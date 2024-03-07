@@ -15,18 +15,18 @@ owner:
   github: Kinnuch
 
 links:
-  - title: About Me
+  - title: Balphalt
     url: /
-  - title: Teams
-    url: /teams/
-  - title: Publications
-    url: /publications/
-  - title: Awards
-    url: /awards/
-  - title: Hobbies
-    url: /hobbies/
-  - title: Blogs
-    url: /blogs/
+  - title: Laim
+    url: /laim/
+  - title: Haudhas
+    url: /haudhas/
+  - title: Cerf
+    url: /cerf/
+  - title: Mínimraef
+    url: /mínimraef/
+  - title: TEAE
+    url: /teae/
 
 # http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
 timezone: China/Beijing

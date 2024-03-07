@@ -8,7 +8,7 @@ layout: page
 
 ## Istad i lam nîn
 
-- test
+- Isto i lam Edhel! Meno i nethad [Realelvish](https://academy.realelvish.net) an istad.
 
 <br>
 
@@ -16,7 +16,7 @@ layout: page
 
 ## I pherf dethennin
 
-- test2
+- TEAE 1(Tastaith Edhellen an Edain 1), cúltho den [TEAE 1](https://kinnuch.github.io/file/TEAE1.pdf)
 
 <br>
 
@@ -25,3 +25,4 @@ layout: page
 ## Pennas-e-vínimraef
 
 - **Orithil, Odlad 7, Echuir 4202：**I vínimraef nîn edras!
+- **Orgaladhad, Odlad 7, Echuir 4202：**Sâv i varphalt!

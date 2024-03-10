@@ -24,6 +24,6 @@ layout: page
 
 ## Pennas-e-vínimraef
 
-- **Orithil, Odlad 7, Echuir 4202: ** I vínimraef nîn edras!
-- **Orgaladhad, Odlad 7, Echuir 4202: ** Ahov i varphalt!
-- **Orgilion, Odlad 8, Echuir 4202: ** Echódiel i ’olf, cýras i varphalt.
+- **Orithil, Odlad 7, Echuir 4202：** I vínimraef nîn edras!
+- **Orgaladhad, Odlad 7, Echuir 4202：** Ahov i varphalt!
+- **Orgilion, Odlad 8, Echuir 4202：** Echódiel i ’olf, cýras i varphalt.

@@ -6,9 +6,10 @@ layout: page
 
 <img src="https://kinnuch.github.io/Lothlorien.png">
 
-## Istad i lam nîn
+## Istad i laim
 
 - Isto i lam Edhel! Meno i nethad [Realelvish](https://academy.realelvish.net) an istad.
+- Isto i lam Elandis! Fabo [Elandis](https://kinnuch.github.io/laim/elandis) an istad.
 
 <br>
 

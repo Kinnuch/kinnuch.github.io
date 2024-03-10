@@ -82,7 +82,7 @@ title: Elandis
 
 两款**元音附标文字**，分别为用于日常书写的**圣纹体(Nuran Irwen)**和用于刻写碑文等的**海蚀体(Nuran Llando)**。
 
-![圣纹体和海蚀体](F:\Github\kinnuch.github.io\laim\elandis.assets\Writingsystem.jpg)
+![圣纹体和海蚀体](https://kinnuch.github.io/laim/elandis.assets/Writingsystem.jpg)
 
 <center style="font-size:14px;color:#C0C0C0;"><i>圣纹体和海蚀体（草稿）</i></center>
 

@@ -20,13 +20,13 @@ links:
   - title: Laim
     url: /laim/
   - title: Haudhas
-    url: /file/404.md
+    url: /haudhas
   - title: Cerf
-    url: /file/404.md
+    url: /cerf
   - title: Mínimraef
-    url: /file/404.md
+    url: /mínimraef
   - title: TEAE
-    url: /file/404.md
+    url: /teae
 
 # http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
 timezone: China/Beijing

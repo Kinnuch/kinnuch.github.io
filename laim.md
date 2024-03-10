@@ -10,5 +10,7 @@ title: Laim
 
 ## Elandis
 
+Elandis lam vain nîn. Istad, ceno [Elandis](https://kinnuch.github.io/laim/elandis).
+
 ## Vōhyssys
 

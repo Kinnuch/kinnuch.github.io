@@ -4,7 +4,7 @@ layout: page
 
 # Uin mínimraef hen
 
-<img src="https://kinnuch.github.io/arda.png" class="floatpic" width="360" height="480">
+<img src="https://kinnuch.github.io/Lothlorien.png">
 
 ## Istad i lam nîn
 
@@ -24,5 +24,6 @@ layout: page
 
 ## Pennas-e-vínimraef
 
-- **Orithil, Odlad 7, Echuir 4202：**I vínimraef nîn edras!
-- **Orgaladhad, Odlad 7, Echuir 4202：**Sâv i varphalt!
+- **Orithil, Odlad 7, Echuir 4202: **I vínimraef nîn edras!
+- **Orgaladhad, Odlad 7, Echuir 4202: **Ahov i varphalt!
+- **Orgilion, Odlad 8, Echuir 4202: **Echódiel i ’olf, cýras i varphalt.

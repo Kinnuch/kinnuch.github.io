@@ -14,3 +14,7 @@ Elandis lam vain nîn. Istad, ceno [Elandis](https://kinnuch.github.io/laim/elan
 
 ## Vōhyssys
 
+## Scottish Gaelic
+
+[Scottish Gaelic Haudhas](https://kinnuch.github.io/laim/scottishgaelic)
+

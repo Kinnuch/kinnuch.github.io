@@ -1,6 +1,6 @@
 ---
 layout: page
-permalink: /file/404/index.html
+permalink: /cerf/index.html
 title: Lost in Void
 ---
 

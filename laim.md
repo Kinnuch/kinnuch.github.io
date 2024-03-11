@@ -4,17 +4,19 @@ permalink: /laim/index.html
 title: Laim
 ---
 
-## Sindarin
+## Sindarin | 辛达语
 
-## Quenya
+Fabo [Sindarin](https://kinnuch.github.io/laim/sindarin) an istad. ←开始学习辛达语。
 
-## Elandis
+## Quenya | 昆雅语
 
-Elandis lam vain nîn. Istad, ceno [Elandis](https://kinnuch.github.io/laim/elandis).
+## Elandis | 亚提斯语
 
-## Vōhyssys
+Elandis lam vain nîn. Istad, ceno [Elandis](https://kinnuch.github.io/laim/elandis). 亚提斯语是我的第一门造语。点击链接浏览相关信息。
 
-## Scottish Gaelic
+## Vōhyssys | 厄希斯语
 
-[Scottish Gaelic Haudhas](https://kinnuch.github.io/laim/scottishgaelic)
+## Scottish Gaelic | 苏格兰盖尔语
+
+[Scottish Gaelic Haudhas](https://kinnuch.github.io/laim/scottishgaelic) 苏盖学习笔记
 

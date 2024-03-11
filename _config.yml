@@ -15,17 +15,17 @@ owner:
   github: Kinnuch
 
 links:
-  - title: Barphalt
+  - title: Barphalt 主页
     url: /
-  - title: Laim
+  - title: Laim 语言
     url: /laim/
-  - title: Haudhas
+  - title: Haudhas 仓库
     url: /haudhas
-  - title: Cerf
+  - title: Cerf 工具
     url: /cerf
-  - title: Mínimraef
+  - title: Mínimraef 博客
     url: /mínimraef
-  - title: TEAE
+  - title: TEAE 测试
     url: /teae
 
 # http://en.wikipedia.org/wiki/List_of_tz_database_time_zones

@@ -4,7 +4,7 @@ layout: page
 
 # Maedol! | 欢迎！
 
-<center><iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=31108432&auto=1&height=66"></iframe></center>
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=31108432&auto=1&height=66"></iframe>
 
 <img src="https://kinnuch.github.io/Lothlorien.png">
 
@@ -30,18 +30,22 @@ layout: page
 
 - **Orithil, Odlad 7, Echuir 4202：** I vínimraef nîn edras! 
 
-  网站于2024年苏季第7周月亮日(2024.3.6)上线。
+  网站于2024年苏季第七周月亮日(2024.3.6)上线。
 
 - **Orgaladhad, Odlad 7, Echuir 4202：** Ahov i varphalt! 
 
-  主页于2024年苏季第7周双树日(2024.3.7)完成。
+  主页于2024年苏季第七周双树日(2024.3.7)完成。
 
 - **Orgilion, Odlad 8, Echuir 4202：** Echódiel i ’olf, cýras i varphalt. 
 
-  2024年苏季第8周星辰日(2024.3.10)网站框架完成，枝干清理完毕，并更新了主干。
+  2024年苏季第八周星辰日(2024.3.10)：网站框架完成，枝干清理完毕，并更新了主页。
 
 - **Orannor, Odlad 8, Echuir 4202：** Ahov i linnas! 
 
-  2024年苏季第8周太阳日(2024.3.11)添加音乐模块。
+  2024年苏季第八周太阳日(2024.3.11)：添加音乐模块。
+
+- **Orithil, Odlad 8, Echuir 4202：** Iestas adabad i ñgelthennith Edhellen. Ahov i ’enediad.
+
+  2024年苏季第八周月亮日(2024.3.12)：开始搭建辛达语课程。添加日历模块。
 
 - 

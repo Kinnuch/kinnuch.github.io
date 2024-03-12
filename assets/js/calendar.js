@@ -19,7 +19,11 @@ function showCalendar(Year, Month, Day){
             else {Season = 6;}
             break;
         }
-        case 2:{Season = 7; break;}
+        case 2:{
+            if (Day == 29) {Season = 9;}
+            else {Season = 7;} 
+            break;
+        }
         case 3:{
             if (Day <= 21) {Season = 7;}
             else{
@@ -60,7 +64,7 @@ function showCalendar(Year, Month, Day){
         }
         case 12:{Season = 6; break;}
     }
-    if (Season != 0 && Season != 4 && Season != 8){
+    if (Season != 0 && Season != 4 && Season != 8 && Season != 9){
         switch(Season){
             case 1:{
                 switch(Month){
@@ -130,23 +134,54 @@ function showCalendar(Year, Month, Day){
             }
         }
     }
-    else{
-
-    }
     if (Ac != -1){
         SDay = Ac % 6;
         SWeek = (Ac - SDay) / 6;
     }
-    var tsHtml = "<td>" + SindarinDay[SDay] + "</td>";
-    tsHtml += "<td>Odlad " + SindarinWeek[SWeek] + "</td>";
-    tsHtml += "<td>" + SindarinSeason[Season] + "</td>";
+    var tsHtml;
+    if (Season != 0 && Season != 4 && Season != 8 && Season != 9){
+        tsHtml = "<td>" + SindarinDay[SDay] + "</td>";
+        tsHtml += "<td>Odlad " + SindarinWeek[SWeek] + "</td>";
+    }
+    else{
+        if (Season == 0 || Season == 8){tsHtml = "";}
+        if (Season == 4){tsHtml = "<td>Arad " + SindarinDay[Day - 20] + "</td>";}
+        if (Season == 9){
+            var leap = ((Year % 100) % 12) / 4;
+            if (leap == 0) leap = 3;
+            tsHtml = "<td>Arad " + SindarinDay[3 + leap] + "</td>";
+        }
+    }
+    if (Season != 9) {tsHtml += "<td>" + SindarinSeason[Season] + "</td>";}
+    else {
+        var leapYear = ((Year % 100) % 12);
+        if (leapYear != 0) leapYear = Year + 12 - leapYear;
+        var sly = String(leapYear);
+        tsHtml += "<td>*" + sly[3] + sly[2] + sly[1] + sly[0] + "</td>";
+    }
     tsHtml += "<td>" + SYear + "</td>";
     var tsbody = document.getElementById('Sindarin');
     tsbody.innerHTML = tsHtml;
     var tmHtml = "<td>" + String(Year) + "年</td>";
-    tmHtml += "<td>" + MandarinSeason[Season] + "</td>";
-    tmHtml += "<td>第" + MandarinWeek[SWeek] + "周</td>";
-    tmHtml += "<td>" + MandarinDay[SDay] + "</td>";
+    if (Season != 9) {tmHtml += "<td>" + MandarinSeason[Season] + "</td>";}
+    else {
+        var leapYear = ((Year % 100) % 12);
+        if (leapYear != 0) leapYear = Year + 12 - leapYear;
+        var sly = String(leapYear);
+        tsHtml += "<td>闰于" + sly[3] + sly[2] + sly[1] + sly[0] + "年年半</td>";
+    }
+    if (Season != 0 && Season != 4 && Season != 8 && Season != 9){
+        tmHtml += "<td>第" + MandarinWeek[SWeek] + "周</td>";
+        tmHtml += "<td>" + MandarinDay[SDay] + "</td>";
+    }
+    else{
+        if (Season == 4){tsHtml += "<td>第" + SindarinDay[Day - 20] + "天</td>";}
+        if (Season == 9){
+            var leap = ((Year % 100) % 12) / 4;
+            if (leap == 0) leap = 3;
+            tsHtml += "<td>第" + SindarinDay[3 + leap] + "天(闰)</td>";
+        }
+    }
     var tmbody = document.getElementById('Mandarin');
     tmbody.innerHTML = tmHtml;
 }

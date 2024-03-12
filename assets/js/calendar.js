@@ -149,7 +149,7 @@ function showCalendar(Year, Month, Day){
         if (Season == 9){
             var leap = ((Year % 100) % 12) / 4;
             if (leap == 0) leap = 3;
-            tsHtml = "<td>Arad " + SindarinWeek[3 + leap] + "</td>";
+            tsHtml = "<td>Arad " + SindarinWeek[2 + leap] + "</td>";
         }
     }
     if (Season != 9) {tsHtml += "<td>" + SindarinSeason[Season] + "</td>";}
@@ -158,7 +158,7 @@ function showCalendar(Year, Month, Day){
         if (leapYear != 0) leapYear = Year + 12 - leapYear;
         else leapYear = Year;
         var sly = String(leapYear);
-        tsHtml += "<td>Amin" + sly[3] + sly[2] + sly[1] + sly[0] + "</td>";
+        tsHtml += "<td>Amin " + sly[3] + sly[2] + sly[1] + sly[0] + "</td>";
     }
     tsHtml += "<td>" + SYear + "</td>";
     var tsbody = document.getElementById('Sindarin');
@@ -181,7 +181,7 @@ function showCalendar(Year, Month, Day){
         if (Season == 9){
             var leap = ((Year % 100) % 12) / 4;
             if (leap == 0) leap = 3;
-            tmHtml += "<td>第" + MandarinWeek[3 + leap] + "天(闰)</td>";
+            tmHtml += "<td>第" + MandarinWeek[2 + leap] + "天(闰)</td>";
         }
     }
     var tmbody = document.getElementById('Mandarin');

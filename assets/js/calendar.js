@@ -170,18 +170,18 @@ function showCalendar(Year, Month, Day){
         if (leapYear != 0) leapYear = Year + 12 - leapYear;
         else leapYear = Year;
         var sly = String(leapYear);
-        tsHtml += "<td>闰于" + sly[3] + sly[2] + sly[1] + sly[0] + "年年半</td>";
+        tmHtml += "<td>闰于" + sly[3] + sly[2] + sly[1] + sly[0] + "年年半</td>";
     }
     if (Season != 0 && Season != 4 && Season != 8 && Season != 9){
         tmHtml += "<td>第" + MandarinWeek[SWeek] + "周</td>";
         tmHtml += "<td>" + MandarinDay[SDay] + "</td>";
     }
     else{
-        if (Season == 4){tsHtml += "<td>第" + MandarinWeek[Day - 20] + "天</td>";}
+        if (Season == 4){tmHtml += "<td>第" + MandarinWeek[Day - 20] + "天</td>";}
         if (Season == 9){
             var leap = ((Year % 100) % 12) / 4;
             if (leap == 0) leap = 3;
-            tsHtml += "<td>第" + MandarinWeek[3 + leap] + "天(闰)</td>";
+            tmHtml += "<td>第" + MandarinWeek[3 + leap] + "天(闰)</td>";
         }
     }
     var tmbody = document.getElementById('Mandarin');

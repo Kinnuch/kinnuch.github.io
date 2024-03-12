@@ -145,19 +145,20 @@ function showCalendar(Year, Month, Day){
     }
     else{
         if (Season == 0 || Season == 8){tsHtml = "";}
-        if (Season == 4){tsHtml = "<td>Arad " + SindarinDay[Day - 20] + "</td>";}
+        if (Season == 4){tsHtml = "<td>Arad " + SindarinWeek[Day - 20] + "</td>";}
         if (Season == 9){
             var leap = ((Year % 100) % 12) / 4;
             if (leap == 0) leap = 3;
-            tsHtml = "<td>Arad " + SindarinDay[3 + leap] + "</td>";
+            tsHtml = "<td>Arad " + SindarinWeek[3 + leap] + "</td>";
         }
     }
     if (Season != 9) {tsHtml += "<td>" + SindarinSeason[Season] + "</td>";}
     else {
         var leapYear = ((Year % 100) % 12);
         if (leapYear != 0) leapYear = Year + 12 - leapYear;
+        else leapYear = Year;
         var sly = String(leapYear);
-        tsHtml += "<td>*" + sly[3] + sly[2] + sly[1] + sly[0] + "</td>";
+        tsHtml += "<td>Amin" + sly[3] + sly[2] + sly[1] + sly[0] + "</td>";
     }
     tsHtml += "<td>" + SYear + "</td>";
     var tsbody = document.getElementById('Sindarin');
@@ -167,6 +168,7 @@ function showCalendar(Year, Month, Day){
     else {
         var leapYear = ((Year % 100) % 12);
         if (leapYear != 0) leapYear = Year + 12 - leapYear;
+        else leapYear = Year;
         var sly = String(leapYear);
         tsHtml += "<td>闰于" + sly[3] + sly[2] + sly[1] + sly[0] + "年年半</td>";
     }
@@ -175,11 +177,11 @@ function showCalendar(Year, Month, Day){
         tmHtml += "<td>" + MandarinDay[SDay] + "</td>";
     }
     else{
-        if (Season == 4){tsHtml += "<td>第" + SindarinDay[Day - 20] + "天</td>";}
+        if (Season == 4){tsHtml += "<td>第" + MandarinWeek[Day - 20] + "天</td>";}
         if (Season == 9){
             var leap = ((Year % 100) % 12) / 4;
             if (leap == 0) leap = 3;
-            tsHtml += "<td>第" + SindarinDay[3 + leap] + "天(闰)</td>";
+            tsHtml += "<td>第" + MandarinWeek[3 + leap] + "天(闰)</td>";
         }
     }
     var tmbody = document.getElementById('Mandarin');

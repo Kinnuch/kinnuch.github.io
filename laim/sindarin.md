@@ -18,13 +18,7 @@ title: Sindarin Textbook
 
 搭建这门课程耗费不少心血，我很感谢我的朋友们愿意帮助我完成这门课程。在此我将介绍本课程音频的贡献者——我和我的朋友们。
 
-**Kinnuch：**
-
-**Eänár：**
-
-**Laurelin：**
-
-**Basnor：**
+![Friends](https://kinnuch.github.io/laim/sindarin.assets/Friends.png)
 
 ## Golthanneth Lad: tîw ah lhónnas| 第零课：字母和语音
 

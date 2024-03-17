@@ -50,16 +50,14 @@ title: Sindarin Textbook
 
 1. **A [ɑ]**
 
-   卢恩转写：![Arune](https://kinnuch.github.io/laim/sindarin.assets/Arune.png)
-
-   腾格瓦转写：![Atengwar](https://kinnuch.github.io/laim/sindarin.assets/Atengwar.png)
-
    开前不圆唇元音。发音有如英语father中的a、汉语"发"中的a。需要注意辛达语中的a位置**稍稍靠后**。
 
    录音中的单词：**Adan** 人类，**Hadhod** 矮人，**Caras Galadhon** 树木之城，**Galadriel** 加拉德瑞尔
 
-   ```html
    <audio controls="controls"><source src="https://kinnuch.github.io/laim/sindarin.assets/Aman.mp3" type="audio/mpeg"></audio>
-   ```
 
-2. 
+2. **E [ɛ]**
+
+   半开不圆唇元音。
+
+3. 

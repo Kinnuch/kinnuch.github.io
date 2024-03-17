@@ -22,7 +22,7 @@ title: Sindarin Textbook
 
 ## Golthanneth Lad: tîw ah lhónnas| 第零课：字母和语音
 
-辛达语有着多种书写方式，最常用的有三种：基于茹尼字母(Runic)的**Angerthas Daeron**，基于腾格瓦字母(Tengwar)的**Tiwdi**，以及基于拉丁字母的，用于教学最方便的拉丁转写版本。在本课中，三种文字我们都将提及，但在之后的课程中，我们仅使用**拉丁转写**。
+辛达语有着多种书写方式，最常用的有三种：基于卢恩字母(Runic)的**Angerthas Daeron**，基于腾格瓦字母(Tengwar)的**Tiwdi**，以及基于拉丁字母的，用于教学最方便的拉丁转写版本。在本课中，三种文字我们都将提及，但在之后的课程中，我们仅使用**拉丁转写**。
 
 首先来看一段同样的文本，但使用不同字母书写所产生的效果：
 
@@ -45,3 +45,17 @@ title: Sindarin Textbook
 ![TengwarEg](https://kinnuch.github.io/laim/sindarin.assets/TengwarEg.png)
 
 <center style="font-size:14px;color:#C0C0C0;"><i>已然成为精灵风代言词的腾格瓦字母</i></center>
+
+只有掌握了辛达语每个字母的发音，才能流畅地读出优雅的精灵语。每个字母会有单独的录音，同时会附带一些含有该字母的常见单词，方便学习。接下来就分别介绍辛达语中每个字母的发音，首先来看单元音：
+
+1. **A [ɑ]**
+
+   卢恩转写：![Arune](https://kinnuch.github.io/laim/sindarin.assets/Arune.png)
+
+   腾格瓦转写：![Atengwar](https://kinnuch.github.io/laim/sindarin.assets/Atengwar.png)
+
+   开前不圆唇元音。发音有如英语father中的a、汉语"发"中的a。需要注意辛达语中的a位置**稍稍靠后**。
+
+   录音中的单词：**Adan** 人类，**Hadhod** 矮人，**Caras Galadhon** 树木之城，**Galadriel** 加拉德瑞尔
+
+2. 

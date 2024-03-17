@@ -58,4 +58,8 @@ title: Sindarin Textbook
 
    录音中的单词：**Adan** 人类，**Hadhod** 矮人，**Caras Galadhon** 树木之城，**Galadriel** 加拉德瑞尔
 
+   ```html
+   <audio controls="controls"><source src="https://kinnuch.github.io/laim/sindarin.assets/Aman.mp3" type="audio/mpeg"></audio>
+   ```
+
 2. 

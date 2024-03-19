@@ -52,9 +52,9 @@ title: Sindarin Textbook
 
    开前不圆唇元音。发音有如英语father中的a、汉语"发"中的a。需要注意辛达语中的a位置**稍稍靠后**。
 
-   录音中的单词分别是：**<u>A</u>d<u>a</u>n** 人类，**H<u>a</u>dhod** 矮人，**C<u>a</u>r<u>a</u>s G<u>a</u>l<u>a</u>dhon** 树木之城，**G<u>a</u>l<u>a</u>driel** 加拉德瑞尔
-
    <audio controls="controls"><source src="https://kinnuch.github.io/laim/sindarin.assets/Amanwoman.mp3" type="audio/mpeg"></audio>
+
+   录音中的单词分别是：**<u>A</u>d<u>a</u>n** 人类，**H<u>a</u>dhod** 矮人，**C<u>a</u>r<u>a</u>s G<u>a</u>l<u>a</u>dhon** 树木之城，**G<u>a</u>l<u>a</u>driel** 加拉德瑞尔
 
    <audio controls="controls"><source src="https://kinnuch.github.io/laim/sindarin.assets/Aman.mp3" type="audio/mpeg"></audio>
 
@@ -62,9 +62,9 @@ title: Sindarin Textbook
 
    半开前不圆唇元音。发音有如英语let, bet等词中的e。并不是汉语中的e。
 
-   录音中的单词分别是：**<u>E</u>m<u>e</u>l** 母亲，**p<u>e</u>th** 词，**<u>E</u>r<u>e</u>bor** 孤山，**B<u>e</u>r<u>e</u>n** 贝伦
-
    <audio controls="controls"><source src="https://kinnuch.github.io/laim/sindarin.assets/Emanwoman.mp3" type="audio/mpeg"></audio>
+
+   录音中的单词分别是：**<u>E</u>m<u>e</u>l** 母亲，**p<u>e</u>th** 词，**<u>E</u>r<u>e</u>bor** 孤山，**B<u>e</u>r<u>e</u>n** 贝伦
 
    <audio controls="controls"><source src="https://kinnuch.github.io/laim/sindarin.assets/Eman.mp3" type="audio/mpeg"></audio>
 
@@ -72,9 +72,9 @@ title: Sindarin Textbook
 
    闭前不圆唇元音。发音有如英语pit中的i，汉语'辟'中i的音，不过需要注意不要拖长。
 
-   录音中的单词分别是：**N<u>i</u>m** 白色的，**<u>I</u>th<u>i</u>l** 月亮，**<u>I</u>vr<u>i</u>n** 伊芙林湖， **T<u>i</u>núv<u>i</u>el** 露西恩
-
    <audio controls="controls"><source src="https://kinnuch.github.io/laim/sindarin.assets/Imanwoman.mp3" type="audio/mpeg"></audio>
+
+   录音中的单词分别是：**N<u>i</u>m** 白色的，**<u>I</u>th<u>i</u>l** 月亮，**<u>I</u>vr<u>i</u>n** 伊芙林湖， **T<u>i</u>núv<u>i</u>el** 露西恩
 
    <audio controls="controls"><source src="https://kinnuch.github.io/laim/sindarin.assets/Iman.mp3" type="audio/mpeg"></audio>
 
@@ -88,9 +88,9 @@ title: Sindarin Textbook
 
    半开后圆唇元音。发音有如英语orange中的o。汉语'波'中的o也类似，但注意辛达语中的o通常舌位更低。
 
-   录音中的单词分别是：**<u>o</u>rch** 半兽人，**r<u>o</u>ch** 马，**G<u>o</u>nd<u>o</u>r** 刚铎， **Finr<u>o</u>d** 芬罗德
-
    <audio controls="controls"><source src="https://kinnuch.github.io/laim/sindarin.assets/Omanwoman.mp3" type="audio/mpeg"></audio>
+
+   录音中的单词分别是：**<u>o</u>rch** 半兽人，**r<u>o</u>ch** 马，**G<u>o</u>nd<u>o</u>r** 刚铎， **Finr<u>o</u>d** 芬罗德
 
    <audio controls="controls"><source src="https://kinnuch.github.io/laim/sindarin.assets/Oman.mp3" type="audio/mpeg"></audio>
 
@@ -98,9 +98,9 @@ title: Sindarin Textbook
 
    闭后圆唇元音。发音有如英语brute中的u，汉语'乌'中的u，但注意不要拖长。
 
-   录音中的单词分别是：**t<u>u</u>m** 谷地，**r<u>u</u>sc** 狐狸，**<u>U</u>dûn** 乌顿，**T<u>u</u>rgon** 图尔巩
-
    <audio controls="controls"><source src="https://kinnuch.github.io/laim/sindarin.assets/Umanwoman.mp3" type="audio/mpeg"></audio>
+
+   录音中的单词分别是：**t<u>u</u>m** 谷地，**r<u>u</u>sc** 狐狸，**<u>U</u>dûn** 乌顿，**T<u>u</u>rgon** 图尔巩
 
    <audio controls="controls"><source src="https://kinnuch.github.io/laim/sindarin.assets/Uman.mp3" type="audio/mpeg"></audio>
 
@@ -108,12 +108,68 @@ title: Sindarin Textbook
 
    闭前圆唇元音。和i构成不圆唇和圆唇的对立。发音同汉语的'鱼'，不过不要拖长。
 
-   录音中的单词分别是：**<u>y</u>lf** 杯子，**mell<u>y</u>n** 朋友们，**gel<u>y</u>dh** 树木（复数），**er<u>y</u>d** 山（复数）
-
    <audio controls="controls"><source src="https://kinnuch.github.io/laim/sindarin.assets/Ymanwoman.mp3" type="audio/mpeg"></audio>
+
+   录音中的单词分别是：**<u>y</u>lf** 杯子，**mell<u>y</u>n** 朋友们，**gel<u>y</u>dh** 树木（复数），**er<u>y</u>d** 山（复数）
    
    <audio controls="controls"><source src="https://kinnuch.github.io/laim/sindarin.assets/Yman.mp3" type="audio/mpeg"></audio>
 
-辛达语中的单元音
+辛达语中的单元音有三种**音长**，即**短音(a)**、**半长音(á)**、**长音(â)**。下面列出六个单元音的三种音长形式：a-á-â, e-é-ê, i-í-î, o-ó-ô, u-ú-û, y-ý-ŷ。长音的音长是短音的两倍，在朗读单词时需要注意。半长音则比较特殊，虽然**理论上**半长音的音长介于长音短音之间，是短音的1.5倍，但毕竟人耳在语流中几乎无法分辨1.5倍的音长，所以**实际上**半长音就按照短元音读即可，但是在书面语当中**必须标出**（半长音和部分元音弱化有关）。
 
-接下来是
+接下来是双元音：
+
+1. **ai [ɑj]**
+
+   降调双元音。发音有如英语wine中的i_e，汉语中的'爱'，不过开口没有汉语那么大。
+
+   录音中的单词分别是：**b<u>ai</u>n** 美丽的，**c<u>ai</u>r** 船，**Dúned<u>ai</u>n** 杜内丹人，**Annún<u>ai</u>d** 西方通用语
+
+   <audio controls="controls"><source src="https://kinnuch.github.io/laim/sindarin.assets/AIman.mp3" type="audio/mpeg"></audio>
+
+2. **ae [ɑɛ]**
+
+   降调双元音，和ai的发音十分相似，只不过开口略小，且结尾的口型是e的口型而不是i的口型。
+
+   录音中的单词分别是：**g<u>ae</u>ar** 大海，**ath<u>ae</u>** 草药/治愈的，**Iorh<u>ae</u>l** 弗罗多，**<u>Ae</u>luin** 艾路因湖
+
+   <audio controls="controls"><source src="https://kinnuch.github.io/laim/sindarin.assets/AEman.mp3" type="audio/mpeg"></audio>
+
+3. **au [ɑu]**
+
+   降调双元音。发音有如英语ouch中的ou，汉语中的'奥'。
+
+   录音中的单词分别是：**(n)g<u>au</u>r** 座狼，**n<u>au</u>b** 大拇指，**G<u>au</u>l** 奥力，**Gl<u>au</u>rung** 格劳龙
+
+   <audio controls="controls"><source src="https://kinnuch.github.io/laim/sindarin.assets/AUman.mp3" type="audio/mpeg"></audio>
+
+4. **aw [ɑw]**
+
+   降调双元音，和au的发音十分相似，只不过开口略小。发音有如英语owl中的ow。
+
+   录音中的单词分别是：**l<u>aw</u>** 否定助词，**lh<u>aw</u>** 耳朵，**G<u>aw</u>** 虚空，**Ar<u>aw</u>** 欧洛姆
+
+   <audio controls="controls"><source src="https://kinnuch.github.io/laim/sindarin.assets/AWman.mp3" type="audio/mpeg"></audio>
+
+5. **ei [ej]**
+
+   降调双元音。发音有如英语say中的ay，汉语中的'欸'。
+
+   录音中的单词分别是：**<u>ei</u>thel** 喷泉/井，**l<u>ei</u>thia-** 放松/(箭矢)出射，**t<u>ei</u>tha-** 写，**L<u>ei</u>thian** 蕾希安
+
+   <audio controls="controls"><source src="https://kinnuch.github.io/laim/sindarin.assets/EIman.mp3" type="audio/mpeg"></audio>
+
+6. **oe [ɔɛ]**
+
+   降调双元音。发音有如英语boy中的oy。
+
+   录音中的单词分别是：**g<u>oe</u>** 恐惧，**c<u>oe</u>** 土地，**b<u>oe</u>** 必须，**F<u>oe</u>n** 弗恩山
+
+   <audio controls="controls"><source src="https://kinnuch.github.io/laim/sindarin.assets/OEman.mp3" type="audio/mpeg"></audio>
+
+7. **ui [uj]**
+
+   降调双元音。发音就是快速的从u滑到i。
+
+   录音中的单词分别是：**<u>ui</u>al** 微光，**Br<u>ui</u>nen** 布茹伊能河， **And<u>ui</u>n** 安度因河，**ech<u>ui</u>a-** 唤醒/苏醒
+
+   <audio controls="controls"><source src="https://kinnuch.github.io/laim/sindarin.assets/UIman.mp3" type="audio/mpeg"></audio>

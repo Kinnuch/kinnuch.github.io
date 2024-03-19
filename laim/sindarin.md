@@ -54,6 +54,8 @@ title: Sindarin Textbook
 
    录音中的单词分别是：**<u>A</u>d<u>a</u>n** 人类，**H<u>a</u>dhod** 矮人，**C<u>a</u>r<u>a</u>s G<u>a</u>l<u>a</u>dhon** 树木之城，**G<u>a</u>l<u>a</u>driel** 加拉德瑞尔
 
+   <audio controls="controls"><source src="https://kinnuch.github.io/laim/sindarin.assets/Amanwoman.mp3" type="audio/mpeg"></audio>
+
    <audio controls="controls"><source src="https://kinnuch.github.io/laim/sindarin.assets/Aman.mp3" type="audio/mpeg"></audio>
 
 2. **e [ɛ]**
@@ -62,6 +64,8 @@ title: Sindarin Textbook
 
    录音中的单词分别是：**<u>E</u>m<u>e</u>l** 母亲，**p<u>e</u>th** 词，**<u>E</u>r<u>e</u>bor** 孤山，**B<u>e</u>r<u>e</u>n** 贝伦
 
+   <audio controls="controls"><source src="https://kinnuch.github.io/laim/sindarin.assets/Emanwoman.mp3" type="audio/mpeg"></audio>
+
    <audio controls="controls"><source src="https://kinnuch.github.io/laim/sindarin.assets/Eman.mp3" type="audio/mpeg"></audio>
 
 3. **i [i]**
@@ -69,6 +73,8 @@ title: Sindarin Textbook
    闭前不圆唇元音。发音有如英语pit中的i，汉语'辟'中i的音，不过需要注意不要拖长。
 
    录音中的单词分别是：**N<u>i</u>m** 白色的，**<u>I</u>th<u>i</u>l** 月亮，**<u>I</u>vr<u>i</u>n** 伊芙林湖， **T<u>i</u>núv<u>i</u>el** 露西恩
+
+   <audio controls="controls"><source src="https://kinnuch.github.io/laim/sindarin.assets/Imanwoman.mp3" type="audio/mpeg"></audio>
 
    <audio controls="controls"><source src="https://kinnuch.github.io/laim/sindarin.assets/Iman.mp3" type="audio/mpeg"></audio>
 
@@ -84,6 +90,8 @@ title: Sindarin Textbook
 
    录音中的单词分别是：**<u>o</u>rch** 半兽人，**r<u>o</u>ch** 马，**G<u>o</u>nd<u>o</u>r** 刚铎， **Finr<u>o</u>d** 芬罗德
 
+   <audio controls="controls"><source src="https://kinnuch.github.io/laim/sindarin.assets/Omanwoman.mp3" type="audio/mpeg"></audio>
+
    <audio controls="controls"><source src="https://kinnuch.github.io/laim/sindarin.assets/Oman.mp3" type="audio/mpeg"></audio>
 
 5. **u [u]**
@@ -91,6 +99,8 @@ title: Sindarin Textbook
    闭后圆唇元音。发音有如英语brute中的u，汉语'乌'中的u，但注意不要拖长。
 
    录音中的单词分别是：**t<u>u</u>m** 谷地，**r<u>u</u>sc** 狐狸，**<u>U</u>dûn** 乌顿，**T<u>u</u>rgon** 图尔巩
+
+   <audio controls="controls"><source src="https://kinnuch.github.io/laim/sindarin.assets/Umanwoman.mp3" type="audio/mpeg"></audio>
 
    <audio controls="controls"><source src="https://kinnuch.github.io/laim/sindarin.assets/Uman.mp3" type="audio/mpeg"></audio>
 
@@ -100,6 +110,8 @@ title: Sindarin Textbook
 
    录音中的单词分别是：**<u>y</u>lf** 杯子，**mell<u>y</u>n** 朋友们，**gel<u>y</u>dh** 树木（复数），**er<u>y</u>d** 山（复数）
 
+   <audio controls="controls"><source src="https://kinnuch.github.io/laim/sindarin.assets/Ymanwoman.mp3" type="audio/mpeg"></audio>
+   
    <audio controls="controls"><source src="https://kinnuch.github.io/laim/sindarin.assets/Yman.mp3" type="audio/mpeg"></audio>
 
 辛达语中的单元音

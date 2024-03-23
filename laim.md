@@ -22,3 +22,6 @@ Elandis lam vain nîn. Istad, ceno [Elandis](https://kinnuch.github.io/laim/elan
 
 [Scottish Gaelic Haudhas](https://kinnuch.github.io/laim/scottishgaelic) 苏盖学习笔记
 
+## Old Norse & Old Icelandic | 古诺斯语&古冰岛语
+
+[Icelandic Haudhas](https://kinnuch.github.io/laim/oldicelandic) 古冰岛语学习笔记

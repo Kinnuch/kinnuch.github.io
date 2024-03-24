@@ -12,29 +12,45 @@ title: Elandis
 
 ## Prologue | 序言
 
-不知真月赠与了大海几多银带，不知天海的烈日干涸了多少雨泪。
+不知真月赠与了大海几多银带，
 
-**Uzetes í ù-natixad Phále mōrya patat lhèriain xelaimer, uzetes í ù-tlhachoxat Váin zèlvainirēn patat reu agh theri.** 
+**Uzetes í ù-natixad Phále mōrya patat lhèriain xelaimer,**
 
-云草铺满海底，又扎破水面；霞蝶举族南迁，周而复返。
+不知天海的烈日干涸了多少雨泪。
 
-**Topeched o phálf he ànda moryaurēn, agh veruxath zén os sèur; Quetaxath an nduchúlla ic namathéna, agh bovixad zén ína-ùna.**
+**uzetes í ù-tlhachoxat Váin zèlvainirēn patat reu agh theri.**
+
+云草铺满海底，又扎破水面；
+
+**Topeched o phálf he ànda moryaurēn, agh veruxath zén os sèur;**
+
+霞蝶举族南迁，周而复返。
+
+**Quetaxath an nduchúlla ic namathéna, agh bovixad zén ína-ùna.**
 
 六季轮回直到连山血的光辉都暗淡了。
 
-**Quetamanenifi ir bhevíste vema leina que modixad i ccál  borerēn thunturēn.**
+**Quetamanenifi ir bhevíste vema leina que modixad i ccál borerēn thunturēn.**
 
-连最后奔向流光的海浪都走到了世界的尽头，大海，终于完全静止了。
+连最后奔向流光的海浪都走到了世界的尽头，
 
-**Que avtaxath gléb ya naraxath lhataína vatimale vàitith Ambarirēn, o mhorya, sapeched arab vatimaeth.**
+**Que avtaxath gléb ya naraxath lhataína vatimale vàitith Ambarirēn,**
+
+大海，终于完全静止了。
+
+**o mhorya, sapeched arab vatimaeth.**
 
 静而后动。
 
 **Sapechec har í ù aggas.**
 
-飒沓的流星自无边之地堕入海中，炽烈的光芒驱使着沸腾的热水逆流溯回。
+飒沓的流星自无边之地堕入海中，
 
-**Motixad thráud qual Nithnatinorùna moryaúna, taigzanixad cál arvaiv i dhìm greliv.**
+**Motixad thráud qual Nithnatinorùna moryaúna,**
+
+炽烈的光芒驱使着沸腾的热水逆流溯回。
+
+**taigzanixad cál arvaiv i dhìm greliv.**
 
 苍茫的远海啊，也难衡无量的坠星。
 
@@ -46,45 +62,153 @@ title: Elandis
 
 *《海蚀录》亚提斯神话——山与海*
 
+## Greetings | 寒暄用语
+
+亚提斯人，尤其是紫岸支的亚提斯人，会在成年后把紫色亚纹石磨碎后提取出的颜料抹匀在利器上，然后在右手手腕靠右上的小窝里刻上一些点。最常见的形状是两层正方形的点（四角的四个点，嵌套两层），然后中央横排刻上三个点，整体象征尖牙利齿。这被视为是母亲河保佑身体强健的符号。
+
+当两位成年亚族人碰面时，他们通常会伸出右手，手臂平举，手心朝上，呈轻握拳状，上下晃动两至三下手腕来打招呼。这个动作象征着咬合，所以寒暄最常见的用语便是**'Rugham!'**，即'（愿母亲）保护你'。有时亚族人也会展示一下自己的牙齿，然后说**'Sothriv xi!'**，即'最好的健康'。而对于孩童或者熟人，一般来说用**Sa!**简单招呼一下即可。
+
+而离别时，根据场合可选的礼貌用语也不少。最简单的再见是**'Gane oriv!'**，即'好去'，甚至直接说**'Oriv!'**也是亚族人可以接受的告别方式。另外也可以说**'Ap emmam.'**，即'我一会儿回来'，或**'Aron rue!'**，'好运相伴'。
+
+初次见面，询问对方的名字时，可以说**'Damantavath llándo mhàn?'**，直译是'海蚀未摧毁什么？'；对方的回答会像这样**'Axidi ithren Lafa!'**，即'（神话）星（群）见证，吾名拉法！'。另一种比较直白的询问方式是**'Cem i axidi uren?'**或者缩略形式**'Cem yaxidi uren?'**，意为'能允许我知道你的名字吗？'。
+
+另外，亚夜的六大星体也对亚族人的问候用语有极大的影响：
+
+- Vema维瓦，**波纹星群**，司掌变化与诞生。对应**宫音Ve**与**黎明veming**。
+- Yona约奈，**五角天**，司掌秩序与规则。对应**商音Yo**与**早晨yoving**。
+- Vain瓦因，**天海日**，司掌光明与热烈。对应**角音Va**与**正午vaiving**。
+- Aeyen亚夜，**神话星群**，司掌智慧与丰收，对应**徵音Ae**与**午后aeving**。
+- Phale法勒，**真月**，司掌汇聚与包容，对应**羽音Pha**与**傍晚phaving**。
+- Naghule纳沽列，**星云天**，司掌黑夜与宁静，对应**变羽音Na**与**夜晚naving**。
+
+另外深夜由数字零的词根nu构成，即**nuving**，Nu也就对应**变徵音**。
+
+在每天的不同时段，使用动词**vererē '祝好'**的祈使式**vereo**搭配对应名词的方位格即可：
+
+- **Vereo Vemīth** 早上好
+- **Vereo Yovīth** 上午好
+- **Vereo Vaivīth** 中午好
+- **Vereo Aevīth** 下午好
+- **Vereo Phavīth** 傍晚好
+- **Vereo Navīth** 晚上好
+- **Vereo Nuvīth** 晚安
+
 ## Phonology and Orthography| 音系与正字
 
-<center style="font-size:20px;color:#808080;"><b>辅音表</b></center>
+### 辅音
 
-|              |        双唇        |          唇齿           |             齿龈             |   硬腭   |         软腭          |     小舌      |   声门   |
-| :----------: | :----------------: | :---------------------: | :--------------------------: | :------: | :-------------------: | :-----------: | :------: |
-|   **鼻音**   | **mh**[m̥] **m**[m] |                         |    **nh/nm**[n̥] **n**[n]     |          |       **ñ**[ŋ]        |               |          |
-| **塞音**[^1] | **p**[p] **b**[b]  |                         |      **t**[t] **d**[d]       |          |   **c**[k] **g**[g]   |  **q/cc**[q]  | **'**[ʔ] |
-|   **擦音**   |                    | **f/ph**[f] **v/bh**[v] | **s/th**[s] **z/dh**[z] [^2] |          |  **ch**[x] **gh**[ɣ]  | **x**[χ] [^3] |          |
-|   **闪音**   |                    |                         |           **r**[ɾ]           |          |                       |               |          |
-|  **边擦音**  |                    |                         |          **lh**[ɬ]           |          |                       |               |          |
-|   **通音**   |                    |                         |           **l**[l]           | **y**[j] |                       |               |          |
-|   **协同**   |                    |                         |         **tlh**[tɬ]          |          | **qu**[k<sup>w</sup>] |               |          |
+#### 辅音全表
 
-<center style="font-size:20px;color:#808080;"><b>单元音表</b></center>
+![Consonants](https://kinnuch.github.io/laim/elandis.assets/Consonants.png)
 
-|        |        前        |      后      |
-| :----: | :--------------: | :----------: |
-| **闭** |     **i**[i]     |   **u**[u]   |
-| **中** |   **e**[ɛ ~ e]   | **o**[ɔ ~ o] |
-| **开** | **a**[a ~ ɐ ~ ɑ] |              |
+#### 双唇音
 
-<center style="font-size:20px;color:#808080;"><b>双元音表</b></center>
+1. 鼻音：清鼻音**mh**[m̥]和浊鼻音**m**[m]
+2. 塞音：清塞音[^1]**p**[p]和浊塞音**b**[b]
 
-|  拼写  |      音值      |
-| :----: | :------------: |
-| **ai** |      [ai]      |
-| **au** |      [au]      |
-| **ae** | [aɛ ~ e: ~ ai] |
-| **eu** | [ɛu ~ ɔu ~ ɔi] |
-| **ei** |      [ei]      |
+#### 唇齿音
+
+1. 擦音：清擦音**f/ph**[f]和浊擦音**v/bh**[v]
+
+> 其中ph/bh记录的词偏向于外来词，尤其来自**流云语(Phlaman)**的亚夜花园相关词。f/v则偏向于固有词。
+
+#### 齿龈音
+
+1. 鼻音：清鼻音**nh/nm**[n̥]和浊鼻音**n**[n]
+
+   > 拼写为nm的清鼻音已经非常罕见，通常会有舌唇化倾向，不过很多已经演化为(n)m。
+
+2. 塞音：清塞音**t**[t]和浊塞音**d**[d]
+
+3. 擦音[^2]：清擦音**s/th**[s]和浊擦音**z/dh**[z]
+
+4. 闪音：浊闪音**r**[ɾ]
+
+5. 边擦音：清边擦音**lh**[ɬ]
+
+   > 闪音和边擦音的清浊对立已经消失，但清闪音可能体现在一些**(h)r**开头的残存词汇中，对冠词的辅音交替也有影响。
+
+6. 通音：浊通音**l**[l]
+
+   > 某些l在音节首会发清边擦音，不过发生这种现象具体的时机并没有太多规律。唯二已知的规律是双写的l，即**ll**，基本是一定会发清边擦音的；以及出现在辅音丛**fl**中的l很大可能发清边擦音。
+
+7. 塞擦音：清塞擦音**tlh**[tɬ]
+
+#### 硬腭音
+
+1. 通音：浊通音**y**[j]
+
+#### 软腭音
+
+1. 鼻音：浊鼻音**ñ**[ŋ]
+
+   > 该音也拼为ng，事实上在圣纹体和海蚀体中就是这样拼写的。
+
+2. 塞音：清塞音**c**[k]和浊塞音**g**[g]
+
+3. 擦音：清擦音**ch**[x]和浊擦音**gh**[ɣ]
+
+4. 唇化塞音：**qu**[k<sup>w</sup>]
+
+#### 小舌音
+
+1. 塞音：清塞音**q/cc**[q]
+2. 擦音：清擦音[^3]**x**[χ]
+
+#### 声门音
+
+1. 塞音：清塞音**'**[ʔ]
+2. 擦音：清擦音[^4]**h**[h]
+
+
+
+### 元音
+
+#### 单元音
+
+1. 前高不圆唇元音**i**[i]
+
+2. 前中不圆唇元音**e**[ɛ ~ e]
+
+3. 后高圆唇元音**u**[u]
+
+4. 后中圆唇元音**o**[ɔ ~ o]
+
+5. 低元音**a**[ɐ ~ ɑ]
+
+6. 央元音[ə]
+
+   > 央元音体现在**非重读**的o/a上。其中a一级弱化a > [ə]，o两级弱化o > a > [ə]。另外非重读的e可能发[i]。
+
+#### 双元音
+
+1. 降双元音**ai**[ɐi]
+2. 降双元音**au**[ɐu]
+3. 升双元音**ae**[ɐɛ ~ e: ~ ɐi]
+4. 降双元音**eu**[ɛu ~ ɔu ~ ɔi]
+5. 降双元音**ei**[ei]，出现频次较少
+
+
+
+### 重音规则
+
+除了单音节词，少数重音不规则的词，绝大部分亚提斯语词汇重音都在倒数第二个音节上，该音节被称为**重读音节(Laqrab Vagh)**，或称**瓦厄音节**。名词的格标记便施加在该音节的元音，即**干元音(Ving Vagh)**，或称**瓦厄元音**，上。如果巴厄元音是双元音，那么标记就落在降双元音首或升双元音尾上。
+
+
 
 ## Writing System | 文字
 
-两款**元音附标文字**，分别为用于日常书写的**圣纹体(Nuran Irwen)**和用于刻写碑文等的**海蚀体(Nuran Llando)**。
+两款**全音素文字**，分别为用于日常书写的**圣纹体(Nuran Irwen)**和用于刻写碑文等的**海蚀体(Nuran Llando)**。
 
-![圣纹体和海蚀体](https://kinnuch.github.io/laim/elandis.assets/Writingsystem.jpg)
+![NuranIrven](https://kinnuch.github.io/laim/elandis.assets/NuranIrven.png)
 
-<center style="font-size:14px;color:#C0C0C0;"><i>圣纹体和海蚀体（草稿）</i></center>
+<center style="font-size:14px;color:#C0C0C0;"><i>圣纹体</i></center>
+
+
+
+## Morphology | 形态
+
+
 
 
 
@@ -93,3 +217,4 @@ title: Elandis
 [^1]: 所有清塞音都弱送气
 [^2]: 某些方言中th, dh是齿音[θ]和[ð]
 [^3]: 现代亚提斯语中，小舌清擦音和软腭清擦音已经几乎合并
+[^4]: 现代亚提斯语中，声门擦音基本脱落（尤其词首），h不发音

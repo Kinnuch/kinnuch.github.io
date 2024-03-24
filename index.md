@@ -13,6 +13,7 @@ layout: page
 - Isto Edhellen mi Vandarin! Fabo [Sindarin](https://kinnuch.github.io/laim/sindarin) an istad. **←我们的开发重点！**用中文学习辛达语！
 - Isto Edhellen! Meno i nethad [Realelvish](https://academy.realelvish.net) an istad. 点击链接前往原始课程学习精灵语。
 - Isto i lam Elandis! Fabo [Elandis](https://kinnuch.github.io/laim/elandis) an istad. 点击链接浏览我的造语亚提斯语。（施工中）
+- Fabo [Old Icelandic](https://kinnuch.github.io/laim/oldicelandic) an istad. 点击链接浏览古诺斯语及古冰岛语的学习笔记。
 
 <br>
 
@@ -47,5 +48,9 @@ layout: page
 - **Orithil, Odlad 8, Echuir 4202：** Iestas adabad i ñgelthennith Edhellen. Ahov i ’enediad.
 
   2024年苏季第八周月亮日(2024.3.12)：开始搭建辛达语课程。添加日历模块。
+
+- **Oranor, Odlad 1, Ethuil 4202：**Ahov i istas o lham Icelandic.
+
+  2024年春季第一周太阳日(2024.3.25)：开始缓慢添加古诺斯语学习笔记
 
 - 

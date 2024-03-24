@@ -294,9 +294,46 @@ Seven categories where the former six are quite regular:
 5. r**e**ka ’drive’-r**e**kr-r**a**k-r**á**ku-r**æ**ki-r**e**kinn
 6. f**a**ra ’go/fare’-f**e**rr-f**ó**r-f**ó**ru-f**œ**ri-f**a**rinn
 
-3sg.pre is closely related with infinitive, and 3sg.pst.sub is definitely the result of **i-mutation** of 3pl.pst
+3sg.pre is closely related with infinitive, and 3sg.pst.sub is definitely the result of **i-mutation** of 3pl.pst.
+
+So we regard infinitive, 3sg.pst, 3pl.pst and p.p. as **:one:/:two:/:three:/:four:** vowel representative respectively. 
 
 ##### Active suffix of strong verb
 
+**Indicative**
 
+- single present
+  - 1st person: :one:+ i-mutation + -
+  - 2nd person: :one: + i-mutation + -r
+  - 3rd person: :one: + i-mutation + -r
+- plural present
+  - 1st person: :one: + u-mutation + -um
+  - 2nd person: :one: + -ið
+  - 3rd person: :one: + -a
+- single past
+  - 1st person: :two: + -
+  - 2nd person: :two: + -t
+  - 3rd person: :two: + -
+- plural past
+  - 1st person: :three: + u-mutation + -um
+  - 2nd person: :three: + -uð
+  - 3rd person: :three: + -u
 
+**Subjunctive**
+
+- single present
+  - 1st person: :one:+ -a
+  - 2nd person: :one: + -ir
+  - 3rd person: :one: + -i
+- plural present
+  - 1st person: :one: + u-mutation + -um
+  - 2nd person: :one: + -ið
+  - 3rd person: :one: + -a
+- single past
+  - 1st person: :two: + -
+  - 2nd person: :two: + -t
+  - 3rd person: :two: + -
+- plural past
+  - 1st person: :three: + u-mutation + -um
+  - 2nd person: :three: + -uð
+  - 3rd person: :three: + -u

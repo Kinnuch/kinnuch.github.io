@@ -200,6 +200,8 @@ title: Elandis
 
 两款**全音素文字**，分别为用于日常书写的**圣纹体(Nuran Irwen)**和用于刻写碑文等的**海蚀体(Nuran Llando)**。
 
+<font face='NuranIrven'>html test</font>
+
 ![NuranIrven](https://kinnuch.github.io/laim/elandis.assets/NuranIrven.png)
 
 <center style="font-size:14px;color:#C0C0C0;"><i>圣纹体</i></center>

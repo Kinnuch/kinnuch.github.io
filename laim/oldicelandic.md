@@ -298,6 +298,11 @@ Seven categories where the former six are quite regular:
 
 So we regard infinitive, 3sg.pst, 3pl.pst and p.p. as **:one:/:two:/:three:/:four:** vowel representative respectively. 
 
+- infinitive without -a is :one:
+- 3sg.pst is :two:
+- 3pl.pst without -u is :three:
+- p.p. without -inn is :four:
+
 ##### Active suffix of strong verb
 
 **Indicative**
@@ -326,14 +331,424 @@ So we regard infinitive, 3sg.pst, 3pl.pst and p.p. as **:one:/:two:/:three:/:fou
   - 2nd person: :one: + -ir
   - 3rd person: :one: + -i
 - plural present
-  - 1st person: :one: + u-mutation + -um
+  - 1st person: :one: + -im
   - 2nd person: :one: + -ið
-  - 3rd person: :one: + -a
+  - 3rd person: :one: + -i
 - single past
-  - 1st person: :two: + -
-  - 2nd person: :two: + -t
-  - 3rd person: :two: + -
+  - 1st person: :three: + i-mutation + -a
+  - 2nd person: :three: + i-mutation + -ir
+  - 3rd person: :three: + i-mutation + -i
+- plural past
+  - 1st person: :three: + i-mutation + -im
+  - 2nd person: :three: + i-mutation + -ið
+  - 3rd person: :three: + i-mutation + -i
+
+**Imperative**
+
+- you: :one: + -
+- we: :one: + u-mutation + -um
+- you(pl.): :one: + -ið
+
+**Infinitive**: :one: + -a
+
+**Present Particle**: :one: + -andi
+
+**Past Particle**: :four: + -inn
+
+> infinitive: rjúfa ’break’
+>
+> dictionary: rjúfa, rauf, rufu, rofinn
+>
+> :one: rjúf :two:rauf :three: ruf :four: rof
+>
+> **indicative:**
+>
+> - single present
+>   - 1st person: rjúf + i-mutation + - > †​​rjýf > rýf
+>   - 2nd person: rýfr
+>   - 3rd person: rýfr
+> - plural present
+>   - 1st person: rjúfum
+>   - 2nd person: rjúfið
+>   - 3rd person: rjúfa
+> - single past
+>   - 1st person: rauf
+>   - 2nd person: rauft
+>   - 3rd person: rauf
+> - plural past
+>   - 1st person: rufum
+>   - 2nd person: rufuð
+>   - 3rd person: rufu
+>
+> **Subjunctive**
+>
+> - single present
+>   - 1st person: rjúfa
+>   - 2nd person: rjúfir
+>   - 3rd person: rjúfi
+> - plural present
+>   - 1st person: rjúfim
+>   - 2nd person: rjúfið
+>   - 3rd person: rjúfi
+> - single past
+>   - 1st person: rýfa
+>   - 2nd person: rýfir
+>   - 3rd person: rýfi
+> - plural past
+>   - 1st person: rýfim
+>   - 2nd person: rýfið
+>   - 3rd person: rýfi
+>
+> **Imperative**
+>
+> - you: rjúfa
+> - we: rjúfum
+> - you(pl.): rjúfið
+>
+> **Infinitive**: rjúfa
+>
+> **Present Particle**: rjúfandi
+>
+> **Past Particle**: rofinn
+
+##### Middle voice suffix of strong verb
+
+Basically plus -sk(1st person -mk) version of active voice with some sound change
+
+-t/ð + -sk > -zk
+
+**Indicative**
+
+- single present
+  - 1st person: :one:+ u-mutation + -umk
+  - 2nd person: :one: + i-mutation + -sk
+  - 3rd person: :one: + i-mutation + -sk
+- plural present
+  - 1st person: :one: + u-mutation + -umsk
+  - 2nd person: :one: + -izk
+  - 3rd person: :one: + -ask
+- single past
+  - 1st person: ​*:three: + u-mutation + -umk
+  - 2nd person: :two: + -zk
+  - 3rd person: :two: + -sk
 - plural past
   - 1st person: :three: + u-mutation + -um
-  - 2nd person: :three: + -uð
-  - 3rd person: :three: + -u
+  - 2nd person: :three: + -uzk
+  - 3rd person: :three: + -usk
+
+**Subjunctive**
+
+- single present
+  - 1st person: :one:+ u-mutation + -umk
+  - 2nd person: :one: + -isk
+  - 3rd person: :one: + -isk
+- plural present
+  - 1st person: :one: + -imsk
+  - 2nd person: :one: + -izk
+  - 3rd person: :one: + -isk
+- single past
+  - 1st person: :three: + *i-mutation + -umk
+  - 2nd person: :three: + i-mutation + -isk
+  - 3rd person: :three: + i-mutation + -isk
+- plural past
+  - 1st person: :three: + i-mutation + -imsk
+  - 2nd person: :three: + i-mutation + -izk
+  - 3rd person: :three: + i-mutation + -isk
+
+**Imperative**
+
+- you: :one: + -sk
+- we: :one: + u-mutation + -umsk
+- you(pl.): :one: + -izk
+
+**Infinitive**: :one: + -ask
+
+**Present Particle**: :one: + -andisk
+
+**Past Particle**: :four: + -izk
+
+> infinitive: rjúfa ’break’
+>
+> dictionary: rjúfa, rauf, rufu, rofinn
+>
+> :one: rjúf :two:rauf :three: ruf :four: rof
+>
+> **indicative:**
+>
+> - single present
+>   - 1st person: rjúf + u-mutation + -umk > rjúfumk
+>   - 2nd person: rýfsk
+>   - 3rd person: rýfsk
+> - plural present
+>   - 1st person: rjúfumsk
+>   - 2nd person: rjúfizk
+>   - 3rd person: rjúfask
+> - single past
+>   - 1st person: *ruf + u-mutation + -umk > rufumk
+>   - 2nd person: raufzk
+>   - 3rd person: raufsk
+> - plural past
+>   - 1st person: rufum
+>   - 2nd person: rufuzk
+>   - 3rd person: rufusk
+>
+> **Subjunctive**
+>
+> - single present
+>   - 1st person: rjúfumk
+>   - 2nd person: rjúfisk
+>   - 3rd person: rjúfisk
+> - plural present
+>   - 1st person: rjúfimsk
+>   - 2nd person: rjúfizk
+>   - 3rd person: rjúfisk
+> - single past
+>   - 1st person: *rýfumk
+>   - 2nd person: rýfisk
+>   - 3rd person: rýfisk
+> - plural past
+>   - 1st person: rýfimsk
+>   - 2nd person: rýfizk
+>   - 3rd person: rýfisk
+>
+> **Imperative**
+>
+> - you: rjúfask
+> - we: rjúfumsk
+> - you(pl.): rjúfizk
+>
+> **Infinitive**: rjúfask
+>
+> **Present Particle**: rjúfandisk
+>
+> **Past Particle**: rofizk
+
+##### First strong conjugation
+
+Basic: **í > ei > i > i/e**
+
+Special: infinitive stem with an ending -g has another form of single past which is **í > é and g drops**
+
+> stíga > sté
+
+> infinitive: bíta ’bite’
+>
+> dictionary: bíta, beit, bitu, bitinn
+>
+> :one: bít :two:beit :three: bit :four: bit
+>
+> **indicative:**
+>
+> - single present
+>   - 1st person: bít
+>   - 2nd person: bítr
+>   - 3rd person: bítr
+> - plural present
+>   - 1st person: bítum
+>   - 2nd person: bítið
+>   - 3rd person: bíta
+> - single past
+>   - 1st person: beit
+>   - 2nd person: *beitt > beizt (early -t < -st, thus -tst > -zt)
+>   - 3rd person: beit
+> - plural past
+>   - 1st person: bitum
+>   - 2nd person: bituð
+>   - 3rd person: bitu
+>
+> **Subjunctive**
+>
+> - single present
+>   - 1st person: bíta
+>   - 2nd person: bítir
+>   - 3rd person: bíti
+> - plural present
+>   - 1st person: bítim
+>   - 2nd person: bítið
+>   - 3rd person: bíti
+> - single past
+>   - 1st person: bita
+>   - 2nd person: bitir
+>   - 3rd person: biti
+> - plural past
+>   - 1st person: bitim
+>   - 2nd person: bitið
+>   - 3rd person: biti
+>
+> **Imperative**
+>
+> - you: bít
+> - we: bítum
+> - you(pl.): bítið
+>
+> **Infinitive**: bíta
+>
+> **Present Particle**: bítandi
+>
+> **Past Particle**: bitinn
+
+##### Second strong conjugation
+
+Basic: **jú/jó(ý) > au > u(y) > o**, parenthesis indicates forms when **i-mutation** is applied. jó is the product of jú > jó when there is **ð/d/s/t**
+
+Special:
+
+- stem with ending -g, g drops and lengthen the vowel
+- stem with ending -s, weak conjugation is valid
+- **lúka** ’finish’, **súpa** ’sip’, **lúta** ’bow’ conjugate like second type strong verb, although there is no j
+
+> infinitive: skjóta ’shoot’
+>
+> dictionary: skjóta, skaut, skutu, skotinn
+>
+> :one: skjót :two:skaut :three: skut :four: skot
+>
+> **indicative:**
+>
+> - single present
+>   - 1st person: skýt
+>   - 2nd person: skýtr
+>   - 3rd person: skýtr
+> - plural present
+>   - 1st person: skjótum
+>   - 2nd person: skjótið
+>   - 3rd person: skjóta
+> - single past
+>   - 1st person: skaut
+>   - 2nd person: *skautt > skauzt
+>   - 3rd person: skaut
+> - plural past
+>   - 1st person: skutum
+>   - 2nd person: skutuð
+>   - 3rd person: skutu
+>
+> **Subjunctive**
+>
+> - single present
+>   - 1st person: skjóta
+>   - 2nd person: skjótir
+>   - 3rd person: skjóti
+> - plural present
+>   - 1st person: skjótim
+>   - 2nd person: skjótið
+>   - 3rd person: skjóti
+> - single past
+>   - 1st person: skyta
+>   - 2nd person: skytir
+>   - 3rd person: skyti
+> - plural past
+>   - 1st person: skytim
+>   - 2nd person: skytið
+>   - 3rd person: skyti
+>
+> **Imperative**
+>
+> - you: skjót
+> - we: *skjót(special)
+> - you(pl.): *skjót(special)
+>
+> **Infinitive**: skjóta
+>
+> **Present Particle**: skjótandi
+>
+> **Past Particle**: skotinn
+
+##### Third strong conjugation
+
+Basic: **e/i > a > u(y) > u/o** and the stem is always with a **double consonant ending**. i is the product of **e followed by n**(but **brenna** ’burn’ and **renna** ’run’ is special). o is the product of **u followed by l/r**.
+
+Special:
+
+- v drops before o/u
+
+  > verða ’become’ > verð-, varð-, **urð**-, orð-
+
+- -nd > -tt, -ng > -kk and -ld > -lt in single past
+
+  > binda > †band > batt
+  >
+  > gjalda ’pay’ > gjalt
+
+- in infinitive and plural present, **ja is fractured from e** when e is followed by a consonant cluster that starts with a l/r.
+
+  > †gelda > gjalda > single present: geld, geldr, geldr plural present: gjǫldum
+
+- infinitive with a -va ending applies u-mutation first, thus **a > ǫ, i > y, e > ø**. And -va was wholly removed when applying :three: and :four: types.​ -v drops when no suffix or -r is added.
+
+  > †sekkva > søkkva ’sink’
+  >
+  > søkkv-, sǫkkv-, **sukk-, sokk-**
+  >
+  > sg.pre søkk, søkkr, søkkr
+  >
+  > †singva > syngva ’sing’
+  >
+  > singv-, sangv-, sung-, song-
+  >
+  > sg.pst sǫng not **sǫkk**, because actually there is a -v- in the end
+  
+- irregular verb
+
+  > **finna** ’find’
+  >
+  > **finn-, fann-, fund-, fund-**
+  >
+  > **bregða** ’hasten’
+  >
+  > **bregð-, brá-, brátt, brá-**
+
+> infinitive: søkkva ’sink’
+>
+> dictionary: søkkva, sǫkk, sukku, sokkinn
+>
+> :one: søkkv:two: sǫkkv:three: sukk:four: sokk
+>
+> **indicative:**
+>
+> - single present
+>   - 1st person: søkk
+>   - 2nd person: søkkr
+>   - 3rd person: søkkr
+> - plural present
+>   - 1st person: søkkum
+>   - 2nd person: søkkvið
+>   - 3rd person: søkkva
+> - single past
+>   - 1st person: sǫkk
+>   - 2nd person: sǫkkt
+>   - 3rd person: sǫkk
+> - plural past
+>   - 1st person: sukkum
+>   - 2nd person: sukkuð
+>   - 3rd person: sukku
+>
+> **Subjunctive**
+>
+> - single present
+>   - 1st person: søkkva
+>   - 2nd person: søkkvir
+>   - 3rd person: søkkvi
+> - plural present
+>   - 1st person: søkkvim
+>   - 2nd person: søkkvið
+>   - 3rd person: søkkvi
+> - single past
+>   - 1st person: sykka
+>   - 2nd person: sykkir
+>   - 3rd person: sykki
+> - plural past
+>   - 1st person: sykkim
+>   - 2nd person: sykkið
+>   - 3rd person: sykki
+>
+> **Imperative**
+>
+> - you: søkk
+> - we: søkkum
+> - you(pl.): søkkvið
+>
+> **Infinitive**: søkkva
+>
+> **Present Particle**: søkkvandi
+>
+> **Past Particle**: sokkinn

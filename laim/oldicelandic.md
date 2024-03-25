@@ -752,3 +752,197 @@ Special:
 > **Present Particle**: søkkvandi
 >
 > **Past Particle**: sokkinn
+
+##### Fourth strong conjugation
+
+Basic: **e > a > á(æ) > o/u**, infinitives have l/m/r/n as an ending
+
+very regular
+
+> bera ’carry, bear’ > bar > báru > borinn
+>
+> nema ’take’ > nam > námu > numinn
+
+since the fourth type is very similar to the fifth type, we cover them together.
+
+##### Fifth strong conjugation
+
+Basic: **e > a > á(æ) > o**, infinitives have any consonant **except l/m/r/n** as an ending
+
+Special: some infinitives end with -ja, thus i-mutation causes **e > i** which is retained in all **present** conjugations. **-ja verbs are like -va verbs.**
+
+> †beðja > b**i**ðja ’ask, demand, bid’
+>
+> †setja > s**i**tja ’sit’
+
+There are two even more irregular -ja verbs(which are caused by double consonant **gg**):
+
+> liggja ’lie(lie down)’ > †laggj(which is expected to be :two:) > lá > lág 
+>
+> þiggja ’accept’ > þá > þág
+>
+> vega > vá > vág
+
+More confusing examples are infinitives with v in root, like sofa and vefa:
+
+> sofa ’sleep’
+>
+> root: svef-
+>
+> single present: **sef(søf), sefr(søfr), sefr(søfr)**
+>
+> plural present: sofum, sofið, sofa
+>
+> single past: svaf, svaft, svaf
+>
+> plural past: sváfum, sváfuð, sváfu
+
+> vefa ’weave’
+>
+> root: vef-
+>
+> single present: vef, vefr, vefr
+>
+> plural present: vefum, vefið, vefa
+>
+> single past: †vaf > **óf, óft, óf**
+>
+> plural past: **ófum, ófuð, ófu**
+
+Another irregular verb is **troða ’tread’**, with pattern **o > a > á > o**
+
+In the end, considering verb **sjá ’see’**, which is highly **irregular**:
+
+> infinitive: sjá ’see’
+>
+> dictionary: sé, sjá, sá, sé
+>
+> :one: sé:two: sjá:three: sá:four: sé
+>
+> **indicative:**
+>
+> - single present
+>   - 1st person: sé
+>   - 2nd person: sér
+>   - 3rd person: sér
+> - plural present
+>   - 1st person: sjám
+>   - 2nd person: séð(sjáið)
+>   - 3rd person: sjá
+> - single past
+>   - 1st person: sá
+>   - 2nd person: sátt
+>   - 3rd person: sá
+> - plural past
+>   - 1st person: sám
+>   - 2nd person: sáuð
+>   - 3rd person: sá(sáu)
+>
+> **Subjunctive**
+>
+> - single present
+>   - 1st person: sé
+>   - 2nd person: sér
+>   - 3rd person: sé(sjái/sjáir)
+> - plural present
+>   - 1st person: sém
+>   - 2nd person: séð
+>   - 3rd person: sé
+> - single past
+>   - 1st person: sæa
+>   - 2nd person: sæir
+>   - 3rd person: sæi
+> - plural past
+>   - 1st person: sæim
+>   - 2nd person: sæið
+>   - 3rd person: sæi
+>
+> **Imperative**
+>
+> - you: sér
+> - we: sjám
+> - you(pl.): séð(sjáið)
+>
+> **Infinitive**: sjá
+>
+> **Present Particle**: sjándi
+>
+> **Past Particle**: séður
+
+##### Sixth strong conjugation
+
+Basic: **a(e) > ó > ó(æ) > a/e**, e in past particle is the result of **ending k/g**.
+
+Special:
+
+- some ending g drops, like in the first and second types
+
+  > draga ’drag’ > **dró**
+
+- some ending nd acts weirdly, where n drops and d gets assimilated and produces ð:
+
+  > standa ’stand’ > **stóð > stóð > stað**
+
+- some -ja words lead i-mutation, thus all the **present conjugations** are affected:
+
+  > sverja
+  >
+  > hefja
+
+- like fifth type, structure like **v + back vowel** will lose v in **past conjugations**:
+
+  > sverja > **sór, sórt, sór**
+  >
+  > vaxa > **óx, óxt, óx**
+  >
+  > vaða > **óð, ótt, óð**
+
+- other irregular verbs:
+
+  > slá ’slay’ > slag > sleg > sleg
+  >
+  > single present: slæ, slær, slær
+  >
+  > plural present: slám, sláið, slá
+  >
+  > single past: †slag > **sló, slótt, sló**
+  >
+  > plural past: **slógum, slóguð, slógu**
+
+  > deyja ’die’
+  >
+  > single present: dey, deyr, deyr
+  >
+  > plural present: deyjum, deyið, deyja
+  >
+  > single past: **dó, dótt, dó**
+  >
+  > plural past: **dóm, dóð, dó**
+
+  > hlæja ’laugh’
+  >
+  > single present: hlæ, hlær, hlær
+  >
+  > plural present: hlæjum, hlæið, hlæja
+  >
+  > single past: **hló, hlótt, hló**
+  >
+  > plural past: **hlógum, hlóguð, hlógu**
+
+##### Seventh strong conjugation
+
+Those that cannot fit into any of the former six types are called the **seventh type strong verbs**. They includes:
+
+>a > á > ó
+>
+>a > e > e
+>
+>á > é > é
+>
+>au > jó > jó
+>
+>ei > é > é
+
+But some past forms of those verbs retain so-called **reduplicated** symbol in Proto-Germanic, which in return changes the pattern by **adding initial consonant right before the root**.
+
+> Old English hātan(German heißen) > past tense †he**h**t- > hēt

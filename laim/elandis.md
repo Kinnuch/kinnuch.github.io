@@ -66,7 +66,7 @@ title: Elandis
 
 亚提斯人，尤其是紫岸支的亚提斯人，会在成年后把紫色亚纹石磨碎后提取出的颜料抹匀在利器上，然后在右手手腕靠右上的小窝里刻上一些点。最常见的形状是两层正方形的点（四角的四个点，嵌套两层），然后中央横排刻上三个点，整体象征尖牙利齿。这被视为是母亲河保佑身体强健的符号。
 
-当两位成年亚族人碰面时，他们通常会伸出右手，手臂平举，手心朝上，呈轻握拳状，上下晃动两至三下手腕来打招呼。这个动作象征着咬合，所以寒暄最常见的用语便是**'Rugham!'**，即'（愿母亲）保护你'。有时亚族人也会展示一下自己的牙齿，然后说**'Sothriv xi!'**，即'最好的健康'。而对于孩童或者熟人，一般来说用**Sa!**简单招呼一下即可。
+当两位成年亚族人碰面时，他们通常会伸出右手，手臂平举，手心朝上，呈轻握拳状，上下晃动两至三下手腕来打招呼。这个动作象征着咬合，依据该动词派生出的寒暄最常见的用语便是**'Rugham!'**，即'（愿母亲）保护你'。有时亚族人也会展示一下自己的牙齿，然后说**'Sothriv xi!'**，即'最好的健康'。而对于孩童或者熟人，一般来说用**Sa!**简单招呼一下即可。
 
 而离别时，根据场合可选的礼貌用语也不少。最简单的再见是**'Gane oriv!'**，即'好去'，甚至直接说**'Oriv!'**也是亚族人可以接受的告别方式。另外也可以说**'Ap emmam.'**，即'我一会儿回来'，或**'Aron rue!'**，'好运相伴'。
 
@@ -200,9 +200,31 @@ title: Elandis
 
 两款**全音素文字**，分别为用于日常书写的**圣纹体(Nuran Irwen)**和用于刻写碑文等的**海蚀体(Nuran Llando)**。
 
-<font face='NuranIrven'>html test</font>
+*特别感谢**Kikomas**的字体制作，星佬是我特别佩服的设计大佬，同时也是人造语言圈享有盛名的蓝地语的创造者，他的个人网站在此附上：[Kikomas](https://kikomas.art)←点此浏览*
 
-![NuranIrven](https://kinnuch.github.io/laim/elandis.assets/NuranIrven.png)
+<font face='NuranIrven'>uzetes i unatixad fale morya pata Leriain xelaimer</font>
+
+<font face='NuranIrven'>uzetes i utLaCoxat vain zelvainiren patat reu aG seri</font>
+
+<font face='NuranIrven'>topeCed o falf he anda moryauren aG veruxas zen os seur</font>
+
+<font face='NuranIrven'>quetaxas an nduCulla ic namasena aG bovixad zen inauna</font>
+
+<font face='NuranIrven'>quetamanenifi ir veviste vema Leina que modixad i qal boreren sunturen</font>
+
+<font face='NuranIrven'>que avtaxas gleb ya naraxas Lataina vaitis ambariren</font>
+
+<font face='NuranIrven'>o Morya sapeCed arab vatimaes</font>
+
+<font face='NuranIrven'>sapeCec har i u aggas</font>
+
+<font face='NuranIrven'>motixad sraud qual nisnatinoruna moryauna</font>
+
+<font face='NuranIrven'>taigzanixad cal arvaiv i zim greliv</font>
+
+<font face='NuranIrven'>a eqemorya Gua em uluneG motire sraud dara</font>
+
+<font face='NuranIrven'>via aL Landita Ma sazar glib sir suntule lamare serid moryasim asiv</font>
 
 <center style="font-size:14px;color:#C0C0C0;"><i>圣纹体</i></center>
 

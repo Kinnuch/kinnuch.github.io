@@ -943,6 +943,62 @@ Those that cannot fit into any of the former six types are called the **seventh 
 >
 >ei > é > é
 
-But some past forms of those verbs retain so-called **reduplicated** symbol in Proto-Germanic, which in return changes the pattern by **adding initial consonant right before the root**.
+The past forms of those verbs retain so-called **reduplicated** symbol in Proto-Germanic, which in return changes the pattern by **adding initial consonant right before the root**, thus producing such weird results.
 
 > Old English hātan(German heißen) > past tense †he**h**t- > hēt
+
+The typical patterns are as below, where :one: accords with :four:, and :two: accords with :three::
+
+> Type 1: heita ’be called’ > hét > hétum > heitinn
+>
+> Type 2a: auka ’increase’ > jók > jókum > aukinn
+>
+> Type 2b: búa ’inhabit’ > bjó > b**ju**ggum > búinn
+>
+> Type 3: falla ’fall’ > fell > fellum > fallinn
+>
+> Type 4: láta ’let’ > lét > létum > látinn
+>
+> Type 5: blóta ’offer’ > blét > blétum > blótinn
+
+There are also other extreme irregular ones that belong to the seventh type, their conjugation are as follows:
+
+> ganga ’go, walk’ > geng(single past ge**kk**-) > geng > geng
+>
+> single present: geng, gengr, gengr
+>
+> plural present: gǫngum, gangið, ganga
+>
+> single past: **gekk, gekkt, gekk**
+>
+> plural past: gengum, genguð, gengu
+
+> fá ’hand over, get’ > feng(single past fe**kk**-) > feng > feng
+>
+> single present: fæ, fær, fær
+>
+> plural present: fám, fáið, fá
+>
+> single past: **fekk, fekkt, fekk**
+>
+> plural past: fengum, fenguð, fengu
+
+> halda ’hold’ > held(single past ha**lt**-) > heldum > haldinn
+>
+> single present: held, heldr, heldr
+>
+> plural present: 
+>
+> single past:
+>
+> plural past:
+
+> hǫggva ’hew’ > **hjó > hjuggum** > 
+>
+> single present: 
+>
+> plural present:
+>
+> single past:
+>
+> plural past:

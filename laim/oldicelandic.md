@@ -411,7 +411,7 @@ So we regard infinitive, 3sg.pst, 3pl.pst and p.p. as **:one:/:two:/:three:/:fou
 >
 > **Past Particle**: rofinn
 
-##### Middle voice suffix of strong verb
+##### Mediopassive suffix of strong verb
 
 Basically plus -sk(1st person -mk) version of active voice with some sound change
 
@@ -1036,3 +1036,251 @@ Some words even retain the reduplicated forms:
 > plural past: **snerum, sneruð, sneru**, where e can be ø
 
 **gróa ’grow’** and **gnúa ’rub’** have nothing to do with róa and snúa in the ancient times, but due to **analogy** they are both now conjugate like róa and snúa respectively.
+
+#### Weak Verb
+
+Weak verbs plus **-ði-** to form past tense, and according to the vowel in the stem, weak verbs can be divided into **three** groups.
+
+> sigl-**i/j**-
+>
+> kall-**a**-
+>
+> lif-**i**-
+>
+> the former vowel is called **root vowel** and the latter one is called **stem vowel** which differs with groups.
+
+##### Common sound changes in weak conjugation
+
+- deletion of i
+
+  > i in ði vanishes before vowel
+  >
+  > stem vowel i/j or i drops before -ði-
+
+- **u-mutation**(pay attention to unstressed **a > u**)
+
+  > kall-a-ði-um > †kalluðum > **kǫlluðum**
+  >
+  > tal-i/j-ði-uð > †talðuð > **tǫlðuð**
+
+- -ð + ð- > -dd-
+
+  > auð-i/j > eyða
+  >
+  > eyð-ði-a > eyðða > **eydda**
+
+- **sometimes** -n + ð- > -nd-
+
+  > munu ’will’ : mun-ði > **mundi**
+  >
+  > but stefna > **stefnði**
+
+- -t/s + ð- > -tt/st
+
+  > flut-i/j > flytja
+  >
+  > flytj-ði-a > †flytða > **flytta**
+  >
+  > þeys-ði-a > †þeysða > **þeysta**
+
+- **sometimes** -p/k/f/l + ð- > -pt/kt/ft/lt
+
+  > þurfa ’need’: þurf-ði-a > †þurfða > **þurfta**
+  >
+  > but hafa ’have’: haf-ði-a > **hafða**
+
+- -Cdd/Ctt > -Cd/C
+
+  > senda ’send’: send-i/j-ði-a > †sendða > **senda**
+
+And we only need **three representatives** for weak verbs because the past tense of weak verbs share the same stem not like in the strong case. Thus infinitive, 3sg.pst, p.p. are :one:/:two:/:three:.
+
+##### Active suffix of weak verb
+
+**Indicative**
+
+- single present
+  - 1st person: :one: + -/-a/-i **(three types differ in present)**
+  - 2nd person: :one: + -r/-ar/-ir
+  - 3rd person: :one: + -r/-ar/-ir
+- plural present
+  - 1st person: :one: + u-mutation + -um
+  - 2nd person: :one: + -ið
+  - 3rd person: :one: + -a
+- single past
+  - 1st person: :two: + -ða
+  - 2nd person: :two: + -ðir
+  - 3rd person: :two: + -ði
+- plural past
+  - 1st person: :two: + u-mutation + -ðum
+  - 2nd person: :two: + u-mutation + -ðuð
+  - 3rd person: :two: + u-mutation + -ðu
+
+**Subjunctive**
+
+- single present
+  - 1st person: :one:+ -a
+  - 2nd person: :one: + -ir
+  - 3rd person: :one: + -i
+- plural present
+  - 1st person: :one: + -im
+  - 2nd person: :one: + -ið
+  - 3rd person: :one: + -i
+- single past
+  - 1st person: :two: + i-mutation + -ða
+  - 2nd person: :two: + i-mutation + -ðir
+  - 3rd person: :two: + i-mutation + -ði
+- plural past
+  - 1st person: :two: + i-mutation + -ðim
+  - 2nd person: :two: + i-mutation + -ðið
+  - 3rd person: :two: + i-mutation + -ði
+
+**Imperative**
+
+- you: :one: + -
+- we: :one: + u-mutation + -um
+- you(pl.): :one: + -ið
+
+**Infinitive**: :one: + -a
+
+**Present Particle**: :one: + -andi
+
+**Past Particle**: :three: + -ðr
+
+##### Mediopassive suffix of weak verb
+
+**Indicative**
+
+- single present
+  - 1st person: :one: + u-mutation + -umk
+  - 2nd person: :one: + -sk/-ask/-isk
+  - 3rd person: :one: + -sk/-ask/-isk
+- plural present
+  - 1st person: :one: + u-mutation + -umsk
+  - 2nd person: :one: + -izk
+  - 3rd person: :one: + -ask
+- single past
+  - 1st person: :two: + u-mutation + -ðumk
+  - 2nd person: :two: + -ðisk
+  - 3rd person: :two: + -ðisk
+- plural past
+  - 1st person: :two: + u-mutation + -ðumsk
+  - 2nd person: :two: + u-mutation + -ðuzk
+  - 3rd person: :two: + u-mutation + -ðusk
+
+**Subjunctive**
+
+- single present
+  - 1st person: :one:+ u-mutation + -umk
+  - 2nd person: :one: + -isk
+  - 3rd person: :one: + -isk
+- plural present
+  - 1st person: :one: + -imsk
+  - 2nd person: :one: + -izk
+  - 3rd person: :one: + -isk
+- single past
+  - 1st person: :two: + *u-mutation + -ðumk
+  - 2nd person: :two: + i-mutation + -ðisk
+  - 3rd person: :two: + i-mutation + -ðisk
+- plural past
+  - 1st person: :two: + i-mutation + -ðimsk
+  - 2nd person: :two: + i-mutation + -ðizk
+  - 3rd person: :two: + i-mutation + -ðisk
+
+**Imperative**
+
+- you: :one: + -sk/ask
+- we: :one: + u-mutation + -umsk
+- you(pl.): :one: + -izk
+
+**Infinitive**: :one: + -ask
+
+**Present Particle**: :one: + -andisk
+
+**Past Particle**: :three: + *-zk
+
+##### First weak conjugation
+
+Stem vowel: **i/j**, when final syllable is **short**, j is chosen, otherwise i is chosen.
+
+And **i is retained in both present and past**, but **j is only retained in present**.  Notedly, whenever there is a i/j in the stem vowel slot, **i-mutation** is applied, therefore both present and past forms in i’s case are mutated while only present forms are mutated in j’s case.
+
+> var-i/j- > ver-j- > var-
+>
+> sigl-i/j- > sigl-i- > sigl-i-
+>
+> skil-i/j- > skil-j- > skil-
+>
+> stafn-i/j- > stefn-i- > stefn-i-
+>
+> sát-i/j- > sæt-i- > sæt-i-
+
+Some special cases:
+
+- long syllables with k/g endings, -i- turns to -j- before **a/u**
+
+  > lág-i/j- > 3pl.pre †lægia > læg**j**a
+
+- short syllables with g endings, -j- turns to -i- before **single consonant or nothing** in **present tense**.
+
+  > sag-i/j- > 1sg.pre †segj > seg**i**
+
+- some short syllables with g endings may double g in **present tense**
+
+  > lag-i/j > legg-j-
+
+> infinitive: verja ’defend’
+>
+> dictionary: verja, ver, varði
+>
+> :one: var-j-:two: ver-j-:three: var-
+>
+> **indicative:**
+>
+> - single present
+>   - 1st person: var
+>   - 2nd person: varr
+>   - 3rd person: varr
+> - plural present
+>   - 1st person: sjám
+>   - 2nd person: séð(sjáið)
+>   - 3rd person: sjá
+> - single past
+>   - 1st person: sá
+>   - 2nd person: sátt
+>   - 3rd person: sá
+> - plural past
+>   - 1st person: sám
+>   - 2nd person: sáuð
+>   - 3rd person: sá(sáu)
+>
+> **Subjunctive**
+>
+> - single present
+>   - 1st person: sé
+>   - 2nd person: sér
+>   - 3rd person: sé(sjái/sjáir)
+> - plural present
+>   - 1st person: sém
+>   - 2nd person: séð
+>   - 3rd person: sé
+> - single past
+>   - 1st person: sæa
+>   - 2nd person: sæir
+>   - 3rd person: sæi
+> - plural past
+>   - 1st person: sæim
+>   - 2nd person: sæið
+>   - 3rd person: sæi
+>
+> **Imperative**
+>
+> - you: sér
+> - we: sjám
+> - you(pl.): séð(sjáið)
+>
+> **Infinitive**: sjá
+>
+> **Present Particle**: sjándi
+>
+> **Past Particle**: séður

@@ -899,7 +899,7 @@ Special:
 
 - other irregular verbs:
 
-  > slá ’slay’ > slag > sleg > sleg
+  > slá ’slay’ > slóg > slóg > sleg
   >
   > single present: slæ, slær, slær
   >
@@ -987,18 +987,52 @@ There are also other extreme irregular ones that belong to the seventh type, the
 >
 > single present: held, heldr, heldr
 >
-> plural present: 
+> plural present: hǫldum, haldið, halda
 >
-> single past:
+> single past: **helt, helzt, helt**
 >
-> plural past:
+> plural past: heldum, helduð, heldu
 
-> hǫggva ’hew’ > **hjó > hjuggum** > 
+> hǫggva ’hew’ > **hjó > hjuggum**
 >
-> single present: 
+> single present: høgg, høggr, høggr
 >
-> plural present:
+> plural present: hǫggum, hǫggvið, hǫggva
 >
-> single past:
+> single past: **hjó, hjótt, hjó**
 >
-> plural past:
+> plural past: **hjuggum, hjugguð, hjuggu**
+
+Some words even retain the reduplicated forms:
+
+> róa ’row’
+>
+> single present: rœ, rœr, rœr
+>
+> plural present: róm, róið, róa
+>
+> single past: **rera, rerir, reri**, where e can be ø
+>
+> plural past: **rerum, reruð, reru**, where e can be ø
+
+> sá ’sow’
+>
+> single present: sæ, sær, sær
+>
+> plural present: sám, sáið, sá
+>
+> single past: **sera, serir, seri**, where e can be ø
+>
+> plural past: **serum, seruð, seru**, where e can be ø
+
+> snúa ’turn’
+>
+> single present: sný, snýr, snýr
+>
+> plural present: snúm, snúið, snúa
+>
+> single past: **snera, snerir, sneri**, where e can be ø
+>
+> plural past: **snerum, sneruð, sneru**, where e can be ø
+
+**gróa ’grow’** and **gnúa ’rub’** have nothing to do with róa and snúa in the ancient times, but due to **analogy** they are both now conjugate like róa and snúa respectively.

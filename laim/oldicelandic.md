@@ -4,7 +4,7 @@ permalink: /laim/oldicelandic/index.html
 title: Old Icelandic
 ---
 
-<!-- @import "[TOC]" {cmd="toc" depthFrom=2 depthTo=3 orderedList=false} -->
+[TOC]
 
 ## Basic Info
 
@@ -1464,3 +1464,5 @@ Special: verbs with -Ã¡ ending **drops and only drops -i- in 3pl.pre** and donâ€
 #### Preterite-present Verb
 
 This type of verbs apply past tense pattern of strong verbs in their present tense and conjugate as weak verbs in past tense. Only 10 in Old Nose.
+
+How does this weird conjugation pattern exist? Because generally past tense conjugation in Proto-Germanic came from perfect aspect in Proto-Indo-European, but in those words above the perfect aspect became present tense inversely, thus their blank past tense were filled by weak conjugation pattern.

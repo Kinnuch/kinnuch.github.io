@@ -4,6 +4,8 @@ permalink: /laim/oldicelandic/index.html
 title: Old Icelandic
 ---
 
+<!-- @import "[TOC]" {cmd="toc" depthFrom=2 depthTo=3 orderedList=false} -->
+
 ## Basic Info
 
 - 8~15AD
@@ -1231,56 +1233,234 @@ Some special cases:
 
 > infinitive: verja ’defend’
 >
-> dictionary: verja, ver, varði
->
-> :one: var-j-:two: ver-j-:three: var-
+> :one: ver-j-:two: var-:three: var-
 >
 > **indicative:**
 >
 > - single present
->   - 1st person: var
->   - 2nd person: varr
->   - 3rd person: varr
+>   - 1st person: ver
+>   - 2nd person: verr
+>   - 3rd person: ver
 > - plural present
->   - 1st person: sjám
->   - 2nd person: séð(sjáið)
->   - 3rd person: sjá
+>   - 1st person: verjum
+>   - 2nd person: verið
+>   - 3rd person: verja
 > - single past
->   - 1st person: sá
->   - 2nd person: sátt
->   - 3rd person: sá
+>   - 1st person: varða
+>   - 2nd person: varðir
+>   - 3rd person: varði
 > - plural past
->   - 1st person: sám
->   - 2nd person: sáuð
->   - 3rd person: sá(sáu)
+>   - 1st person: vǫrðum
+>   - 2nd person: vǫrðuð
+>   - 3rd person: vǫrðu
 >
 > **Subjunctive**
 >
 > - single present
->   - 1st person: sé
->   - 2nd person: sér
->   - 3rd person: sé(sjái/sjáir)
+>   - 1st person: verja
+>   - 2nd person: verir
+>   - 3rd person: veri
 > - plural present
->   - 1st person: sém
->   - 2nd person: séð
->   - 3rd person: sé
+>   - 1st person: verim
+>   - 2nd person: verið
+>   - 3rd person: veri
 > - single past
->   - 1st person: sæa
->   - 2nd person: sæir
->   - 3rd person: sæi
+>   - 1st person: verða
+>   - 2nd person: verðir
+>   - 3rd person: verði
 > - plural past
->   - 1st person: sæim
->   - 2nd person: sæið
->   - 3rd person: sæi
+>   - 1st person: verðim
+>   - 2nd person: verðið
+>   - 3rd person: verði
 >
 > **Imperative**
 >
-> - you: sér
-> - we: sjám
-> - you(pl.): séð(sjáið)
+> - you: ver
+> - we: verjum
+> - you(pl.): verið
 >
-> **Infinitive**: sjá
+> **Infinitive**: verja
 >
-> **Present Particle**: sjándi
+> **Present Particle**: verjandi
 >
-> **Past Particle**: séður
+> **Past Particle**: varðr
+>
+> Then Mediopassive:
+>
+> **indicative:**
+>
+> - single present
+>   - 1st person: verjumk
+>   - 2nd person: versk
+>   - 3rd person: versk
+> - plural present
+>   - 1st person: verjumsk
+>   - 2nd person: verizk
+>   - 3rd person: verjask
+> - single past
+>   - 1st person: vǫrðumk
+>   - 2nd person: varðisk
+>   - 3rd person: varðisk
+> - plural past
+>   - 1st person: vǫrðumsk
+>   - 2nd person: vǫrðuzk
+>   - 3rd person: vǫrðusk
+>
+> **Subjunctive**
+>
+> - single present
+>   - 1st person: verjumk
+>   - 2nd person: verisk
+>   - 3rd person: verisk
+> - plural present
+>   - 1st person: verimsk
+>   - 2nd person: verizk
+>   - 3rd person: verisk
+> - single past
+>   - 1st person: verðumk
+>   - 2nd person: verðisk
+>   - 3rd person: verðisk
+> - plural past
+>   - 1st person: verðimsk
+>   - 2nd person: verðizk
+>   - 3rd person: verðisk
+>
+> **Imperative**
+>
+> - you: versk
+> - we: verjumsk
+> - you(pl.): verizk
+>
+> **Infinitive**: verjask
+>
+> **Present Particle**: verjandisk
+>
+> **Past Particle**: verzk
+
+> infinitive: fella ’fall’
+>
+> :one: fell-i:two: felld-i:three: var-
+>
+> **indicative:**
+>
+> - single present
+>   - 1st person: felli
+>   - 2nd person: fellir
+>   - 3rd person: fellir
+> - plural present
+>   - 1st person: fellum
+>   - 2nd person: fellið
+>   - 3rd person: fella
+> - single past
+>   - 1st person: fellda
+>   - 2nd person: felldir
+>   - 3rd person: felldi
+> - plural past
+>   - 1st person: felldum
+>   - 2nd person: fellduð
+>   - 3rd person: felldu
+>
+> **Subjunctive**
+>
+> - single present
+>   - 1st person: fella
+>   - 2nd person: fellir
+>   - 3rd person: felli
+> - plural present
+>   - 1st person: fellim
+>   - 2nd person: fellið
+>   - 3rd person: felli
+> - single past
+>   - 1st person: fellda
+>   - 2nd person: felldir
+>   - 3rd person: felldi
+> - plural past
+>   - 1st person: felldim
+>   - 2nd person: felldið
+>   - 3rd person: felldi
+>
+> **Imperative**
+>
+> - you: fell
+> - we: fellum
+> - you(pl.): fellið
+>
+> **Infinitive**: fella
+>
+> **Present Particle**: fellandi
+>
+> **Past Particle**: felldur
+>
+> Then Mediopassive:
+>
+> **indicative:**
+>
+> - single present
+>   - 1st person: fellumk
+>   - 2nd person: fellisk
+>   - 3rd person: fellisk
+> - plural present
+>   - 1st person: fellumsk
+>   - 2nd person: fellizk
+>   - 3rd person: fellask
+> - single past
+>   - 1st person: felldumk
+>   - 2nd person: felldisk
+>   - 3rd person: felldisk
+> - plural past
+>   - 1st person: felldumsk
+>   - 2nd person: fellduzk
+>   - 3rd person: felldusk
+>
+> **Subjunctive**
+>
+> - single present
+>   - 1st person: fellumk
+>   - 2nd person: fellisk
+>   - 3rd person: fellsik
+> - plural present
+>   - 1st person: fellimsk
+>   - 2nd person: fellizk
+>   - 3rd person: fellisk
+> - single past
+>   - 1st person: fellumk
+>   - 2nd person: fellisk
+>   - 3rd person: fellisk
+> - plural past
+>   - 1st person: fellimsk
+>   - 2nd person: fellizk
+>   - 3rd person: fellisk
+>
+> **Imperative**
+>
+> - you: fellisk
+> - we: fellumsk
+> - you(pl.): fellizk
+>
+> **Infinitive**: fellask
+>
+> **Present Particle**: fellandisk
+>
+> **Past Particle**: fellazk
+
+##### Second & Third Weak Conjugation
+
+Second: -a- may drop if it is followed by a vowel, sometimes it turns to -u- due to u-mutation
+
+Third: -i- may drop if it is followed by a vowel. And it differs from the first type because the -i- here **does not trigger i-mutation**. -i- in the third type does not show up in the past tense.
+
+Special: verbs with -á ending **drops and only drops -i- in 3pl.pre** and don’t need to supply any -a
+
+> ná ’reach,get’:
+>
+> single present: nái, náir, náir
+>
+> plural present: náum, náið, ná
+>
+> single past: náða, náðir, náði
+>
+> plural past: náðum, náðuð, náðu
+
+#### Preterite-present Verb
+
+This type of verbs apply past tense pattern of strong verbs in their present tense and conjugate as weak verbs in past tense. Only 10 in Old Nose.

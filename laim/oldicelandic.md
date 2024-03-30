@@ -4,7 +4,46 @@ permalink: /laim/oldicelandic/index.html
 title: Old Icelandic
 ---
 
-[TOC]
+## Catalog
+
+- [Basic Info](#basic-info)
+- [Phonology \& Orthography](#phonology--orthography)
+  - [Vowel](#vowel)
+    - [Monophthong](#monophthong)
+    - [Diphthong](#diphthong)
+  - [Consonants](#consonants)
+  - [Stress](#stress)
+  - [Umlaut-Vowel Harmonization(latter affects former)](#umlaut-vowel-harmonizationlatter-affects-former)
+  - [Consonant Sound Change](#consonant-sound-change)
+    - [Consonant lengthening](#consonant-lengthening)
+    - [Consonant simplification](#consonant-simplification)
+    - [Consonant assimilation](#consonant-assimilation)
+    - [Unvoiced end](#unvoiced-end)
+    - [Consonant dropping](#consonant-dropping)
+  - [Other Sound Change](#other-sound-change)
+    - [Syncope and contraction](#syncope-and-contraction)
+    - [Vowel fracture](#vowel-fracture)
+    - [Other lengthening or shortening](#other-lengthening-or-shortening)
+    - [\*Retention of semi-vowel](#retention-of-semi-vowel)
+- [Morphology](#morphology)
+  - [Verb conjugation](#verb-conjugation)
+    - [Strong Verb(Ablaut, from PIE)](#strong-verbablaut-from-pie)
+      - [Active suffix of strong verb](#active-suffix-of-strong-verb)
+      - [Mediopassive suffix of strong verb](#mediopassive-suffix-of-strong-verb)
+      - [First strong conjugation](#first-strong-conjugation)
+      - [Second strong conjugation](#second-strong-conjugation)
+      - [Third strong conjugation](#third-strong-conjugation)
+      - [Fourth strong conjugation](#fourth-strong-conjugation)
+      - [Fifth strong conjugation](#fifth-strong-conjugation)
+      - [Sixth strong conjugation](#sixth-strong-conjugation)
+      - [Seventh strong conjugation](#seventh-strong-conjugation)
+    - [Weak Verb](#weak-verb)
+      - [Common sound changes in weak conjugation](#common-sound-changes-in-weak-conjugation)
+      - [Active suffix of weak verb](#active-suffix-of-weak-verb)
+      - [Mediopassive suffix of weak verb](#mediopassive-suffix-of-weak-verb)
+      - [First weak conjugation](#first-weak-conjugation)
+      - [Second \& Third Weak Conjugation](#second--third-weak-conjugation)
+    - [Preterite-present Verb](#preterite-present-verb)
 
 ## Basic Info
 
@@ -1466,3 +1505,5 @@ Special: verbs with -Ã¡ ending **drops and only drops -i- in 3pl.pre** and donâ€
 This type of verbs apply past tense pattern of strong verbs in their present tense and conjugate as weak verbs in past tense. Only 10 in Old Nose.
 
 How does this weird conjugation pattern exist? Because generally past tense conjugation in Proto-Germanic came from perfect aspect in Proto-Indo-European, but in those words above the perfect aspect became present tense inversely, thus their blank past tense were filled by weak conjugation pattern.
+
+Sometimes they even have present infinitive and past infinitive.

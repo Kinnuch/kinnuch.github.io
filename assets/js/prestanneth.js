@@ -6,8 +6,8 @@ function getRandomLine() {
 
 function updateLine() {
     const randomLine = getRandomLine();
-    document.getElementById('Prestanneth').innerText = randomLine[0];
-    currentAnswer = randomLine[1].trim();
+    document.getElementById('Prestanneth').innerText = "hí: 当前：" + randomLine[0] + " English Meaning: " + randomLine[1].trim() + " 汉语释义：" + randomLine[2].trim();
+    currentAnswer = randomLine[3].trim();
     document.getElementById('resultFeedback').innerText = '';
 }
 
@@ -18,7 +18,7 @@ function checkAnswer() {
         output.innerText = "Thand! 正确！";
     }
     else {
-        output.innerText = "Althand~i nangweth thand: 错误~正确答案应该是：\n${currentAnswer}"
+        output.innerText = "Althand~i nangweth thand: 错误~正确答案应该是：\n" + currentAnswer;
     }
 }
 

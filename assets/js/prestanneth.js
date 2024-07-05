@@ -27,7 +27,7 @@ async function showQuestion() {
     try {
         const response = await fetch(FileURL);
         const csvData = await response.text();
-        const dataArray = csvData.trim().split('\n').map(line => line.split(','));
+        dataArray = csvData.trim().split('\n').map(line => line.split(','));
         updateLine();
         document.getElementById('refreshButton').addEventListener('click', updateLine);
         document.getElementById('checkAnswer').addEventListener('click', checkAnswer);
@@ -37,5 +37,6 @@ async function showQuestion() {
     }
 }
 
+let dataArray;
 let currentAnswer = '';
 showQuestion();

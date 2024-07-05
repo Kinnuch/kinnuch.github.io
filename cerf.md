@@ -8,9 +8,17 @@ title: Cerf
 
 - Prestanneth 音变练习
 
+  带i的软音变：
+
   <div id="Prestanneth"></div>
 
-  <button id="refreshButton">Laeda 刷新</button>
+  <input type="text" id="userInput" placeholder="teitho hí 在此处填入答案">
+
+  <button id="checkAnswer">Cêth i nangweth 检查答案</button>
+
+  <button id="refreshButton">Laeda 切换题目</button>
+
+  <div id="resultFeedback"></div>
 
   <script src="https://kinnuch.github.io/assets/js/prestanneth.js"></script>
 

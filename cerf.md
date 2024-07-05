@@ -4,6 +4,12 @@ permalink: /cerf/index.html
 title: Cerf
 ---
 
+
+
+##### 可能用到的特殊符号：
+
+á é í ó ú ý â ê î ô û ŷ ñ
+
 ## Abdrab | 课后练习
 
 - Prestanneth 音变练习
@@ -23,3 +29,4 @@ title: Cerf
   <script src="https://kinnuch.github.io/assets/js/prestanneth.js"></script>
 
 - 
+

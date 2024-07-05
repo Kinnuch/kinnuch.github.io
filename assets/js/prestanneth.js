@@ -30,8 +30,8 @@ async function main() {
         const csvData = await response.text();
         const dataArray = csvData.trim().split('\n').map(line => line.split(','));
         updateLine(dataArray);
-        document.getElementById('refreshButton').addEventListener('click', updateLine(dataArray));
-        document.getElementById('checkAnswer').addEventListener('click', checkAnswer());
+        document.getElementById('refreshButton').addEventListener('click', updateLine);
+        document.getElementById('checkAnswer').addEventListener('click', checkAnswer);
     }
     catch (error){
         console.error("ú-'resta", error);

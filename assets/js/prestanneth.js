@@ -1,19 +1,3 @@
-async function main() {
-    const FileURL = "https://kinnuch.github.io/file/prestanneth.csv";
-    try {
-        const response = await fetch(FileURL);
-        const csvData = await response.text();
-        const dataArray = csvData.trim().split('\n').map(line => line.split(','));
-        updateLine();
-        document.getElementById('refreshButton').addEventListener('click', updateLine);
-        document.getElementById('checkAnswer').addEventListener('click', checkAnswer);
-    }
-    catch (error){
-        console.error("ú-'resta", error);
-    }
-}
-
-
 function getRandomLine() {
     const randomIndex = Math.floor(Math.random() * dataArray.length);
     const randomLine = dataArray[randomIndex];
@@ -38,5 +22,20 @@ function checkAnswer() {
     }
 }
 
+async function showQuestion() {
+    const FileURL = "https://kinnuch.github.io/file/prestanneth.csv";
+    try {
+        const response = await fetch(FileURL);
+        const csvData = await response.text();
+        const dataArray = csvData.trim().split('\n').map(line => line.split(','));
+        updateLine();
+        document.getElementById('refreshButton').addEventListener('click', updateLine);
+        document.getElementById('checkAnswer').addEventListener('click', checkAnswer);
+    }
+    catch (error){
+        console.error("ú-'resta", error);
+    }
+}
+
 let currentAnswer = '';
-main()
+showQuestion();

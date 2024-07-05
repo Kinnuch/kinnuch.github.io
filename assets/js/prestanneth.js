@@ -1,12 +1,12 @@
 
-function getRandomLine(inDataArray) {
-    const randomIndex = Math.floor(Math.random() * inDataArray.length);
-    const randomLine = inDataArray[randomIndex];
+function getRandomLine() {
+    const randomIndex = Math.floor(Math.random() * dataArray.length);
+    const randomLine = dataArray[randomIndex];
     return randomLine;
 }
 
-function updateLine(inDataArray) {
-    const randomLine = getRandomLine(inDataArray);
+function updateLine() {
+    const randomLine = getRandomLine(dataArray);
     document.getElementById('Prestanneth').innerText = randomLine[0];
     currentAnswer = randomLine[1].trim();
     document.getElementById('resultFeedback').innerText = '';
@@ -29,7 +29,7 @@ async function main() {
         const response = await fetch(FileURL);
         const csvData = await response.text();
         const dataArray = csvData.trim().split('\n').map(line => line.split(','));
-        updateLine(dataArray);
+        updateLine();
         document.getElementById('refreshButton').addEventListener('click', updateLine);
         document.getElementById('checkAnswer').addEventListener('click', checkAnswer);
     }

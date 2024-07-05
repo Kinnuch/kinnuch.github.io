@@ -12,7 +12,7 @@ title: Cerf
 
   <div id="Prestanneth"></div>
 
-  <input type="text" id="userInput" placeholder="teitho hí 在此处填入答案">
+  <input type="text" id="userInput" placeholder="teitho hí 在此处填入答案" />
 
   <button id="checkAnswer">Cêth i nangweth 检查答案</button>
 

@@ -34,6 +34,7 @@ async function showQuestion() {
         updateLine();
         document.getElementById('refreshButton').addEventListener('click', updateLine);
         document.getElementById('checkAnswer').addEventListener('click', checkAnswer);
+        document.getElementById('questionType').addEventListener('change', updateLine);
     }
     catch (error){
         console.error("ú-'resta", error);

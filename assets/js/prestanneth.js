@@ -6,8 +6,10 @@ function getRandomLine() {
 
 function updateLine() {
     const randomLine = getRandomLine();
+    const questionType = document.getElementById('questionType').value;
+    if (!questionType) return;
     document.getElementById('Prestanneth').innerText = "Sí: 当前：" + randomLine[0] + "\nEnglish Meaning: " + randomLine[1].trim() + "\n汉语释义：" + randomLine[2].trim();
-    currentAnswer = randomLine[3].trim();
+    currentAnswer = randomLine[questionType].trim();
     document.getElementById('resultFeedback').innerText = '';
     document.getElementById('userInput').value = '';
 }

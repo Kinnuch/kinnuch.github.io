@@ -14,6 +14,10 @@ title: Cerf
 
 - Prestanneth 音变练习
 
+  <style src="https://kinnuch.github.io/assets/css/cerf.css"></style>
+
+  <body>
+
   带i的软音变：
 
   <div id="Prestanneth"></div>
@@ -27,6 +31,8 @@ title: Cerf
   <div id="resultFeedback"></div>
 
   <script src="https://kinnuch.github.io/assets/js/prestanneth.js"></script>
+  
+  </body>
 
 - 
 

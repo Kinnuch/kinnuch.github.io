@@ -21,7 +21,7 @@ function checkGwenwiAnswer() {
         output.innerText = "Thand! 正确！";
     }
     else {
-        output.innerText = "Althand~i nangweth thand: 错误~正确答案应该是：\n" + currentAnswer;
+        output.innerText = "Althand~i nangweth thand: 错误~正确答案应该是：\n" + currentGwenwiAnswer;
     }
 }
 

@@ -1,23 +1,23 @@
-function getRandomLine() {
-    const randomIndex = Math.floor(Math.random() * dataArray.length);
-    const randomLine = dataArray[randomIndex];
+function getRandomGwenwiLine() {
+    const randomIndex = Math.floor(Math.random() * dataGwenwiArray.length);
+    const randomLine = dataGwenwiArray[randomIndex];
     return randomLine;
 }
 
-function updateLine() {
-    const randomLine = getRandomLine();
+function updateGwenwiLine() {
+    const randomLine = getRandomGwenwiLine();
     const randomPersonIndex = Math.floor(Math.random() * 9);
     const randomPerson = personArray[randomPersonIndex];
     document.getElementById('Gwenwi').innerText = "Sí: 当前：" + randomLine[0] + "\nEnglish Meaning: " + randomLine[1].trim() + "\n汉语释义：" + randomLine[2].trim() + "\nTeitho 请写出：" + randomPerson + randomLine[2].trim();
-    currentAnswer = randomLine[3 + randomPersonIndex].trim();
+    currentGwenwiAnswer = randomLine[3 + randomPersonIndex].trim();
     document.getElementById('resultGwenwiFeedback').innerText = '';
     document.getElementById('GwenwiInput').value = '';
 }
 
-function checkAnswer() {
+function checkGwenwiAnswer() {
     const userAnswer = document.getElementById('GwenwiInput').value.trim();
     const output = document.getElementById('resultGwenwiFeedback');
-    if (userAnswer.toLowerCase() === currentAnswer.toLowerCase()) {
+    if (userAnswer.toLowerCase() === currentGwenwiAnswer.toLowerCase()) {
         output.innerText = "Thand! 正确！";
     }
     else {
@@ -25,15 +25,15 @@ function checkAnswer() {
     }
 }
 
-async function showQuestion() {
+async function showGwenwiQuestion() {
     const FileURL = "https://kinnuch.github.io/file/gwenwi.csv";
     try {
         const response = await fetch(FileURL);
         const csvData = await response.text();
-        dataArray = csvData.trim().split('\n').map(line => line.split(','));
-        updateLine();
-        document.getElementById('refreshGwenwiButton').addEventListener('click', updateLine);
-        document.getElementById('checkGwenwiAnswer').addEventListener('click', checkAnswer);
+        dataGwenwiArray = csvData.trim().split('\n').map(line => line.split(','));
+        updateGwenwiLine();
+        document.getElementById('refreshGwenwiButton').addEventListener('click', updateGwenwiLine);
+        document.getElementById('checkGwenwiAnswer').addEventListener('click', checkGwenwiAnswer);
     }
     catch (error){
         console.error("ú-'resta", error);
@@ -44,6 +44,6 @@ let personArray = new Array();
 personArray[0] = "我"; personArray[1] = "你和我"; personArray[2] = "（亲密）你"; personArray[3] = "（正式）你/您"
 personArray[4] = "他/她/它"; personArray[5] = "（不含听话者）我们"; personArray[6] = "（包含听话者）我们";
 personArray[7] = "你们"; personArray[8] = "他们/她们/它们";
-let dataArray;
-let currentAnswer = '';
-showQuestion();
+let dataGwenwiArray;
+let currentGwenwiAnswer = '';
+showGwenwiQuestion();

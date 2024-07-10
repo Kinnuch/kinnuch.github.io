@@ -17,6 +17,10 @@ function updateGwenwiLine() {
 function checkGwenwiAnswer() {
     const userAnswer = document.getElementById('GwenwiInput').value.trim();
     const output = document.getElementById('resultGwenwiFeedback');
+    if (userAnswer == "") {
+        output.innerText = "Teitho nad erui! 请先输入答案！";
+        return;
+    }
     if (userAnswer.toLowerCase() === currentGwenwiAnswer.toLowerCase()) {
         output.innerText = "Thand! 正确！";
     }

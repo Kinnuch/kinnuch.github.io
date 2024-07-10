@@ -17,6 +17,10 @@ function updateLine() {
 function checkAnswer() {
     const userAnswer = document.getElementById('userInput').value.trim();
     const output = document.getElementById('resultFeedback');
+    if (userAnswer == "") {
+        output.innerText = "Teitho nad erui! 请先输入答案！";
+        return;
+    }
     if (userAnswer.toLowerCase() === currentAnswer.toLowerCase()) {
         output.innerText = "Thand! 正确！";
     }

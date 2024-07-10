@@ -46,5 +46,22 @@ title: Cerf
   
   </body>
 
-- 
+- Gwenwi-i-choer 动词过去时
 
+  <body>
+
+  <div>写出对应动词带人称的过去时：</div>
+
+  <div id="Gwenwi"></div>
+
+  <input type="text" id="GwenwiInput" placeholder="Teitho hí 在此处填入答案" />
+
+  <button id="checkGwenwiAnswer">Cêth i nangweth 检查答案</button>
+
+  <button id="refreshGwenwiButton">Laeda 切换题目</button>
+
+  <div id="resultGwenwiFeedback"></div>
+
+  <script src="https://kinnuch.github.io/assets/js/gwenwi.js"></script>
+
+  </body>

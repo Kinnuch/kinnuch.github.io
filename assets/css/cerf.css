@@ -6,6 +6,14 @@ body {
     align-items: center;
 }
 
+#questionType {
+    margin-bottom: 20px;
+    padding: 10px;
+    font-size: 1em;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
 #Prestanneth {
     font-size: 1.5em;
     margin-bottom: 20px;

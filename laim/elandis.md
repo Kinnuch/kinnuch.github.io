@@ -244,6 +244,108 @@ title: Elandis
 
 ## Morphology | 形态
 
+### 辅音交替/子音演替
+
+#### 交替条件
+
+词首辅音是**清塞音**p/t(含tr)/c，**浊塞音**b/d(含dr)/g(含gl/gr)，**浊鼻音**m/n，**边/闪音**l/lh/r，**古典形**(m)b/(n)d/(n)g/(n)m/(h)r以及**擦音**th/gh/s时，均有可能发生辅音交替。
+
+#### 交替方式
+
+基本上涉及清化、浊化、擦化、鼻化、强化、同化等
+
+#### 交替种类
+
+##### Ⅰ类音变(Vocalic Mutation/VM)
+
+最为常见的音变。主要表现为浊化和强化。一般由**硬元音**结尾的小词引起，也出现在各种需要绑定被修饰词和修饰词的场景中，如**形容词**。
+
+以小词a举例，VM的变化如下：
+
+> 清塞音组：a p > a b	a t > a d	a tr > a dr	a c > a g
+>
+> 浊塞音组：a b > a mb	a d > a nd	a dr > a dr	a g > a ñg	a gl/gr > a gl/gr
+>
+> 鼻音组：a m > a m	a n > a n
+>
+> 边/闪音组：a l > a l	a lh > ath l	a r > adh r[^5]
+>
+> 擦音组：a th > a dh	a gh > ag ch	a s > a h
+>
+> 古典形：a (m)b > a m	a (n)d > a n	a (n)g > a ñ	a (n)m > a n	a (h)r > a h
+
+##### Ⅱ类音变(Nasal Mutation/NM)
+
+主要表现为鼻化和同化。一般由**-n/m**结尾的小词引起。
+
+以小词in举例，NM的变化如下：
+
+> 清塞音组：in p > i p	in t > i t	in tr > i tr	in c > i c
+>
+> 浊塞音组：in b > im m	in d > in n	in dr > in dr	in g > in ñ	in gl/gr > iñ gl/gr
+>
+> 鼻音组：in m > im m	in n > in n
+>
+> 边/闪音组：in l > i l	in lh > in 'l	in r > idh r
+>
+> 擦音组：in th > i th	in gh > iñ ch	in s > i s
+>
+> 古典形：in (m)b > im mb	in (n)d > in nd	in (n)g > in ñg	in (n)m > a n	a (h)r > a h
+
+##### Ⅲ类音变(Liquid Mutation/LM)
+
+主要表现为擦化和同化。一般由**-l/r**结尾的小词引起。
+
+以小词ar举例，LM的变化如下：
+
+> 清塞音组：ar p > ar ph	ar t > ar th	ar tr > ar thr	ar c > ar ch
+>
+> 浊塞音组：ar b > ar bh	ar d > ar dh	ar dr > ar dhr	ar g > ar gh	ar gl/gr > ar 'l/'r
+>
+> 鼻音组：ar m > ar v	ar n > ar th
+>
+> 边/闪音组：ar l > al l	ar lh > ar lh	ar r > ar r
+>
+> 擦音组：ar th > ar th	ar gh > ar '	ar s > ar h
+>
+> 古典形：ar (m)b > ar v	ar (n)d > ar z	ar (n)g > ar '	ar (n)m > ar th	at (h)r > ar h
+
+##### Ⅳ类音变(Stop Mutation/SM)
+
+主要表现为同化。一般由**-b/d**结尾的小词引起。
+
+以小词od举例，SM的变化如下：
+
+> 清塞音组：od p > o b	od t > o d	od tr > o dr	od c > o ch
+>
+> 浊塞音组：od b > ob b	od d > od d	od dr > od dr	od g > od g	od gl/gr > od gl/gr
+>
+> 鼻音组：od m > om m	od n > on n
+>
+> 边/闪音组：od l > od l	od lh > od 'l	od r > od r
+>
+> 擦音组：od th > o th	od gh > o gh	od s > os s
+>
+> 古典形：od (m)b > ob b	od (n)d > od d	od (n)g > od g	od (n)m > on n	od (h)r > odh
+
+##### Ⅴ类音变(H Mutation/HM)
+
+主要表现为清化和擦化。一般由**-h**结尾的小词引起。
+
+以小词ah举例，HM的变化如下：
+
+> 清塞音组：od p > o b	od t > o d	od tr > o dr	od c > o ch
+>
+> 浊塞音组：od b > ob b	od d > od d	od dr > od dr	od g > od g	od gl/gr > od gl/gr
+>
+> 鼻音组：od m > om m	od n > on n
+>
+> 边/闪音组：od l > od l	od lh > od 'l	od r > od r
+>
+> 擦音组：od th > o th	od gh > o gh	od s > os s
+>
+> 古典形：od (m)b > ob b	od (n)d > od d	od (n)g > od g	od (n)m > on n	od (h)r > odh
+
 ### 名词
 
 #### 名词的性
@@ -262,12 +364,6 @@ title: Elandis
 >
 > 通性则指代各种抽象的思想、概念、物品以及不好分类的其他名词。
 
-#### 辅音交替/子音演替
-
-当想要对名词进行限定时，不同性的名词使用的限定词均不同，而不同的限定词便会引发不同的辅音交替。
-
-##### 生物性单数限定词an
-
 
 
 ## Footnotes | 注释
@@ -276,3 +372,4 @@ title: Elandis
 [^2]: 某些方言中th, dh是齿音[θ]和[ð]
 [^3]: 现代亚提斯语中，小舌清擦音和软腭清擦音已经几乎合并
 [^4]: 现代亚提斯语中，声门擦音基本脱落（尤其词首），h不发音
+[^5]: 非元音引发的VM可能导致尾部出现禁止的辅音丛，此时需要按照复合词辅音丛简化规则进行简化，详情见后文

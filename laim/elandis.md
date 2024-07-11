@@ -226,7 +226,7 @@ title: Elandis
 
 首坠星**Althraud** = A + l + th + rau + d = **阿尔瑟劳德**
 
-大灾难，海蚀**Toporas** = To + po + ra + s = **铎波拉斯**
+大灾难，海蚀**Toporas** = To + po + ra + s = **托波拉斯**
 
 亚衍河**Phanam** = Pha + na + m = **法娜姆**
 

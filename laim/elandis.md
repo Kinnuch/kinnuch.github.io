@@ -210,7 +210,7 @@ title: Elandis
 
 ### 译音表
 
-[译音表](https://kinnuch.github.io/laim/elandis.assets/ContrastTable.png)
+![译音表](https://kinnuch.github.io/laim/elandis.assets/ContrastTable.png)
 
 >  注：
 >

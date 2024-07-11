@@ -286,17 +286,17 @@ title: Elandis
 
 以小词a举例，VM的变化如下：
 
-> 清塞音组：a p > a b	a t > a d	a tr > a dr	a c > a g
+> 清塞音组：a p > a b, a t > a d, a tr > a dr, a c > a g
 >
-> 浊塞音组：a b > a mb	a d > a nd	a dr > a dr	a g > a ñg	a gl/gr > a gl/gr
+> 浊塞音组：a b > a mb, a d > a nd, a dr > a dr, a g > a ñg, a gl/gr > a gl/gr
 >
-> 鼻音组：a m > a m	a n > a n
+> 鼻音组：a m > a m, a n > a n
 >
-> 边/闪音组：a l > a l	a lh > ath l	a r > adh r[^5]
+> 边/闪音组：a l > a l, a lh > ath l, a r > adh r[^5]
 >
-> 擦音组：a th > a dh	a gh > ag ch	a s > a h
+> 擦音组：a th > a dh, a gh > ag ch, a s > a h
 >
-> 古典形：a (m)b > a m	a (n)d > a n	a (n)g > a ñ	a (n)m > a n	a (h)r > a h
+> 古典形：a (m)b > a m, a (n)d > a n, a (n)g > a ñ, a (n)m > a n, a (h)r > a h
 
 ##### Ⅱ类音变(Nasal Mutation/NM)
 
@@ -304,17 +304,17 @@ title: Elandis
 
 以小词in举例，NM的变化如下：
 
-> 清塞音组：in p > i p	in t > i t	in tr > i tr	in c > i c
+> 清塞音组：in p > i p, in t > i t, in tr > i tr, in c > i c
 >
-> 浊塞音组：in b > im m	in d > in n	in dr > in dr	in g > in ñ	in gl/gr > iñ gl/gr
+> 浊塞音组：in b > im m, in d > in n, in dr > in dr, in g > in ñ, in gl/gr > iñ gl/gr
 >
-> 鼻音组：in m > im m	in n > in n
+> 鼻音组：in m > im m, in n > in n
 >
-> 边/闪音组：in l > i l	in lh > in 'l	in r > idh r
+> 边/闪音组：in l > i l, in lh > in 'l, in r > idh r
 >
-> 擦音组：in th > i th	in gh > iñ ch	in s > i s
+> 擦音组：in th > i th, in gh > iñ ch, in s > i s
 >
-> 古典形：in (m)b > im mb	in (n)d > in nd	in (n)g > in ñg	in (n)m > a n	a (h)r > a h
+> 古典形：in (m)b > im mb, in (n)d > in nd, in (n)g > in ñg, in (n)m > a n, a (h)r > a h
 
 ##### Ⅲ类音变(Liquid Mutation/LM)
 
@@ -322,17 +322,17 @@ title: Elandis
 
 以小词ar举例，LM的变化如下：
 
-> 清塞音组：ar p > ar ph	ar t > ar th	ar tr > ar thr	ar c > ar ch
+> 清塞音组：ar p > ar ph, ar t > ar th, ar tr > ar thr, ar c > ar ch
 >
-> 浊塞音组：ar b > ar bh	ar d > ar dh	ar dr > ar dhr	ar g > ar gh	ar gl/gr > ar 'l/'r
+> 浊塞音组：ar b > ar bh, ar d > ar dh, ar dr > ar dhr, ar g > ar gh, ar gl/gr > ar 'l/'r
 >
-> 鼻音组：ar m > ar v	ar n > ar th
+> 鼻音组：ar m > ar v, ar n > ar th
 >
-> 边/闪音组：ar l > al l	ar lh > ar lh	ar r > ar r
+> 边/闪音组：ar l > al l, ar lh > ar lh, ar r > ar r
 >
-> 擦音组：ar th > ar th	ar gh > ar '	ar s > ar h
+> 擦音组：ar th > ar th, ar gh > ar ', ar s > ar h
 >
-> 古典形：ar (m)b > ar v	ar (n)d > ar z	ar (n)g > ar '	ar (n)m > ar th	at (h)r > ar h
+> 古典形：ar (m)b > ar v, ar (n)d > ar z, ar (n)g > ar ', ar (n)m > ar th, at (h)r > ar h
 
 ##### Ⅳ类音变(Stop Mutation/SM)
 
@@ -340,17 +340,17 @@ title: Elandis
 
 以小词od举例，SM的变化如下：
 
-> 清塞音组：od p > o b	od t > o d	od tr > o dr	od c > o ch
+> 清塞音组：od p > o b, od t > o d, od tr > o dr, od c > o ch
 >
-> 浊塞音组：od b > ob b	od d > od d	od dr > od dr	od g > od g	od gl/gr > od gl/gr
+> 浊塞音组：od b > ob b, od d > od d, od dr > od dr, od g > od g, od gl/gr > od gl/gr
 >
-> 鼻音组：od m > om m	od n > on n
+> 鼻音组：od m > om m, od n > on n
 >
-> 边/闪音组：od l > od l	od lh > od 'l	od r > od r
+> 边/闪音组：od l > od l, od lh > od 'l, od r > od r
 >
-> 擦音组：od th > o th	od gh > o gh	od s > os s
+> 擦音组：od th > o th, od gh > o gh, od s > os s
 >
-> 古典形：od (m)b > ob b	od (n)d > od d	od (n)g > od g	od (n)m > on n	od (h)r > odh
+> 古典形：od (m)b > ob b, od (n)d > od d, od (n)g > od g, od (n)m > on n, od (h)r > odh
 
 ##### Ⅴ类音变(H Mutation/HM)
 
@@ -358,17 +358,17 @@ title: Elandis
 
 以小词ah举例，HM的变化如下：
 
-> 清塞音组：ah p > a ph	ah t > a th	ah tr > a thr	ah c > a ch
+> 清塞音组：ah p > a ph, ah t > a th, ah tr > a thr, ah c > a ch
 >
-> 浊塞音组：ah b > a p	ah d > a t	ah dr > a tr	ah g > a c	ah gl/gr > ah gl/gr
+> 浊塞音组：ah b > a p, ah d > a t, ah dr > a tr, ah g > a c, ah gl/gr > ah gl/gr
 >
-> 鼻音组：ah m > a mh	ah n > a nh
+> 鼻音组：ah m > a mh, ah n > a nh
 >
-> 边/闪音组：ah l > a lh	ah lh > ah lh	ah r > a h
+> 边/闪音组：ah l > a lh, ah lh > ah lh, ah r > a h
 >
-> 擦音组：ah th > a th	ah gh > a ch	ah s > as s
+> 擦音组：ah th > a th, ah gh > a ch, ah s > as s
 >
-> 古典形：ah (m)b > ah b	ah (n)d > ah d	ah (n)g > ah g	ah (n)m > ah m	ah (h)r > ah r
+> 古典形：ah (m)b > ah b, ah (n)d > ah d, ah (n)g > ah g, ah (n)m > ah m, ah (h)r > ah r
 >
 > 特殊：ah y > a ch
 

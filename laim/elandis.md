@@ -210,7 +210,25 @@ title: Elandis
 
 ### 译音表
 
+[译音表](https://kinnuch.github.io/laim/elandis.assets/ContrastTable.png)
 
+>  注：
+>
+> 1. '不译
+> 2. ng/gh在音节首视为**零声母**
+> 3. gh出现在音节末视为e
+> 4. 央元音视为**零韵母**
+> 5. 双元音eu视为o+i,ae视为a+e/e本身
+> 6. 有多个汉字的，提供的其他选项用于地名或人名的变体
+> 7. 外来词一般来说尊重词源，并不遵守此译音表
+
+几个例子：
+
+首坠星**Althraud** = A + l + th + rau + d = **阿尔瑟劳德**
+
+大灾难，海蚀**Toporas** = To + po + ra + s = **铎波拉斯**
+
+亚衍河**Phanam** = Pha + na + m = **法娜姆**
 
 
 

@@ -1,29 +1,29 @@
-lhûg,dragon,龙,i thlûg,lhuig,ith luig,e-'lûg,an 'lûg,anin 'lûg,egor 'lûg,o thlûg,ah lhûg,neth lûg
-êl,star,星辰,i êl,elin,in elin,en-êl,an êl,anin êl,egor êl,od êl,ah êl,nedh êl
-parf,book,书,i barf,perf,i pherf,e-barf,a pharf,anin barf,egor pharf,o pharf,a pharf,ne pharf
-(n)daug,soldier,士兵,i naug,doeg,i ndoeg,e-ndaug,an daug,anin daug,egor daug,o ndaug,ah daug,nedh daug
-ivor,crystal,水晶,i ivor,ivyr,in ivyr,en-ivor,an ivor,anin ivor,egor ivor,od ivor,ah ivor,nedh ivor
-(m)bachor,merchant,商人,i machor,bechyr,i mbechyr,e-mbachor,am bachor,anin bachor,egor bachor,o mbachor,ah bachor,nedh bachor
-rhach,curse,诅咒,i thrach,rhaich,ith raich,e-'rach,an 'rach,anin 'rach,egor 'rach,o thrach,ah rhach,neth rach
-galadh,tree,树,i 'aladh,gelaidh,i ñelaidh,e-galadh,añ galadh,anin galadh,egor 'aladh,o galadh,ah galadh,nedh galadh
-ulun,monster,怪兽,i ulun,ylyn,in ylyn,en-ulun,an ulun,anin ulun,egor ulun,od ulun,ah ulun,nedh ulun
-heleg,ice,冰,i cheleg,helig,i chelig,e-cheleg,an cheleg,anin cheleg,egor cheleg,o cheleg,a cheleg,nedh heleg
-(n)garaf,wolf,狼,i ñaraf,geraif,i ñgeraif,e-ñgaraf,añ garaf,anin garaf,egor garaf,o ñgaraf,ah garaf,nedh garaf
-dim,sadness,悲伤,i dhim,dim,i nim,e-dim,an dim,anin dim,egor dhim,o dim,ah dim,nedh dim
-magol,sword,剑,i vagol,megyl,i megyl,e-magol,am magol,anin magol,egor vagol,o magol,ah magol,nedh magol
-orod,mountain,山,i orod,eryd,in eryd,en-orod,an orod,anin orod,egor orod,od orod,ah orod,nedh orod
-gwath,shadow,暗影,i 'wath,gwaith,iñ gwaith,eñ-gwath,an 'wath,egor 'wath,o gwath,ah gwath,nedh gwath
-noss,family,家庭,i noss,nyss,i nyss,en-noss,an noss,anin noss,egor noss,o noss,ah noss,nedh noss
-ranc,arm,手臂,i ranc,renc,idh renc,edh-ranc,adh ranc,anin ranc,egor ranc,od ranc,a rhanc,nedh ranc
-hwest,breeze,微风,i chwest,hwist,i chwist,e-'west,an 'west,anin 'west,egor chwest,oth west,a chwest,neth west
-tâl,foot,脚,i dâl,tail,i thail,e-dâl,a thâl,anin dâl,egor thâl,o thâl,a thâl,ne thâl
-(n)gaur,werewolf,座狼,i ñaur,goer,i ñgoer,e-ñgaur,añ gaur,anin gaur,egor gaur,o ñgaur,ah gaur,nedh gaur
-iôl,floodwater,洪水,i iôl,ŷl,in ŷl,en-iôl,an iôl,anin iôl,egor iôl,od iôl,a chôl,nedh iôl
-iest,wish,祈愿,i iest,ist,in ist,en-iest,an iest,anin iest,egor iest,od iest,a chest,nedh iest
-sîr,river,河,i hîr,sîr,i sîr,e-hîr,an hîr,anin hîr,egor sîr,os sîr,as sîr,nedh sîr
-hîth,mist,迷雾,i chîth,hîth,i chîth,e-chîth,an chîth,anin chîth,egor chîth,o chîth,a chîth,nedh hîth
-lass,leaf,树叶,i lass,laiss,i laiss,e-lass,an lass,anin lass,egor lass,od lass,a lhass,ned lass
-balan,vala,维拉,i valan,belain,i melain,e-balan,am balan,anin balan,egor valan,o balan,ah balan,nedh balan
-cair,ship,船,i gair,cîr,i chîr,e-chair,a chair,anin gair,egor chair,o chair,a chair,ne chair
-aran,king,王,i aran,erain,in erain,en-aran,an aran,anin aran,egor aran,od aran,ah aran,nedh aran
-loth,flower,花,i loth,lyth,i lyth,e-loth,an loth,anin loth,egor loth,od loth,a lhoth,ned loth
+lhûg,dragon,龙,lhuig
+êl,star,星辰,elin
+parf,book,书,perf
+(n)daug,soldier,士兵,doeg
+ivor,crystal,水晶,ivyr
+(m)bachor,merchant,商人,bechyr
+rhach,curse,诅咒,rhaich
+galadh,tree,树,gelaidh
+ulun,monster,怪兽,ylyn
+heleg,ice,冰,helig
+(n)garaf,wolf,狼,geraif
+dim,sadness,悲伤,dim
+magol,sword,剑,megyl
+orod,mountain,山,eryd
+gwath,shadow,暗影,gwaith
+noss,family,家庭,nyss
+ranc,arm,手臂,renc
+hwest,breeze,微风,hwist
+tâl,foot,脚,tail
+(n)gaur,werewolf,座狼,goer
+iôl,floodwater,洪水,ŷl
+iest,wish,祈愿,ist
+sîr,river,河,sîr
+hîth,mist,迷雾,hîth
+lass,leaf,树叶,laiss
+balan,vala,维拉,belain
+cair,ship,船,cîr
+aran,king,王,erain
+loth,flower,花,lyth

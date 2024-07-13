@@ -552,7 +552,7 @@ function updateLine() {
     if (!questionType) return;
     document.getElementById('Prestanneth').innerText = "Sí: 当前：" + randomLine[0] + "\nEnglish Meaning: " + randomLine[1].trim() + "\n汉语释义：" + randomLine[2].trim();
     const isAncient = 0;
-    let inWord = randomLine;
+    let inWord = randomLine[0];
     if (inWord[0] == '(') {
         isAncient = 1;
         inWord = inWord.substr(3, inWord.length - 3);

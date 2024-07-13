@@ -557,7 +557,8 @@ function updateLine() {
         isAncient = 1;
         inWord = inWord.substr(3, inWord.length - 3);
     }
-    switch (questionType.value) {
+    const questionTypeValue = questionType.value;
+    switch (questionTypeValue) {
         case "2":
             console.log("test");
             currentAnswer = "i " + getSoftMutation(inWord, isAncient);
@@ -588,6 +589,9 @@ function updateLine() {
             break;
         case "11":
             currentAnswer = getDHMutation("nedh", inWord);
+            break;
+        default:
+            console.log("error");
             break;
     }
     document.getElementById('resultFeedback').innerText = '';

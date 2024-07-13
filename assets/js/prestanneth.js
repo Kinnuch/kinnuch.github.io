@@ -558,6 +558,7 @@ function updateLine() {
         inWord = inWord.substr(3, inWord.length - 3);
     }
     const questionTypeValue = questionType.value;
+    console.log(questionTypeValue === "2");
     switch (questionTypeValue) {
         case "2":
             console.log("test");

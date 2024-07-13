@@ -1,54 +1,54 @@
 function getSoftMutation(inWord, isAncient) {
     let ret = inWord;
     switch (inWord[0]) {
-        case 'p':
-            if (inWord[1] != 'h') ret[0] = 'b';
+        case "p":
+            if (inWord[1] != "h") ret[0] = "b";
             break;
-        case 't':
-            if (inWord[1] != 'h') ret[0] = 'd';
+        case "t":
+            if (inWord[1] != "h") ret[0] = "d";
             break;
-        case 'c':
-            if (inWord[1] != 'h') ret[0] = 'g';
+        case "c":
+            if (inWord[1] != "h") ret[0] = "g";
             break;
-        case 'b':
-            if (isAncient == 1) ret[0] = 'm';
-            else ret[0] = 'v';
+        case "b":
+            if (isAncient == 1) ret[0] = "m";
+            else ret[0] = "v";
             break;
-        case 'd':
-            if (inWord[1] != 'h') {
-                if (isAncient == 1) ret[0] = 'n';
+        case "d":
+            if (inWord[1] != "h") {
+                if (isAncient == 1) ret[0] = "n";
                 else {
-                   ret[0] = 'h';
-                    ret = 'd' + ret; 
+                   ret[0] = "h";
+                    ret = "d" + ret; 
                 }
             }
             break;
-        case 'g':
-            if (isAncient == 1) ret[0] = 'ñ';
-            else ret[0] = '\'';
+        case "g":
+            if (isAncient == 1) ret[0] = "ñ";
+            else ret[0] = "\'";
             break;
-        case 'h':
+        case "h":
             // include the "hw" case
-            ret = 'c' + ret;
+            ret = "c" + ret;
             break;
-        case 's':
-            ret[0] = 'h';
+        case "s":
+            ret[0] = "h";
             break;
-        case 'm':
-            ret[0] = 'v';
+        case "m":
+            ret[0] = "v";
             break;
-        case 'l':
-            if (inWord[1] == 'h') {
-                ret[0] = 'h';
-                ret[1] = 'l';
-                ret = 't' + ret;
+        case "l":
+            if (inWord[1] == "h") {
+                ret[0] = "h";
+                ret[1] = "l";
+                ret = "t" + ret;
             }
             break;
-        case 'r':
-            if (inWord[1] == 'h') {
-                ret[0] = 'h';
-                ret[1] = 'r';
-                ret = 't' + ret;
+        case "r":
+            if (inWord[1] == "h") {
+                ret[0] = "h";
+                ret[1] = "r";
+                ret = "t" + ret;
             }
             break;
     }
@@ -60,192 +60,192 @@ function getNasalMutation(inParticle, inWord, isHard, isAncient) {
     const pLen = retP.length;
     let ret = inWord;
     switch (inWord[0]) {
-        case 'p':
-            if (inWord[1] != 'h') {
-                ret[0] = 'h';
-                ret = 'p' + ret;
+        case "p":
+            if (inWord[1] != "h") {
+                ret[0] = "h";
+                ret = "p" + ret;
                 retP = retP.substr(0, pLen - 1);
             }
             break;
-        case 't':
-            if (inWord[1] != 'h') {
-                ret[0] = 'h';
-                ret = 't' + ret;
+        case "t":
+            if (inWord[1] != "h") {
+                ret[0] = "h";
+                ret = "t" + ret;
                 retP = retP.substr(0, pLen - 1);
             }
             else retP = retP.substr(0, pLen - 1);
             break;
-        case 'c':
-            if (inWord[1] != 'h') {
-                ret[0] = 'h';
-                ret = 'c' + ret;
+        case "c":
+            if (inWord[1] != "h") {
+                ret[0] = "h";
+                ret = "c" + ret;
                 retP = retP.substr(0, pLen - 1);
             }
             break;
-        case 'b':
-            if (isHard == 1) retP[pLen - 1] = 'm';
+        case "b":
+            if (isHard == 1) retP[pLen - 1] = "m";
             else {
-                if (isAncient == 1) ret = 'm' + ret;
-                else ret[0] = 'm';
+                if (isAncient == 1) ret = "m" + ret;
+                else ret[0] = "m";
                 retP = retP.substr(0, pLen - 1);
             }
             break;
-        case 'd':
-            if (isHard == 0 && inWord[1] != 'h') {
-                if (isAncient == 1) ret = 'n' + ret;
-                else ret[0] = 'n';
-                if (inWord[1] != 'r') retP = retP.substr(0, pLen - 1);
+        case "d":
+            if (isHard == 0 && inWord[1] != "h") {
+                if (isAncient == 1) ret = "n" + ret;
+                else ret[0] = "n";
+                if (inWord[1] != "r") retP = retP.substr(0, pLen - 1);
             }
             break;
-        case 'g':
+        case "g":
             if (isHard == 1) {
-                if (inWord[1] != 'w') retP[pLen - 1] = 'ñ';
-                else ret[0] = '\'';
+                if (inWord[1] != "w") retP[pLen - 1] = "ñ";
+                else ret[0] = "\'";
             }
             else {
                 if (isAncient == 1) {
-                    ret = 'ñ' + ret;
+                    ret = "ñ" + ret;
                     retP = retP.substr(0, pLen - 1);
                 }
                 else {
-                    if (inWord[1] == 'l' || inWord[1] == 'r' || inWord[1] == 'w') retP[pLen - 1] = 'ñ';
+                    if (inWord[1] == "l" || inWord[1] == "r" || inWord[1] == "w") retP[pLen - 1] = "ñ";
                     else {
-                        ret[0] = 'ñ';
+                        ret[0] = "ñ";
                         retP = retP.substr(0, pLen - 1);
                     }
                 }
             }
             break;
-        case 'h':
+        case "h":
             // include the "hw" case
-            if (isHard == 1 && inWord[1] == 'w') ret[0] = '\'';
+            if (isHard == 1 && inWord[1] == "w") ret[0] = "\'";
             else {
-                ret = 'c' + ret;
+                ret = "c" + ret;
                 if (isHard == 0) retP = retP.substr(0, pLen - 1);
             }
             break;
-        case 's':
-            if (isHard == 1) ret[0] = 'h';
+        case "s":
+            if (isHard == 1) ret[0] = "h";
             else retP = retP.substr(0, pLen - 1);
             break;
-        case 'm':
-            if (isHard == 1) retP[pLen - 1] = 'm';
+        case "m":
+            if (isHard == 1) retP[pLen - 1] = "m";
             else retP = retP.substr(0, pLen - 1);
             break;
-        case 'f':
+        case "f":
             if (isHard == 0) retP = retP.substr(0, pLen - 1);
             break;
-        case 'n':
+        case "n":
             if (isHard == 0) retP = retP.substr(0, pLen - 1);
             break;
-        case 'l':
-            if (inWord[1] == 'h') {
+        case "l":
+            if (inWord[1] == "h") {
                 if (isHard == 1) {
-                    ret[0] = '\'';
-                    ret[1] = 'l';
+                    ret[0] = "\'";
+                    ret[1] = "l";
                 }
                 else {
-                    ret = 'l' + ret.substr(2, ret.length - 2);
-                    retP[pLen - 1] = 't';
-                    retP = retP + 'h'; 
+                    ret = "l" + ret.substr(2, ret.length - 2);
+                    retP[pLen - 1] = "t";
+                    retP = retP + "h"; 
                 }
             }
             else if (isHard == 0) retP = retP.substr(0, pLen - 1);
             break;
-        case 'r':
-            if (inWord[1] == 'h') {
+        case "r":
+            if (inWord[1] == "h") {
                 if (isHard == 1) {
-                    ret[0] = '\'';
-                    ret[1] = 'r';
+                    ret[0] = "\'";
+                    ret[1] = "r";
                 }
                 else {
-                    ret = 'r' + ret.substr(2, ret.length - 2);
-                    retP[pLen - 1] = 't';
-                    retP = retP + 'h';
+                    ret = "r" + ret.substr(2, ret.length - 2);
+                    retP[pLen - 1] = "t";
+                    retP = retP + "h";
                 }
             }
             else {
-                retP[pLen - 1] = 'd';
-                retP = retP + 'h';
+                retP[pLen - 1] = "d";
+                retP = retP + "h";
             }
             break;
     }
-    return retP + ' ' + ret;
+    return retP + " " + ret;
 }
 
 function getMixedMutation(inWord, isAncient) {
     let ret = inWord;
     switch (inWord[0]) {
-        case 'p':
-            if (inWord[1] != 'h') {
-                ret[0] = 'b';
-                ret = 'e' + '-' + ret;
+        case "p":
+            if (inWord[1] != "h") {
+                ret[0] = "b";
+                ret = "e" + "-" + ret;
             }
             break;
-        case 't':
-            if (inWord[1] != 'h') {
-                ret[0] = 'd';
-                if (inWord[1] == 'r') ret = 'e' + 'n' + '-' + ret;
-                else ret = 'e' + '-' + ret;
+        case "t":
+            if (inWord[1] != "h") {
+                ret[0] = "d";
+                if (inWord[1] == "r") ret = "e" + "n" + "-" + ret;
+                else ret = "e" + "-" + ret;
             }
-            else ret = 'e' + '-' + ret;
+            else ret = "e" + "-" + ret;
             break;
-        case 'c':
-            if (inWord[1] != 'h') {
-                ret[0] = 'g';
-                ret = 'e' + '-' + ret;
-            }
-            break;
-        case 'b':
-            if (isAncient == 1) ret = 'e' + '-' + 'm' + ret;
-            else ret = 'e' + '-' + ret;
-            break;
-        case 'd':
-            if (inWord[1] != 'h') {
-                if (isAncient == 1) ret = 'e' + '-' + 'n' + ret;
-                else if (inWord[1] != 'r') ret = 'e' + '-' + ret;
+        case "c":
+            if (inWord[1] != "h") {
+                ret[0] = "g";
+                ret = "e" + "-" + ret;
             }
             break;
-        case 'g':
-            if (isAncient == 1) ret = 'e' + '-' + 'ñ' + ret;
+        case "b":
+            if (isAncient == 1) ret = "e" + "-" + "m" + ret;
+            else ret = "e" + "-" + ret;
+            break;
+        case "d":
+            if (inWord[1] != "h") {
+                if (isAncient == 1) ret = "e" + "-" + "n" + ret;
+                else if (inWord[1] != "r") ret = "e" + "-" + ret;
+            }
+            break;
+        case "g":
+            if (isAncient == 1) ret = "e" + "-" + "ñ" + ret;
             else {
-                if (inWord[1] == 'l' || inWord[1] == 'r' || inWord[1] == 'w') 
-                    ret = 'e' + 'ñ' + '-' + ret;
-                else ret = 'e' + '-' + ret;
+                if (inWord[1] == "l" || inWord[1] == "r" || inWord[1] == "w") 
+                    ret = "e" + "ñ" + "-" + ret;
+                else ret = "e" + "-" + ret;
             }
             break;
-        case 'h':
+        case "h":
             // include the "hw" case
-            if (inWord[1] == 'w') {
-                ret[0] = '\'';
-                ret = 'e' + '-' + ret;
+            if (inWord[1] == "w") {
+                ret[0] = "\'";
+                ret = "e" + "-" + ret;
             }
-            else ret = 'e' + '-' + 'c' + ret;
+            else ret = "e" + "-" + "c" + ret;
             break;
-        case 's':
-            ret[0] = 'h';
-            ret = 'e' + '-' + ret;
+        case "s":
+            ret[0] = "h";
+            ret = "e" + "-" + ret;
             break;
-        case 'm':
-            ret = 'e' + '-' + ret;
+        case "m":
+            ret = "e" + "-" + ret;
             break;
-        case 'l':
-            if (inWord[1] == 'h') {
-                ret[0] = '\'';
-                ret[1] = 'l';
+        case "l":
+            if (inWord[1] == "h") {
+                ret[0] = "\'";
+                ret[1] = "l";
             }
-            ret = 'e' + '-' + ret;
+            ret = "e" + "-" + ret;
             break;
-        case 'r':
-            if (inWord[1] == 'h') {
-                ret[0] = '\'';
-                ret[1] = 'r';
-                ret = 'e' + '-' + ret;
+        case "r":
+            if (inWord[1] == "h") {
+                ret[0] = "\'";
+                ret[1] = "r";
+                ret = "e" + "-" + ret;
             }
-            else ret = 'e' + 'd' + 'h' + '-' + ret;
+            else ret = "e" + "d" + "h" + "-" + ret;
             break;
         default:
-            ret = 'e' + 'n' + '-' + ret;
+            ret = "e" + "n" + "-" + ret;
     }
     return ret;
 }
@@ -253,32 +253,32 @@ function getMixedMutation(inWord, isAncient) {
 function getMixedMutationHard(inWord) {
     let ret = inWord;
     switch (inWord[0]) {
-        case 'p':
-            if (inWord[1] != 'h') ret[0] = 'b';
+        case "p":
+            if (inWord[1] != "h") ret[0] = "b";
             break;
-        case 't':
-            if (inWord[1] != 'h') ret[0] = 'd';
+        case "t":
+            if (inWord[1] != "h") ret[0] = "d";
             break;
-        case 'c':
-            if (inWord[1] != 'h') ret[0] = 'g';
+        case "c":
+            if (inWord[1] != "h") ret[0] = "g";
             break;
-        case 'h':
-            if (inWord[1] == 'w') ret[0] = '\'';
-            else ret = 'c' + ret;
+        case "h":
+            if (inWord[1] == "w") ret[0] = "\'";
+            else ret = "c" + ret;
             break;
-        case 's':
-            ret[0] = 'h';
+        case "s":
+            ret[0] = "h";
             break;
-        case 'l':
-            if (inWord[1] == 'h') {
-                ret[0] = '\'';
-                ret[1] = 'l';
+        case "l":
+            if (inWord[1] == "h") {
+                ret[0] = "\'";
+                ret[1] = "l";
             }
             break;
-        case 'r':
-            if (inWord[1] == 'h') {
-                ret[0] = '\'';
-                ret[1] = 'r';
+        case "r":
+            if (inWord[1] == "h") {
+                ret[0] = "\'";
+                ret[1] = "r";
             }
             break;
     }
@@ -288,53 +288,53 @@ function getMixedMutationHard(inWord) {
 function getLiquidMutation(inWord) {
     let ret = inWord;
     switch (inWord[0]) {
-        case 'p':
-            if (inWord[1] != 'h') {
-                ret[0] = 'h';
-                ret = 'p' + ret;
+        case "p":
+            if (inWord[1] != "h") {
+                ret[0] = "h";
+                ret = "p" + ret;
             }
             break;
-        case 't':
-            if (inWord[1] != 'h') {
-                ret[0] = 'h';
-                ret = 't' + ret;
+        case "t":
+            if (inWord[1] != "h") {
+                ret[0] = "h";
+                ret = "t" + ret;
             }
             break;
-        case 'c':
-            if (inWord[1] != 'h') {
-                ret[0] = 'h';
-                ret = 'c' + ret;
+        case "c":
+            if (inWord[1] != "h") {
+                ret[0] = "h";
+                ret = "c" + ret;
             }
             break;
-        case 'b':
-            ret[0] = 'v';
+        case "b":
+            ret[0] = "v";
             break;
-        case 'd':
-            if (inWord[1] != 'h') {
-                ret[0] = 'h';
-                ret = 'd' + ret;
+        case "d":
+            if (inWord[1] != "h") {
+                ret[0] = "h";
+                ret = "d" + ret;
             }
             break;
-        case 'g':
-            ret[0] = '\'';
+        case "g":
+            ret[0] = "\'";
             break;
-        case 'h':
+        case "h":
             // include the hw case
-            ret = 'c' + ret;
+            ret = "c" + ret;
             break;
-        case 'm':
-            ret[0] = 'v';
+        case "m":
+            ret[0] = "v";
             break;
-        case 'l':
-            if (inWord[1] == 'h') {
-                ret[0] = '\'';
-                ret[1] = 'l';
+        case "l":
+            if (inWord[1] == "h") {
+                ret[0] = "\'";
+                ret[1] = "l";
             }
             break;
-        case 'r':
-            if (inWord[1] == 'h') {
-                ret[0] = '\'';
-                ret[1] = 'r';
+        case "r":
+            if (inWord[1] == "h") {
+                ret[0] = "\'";
+                ret[1] = "r";
             }
             break;
     }
@@ -346,86 +346,86 @@ function getStopMutation(inParticle, inWord, isAncient) {
     const pLen = retP.length;
     let ret = inWord;
     switch (inWord[0]) {
-        case 'p':
-            if (inWord[1] != 'h') {
-                ret[0] = 'h';
-                ret = 'p' + ret;
+        case "p":
+            if (inWord[1] != "h") {
+                ret[0] = "h";
+                ret = "p" + ret;
                 retP = retP.substr(0, pLen - 1);
             }
             break;
-        case 't':
-            if (inWord[1] != 'h') {
-                ret[0] = 'h';
-                ret = 't' + ret;
+        case "t":
+            if (inWord[1] != "h") {
+                ret[0] = "h";
+                ret = "t" + ret;
                 retP = retP.substr(0, pLen - 1);
             }
             else{
-                retP[pLen - 1] = 't';
-                retP = retP + 'h';
+                retP[pLen - 1] = "t";
+                retP = retP + "h";
             }
             break;
-        case 'c':
-            if (inWord[1] != 'h') {
-                ret[0] = 'h';
-                ret = 'c' + ret;
+        case "c":
+            if (inWord[1] != "h") {
+                ret[0] = "h";
+                ret = "c" + ret;
                 retP = retP.substr(0, pLen - 1);
             }
             break;
-        case 'b':
-            if (isAncient == 1) ret = 'm' + ret;
+        case "b":
+            if (isAncient == 1) ret = "m" + ret;
             retP = retP.substr(0, pLen - 1);
             break;
-        case 'd':
-            if (isAncient == 1) ret = 'n' + ret;
+        case "d":
+            if (isAncient == 1) ret = "n" + ret;
             retP = retP.substr(0, pLen - 1);
             break;
-        case 'g':
-            if (isAncient == 1) ret = 'ñ' + ret;
+        case "g":
+            if (isAncient == 1) ret = "ñ" + ret;
             retP = retP.substr(0, pLen - 1);
             break;
-        case 'h':
+        case "h":
             // include the "hw" case
-            if (inWord[1] == 'w') {
+            if (inWord[1] == "w") {
                 ret = ret.substr(1, ret.length - 1);
-                retP[pLen - 1] = 't';
-                retP = retP + 'h';
+                retP[pLen - 1] = "t";
+                retP = retP + "h";
             }
             else {
-                ret = 'c' + ret;
+                ret = "c" + ret;
                 retP = retP.substr(0, pLen - 1);
             }
             break;
-        case 's':
-            retP[pLen - 1] = 's';
+        case "s":
+            retP[pLen - 1] = "s";
             break;
-        case 'm':
+        case "m":
             retP = retP.substr(0, pLen - 1);
             break;
-        case 'f':
-            retP[pLen - 1] = 'p';
-            retP = retP + 'h';
+        case "f":
+            retP[pLen - 1] = "p";
+            retP = retP + "h";
             break;
-        case 'n':
+        case "n":
             retP = retP.substr(0, pLen - 1);
             break;
-        case 'l':
-            if (inWord[1] == 'h') {
-                ret[0] = 'h';
-                ret[1] = 'l';
-                ret = 't' + ret;
+        case "l":
+            if (inWord[1] == "h") {
+                ret[0] = "h";
+                ret[1] = "l";
+                ret = "t" + ret;
                 retP = retP.substr(0, pLen - 1);
             }
             break;
-        case 'r':
-            if (inWord[1] == 'h') {
-                ret[0] = 'h';
-                ret[1] = 'r';
-                ret = 't' + ret;
+        case "r":
+            if (inWord[1] == "h") {
+                ret[0] = "h";
+                ret[1] = "r";
+                ret = "t" + ret;
                 retP = retP.substr(0, pLen - 1);
             }
             break;
     }
-    return retP + ' ' + ret;
+    return retP + " " + ret;
 }
 
 function getHMutation(inParticle, inWord) {
@@ -433,60 +433,60 @@ function getHMutation(inParticle, inWord) {
     const pLen = retP.length;
     let ret = inWord;
     switch (inWord[0]) {
-        case 'p':
-            if (inWord[1] != 'h') {
-                ret[0] = 'h';
-                ret = 'p' + ret;
+        case "p":
+            if (inWord[1] != "h") {
+                ret[0] = "h";
+                ret = "p" + ret;
                 retP = retP.substr(0, pLen - 1);
             }
             break;
-        case 't':
-            if (inWord[1] != 'h') {
-                ret[0] = 'h';
-                ret = 't' + ret;
+        case "t":
+            if (inWord[1] != "h") {
+                ret[0] = "h";
+                ret = "t" + ret;
                 retP = retP.substr(0, pLen - 1);
             }
             break;
-        case 'c':
-            if (inWord[1] != 'h') {
-                ret[0] = 'h';
-                ret = 'c' + ret;
+        case "c":
+            if (inWord[1] != "h") {
+                ret[0] = "h";
+                ret = "c" + ret;
                 retP = retP.substr(0, pLen - 1);
             }
             break;
-        case 'h':
+        case "h":
             // include the hw case
-            ret = 'c' + ret;
+            ret = "c" + ret;
             retP = retP.substr(0, pLen - 1);
             break;
-        case 's':
-            retP[pLen - 1] = 's';
+        case "s":
+            retP[pLen - 1] = "s";
             break;
-        case 'l':
-            if (inWord[1] != 'h') {
-                ret[0] = 'h';
-                ret = 'l' + ret;
+        case "l":
+            if (inWord[1] != "h") {
+                ret[0] = "h";
+                ret = "l" + ret;
                 retP = retP.substr(0, pLen - 1);
             }
             break;
-        case 'r':
-            if (inWord[1] != 'h') {
-                ret[0] = 'h';
-                ret = 'r' + ret;
+        case "r":
+            if (inWord[1] != "h") {
+                ret[0] = "h";
+                ret = "r" + ret;
                 retP = retP.substr(0, pLen - 1);
             }
             break;
-        case 'i':
+        case "i":
             const tV = inWord[1];
-            if (tV == 'a' || tV == 'e' || tV == 'o' || tV == 'u' 
-             || tV == 'â' || tV == 'ê' || tV == 'ô' || tV == 'û') {
-                ret[0] = 'h';
-                ret = 'c' + ret;
+            if (tV == "a" || tV == "e" || tV == "o" || tV == "u" 
+             || tV == "â" || tV == "ê" || tV == "ô" || tV == "û") {
+                ret[0] = "h";
+                ret = "c" + ret;
                 retP = retP.substr(0, pLen - 1);
             }
             break;
     }
-    return retP + ' ' + ret;
+    return retP + " " + ret;
 }
 
 function getDHMutation(inParticle, inWord) {
@@ -494,50 +494,50 @@ function getDHMutation(inParticle, inWord) {
     pLen = retP.length;
     let ret = inWord;
     switch (inWord[0]) {
-        case 'p':
-            if (inWord[1] != 'h') {
-                ret[0] = 'h';
-                ret = 'p' + ret;
+        case "p":
+            if (inWord[1] != "h") {
+                ret[0] = "h";
+                ret = "p" + ret;
                 retP = retP.substr(0, pLen - 2);
             }
             break;
-        case 't':
-            if (inWord[1] != 'h') {
-                ret[0] = 'h';
-                ret = 't' + ret;
+        case "t":
+            if (inWord[1] != "h") {
+                ret[0] = "h";
+                ret = "t" + ret;
                 retP = retP.substr(0, pLen - 2);
             }
             break;
-        case 'c':
-            if (inWord[1] != 'h') {
-                ret[0] = 'h';
-                ret = 'c' + ret;
+        case "c":
+            if (inWord[1] != "h") {
+                ret[0] = "h";
+                ret = "c" + ret;
                 retP = retP.substr(0, pLen - 2);
             }
             break;
-        case 'h':
-            if (inWord[1] == 'w') {
+        case "h":
+            if (inWord[1] == "w") {
                 ret = ret.substr(1, ret.length - 1);
-                retP[pLen - 2] = 't';
+                retP[pLen - 2] = "t";
             }
             break;
-        case 'l':
-            if (inWord[1] == 'h') {
-                ret[1] = 'l';
+        case "l":
+            if (inWord[1] == "h") {
+                ret[1] = "l";
                 ret = ret.substr(1, ret.length - 1);
-                retP[pLen - 2] = 't';
+                retP[pLen - 2] = "t";
             }
             else retP = retP.substr(0, pLen - 1);
             break;
-        case 'r':
-            if (inWord[1] == 'h') {
-                ret[1] = 'r';
+        case "r":
+            if (inWord[1] == "h") {
+                ret[1] = "r";
                 ret = ret.substr(1, ret.length - 1);
-                retP[pLen - 2] = 't';
+                retP[pLen - 2] = "t";
             }
             break;
     }
-    return retP + ' ' + ret;
+    return retP + " " + ret;
 }
 
 function getRandomLine() {
@@ -548,12 +548,12 @@ function getRandomLine() {
 
 function updateLine() {
     const randomLine = getRandomLine();
-    const questionType = document.getElementById('questionType').value;
+    const questionType = document.getElementById("questionType").value;
     if (!questionType) return;
-    document.getElementById('Prestanneth').innerText = "Sí: 当前：" + randomLine[0] + "\nEnglish Meaning: " + randomLine[1].trim() + "\n汉语释义：" + randomLine[2].trim();
+    document.getElementById("Prestanneth").innerText = "Sí: 当前：" + randomLine[0] + "\nEnglish Meaning: " + randomLine[1].trim() + "\n汉语释义：" + randomLine[2].trim();
     let isAncient = 0;
     let inWord = randomLine[0];
-    if (inWord[0] == '(') {
+    if (inWord[0] == "(") {
         isAncient = 1;
         inWord = inWord.substr(3, inWord.length - 3);
     }
@@ -592,13 +592,13 @@ function updateLine() {
             console.log("error");
             break;
     }
-    document.getElementById('resultFeedback').innerText = '';
-    document.getElementById('userInput').value = '';
+    document.getElementById("resultFeedback").innerText = "";
+    document.getElementById("userInput").value = "";
 }
 
 function checkAnswer() {
-    const userAnswer = document.getElementById('userInput').value.trim();
-    const output = document.getElementById('resultFeedback');
+    const userAnswer = document.getElementById("userInput").value.trim();
+    const output = document.getElementById("resultFeedback");
     if (userAnswer == "") {
         output.innerText = "Teitho nad erui! 请先输入答案！";
         return;
@@ -616,11 +616,11 @@ async function showQuestion() {
     try {
         const response = await fetch(FileURL);
         const csvData = await response.text();
-        dataArray = csvData.trim().split('\n').map(line => line.split(','));
+        dataArray = csvData.trim().split("\n").map(line => line.split(","));
         updateLine();
-        document.getElementById('refreshButton').addEventListener('click', updateLine);
-        document.getElementById('checkAnswer').addEventListener('click', checkAnswer);
-        document.getElementById('questionType').addEventListener('change', updateLine);
+        document.getElementById("refreshButton").addEventListener("click", updateLine);
+        document.getElementById("checkAnswer").addEventListener("click", checkAnswer);
+        document.getElementById("questionType").addEventListener("change", updateLine);
     }
     catch (error){
         console.error("ú-'resta", error);
@@ -628,5 +628,5 @@ async function showQuestion() {
 }
 
 let dataArray;
-let currentAnswer = '';
+let currentAnswer = "";
 showQuestion();

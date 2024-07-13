@@ -557,37 +557,35 @@ function updateLine() {
         isAncient = 1;
         inWord = inWord.substr(3, inWord.length - 3);
     }
-    console.log(inWord);
     switch (questionType.value) {
-        case "i":
-            console.log("test");
+        case 2:
             currentAnswer = "i " + getSoftMutation(inWord, isAncient);
             break;
-        case "3":
+        case 3:
             currentAnswer = randomLine[3];
             break;
-        case "in":
+        case 4:
             currentAnswer = getNasalMutation("in", inWord, 0, isAncient);
             break;
-        case "en":
+        case 5:
             currentAnswer = getMixedMutation(inWord, isAncient);
             break;
-        case "an":
+        case 6:
             currentAnswer = getNasalMutation("an", inWord, 1, isAncient);
             break;
-        case "anin":
+        case 7:
             currentAnswer = "anin " + getMixedMutationHard(inWord);
             break;
-        case "egor":
+        case 8:
             currentAnswer = "egor " + getLiquidMutation(inWord);
             break;
-        case "od":
+        case 9:
             currentAnswer = getStopMutation("od", inWord, isAncient);
             break;
-        case "ah":
+        case 10:
             currentAnswer = getHMutation("ah", inWord);
             break;
-        case "nedh":
+        case 11:
             currentAnswer = getDHMutation("nedh", inWord);
             break;
     }

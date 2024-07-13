@@ -20,16 +20,16 @@ title: Cerf
 
   <select id="questionType">
       <option value="">Cilo i brestanneth 请选择音变类型</option>
-      <option value="i">Prestanneth vae nan i 带i的软音变</option>
+      <option value="2">Prestanneth vae nan i 带i的软音变</option>
       <option value="3">hoth-e-bedui 名词的复数</option>
-      <option value="in">Prestanneth munneb nan in 带in的鼻音音变（名词需要先变为复数）</option>
-      <option value="en">Prestanneth gang nan en 带en的混合音变（以-连接）</option>
-      <option value="an">Prestanneth munneb nan an 带an的鼻音音变</option>
-      <option value="anin">Prestanneth gang nan anin 带anin的混合音变</option>
-      <option value="egor">Prestanneth hiriol nan egor 带egor的流音音变</option>
-      <option value="od">Prestanneth dharnen nan od 带od的闭锁音变</option>
-      <option value="ah">Prestanneth 'hyarmen' nan ah 带ah的H音变</option>
-      <option value="nedh">Prestanneth 'anto' nan nedh 带nedh的DH音变</option>
+      <option value="4">Prestanneth munneb nan in 带in的鼻音音变（名词需要先变为复数）</option>
+      <option value="5">Prestanneth gang nan en 带en的混合音变（以-连接）</option>
+      <option value="6">Prestanneth munneb nan an 带an的鼻音音变</option>
+      <option value="7">Prestanneth gang nan anin 带anin的混合音变</option>
+      <option value="8">Prestanneth hiriol nan egor 带egor的流音音变</option>
+      <option value="9">Prestanneth dharnen nan od 带od的闭锁音变</option>
+      <option value="10">Prestanneth 'hyarmen' nan ah 带ah的H音变</option>
+      <option value="11">Prestanneth 'anto' nan nedh 带nedh的DH音变</option>
   </select>
 
   <div id="Prestanneth"></div>

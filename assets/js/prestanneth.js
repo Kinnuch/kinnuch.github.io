@@ -35,7 +35,9 @@ function getSoftMutation(inWord, isAncient) {
             ret[0] = "h";
             break;
         case "m":
+            console.log("testt");
             ret[0] = "v";
+            console.log(ret);
             break;
         case "l":
             if (inWord[1] == "h") {

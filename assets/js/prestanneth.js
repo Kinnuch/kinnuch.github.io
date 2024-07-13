@@ -1,55 +1,59 @@
+function replaceStr(inString, inPlace, inChar) {
+    let strArr = inString.split('');
+    strArr[inPlace] = inChar;
+    return strArr.join('');
+}
+
 function getSoftMutation(inWord, isAncient) {
     let ret = inWord;
     switch (inWord[0]) {
         case "p":
-            if (inWord[1] != "h") ret[0] = "b";
+            if (inWord[1] != "h") ret = replaceStr(ret, 0, "b");
             break;
         case "t":
-            if (inWord[1] != "h") ret[0] = "d";
+            if (inWord[1] != "h") ret = replaceStr(ret, 0, "d");
             break;
         case "c":
-            if (inWord[1] != "h") ret[0] = "g";
+            if (inWord[1] != "h") ret = replaceStr(ret, 0, "g");
             break;
         case "b":
-            if (isAncient == 1) ret[0] = "m";
-            else ret[0] = "v";
+            if (isAncient == 1) ret = replaceStr(ret, 0, "m");
+            else ret = replaceStr(ret, 0, "v");
             break;
         case "d":
             if (inWord[1] != "h") {
-                if (isAncient == 1) ret[0] = "n";
+                if (isAncient == 1) ret = replaceStr(ret, 0, "n");
                 else {
-                   ret[0] = "h";
+                    ret = replaceStr(ret, 0, "h");
                     ret = "d" + ret; 
                 }
             }
             break;
         case "g":
-            if (isAncient == 1) ret[0] = "ñ";
-            else ret[0] = "\'";
+            if (isAncient == 1) ret = replaceStr(ret, 0, "ñ");
+            else ret = replaceStr(ret, 0, "\'");
             break;
         case "h":
             // include the "hw" case
             ret = "c" + ret;
             break;
         case "s":
-            ret[0] = "h";
+            ret = replaceStr(ret, 0, "h");
             break;
         case "m":
-            console.log("testt");
-            ret[0] = "v";
-            console.log(ret);
+            ret = replaceStr(ret, 0, "v");
             break;
         case "l":
             if (inWord[1] == "h") {
-                ret[0] = "h";
-                ret[1] = "l";
+                ret = replaceStr(ret, 0, "h");
+                ret = replaceStr(ret, 1, "l");
                 ret = "t" + ret;
             }
             break;
         case "r":
             if (inWord[1] == "h") {
-                ret[0] = "h";
-                ret[1] = "r";
+                ret = replaceStr(ret, 0, "h");
+                ret = replaceStr(ret, 1, "r");
                 ret = "t" + ret;
             }
             break;
@@ -64,14 +68,14 @@ function getNasalMutation(inParticle, inWord, isHard, isAncient) {
     switch (inWord[0]) {
         case "p":
             if (inWord[1] != "h") {
-                ret[0] = "h";
+                ret = replaceStr(ret, 0, "h");
                 ret = "p" + ret;
                 retP = retP.substr(0, pLen - 1);
             }
             break;
         case "t":
             if (inWord[1] != "h") {
-                ret[0] = "h";
+                ret = replaceStr(ret, 0, "h");
                 ret = "t" + ret;
                 retP = retP.substr(0, pLen - 1);
             }
@@ -79,30 +83,30 @@ function getNasalMutation(inParticle, inWord, isHard, isAncient) {
             break;
         case "c":
             if (inWord[1] != "h") {
-                ret[0] = "h";
+                ret = replaceStr(ret, 0, "h");
                 ret = "c" + ret;
                 retP = retP.substr(0, pLen - 1);
             }
             break;
         case "b":
-            if (isHard == 1) retP[pLen - 1] = "m";
+            if (isHard == 1) retP = replaceStr(retP, pLen - 1, "m");
             else {
                 if (isAncient == 1) ret = "m" + ret;
-                else ret[0] = "m";
+                else ret = replaceStr(ret, 0, "m");
                 retP = retP.substr(0, pLen - 1);
             }
             break;
         case "d":
             if (isHard == 0 && inWord[1] != "h") {
                 if (isAncient == 1) ret = "n" + ret;
-                else ret[0] = "n";
+                else ret = replaceStr(ret, 0, "n");
                 if (inWord[1] != "r") retP = retP.substr(0, pLen - 1);
             }
             break;
         case "g":
             if (isHard == 1) {
-                if (inWord[1] != "w") retP[pLen - 1] = "ñ";
-                else ret[0] = "\'";
+                if (inWord[1] != "w") retP = replaceStr(retP, pLen - 1, "ñ");
+                else ret = replaceStr(ret, 0, "\'");
             }
             else {
                 if (isAncient == 1) {
@@ -110,9 +114,9 @@ function getNasalMutation(inParticle, inWord, isHard, isAncient) {
                     retP = retP.substr(0, pLen - 1);
                 }
                 else {
-                    if (inWord[1] == "l" || inWord[1] == "r" || inWord[1] == "w") retP[pLen - 1] = "ñ";
+                    if (inWord[1] == "l" || inWord[1] == "r" || inWord[1] == "w") retP = replaceStr(retP, pLen - 1, "ñ");
                     else {
-                        ret[0] = "ñ";
+                        ret = replaceStr(ret, 0, "ñ");
                         retP = retP.substr(0, pLen - 1);
                     }
                 }
@@ -120,18 +124,18 @@ function getNasalMutation(inParticle, inWord, isHard, isAncient) {
             break;
         case "h":
             // include the "hw" case
-            if (isHard == 1 && inWord[1] == "w") ret[0] = "\'";
+            if (isHard == 1 && inWord[1] == "w") ret = replaceStr(ret, 0, "\'");
             else {
                 ret = "c" + ret;
                 if (isHard == 0) retP = retP.substr(0, pLen - 1);
             }
             break;
         case "s":
-            if (isHard == 1) ret[0] = "h";
+            if (isHard == 1) ret = replaceStr(ret, 0, "h");
             else retP = retP.substr(0, pLen - 1);
             break;
         case "m":
-            if (isHard == 1) retP[pLen - 1] = "m";
+            if (isHard == 1) retP = replaceStr(retP, pLen - 1, "m");
             else retP = retP.substr(0, pLen - 1);
             break;
         case "f":
@@ -143,12 +147,12 @@ function getNasalMutation(inParticle, inWord, isHard, isAncient) {
         case "l":
             if (inWord[1] == "h") {
                 if (isHard == 1) {
-                    ret[0] = "\'";
-                    ret[1] = "l";
+                    ret = replaceStr(ret, 0, "\'");
+                    ret = replaceStr(ret, 1, "l");
                 }
                 else {
                     ret = "l" + ret.substr(2, ret.length - 2);
-                    retP[pLen - 1] = "t";
+                    retP = replaceStr(retP, pLen - 1, "t");
                     retP = retP + "h"; 
                 }
             }
@@ -157,17 +161,17 @@ function getNasalMutation(inParticle, inWord, isHard, isAncient) {
         case "r":
             if (inWord[1] == "h") {
                 if (isHard == 1) {
-                    ret[0] = "\'";
-                    ret[1] = "r";
+                    ret = replaceStr(ret, 0, "\'");
+                    ret = replaceStr(ret, 1, "r");
                 }
                 else {
                     ret = "r" + ret.substr(2, ret.length - 2);
-                    retP[pLen - 1] = "t";
+                    retP = replaceStr(retP, pLen - 1, "t");
                     retP = retP + "h";
                 }
             }
             else {
-                retP[pLen - 1] = "d";
+                retP = replaceStr(retP, pLen - 1, "d");
                 retP = retP + "h";
             }
             break;
@@ -180,13 +184,13 @@ function getMixedMutation(inWord, isAncient) {
     switch (inWord[0]) {
         case "p":
             if (inWord[1] != "h") {
-                ret[0] = "b";
+                ret = replaceStr(ret, 0, "b");
                 ret = "e" + "-" + ret;
             }
             break;
         case "t":
             if (inWord[1] != "h") {
-                ret[0] = "d";
+                ret = replaceStr(ret, 0, "d");
                 if (inWord[1] == "r") ret = "e" + "n" + "-" + ret;
                 else ret = "e" + "-" + ret;
             }
@@ -194,7 +198,7 @@ function getMixedMutation(inWord, isAncient) {
             break;
         case "c":
             if (inWord[1] != "h") {
-                ret[0] = "g";
+                ret = replaceStr(ret, 0, "g");
                 ret = "e" + "-" + ret;
             }
             break;
@@ -219,13 +223,13 @@ function getMixedMutation(inWord, isAncient) {
         case "h":
             // include the "hw" case
             if (inWord[1] == "w") {
-                ret[0] = "\'";
+                ret = replaceStr(ret, 0, "\'");
                 ret = "e" + "-" + ret;
             }
             else ret = "e" + "-" + "c" + ret;
             break;
         case "s":
-            ret[0] = "h";
+            ret = replaceStr(ret, 0, "h");
             ret = "e" + "-" + ret;
             break;
         case "m":
@@ -233,15 +237,15 @@ function getMixedMutation(inWord, isAncient) {
             break;
         case "l":
             if (inWord[1] == "h") {
-                ret[0] = "\'";
-                ret[1] = "l";
+                ret = replaceStr(ret, 0, "\'");
+                ret = replaceStr(ret, 1, "l");
             }
             ret = "e" + "-" + ret;
             break;
         case "r":
             if (inWord[1] == "h") {
-                ret[0] = "\'";
-                ret[1] = "r";
+                ret = replaceStr(ret, 0, "\'");
+                ret = replaceStr(ret, 1, "r");
                 ret = "e" + "-" + ret;
             }
             else ret = "e" + "d" + "h" + "-" + ret;
@@ -256,31 +260,31 @@ function getMixedMutationHard(inWord) {
     let ret = inWord;
     switch (inWord[0]) {
         case "p":
-            if (inWord[1] != "h") ret[0] = "b";
+            if (inWord[1] != "h") ret = replaceStr(ret, 0, "b");
             break;
         case "t":
-            if (inWord[1] != "h") ret[0] = "d";
+            if (inWord[1] != "h") ret = replaceStr(ret, 0, "d");
             break;
         case "c":
-            if (inWord[1] != "h") ret[0] = "g";
+            if (inWord[1] != "h") ret = replaceStr(ret, 0, "g");
             break;
         case "h":
-            if (inWord[1] == "w") ret[0] = "\'";
+            if (inWord[1] == "w") ret = replaceStr(ret, 0, "\'");
             else ret = "c" + ret;
             break;
         case "s":
-            ret[0] = "h";
+            ret = replaceStr(ret, 0, "h");
             break;
         case "l":
             if (inWord[1] == "h") {
-                ret[0] = "\'";
-                ret[1] = "l";
+                ret = replaceStr(ret, 0, "\'");
+                ret = replaceStr(ret, 1, "l");
             }
             break;
         case "r":
             if (inWord[1] == "h") {
-                ret[0] = "\'";
-                ret[1] = "r";
+                ret = replaceStr(ret, 0, "\'");
+                ret = replaceStr(ret, 0, "r");
             }
             break;
     }
@@ -292,51 +296,51 @@ function getLiquidMutation(inWord) {
     switch (inWord[0]) {
         case "p":
             if (inWord[1] != "h") {
-                ret[0] = "h";
+                ret = replaceStr(ret, 0, "h");
                 ret = "p" + ret;
             }
             break;
         case "t":
             if (inWord[1] != "h") {
-                ret[0] = "h";
+                ret = replaceStr(ret, 0, "h");
                 ret = "t" + ret;
             }
             break;
         case "c":
             if (inWord[1] != "h") {
-                ret[0] = "h";
+                ret = replaceStr(ret, 0, "h");
                 ret = "c" + ret;
             }
             break;
         case "b":
-            ret[0] = "v";
+            ret = replaceStr(ret, 0, "v");
             break;
         case "d":
             if (inWord[1] != "h") {
-                ret[0] = "h";
+                ret = replaceStr(ret, 0, "h");
                 ret = "d" + ret;
             }
             break;
         case "g":
-            ret[0] = "\'";
+            ret = replaceStr(ret, 0, "\'");
             break;
         case "h":
             // include the hw case
             ret = "c" + ret;
             break;
         case "m":
-            ret[0] = "v";
+            ret = replaceStr(ret, 0, "v");
             break;
         case "l":
             if (inWord[1] == "h") {
-                ret[0] = "\'";
-                ret[1] = "l";
+                ret = replaceStr(ret, 0, "\'");
+                ret = replaceStr(ret, 1, "l");
             }
             break;
         case "r":
             if (inWord[1] == "h") {
-                ret[0] = "\'";
-                ret[1] = "r";
+                ret = replaceStr(ret, 0, "\'");
+                ret = replaceStr(ret, 1, "r");
             }
             break;
     }
@@ -350,25 +354,25 @@ function getStopMutation(inParticle, inWord, isAncient) {
     switch (inWord[0]) {
         case "p":
             if (inWord[1] != "h") {
-                ret[0] = "h";
+                ret = replaceStr(ret, 0, "h");
                 ret = "p" + ret;
                 retP = retP.substr(0, pLen - 1);
             }
             break;
         case "t":
             if (inWord[1] != "h") {
-                ret[0] = "h";
+                ret = replaceStr(ret, 0, "h");
                 ret = "t" + ret;
                 retP = retP.substr(0, pLen - 1);
             }
             else{
-                retP[pLen - 1] = "t";
+                retP = replaceStr(retP, pLen - 1, "t");
                 retP = retP + "h";
             }
             break;
         case "c":
             if (inWord[1] != "h") {
-                ret[0] = "h";
+                ret = replaceStr(ret, 0, "h");
                 ret = "c" + ret;
                 retP = retP.substr(0, pLen - 1);
             }
@@ -389,7 +393,7 @@ function getStopMutation(inParticle, inWord, isAncient) {
             // include the "hw" case
             if (inWord[1] == "w") {
                 ret = ret.substr(1, ret.length - 1);
-                retP[pLen - 1] = "t";
+                retP = replaceStr(retP, pLen - 1, "t");
                 retP = retP + "h";
             }
             else {
@@ -398,13 +402,13 @@ function getStopMutation(inParticle, inWord, isAncient) {
             }
             break;
         case "s":
-            retP[pLen - 1] = "s";
+            retP = replaceStr(retP, pLen - 1, "s");
             break;
         case "m":
             retP = retP.substr(0, pLen - 1);
             break;
         case "f":
-            retP[pLen - 1] = "p";
+            retP = replaceStr(retP, pLen - 1, "p");
             retP = retP + "h";
             break;
         case "n":
@@ -412,16 +416,16 @@ function getStopMutation(inParticle, inWord, isAncient) {
             break;
         case "l":
             if (inWord[1] == "h") {
-                ret[0] = "h";
-                ret[1] = "l";
+                ret = replaceStr(ret, 0, "h");
+                ret = replaceStr(ret, 1, "l");
                 ret = "t" + ret;
                 retP = retP.substr(0, pLen - 1);
             }
             break;
         case "r":
             if (inWord[1] == "h") {
-                ret[0] = "h";
-                ret[1] = "r";
+                ret = replaceStr(ret, 0, "h");
+                ret = replaceStr(ret, 1, "r");
                 ret = "t" + ret;
                 retP = retP.substr(0, pLen - 1);
             }
@@ -437,21 +441,21 @@ function getHMutation(inParticle, inWord) {
     switch (inWord[0]) {
         case "p":
             if (inWord[1] != "h") {
-                ret[0] = "h";
+                ret = replaceStr(ret, 0, "h");
                 ret = "p" + ret;
                 retP = retP.substr(0, pLen - 1);
             }
             break;
         case "t":
             if (inWord[1] != "h") {
-                ret[0] = "h";
+                ret = replaceStr(ret, 0, "h");
                 ret = "t" + ret;
                 retP = retP.substr(0, pLen - 1);
             }
             break;
         case "c":
             if (inWord[1] != "h") {
-                ret[0] = "h";
+                ret = replaceStr(ret, 0, "h");
                 ret = "c" + ret;
                 retP = retP.substr(0, pLen - 1);
             }
@@ -462,18 +466,18 @@ function getHMutation(inParticle, inWord) {
             retP = retP.substr(0, pLen - 1);
             break;
         case "s":
-            retP[pLen - 1] = "s";
+            retP = replaceStr(retP, pLen - 1, "s");
             break;
         case "l":
             if (inWord[1] != "h") {
-                ret[0] = "h";
+                ret = replaceStr(ret, 0, "h");
                 ret = "l" + ret;
                 retP = retP.substr(0, pLen - 1);
             }
             break;
         case "r":
             if (inWord[1] != "h") {
-                ret[0] = "h";
+                ret = replaceStr(ret, 0, "h");
                 ret = "r" + ret;
                 retP = retP.substr(0, pLen - 1);
             }
@@ -482,7 +486,7 @@ function getHMutation(inParticle, inWord) {
             const tV = inWord[1];
             if (tV == "a" || tV == "e" || tV == "o" || tV == "u" 
              || tV == "â" || tV == "ê" || tV == "ô" || tV == "û") {
-                ret[0] = "h";
+                ret = replaceStr(ret, 0, "h");
                 ret = "c" + ret;
                 retP = retP.substr(0, pLen - 1);
             }
@@ -498,21 +502,21 @@ function getDHMutation(inParticle, inWord) {
     switch (inWord[0]) {
         case "p":
             if (inWord[1] != "h") {
-                ret[0] = "h";
+                ret = replaceStr(ret, 0, "h");
                 ret = "p" + ret;
                 retP = retP.substr(0, pLen - 2);
             }
             break;
         case "t":
             if (inWord[1] != "h") {
-                ret[0] = "h";
+                ret = replaceStr(ret, 0, "h");
                 ret = "t" + ret;
                 retP = retP.substr(0, pLen - 2);
             }
             break;
         case "c":
             if (inWord[1] != "h") {
-                ret[0] = "h";
+                ret = replaceStr(ret, 0, "h");
                 ret = "c" + ret;
                 retP = retP.substr(0, pLen - 2);
             }
@@ -520,22 +524,22 @@ function getDHMutation(inParticle, inWord) {
         case "h":
             if (inWord[1] == "w") {
                 ret = ret.substr(1, ret.length - 1);
-                retP[pLen - 2] = "t";
+                retP = replaceStr(retP, pLen - 2, "t");
             }
             break;
         case "l":
             if (inWord[1] == "h") {
                 ret[1] = "l";
                 ret = ret.substr(1, ret.length - 1);
-                retP[pLen - 2] = "t";
+                retP = replaceStr(retP, pLen - 2, "t");
             }
             else retP = retP.substr(0, pLen - 1);
             break;
         case "r":
             if (inWord[1] == "h") {
-                ret[1] = "r";
+                ret = replaceStr(ret, 1, "r");
                 ret = ret.substr(1, ret.length - 1);
-                retP[pLen - 2] = "t";
+                retP = replaceStr(retP, pLen - 2, "t");
             }
             break;
     }

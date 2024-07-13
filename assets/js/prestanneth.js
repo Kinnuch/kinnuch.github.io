@@ -557,9 +557,8 @@ function updateLine() {
         isAncient = 1;
         inWord = inWord.substr(3, inWord.length - 3);
     }
-    const questionTypeValue = questionType.value;
-    console.log(questionTypeValue === "2");
-    switch (questionTypeValue) {
+    console.log(questionType.value === "2");
+    switch (questionType.value) {
         case "2":
             console.log("test");
             currentAnswer = "i " + getSoftMutation(inWord, isAncient);

@@ -8,7 +8,7 @@ function updateGwenwiLine() {
     const randomLine = getRandomGwenwiLine();
     const randomPersonIndex = Math.floor(Math.random() * 9);
     const randomPerson = personArray[randomPersonIndex];
-    document.getElementById('Gwenwi').innerText = "Sí: 当前：" + randomLine[0] + "\nEnglish Meaning: " + randomLine[1].trim() + "\n汉语释义：" + randomLine[2].trim() + "\nTeitho 请写出：" + randomPerson + randomLine[2].trim();
+    document.getElementById('Gwenwi').innerText = "Sí: 当前：" + randomLine[0] + "\nEnglish Meaning: " + randomLine[1].trim() + "\n汉语释义：" + randomLine[2].trim() + "\nTeitho 请写出：" + randomPerson + randomLine[2].trim() + "了";
     currentGwenwiAnswer = randomLine[3 + randomPersonIndex].trim();
     document.getElementById('resultGwenwiFeedback').innerText = '';
     document.getElementById('GwenwiInput').value = '';

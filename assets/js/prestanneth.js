@@ -546,6 +546,20 @@ function getDHMutation(inParticle, inWord) {
     return retP + " " + ret;
 }
 
+function getSyllableParsing(inWord) {
+    let tWord = inWord;
+    let syllableArr = [];
+    while (tWord.length > 0) {
+        let nowSyllable = tWord.match();
+        if (nowSyllable) {
+            syllableArr.push(nowSyllable[0]);
+            tWord = tWord.substr(0, tWord.length - nowSyllable[0].length);
+        }
+    }
+    if (syllableArr) return syllableArr.reverse().join(" ");
+    else return "";
+}
+
 function getRandomLine() {
     const randomIndex = Math.floor(Math.random() * dataArray.length);
     const randomLine = dataArray[randomIndex];
@@ -571,7 +585,7 @@ function updateLine() {
             currentAnswer = randomLine[3];
             break;
         case "4":
-            currentAnswer = getNasalMutation("in", inWord, 0, isAncient);
+            currentAnswer = getNasalMutation("in", randomLine[3], 0, isAncient);
             break;
         case "5":
             currentAnswer = getMixedMutation(inWord, isAncient);

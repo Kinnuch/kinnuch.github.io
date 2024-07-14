@@ -550,7 +550,7 @@ function getSyllableParsing(inWord) {
     let tWord = inWord;
     let syllableArr = [];
     const vowels = "aeiouyáéíóúýâêîôûŷ";
-    const syllablePattern = new RegExp(`(^i(?=${vowels})|[^${vowels}]*)?([${vowels}*])?([^${vowels}])*$`,'i');
+    const syllablePattern = new RegExp(`(^i(?=${vowels})|[^${vowels}]?|th|ch|^lh|^rh|^bl|^gl|^gr|^gw|^tr|^dr|ph|bh|dh|^thr|^thl|)?([${vowels}]|ai|au|ae|ui|oe){1}([^${vowels}])*$`,'i');
     while (tWord.length > 0) {
         let nowSyllable = tWord.match(syllablePattern);
         if (nowSyllable) {

@@ -547,7 +547,7 @@ function getDHMutation(inParticle, inWord) {
 }
 
 function getSyllableParsing(inWord, retPattern) {
-    // retPattern: 0---parsing 1---sundóma
+    // retPattern: 0---parsing 1---sundóma 2---initial vowel/consonant judgement
     let tWord = inWord;
     let syllableArr = [];
     const vowels = "aeiouyáéíóúýâêîôûŷ";
@@ -563,12 +563,131 @@ function getSyllableParsing(inWord, retPattern) {
         if (syllableArr) return syllableArr.reverse().join(" ");
         else return "";
     }
-    else {
-        let syllablePattern = new RegExp(`([${vowels}]|ai|au|ae|ui|oe){1}(?=[^${vowels}]*$)`,'i');
+    else if (retPattern == 1) {
+        let syllablePattern = new RegExp(`([${vowels}]){1}(?=[^${vowels}]*$)`,'i');
         let nowSyllable = tWord.match(syllablePattern);
         if (nowSyllable) return nowSyllable[0];
         else return "";
     }
+    else if (retPattern == 2) {
+        let syllablePattern = new RegExp(`^([^${vowels}]|i(?=${vowels}))`,'i');
+        let nowSyllable = tWord.match(syllablePattern);
+        if (nowSyllable) return 1; // consonant
+        else return 0; // vowel
+    }
+}
+
+function getPast(inWord, inPerson, specialPattern) {
+    let fiWord = inWord[inWord.length - 1];
+    let isWeak = fiWord == "a";
+    let ret = inWord;
+    if (isWeak == false) { // strong verb
+        let isSgSyllable = getSyllableParsing(inWord, 0).indexOf(" ");
+        let sundoma = getSyllableParsing(inWord, 1);
+        let sundomaPlace = inWord.lastIndexOf(sundoma);
+        let isConsonant = getSyllableParsing(inWord, 2);
+        if (specialPattern == 1) ret = replaceStr(ret, sundomaPlace, "u"); // o > u special
+        if (fiWord == "b" || fiWord == "d" || fiWord == "g") { // b,d,g final strong verb
+            if (inPerson == 4) {
+                ret = ret.substr(0, ret.length - 1);
+                if (fiWord == "b") ret = ret + "mp";
+                else if (fiWord == "d") ret = ret + "nt";
+                else ret = ret + "nc";
+            }
+            else {
+                ret = ret.substr(0, ret.length - 1);
+                if (fiWord == "b") ret = ret + "mme";
+                else if (fiWord == "d") ret = ret + "nne";
+                else ret = ret + "nge";
+                ret = ret + personArr[inPerson];
+            }
+        }
+        else {
+            if (sundoma == "a") {
+                if (isSgSyllable == -1) {
+                    if (inPerson == 4) ret = ret.substring(0, sundomaPlace) + "u" + ret.substring(sundomaPlace + 1, ret.length - 1);
+                    else {
+                        ret = replaceStr(ret, sundomaPlace, "ó");
+                        ret = ret + "e" + personArr[inPerson];
+                    }
+                }
+                else {
+                    if (inPerson == 4) ret = replaceStr(ret, sundomaPlace, "o");
+                    else {
+                        ret = replaceStr(ret, sundomaPlace, "ó");
+                        ret = ret + "e" + personArr[inPerson];
+                    }
+                }
+            }
+            else if (sundoma == "e" || sundoma == "i") {
+                if (isSgSyllable == -1) {
+                    if (inPerson == 4) ret = replaceStr(ret, sundomaPlace, "î");
+                    else {
+                        ret = replaceStr(ret, sundomaPlace, "í");
+                        ret = ret + "e" + personArr[inPerson];
+                    }
+                }
+                else {
+                    if (inPerson == 4) ret = replaceStr(ret, sundomaPlace, "i");
+                    else {
+                        ret = replaceStr(ret, sundomaPlace, "í");
+                        ret = ret + "e" + personArr[inPerson];
+                    }
+                }
+            }
+            else if (sundoma == "o" || sundoma == "u") {
+                if (isSgSyllable == -1) {
+                    if (inPerson == 4) ret = replaceStr(ret, sundomaPlace, "û");
+                    else {
+                        ret = replaceStr(ret, sundomaPlace, "ú");
+                        ret = ret + "e" + personArr[inPerson];
+                    }
+                }
+                else {
+                    if (inPerson == 4) ret = replaceStr(ret, sundomaPlace, "u");
+                    else {
+                        ret = replaceStr(ret, sundomaPlace, "ú");
+                        ret = ret + "e" + personArr[inPerson];
+                    }
+                }
+            }
+            else if (sundoma == "y") {
+                ret = replaceStr(ret, sundomaPlace, "i");
+                if (inPerson == 4) ret = ret.substring(0, sundomaPlace) + "u" + ret.substring(sundomaPlace + 1, ret.length - 1);
+                else {
+                    ret = ret.substring(0, sundomaPlace) + "ú" + ret.substring(sundomaPlace + 1, ret.length - 1);
+                    ret = ret + "e" + personArr[inPerson];
+                }
+                if (sundomaPlace == 0) ret = "u" + ret;
+            }
+        }
+        // deal the soft mutation last(string length is changed)
+        if (isConsonant == 1 && isSgSyllable == -1) {
+            ret = getSoftMutation(ret);
+            if (ret[0] == "\'") {
+                ret = ret.substr(1, ret.length - 1);
+                if (ret[0] == "l" || ret[0] == "r" || ret[0] == "w") ret = sundoma + ret;
+            }
+            else ret = sundoma + ret;
+        }
+    }
+    else { // weak verb, 0 for vi, 1 for vt
+        if (inPerson == 4) {
+            if (specialPattern == 0) ret = ret + "s";
+            else ret = ret + "nt";
+        } 
+        else {
+            if (specialPattern == 0) ret = ret + "sse" + personArr[inPerson];
+            else {
+                if (ret.length > 3 && ret[ret.length - 1] == "a" && ret[ret.length - 2] == "n" && ret[ret.length - 3] == "n") {
+                    ret = ret.substr(0, ret.length - 1);
+                    ret = ret + "e" + personArr[inPerson];
+                }
+                else ret = ret + "nne" + personArr[inPerson];
+            }
+        }
+    }
+    return ret;
 }
 
 function getRandomLine() {
@@ -658,6 +777,14 @@ async function showQuestion() {
     }
 }
 
+let personArray = new Array();
+personArray[0] = "我"; personArray[1] = "你和我"; personArray[2] = "（亲密）你"; personArray[3] = "（正式）你/您"
+personArray[4] = "他/她/它"; personArray[5] = "（不含听话者）我们"; personArray[6] = "（包含听话者）我们";
+personArray[7] = "你们"; personArray[8] = "他们/她们/它们";
+let personArr = new Array();
+personArr[0] = "n"; personArr[1] = "nc"; personArr[2] = "g"; personArr[3] = "l";
+personArr[4] = ""; personArr[5] = "f"; personArr[6] = "b";
+personArr[7] = "dh"; personArr[8] = "r";
 let dataArray;
 let currentAnswer = "";
 showQuestion();

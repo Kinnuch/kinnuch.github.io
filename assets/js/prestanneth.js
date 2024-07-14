@@ -566,7 +566,7 @@ function getSyllableParsing(inWord, retPattern) {
     else {
         let syllablePattern = new RegExp(`([${vowels}]|ai|au|ae|ui|oe){1}(?=[^${vowels}]*$)`,'i');
         let nowSyllable = tWord.match(syllablePattern);
-        if (nowSyllable) return nowSyllable;
+        if (nowSyllable) return nowSyllable[0];
         else return "";
     }
 }

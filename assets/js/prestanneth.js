@@ -546,20 +546,29 @@ function getDHMutation(inParticle, inWord) {
     return retP + " " + ret;
 }
 
-function getSyllableParsing(inWord) {
+function getSyllableParsing(inWord, retPattern) {
+    // retPattern: 0---parsing 1---sundóma
     let tWord = inWord;
     let syllableArr = [];
     const vowels = "aeiouyáéíóúýâêîôûŷ";
-    const syllablePattern = new RegExp(`(^i(?=${vowels})|[^${vowels}]?|th|ch|^lh|^rh|^bl|^gl|^gr|^gw|^tr|^dr|ph|bh|dh|^thr|^thl|)?([${vowels}]|ai|au|ae|ui|oe){1}([^${vowels}])*$`,'i');
-    while (tWord.length > 0) {
-        let nowSyllable = tWord.match(syllablePattern);
-        if (nowSyllable) {
-            syllableArr.push(nowSyllable[0]);
-            tWord = tWord.substr(0, tWord.length - nowSyllable[0].length);
+    if (retPattern == 0) {
+        let syllablePattern = new RegExp(`(^i(?=${vowels})|[^${vowels}]?|th|ch|^lh|^rh|^bl|^gl|^gr|^gw|^tr|^dr|ph|bh|dh|^thr|^thl|)?([${vowels}]|ai|au|ae|ui|oe){1}([^${vowels}])*$`,'i');
+        while (tWord.length > 0) {
+            let nowSyllable = tWord.match(syllablePattern);
+            if (nowSyllable) {
+                syllableArr.push(nowSyllable[0]);
+                tWord = tWord.substr(0, tWord.length - nowSyllable[0].length);
+            }
         }
+        if (syllableArr) return syllableArr.reverse().join(" ");
+        else return "";
     }
-    if (syllableArr) return syllableArr.reverse().join(" ");
-    else return "";
+    else {
+        let syllablePattern = new RegExp(`([${vowels}]|ai|au|ae|ui|oe){1}(?=[^${vowels}]*$)`,'i');
+        let nowSyllable = tWord.match(syllablePattern);
+        if (nowSyllable) return nowSyllable;
+        else return "";
+    }
 }
 
 function getRandomLine() {

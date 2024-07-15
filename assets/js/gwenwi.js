@@ -9,7 +9,12 @@ function updateGwenwiLine() {
     const randomPersonIndex = Math.floor(Math.random() * 9);
     const randomPerson = personArray[randomPersonIndex];
     document.getElementById('Gwenwi').innerText = "Sí: 当前：" + randomLine[0] + "\nEnglish Meaning: " + randomLine[1].trim() + "\n汉语释义：" + randomLine[2].trim() + "\nTeitho 请写出：" + randomPerson + randomLine[2].trim() + "了";
-    currentGwenwiAnswer = getPast(randomLine[0], randomPersonIndex, randomLine[3]);
+    let nowWord = randomLine[0];
+    if (nowWord[nowWord.length - 1] == ")") { // deal the -TA word
+        let leftPos = nowWord.lastIndexOf("(");
+        nowWord = nowWord.substring(0, leftPos - 1);
+    }
+    currentGwenwiAnswer = getPast(nowWord, randomPersonIndex, randomLine[3]);
     document.getElementById('resultGwenwiFeedback').innerText = '';
     document.getElementById('GwenwiInput').value = '';
 }

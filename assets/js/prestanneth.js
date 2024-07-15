@@ -552,7 +552,7 @@ function getSyllableParsing(inWord, retPattern) {
     let syllableArr = [];
     const vowels = "aeiouyáéíóúýâêîôûŷ";
     if (retPattern == 0) {
-        let syllablePattern = new RegExp(`(^i(?=${vowels})|[^${vowels}]?|th|ch|^lh|^rh|^bl|^gl|^gr|^gw|^tr|^dr|ph|bh|dh|^thr|^thl|)?([${vowels}]|ai|au|ae|ui|oe){1}([^${vowels}])*$`,'i');
+        let syllablePattern = new RegExp(`(^i(?=${vowels})|[^${vowels}]?|th|ch|^lh|^rh|^bl|^gl|^gr|^gw|^tr|^dr|ph|bh|dh|^thr|^thl|^\(m\)b|^\(n\)d|\(n\)g)?([${vowels}]|ai|au|ae|ui|oe){1}([^${vowels}])*$`,'i');
         while (tWord.length > 0) {
             let nowSyllable = tWord.match(syllablePattern);
             if (nowSyllable) {
@@ -586,7 +586,10 @@ function getPast(inWord, inPerson, specialPattern) {
         let sundoma = getSyllableParsing(inWord, 1);
         let sundomaPlace = inWord.lastIndexOf(sundoma);
         let isConsonant = getSyllableParsing(inWord, 2);
-        if (specialPattern == 1) ret = replaceStr(ret, sundomaPlace, "u"); // o > u special
+        if (specialPattern == 1) {
+            ret = replaceStr(ret, sundomaPlace, "u"); // o > u special
+            sundoma = "u";
+        }
         if (fiWord == "b" || fiWord == "d" || fiWord == "g") { // b,d,g final strong verb
             if (inPerson == 4) {
                 ret = ret.substr(0, ret.length - 1);
@@ -664,7 +667,12 @@ function getPast(inWord, inPerson, specialPattern) {
         }
         // deal the soft mutation last(string length is changed)
         if (isConsonant == 1 && isSgSyllable == -1) {
-            ret = getSoftMutation(ret);
+            let isAncient = 0;
+            if (ret[0] == "(") {
+                isAncient = 1;
+                ret = ret.substr(3, ret.length - 3);
+            }
+            ret = getSoftMutation(ret, isAncient);
             if (ret[0] == "\'") {
                 ret = ret.substr(1, ret.length - 1);
                 if (ret[0] == "l" || ret[0] == "r" || ret[0] == "w") ret = sundoma + ret;

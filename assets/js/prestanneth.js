@@ -549,6 +549,10 @@ function getDHMutation(inParticle, inWord) {
 function getSyllableParsing(inWord, retPattern) {
     // retPattern: 0---parsing 1---sundóma 2---initial vowel/consonant judgement
     let tWord = inWord;
+    if (tWord != inWord) {
+        console.log("error!");
+        return;
+    }
     let syllableArr = [];
     const vowels = "aeiouyáéíóúýâêîôûŷ";
     if (retPattern == 0) {

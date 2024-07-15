@@ -549,10 +549,15 @@ function getDHMutation(inParticle, inWord) {
 function getSyllableParsing(inWord, retPattern) {
     // retPattern: 0---parsing 1---sundóma 2---initial vowel/consonant judgement
     let tWord = inWord;
+    let ancientTag = "";
+    if (tWord[0] == "(") {
+        ancientTag = tWord.substr(0, 3);
+        tWord = tWord.substr(3, tWord.length - 3);
+    }
     let syllableArr = [];
     const vowels = "aeiouyáéíóúýâêîôûŷ";
     if (retPattern == 0) {
-        let syllablePattern = new RegExp(`(^i(?=${vowels})|th|ch|^lh|^rh|^bl|^gl|^gr|^gw|^tr|^dr|ph|bh|dh|^thr|^thl|^\(m\)b|^\(n\)d|^\(n\)g|[^${vowels}]?)?([${vowels}]|ai|au|ae|ui|oe){1}([^${vowels}])*$`,'i');
+        let syllablePattern = new RegExp(`(^i(?=${vowels})|th|ch|^lh|^rh|^bl|^gl|^gr|^gw|^tr|^dr|ph|bh|dh|^thr|^thl|[^${vowels}]?)?([${vowels}]|ai|au|ae|ui|oe){1}([^${vowels}])*$`,'i');
         while (tWord.length > 0) {
             let nowSyllable = tWord.match(syllablePattern);
             if (nowSyllable) {
@@ -560,7 +565,11 @@ function getSyllableParsing(inWord, retPattern) {
                 tWord = tWord.substr(0, tWord.length - nowSyllable[0].length);
             }
         }
-        if (syllableArr) return syllableArr.reverse().join(" ");
+        if (syllableArr) {
+            let ret = syllableArr.reverse().join(" ");
+            if (ancientTag != "") ret = ancientTag + ret;
+            return ret;
+        }
         else return "";
     }
     else if (retPattern == 1) {

@@ -5,11 +5,14 @@ function getRandomGwenwiLine() {
 }
 
 function updateGwenwiLine() {
+    const gwenwiType = document.getElementById('gwenwiType').value;
     const randomLine = getRandomGwenwiLine();
+    // Intransitive Weak Verb cannot have Direct Object(Accusative Pronoun)
+    while (gwenwiType == "2" && randomLine[0][random[0].length - 1] == "a" && randomLine[3] == 1)
+        randomLine = getRandomGwenwiLine();
     const randomPersonIndex = Math.floor(Math.random() * 9);
     const randomPatientIndex = Math.floor(Math.random() * 9);
     const randomPerson = personArray[randomPersonIndex];
-    const gwenwiType = document.getElementById('gwenwiType').value;
     if (!gwenwiType) return;
     if (gwenwiType == "1") document.getElementById('Gwenwi').innerText = "Sí: 当前：" + randomLine[0] + "\nEnglish Meaning: " + randomLine[1].trim() + "\n汉语释义：" + randomLine[2].trim() + "\nTeitho 请写出：" + randomPerson + randomLine[2].trim() + "了";
     else if (gwenwiType == "2") document.getElementById('Gwenwi').innerText = "Sí: 当前：" + randomLine[0] + "\nEnglish Meaning: " + randomLine[1].trim() + "\n汉语释义：" + randomLine[2].trim() + "\nTeitho 请写出：" + randomPerson + randomLine[2].trim() + "了" + personArray[randomPatientIndex];

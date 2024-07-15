@@ -609,7 +609,7 @@ function getPast(inWord, inPerson, specialPattern) {
             if (inPerson != 4 && fiWord == "w") ret = ret.substr(0, ret.length - 1);
             if (sundoma == "a") {
                 if (isSgSyllable == -1) {
-                    if (inPerson == 4) ret = ret.substring(0, sundomaPlace) + "u" + ret.substring(sundomaPlace + 1, ret.length - 1);
+                    if (inPerson == 4) ret = ret.substring(0, sundomaPlace + 1) + "u" + ret.substring(sundomaPlace + 1, ret.length);
                     else {
                         ret = replaceStr(ret, sundomaPlace, "ó");
                         ret = ret + "e" + personArr[inPerson];

@@ -657,9 +657,9 @@ function getPast(inWord, inPerson, specialPattern) {
             }
             else if (sundoma == "y") {
                 ret = replaceStr(ret, sundomaPlace, "i");
-                if (inPerson == 4) ret = ret.substring(0, sundomaPlace) + "u" + ret.substring(sundomaPlace + 1, ret.length - 1);
+                if (inPerson == 4) ret = ret.substring(0, sundomaPlace + 1) + "u" + ret.substring(sundomaPlace + 1, ret.length);
                 else {
-                    ret = ret.substring(0, sundomaPlace) + "ú" + ret.substring(sundomaPlace + 1, ret.length - 1);
+                    ret = ret.substring(0, sundomaPlace + 1) + "ú" + ret.substring(sundomaPlace + 1, ret.length);
                     ret = ret + "e" + personArr[inPerson];
                 }
                 if (sundomaPlace == 0) ret = "u" + ret;

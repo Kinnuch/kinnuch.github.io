@@ -12,7 +12,7 @@ function updateGwenwiLine() {
     let nowWord = randomLine[0];
     if (nowWord[nowWord.length - 1] == ")") { // deal the -TA word
         let leftPos = nowWord.lastIndexOf("(");
-        nowWord = nowWord.substring(0, leftPos - 1);
+        nowWord = nowWord.substring(0, leftPos);
     }
     currentGwenwiAnswer = getPast(nowWord, randomPersonIndex, randomLine[3]);
     document.getElementById('resultGwenwiFeedback').innerText = '';

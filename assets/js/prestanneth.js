@@ -708,6 +708,12 @@ function getPast(inWord, inPerson, specialPattern) {
     return ret;
 }
 
+function getAccPron(inVerb, inPron, isAncient) {
+    let ret = getSoftMutation(inPron, 0);
+    ret = getNasalMutation(ret, inVerb, 0, isAncient);
+    return ret;
+}
+
 function getRandomLine() {
     const randomIndex = Math.floor(Math.random() * dataArray.length);
     const randomLine = dataArray[randomIndex];
@@ -803,6 +809,10 @@ let personArr = new Array();
 personArr[0] = "n"; personArr[1] = "nc"; personArr[2] = "g"; personArr[3] = "l";
 personArr[4] = ""; personArr[5] = "f"; personArr[6] = "b";
 personArr[7] = "dh"; personArr[8] = "r";
+let patientArr = new Array();
+patientArr[0] = "nin"; patientArr[1] = "gwen"; patientArr[2] = "cin"; patientArr[3] = "len";
+patientArr[4] = "ten"; patientArr[5] = "men"; patientArr[6] = "gwen";
+patientArr[7] = "den"; patientArr[8] = "tin";
 let dataArray;
 let currentAnswer = "";
 showQuestion();

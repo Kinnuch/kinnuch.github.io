@@ -13,11 +13,8 @@ title: Cerf
 ## Abdrab | 课后练习
 
 - Prestanneth 音变练习
-
   <style src="https://kinnuch.github.io/assets/css/cerf.css"></style>
-
   <body>
-
   <select id="questionType">
       <option value="">Cilo i brestanneth 请选择音变类型</option>
       <option value="2">Prestanneth vae nan i 带i的软音变</option>
@@ -29,7 +26,7 @@ title: Cerf
       <option value="8">Prestanneth hiriol nan egor 带egor的流音音变</option>
       <option value="9">Prestanneth dharnen nan od 带od的闭锁音变</option>
       <option value="10">Prestanneth 'hyarmen' nan ah 带ah的H音变</option>
-      <option value="11">Prestanneth 'anto' nan nedh 带nedh的DH音变</option>
+      <option value="11">Prestanneth 'anto' na nedh 带nedh的DH音变</option>
   </select>
 
   <div id="Prestanneth"></div>
@@ -47,10 +44,12 @@ title: Cerf
   </body>
 
 - Gwenwi-i-choer 动词过去时
-
   <body>
-
-  <div>写出对应动词带人称的过去时：</div>
+  <select id="gwenwiType">
+      <option value="">Cilo i onnas 请选择类型</option>
+      <option value="1">Gwenwi-i-choer na charon 带施事者的动词过去时</option>
+      <option value="2">Gwenwi-i-choer na chavon a charon 带施事者和受事者的动词过去时</option>
+  </select>
 
   <div id="Gwenwi"></div>
 

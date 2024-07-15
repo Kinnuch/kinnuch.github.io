@@ -7,15 +7,24 @@ function getRandomGwenwiLine() {
 function updateGwenwiLine() {
     const randomLine = getRandomGwenwiLine();
     const randomPersonIndex = Math.floor(Math.random() * 9);
+    const randomPatientIndex = Math.floor(Math.random() * 9);
     const randomPerson = personArray[randomPersonIndex];
-    document.getElementById('Gwenwi').innerText = "Sí: 当前：" + randomLine[0] + "\nEnglish Meaning: " + randomLine[1].trim() + "\n汉语释义：" + randomLine[2].trim() + "\nTeitho 请写出：" + randomPerson + randomLine[2].trim() + "了";
+    const gwenwiType = document.getElementById('gwenwiType').value;
+    if (!gwenwiType) return;
+    if (gwenwiType == "1") document.getElementById('Gwenwi').innerText = "Sí: 当前：" + randomLine[0] + "\nEnglish Meaning: " + randomLine[1].trim() + "\n汉语释义：" + randomLine[2].trim() + "\nTeitho 请写出：" + randomPerson + randomLine[2].trim() + "了";
+    else if (gwenwiType == "2") document.getElementById('Gwenwi').innerText = "Sí: 当前：" + randomLine[0] + "\nEnglish Meaning: " + randomLine[1].trim() + "\n汉语释义：" + randomLine[2].trim() + "\nTeitho 请写出：" + randomPerson + randomLine[2].trim() + "了" + personArray[randomPatientIndex];
     let nowWord = randomLine[0];
     if (nowWord[nowWord.length - 1] == ")") { // deal the -TA word
         let leftPos = nowWord.lastIndexOf("(");
         nowWord = nowWord.substring(0, leftPos);
     }
     let tmpAns = getPast(nowWord, randomPersonIndex, randomLine[3]);
-    if (tmpAns[0] == "(") tmpAns = tmpAns.substr(3, tmpAns.length - 3);
+    let isAncient = 0;
+    if (tmpAns[0] == "(") {
+        tmpAns = tmpAns.substr(3, tmpAns.length - 3);
+        isAncient = 1;
+    }
+    if (gwenwiType == "2") tmpAns = getAccPron(tmpAns, patientArr[randomPatientIndex], isAncient);
     currentGwenwiAnswer = tmpAns;
     document.getElementById('resultGwenwiFeedback').innerText = '';
     document.getElementById('GwenwiInput').value = '';

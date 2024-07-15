@@ -54,6 +54,7 @@ async function showGwenwiQuestion() {
         updateGwenwiLine();
         document.getElementById('refreshGwenwiButton').addEventListener('click', updateGwenwiLine);
         document.getElementById('checkGwenwiAnswer').addEventListener('click', checkGwenwiAnswer);
+        document.getElementById('gwenwiType').addEventListener('change', updateGwenwiLine);
     }
     catch (error){
         console.error("ú-'resta", error);

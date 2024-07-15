@@ -14,7 +14,9 @@ function updateGwenwiLine() {
         let leftPos = nowWord.lastIndexOf("(");
         nowWord = nowWord.substring(0, leftPos);
     }
-    currentGwenwiAnswer = getPast(nowWord, randomPersonIndex, randomLine[3]);
+    let tmpAns = getPast(nowWord, randomPersonIndex, randomLine[3]);
+    if (tmpAns[0] == "(") tmpAns = tmpAns.substr(3, tmpAns.length - 3);
+    currentGwenwiAnswer = tmpAns;
     document.getElementById('resultGwenwiFeedback').innerText = '';
     document.getElementById('GwenwiInput').value = '';
 }

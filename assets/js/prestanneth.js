@@ -549,14 +549,10 @@ function getDHMutation(inParticle, inWord) {
 function getSyllableParsing(inWord, retPattern) {
     // retPattern: 0---parsing 1---sundóma 2---initial vowel/consonant judgement
     let tWord = inWord;
-    if (tWord != inWord) {
-        console.log("error!");
-        return;
-    }
     let syllableArr = [];
     const vowels = "aeiouyáéíóúýâêîôûŷ";
     if (retPattern == 0) {
-        let syllablePattern = new RegExp(`(^i(?=${vowels})|[^${vowels}]?|th|ch|^lh|^rh|^bl|^gl|^gr|^gw|^tr|^dr|ph|bh|dh|^thr|^thl|^\(m\)b|^\(n\)d|\(n\)g)?([${vowels}]|ai|au|ae|ui|oe){1}([^${vowels}])*$`,'i');
+        let syllablePattern = new RegExp(`(^i(?=${vowels})|th|ch|^lh|^rh|^bl|^gl|^gr|^gw|^tr|^dr|ph|bh|dh|^thr|^thl|^\(m\)b|^\(n\)d|^\(n\)g|[^${vowels}]?)?([${vowels}]|ai|au|ae|ui|oe){1}([^${vowels}])*$`,'i');
         while (tWord.length > 0) {
             let nowSyllable = tWord.match(syllablePattern);
             if (nowSyllable) {

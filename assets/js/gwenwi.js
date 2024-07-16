@@ -6,7 +6,7 @@ function getRandomGwenwiLine() {
 
 function updateGwenwiLine() {
     const gwenwiType = document.getElementById('gwenwiType').value;
-    const randomLine = getRandomGwenwiLine();
+    let randomLine = getRandomGwenwiLine();
     // Intransitive Weak Verb cannot have Direct Object(Accusative Pronoun)
     if (gwenwiType == "2") {
         let isWeak = randomLine[0][randomLine[0].length - 1] == "a";

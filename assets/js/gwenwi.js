@@ -8,8 +8,11 @@ function updateGwenwiLine() {
     const gwenwiType = document.getElementById('gwenwiType').value;
     const randomLine = getRandomGwenwiLine();
     // Intransitive Weak Verb cannot have Direct Object(Accusative Pronoun)
-    while (gwenwiType == "2" && randomLine[0][randomLine[0].length - 1] == "a" && randomLine[3] == 0)
-        randomLine = getRandomGwenwiLine();
+    if (gwenwiType == "2") {
+        let isWeak = randomLine[0][randomLine[0].length - 1] == "a";
+        while ((isWeak && randomLine[3] == 0) || (!isWeak && randomLine[3] == 2))
+            randomLine = getRandomGwenwiLine();
+    }
     const randomPersonIndex = Math.floor(Math.random() * 9);
     const randomPatientIndex = Math.floor(Math.random() * 9);
     const randomPerson = personArray[randomPersonIndex];
@@ -21,6 +24,9 @@ function updateGwenwiLine() {
         let leftPos = nowWord.lastIndexOf("(");
         nowWord = nowWord.substring(0, leftPos);
     }
+    // special pattern:
+    // for strong verb:0---none,1---u sundoma(now o),2---intransitive verb(will not have acc.)
+    // for weak verb:0---intransitive verb,1---transitive verb
     let tmpAns = getPast(nowWord, randomPersonIndex, randomLine[3]);
     let isAncient = 0;
     if (tmpAns[0] == "(") {

@@ -2,23 +2,23 @@ dav,to allow,允许,0
 pen,to lack,缺少,0
 gor,to advise,建议,0
 meth,to end,终结,0
-dýgar,to make a mistake,犯错,0
-athragar,to interact,互动,0
+dýgar,to make a mistake,犯错,2
+athragar,to interact,互动,2
 caw,to taste,品尝,0
-fir,to die,死亡,0
-ren,to remember,记忆,0
-gir,to shudder,战栗,0
+fir,to die,死亡,2
+ren,to remember,记得,0
+gir,to shudder,战栗,2
 (n)dev,to try,尝试,0
 rhugar,to sin,亵渎,0
-tol,to come,来,0
-sen,to free,使...自由,0
+tol,to come,来,2
+sen,to free,自由,0
 hal,to lift,举起,0
-gladh,to laugh,笑,0
-glir,to sing,唱歌,0
-can,to cry out,叫喊,0
+gladh,to laugh,笑,2
+glir,to sing,唱,0
+can,to cry out,叫喊,2
 badh,to judge,审判,0
-cov,to bow,鞠躬,0
-yr,to run,跑,0
+cov,to bow,鞠躬,2
+yr,to run,跑,2
 hir,to find,寻找,0
 cil,to choose,选择,0
 ol,to become,成为,0
@@ -29,22 +29,22 @@ adleg,to release,释放,0
 echad,to make,制作,0
 sog,to drink,喝,1
 nod,to bind,绑,1
-cab,to hop,跳跃,0
-trevad,to travel,旅行,0
+cab,to hop,跳跃,2
+trevad,to travel,旅行,2
 had,to throw,投掷,0
-heb,to keep,保持,0
+heb,to keep,保留,0
 (n)dag,to kill,杀,0
 gad,to catch,抓,0
-blab,to flap wings,振翅,0
+blab,to flap wings,振翅,2
 mib,to kiss,亲吻,0
 tob,to cover,覆盖,0
 rhib,to scratch,抓挠,0
 rag,to break,破坏,0
 nestag,to insert,插入,0
-ped,to speak,说话,0
-hab,to clothe,穿衣,0
+ped,to speak,说,0
+hab,to clothe,着衣,0
 rib,to flow,奔涌,0
-tinna,to glint,闪烁,0
+tinna,to glint,闪烁,2
 awartha,to forsake,抛弃,1
 cýra,to renew,更新,1
 gleina,to limit,限制,1
@@ -63,3 +63,26 @@ nathla,to welcome,欢迎,1
 dringa,to hammer,锤,1
 minna,to enter,进入,1
 an(na),to give,给,0
+achar,to revenge,复仇,0
+amartha,to define,命定,1
+anglenna,to approach,接近,1
+aníra,to desire,渴求,1
+aphad,to follow,跟随,0
+boda,to ban,禁止,1
+cal,to shine,照耀,2
+car,to do,制作/做,0
+cova,to meet,见面,0
+cova,to assemble,召集,1
+(n)dandol,to return,返回,2
+dan(na),to fall,坠落,2
+dar,to stop,停止/阻止,0
+drega,to flee,逃跑,0
+edra,to open,打开,1
+laba,to hop,跳跃,0
+lacha,to flame,点燃,1
+lasta,to listen,听,0
+lasta,to hear,听见,1
+leithia,to loose,松开,1
+mel,to love,爱,0
+men,to go,去,2
+teitha,to write,写,1

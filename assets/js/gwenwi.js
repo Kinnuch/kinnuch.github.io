@@ -10,8 +10,10 @@ function updateGwenwiLine() {
     // Intransitive Weak Verb cannot have Direct Object(Accusative Pronoun)
     if (gwenwiType == "2") {
         let isWeak = randomLine[0][randomLine[0].length - 1] == "a";
-        while ((isWeak && randomLine[3] == 0) || (!isWeak && randomLine[3] == 2))
+        while ((isWeak && randomLine[3] == 0) || (!isWeak && randomLine[3] == 2)) {
             randomLine = getRandomGwenwiLine();
+            isWeak = randomLine[0][randomLine[0].length - 1] == "a";
+        }
     }
     const randomPersonIndex = Math.floor(Math.random() * 9);
     const randomPatientIndex = Math.floor(Math.random() * 9);

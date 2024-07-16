@@ -616,9 +616,10 @@ function getPast(inWord, inPerson, specialPattern) {
         }
         else {
             if (inPerson != 4 && fiWord == "w") ret = ret.substr(0, ret.length - 1);
+            let isAfterSingle = isConsonant == 0 || (ret[0] == "g" && ret[1] != "l" && ret[1] != "r" && ret[1] != "w");
             if (sundoma == "a") {
                 if (isSgSyllable == -1) {
-                    if (inPerson == 4) ret = ret.substring(0, sundomaPlace + 1) + "u" + ret.substring(sundomaPlace + 1, ret.length);
+                    if (inPerson == 4 && isAfterSingle) ret = ret.substring(0, sundomaPlace + 1) + "u" + ret.substring(sundomaPlace + 1, ret.length);
                     else {
                         ret = replaceStr(ret, sundomaPlace, "ó");
                         ret = ret + "e" + personArr[inPerson];
@@ -634,7 +635,7 @@ function getPast(inWord, inPerson, specialPattern) {
             }
             else if (sundoma == "e" || sundoma == "i") {
                 if (isSgSyllable == -1) {
-                    if (inPerson == 4) ret = replaceStr(ret, sundomaPlace, "î");
+                    if (inPerson == 4 && isAfterSingle) ret = replaceStr(ret, sundomaPlace, "î");
                     else {
                         ret = replaceStr(ret, sundomaPlace, "í");
                         ret = ret + "e" + personArr[inPerson];
@@ -650,7 +651,7 @@ function getPast(inWord, inPerson, specialPattern) {
             }
             else if (sundoma == "o" || sundoma == "u") {
                 if (isSgSyllable == -1) {
-                    if (inPerson == 4) ret = replaceStr(ret, sundomaPlace, "û");
+                    if (inPerson == 4 && isAfterSingle) ret = replaceStr(ret, sundomaPlace, "û");
                     else {
                         ret = replaceStr(ret, sundomaPlace, "ú");
                         ret = ret + "e" + personArr[inPerson];
@@ -666,7 +667,7 @@ function getPast(inWord, inPerson, specialPattern) {
             }
             else if (sundoma == "y") {
                 ret = replaceStr(ret, sundomaPlace, "i");
-                if (inPerson == 4) ret = ret.substring(0, sundomaPlace + 1) + "u" + ret.substring(sundomaPlace + 1, ret.length);
+                if (inPerson == 4 && isAfterSingle) ret = ret.substring(0, sundomaPlace + 1) + "u" + ret.substring(sundomaPlace + 1, ret.length);
                 else {
                     ret = ret.substring(0, sundomaPlace + 1) + "ú" + ret.substring(sundomaPlace + 1, ret.length);
                     ret = ret + "e" + personArr[inPerson];

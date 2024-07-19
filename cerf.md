@@ -42,8 +42,6 @@ title: Cerf
   <script src="https://kinnuch.github.io/assets/js/prestanneth.js"></script>
   
   </body>
-
-  
   
 - Gwenwi-i-choer 动词过去时
   <body>
@@ -64,5 +62,23 @@ title: Cerf
   <div id="resultGwenwiFeedback"></div>
 
   <script src="https://kinnuch.github.io/assets/js/gwenwi.js"></script>
+
+  </body>
+
+- Pethas 句子翻译
+  <body>
+  <div>翻译以下句子</div>
+
+  <div id="Pethas"></div>
+
+  <input type="text" id="PethasInput" placeholder="Teitho hí 在此处填入答案" />
+
+  <button id="checkPethasAnswer">Cêth i nangweth 检查答案</button>
+
+  <button id="refreshPethasButton">Laeda 切换题目</button>
+
+  <div id="resultPethasFeedback"></div>
+
+  <script src="https://kinnuch.github.io/assets/js/pethas.js"></script>
 
   </body>

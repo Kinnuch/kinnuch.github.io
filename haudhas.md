@@ -54,7 +54,7 @@ title: Haudhas
 >
 > Ar i mettassë i osto lantanë.
 >
-> Ah min methed i garas dannas.
+> Ah min methed i garas adhon.
 >
 > 最终贡多林陷落了，
 >
@@ -170,7 +170,7 @@ title: Haudhas
 >
 > and there was the king’s house in great anguish, and dread cries carried up to the watchers. 
 >
-> Ah ennas i arabar-en-aran mi velenaegos, ah i rim pelir lastad i iail naer.
+> Ah ennas i arabar-en-aran mi velenaegos, ah i rim pelir lastad i iel naer.
 >
 > 国王的卫士们正在极大的痛苦中奋战，可怕的喊声直传到观者耳中。
 >
@@ -184,7 +184,7 @@ title: Haudhas
 >
 > En ebent Idril: ’’naeth annin i adar nîn darthant amarth min gaw ro-daer dîn; ach naeth odoglu annin i vethron nîn ifir Vorgoth ab ah ú-nandol i mâr dîn.’’ An hiriol athen nan i naegos i dhû han.
 >
-> 伊缀尔说：“我肝肠寸断，因为我父亲正在他最高的尖塔顶上等候死亡降临；但更令我五内俱焚的，是我丈夫已在米尔冠面前殒落，再也不能大步返回家园。”她说这话，是因为那一夜的锥心之痛使她忧心若狂。
+> 伊缀尔说：“我肝肠寸断，因为我父亲正在他最高的尖塔顶上等候死亡降临；但更令我五内俱焚的，是我丈夫已在米尔寇面前殒落，再也不能大步返回家园。”她说这话，是因为那一夜的锥心之痛使她忧心若狂。
 >
 > Then said Tuor: ‘Lo! Idril, it is I, and I live; yet now will I get thy father hence, be it from the Hells of Melko!’ With that he would make down the hill alone, maddened by the grief of his wife; 
 >
@@ -200,6 +200,6 @@ title: Haudhas
 >
 > Yet even as they spoke a great noise and a yelling rose from that place of anguish. Behold, the tower leapt into a flame and in a stab of fire it fell, and therein passed Turgon King of the Gondothlim, and for that hour the victory was to Melko.
 >
-> Ach nan i athrabeth ir thlôn dhaer a chal orthasser uin had naegos han. Ceno, i vinas agamp mî lach ah mi eithas naur dannas, mivan Turgon Aran Gondolin ifir, ah i oreth han breniad i dûr am Morgoth.
+> Ach nan i athrabeth ir thlôn dhaer a chal orthasser uin had naegos han. Ceno, i vinas agamp mî lach ah mi eithas naur adhon, mivan Turgon Aran Gondolin ifir, ah i oreth han breniad i dûr am Morgoth.
 >
 > 就在他们说话的时候，从那悲苦之地传来了一声巨响和叫喊。看哪，高塔猛然一晃，坍塌下来，倒入一团骤然高涨的烈火中，刚多林民的王图尔巩就此陨落，在这一刻胜利是属于米尔寇的。

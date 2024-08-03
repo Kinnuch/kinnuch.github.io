@@ -140,6 +140,8 @@ title: Sindarin Textbook
 
 2. **ae [ɑɛ]**
 
+   <audio controls="controls"><source src="https://kinnuch.github.io/laim/sindarin.assets/AE.mp3" type="audio/mpeg"></audio>
+
    降调双元音，和ai的发音十分相似，只不过开口略小，且结尾的口型是e的口型而不是i的口型。
 
    录音中的单词分别是：**g<u>ae</u>ar** 大海，**ath<u>ae</u>** 草药/治愈的，**Iorh<u>ae</u>l** 弗罗多，**<u>Ae</u>luin** 艾路因湖
@@ -156,6 +158,8 @@ title: Sindarin Textbook
 
 4. **aw [ɑw]**
 
+   <audio controls="controls"><source src="https://kinnuch.github.io/laim/sindarin.assets/AW.mp3" type="audio/mpeg"></audio>
+
    降调双元音，和au的发音十分相似，只不过开口略小。发音有如英语owl中的ow。
 
    录音中的单词分别是：**l<u>aw</u>** 否定助词，**lh<u>aw</u>** 耳朵，**G<u>aw</u>** 虚空，**Ar<u>aw</u>** 欧洛姆
@@ -171,6 +175,8 @@ title: Sindarin Textbook
    <audio controls="controls"><source src="https://kinnuch.github.io/laim/sindarin.assets/EIman.mp3" type="audio/mpeg"></audio>
 
 6. **oe [ɔɛ]**
+
+   <audio controls="controls"><source src="https://kinnuch.github.io/laim/sindarin.assets/OE.mp3" type="audio/mpeg"></audio>
 
    降调双元音。发音有如英语boy中的oy。
 
@@ -228,4 +234,14 @@ title: Sindarin Textbook
 
    录音中的单词分别是：
 
-6. 
+6. **lh [l̥]**
+
+   <audio controls="controls"><source src="https://kinnuch.github.io/laim/sindarin.assets/LHman.mp3" type="audio/mpeg"></audio>
+
+   边擦音。这个音很难在汉语或英语中找到对应的音。发音时，舌位和l一样，由舌尖顶住上颚，但气流由两侧强烈的送出，形成摩擦。
+
+   录音中的单词分别是：**<u>lh</u>ûg** 龙 **<u>lh</u>ing** 蜘蛛网 **<u>Lh</u>othlann** 舒丝蓝  **<u>Lh</u>úthien** 露西恩
+
+   <audio controls="controls"><source src="https://kinnuch.github.io/laim/sindarin.assets/LHmanWord.mp3" type="audio/mpeg"></audio>
+
+7. 

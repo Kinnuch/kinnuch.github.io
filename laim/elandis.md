@@ -479,11 +479,11 @@ title: Elandis
 >
 > a > o
 >
-> e/i > u
+> i > u
 
 来看一个融合了所有的格的例子：
 
-> - Láth ecce-moryōth, ir thredīle
+> - Láth ecce-moryōth, ir thredīle Nithnetinerirēn, Natimoròna Vecca Phamóna, har 'relūn 
 >
 > 远海的波涛，伴随着无边之地的坠星，自边境海奔涌而来，奔向幽蓝海沟，并以高温点燃了亚纹山，为亚族带去了无尽的苦难。
 

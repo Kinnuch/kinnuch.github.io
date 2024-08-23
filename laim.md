@@ -18,6 +18,10 @@ Elandis lam vain nîn. Istad, ceno [Elandis](https://kinnuch.github.io/laim/elan
 
 ## Vōhyssys | 厄希斯语
 
+## Shikṛin | 希克林语
+
+Shikṛin lam neledh nîn. Istad, ceno [Shikṛin](https://kinnuch.github.io/laim/shikṛin). 希克林语是我的第三门造语。点击链接浏览相关信息。
+
 ## Scottish Gaelic | 苏格兰盖尔语
 
 [Scottish Gaelic Haudhas](https://kinnuch.github.io/laim/scottishgaelic) 苏盖学习笔记

@@ -236,7 +236,9 @@ Proto-Shikṛin的数系统相对简单，三分为单数，双数，复数，�
 >
 > *Vks# > *Vʃ#
 
-#### 12. 元音间弱化(Lenition between Vowels)
+#### 12. 词中缩合(Syncope)
+
+#### 13. 元音间弱化(Lenition between Vowels)
 
 > *VpV > *VbV, *VbV > *VwV, *V^m^bV > *VmV
 >
@@ -244,7 +246,7 @@ Proto-Shikṛin的数系统相对简单，三分为单数，双数，复数，�
 >
 > *VkV > *VgV, *VgV > *VɣV, *V^ŋ^gV > *VŋV
 
-#### 13. 词首弱化(Lenition at head)
+#### 14. 词首弱化(Lenition at head)
 
 > *#^m^b > *#b, *#b > *#p, *#p > *#s
 >
@@ -252,12 +254,10 @@ Proto-Shikṛin的数系统相对简单，三分为单数，双数，复数，�
 >
 > *#^ŋ^g > *#g, *#g > *#k, *#k > *x
 
-#### 14. 鼻冠音分离(Separation of Pre-Nazals)
+#### 15. 鼻冠音分离(Separation of Pre-Nazals)
 
 > *^m^b > *mb, *^n^d > *nd, *^ŋ^g > *ŋg
 
-#### 15. 尾元音脱落(Loss of Ending Vowels)
-
-#### 16. 词中缩合(Syncope)
+#### 16. 尾元音脱落(Loss of Ending Vowels)
 
 #### 17. 辅音丛简化(Simplification of Clusters)

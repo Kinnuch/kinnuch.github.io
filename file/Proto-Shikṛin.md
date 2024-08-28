@@ -195,7 +195,7 @@ Proto-Shikṛin的数系统相对简单，三分为单数，双数，复数，�
 
 #### 8. 元音合并(Merge of Vowels)
 
-> 非重读的元音缩短
+> 非重读的元音缩短: *V̄ > *V > *ə, *o > *a > *ə
 >
 > *e + *a/ā > *ē
 >
@@ -279,7 +279,13 @@ Proto-Shikṛin的数系统相对简单，三分为单数，双数，复数，�
 >
 > *dm > *nd
 >
+> *rrh > *rr
+>
 > *ss > *s, *tt > *st, *ts > *ǀ
+>
+> *wj > *w, *dw/kw > *(e)rk, *jw > *(e)k, *tw > *(e)rh
+>
+> *wo/wu/wə > *o/u, *ji > *i, *jə > *e
 
 #### 17. 流音会厌化(Pharyngealization of Liquids)
 
@@ -322,6 +328,30 @@ root: *^n^dem-
 |    3ꜱɢ.ɪɴᴀɴ    |       wartānẹm       |       wartammos       |
 
 ᴄᴀᴜꜱ
+
+|  人称(Person)  |  过去时变位   |  非过去时变位  |
+| :------------: | :-----------: | :------------: |
+|     3ꜱɢ.ɢᴅ     |    winnẹm     |     wimmos     |
+|      1ꜱɢ       |    wegānẹm    |    wegammos    |
+|  2ꜱɢ.ꜰᴀᴍ./ʀᴇꜱ  | wedānẹm/oḷdẹm | wedammos/oḷdos |
+|     3ꜱɢ.ᴀɴ     |     weném     |    wenemos     |
+| 1ᴘʟ.ᴇxᴄʟ./ɪɴᴄʟ | weþanẹm/onnẹm | weþammos/ommos |
+|      2ᴘʟ       |    werdẹm     |     werdos     |
+|      3ᴘʟ       |     ondẹm     |     ondos      |
+|    3ꜱɢ.ɪɴᴀɴ    |     wēnẹm     |     wemmos     |
+
+ɪɴᴠ.ᴄᴀᴜꜱ
+
+|  人称(Person)  |     过去时变位      |     非过去时变位     |
+| :------------: | :-----------------: | :------------------: |
+|     3ꜱɢ.ɢᴅ     |     urtawinnẹm      |      urtawimmos      |
+|      1ꜱɢ       |      urregānẹm      |      urregammos      |
+|  2ꜱɢ.ꜰᴀᴍ./ʀᴇꜱ  | urredānẹm/wartoḷdẹm | urredammos/wartoḷdos |
+|     3ꜱɢ.ᴀɴ     |       urreném       |      urrenemos       |
+| 1ᴘʟ.ᴇxᴄʟ./ɪɴᴄʟ | urreþanẹm/wartonnẹm | urreþammos/wartommos |
+|      2ᴘʟ       |     urtawerdẹm      |      urtawerdos      |
+|      3ᴘʟ       |      wartondẹm      |      wartondos       |
+|    3ꜱɢ.ɪɴᴀɴ    |      urtawēnẹm      |      urtawemmos      |
 
 #### 2. epst [to eat]
 

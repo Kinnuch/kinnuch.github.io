@@ -213,6 +213,8 @@ Proto-Shikṛin 的数系统相对简单，三分为单数，双数，复数，�
 >
 > *t > *ḱ > *ki̯
 
+Old Shikṛin falls here.
+
 #### 10. s 脱落(Loss of s)
 
 > *VRs# > *V̄R#, *Vps# > *Vð#, *Vts# > *Vǀ#, *Vks# > *Vʃ#
@@ -245,11 +247,7 @@ Proto-Shikṛin 的数系统相对简单，三分为单数，双数，复数，�
 
 > *^m^b > *mb/mp#, *^n^d > *nd/nt#, *^ŋ^g > *ŋg/ŋk#
 
-#### 15. 尾元音脱落(Loss of Ending Vowels)
-
-> only unstressed
-
-#### 16. 滑音提升(Promotion of Glides)
+#### 15. 滑音提升(Promotion of Glides)
 
 > *u̯# > *u#, thus *a/e...u# > *o...u#, *i...u# > *e...u#
 >
@@ -258,6 +256,10 @@ Proto-Shikṛin 的数系统相对简单，三分为单数，双数，复数，�
 > *i̯# > *i#, thus *a/o...i# > *e...i#, *u...i# > *a...i#
 >
 > other *i̯ > *j
+
+#### 16. 尾元音脱落(Loss of Ending Vowels)
+
+> only unstressed
 
 #### 17. 元音简化(Simplification of Vowels)
 

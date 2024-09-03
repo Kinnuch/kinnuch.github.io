@@ -6,4 +6,4 @@ title: Shikṛin
 
 # Proto-Shikṛin | 原始希克林语
 
-[Proto-Shikṛin](https://kinnuch.github.io/file/Proto-Shikṛin.pdf)
+[Proto-Shikṛin](https://kinnuch.github.io/laim/Proto-Shikṛin)

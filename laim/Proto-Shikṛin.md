@@ -1,3 +1,11 @@
+---
+layout: page
+permalink: /laim/Proto-Shikṛin/index.html
+title: Proto-Shikṛin
+---
+
+
+
 # Proto-Shikṛin
 
 ## 演化树

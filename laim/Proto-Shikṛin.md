@@ -298,6 +298,8 @@ Old Shikṛin falls here.
 > *wj > *w, *dw/kw > *(e)rk, *jw > *(e)k, *tw > *(e)rh
 >
 > *wo/wu/wə > *o/u, *ji > *i, *jə > *e
+>
+> *#xk/xt/xp > *#kk/tt/pp, *#xg/xd/xb > *#g/d/b
 
 #### 18. 尾元音脱落(Loss of Ending Vowels)
 

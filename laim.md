@@ -29,3 +29,7 @@ Shikṛin lam neledh nîn. Istad, ceno [Shikṛin](https://kinnuch.github.io/lai
 ## Old Norse & Old Icelandic | 古诺斯语&古冰岛语
 
 [Icelandic Haudhas](https://kinnuch.github.io/laim/oldicelandic) 古冰岛语学习笔记
+
+## Korean | 朝鲜语
+
+[Korean](https://kinnuch.github.io/laim/korean) 朝鲜语学习笔记

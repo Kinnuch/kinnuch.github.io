@@ -153,7 +153,7 @@ class DictionaryApp:
         os_form = ttk.Entry(entries_frame)
         os_form.grid(row=3, column=1)
 
-        ttk.Label(entries_frame, text="现代大陆希克林语:").grid(row=4, column=0, sticky=tk.W)
+        ttk.Label(entries_frame, text="海岛希克林语:").grid(row=4, column=0, sticky=tk.W)
         mis_form = ttk.Entry(entries_frame)
         mis_form.grid(row=4, column=1)
         

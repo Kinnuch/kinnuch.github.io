@@ -82,8 +82,14 @@ class DictionaryApp:
         self.details_text.insert(tk.END, f"字典型: {entry['dict_form']}\n")
         self.details_text.insert(tk.END, f"词根: {entry['root']}\n")
         self.details_text.insert(tk.END, f"释义: {entry['definition']}\n\n")
-        self.details_text.insert(tk.END, f"OS: {entry['os_form']}\n")
-        self.details_text.insert(tk.END, f"MIS: {entry['mis_form']}\n\n")
+        self.details_text.insert(tk.END, f"例句: {entry['sentence']}\n\n")
+        self.details_text.insert(tk.END, f"古型: {entry['os_form']}\n\n")
+        self.details_text.insert(tk.END, f"古典型: {entry['cs_form']}\n\n")
+        self.details_text.insert(tk.END, f"海岛北型(): {entry['mins_form']}\n\n")
+        self.details_text.insert(tk.END, f"海岛南型(): {entry['miss_form']}\n\n")
+        self.details_text.insert(tk.END, f"大陆半岛型(): {entry['mcps_form']}\n\n")
+        self.details_text.insert(tk.END, f"大陆南型(): {entry['mcss_form']}\n\n")
+        self.details_text.insert(tk.END, f"大陆高山型(): {entry['mcms_form']}\n\n")
         
         if entry.get("morphology"):
             self.details_text.insert(tk.END, "形态变位表:\n")
@@ -149,21 +155,51 @@ class DictionaryApp:
         definition.grid(row=2, column=1)
 
         # 选填字段
-        ttk.Label(entries_frame, text="古希克林语:").grid(row=3, column=0, sticky=tk.W)
-        os_form = ttk.Entry(entries_frame)
-        os_form.grid(row=3, column=1)
+        ttk.Label(entries_frame, text="例句:").grid(row=3, column=0, sticky=tk.W)
+        sentence = ttk.Entry(entries_frame)
+        sentence.grid(row=3, column=1)
 
-        ttk.Label(entries_frame, text="海岛希克林语:").grid(row=4, column=0, sticky=tk.W)
-        mis_form = ttk.Entry(entries_frame)
-        mis_form.grid(row=4, column=1)
+        ttk.Label(entries_frame, text="古希克林语:").grid(row=4, column=0, sticky=tk.W)
+        os_form = ttk.Entry(entries_frame)
+        os_form.grid(row=4, column=1)
+
+        ttk.Label(entries_frame, text="古典希克林语:").grid(row=5, column=0, sticky=tk.W)
+        cs_form = ttk.Entry(entries_frame)
+        cs_form.grid(row=5, column=1)
+
+        ttk.Label(entries_frame, text="海岛北型():").grid(row=6, column=0, sticky=tk.W)
+        mins_form = ttk.Entry(entries_frame)
+        mins_form.grid(row=6, column=1)
+
+        ttk.Label(entries_frame, text="海岛南型():").grid(row=7, column=0, sticky=tk.W)
+        miss_form = ttk.Entry(entries_frame)
+        miss_form.grid(row=7, column=1)
+
+        ttk.Label(entries_frame, text="大陆半岛型():").grid(row=8, column=0, sticky=tk.W)
+        mcps_form = ttk.Entry(entries_frame)
+        mcps_form.grid(row=8, column=1)
+
+        ttk.Label(entries_frame, text="大陆南型():").grid(row=9, column=0, sticky=tk.W)
+        mcss_form = ttk.Entry(entries_frame)
+        mcss_form.grid(row=9, column=1)
+
+        ttk.Label(entries_frame, text="大陆高山型():").grid(row=10, column=0, sticky=tk.W)
+        mcms_form = ttk.Entry(entries_frame)
+        mcms_form.grid(row=10, column=1)
         
         # 预填充编辑数据
         if is_edit:
             dict_form.insert(0, entry_data["dict_form"])
-            root.insert(0, entry_data["root"])
+            cs_form.insert(0, entry_data["cs_form"])
             definition.insert(0, entry_data["definition"])
+            sentence.insert(0, entry_data["sentence"])
             os_form.insert(0, entry_data["os_form"])
-            mis_form.insert(0, entry_data["mis_form"])
+            cs_form.insert(0, entry_data["cs_form"])
+            mins_form.insert(0, entry_data["mins_form"])
+            miss_form.insert(0, entry_data["miss_form"])
+            mcps_form.insert(0, entry_data["mcps_form"])
+            mcss_form.insert(0, entry_data["mcss_form"])
+            mcms_form.insert(0, entry_data["mcms_form"])
         
         # 形态输入框架
         morphology_frame = ttk.LabelFrame(dialog, text="形态")
@@ -219,8 +255,14 @@ class DictionaryApp:
                 "dict_form": dict_form.get(),
                 "root": root.get(),
                 "definition": definition.get(),
+                "sentence": sentence.get(),
                 "os_form": os_form.get(),
-                "mis_form": mis_form.get(),
+                "cs_form": cs_form.get(),
+                "mins_form": mins_form.get(),
+                "miss_form": miss_form.get(),
+                "mcps_form": mcps_form.get(),
+                "mcss_form": mcss_form.get(),
+                "mcms_form": mcms_form.get(),
                 "morphology": []
             }
             

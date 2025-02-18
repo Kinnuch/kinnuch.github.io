@@ -6,7 +6,8 @@ from tkinter import ttk, messagebox, filedialog
 class DictionaryApp:
     def __init__(self, root):
         self.root = root
-        self.root.title("Proto-Shikrin词典浏览器")
+        self.root.title("Shikrin Dictionary")
+        self.root.iconbitmap("Shikrin.ico")
         self.data_file = "dictionary.json"
         self.entries = []
         self.current_selection = None
@@ -81,6 +82,8 @@ class DictionaryApp:
         self.details_text.insert(tk.END, f"字典型: {entry['dict_form']}\n")
         self.details_text.insert(tk.END, f"词根: {entry['root']}\n")
         self.details_text.insert(tk.END, f"释义: {entry['definition']}\n\n")
+        self.details_text.insert(tk.END, f"OS: {entry['os_form']}\n")
+        self.details_text.insert(tk.END, f"MIS: {entry['mis_form']}\n\n")
         
         if entry.get("morphology"):
             self.details_text.insert(tk.END, "形态变位表:\n")
@@ -123,6 +126,7 @@ class DictionaryApp:
 
     def word_dialog(self, is_edit=False):
         dialog = tk.Toplevel(self.root)
+        dialog.iconbitmap("Shikrin.ico")
         dialog.title("编辑词条" if is_edit else "添加新词")
         
         entries_frame = ttk.Frame(dialog)
@@ -143,12 +147,23 @@ class DictionaryApp:
         ttk.Label(entries_frame, text="释义*:").grid(row=2, column=0, sticky=tk.W)
         definition = ttk.Entry(entries_frame)
         definition.grid(row=2, column=1)
+
+        # 选填字段
+        ttk.Label(entries_frame, text="古希克林语:").grid(row=3, column=0, sticky=tk.W)
+        os_form = ttk.Entry(entries_frame)
+        os_form.grid(row=3, column=1)
+
+        ttk.Label(entries_frame, text="现代大陆希克林语:").grid(row=4, column=0, sticky=tk.W)
+        mis_form = ttk.Entry(entries_frame)
+        mis_form.grid(row=4, column=1)
         
         # 预填充编辑数据
         if is_edit:
             dict_form.insert(0, entry_data["dict_form"])
             root.insert(0, entry_data["root"])
             definition.insert(0, entry_data["definition"])
+            os_form.insert(0, entry_data["os_form"])
+            mis_form.insert(0, entry_data["mis_form"])
         
         # 形态输入框架
         morphology_frame = ttk.LabelFrame(dialog, text="形态")
@@ -160,17 +175,17 @@ class DictionaryApp:
             row_frame = ttk.Frame(morphology_frame)
             row_frame.pack(fill=tk.X, pady=2)
             
-            voice = ttk.Combobox(row_frame, values=["顺流", "逆流", "致使", "逆致使"], width=8)
+            voice = ttk.Combobox(row_frame, values=["ᴅɪʀ", "ɪɴᴠ", "ᴄᴀᴜꜱ", "ɪɴᴠ.ᴄᴀᴜꜱ"], width=8)
             voice.pack(side=tk.LEFT, padx=2)
             
             person = ttk.Combobox(row_frame, values=[
-                "第三人称神性", "第一人称单数", "第二人称单数亲密", 
-                "第二人称单数尊敬", "第三人称单数有生", "第一人称复数排斥性",
-                "第一人称复数包含性", "第二人称复数", "第三人称复数", "第三人称单数无生"
+                "3ꜱɢ.ɢᴅ", "1ꜱɢ", "2ꜱɢ.ꜰᴀᴍ", 
+                "2ꜱɢ.ʀᴇꜱ", "3ꜱɢ.ᴀɴ", "1ᴘʟ.ᴇxᴄʟ",
+                "1ᴘʟ.ɪɴᴄʟ", "2ᴘʟ", "3ᴘʟ", "3ꜱɢ.ɪɴᴀɴ"
             ], width=20)
             person.pack(side=tk.LEFT, padx=2)
             
-            tense = ttk.Combobox(row_frame, values=["过去时", "非过去时", "远过去时", "其他"], width=10)
+            tense = ttk.Combobox(row_frame, values=["ᴘꜱᴛ", "ɴᴘꜱᴛ", "ʀᴇᴍ.ᴘꜱᴛ", "other"], width=10)
             tense.pack(side=tk.LEFT, padx=2)
             
             form = ttk.Entry(row_frame, width=20)
@@ -204,6 +219,8 @@ class DictionaryApp:
                 "dict_form": dict_form.get(),
                 "root": root.get(),
                 "definition": definition.get(),
+                "os_form": os_form.get(),
+                "mis_form": mis_form.get(),
                 "morphology": []
             }
             

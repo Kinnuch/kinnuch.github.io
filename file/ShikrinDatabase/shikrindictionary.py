@@ -190,7 +190,7 @@ class DictionaryApp:
         # 预填充编辑数据
         if is_edit:
             dict_form.insert(0, entry_data["dict_form"])
-            cs_form.insert(0, entry_data["cs_form"])
+            root.insert(0, entry_data["root"])
             definition.insert(0, entry_data["definition"])
             sentence.insert(0, entry_data["sentence"])
             os_form.insert(0, entry_data["os_form"])

@@ -2,7 +2,7 @@
   {
     "dict_form": "ⁿdm̩st",
     "root": "ⁿdem-",
-    "definition": "走路，行走；（尤其缓慢地）移动，平移；抚摸",
+    "definition": "走，行走；抚摸；直线；过程",
     "sentence": "",
     "os_form": "",
     "cs_form": "",
@@ -80,6 +80,165 @@
         "person": "",
         "tense": "",
         "form": ""
+      }
+    ]
+  },
+  {
+    "dict_form": "bakst",
+    "root": "bak-",
+    "definition": "威严；高耸，高；隐没，隐约",
+    "sentence": "",
+    "os_form": "",
+    "cs_form": "",
+    "mins_form": "",
+    "miss_form": "",
+    "mcps_form": "",
+    "mcss_form": "",
+    "mcms_form": "",
+    "morphology": [
+      {
+        "voice": "",
+        "person": "",
+        "tense": "",
+        "form": ""
+      }
+    ]
+  },
+  {
+    "dict_form": "bl̩st",
+    "root": "bel-",
+    "definition": "燃烧；火焰；明亮的",
+    "sentence": "",
+    "os_form": "",
+    "cs_form": "",
+    "mins_form": "",
+    "miss_form": "",
+    "mcps_form": "",
+    "mcss_form": "",
+    "mcms_form": "",
+    "morphology": [
+      {
+        "voice": "",
+        "person": "",
+        "tense": "",
+        "form": ""
+      }
+    ]
+  },
+  {
+    "dict_form": "ᵐbedst",
+    "root": "ᵐbed-",
+    "definition": "做饭，煮饭，烹饪，料理",
+    "sentence": "",
+    "os_form": "",
+    "cs_form": "",
+    "mins_form": "",
+    "miss_form": "",
+    "mcps_form": "",
+    "mcss_form": "",
+    "mcms_form": "",
+    "morphology": [
+      {
+        "voice": "",
+        "person": "",
+        "tense": "",
+        "form": ""
+      }
+    ]
+  },
+  {
+    "dict_form": "ᵐbeⁿdst",
+    "root": "ᵐbeⁿd-",
+    "definition": "凝聚；强壮；完整",
+    "sentence": "",
+    "os_form": "",
+    "cs_form": "",
+    "mins_form": "",
+    "miss_form": "",
+    "mcps_form": "",
+    "mcss_form": "",
+    "mcms_form": "",
+    "morphology": [
+      {
+        "voice": "",
+        "person": "",
+        "tense": "",
+        "form": ""
+      }
+    ]
+  },
+  {
+    "dict_form": "ᵐbeⁿdh₂st",
+    "root": "ᵐbeⁿdh₂-",
+    "definition": "平的；平等，相等；制衡，平衡",
+    "sentence": "",
+    "os_form": "",
+    "cs_form": "",
+    "mins_form": "",
+    "miss_form": "",
+    "mcps_form": "",
+    "mcss_form": "",
+    "mcms_form": "",
+    "morphology": [
+      {
+        "voice": "",
+        "person": "",
+        "tense": "",
+        "form": ""
+      }
+    ]
+  },
+  {
+    "dict_form": "ᵐbregst",
+    "root": "ᵐbreg-",
+    "definition": "包含，包容，含有；喂奶；养育，喂养，抚养",
+    "sentence": "",
+    "os_form": "",
+    "cs_form": "",
+    "mins_form": "",
+    "miss_form": "",
+    "mcps_form": "",
+    "mcss_form": "",
+    "mcms_form": "",
+    "morphology": [
+      {
+        "voice": "",
+        "person": "",
+        "tense": "",
+        "form": ""
+      }
+    ]
+  },
+  {
+    "dict_form": "test",
+    "root": "test",
+    "definition": "testtest",
+    "sentence": "test tests test",
+    "os_form": "dfag",
+    "cs_form": "ahah",
+    "mins_form": "adfha",
+    "miss_form": "hafh",
+    "mcps_form": "afha",
+    "mcss_form": "adfh",
+    "mcms_form": "hsfhs",
+    "morphology": [
+      {
+        "voice": "ᴅɪʀ",
+        "person": "3ꜱɢ.ɢᴅ",
+        "tense": "ɴᴘꜱᴛ",
+        "form": "sdfhs"
+      },
+      {
+        "voice": "ᴅɪʀ",
+        "person": "3ꜱɢ.ᴀɴ",
+        "tense": "ᴘꜱᴛ",
+        "form": "sfgsfdh"
+      },
+      {
+        "voice": "ᴄᴀᴜꜱ",
+        "person": "2ꜱɢ.ꜰᴀᴍ",
+        "tense": "ʀᴇᴍ.ᴘꜱᴛ",
+        "form": "sdfhsdfh"
       }
     ]
   }

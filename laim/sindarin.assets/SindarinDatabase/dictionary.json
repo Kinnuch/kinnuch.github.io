@@ -124,7 +124,7 @@
     "part": "conjunction",
     "english": "but",
     "definition": "但，但是",
-    "sentence": "<VT50/5> \ni glinn hen agorer Edain mi Velerian, ach hí in Ellath îr ed epholar. \n人类在贝烈瑞安德创作了这首歌，但如今独有精灵（？记得）它了。\n\n",
+    "sentence": "[VT50/5]\ni glinn hen agorer Edain mi Velerian, ach hí in Ellath îr ed epholar. \n人类在贝烈瑞安德创作了这首歌，但如今独有精灵（？记得）它了。\n\n\n",
     "other": "",
     "morphology": [
       {
@@ -139,7 +139,7 @@
     "part": "noun",
     "english": "rock ridge, neck(geographically)",
     "definition": "岩岭，颈（地理上）",
-    "sentence": "<PE17/92><RC/537>\nAchad Tarlang\n塔朗颈\n\n",
+    "sentence": "[PE17/92][RC/537]\nAchad Tarlang\n塔朗颈\n\n\n",
     "other": "地理上山脉间的窄岭",
     "morphology": [
       {
@@ -198,8 +198,8 @@
     "dict_form": "achar-",
     "part": "verb",
     "english": "to avenge, do back, react, requite",
-    "definition": "报仇，以牙还；回应，回报",
-    "sentence": "\n\n",
+    "definition": "报仇，以牙还牙；回应，回报",
+    "sentence": "\n\n\n",
     "other": "",
     "morphology": [
       {
@@ -241,6 +241,406 @@
         "type": "PeferctParticle",
         "form": "achóriel",
         "other_form": "achóriel"
+      }
+    ]
+  },
+  {
+    "dict_form": "achared",
+    "part": "noun",
+    "english": "vengeance",
+    "definition": "复仇",
+    "sentence": "\n\n",
+    "other": "动词achar-的动名词形式",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i achared",
+        "other_form": ""
+      },
+      {
+        "type": "Plural",
+        "form": "动名词没有复数",
+        "other_form": ""
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "*in+achared不合法",
+        "other_form": ""
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an achared",
+        "other_form": ""
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "en-achared",
+        "other_form": ""
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin achared",
+        "other_form": ""
+      },
+      {
+        "type": "Liquid",
+        "form": "egor achared",
+        "other_form": ""
+      },
+      {
+        "type": "Stop",
+        "form": "od achared",
+        "other_form": ""
+      },
+      {
+        "type": "H",
+        "form": "ah achared",
+        "other_form": ""
+      },
+      {
+        "type": "DH",
+        "form": "nedh achared",
+        "other_form": ""
+      }
+    ]
+  },
+  {
+    "dict_form": "acharn",
+    "part": "noun",
+    "english": "vengeance, (an act of)revenge",
+    "definition": "复仇（行为）",
+    "sentence": "\n\n",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i acharn",
+        "other_form": ""
+      },
+      {
+        "type": "Plural",
+        "form": "echern",
+        "other_form": ""
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "in echern",
+        "other_form": ""
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an acharn",
+        "other_form": ""
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "en-acharn",
+        "other_form": ""
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin acharn",
+        "other_form": ""
+      },
+      {
+        "type": "Liquid",
+        "form": "egor acharn",
+        "other_form": ""
+      },
+      {
+        "type": "Stop",
+        "form": "od acharn",
+        "other_form": ""
+      },
+      {
+        "type": "H",
+        "form": "ah acharn",
+        "other_form": ""
+      },
+      {
+        "type": "DH",
+        "form": "nedh acharn",
+        "other_form": ""
+      }
+    ]
+  },
+  {
+    "dict_form": "Adan",
+    "part": "noun",
+    "english": "Man(as a species)",
+    "definition": "人类（种族）",
+    "sentence": "[LotR/1061][PE17/117]\nÓnen i-Estel Edain.\n我把希望给了人类。\n\n",
+    "other": "有偏向性，一般指Dúnedain杜内丹人，其实广义的来说Adan应该包含杜内丹人，Rhúnedain东夷和Drúedain德鲁伊甸人",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i Adan",
+        "other_form": ""
+      },
+      {
+        "type": "Plural",
+        "form": "Edain",
+        "other_form": ""
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "in Edain",
+        "other_form": ""
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an Adan",
+        "other_form": ""
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "en-Adan",
+        "other_form": ""
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin Adan",
+        "other_form": ""
+      },
+      {
+        "type": "Liquid",
+        "form": "egor Adan",
+        "other_form": ""
+      },
+      {
+        "type": "Stop",
+        "form": "od Adan",
+        "other_form": ""
+      },
+      {
+        "type": "H",
+        "form": "ah Adan",
+        "other_form": ""
+      },
+      {
+        "type": "DH",
+        "form": "nedh Adan",
+        "other_form": ""
+      }
+    ]
+  },
+  {
+    "dict_form": "adaneth",
+    "part": "noun",
+    "english": "(mortal)woman",
+    "definition": "（凡人）女性",
+    "sentence": "\n\n",
+    "other": "Adan的女性化形式",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i adaneth",
+        "other_form": ""
+      },
+      {
+        "type": "Plural",
+        "form": "edenith",
+        "other_form": ""
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "in edenith",
+        "other_form": ""
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an adaneth",
+        "other_form": ""
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "en-adaneth",
+        "other_form": ""
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin adaneth",
+        "other_form": ""
+      },
+      {
+        "type": "Liquid",
+        "form": "egor adaneth",
+        "other_form": ""
+      },
+      {
+        "type": "Stop",
+        "form": "od adaneth",
+        "other_form": ""
+      },
+      {
+        "type": "H",
+        "form": "ah adaneth",
+        "other_form": ""
+      },
+      {
+        "type": "DH",
+        "form": "nedh adaneth",
+        "other_form": ""
+      }
+    ]
+  },
+  {
+    "dict_form": "adar",
+    "part": "noun",
+    "english": "father",
+    "definition": "父亲，爸爸，爹",
+    "sentence": "[VT44/21]\nae Adar nín i vi Menel\n我们在天国的父亲\n\n",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i adar",
+        "other_form": ""
+      },
+      {
+        "type": "Plural",
+        "form": "edair",
+        "other_form": ""
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "in edair",
+        "other_form": ""
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an adar",
+        "other_form": ""
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "en-adar",
+        "other_form": ""
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin adar",
+        "other_form": ""
+      },
+      {
+        "type": "Liquid",
+        "form": "egor adar",
+        "other_form": ""
+      },
+      {
+        "type": "Stop",
+        "form": "od adar",
+        "other_form": ""
+      },
+      {
+        "type": "H",
+        "form": "ah adar",
+        "other_form": ""
+      },
+      {
+        "type": "DH",
+        "form": "nedh adar",
+        "other_form": ""
+      }
+    ]
+  },
+  {
+    "dict_form": "adbed-",
+    "part": "verb",
+    "english": "to rephrase",
+    "definition": "重新措辞，改述；换个说法说",
+    "sentence": "\n\n",
+    "other": "ad- + ped-",
+    "morphology": [
+      {
+        "type": "Present",
+        "form": "adbed",
+        "other_form": "edbedi-"
+      },
+      {
+        "type": "Past",
+        "form": "adbent",
+        "other_form": "adbenne-"
+      },
+      {
+        "type": "Future",
+        "form": "adbedatha",
+        "other_form": "adbedatha(o)-"
+      },
+      {
+        "type": "Imperative",
+        "form": "adbedo",
+        "other_form": "adbedo"
+      },
+      {
+        "type": "Gerund",
+        "form": "adbeded",
+        "other_form": "adbeded"
+      },
+      {
+        "type": "PastParticiple",
+        "form": "adbennen",
+        "other_form": "adbennen"
+      },
+      {
+        "type": "PresentParticiple",
+        "form": "adbedel",
+        "other_form": "adbedel"
+      },
+      {
+        "type": "PeferctParticle",
+        "form": "adbídiel",
+        "other_form": "adbídiel"
+      }
+    ]
+  },
+  {
+    "dict_form": "adertha-",
+    "part": "verb",
+    "english": "to reunite",
+    "definition": "重聚；再联合",
+    "sentence": "\n\n",
+    "other": "ad- + ertha-",
+    "morphology": [
+      {
+        "type": "Present",
+        "form": "adertha",
+        "other_form": "adertha(o)-"
+      },
+      {
+        "type": "Past",
+        "form": "aderthant/aderthas",
+        "other_form": "aderthanne-/aderthasse-"
+      },
+      {
+        "type": "Future",
+        "form": "aderthatha",
+        "other_form": "aderthatha(o)-"
+      },
+      {
+        "type": "Imperative",
+        "form": "adertho",
+        "other_form": "adertho"
+      },
+      {
+        "type": "Gerund",
+        "form": "aderthad",
+        "other_form": "aderthad"
+      },
+      {
+        "type": "PastParticiple",
+        "form": "aderthannen/aderthassen",
+        "other_form": "aderthannen/aderthassen"
+      },
+      {
+        "type": "PresentParticiple",
+        "form": "aderthol",
+        "other_form": "aderthol"
+      },
+      {
+        "type": "PeferctParticle",
+        "form": "ederthiel",
+        "other_form": "ederthiel"
       }
     ]
   }

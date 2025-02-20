@@ -94,13 +94,13 @@ class DictionaryApp:
             col_width = [0, 0, 0]
             if (entry['part'] == "noun"):
                 headers = ["变化类型", "形式", ""]
-                col_width = [10, 30, 0]
+                col_width = [20, 30, 0]
             elif (entry['part'] == "verb"):
                 headers = ["变化类型", "三单形式", "其他人称形式"]
-                col_width = [10, 30, 30]
+                col_width = [20, 30, 30]
             elif (entry['part'] == "adjective"):
                 headers = ["变化类型", "形式", ""]
-                col_width = [10, 30, 0]
+                col_width = [20, 30, 0]
             
             # 创建表格头
             header_line = "".join([h.ljust(w) for h, w in zip(headers, col_width)]) + "\n"

@@ -22,7 +22,7 @@ Elandis lam vain nîn. Istad, ceno [Elandis](https://kinnuch.github.io/laim/elan
 
 Shikṛin lam neledh nîn. Istad, ceno [Shikṛin](https://kinnuch.github.io/laim/shikṛin). 希克林语是我的第三门造语。点击链接浏览相关信息。
 
-Istad, ceno [Gobeth Shikṛin](https://kinnuch.github.io/file/ShikrinDatabase/ShikrinDictionary.html). 点击此处查看希克林语词典。
+Istad, ceno [Gobeth Shikṛin](https://kinnuch.github.io/laim/shikrin.assets/ShikrinDatabase/ShikrinDictionary.html). 点击此处查看希克林语词典。
 
 ## Scottish Gaelic | 苏格兰盖尔语
 

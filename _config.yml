@@ -25,8 +25,8 @@ links:
     url: /cerf
   - title: Mínimraef 博客
     url: /mínimraef
-  - title: TEAE 测试
-    url: /teae
+  - title: Gobeth 词典
+    url: /gobeth
 
 # http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
 timezone: China/Beijing

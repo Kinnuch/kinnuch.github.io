@@ -90,13 +90,15 @@ class DictionaryApp:
         
         if entry.get("morphology"):
             self.details_text.insert(tk.END, "形态变化:\n")
-            if (entry['morphology'].get("part") == "noun"):
+            headers = []
+            col_width = []
+            if (entry['part'] == "noun"):
                 headers = ["变化类型", "形式", ""]
                 col_width = [10, 30, 0]
-            elif (entry['morphology'].get("part") == "verb"):
+            elif (entry['part'] == "verb"):
                 headers = ["变化类型", "三单形式", "其他人称形式"]
                 col_width = [10, 30, 30]
-            elif (entry['morphology'].get("part") == "adjective"):
+            elif (entry['part'] == "adjective"):
                 headers = ["变化类型", "形式", ""]
                 col_width = [10, 30, 0]
             
@@ -189,6 +191,7 @@ class DictionaryApp:
             row_frame = ttk.Frame(morphology_frame)
             row_frame.pack(fill=tk.X, pady=2)
             
+            type = ttk.Combobox(row_frame, values=[], width=10)
             if (partofspeech == "noun"):
                 type = ttk.Combobox(row_frame, values=["Soft", "Plural", "NasalⅠ", "NasalⅡ", "MixedⅠ", "MixedⅡ", "Liquid", "Stop", "H", "DH"], width=10)
             elif (partofspeech == "verb"):
@@ -214,12 +217,12 @@ class DictionaryApp:
         # 初始化现有形态数据
         if is_edit and entry_data.get("morphology"):
             for morph in entry_data["morphology"]:
-                add_morphology_row(morph, part)
+                add_morphology_row(morph, part.get())
         else:
-            add_morphology_row()  # 默认添加空行
+            add_morphology_row(None, part.get())  # 默认添加空行
         
-        ttk.Button(morphology_frame, text="添加形态", command=add_morphology_row).pack(pady=5)
-        
+        ttk.Button(morphology_frame, text="添加形态", command=lambda: add_morphology_row(None, part.get())).pack(pady=5)
+
         # 确认按钮
         def save_entry():
             if not all([dict_form.get(), part.get(), english.get(), definition.get()]):

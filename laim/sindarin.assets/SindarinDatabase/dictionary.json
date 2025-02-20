@@ -1,1 +1,62 @@
-[]
+[
+  {
+    "dict_form": "ablad",
+    "part": "noun",
+    "english": "prohibition, refusal",
+    "definition": "禁令，禁止；拒绝，回绝",
+    "sentence": "",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i ablad",
+        "other_form": ""
+      },
+      {
+        "type": "Plural",
+        "form": "eblaid",
+        "other_form": ""
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "in ablad",
+        "other_form": ""
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an ablad",
+        "other_form": ""
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "en-ablad",
+        "other_form": ""
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin ablad",
+        "other_form": ""
+      },
+      {
+        "type": "Liquid",
+        "form": "egor ablad",
+        "other_form": ""
+      },
+      {
+        "type": "Stop",
+        "form": "od ablad",
+        "other_form": ""
+      },
+      {
+        "type": "H",
+        "form": "ah ablad",
+        "other_form": ""
+      },
+      {
+        "type": "DH",
+        "form": "nedh ablad",
+        "other_form": ""
+      }
+    ]
+  }
+]

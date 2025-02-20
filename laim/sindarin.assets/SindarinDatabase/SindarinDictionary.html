@@ -74,7 +74,7 @@
 
         .morphology {
             max-height: 0;
-            overflow: hidden;
+            overflow: scroll;
             transition: max-height 0.3s ease-out;
             margin-top: 15px;
             padding-left: 20px;
@@ -195,7 +195,7 @@
                 const query = e.target.value.toLowerCase();
                 filteredEntries = allEntries.filter(entry => 
                     entry.dict_form.toLowerCase().includes(query) ||
-                    entry.root.toLowerCase().includes(query) ||
+                    entry.english.toLowerCase().includes(query) ||
                     entry.definition.toLowerCase().includes(query)
                 );
                 page = 0;

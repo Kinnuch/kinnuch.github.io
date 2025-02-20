@@ -643,5 +643,300 @@
         "other_form": "ederthiel"
       }
     ]
+  },
+  {
+    "dict_form": "aderthad",
+    "part": "noun",
+    "english": "reuniting",
+    "definition": "重聚",
+    "sentence": "[S/113]\nMereth Aderthad\n重聚宴会\n\n",
+    "other": "动词adertha-的动名词形式",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i aderthad",
+        "other_form": ""
+      },
+      {
+        "type": "Plural",
+        "form": "动名词没有复数",
+        "other_form": ""
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "*in + aderthad不合法",
+        "other_form": ""
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an aderthad",
+        "other_form": ""
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "en-aderthad",
+        "other_form": ""
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin-aderthad",
+        "other_form": ""
+      },
+      {
+        "type": "Liquid",
+        "form": "egor aderthad",
+        "other_form": ""
+      },
+      {
+        "type": "Stop",
+        "form": "od aderthad",
+        "other_form": ""
+      },
+      {
+        "type": "H",
+        "form": "ah aderthad",
+        "other_form": ""
+      },
+      {
+        "type": "DH",
+        "form": "nedh aderthad",
+        "other_form": ""
+      }
+    ]
+  },
+  {
+    "dict_form": "a(ar)/ah",
+    "part": "conjunction",
+    "english": "and",
+    "definition": "和，并，且，同",
+    "sentence": "[Let/448][LotR/953]\nDaur a Berhael, Conin en Annûn\n弗罗多和山姆，西方的王子\n",
+    "other": "ah是多瑞亚斯方言变体",
+    "morphology": [
+      {
+        "type": "",
+        "form": "",
+        "other_form": ""
+      }
+    ]
+  },
+  {
+    "dict_form": "adu",
+    "part": "adjective",
+    "english": "double",
+    "definition": "两倍的",
+    "sentence": "\n\n",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "adu",
+        "other_form": ""
+      },
+      {
+        "type": "Plural",
+        "form": "无复数形式",
+        "other_form": ""
+      }
+    ]
+  },
+  {
+    "dict_form": "aduial",
+    "part": "noun",
+    "english": "(evening)twilight",
+    "definition": "暮光；微光",
+    "sentence": "\n\n",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i aduial",
+        "other_form": ""
+      },
+      {
+        "type": "Plural",
+        "form": "该词一般不适用复数",
+        "other_form": ""
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "*in + aduial不合法",
+        "other_form": ""
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an aduial",
+        "other_form": ""
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "en-aduial",
+        "other_form": ""
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin aduial",
+        "other_form": ""
+      },
+      {
+        "type": "Liquid",
+        "form": "egor aduial",
+        "other_form": ""
+      },
+      {
+        "type": "Stop",
+        "form": "od aduial",
+        "other_form": ""
+      },
+      {
+        "type": "H",
+        "form": "ah aduial",
+        "other_form": ""
+      },
+      {
+        "type": "DH",
+        "form": "nedh aduial",
+        "other_form": ""
+      }
+    ]
+  },
+  {
+    "dict_form": "advir",
+    "part": "noun",
+    "english": "heirloom",
+    "definition": "传家宝，家族遗产，祖传宝物",
+    "sentence": "\n\n",
+    "other": "adar + mîr",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i advir",
+        "other_form": ""
+      },
+      {
+        "type": "Plural",
+        "form": "edvir",
+        "other_form": ""
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "in edvir",
+        "other_form": ""
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an advir",
+        "other_form": ""
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "en-advir",
+        "other_form": ""
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin advir",
+        "other_form": ""
+      },
+      {
+        "type": "Liquid",
+        "form": "egor advir",
+        "other_form": ""
+      },
+      {
+        "type": "Stop",
+        "form": "od advir",
+        "other_form": ""
+      },
+      {
+        "type": "H",
+        "form": "ah advir",
+        "other_form": ""
+      },
+      {
+        "type": "DH",
+        "form": "nedh advir",
+        "other_form": ""
+      }
+    ]
+  },
+  {
+    "dict_form": "aeg",
+    "part": "adjective",
+    "english": "sharp",
+    "definition": "尖锐的，尖的，尖端的，顶端的",
+    "sentence": "\n\n",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "aeg",
+        "other_form": ""
+      },
+      {
+        "type": "Plural",
+        "form": "aeg",
+        "other_form": ""
+      }
+    ]
+  },
+  {
+    "dict_form": "aeglir",
+    "part": "noun",
+    "english": "line of peaks",
+    "definition": "山脉，鳞次栉比的山峰，连绵不断的山巅",
+    "sentence": "[RC/11]\nHithaeglir\n迷雾山脉\n\n\n",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i aeglir",
+        "other_form": ""
+      },
+      {
+        "type": "Plural",
+        "form": "aeglir",
+        "other_form": ""
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "in aeglir",
+        "other_form": ""
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an aeglir",
+        "other_form": ""
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "en-aeglir",
+        "other_form": ""
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin aeglir",
+        "other_form": ""
+      },
+      {
+        "type": "Liquid",
+        "form": "egor aeglir",
+        "other_form": ""
+      },
+      {
+        "type": "Stop",
+        "form": "od aeglir",
+        "other_form": ""
+      },
+      {
+        "type": "H",
+        "form": "ah aeglir",
+        "other_form": ""
+      },
+      {
+        "type": "DH",
+        "form": "nedh aeglir",
+        "other_form": ""
+      }
+    ]
   }
 ]

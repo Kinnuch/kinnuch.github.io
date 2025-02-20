@@ -12,6 +12,7 @@ class DictionaryApp:
         self.root.iconbitmap("Sindarin.ico")
         self.data_file = "dictionary.json"
         self.entries = []
+        self.filtered_entries = []
         self.current_selection = None
         
         # 初始化数据
@@ -64,12 +65,15 @@ class DictionaryApp:
 
     def update_listbox(self, filter_text=None):
         self.listbox.delete(0, tk.END)
+        self.filtered_entries = []
         for entry in self.entries:
             if not filter_text or filter_text.lower() in entry["dict_form"].lower():
+                self.filtered_entries.append(entry)
                 display_text = f"{entry['dict_form']} - {entry['part']} - {entry['english']} - {entry['definition']}"
                 self.listbox.insert(tk.END, display_text)
 
     def update_search(self, event=None):
+        self.current_selection = None
         filter_text = self.search_var.get()
         self.update_listbox(filter_text)
 
@@ -77,8 +81,12 @@ class DictionaryApp:
         selection = self.listbox.curselection()
         if not selection:
             return
-        self.current_selection = selection[0]
-        entry = self.entries[self.current_selection]
+        index = selection[0]
+        if 0 <= index < len(self.filtered_entries):
+            entry = self.filtered_entries[index]
+            self.current_selection = self.entries.index(entry)
+        else:
+            return
         
         self.details_text.delete(1.0, tk.END)
         self.details_text.insert(tk.END, f"辛达语: {entry['dict_form']}\n\n")

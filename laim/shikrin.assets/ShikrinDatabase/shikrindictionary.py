@@ -3,8 +3,11 @@ import os
 import tkinter as tk
 from tkinter import ttk, messagebox, filedialog
 
+os.chdir(os.path.dirname(__file__))
+
 class DictionaryApp:
     def __init__(self, root):
+        print(os.getcwd())
         self.root = root
         self.root.title("Shikrin Dictionary")
         self.root.iconbitmap("Shikrin.ico")

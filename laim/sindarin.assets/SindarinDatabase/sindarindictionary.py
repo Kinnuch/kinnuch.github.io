@@ -3,6 +3,8 @@ import os
 import tkinter as tk
 from tkinter import ttk, messagebox, filedialog
 
+os.chdir(os.path.dirname(__file__))
+
 class DictionaryApp:
     def __init__(self, root):
         self.root = root

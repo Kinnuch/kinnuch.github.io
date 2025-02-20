@@ -90,8 +90,8 @@ class DictionaryApp:
         
         if entry.get("morphology"):
             self.details_text.insert(tk.END, "形态变化:\n")
-            headers = []
-            col_width = []
+            headers = ["", "", ""]
+            col_width = [0, 0, 0]
             if (entry['part'] == "noun"):
                 headers = ["变化类型", "形式", ""]
                 col_width = [10, 30, 0]
@@ -149,28 +149,28 @@ class DictionaryApp:
         # 必填字段
         ttk.Label(entries_frame, text="辛达语*:").grid(row=0, column=0, sticky=tk.W)
         dict_form = ttk.Entry(entries_frame)
-        dict_form.grid(row=0, column=1)
+        dict_form.grid(row=0, column=1, pady=5)
 
         ttk.Label(entries_frame, text="词性*:").grid(row=1, column=0, sticky=tk.W)
         part = ttk.Combobox(entries_frame, values=["noun", "verb", "adjective", "adverb", "preposition", "conjunction", "pronoun", "affix"], width=10)
-        part.grid(row=1, column=1)
+        part.grid(row=1, column=1, pady=5)
         
         ttk.Label(entries_frame, text="英语*:").grid(row=2, column=0, sticky=tk.W)
         english = ttk.Entry(entries_frame)
-        english.grid(row=2, column=1)
+        english.grid(row=2, column=1, pady=5)
         
         ttk.Label(entries_frame, text="释义*:").grid(row=3, column=0, sticky=tk.W)
         definition = ttk.Entry(entries_frame)
-        definition.grid(row=3, column=1)
+        definition.grid(row=3, column=1, pady=5)
 
         # 选填字段
         ttk.Label(entries_frame, text="例句:").grid(row=4, column=0, sticky=tk.W)
-        sentence = ttk.Entry(entries_frame)
-        sentence.grid(row=4, column=1)
+        sentence = tk.Text(entries_frame, height=7, width=30)
+        sentence.grid(row=4, column=1, pady=5)
 
         ttk.Label(entries_frame, text="备注:").grid(row=5, column=0, sticky=tk.W)
         other = ttk.Entry(entries_frame)
-        other.grid(row=5, column=1)
+        other.grid(row=5, column=1, pady=5)
         
         # 预填充编辑数据
         if is_edit:
@@ -178,7 +178,7 @@ class DictionaryApp:
             part.set(entry_data["part"])
             english.insert(0, entry_data["english"])
             definition.insert(0, entry_data["definition"])
-            sentence.insert(0, entry_data["sentence"])
+            sentence.insert(1.0, entry_data["sentence"])
             other.insert(0, entry_data["other"])
         
         # 形态输入框架
@@ -191,7 +191,7 @@ class DictionaryApp:
             row_frame = ttk.Frame(morphology_frame)
             row_frame.pack(fill=tk.X, pady=2)
             
-            type = ttk.Combobox(row_frame, values=[], width=10)
+            type = ttk.Combobox(row_frame, values=[""], width=10)
             if (partofspeech == "noun"):
                 type = ttk.Combobox(row_frame, values=["Soft", "Plural", "NasalⅠ", "NasalⅡ", "MixedⅠ", "MixedⅡ", "Liquid", "Stop", "H", "DH"], width=10)
             elif (partofspeech == "verb"):
@@ -234,7 +234,7 @@ class DictionaryApp:
                 "part": part.get(),
                 "english": english.get(),
                 "definition": definition.get(),
-                "sentence": sentence.get(),
+                "sentence": sentence.get(1.0, tk.END),
                 "other": other.get(),
                 "morphology": []
             }

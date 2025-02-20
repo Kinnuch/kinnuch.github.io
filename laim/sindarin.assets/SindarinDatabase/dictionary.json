@@ -58,5 +58,80 @@
         "other_form": ""
       }
     ]
+  },
+  {
+    "dict_form": "ach",
+    "part": "noun",
+    "english": "neck, (upper)spine",
+    "definition": "脖颈，（上）脊柱",
+    "sentence": "",
+    "other": "只包括骨部分，不包括喉咙，若要表示喉咙或脖颈整体请使用lang这个词",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i ach",
+        "other_form": ""
+      },
+      {
+        "type": "Plural",
+        "form": "aich",
+        "other_form": ""
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "in ach",
+        "other_form": ""
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an ach",
+        "other_form": ""
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "en-ach",
+        "other_form": ""
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin ach",
+        "other_form": ""
+      },
+      {
+        "type": "Liquid",
+        "form": "egor ach",
+        "other_form": ""
+      },
+      {
+        "type": "Stop",
+        "form": "od ach",
+        "other_form": ""
+      },
+      {
+        "type": "H",
+        "form": "ah ach",
+        "other_form": ""
+      },
+      {
+        "type": "DH",
+        "form": "nedh ach",
+        "other_form": ""
+      }
+    ]
+  },
+  {
+    "dict_form": "ach",
+    "part": "conjunction",
+    "english": "but",
+    "definition": "但，但是",
+    "sentence": "<VT50/5> \ni glinn hen agorer Edain mi Velerian, ach hí in Ellath îr ed epholar. \n人类在贝烈瑞安德创作了这首歌，但如今独有精灵（？记得）它了。\n\n",
+    "other": "",
+    "morphology": [
+      {
+        "type": "",
+        "form": "",
+        "other_form": ""
+      }
+    ]
   }
 ]

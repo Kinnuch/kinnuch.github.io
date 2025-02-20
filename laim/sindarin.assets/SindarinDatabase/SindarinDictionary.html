@@ -135,6 +135,7 @@
                         <div class="part">${entry.part}</div>
                         <div class="english">${entry.english}</div>
                         <div class="definition">${entry.definition}</div>
+                        <div class="sentence">${entry.sentence}</div>
                         <div class="other">${entry.other}</div>
                         <div class="morphology">
                             ${entry.morphology.map(m => `
@@ -154,6 +155,7 @@
                         <div class="part">${entry.part}</div>
                         <div class="english">${entry.english}</div>
                         <div class="definition">${entry.definition}</div>
+                        <div class="sentence">${entry.sentence}</div>
                         <div class="other">${entry.other}</div>
                         <div class="morphology">
                             ${entry.morphology.map(m => `
@@ -164,6 +166,18 @@
                                 </div>
                             `).join('')}
                         </div>
+                    </div>
+                `;
+            }
+            else {
+                return `
+                    <div class="entry"">
+                        <div class="dict-form">${entry.dict_form}</div>
+                        <div class="part">${entry.part}</div>
+                        <div class="english">${entry.english}</div>
+                        <div class="definition">${entry.definition}</div>
+                        <div class="sentence">${entry.sentence}</div>
+                        <div class="other">${entry.other}</div>
                     </div>
                 `;
             }

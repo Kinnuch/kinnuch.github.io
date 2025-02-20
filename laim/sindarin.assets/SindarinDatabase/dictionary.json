@@ -1518,5 +1518,65 @@
         "other_form": ""
       }
     ]
+  },
+  {
+    "dict_form": "albeth",
+    "part": "noun",
+    "english": "(word of) good omen",
+    "definition": "表示吉兆，祥瑞，好的预示的话",
+    "sentence": "\n\n",
+    "other": "al- + peth",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i albeth",
+        "other_form": ""
+      },
+      {
+        "type": "Plural",
+        "form": "elbith",
+        "other_form": ""
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "in elbith",
+        "other_form": ""
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an albeth",
+        "other_form": ""
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "en-albeth",
+        "other_form": ""
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin albeth",
+        "other_form": ""
+      },
+      {
+        "type": "Liquid",
+        "form": "egor albeth",
+        "other_form": ""
+      },
+      {
+        "type": "Stop",
+        "form": "od albeth",
+        "other_form": ""
+      },
+      {
+        "type": "H",
+        "form": "ah albeth",
+        "other_form": ""
+      },
+      {
+        "type": "DH",
+        "form": "nedh albeth",
+        "other_form": ""
+      }
+    ]
   }
 ]

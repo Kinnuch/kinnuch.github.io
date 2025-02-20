@@ -4,7 +4,7 @@
     "part": "noun",
     "english": "prohibition, refusal",
     "definition": "禁令，禁止；拒绝，回绝",
-    "sentence": "",
+    "sentence": "\n",
     "other": "",
     "morphology": [
       {
@@ -19,7 +19,7 @@
       },
       {
         "type": "NasalⅠ",
-        "form": "in ablad",
+        "form": "in eblaid",
         "other_form": ""
       },
       {
@@ -64,7 +64,7 @@
     "part": "noun",
     "english": "neck, (upper)spine",
     "definition": "脖颈，（上）脊柱",
-    "sentence": "",
+    "sentence": "\n",
     "other": "只包括骨部分，不包括喉咙，若要表示喉咙或脖颈整体请使用lang这个词",
     "morphology": [
       {
@@ -79,7 +79,7 @@
       },
       {
         "type": "NasalⅠ",
-        "form": "in ach",
+        "form": "in aich",
         "other_form": ""
       },
       {
@@ -131,6 +131,116 @@
         "type": "",
         "form": "",
         "other_form": ""
+      }
+    ]
+  },
+  {
+    "dict_form": "achad",
+    "part": "noun",
+    "english": "rock ridge, neck(geographically)",
+    "definition": "岩岭，颈（地理上）",
+    "sentence": "<PE17/92><RC/537>\nAchad Tarlang\n塔朗颈\n\n",
+    "other": "地理上山脉间的窄岭",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i achad",
+        "other_form": ""
+      },
+      {
+        "type": "Plural",
+        "form": "echaid",
+        "other_form": ""
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "in echaid",
+        "other_form": ""
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an achad",
+        "other_form": ""
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "en-achad",
+        "other_form": ""
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin achad",
+        "other_form": ""
+      },
+      {
+        "type": "Liquid",
+        "form": "egor achad",
+        "other_form": ""
+      },
+      {
+        "type": "Stop",
+        "form": "od achad",
+        "other_form": ""
+      },
+      {
+        "type": "H",
+        "form": "ah achad",
+        "other_form": ""
+      },
+      {
+        "type": "DH",
+        "form": "nedh achad",
+        "other_form": ""
+      }
+    ]
+  },
+  {
+    "dict_form": "achar-",
+    "part": "verb",
+    "english": "to avenge, do back, react, requite",
+    "definition": "报仇，以牙还；回应，回报",
+    "sentence": "\n\n",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Present",
+        "form": "achar",
+        "other_form": "echeri-"
+      },
+      {
+        "type": "Past",
+        "form": "achor",
+        "other_form": "achóre-"
+      },
+      {
+        "type": "Future",
+        "form": "acharatha",
+        "other_form": "acharatha(o)-"
+      },
+      {
+        "type": "Imperative",
+        "form": "acharo",
+        "other_form": "acharo"
+      },
+      {
+        "type": "Gerund",
+        "form": "achared",
+        "other_form": "achared"
+      },
+      {
+        "type": "PastParticiple",
+        "form": "acharnen",
+        "other_form": "acharnen"
+      },
+      {
+        "type": "PresentParticiple",
+        "form": "acharel",
+        "other_form": "acharel"
+      },
+      {
+        "type": "PeferctParticle",
+        "form": "achóriel",
+        "other_form": "achóriel"
       }
     ]
   }

@@ -16,6 +16,60 @@
             background: #f8f9fa;
         }
 
+        .utility-bar {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 15px;
+        }
+
+        .utility-btn {
+            padding: 8px 16px;
+            border: 2px solid #4a90e2;
+            border-radius: 20px;
+            background: white;
+            color: #4a90e2;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .utility-btn:hover {
+            background: #4a90e2;
+            color: white;
+            transform: translateY(-1px);
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: white;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            padding: 15px;
+            min-width: 220px;
+            z-index: 200;
+            margin-top: 5px;
+        }
+
+        .dropdown-content p {
+            margin: 8px 0;
+            color: #34495e;
+            font-size: 13px;
+            line-height: 1.4;
+        }
+
+        .show { display: block; }
+
         .search-box {
             position: sticky;
             top: 0;
@@ -101,6 +155,37 @@
 </head>
 <body>
     <div class="search-box">
+        <div class="utility-bar">
+            <a href="https://kinnuch.github.io/gobeth" class="utility-btn">
+                🏠 返回
+            </a>
+            
+            <div class="dropdown">
+                <button class="utility-btn" onclick="toggleDropdown()">
+                    ℹ 符号说明
+                </button>
+                <div class="dropdown-content" id="dropdownContent">
+                    <p><strong>Soft</strong> - 软音变/弱化</p>
+                    <p><strong>Plural</strong> - 复数</p>
+                    <p><strong>NasalⅠ</strong> - 鼻音音变Ⅰ型（软鼻音音变）</p>
+                    <p><strong>NasalⅡ</strong> - 鼻音音变Ⅱ型（硬鼻音音变）</p>
+                    <p><strong>MixedⅠ</strong> - 混合音变Ⅰ型（en音变）</p>
+                    <p><strong>MixedⅡ</strong> - 混合音变Ⅱ型（简化混合音变）</p>
+                    <p><strong>Liquid</strong> - 流音音变</p>
+                    <p><strong>Stop</strong> - 闭锁音变</p>
+                    <p><strong>H</strong> - H音变(ah/oh)</p>
+                    <p><strong>DH</strong> - DH音变(nedh)</p>
+                    <p><strong>Present</strong> - 现在时变位</p>
+                    <p><strong>Past</strong> - 过去时变位</p>
+                    <p><strong>Future</strong> - 将来时变位</p>
+                    <p><strong>Imperative</strong> - 祈使式</p>
+                    <p><strong>Gerund</strong> - 动名词</p>
+                    <p><strong>PastParticiple</strong> - 过去分词</p>
+                    <p><strong>PresentParticiple</strong> - 现在分词</p>
+                    <p><strong>PerfectParticiple</strong> - 完成分词</p>
+                </div>
+            </div>
+        </div>
         <input type="text" id="searchInput" placeholder="搜索辛达语、英语或汉语...">
     </div>
     <div id="entriesContainer"></div>
@@ -226,6 +311,20 @@
             }, { threshold: 1.0 });
 
             observer.observe(document.getElementById('loading'));
+        }
+
+        function toggleDropdown() {
+            document.getElementById("dropdownContent").classList.toggle("show");
+        }
+
+        // 点击外部关闭下拉
+        window.onclick = function(e) {
+            if (!e.target.matches('.utility-btn')) {
+                const dropdowns = document.getElementsByClassName("dropdown-content");
+                for (let i = 0; i < dropdowns.length; i++) {
+                    dropdowns[i].classList.remove('show');
+                }
+            }
         }
     </script>
 </body>

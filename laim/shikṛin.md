@@ -6,7 +6,7 @@ title: Shikṛin
 
 ### Proto-Shikṛin | 原始希克林语
 
-[Proto-Shikṛin](https://kinnuch.github.io/laim/shikṛin.assets/Proto-Shikṛin.pdf)
+[Proto-Shikṛin](https://kinnuch.github.io/laim/shikrin.assets/Proto-Shikṛin.pdf)
 
 ### Classical Shikṛin | 古典希克林语
 

@@ -124,8 +124,8 @@
     "part": "conjunction",
     "english": "but",
     "definition": "但，但是",
-    "sentence": "[VT50/5]\ni glinn hen agorer Edain mi Velerian, ach hí in Ellath îr ed epholar. \n人类在贝烈瑞安德创作了这首歌，但如今独有精灵（？记得）它了。\n\n\n",
-    "other": "",
+    "sentence": "[VT50/5]\nI glinn hen agorer Edain mi Velerian, ach hí in Ellath îr ed epholar. \n人类在贝烈瑞安德创作了这首歌，但如今独有精灵（？记得）它了。\n\n\n\n\n",
+    "other": "后接软音变",
     "morphology": [
       {
         "type": "",
@@ -709,8 +709,8 @@
     "part": "conjunction",
     "english": "and",
     "definition": "和，并，且，同",
-    "sentence": "[Let/448][LotR/953]\nDaur a Berhael, Conin en Annûn\n弗罗多和山姆，西方的王子\n",
-    "other": "ah是多瑞亚斯方言变体",
+    "sentence": "[Let/448][LotR/953]\nDaur a Berhael, Conin en Annûn\n弗罗多和山姆，西方的王子\n\n",
+    "other": "a后接软音变；ah是多瑞亚斯方言变体，后接H音变",
     "morphology": [
       {
         "type": "",
@@ -935,6 +935,586 @@
       {
         "type": "DH",
         "form": "nedh aeglir",
+        "other_form": ""
+      }
+    ]
+  },
+  {
+    "dict_form": "aeglos",
+    "part": "noun",
+    "english": "icicle, snow-point, snowthorn(a plant)",
+    "definition": "冰锥；雪顶；艾格洛斯（雪荆棘）",
+    "sentence": "\n\n",
+    "other": "aeg + loss",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i aeglos",
+        "other_form": ""
+      },
+      {
+        "type": "Plural",
+        "form": "aeglys",
+        "other_form": ""
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "in aeglys",
+        "other_form": ""
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an aeglos",
+        "other_form": ""
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "en-aeglos",
+        "other_form": ""
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin aeglos",
+        "other_form": ""
+      },
+      {
+        "type": "Liquid",
+        "form": "egor aeglos",
+        "other_form": ""
+      },
+      {
+        "type": "Stop",
+        "form": "od aeglos",
+        "other_form": ""
+      },
+      {
+        "type": "H",
+        "form": "ah aeglos",
+        "other_form": ""
+      },
+      {
+        "type": "DH",
+        "form": "nedh aeglos",
+        "other_form": ""
+      }
+    ]
+  },
+  {
+    "dict_form": "ael",
+    "part": "noun",
+    "english": "lake, pool",
+    "definition": "湖，湖泊；池塘",
+    "sentence": "[S/162]\nAeluin\n蓝湖\n\n",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i ael",
+        "other_form": ""
+      },
+      {
+        "type": "Plural",
+        "form": "aelin",
+        "other_form": ""
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "in aelin",
+        "other_form": ""
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an ael",
+        "other_form": ""
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "en-ael",
+        "other_form": ""
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin ael",
+        "other_form": ""
+      },
+      {
+        "type": "Liquid",
+        "form": "egor ael",
+        "other_form": ""
+      },
+      {
+        "type": "Stop",
+        "form": "od ael",
+        "other_form": ""
+      },
+      {
+        "type": "H",
+        "form": "ah ael",
+        "other_form": ""
+      },
+      {
+        "type": "DH",
+        "form": "nedh ael",
+        "other_form": ""
+      }
+    ]
+  },
+  {
+    "dict_form": "aen",
+    "part": "adverb",
+    "english": "should, could",
+    "definition": "应该",
+    "sentence": "[AotM/62][SD/129]\nEdregol e aníra tírad i Cherdir Perhael (i sennui Panthael estathar aen) Condir i Drann.\n他尤其希望迎接夏尔的市长山姆怀斯（恰如其分的称谓应当是“睿智的”）大人\n",
+    "other": "*ge > *ain > aen [2023 The Art of the Manuscript]",
+    "morphology": [
+      {
+        "type": "",
+        "form": "",
+        "other_form": ""
+      }
+    ]
+  },
+  {
+    "dict_form": "aer",
+    "part": "adjective",
+    "english": "hallowed, holy",
+    "definition": "神圣的",
+    "sentence": "[VT44/21]\nNo aer i eneth lín\n愿汝名祝圣\n\n",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "aer",
+        "other_form": ""
+      },
+      {
+        "type": "Plural",
+        "form": "aer",
+        "other_form": ""
+      }
+    ]
+  },
+  {
+    "dict_form": "aerlinn",
+    "part": "noun",
+    "english": "hymn, holy song",
+    "definition": "赞美诗，圣歌，颂赞诗",
+    "sentence": "[RGEO/62]\nAerlinn in Edhil o Imladris\n幽谷精灵的圣歌\n\n",
+    "other": "aer + lind",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i aerlinn",
+        "other_form": ""
+      },
+      {
+        "type": "Plural",
+        "form": "aerlinn",
+        "other_form": ""
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "in aerlinn",
+        "other_form": ""
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an aerlinn",
+        "other_form": ""
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "en-aerlinn",
+        "other_form": ""
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin aerlinn",
+        "other_form": ""
+      },
+      {
+        "type": "Liquid",
+        "form": "egor aerlinn",
+        "other_form": ""
+      },
+      {
+        "type": "Stop",
+        "form": "od aerlinn",
+        "other_form": ""
+      },
+      {
+        "type": "H",
+        "form": "ah aerlinn",
+        "other_form": ""
+      },
+      {
+        "type": "DH",
+        "form": "nedh aerlinn",
+        "other_form": ""
+      }
+    ]
+  },
+  {
+    "dict_form": "aew",
+    "part": "noun",
+    "english": "(small)bird",
+    "definition": "（小）鸟",
+    "sentence": "\n\n",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i aew",
+        "other_form": ""
+      },
+      {
+        "type": "Plural",
+        "form": "aew",
+        "other_form": ""
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "in aew",
+        "other_form": ""
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an aew",
+        "other_form": ""
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "en-aew",
+        "other_form": ""
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin aew",
+        "other_form": ""
+      },
+      {
+        "type": "Liquid",
+        "form": "egor aew",
+        "other_form": ""
+      },
+      {
+        "type": "Stop",
+        "form": "od aew",
+        "other_form": ""
+      },
+      {
+        "type": "H",
+        "form": "ah aew",
+        "other_form": ""
+      },
+      {
+        "type": "DH",
+        "form": "nedh aew",
+        "other_form": ""
+      }
+    ]
+  },
+  {
+    "dict_form": "aewen",
+    "part": "adjective",
+    "english": "of birds",
+    "definition": "鸟儿们的",
+    "sentence": "[SA/lin]\nLinaewen\n利耐温湖，众鸟之湖泊\n\n",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "aewen",
+        "other_form": ""
+      },
+      {
+        "type": "Plural",
+        "form": "aewin（可能不合法）",
+        "other_form": ""
+      }
+    ]
+  },
+  {
+    "dict_form": "agar",
+    "part": "noun",
+    "english": "blood",
+    "definition": "血",
+    "sentence": "[S/210]\nAgarwaen\n沾满血污的\n\n",
+    "other": "词源不详，建议使用sereg",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i agar",
+        "other_form": ""
+      },
+      {
+        "type": "Plural",
+        "form": "egair",
+        "other_form": ""
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "in egair",
+        "other_form": ""
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an agar",
+        "other_form": ""
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "en-agar",
+        "other_form": ""
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin agar",
+        "other_form": ""
+      },
+      {
+        "type": "Liquid",
+        "form": "egor agar",
+        "other_form": ""
+      },
+      {
+        "type": "Stop",
+        "form": "od agar",
+        "other_form": ""
+      },
+      {
+        "type": "H",
+        "form": "ah agar",
+        "other_form": ""
+      },
+      {
+        "type": "DH",
+        "form": "nedh agar",
+        "other_form": ""
+      }
+    ]
+  },
+  {
+    "dict_form": "aglar",
+    "part": "noun",
+    "english": "glory, brilliance, splendour, radiance",
+    "definition": "荣耀，华丽，辉煌，显赫，荣光",
+    "sentence": "[LotR/238][PE17/20][RGEO/63][RGEO/64]\nO menel aglar elenath\n自天穹繁星荣光\n\n",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i aglar",
+        "other_form": ""
+      },
+      {
+        "type": "Plural",
+        "form": "eglair",
+        "other_form": ""
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "in eglair",
+        "other_form": ""
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an aglar",
+        "other_form": ""
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "en-aglar",
+        "other_form": ""
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin aglar",
+        "other_form": ""
+      },
+      {
+        "type": "Liquid",
+        "form": "egor aglar",
+        "other_form": ""
+      },
+      {
+        "type": "Stop",
+        "form": "od aglar",
+        "other_form": ""
+      },
+      {
+        "type": "H",
+        "form": "ah aglar",
+        "other_form": ""
+      },
+      {
+        "type": "DH",
+        "form": "nedh aglar",
+        "other_form": ""
+      }
+    ]
+  },
+  {
+    "dict_form": "aglareb",
+    "part": "adjective",
+    "english": "glorious, brilliant",
+    "definition": "荣耀的，光荣的，荣光的",
+    "sentence": "[S/115]\nDagor Aglareb\n荣耀之战（达戈·阿格拉瑞布）\n\n",
+    "other": "aglar + -eb",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "aglareb",
+        "other_form": ""
+      },
+      {
+        "type": "Plural",
+        "form": "eglerib",
+        "other_form": ""
+      }
+    ]
+  },
+  {
+    "dict_form": "aglor",
+    "part": "adjective",
+    "english": "glorious, brilliant",
+    "definition": "荣耀的，光荣的，荣光的",
+    "sentence": "\n\n",
+    "other": "同aglareb",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "aglor",
+        "other_form": ""
+      },
+      {
+        "type": "Plural",
+        "form": "eglyr",
+        "other_form": ""
+      }
+    ]
+  },
+  {
+    "dict_form": "ai",
+    "part": "other",
+    "english": "hail!",
+    "definition": "嗨！，嘿！，啊！",
+    "sentence": "[LotR/209][PE17/16]\nai na vedui Dúnadan\n啊！最后，是人类！\n",
+    "other": "感叹词",
+    "morphology": [
+      {
+        "type": "",
+        "form": "",
+        "other_form": ""
+      }
+    ]
+  },
+  {
+    "dict_form": "ai",
+    "part": "pronoun",
+    "english": "those who",
+    "definition": "从句引导词（那些人）",
+    "sentence": "[VT44/21]\nsui mín i gohenam di ai gerir úgerth ammen\n当我们原谅那些入侵对抗我们的人\n",
+    "other": "从句引导词",
+    "morphology": [
+      {
+        "type": "",
+        "form": "",
+        "other_form": ""
+      }
+    ]
+  },
+  {
+    "dict_form": "air",
+    "part": "adjective",
+    "english": "lonely",
+    "definition": "孤独的，独自的，仅剩的，孑然",
+    "sentence": "[VT50/5]\nI glinn hen agorer Edain mi Velerian, ach hí in Ellath îr ed epholar\n人类在贝烈瑞安德创作了这首歌，但如今独有精灵（？记得）它了。\n\n",
+    "other": "属于古-ya词，干元音i",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "air",
+        "other_form": ""
+      },
+      {
+        "type": "Plural",
+        "form": "îr",
+        "other_form": ""
+      }
+    ]
+  },
+  {
+    "dict_form": "alae",
+    "part": "other",
+    "english": "?behold",
+    "definition": "噫吁嚱",
+    "sentence": "[UT/40]\nAlae! ered en Echoriath, ered e·mbar nín\n噫吁嚱！环抱山脉的群山，我家乡的群山！\n",
+    "other": "感叹词",
+    "morphology": [
+      {
+        "type": "",
+        "form": "",
+        "other_form": ""
+      }
+    ]
+  },
+  {
+    "dict_form": "alaf",
+    "part": "noun",
+    "english": "elm",
+    "definition": "榆树，榆木",
+    "sentence": "\n\n",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i alaf",
+        "other_form": ""
+      },
+      {
+        "type": "Plural",
+        "form": "elaif",
+        "other_form": ""
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "in elaif",
+        "other_form": ""
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an alaf",
+        "other_form": ""
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "en-alaf",
+        "other_form": ""
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin alaf",
+        "other_form": ""
+      },
+      {
+        "type": "Liquid",
+        "form": "egor alaf",
+        "other_form": ""
+      },
+      {
+        "type": "Stop",
+        "form": "od alaf",
+        "other_form": ""
+      },
+      {
+        "type": "H",
+        "form": "ah alaf",
+        "other_form": ""
+      },
+      {
+        "type": "DH",
+        "form": "nedh alaf",
         "other_form": ""
       }
     ]

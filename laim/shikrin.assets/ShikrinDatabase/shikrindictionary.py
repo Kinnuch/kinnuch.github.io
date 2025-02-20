@@ -146,6 +146,8 @@ class DictionaryApp:
         dialog.iconbitmap("Shikrin.ico")
         dialog.title("编辑词条" if is_edit else "添加新词")
         
+        dialog.geometry(f"+{self.root.winfo_x() + 50}+{self.root.winfo_y() + 50}")
+
         entries_frame = ttk.Frame(dialog)
         entries_frame.pack(padx=10, pady=10)
         

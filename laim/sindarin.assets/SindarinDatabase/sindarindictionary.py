@@ -148,6 +148,8 @@ class DictionaryApp:
         dialog.iconbitmap("Sindarin.ico")
         dialog.title("编辑词条" if is_edit else "添加新词")
         
+        dialog.geometry(f"+{self.root.winfo_x() + 50}+{self.root.winfo_y() + 50}")
+
         entries_frame = ttk.Frame(dialog)
         entries_frame.pack(padx=10, pady=10)
         
@@ -160,7 +162,7 @@ class DictionaryApp:
         dict_form.grid(row=0, column=1, pady=5)
 
         ttk.Label(entries_frame, text="词性*:").grid(row=1, column=0, sticky=tk.W)
-        part = ttk.Combobox(entries_frame, values=["noun", "verb", "adjective", "adverb", "preposition", "conjunction", "pronoun", "affix"], width=10)
+        part = ttk.Combobox(entries_frame, values=["noun", "verb", "adjective", "adverb", "preposition", "conjunction", "pronoun", "affix", "other"], width=10)
         part.grid(row=1, column=1, pady=5)
         
         ttk.Label(entries_frame, text="英语*:").grid(row=2, column=0, sticky=tk.W)

@@ -139,7 +139,7 @@
     "part": "noun",
     "english": "rock ridge, neck(geographically)",
     "definition": "岩岭，颈（地理上）",
-    "sentence": "[PE17/92][RC/537]\nAchad Tarlang\n塔朗颈\n\n\n",
+    "sentence": "[PE17/92][RC/537]\nAchad Tarlang.\n塔朗颈\n\n\n\n",
     "other": "地理上山脉间的窄岭",
     "morphology": [
       {
@@ -199,48 +199,48 @@
     "part": "verb",
     "english": "to avenge, do back, react, requite",
     "definition": "报仇，以牙还牙；回应，回报",
-    "sentence": "\n\n\n",
+    "sentence": "\n\n\n\n\n",
     "other": "",
     "morphology": [
       {
         "type": "Present",
-        "form": "achar",
-        "other_form": "echeri-"
+        "form": "achar/echeri-",
+        "other_form": ""
       },
       {
         "type": "Past",
-        "form": "achor",
-        "other_form": "achóre-"
+        "form": "achor/achóre-",
+        "other_form": ""
       },
       {
         "type": "Future",
-        "form": "acharatha",
-        "other_form": "acharatha(o)-"
+        "form": "acharatha/acharatha(o)-",
+        "other_form": ""
       },
       {
         "type": "Imperative",
         "form": "acharo",
-        "other_form": "acharo"
+        "other_form": ""
       },
       {
         "type": "Gerund",
         "form": "achared",
-        "other_form": "achared"
+        "other_form": ""
       },
       {
         "type": "PastParticiple",
         "form": "acharnen",
-        "other_form": "acharnen"
+        "other_form": ""
       },
       {
         "type": "PresentParticiple",
         "form": "acharel",
-        "other_form": "acharel"
+        "other_form": ""
       },
       {
         "type": "PeferctParticle",
         "form": "achóriel",
-        "other_form": "achóriel"
+        "other_form": ""
       }
     ]
   },
@@ -489,7 +489,7 @@
     "part": "noun",
     "english": "father",
     "definition": "父亲，爸爸，爹",
-    "sentence": "[VT44/21]\nae Adar nín i vi Menel\n我们在天国的父亲\n\n",
+    "sentence": "[VT44/21]\nae Adar nín i vi Menel.\n我们在天国的父亲\n\n\n",
     "other": "",
     "morphology": [
       {
@@ -549,48 +549,48 @@
     "part": "verb",
     "english": "to rephrase",
     "definition": "重新措辞，改述；换个说法说",
-    "sentence": "\n\n",
+    "sentence": "\n\n\n",
     "other": "ad- + ped-",
     "morphology": [
       {
         "type": "Present",
-        "form": "adbed",
-        "other_form": "edbedi-"
+        "form": "adbed/edbedi-",
+        "other_form": ""
       },
       {
         "type": "Past",
-        "form": "adbent",
-        "other_form": "adbenne-"
+        "form": "adbent/adbenne-",
+        "other_form": ""
       },
       {
         "type": "Future",
-        "form": "adbedatha",
-        "other_form": "adbedatha(o)-"
+        "form": "adbedatha/adbedatha(o)-",
+        "other_form": ""
       },
       {
         "type": "Imperative",
         "form": "adbedo",
-        "other_form": "adbedo"
+        "other_form": ""
       },
       {
         "type": "Gerund",
         "form": "adbeded",
-        "other_form": "adbeded"
+        "other_form": ""
       },
       {
         "type": "PastParticiple",
         "form": "adbennen",
-        "other_form": "adbennen"
+        "other_form": ""
       },
       {
         "type": "PresentParticiple",
         "form": "adbedel",
-        "other_form": "adbedel"
+        "other_form": ""
       },
       {
         "type": "PeferctParticle",
         "form": "adbídiel",
-        "other_form": "adbídiel"
+        "other_form": ""
       }
     ]
   },
@@ -599,48 +599,48 @@
     "part": "verb",
     "english": "to reunite",
     "definition": "重聚；再联合",
-    "sentence": "\n\n",
+    "sentence": "\n\n\n",
     "other": "ad- + ertha-",
     "morphology": [
       {
         "type": "Present",
-        "form": "adertha",
-        "other_form": "adertha(o)-"
+        "form": "adertha/adertha(o)-",
+        "other_form": ""
       },
       {
         "type": "Past",
-        "form": "aderthant/aderthas",
-        "other_form": "aderthanne-/aderthasse-"
+        "form": "aderthant/aderthanne-, aderthas/aderthasse-",
+        "other_form": ""
       },
       {
         "type": "Future",
-        "form": "aderthatha",
-        "other_form": "aderthatha(o)-"
+        "form": "aderthatha/aderthatha(o)-",
+        "other_form": ""
       },
       {
         "type": "Imperative",
         "form": "adertho",
-        "other_form": "adertho"
+        "other_form": ""
       },
       {
         "type": "Gerund",
         "form": "aderthad",
-        "other_form": "aderthad"
+        "other_form": ""
       },
       {
         "type": "PastParticiple",
-        "form": "aderthannen/aderthassen",
-        "other_form": "aderthannen/aderthassen"
+        "form": "aderthannen, aderthassen",
+        "other_form": ""
       },
       {
         "type": "PresentParticiple",
         "form": "aderthol",
-        "other_form": "aderthol"
+        "other_form": ""
       },
       {
         "type": "PeferctParticle",
         "form": "ederthiel",
-        "other_form": "ederthiel"
+        "other_form": ""
       }
     ]
   },
@@ -649,7 +649,7 @@
     "part": "noun",
     "english": "reuniting",
     "definition": "重聚",
-    "sentence": "[S/113]\nMereth Aderthad\n重聚宴会\n\n",
+    "sentence": "[S/113]\nMereth Aderthad.\n重聚宴会\n\n\n",
     "other": "动词adertha-的动名词形式",
     "morphology": [
       {
@@ -709,7 +709,7 @@
     "part": "conjunction",
     "english": "and",
     "definition": "和，并，且，同",
-    "sentence": "[Let/448][LotR/953]\nDaur a Berhael, Conin en Annûn\n弗罗多和山姆，西方的王子\n\n",
+    "sentence": "[Let/448][LotR/953]\nDaur a Berhael, Conin en Annûn.\n弗罗多和山姆，西方的王子\n\n\n",
     "other": "a后接软音变；ah是多瑞亚斯方言变体，后接H音变",
     "morphology": [
       {
@@ -884,7 +884,7 @@
     "part": "noun",
     "english": "line of peaks",
     "definition": "山脉，鳞次栉比的山峰，连绵不断的山巅",
-    "sentence": "[RC/11]\nHithaeglir\n迷雾山脉\n\n\n",
+    "sentence": "[RC/11]\nHithaeglir.\n迷雾山脉\n\n\n\n",
     "other": "",
     "morphology": [
       {
@@ -1079,7 +1079,7 @@
     "part": "adjective",
     "english": "hallowed, holy",
     "definition": "神圣的",
-    "sentence": "[VT44/21]\nNo aer i eneth lín\n愿汝名祝圣\n\n",
+    "sentence": "[VT44/21]\nNo aer i eneth lín.\n愿汝名祝圣\n\n\n",
     "other": "",
     "morphology": [
       {
@@ -1219,7 +1219,7 @@
     "part": "adjective",
     "english": "of birds",
     "definition": "鸟儿们的",
-    "sentence": "[SA/lin]\nLinaewen\n利耐温湖，众鸟之湖泊\n\n",
+    "sentence": "[SA/lin]\nLinaewen.\n利耐温湖，众鸟之湖泊\n\n\n",
     "other": "",
     "morphology": [
       {
@@ -1239,7 +1239,7 @@
     "part": "noun",
     "english": "blood",
     "definition": "血",
-    "sentence": "[S/210]\nAgarwaen\n沾满血污的\n\n",
+    "sentence": "[S/210]\nAgarwaen.\n沾满血污的\n\n\n",
     "other": "词源不详，建议使用sereg",
     "morphology": [
       {
@@ -1299,7 +1299,7 @@
     "part": "noun",
     "english": "glory, brilliance, splendour, radiance",
     "definition": "荣耀，华丽，辉煌，显赫，荣光",
-    "sentence": "[LotR/238][PE17/20][RGEO/63][RGEO/64]\nO menel aglar elenath\n自天穹繁星荣光\n\n",
+    "sentence": "[LotR/238][PE17/20][RGEO/63][RGEO/64]\nO menel aglar elenath.\n自天穹繁星荣光\n\n\n",
     "other": "",
     "morphology": [
       {
@@ -1359,7 +1359,7 @@
     "part": "adjective",
     "english": "glorious, brilliant",
     "definition": "荣耀的，光荣的，荣光的",
-    "sentence": "[S/115]\nDagor Aglareb\n荣耀之战（达戈·阿格拉瑞布）\n\n",
+    "sentence": "[S/115]\nDagor Aglareb.\n荣耀之战（达戈·阿格拉瑞布）\n\n\n",
     "other": "aglar + -eb",
     "morphology": [
       {
@@ -1399,7 +1399,7 @@
     "part": "other",
     "english": "hail!",
     "definition": "嗨！，嘿！，啊！",
-    "sentence": "[LotR/209][PE17/16]\nai na vedui Dúnadan\n啊！最后，是人类！\n",
+    "sentence": "[LotR/209][PE17/16]\nai na vedui Dúnadan.\n啊！最后，是人类！\n\n",
     "other": "感叹词",
     "morphology": [
       {
@@ -1414,7 +1414,7 @@
     "part": "pronoun",
     "english": "those who",
     "definition": "从句引导词（那些人）",
-    "sentence": "[VT44/21]\nsui mín i gohenam di ai gerir úgerth ammen\n当我们原谅那些入侵对抗我们的人\n",
+    "sentence": "[VT44/21]\nsui mín i gohenam di ai gerir úgerth ammen.\n当我们原谅那些入侵对抗我们的人\n\n",
     "other": "从句引导词",
     "morphology": [
       {
@@ -1429,7 +1429,7 @@
     "part": "adjective",
     "english": "lonely",
     "definition": "孤独的，独自的，仅剩的，孑然",
-    "sentence": "[VT50/5]\nI glinn hen agorer Edain mi Velerian, ach hí in Ellath îr ed epholar\n人类在贝烈瑞安德创作了这首歌，但如今独有精灵（？记得）它了。\n\n",
+    "sentence": "[VT50/5]\nI glinn hen agorer Edain mi Velerian, ach hí in Ellath îr ed epholar.\n人类在贝烈瑞安德创作了这首歌，但如今独有精灵（？记得）它了。\n\n\n",
     "other": "属于古-ya词，干元音i",
     "morphology": [
       {
@@ -1449,7 +1449,7 @@
     "part": "other",
     "english": "?behold",
     "definition": "噫吁嚱",
-    "sentence": "[UT/40]\nAlae! ered en Echoriath, ered e·mbar nín\n噫吁嚱！环抱山脉的群山，我家乡的群山！\n",
+    "sentence": "[UT/40]\nAlae! ered en Echoriath, ered e·mbar nín.\n噫吁嚱！环抱山脉的群山，我家乡的群山！\n\n",
     "other": "感叹词",
     "morphology": [
       {

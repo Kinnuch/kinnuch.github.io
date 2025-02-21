@@ -1,0 +1,224 @@
+* {
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+@font-face {
+    font-family: dictChinese;
+    src: url(dlzh.ttf);
+}
+
+body {
+    margin: 0;
+    padding: 20px;
+    background: #f8f9fa;
+}
+
+.utility-bar {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 15px;
+}
+
+.utility-btn {
+    padding: 8px 16px;
+    border: 2px solid #4a90e2;
+    border-radius: 20px;
+    background: white;
+    color: #4a90e2;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.utility-btn:hover {
+    background: #4a90e2;
+    color: white;
+    transform: translateY(-1px);
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: white;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    border-radius: 8px;
+    padding: 15px;
+    min-width: 220px;
+    z-index: 200;
+    margin-top: 5px;
+}
+
+.dropdown-content p {
+    margin: 8px 0;
+    color: #34495e;
+    font-size: 13px;
+    line-height: 1.4;
+}
+
+.show { display: block; }
+
+.search-box {
+    position: sticky;
+    top: 0;
+    background: white;
+    padding: 20px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    z-index: 100;
+}
+
+#searchInput {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #4a90e2;
+    border-radius: 25px;
+    font-size: 16px;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+#searchInput:focus {
+    border-color: #357abd;
+}
+
+.entry {
+    background: white;
+    border-radius: 12px;
+    margin: 15px 0;
+    padding: 20px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.entry:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.dict-form {
+    color: #2c3e50;
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.part {
+    color: #7f8c8d;
+    font-size: 12px;
+    font-style: italic;
+}
+
+.english {
+    color: #7f8c8d;
+    font-size: 14px;
+}
+
+.definition {
+    color: #34495e;
+    line-height: 1.6;
+    font-family: 'Times New Roman', dictChinese;
+}
+
+.sentence {
+    margin-top: 12px;
+    margin-bottom: 12px;
+    padding: 12px;
+    background: #f8f9fa;
+    border-radius: 6px;
+    color: #34495e;
+}
+
+.sentence-bracket {
+    color: #e74c3c;
+    font-weight: 600;
+    font-family: Monaco, Consolas, monospace;
+}
+
+.sentence-latin {
+    color: #2980b9;
+    font-style: italic;
+}
+
+.sentence-chinese {
+    color: #27ae60;
+    border-left: 2px solid #2ecc71;
+    padding-left: 8px;
+    margin-left: 4px;
+    font-family: 'Times New Roman', dictChinese;
+}
+
+.other {
+    color: #34495e;
+    line-height: 1.6;
+    font-family: 'Times New Roman', dictChinese;
+}
+
+.morphology {
+    max-height: 0;
+    overflow: scroll;
+    transition: max-height 0.3s ease-out;
+    margin-top: 15px;
+    padding-left: 20px;
+    border-left: 2px solid #4a90e2;
+}
+
+.morphology.active {
+    max-height: 500px;
+}
+
+.morph-item {
+    margin: 10px 0;
+    padding: 12px;
+    background: #f8f9fa;
+    border-radius: 6px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.03);
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    gap: 8px;
+}
+
+.morph-item > div {
+    display: flex;
+    align-items: center;
+    padding: 4px 0;
+}
+
+.morph-item > :nth-child(odd) {
+    color: #7f8c8d;
+    font-size: 13px;
+    font-family: Monaco, Consolas, monospace;
+}
+
+.morph-item > :nth-child(even) {
+    color: #2c3e50;
+    font-size: 15px;
+    font-family: 'Times New Roman';
+    font-weight: 500;
+    position: relative;
+    padding-left: 12px;
+}
+
+.morph-item > :nth-child(even)::before {
+    content: "·";
+    color: #4a90e2;
+    position: absolute;
+    left: 0;
+    font-weight: 700;
+}
+
+.loading {
+    text-align: center;
+    padding: 20px;
+    color: #7f8c8d;
+}

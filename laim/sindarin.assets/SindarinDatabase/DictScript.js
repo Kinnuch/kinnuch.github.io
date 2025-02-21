@@ -1,0 +1,141 @@
+const data = "https://kinnuch.github.io/laim/sindarin.assets/SindarinDatabase/dictionary.json";
+let page = 0;
+const pageSize = 10;
+let allEntries = [];
+let filteredEntries = [];
+
+// 初始化
+document.addEventListener('DOMContentLoaded', () => {
+    fetch(data)
+        .then(response => response.json())
+        .then(data => {
+            allEntries = data.filter(entry => entry.dict_form !== "test");
+            filteredEntries = [...allEntries];
+            loadMore();
+            setupSearch();
+            setupInfiniteScroll();
+        })
+        .catch(error => console.error('Loading Error', error));
+});
+
+function fillMorphology(entry) {
+    let ret = '';
+    if (entry.part === "noun" || entry.part === "adjective") {
+        ret = 
+            `
+            <div class="morphology">
+            ${entry.morphology.map(m => `
+                <div class="morph-item">
+                    <div>${m.type}</div>
+                    <div>${m.form}</div>
+                </div>
+            `).join('')}
+            </div>
+            `
+    }
+    else if (entry.part === "verb") {
+        ret = 
+            `
+            <div class="morphology">
+                ${entry.morphology.map(m => `
+                    <div class="morph-item">
+                        <div>变化类型：${m.type}</div>
+                        <div>三单形式：${m.form}</div>
+                        <div>其他形式：${m.other_form}</div>
+                    </div>
+                `).join('')}
+            </div>
+            `
+    }
+    return ret;
+}
+
+function createEntryHTML(entry) {
+    let sentenceHTML = '';
+    if (entry.sentence) {
+        const formatted = entry.sentence.replace(
+            /(\[.+\])/g,
+            '<span class="sentence-bracket">$1</span>'
+        ).replace(
+            /([\u4e00-\u9fa5].*)/g, 
+            '<span class="sentence-chinese">$1</span>'
+        ).replace(
+            /([a-zA-Z].*?)(?=\s*[.]\s*|$)/g, 
+            '<span class="sentence-latin">$1</span>'
+        );
+        sentenceHTML = `<div class="sentence">${formatted}</div>`;
+    }
+
+    return `
+        <div class="entry" onclick="toggleMorphology(this)">
+            <div class="dict-form">${entry.dict_form}</div>
+            <div class="part">${entry.part}</div>
+            <div class="english">${entry.english}</div>
+            <div class="definition">${entry.definition}</div>
+            ${sentenceHTML}
+            <div class="other">${entry.other}</div>
+            ${fillMorphology(entry)}
+        </div>
+    `;
+}
+
+function toggleMorphology(element) {
+    const morphology = element.querySelector('.morphology');
+    if (morphology) {
+        morphology.classList.toggle('active');
+    }
+}
+
+function loadMore() {
+    const start = page * pageSize;
+    const end = start + pageSize;
+    const entries = filteredEntries.slice(start, end);
+    
+    if(entries.length === 0) {
+        document.getElementById('loading').style.display = 'none';
+        return;
+    }
+
+    const entriesHTML = entries.map(createEntryHTML).join('');
+    document.getElementById('entriesContainer').innerHTML += entriesHTML;
+    page++;
+}
+
+function setupSearch() {
+    const searchInput = document.getElementById('searchInput');
+    searchInput.addEventListener('input', (e) => {
+        const query = e.target.value.toLowerCase();
+        filteredEntries = allEntries.filter(entry => 
+            entry.dict_form.toLowerCase().includes(query) ||
+            entry.english.toLowerCase().includes(query) ||
+            entry.definition.toLowerCase().includes(query)
+        );
+        page = 0;
+        document.getElementById('entriesContainer').innerHTML = '';
+        loadMore();
+    });
+}
+
+function setupInfiniteScroll() {
+    const observer = new IntersectionObserver((entries) => {
+        if(entries[0].isIntersecting) {
+            loadMore();
+        }
+    }, { threshold: 1.0 });
+
+    observer.observe(document.getElementById('loading'));
+}
+
+function toggleDropdown() {
+    document.getElementById("dropdownContent").classList.toggle("show");
+}
+
+// 点击外部关闭下拉
+window.onclick = function(e) {
+    if (!e.target.matches('.utility-btn')) {
+        const dropdowns = document.getElementsByClassName("dropdown-content");
+        for (let i = 0; i < dropdowns.length; i++) {
+            dropdowns[i].classList.remove('show');
+        }
+    }
+}

@@ -98,17 +98,8 @@ class DictionaryApp:
         
         if entry.get("morphology"):
             self.details_text.insert(tk.END, "形态变化:\n")
-            headers = ["", "", ""]
-            col_width = [0, 0, 0]
-            if (entry['part'] == "noun"):
-                headers = ["变化类型", "形式", ""]
-                col_width = [20, 30, 0]
-            elif (entry['part'] == "verb"):
-                headers = ["变化类型", "三单形式", "其他人称形式"]
-                col_width = [20, 30, 30]
-            elif (entry['part'] == "adjective"):
-                headers = ["变化类型", "形式", ""]
-                col_width = [20, 30, 0]
+            headers = ["变化类型", "形式"]
+            col_width = [20, 30]
             
             # 创建表格头
             header_line = "".join([h.ljust(w) for h, w in zip(headers, col_width)]) + "\n"
@@ -120,7 +111,6 @@ class DictionaryApp:
                 line = "".join([
                     morph["type"].ljust(col_width[0]),
                     morph["form"].ljust(col_width[1]),
-                    morph["other_form"].ljust(col_width[2]),
                 ]) + "\n"
                 self.details_text.insert(tk.END, line)
 
@@ -212,17 +202,13 @@ class DictionaryApp:
             
             form = ttk.Entry(row_frame, width=20)
             form.pack(side=tk.LEFT, padx=2)
-
-            other_form = ttk.Entry(row_frame, width=20)
-            other_form.pack(side=tk.LEFT, padx=2)
             
             # 预填充编辑数据
             if morph_data:
                 type.set(morph_data["type"])
                 form.insert(0, morph_data["form"])
-                other_form.insert(0, morph_data["other_form"])
             
-            self.morphology_entries.append((type, form, other_form))
+            self.morphology_entries.append((type, form))
         
         # 初始化现有形态数据
         if is_edit and entry_data.get("morphology"):
@@ -253,7 +239,6 @@ class DictionaryApp:
                 new_entry["morphology"].append({
                     "type": type.get(),
                     "form": form.get(),
-                    "other_form": other_form.get(),
                 })
             
             if is_edit:

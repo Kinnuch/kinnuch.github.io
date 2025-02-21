@@ -39,9 +39,8 @@ function fillMorphology(entry) {
             <div class="morphology">
                 ${entry.morphology.map(m => `
                     <div class="morph-item">
-                        <div>变化类型：${m.type}</div>
-                        <div>三单形式：${m.form}</div>
-                        <div>其他形式：${m.other_form}</div>
+                        <div>${m.type}</div>
+                        <div>${m.form}</div>
                     </div>
                 `).join('')}
             </div>
@@ -60,13 +59,12 @@ function createEntryHTML(entry) {
             /([\u4e00-\u9fa5].*)/g, 
             '<span class="sentence-chinese">$1</span>'
         ).replace(
-            /([a-zA-Z].*?)(?=\s*[.]\s*|$)/g, 
+            /([áéíóúýÁÉÍÓÚÝñÑâêîôûŷÂÊÎÔÛŶëËa-zA-Z].*?)(?=\s*[.]\s*|$)/g, 
             '<span class="sentence-latin">$1</span>'
         );
         sentenceHTML = `<div class="sentence">${formatted}</div>`;
-    }
 
-    return `
+        return `
         <div class="entry" onclick="toggleMorphology(this)">
             <div class="dict-form">${entry.dict_form}</div>
             <div class="part">${entry.part}</div>
@@ -76,7 +74,20 @@ function createEntryHTML(entry) {
             <div class="other">${entry.other}</div>
             ${fillMorphology(entry)}
         </div>
-    `;
+        `;
+    }
+    else {
+        return `
+        <div class="entry" onclick="toggleMorphology(this)">
+            <div class="dict-form">${entry.dict_form}</div>
+            <div class="part">${entry.part}</div>
+            <div class="english">${entry.english}</div>
+            <div class="definition">${entry.definition}</div>
+            <div class="other">${entry.other}</div>
+            ${fillMorphology(entry)}
+        </div>
+        `;
+    }
 }
 
 function toggleMorphology(element) {
@@ -126,16 +137,24 @@ function setupInfiniteScroll() {
     observer.observe(document.getElementById('loading'));
 }
 
-function toggleDropdown() {
-    document.getElementById("dropdownContent").classList.toggle("show");
+function toggleDropdownInfo() {
+    document.getElementById("dropdownContentInfo").classList.toggle("show");
+}
+
+function toggleDropdownGuide() {
+    document.getElementById("dropdownContentGuide").classList.toggle("show");
 }
 
 // 点击外部关闭下拉
 window.onclick = function(e) {
     if (!e.target.matches('.utility-btn')) {
-        const dropdowns = document.getElementsByClassName("dropdown-content");
+        const dropdownsinfo = document.getElementsByClassName("dropdowninfo-content");
         for (let i = 0; i < dropdowns.length; i++) {
-            dropdowns[i].classList.remove('show');
+            dropdownsinfo[i].classList.remove('show');
+        }
+        const dropdownsguide = document.getElementsByClassName("dropdownguide-content");
+        for (let i = 0; i < dropdowns.length; i++) {
+            dropdownsguide[i].classList.remove('show');
         }
     }
 }

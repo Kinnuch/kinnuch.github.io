@@ -13,11 +13,11 @@
                 🏠 返回
             </a>
             
-            <div class="dropdown">
-                <button class="utility-btn" onclick="toggleDropdown()">
-                    ℹ 符号说明
+            <div class="dropdowninfo">
+                <button class="utility-btn" onclick="toggleDropdownInfo()">
+                    ℹ️ 符号说明
                 </button>
-                <div class="dropdown-content" id="dropdownContent">
+                <div class="dropdowninfo-content" id="dropdownContentInfo">
                     <p><strong>Soft</strong> - 软音变/弱化</p>
                     <p><strong>Plural</strong> - 复数</p>
                     <p><strong>NasalⅠ</strong> - 鼻音音变Ⅰ型（软鼻音音变）</p>
@@ -36,6 +36,16 @@
                     <p><strong>PastParticiple</strong> - 过去分词</p>
                     <p><strong>PresentParticiple</strong> - 现在分词</p>
                     <p><strong>PerfectParticiple</strong> - 完成分词</p>
+                </div>
+            </div>
+
+            <div class="dropdownguide">
+                <button class="utility-btn" onclick="toggleDropdownGuide()">
+                    🧭 使用指南
+                </button>
+                <div class="dropdownguide-content" id="dropdownContentGuide">
+                    <p><strong>名词形态</strong> - 展示了每种音变的变化</p>
+                    <p><strong>动词形态</strong> - 斜杠左侧为三单形式，右侧为未添加人称的非三单形式；如果有逗号则代表两种形式均可</p>
                 </div>
             </div>
         </div>

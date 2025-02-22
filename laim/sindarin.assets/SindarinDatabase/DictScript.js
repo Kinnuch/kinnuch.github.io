@@ -9,7 +9,8 @@ document.addEventListener('DOMContentLoaded', () => {
     fetch(data)
         .then(response => response.json())
         .then(data => {
-            allEntries = data.filter(entry => entry.dict_form !== "test");
+            allEntries = data
+            .filter(entry => entry.dict_form !== "test");
             filteredEntries = [...allEntries];
             loadMore();
             setupSearch();
@@ -51,7 +52,11 @@ function fillMorphology(entry) {
 
 function createEntryHTML(entry) {
     let sentenceHTML = '';
-    if (entry.sentence) {
+    const hasValidSentence = entry.sentence && 
+                            entry.sentence.trim() !== '' && 
+                            entry.sentence !== 'null' && 
+                            entry.sentence !== 'undefined';
+    if (hasValidSentence) {
         const formatted = entry.sentence.replace(
             /(\[.+\])/g,
             '<span class="sentence-bracket">$1</span>'
@@ -63,31 +68,30 @@ function createEntryHTML(entry) {
             '<span class="sentence-latin">$1</span>'
         );
         sentenceHTML = `<div class="sentence">${formatted}</div>`;
-
-        return `
+    }
+    let otherHTML = '';
+    const hasValidOther = entry.other && 
+                            entry.other.trim() !== '' && 
+                            entry.other !== 'null' && 
+                            entry.other !== 'undefined';
+    if (hasValidOther) {
+        const formatted = entry.other.replace(
+            /([\u4e00-\u9fa5，；]+)/g,
+            '<span lang="zh-Hans">$1</span>'
+        );
+        otherHTML = `<div class="other">${formatted}</div>`;
+    }
+    return `
         <div class="entry" onclick="toggleMorphology(this)">
             <div class="dict-form">${entry.dict_form}</div>
             <div class="part">${entry.part}</div>
             <div class="english">${entry.english}</div>
             <div class="definition">${entry.definition}</div>
             ${sentenceHTML}
-            <div class="other">${entry.other}</div>
+            ${otherHTML}
             ${fillMorphology(entry)}
         </div>
         `;
-    }
-    else {
-        return `
-        <div class="entry" onclick="toggleMorphology(this)">
-            <div class="dict-form">${entry.dict_form}</div>
-            <div class="part">${entry.part}</div>
-            <div class="english">${entry.english}</div>
-            <div class="definition">${entry.definition}</div>
-            <div class="other">${entry.other}</div>
-            ${fillMorphology(entry)}
-        </div>
-        `;
-    }
 }
 
 function toggleMorphology(element) {
@@ -149,11 +153,11 @@ function toggleDropdownGuide() {
 window.onclick = function(e) {
     if (!e.target.matches('.utility-btn')) {
         const dropdownsinfo = document.getElementsByClassName("dropdowninfo-content");
-        for (let i = 0; i < dropdowns.length; i++) {
+        for (let i = 0; i < dropdownsinfo.length; i++) {
             dropdownsinfo[i].classList.remove('show');
         }
         const dropdownsguide = document.getElementsByClassName("dropdownguide-content");
-        for (let i = 0; i < dropdowns.length; i++) {
+        for (let i = 0; i < dropdownsguide.length; i++) {
             dropdownsguide[i].classList.remove('show');
         }
     }

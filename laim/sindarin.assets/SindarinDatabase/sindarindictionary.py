@@ -235,7 +235,7 @@ class DictionaryApp:
                 "morphology": []
             }
             
-            for type, form, other_form in self.morphology_entries:
+            for type, form in self.morphology_entries:
                 new_entry["morphology"].append({
                     "type": type.get(),
                     "form": form.get(),

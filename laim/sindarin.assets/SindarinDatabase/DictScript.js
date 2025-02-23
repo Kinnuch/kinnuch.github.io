@@ -10,7 +10,8 @@ document.addEventListener('DOMContentLoaded', () => {
         .then(response => response.json())
         .then(data => {
             allEntries = data
-            .filter(entry => entry.dict_form !== "test");
+            .filter(entry => entry.dict_form !== "test")
+            .sort((a, b) => {return a.dict_form.localeCompare(b.dict_form)});
             filteredEntries = [...allEntries];
             loadMore();
             setupSearch();

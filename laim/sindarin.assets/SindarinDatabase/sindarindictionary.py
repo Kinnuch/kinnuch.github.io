@@ -14,6 +14,17 @@ class DictionaryApp:
         self.entries = []
         self.filtered_entries = []
         self.current_selection = None
+        self.morphology_options = {
+            "noun" : ["Soft", "Plural", "NasalⅠ", "NasalⅡ", "MixedⅠ", "MixedⅡ", "Liquid", "Stop", "H", "DH"],
+            "verb" : ["Present", "Past", "Future", "Imperative", "Gerund", "PastParticiple", "PresentParticiple", "PeferctParticle"],
+            "adjective" : ["Soft", "Plural", "Comparative", "Superlative"],
+            "adverb" : [],
+            "preposition" : [],
+            "conjunction" : [],
+            "pronoun" : [],
+            "affix" : [],
+            "other" : []
+        }
         
         # 初始化数据
         self.load_data()
@@ -56,6 +67,7 @@ class DictionaryApp:
         if os.path.exists(self.data_file):
             with open(self.data_file, 'r', encoding='utf-8') as f:
                 self.entries = json.load(f)
+                self.entries.sort(key=lambda x: x["dict_form"])
         else:
             self.entries = []
 
@@ -142,6 +154,9 @@ class DictionaryApp:
 
         entries_frame = ttk.Frame(dialog)
         entries_frame.pack(padx=10, pady=10)
+
+        pos_frame = ttk.Frame(dialog)
+        pos_frame.pack(padx=10, pady=5, fill=tk.X)
         
         # 初始化数据
         entry_data = self.entries[self.current_selection] if is_edit else None
@@ -151,10 +166,6 @@ class DictionaryApp:
         dict_form = ttk.Entry(entries_frame)
         dict_form.grid(row=0, column=1, pady=5)
 
-        ttk.Label(entries_frame, text="词性*:").grid(row=1, column=0, sticky=tk.W)
-        part = ttk.Combobox(entries_frame, values=["noun", "verb", "adjective", "adverb", "preposition", "conjunction", "pronoun", "affix", "other"], width=10)
-        part.grid(row=1, column=1, pady=5)
-        
         ttk.Label(entries_frame, text="英语*:").grid(row=2, column=0, sticky=tk.W)
         english = ttk.Entry(entries_frame)
         english.grid(row=2, column=1, pady=5)
@@ -175,59 +186,69 @@ class DictionaryApp:
         # 预填充编辑数据
         if is_edit:
             dict_form.insert(0, entry_data["dict_form"])
-            part.set(entry_data["part"])
             english.insert(0, entry_data["english"])
             definition.insert(0, entry_data["definition"])
             sentence.insert(1.0, entry_data["sentence"])
             other.insert(0, entry_data["other"])
         
-        # 形态输入框架
         morphology_frame = ttk.LabelFrame(dialog, text="形态")
         morphology_frame.pack(padx=10, pady=5, fill=tk.X)
         
         self.morphology_entries = []
         
-        def add_morphology_row(morph_data=None, partofspeech=None):
-            row_frame = ttk.Frame(morphology_frame)
-            row_frame.pack(fill=tk.X, pady=2)
+        def create_morphology_rows():
+            # 清空现有形态输入框
+            for widget in morphology_frame.winfo_children():
+                widget.destroy()
             
-            type = ttk.Combobox(row_frame, values=[""], width=10)
-            if (partofspeech == "noun"):
-                type = ttk.Combobox(row_frame, values=["Soft", "Plural", "NasalⅠ", "NasalⅡ", "MixedⅠ", "MixedⅡ", "Liquid", "Stop", "H", "DH"], width=10)
-            elif (partofspeech == "verb"):
-                type = ttk.Combobox(row_frame, values=["Present", "Past", "Future", "Imperative", "Gerund", "PastParticiple", "PresentParticiple", "PeferctParticle"], width=10)
-            elif (partofspeech == "adjective"):
-                type = ttk.Combobox(row_frame, values=["Soft", "Plural"], width=10)
-            type.pack(side=tk.LEFT, padx=2)
+            # 根据当前词性创建对应选项
+            current_pos = self.pos_var.get()
+            options = self.morphology_options.get(current_pos, [])
             
-            form = ttk.Entry(row_frame, width=20)
-            form.pack(side=tk.LEFT, padx=2)
+            if not options:
+                ttk.Label(morphology_frame, text="该词性没有预定义形态").pack()
+                return
             
-            # 预填充编辑数据
-            if morph_data:
-                type.set(morph_data["type"])
-                form.insert(0, morph_data["form"])
+            # 创建形态选择行
+            for i, morph_type in enumerate(options):
+                row_frame = ttk.Frame(morphology_frame)
+                row_frame.pack(fill=tk.X, pady=3)
+                
+                ttk.Label(row_frame, text=f"{morph_type}:").pack(side=tk.LEFT, padx=2)
+                entry = ttk.Entry(row_frame, width=25)
+                entry.pack(side=tk.LEFT, padx=2)
+                
+                # 预填充数据
+                if entry_data and entry_data.get("morphology"):
+                    for morph in entry_data["morphology"]:
+                        if morph["type"] == morph_type:
+                            entry.insert(0, morph["form"])
+                
+                self.morphology_entries.append((morph_type, entry))
             
-            self.morphology_entries.append((type, form))
-        
-        # 初始化现有形态数据
-        if is_edit and entry_data.get("morphology"):
-            for morph in entry_data["morphology"]:
-                add_morphology_row(morph, part.get())
-        else:
-            add_morphology_row(None, part.get())  # 默认添加空行
-        
-        ttk.Button(morphology_frame, text="添加形态", command=lambda: add_morphology_row(None, part.get())).pack(pady=5)
+        def update_morphology_options(event=None):
+            # 当词性改变时更新形态输入框
+            create_morphology_rows()
+
+        ttk.Label(pos_frame, text="词性*:").pack(side=tk.LEFT)
+        self.pos_var = tk.StringVar()
+        if is_edit:
+            self.pos_var.set(entry_data["part"])
+        pos_combo = ttk.Combobox(pos_frame, textvariable=self.pos_var, values=list(self.morphology_options.keys()))
+        pos_combo.pack(side=tk.LEFT, padx=5)
+        pos_combo.bind("<<ComboboxSelected>>", update_morphology_options)
+
+        create_morphology_rows()
 
         # 确认按钮
         def save_entry():
-            if not all([dict_form.get(), part.get(), english.get(), definition.get()]):
+            if not all([dict_form.get(), self.pos_var.get(), english.get(), definition.get()]):
                 messagebox.showerror("错误", "请填写所有必填字段")
                 return
             
             new_entry = {
                 "dict_form": dict_form.get(),
-                "part": part.get(),
+                "part": self.pos_var.get(),
                 "english": english.get(),
                 "definition": definition.get(),
                 "sentence": sentence.get(1.0, tk.END),
@@ -235,10 +256,10 @@ class DictionaryApp:
                 "morphology": []
             }
             
-            for type, form in self.morphology_entries:
+            for morph_type, entry_widget in self.morphology_entries:
                 new_entry["morphology"].append({
-                    "type": type.get(),
-                    "form": form.get(),
+                    "type": morph_type,
+                    "form": entry_widget.get()
                 })
             
             if is_edit:
@@ -251,7 +272,7 @@ class DictionaryApp:
             dialog.destroy()
         
         ttk.Button(dialog, text="保存", command=save_entry).pack(pady=10)
-
+        
 if __name__ == "__main__":
     root = tk.Tk()
     app = DictionaryApp(root)

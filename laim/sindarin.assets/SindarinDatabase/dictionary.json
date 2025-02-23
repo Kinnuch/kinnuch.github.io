@@ -1,5 +1,79 @@
 [
   {
+    "dict_form": "Adan",
+    "part": "noun",
+    "english": "Man(as a species)",
+    "definition": "人类（种族）",
+    "sentence": "[LotR/1061][PE17/117]\nÓnen i-Estel Edain.\n我把希望给了人类。\n\n\n\n",
+    "other": "有偏向性，一般指Dúnedain杜内丹人，其实广义的来说Adan应该包含杜内丹人，Rhúnedain东夷和Drúedain德鲁伊甸人",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i Adan"
+      },
+      {
+        "type": "Plural",
+        "form": "Edain"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "in Edain"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an Adan"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "en-Adan"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin Adan"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor Adan"
+      },
+      {
+        "type": "Stop",
+        "form": "od Adan"
+      },
+      {
+        "type": "H",
+        "form": "ah Adan"
+      },
+      {
+        "type": "DH",
+        "form": "nedh Adan"
+      }
+    ]
+  },
+  {
+    "dict_form": "a(ar)/ah",
+    "part": "conjunction",
+    "english": "and",
+    "definition": "和，并，且，同",
+    "sentence": "[Let/448][LotR/953]\nDaur a Berhael, Conin en Annûn.\n弗罗多和山姆，西方的王子\n\n\n",
+    "other": "a后接软音变；ah是多瑞亚斯方言变体，后接H音变",
+    "morphology": [
+      {
+        "type": "",
+        "form": "",
+        "other_form": ""
+      }
+    ]
+  },
+  {
+    "dict_form": "ab",
+    "part": "preposition",
+    "english": "after",
+    "definition": "在...之后",
+    "sentence": "\n\n",
+    "other": "",
+    "morphology": []
+  },
+  {
     "dict_form": "ablad",
     "part": "noun",
     "english": "prohibition, refusal",
@@ -365,66 +439,6 @@
     ]
   },
   {
-    "dict_form": "Adan",
-    "part": "noun",
-    "english": "Man(as a species)",
-    "definition": "人类（种族）",
-    "sentence": "[LotR/1061][PE17/117]\nÓnen i-Estel Edain.\n我把希望给了人类。\n\n",
-    "other": "有偏向性，一般指Dúnedain杜内丹人，其实广义的来说Adan应该包含杜内丹人，Rhúnedain东夷和Drúedain德鲁伊甸人",
-    "morphology": [
-      {
-        "type": "Soft",
-        "form": "i Adan",
-        "other_form": ""
-      },
-      {
-        "type": "Plural",
-        "form": "Edain",
-        "other_form": ""
-      },
-      {
-        "type": "NasalⅠ",
-        "form": "in Edain",
-        "other_form": ""
-      },
-      {
-        "type": "NasalⅡ",
-        "form": "an Adan",
-        "other_form": ""
-      },
-      {
-        "type": "MixedⅠ",
-        "form": "en-Adan",
-        "other_form": ""
-      },
-      {
-        "type": "MixedⅡ",
-        "form": "anin Adan",
-        "other_form": ""
-      },
-      {
-        "type": "Liquid",
-        "form": "egor Adan",
-        "other_form": ""
-      },
-      {
-        "type": "Stop",
-        "form": "od Adan",
-        "other_form": ""
-      },
-      {
-        "type": "H",
-        "form": "ah Adan",
-        "other_form": ""
-      },
-      {
-        "type": "DH",
-        "form": "nedh Adan",
-        "other_form": ""
-      }
-    ]
-  },
-  {
     "dict_form": "adaneth",
     "part": "noun",
     "english": "(mortal)woman",
@@ -705,37 +719,28 @@
     ]
   },
   {
-    "dict_form": "a(ar)/ah",
-    "part": "conjunction",
-    "english": "and",
-    "definition": "和，并，且，同",
-    "sentence": "[Let/448][LotR/953]\nDaur a Berhael, Conin en Annûn.\n弗罗多和山姆，西方的王子\n\n\n",
-    "other": "a后接软音变；ah是多瑞亚斯方言变体，后接H音变",
-    "morphology": [
-      {
-        "type": "",
-        "form": "",
-        "other_form": ""
-      }
-    ]
-  },
-  {
     "dict_form": "adu",
     "part": "adjective",
     "english": "double",
     "definition": "两倍的",
-    "sentence": "\n\n",
+    "sentence": "\n\n\n",
     "other": "",
     "morphology": [
       {
         "type": "Soft",
-        "form": "adu",
-        "other_form": ""
+        "form": "adu"
       },
       {
         "type": "Plural",
-        "form": "无复数形式",
-        "other_form": ""
+        "form": "无复数形式"
+      },
+      {
+        "type": "Comparative",
+        "form": "无比较级形式"
+      },
+      {
+        "type": "Superlative",
+        "form": "无最高级形式"
       }
     ]
   },
@@ -864,18 +869,24 @@
     "part": "adjective",
     "english": "sharp",
     "definition": "尖锐的，尖的，尖端的，顶端的",
-    "sentence": "\n\n",
+    "sentence": "\n\n\n",
     "other": "",
     "morphology": [
       {
         "type": "Soft",
-        "form": "aeg",
-        "other_form": ""
+        "form": "aeg"
       },
       {
         "type": "Plural",
-        "form": "aeg",
-        "other_form": ""
+        "form": "aeg"
+      },
+      {
+        "type": "Comparative",
+        "form": "anaeg"
+      },
+      {
+        "type": "Superlative",
+        "form": "roaeg"
       }
     ]
   },
@@ -1079,18 +1090,24 @@
     "part": "adjective",
     "english": "hallowed, holy",
     "definition": "神圣的",
-    "sentence": "[VT44/21]\nNo aer i eneth lín.\n愿汝名祝圣\n\n\n",
+    "sentence": "[VT44/21]\nNo aer i eneth lín.\n愿汝名祝圣\n\n\n\n",
     "other": "",
     "morphology": [
       {
         "type": "Soft",
-        "form": "aer",
-        "other_form": ""
+        "form": "aer"
       },
       {
         "type": "Plural",
-        "form": "aer",
-        "other_form": ""
+        "form": "aer"
+      },
+      {
+        "type": "Comparative",
+        "form": "anaer"
+      },
+      {
+        "type": "Superlative",
+        "form": "roaer"
       }
     ]
   },
@@ -1219,18 +1236,24 @@
     "part": "adjective",
     "english": "of birds",
     "definition": "鸟儿们的",
-    "sentence": "[SA/lin]\nLinaewen.\n利耐温湖，众鸟之湖泊\n\n\n",
+    "sentence": "[SA/lin]\nLinaewen.\n利耐温湖，众鸟之湖泊\n\n\n\n\n",
     "other": "",
     "morphology": [
       {
         "type": "Soft",
-        "form": "aewen",
-        "other_form": ""
+        "form": "aewen"
       },
       {
         "type": "Plural",
-        "form": "aewin（可能不合法）",
-        "other_form": ""
+        "form": "aewin"
+      },
+      {
+        "type": "Comparative",
+        "form": "无比较级形式"
+      },
+      {
+        "type": "Superlative",
+        "form": "无最高级形式"
       }
     ]
   },
@@ -1359,18 +1382,24 @@
     "part": "adjective",
     "english": "glorious, brilliant",
     "definition": "荣耀的，光荣的，荣光的",
-    "sentence": "[S/115]\nDagor Aglareb.\n荣耀之战（达戈·阿格拉瑞布）\n\n\n",
+    "sentence": "[S/115]\nDagor Aglareb.\n荣耀之战（达戈·阿格拉瑞布）\n\n\n\n",
     "other": "aglar + -eb",
     "morphology": [
       {
         "type": "Soft",
-        "form": "aglareb",
-        "other_form": ""
+        "form": "aglareb"
       },
       {
         "type": "Plural",
-        "form": "eglerib",
-        "other_form": ""
+        "form": "eglerib"
+      },
+      {
+        "type": "Comparative",
+        "form": "anaglareb"
+      },
+      {
+        "type": "Superlative",
+        "form": "roaglareb"
       }
     ]
   },
@@ -1379,18 +1408,24 @@
     "part": "adjective",
     "english": "glorious, brilliant",
     "definition": "荣耀的，光荣的，荣光的",
-    "sentence": "\n\n",
+    "sentence": "\n\n\n",
     "other": "同aglareb",
     "morphology": [
       {
         "type": "Soft",
-        "form": "aglor",
-        "other_form": ""
+        "form": "aglor"
       },
       {
         "type": "Plural",
-        "form": "eglyr",
-        "other_form": ""
+        "form": "eglyr"
+      },
+      {
+        "type": "Comparative",
+        "form": "anaglor"
+      },
+      {
+        "type": "Superlative",
+        "form": "roaglor"
       }
     ]
   },
@@ -1429,18 +1464,24 @@
     "part": "adjective",
     "english": "lonely",
     "definition": "孤独的，独自的，仅剩的，孑然",
-    "sentence": "[VT50/5]\nI glinn hen agorer Edain mi Velerian, ach hí in Ellath îr ed epholar.\n人类在贝烈瑞安德创作了这首歌，但如今独有精灵（？记得）它了。\n\n\n",
+    "sentence": "[VT50/5]\nI glinn hen agorer Edain mi Velerian, ach hí in Ellath îr ed epholar.\n人类在贝烈瑞安德创作了这首歌，但如今独有精灵（？记得）它了。\n\n\n\n",
     "other": "属于古-ya词，干元音i",
     "morphology": [
       {
         "type": "Soft",
-        "form": "air",
-        "other_form": ""
+        "form": "air"
       },
       {
         "type": "Plural",
-        "form": "îr",
-        "other_form": ""
+        "form": "îr"
+      },
+      {
+        "type": "Comparative",
+        "form": "anair"
+      },
+      {
+        "type": "Superlative",
+        "form": "roair"
       }
     ]
   },
@@ -1576,6 +1617,1693 @@
         "type": "DH",
         "form": "nedh albeth",
         "other_form": ""
+      }
+    ]
+  },
+  {
+    "dict_form": "alfirin",
+    "part": "noun",
+    "english": "a species of flower",
+    "definition": "阿尔费琳，永生花；（辛贝穆奈的别名）",
+    "sentence": "\n\n",
+    "other": "一说al- + pirin = alphirin 阿尔费琳这一辛达语名称疑似同时指代了两种花，莱本宁平原上的金色钟状花朵和洁白的辛贝穆奈",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i alfirin"
+      },
+      {
+        "type": "Plural",
+        "form": "elfirin"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "in elfirin"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an alfirin"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "en-alfirin"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin alfirin"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor alfirin"
+      },
+      {
+        "type": "Stop",
+        "form": "od alfirin"
+      },
+      {
+        "type": "H",
+        "form": "ah alfirin"
+      },
+      {
+        "type": "DH",
+        "form": "nedh alfirin"
+      }
+    ]
+  },
+  {
+    "dict_form": "alfirin",
+    "part": "adjective",
+    "english": "immortal, not dying",
+    "definition": "永生的，不会死亡的，不朽的，不会凋零的",
+    "sentence": "\n\n\n",
+    "other": "al- + firin",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "alfirin"
+      },
+      {
+        "type": "Plural",
+        "form": "elfirin"
+      },
+      {
+        "type": "Comparative",
+        "form": "analfirin"
+      },
+      {
+        "type": "Superlative",
+        "form": "roalfirin"
+      }
+    ]
+  },
+  {
+    "dict_form": "alph",
+    "part": "noun",
+    "english": "swan",
+    "definition": "天鹅",
+    "sentence": "[NM/378][VT42/7]\nNîn-in-Eilph.\n天鹅泽（宁-因-艾尔芙）\n\n",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i alph"
+      },
+      {
+        "type": "Plural",
+        "form": "eilph"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "in eilph"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an alph"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "en-alph"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin alph"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor alph"
+      },
+      {
+        "type": "Stop",
+        "form": "od alph"
+      },
+      {
+        "type": "H",
+        "form": "ah alph"
+      },
+      {
+        "type": "DH",
+        "form": "nedh alph"
+      }
+    ]
+  },
+  {
+    "dict_form": "alu(alw)",
+    "part": "adjective",
+    "english": "wholesome",
+    "definition": "有益的，有益健康的",
+    "sentence": "\n",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "alu"
+      },
+      {
+        "type": "Plural",
+        "form": "ely"
+      },
+      {
+        "type": "Comparative",
+        "form": "analu"
+      },
+      {
+        "type": "Superlative",
+        "form": "roalu"
+      }
+    ]
+  },
+  {
+    "dict_form": "alwed",
+    "part": "adjective",
+    "english": "prosperous, fortunate",
+    "definition": "繁荣的，富裕的；辛运的",
+    "sentence": "\n",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "alwed"
+      },
+      {
+        "type": "Plural",
+        "form": "elwid"
+      },
+      {
+        "type": "Comparative",
+        "form": "analwed"
+      },
+      {
+        "type": "Superlative",
+        "form": "roalwed"
+      }
+    ]
+  },
+  {
+    "dict_form": "am",
+    "part": "adverb",
+    "english": "up",
+    "definition": "向上",
+    "sentence": "\n",
+    "other": "",
+    "morphology": []
+  },
+  {
+    "dict_form": "amar",
+    "part": "noun",
+    "english": "world, the Earth, settlement, the great habitation",
+    "definition": "世界，大地；大居留地",
+    "sentence": "\n",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i amar"
+      },
+      {
+        "type": "Plural",
+        "form": "emair"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "in emair"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an amar"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "en-amar"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin amar"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor amar"
+      },
+      {
+        "type": "Stop",
+        "form": "od amar"
+      },
+      {
+        "type": "H",
+        "form": "ah amar"
+      },
+      {
+        "type": "DH",
+        "form": "nedh amar"
+      }
+    ]
+  },
+  {
+    "dict_form": "amarth",
+    "part": "noun",
+    "english": "fate, doom",
+    "definition": "命运；厄运；毁灭，死亡，末日",
+    "sentence": "[PE17/66][PE17/104][PE17/114][PE17/123]\nAmon Amarth.\n末日火山\n",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i amarth"
+      },
+      {
+        "type": "Plural",
+        "form": "emerth"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "in emerth"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an amarth"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "en-amarth"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin amarth"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor amarth"
+      },
+      {
+        "type": "Stop",
+        "form": "od amarth"
+      },
+      {
+        "type": "H",
+        "form": "ah amarth"
+      },
+      {
+        "type": "DH",
+        "form": "nedh amarth"
+      }
+    ]
+  },
+  {
+    "dict_form": "amartha-",
+    "part": "verb",
+    "english": "to define, decree, destine",
+    "definition": "定义；限定，指定；颁布法令，政令，命令；命定，预定，注定",
+    "sentence": "\n",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Present",
+        "form": "amartha/amartha(o)-"
+      },
+      {
+        "type": "Past",
+        "form": "amarthant/amarthanne-"
+      },
+      {
+        "type": "Future",
+        "form": "amarthatha/amarthatha(o)-"
+      },
+      {
+        "type": "Imperative",
+        "form": "amartho"
+      },
+      {
+        "type": "Gerund",
+        "form": "amarthad"
+      },
+      {
+        "type": "PastParticiple",
+        "form": "amarthannen"
+      },
+      {
+        "type": "PresentParticiple",
+        "form": "amarthol"
+      },
+      {
+        "type": "PeferctParticle",
+        "form": "emerthiel"
+      }
+    ]
+  },
+  {
+    "dict_form": "amdir",
+    "part": "noun",
+    "english": "hope(based on reason)",
+    "definition": "（基于理由的）希望",
+    "sentence": "\n",
+    "other": "am- + tir-",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i amdir"
+      },
+      {
+        "type": "Plural",
+        "form": "emdir"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "in emdir"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an amdir"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "en-amdir"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin amdir"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor amdir"
+      },
+      {
+        "type": "Stop",
+        "form": "od amdir"
+      },
+      {
+        "type": "H",
+        "form": "ah amdir"
+      },
+      {
+        "type": "DH",
+        "form": "nedh amdir"
+      }
+    ]
+  },
+  {
+    "dict_form": "amloth",
+    "part": "noun",
+    "english": "helm crest",
+    "definition": "头盔上的羽饰或花纹",
+    "sentence": "\n",
+    "other": "am- + loth = 上扬的花",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i amloth"
+      },
+      {
+        "type": "Plural",
+        "form": "emlyth"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "in emlyth"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an amloth"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "en-amloth"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin amloth"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor amloth"
+      },
+      {
+        "type": "Stop",
+        "form": "od amloth"
+      },
+      {
+        "type": "H",
+        "form": "ah amloth"
+      },
+      {
+        "type": "DH",
+        "form": "nedh amloth"
+      }
+    ]
+  },
+  {
+    "dict_form": "amon",
+    "part": "noun",
+    "english": "hill, mountain with steep sides, lump, clump, mass",
+    "definition": "小山，山丘，有陡坡的山；块，簇，集，群",
+    "sentence": "[RC/334]\nEmyn Muil.\n埃敏穆伊，忧郁丘陵\n",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i amon"
+      },
+      {
+        "type": "Plural",
+        "form": "emyn"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "in emyn"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an amon"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "en-amon"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin amon"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor amon"
+      },
+      {
+        "type": "Stop",
+        "form": "od amon"
+      },
+      {
+        "type": "H",
+        "form": "ah amon"
+      },
+      {
+        "type": "DH",
+        "form": "nedh amon"
+      }
+    ]
+  },
+  {
+    "dict_form": "amrûn",
+    "part": "noun",
+    "english": "sunrise, east",
+    "definition": "日出；东方",
+    "sentence": "\n",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i amrûn"
+      },
+      {
+        "type": "Plural",
+        "form": "emruin"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "in emruin"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an amrûn"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "en-amrûn"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin amrûn"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor amrûn"
+      },
+      {
+        "type": "Stop",
+        "form": "od amrûn"
+      },
+      {
+        "type": "H",
+        "form": "ah amrûn"
+      },
+      {
+        "type": "DH",
+        "form": "nedh amrûn"
+      }
+    ]
+  },
+  {
+    "dict_form": "an",
+    "part": "preposition",
+    "english": "to, for",
+    "definition": "为了，对...，",
+    "sentence": "\n",
+    "other": "",
+    "morphology": []
+  },
+  {
+    "dict_form": "anann",
+    "part": "adverb",
+    "english": "(for)long",
+    "definition": "长时间，长久",
+    "sentence": "[Let/448][LotR/953][PE17/102]\nCuio i Pheriain anann.\n愿半身人长盛不衰\n",
+    "other": "an + and",
+    "morphology": []
+  },
+  {
+    "dict_form": "and",
+    "part": "adjective",
+    "english": "long",
+    "definition": "长的",
+    "sentence": "[PE17/147]\ni arben na megil and.\n长剑骑士\n",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "and"
+      },
+      {
+        "type": "Plural",
+        "form": "end"
+      },
+      {
+        "type": "Comparative",
+        "form": "anand"
+      },
+      {
+        "type": "Superlative",
+        "form": "roand"
+      }
+    ]
+  },
+  {
+    "dict_form": "andaith",
+    "part": "noun",
+    "english": "long-mark",
+    "definition": "（腾格瓦中的）长音标记",
+    "sentence": "\n",
+    "other": "and + taith",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i andaith"
+      },
+      {
+        "type": "Plural",
+        "form": "endaith"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "in endaith"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an andaith"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "en-andaith"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin andaith"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor andaith"
+      },
+      {
+        "type": "Stop",
+        "form": "od andaith"
+      },
+      {
+        "type": "H",
+        "form": "ah andaith"
+      },
+      {
+        "type": "DH",
+        "form": "nedh andaith"
+      }
+    ]
+  },
+  {
+    "dict_form": "andreth",
+    "part": "noun",
+    "english": "long-suffering, patience",
+    "definition": "耐心，长期受苦，受难",
+    "sentence": "\n",
+    "other": "and + reth-",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i andreth"
+      },
+      {
+        "type": "Plural",
+        "form": "endrith"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "in endrith"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an andreth"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "en-andreth"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin andreth"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor andreth"
+      },
+      {
+        "type": "Stop",
+        "form": "od andreth"
+      },
+      {
+        "type": "H",
+        "form": "ah andreth"
+      },
+      {
+        "type": "DH",
+        "form": "nedh andreth"
+      }
+    ]
+  },
+  {
+    "dict_form": "ang",
+    "part": "noun",
+    "english": "iron",
+    "definition": "铁",
+    "sentence": "[SA/anga]\nAngband.\n安格班，铁牢笼\n",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i ang"
+      },
+      {
+        "type": "Plural",
+        "form": "eng"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "in eng"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an ang"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "en-ang"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin ang"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor ang"
+      },
+      {
+        "type": "Stop",
+        "form": "od ang"
+      },
+      {
+        "type": "H",
+        "form": "ah ang"
+      },
+      {
+        "type": "DH",
+        "form": "nedh ang"
+      }
+    ]
+  },
+  {
+    "dict_form": "angerthas",
+    "part": "noun",
+    "english": "runic alphabetic",
+    "definition": "如尼字母",
+    "sentence": "[LotR/1123]\nAngerthas Daeron.\n戴隆的如尼文\n",
+    "other": "ang + certhas",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i angerthas"
+      },
+      {
+        "type": "Plural",
+        "form": "engerthais"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "in engerthais"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an angerthas"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "en-angerthas"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin angerthas"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor angerthas"
+      },
+      {
+        "type": "Stop",
+        "form": "od angerthas"
+      },
+      {
+        "type": "H",
+        "form": "ah angerthas"
+      },
+      {
+        "type": "DH",
+        "form": "nedh angerthas"
+      }
+    ]
+  },
+  {
+    "dict_form": "anglenna-",
+    "part": "verb",
+    "english": "to approach",
+    "definition": "接近，靠近",
+    "sentence": "[AotM/62][SD/129]\nanglennatha i Varanduiniant erin dolothen Ethuil.\n阿拉贡将会在春季的第八天接近白兰地河大桥\n",
+    "other": "an + glenna-",
+    "morphology": [
+      {
+        "type": "Present",
+        "form": "anglenna/anglenna(o)-"
+      },
+      {
+        "type": "Past",
+        "form": "anglennant/anglenne-"
+      },
+      {
+        "type": "Future",
+        "form": "anglennatha/anglennatha(o)-"
+      },
+      {
+        "type": "Imperative",
+        "form": "anglenno"
+      },
+      {
+        "type": "Gerund",
+        "form": "anglennad"
+      },
+      {
+        "type": "PastParticiple",
+        "form": "anglennen"
+      },
+      {
+        "type": "PresentParticiple",
+        "form": "anglennol"
+      },
+      {
+        "type": "PeferctParticle",
+        "form": "englenniel"
+      }
+    ]
+  },
+  {
+    "dict_form": "angren",
+    "part": "adjective",
+    "english": "of iron",
+    "definition": "铁的，钢铁的",
+    "sentence": "[SA/anga]\nEred Engrin.\n铁山脉，严酷山脉\n",
+    "other": "ang + -ren",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "angren"
+      },
+      {
+        "type": "Plural",
+        "form": "engrin"
+      },
+      {
+        "type": "Comparative",
+        "form": "无比较级形式"
+      },
+      {
+        "type": "Superlative",
+        "form": "无最高级形式"
+      }
+    ]
+  },
+  {
+    "dict_form": "aníra-",
+    "part": "verb",
+    "english": "to desire",
+    "definition": "渴望，需要，渴求，想要",
+    "sentence": "[AotM/62][SD/129]\nar e aníra ennas suilannad mhellyn în phain.\n而且他想要在那里见见他所有的朋友\n",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Present",
+        "form": "aníra/aníra(o)-"
+      },
+      {
+        "type": "Past",
+        "form": "anírant/aníranne-"
+      },
+      {
+        "type": "Future",
+        "form": "aníratha/aníratha(o)-"
+      },
+      {
+        "type": "Imperative",
+        "form": "aníro"
+      },
+      {
+        "type": "Gerund",
+        "form": "anírad"
+      },
+      {
+        "type": "PastParticiple",
+        "form": "anírannen"
+      },
+      {
+        "type": "PresentParticiple",
+        "form": "anírol"
+      },
+      {
+        "type": "PeferctParticle",
+        "form": "eníriel"
+      }
+    ]
+  },
+  {
+    "dict_form": "ann",
+    "part": "noun",
+    "english": "gift",
+    "definition": "礼物",
+    "sentence": "\n",
+    "other": "Melian的名字即为珍贵的礼物",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i ann"
+      },
+      {
+        "type": "Plural",
+        "form": "enn"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "in enn"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an ann"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "en-ann"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin ann"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor ann"
+      },
+      {
+        "type": "Stop",
+        "form": "od ann"
+      },
+      {
+        "type": "H",
+        "form": "ah ann"
+      },
+      {
+        "type": "DH",
+        "form": "nedh ann"
+      }
+    ]
+  },
+  {
+    "dict_form": "anna-",
+    "part": "verb",
+    "english": "to give",
+    "definition": "给，呈，递给",
+    "sentence": "[VT44/21]\nanno ammen sír i mbas ilaurui vín.\n在这天给我们每天的面包\n",
+    "other": "TA类动词，变形时词根视为an-",
+    "morphology": [
+      {
+        "type": "Present",
+        "form": "anna/anna(o)-"
+      },
+      {
+        "type": "Past",
+        "form": "aun/óne-"
+      },
+      {
+        "type": "Future",
+        "form": "annatha/annatha(o)-"
+      },
+      {
+        "type": "Imperative",
+        "form": "anno"
+      },
+      {
+        "type": "Gerund",
+        "form": "aned"
+      },
+      {
+        "type": "PastParticiple",
+        "form": "annen"
+      },
+      {
+        "type": "PresentParticiple",
+        "form": "anel"
+      },
+      {
+        "type": "PeferctParticle",
+        "form": "óniel"
+      }
+    ]
+  },
+  {
+    "dict_form": "annon",
+    "part": "noun",
+    "english": "(great)gate, door",
+    "definition": "大门，城门",
+    "sentence": "[LotR/307][PE17/45]\nannon edhellen, edro hi ammen.\n精灵之门，为吾而开\n",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i annon"
+      },
+      {
+        "type": "Plural",
+        "form": "ennyn"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "in ennyn"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an annon"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "en-annon"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin annon"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor annon"
+      },
+      {
+        "type": "Stop",
+        "form": "od annon"
+      },
+      {
+        "type": "H",
+        "form": "ah annon"
+      },
+      {
+        "type": "DH",
+        "form": "nedh annon"
+      }
+    ]
+  },
+  {
+    "dict_form": "annui",
+    "part": "adjective",
+    "english": "west, western",
+    "definition": "西方，西方的",
+    "sentence": "[AotM/62][SD/128]\naran Gondor ar Arnor ar Hîr i Mbair Annui.\n刚铎与阿尔诺的国王暨西境之主\n",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "annui"
+      },
+      {
+        "type": "Plural",
+        "form": "ennui"
+      },
+      {
+        "type": "Comparative",
+        "form": "anannui"
+      },
+      {
+        "type": "Superlative",
+        "form": "roannui"
+      }
+    ]
+  },
+  {
+    "dict_form": "annûn",
+    "part": "noun",
+    "english": "sunset, west",
+    "definition": "日落；西方",
+    "sentence": "[LB/354]\na Hîr Annûn Gilthoniel.\n哦，西境女士，吉尔松涅尔\n",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i annûn"
+      },
+      {
+        "type": "Plural",
+        "form": "ennuin"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "in ennuin"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an annûn"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "en-annûn"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin annûn"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor annûn"
+      },
+      {
+        "type": "Stop",
+        "form": "od annûn"
+      },
+      {
+        "type": "H",
+        "form": "ah annûn"
+      },
+      {
+        "type": "DH",
+        "form": "nedh annûn"
+      }
+    ]
+  },
+  {
+    "dict_form": "Anor",
+    "part": "noun",
+    "english": "Sun",
+    "definition": "太阳",
+    "sentence": "\n",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i Anor"
+      },
+      {
+        "type": "Plural",
+        "form": "专有，无复数"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "in Anor(不合法)"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an Anor"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "专有，无需添加the"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "专有，无需添加the"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor Anor"
+      },
+      {
+        "type": "Stop",
+        "form": "od Anor"
+      },
+      {
+        "type": "H",
+        "form": "ah Anor"
+      },
+      {
+        "type": "DH",
+        "form": "nedh Anor"
+      }
+    ]
+  },
+  {
+    "dict_form": "anwar",
+    "part": "noun",
+    "english": "awe",
+    "definition": "惊奇，惊叹；震慑，敬畏",
+    "sentence": "[UT/301]\nAmon Anwar.\n安瓦尔山，敬畏之山\n",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i anwar"
+      },
+      {
+        "type": "Plural",
+        "form": "enwair"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "in enwair"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an anwar"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "en-anwar"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin anwar"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor anwar"
+      },
+      {
+        "type": "Stop",
+        "form": "od anwar"
+      },
+      {
+        "type": "H",
+        "form": "ah anwar"
+      },
+      {
+        "type": "DH",
+        "form": "nedh anwar"
+      }
+    ]
+  },
+  {
+    "dict_form": "aphad-",
+    "part": "verb",
+    "english": "to follow",
+    "definition": "跟随，跟上，跟着，追随",
+    "sentence": "[WJ/387]\naphadon.\n追随者\n",
+    "other": "ab + pad-",
+    "morphology": [
+      {
+        "type": "Present",
+        "form": "aphad/ephedi-"
+      },
+      {
+        "type": "Past",
+        "form": "aphant/aphanne-"
+      },
+      {
+        "type": "Future",
+        "form": "aphadatha/aphadatha(o)-"
+      },
+      {
+        "type": "Imperative",
+        "form": "aphado"
+      },
+      {
+        "type": "Gerund",
+        "form": "aphaded"
+      },
+      {
+        "type": "PastParticiple",
+        "form": "aphannen"
+      },
+      {
+        "type": "PresentParticiple",
+        "form": "aphadel"
+      },
+      {
+        "type": "PeferctParticle",
+        "form": "aphódiel"
+      }
+    ]
+  },
+  {
+    "dict_form": "aphadon",
+    "part": "noun",
+    "english": "follower",
+    "definition": "追随者，跟随者；信众",
+    "sentence": "\n",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i aphadon"
+      },
+      {
+        "type": "Plural",
+        "form": "ephedyn"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "in ephedyn"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an aphadon"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "en-aphadon"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin aphadon"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor aphadon"
+      },
+      {
+        "type": "Stop",
+        "form": "od aphadon"
+      },
+      {
+        "type": "H",
+        "form": "ah aphadon"
+      },
+      {
+        "type": "DH",
+        "form": "nedh aphadon"
+      }
+    ]
+  },
+  {
+    "dict_form": "aphed-",
+    "part": "verb",
+    "english": "to answer",
+    "definition": "回答，应答",
+    "sentence": "\n",
+    "other": "ad- + ped-",
+    "morphology": [
+      {
+        "type": "Present",
+        "form": "aphed/ephedi-"
+      },
+      {
+        "type": "Past",
+        "form": "aphent/aphenne-"
+      },
+      {
+        "type": "Future",
+        "form": "aphedatha/aphedatha(o)-"
+      },
+      {
+        "type": "Imperative",
+        "form": "aphedo"
+      },
+      {
+        "type": "Gerund",
+        "form": "apheded"
+      },
+      {
+        "type": "PastParticiple",
+        "form": "aphennen"
+      },
+      {
+        "type": "PresentParticiple",
+        "form": "aphedel"
+      },
+      {
+        "type": "PeferctParticle",
+        "form": "aphídiel"
+      }
+    ]
+  },
+  {
+    "dict_form": "archadhu",
+    "part": "noun",
+    "english": "throne, high seat",
+    "definition": "王座，王位",
+    "sentence": "\n",
+    "other": "ar(a)- + hadhu, 原拼写为arahadhw",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i archadhu"
+      },
+      {
+        "type": "Plural",
+        "form": "erchedhu"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "in erchedhu"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an archadhu"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "en-archadhu"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin archadhu"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor archadhu"
+      },
+      {
+        "type": "Stop",
+        "form": "od archadhu"
+      },
+      {
+        "type": "H",
+        "form": "ah archadhu"
+      },
+      {
+        "type": "DH",
+        "form": "nedh archadhu"
+      }
+    ]
+  },
+  {
+    "dict_form": "aran",
+    "part": "noun",
+    "english": "king, lord, chief, high or noble person",
+    "definition": "王，国王；领主；首领，酋长；高贵或德高望重的人",
+    "sentence": "[LotR/305][PE17/40]\nEnnyn Durin Aran Moria.\n都林之门，摩瑞亚之主\n",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i aran"
+      },
+      {
+        "type": "Plural",
+        "form": "erain"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "in erain"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an aran"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "en-aran"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin aran"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor aran"
+      },
+      {
+        "type": "Stop",
+        "form": "od aran"
+      },
+      {
+        "type": "H",
+        "form": "ah aran"
+      },
+      {
+        "type": "DH",
+        "form": "nedh aran"
+      }
+    ]
+  },
+  {
+    "dict_form": "aras",
+    "part": "noun",
+    "english": "deer",
+    "definition": "鹿",
+    "sentence": "[UT/150]\nCabed-en-Aras.\n卡贝得-恩-阿拉斯，鹿跃\n",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i aras"
+      },
+      {
+        "type": "Plural",
+        "form": "erais"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "in erais"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an aras"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "en-aras"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin aras"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor aras"
+      },
+      {
+        "type": "Stop",
+        "form": "od aras"
+      },
+      {
+        "type": "H",
+        "form": "ah aras"
+      },
+      {
+        "type": "DH",
+        "form": "nedh aras"
+      }
+    ]
+  },
+  {
+    "dict_form": "arnad",
+    "part": "noun",
+    "english": "kingdom",
+    "definition": "国度，国家，王国，王土",
+    "sentence": "[VT44/21]\ntolo i arnad lín.\n你的王国降临了\n",
+    "other": "aran + -ad",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i arnad"
+      },
+      {
+        "type": "Plural",
+        "form": "ernaid"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "in ernaid"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an arnad"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "en-arnad"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin arnad"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor arnad"
+      },
+      {
+        "type": "Stop",
+        "form": "od arnad"
+      },
+      {
+        "type": "H",
+        "form": "ah arnad"
+      },
+      {
+        "type": "DH",
+        "form": "nedh arnad"
+      }
+    ]
+  },
+  {
+    "dict_form": "arnediad",
+    "part": "adjective",
+    "english": "unnumbered",
+    "definition": "数不清的，无数的；未编号的",
+    "sentence": "[WJ/28]\nDagor Arnediad.\n泪雨之战，无数的眼泪之战，达戈·阿诺迪亚德\n\n",
+    "other": "ar- + nedia-, 旧拼arnoediad",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "arnediad"
+      },
+      {
+        "type": "Plural",
+        "form": "已经有复数含义"
+      },
+      {
+        "type": "Comparative",
+        "form": "无比较级形式"
+      },
+      {
+        "type": "Superlative",
+        "form": "无最高级形式"
+      }
+    ]
+  },
+  {
+    "dict_form": "arod",
+    "part": "adjective",
+    "english": "noble",
+    "definition": "高贵的，贵族的；道德的，高尚的，伟大的",
+    "sentence": "\n",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "arod"
+      },
+      {
+        "type": "Plural",
+        "form": "eryd"
+      },
+      {
+        "type": "Comparative",
+        "form": "anarod"
+      },
+      {
+        "type": "Superlative",
+        "form": "roarod"
+      }
+    ]
+  },
+  {
+    "dict_form": "arphen",
+    "part": "noun",
+    "english": "noble, knight",
+    "definition": "骑士；贵族",
+    "sentence": "\n",
+    "other": "ar(a)- + pen, 旧拼arben",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i arphen"
+      },
+      {
+        "type": "Plural",
+        "form": "erphin"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "in erphin"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an arphen"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "en-arphen"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin arphen"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor arphen"
+      },
+      {
+        "type": "Stop",
+        "form": "od arphen"
+      },
+      {
+        "type": "H",
+        "form": "ah arphen"
+      },
+      {
+        "type": "DH",
+        "form": "nedh arphen"
+      }
+    ]
+  },
+  {
+    "dict_form": "arthor",
+    "part": "noun",
+    "english": "realm",
+    "definition": "国家；界，领域；范围",
+    "sentence": "\n",
+    "other": "注意和表示区域的gardh区分",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i arthor"
+      },
+      {
+        "type": "Plural",
+        "form": "erthyr"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "in erthyr"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an arthor"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "en-arthor"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin arthor"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor arthor"
+      },
+      {
+        "type": "Stop",
+        "form": "od arthor"
+      },
+      {
+        "type": "H",
+        "form": "ah arthor"
+      },
+      {
+        "type": "DH",
+        "form": "nedh arthor"
       }
     ]
   }

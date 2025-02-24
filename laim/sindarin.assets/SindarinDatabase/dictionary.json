@@ -50,6 +50,56 @@
     ]
   },
   {
+    "dict_form": "Anor",
+    "part": "noun",
+    "english": "Sun",
+    "definition": "太阳",
+    "sentence": "\n",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i Anor"
+      },
+      {
+        "type": "Plural",
+        "form": "专有，无复数"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "in Anor(不合法)"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an Anor"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "专有，无需添加the"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "专有，无需添加the"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor Anor"
+      },
+      {
+        "type": "Stop",
+        "form": "od Anor"
+      },
+      {
+        "type": "H",
+        "form": "ah Anor"
+      },
+      {
+        "type": "DH",
+        "form": "nedh Anor"
+      }
+    ]
+  },
+  {
     "dict_form": "a(ar)/ah",
     "part": "conjunction",
     "english": "and",
@@ -2462,48 +2512,6 @@
     ]
   },
   {
-    "dict_form": "aníra-",
-    "part": "verb",
-    "english": "to desire",
-    "definition": "渴望，需要，渴求，想要",
-    "sentence": "[AotM/62][SD/129]\nar e aníra ennas suilannad mhellyn în phain.\n而且他想要在那里见见他所有的朋友\n",
-    "other": "",
-    "morphology": [
-      {
-        "type": "Present",
-        "form": "aníra/aníra(o)-"
-      },
-      {
-        "type": "Past",
-        "form": "anírant/aníranne-"
-      },
-      {
-        "type": "Future",
-        "form": "aníratha/aníratha(o)-"
-      },
-      {
-        "type": "Imperative",
-        "form": "aníro"
-      },
-      {
-        "type": "Gerund",
-        "form": "anírad"
-      },
-      {
-        "type": "PastParticiple",
-        "form": "anírannen"
-      },
-      {
-        "type": "PresentParticiple",
-        "form": "anírol"
-      },
-      {
-        "type": "PeferctParticle",
-        "form": "eníriel"
-      }
-    ]
-  },
-  {
     "dict_form": "ann",
     "part": "noun",
     "english": "gift",
@@ -2722,56 +2730,6 @@
     ]
   },
   {
-    "dict_form": "Anor",
-    "part": "noun",
-    "english": "Sun",
-    "definition": "太阳",
-    "sentence": "\n",
-    "other": "",
-    "morphology": [
-      {
-        "type": "Soft",
-        "form": "i Anor"
-      },
-      {
-        "type": "Plural",
-        "form": "专有，无复数"
-      },
-      {
-        "type": "NasalⅠ",
-        "form": "in Anor(不合法)"
-      },
-      {
-        "type": "NasalⅡ",
-        "form": "an Anor"
-      },
-      {
-        "type": "MixedⅠ",
-        "form": "专有，无需添加the"
-      },
-      {
-        "type": "MixedⅡ",
-        "form": "专有，无需添加the"
-      },
-      {
-        "type": "Liquid",
-        "form": "egor Anor"
-      },
-      {
-        "type": "Stop",
-        "form": "od Anor"
-      },
-      {
-        "type": "H",
-        "form": "ah Anor"
-      },
-      {
-        "type": "DH",
-        "form": "nedh Anor"
-      }
-    ]
-  },
-  {
     "dict_form": "anwar",
     "part": "noun",
     "english": "awe",
@@ -2818,6 +2776,48 @@
       {
         "type": "DH",
         "form": "nedh anwar"
+      }
+    ]
+  },
+  {
+    "dict_form": "aníra-",
+    "part": "verb",
+    "english": "to desire",
+    "definition": "渴望，需要，渴求，想要",
+    "sentence": "[AotM/62][SD/129]\nar e aníra ennas suilannad mhellyn în phain.\n而且他想要在那里见见他所有的朋友\n",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Present",
+        "form": "aníra/aníra(o)-"
+      },
+      {
+        "type": "Past",
+        "form": "anírant/aníranne-"
+      },
+      {
+        "type": "Future",
+        "form": "aníratha/aníratha(o)-"
+      },
+      {
+        "type": "Imperative",
+        "form": "aníro"
+      },
+      {
+        "type": "Gerund",
+        "form": "anírad"
+      },
+      {
+        "type": "PastParticiple",
+        "form": "anírannen"
+      },
+      {
+        "type": "PresentParticiple",
+        "form": "anírol"
+      },
+      {
+        "type": "PeferctParticle",
+        "form": "eníriel"
       }
     ]
   },
@@ -2956,56 +2956,6 @@
     ]
   },
   {
-    "dict_form": "archadhu",
-    "part": "noun",
-    "english": "throne, high seat",
-    "definition": "王座，王位",
-    "sentence": "\n",
-    "other": "ar(a)- + hadhu, 原拼写为arahadhw",
-    "morphology": [
-      {
-        "type": "Soft",
-        "form": "i archadhu"
-      },
-      {
-        "type": "Plural",
-        "form": "erchedhu"
-      },
-      {
-        "type": "NasalⅠ",
-        "form": "in erchedhu"
-      },
-      {
-        "type": "NasalⅡ",
-        "form": "an archadhu"
-      },
-      {
-        "type": "MixedⅠ",
-        "form": "en-archadhu"
-      },
-      {
-        "type": "MixedⅡ",
-        "form": "anin archadhu"
-      },
-      {
-        "type": "Liquid",
-        "form": "egor archadhu"
-      },
-      {
-        "type": "Stop",
-        "form": "od archadhu"
-      },
-      {
-        "type": "H",
-        "form": "ah archadhu"
-      },
-      {
-        "type": "DH",
-        "form": "nedh archadhu"
-      }
-    ]
-  },
-  {
     "dict_form": "aran",
     "part": "noun",
     "english": "king, lord, chief, high or noble person",
@@ -3102,6 +3052,56 @@
       {
         "type": "DH",
         "form": "nedh aras"
+      }
+    ]
+  },
+  {
+    "dict_form": "archadhu",
+    "part": "noun",
+    "english": "throne, high seat",
+    "definition": "王座，王位",
+    "sentence": "\n",
+    "other": "ar(a)- + hadhu, 原拼写为arahadhw",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i archadhu"
+      },
+      {
+        "type": "Plural",
+        "form": "erchedhu"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "in erchedhu"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an archadhu"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "en-archadhu"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin archadhu"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor archadhu"
+      },
+      {
+        "type": "Stop",
+        "form": "od archadhu"
+      },
+      {
+        "type": "H",
+        "form": "ah archadhu"
+      },
+      {
+        "type": "DH",
+        "form": "nedh archadhu"
       }
     ]
   },
@@ -3304,6 +3304,852 @@
       {
         "type": "DH",
         "form": "nedh arthor"
+      }
+    ]
+  },
+  {
+    "dict_form": "astor",
+    "part": "noun",
+    "english": "loyalty",
+    "definition": "忠诚",
+    "sentence": "\n",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i astor"
+      },
+      {
+        "type": "Plural",
+        "form": "estyr"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "in estyr"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an astor"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "en-astor"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin astor"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor astor"
+      },
+      {
+        "type": "Stop",
+        "form": "od astor"
+      },
+      {
+        "type": "H",
+        "form": "ah astor"
+      },
+      {
+        "type": "DH",
+        "form": "nedh astor"
+      }
+    ]
+  },
+  {
+    "dict_form": "astorad",
+    "part": "noun",
+    "english": "loyalty",
+    "definition": "忠诚",
+    "sentence": "\n",
+    "other": "同astor",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i astorad"
+      },
+      {
+        "type": "Plural",
+        "form": "esteraid"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "in esteraid"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an astorad"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "en-astorad"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin astorad"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor astorad"
+      },
+      {
+        "type": "Stop",
+        "form": "od astorad"
+      },
+      {
+        "type": "H",
+        "form": "ah astorad"
+      },
+      {
+        "type": "DH",
+        "form": "nedh astorad"
+      }
+    ]
+  },
+  {
+    "dict_form": "atha-",
+    "part": "verb",
+    "english": "will(future)",
+    "definition": "将要，将会，将",
+    "sentence": "\n",
+    "other": "如果有强烈计划性，请使用tol(e)-表达",
+    "morphology": [
+      {
+        "type": "Present",
+        "form": "atha-/atha(o)-"
+      },
+      {
+        "type": "Past",
+        "form": "已经表将来含义了"
+      },
+      {
+        "type": "Future",
+        "form": "已经表将来含义了"
+      },
+      {
+        "type": "Imperative",
+        "form": "atho"
+      },
+      {
+        "type": "Gerund",
+        "form": "athad"
+      },
+      {
+        "type": "PastParticiple",
+        "form": "已经表将来含义了"
+      },
+      {
+        "type": "PresentParticiple",
+        "form": "已经表将来含义了"
+      },
+      {
+        "type": "PeferctParticle",
+        "form": "已经表将来含义了"
+      }
+    ]
+  },
+  {
+    "dict_form": "athae",
+    "part": "noun",
+    "english": "healing herb",
+    "definition": "草药，治愈灵草",
+    "sentence": "[PE17/49][PE17/148]\nathelas.\n阿塞拉斯，王叶草\n",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i athae"
+      },
+      {
+        "type": "Plural",
+        "form": "ethae"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "in ethae"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an athae"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "en-athae"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin athae"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor athae"
+      },
+      {
+        "type": "Stop",
+        "form": "od athae"
+      },
+      {
+        "type": "H",
+        "form": "ah athae"
+      },
+      {
+        "type": "DH",
+        "form": "nedh athae"
+      }
+    ]
+  },
+  {
+    "dict_form": "athae",
+    "part": "adjective",
+    "english": "healing",
+    "definition": "治愈的，疗伤的，恢复的；有帮助的",
+    "sentence": "\n",
+    "other": "Le athae是FJ版本的thank you(lit. you're helpful)；注意和VLDS通用的annon allen区分",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "athae"
+      },
+      {
+        "type": "Plural",
+        "form": "ethae"
+      },
+      {
+        "type": "Comparative",
+        "form": "anathae"
+      },
+      {
+        "type": "Superlative",
+        "form": "roathae"
+      }
+    ]
+  },
+  {
+    "dict_form": "atheg",
+    "part": "noun",
+    "english": "father, thumb",
+    "definition": "大拇指；父亲，爸爸，爹（亲昵称呼）",
+    "sentence": "\n",
+    "other": "adar + -eg",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i atheg"
+      },
+      {
+        "type": "Plural",
+        "form": "ethig"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "in ethig"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an atheg"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "en-atheg"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin atheg"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor atheg"
+      },
+      {
+        "type": "Stop",
+        "form": "od atheg"
+      },
+      {
+        "type": "H",
+        "form": "ah atheg"
+      },
+      {
+        "type": "DH",
+        "form": "nedh atheg"
+      }
+    ]
+  },
+  {
+    "dict_form": "athelas",
+    "part": "noun",
+    "english": "kingsfoil, a healing herb",
+    "definition": "阿塞拉斯，王叶草",
+    "sentence": "\n",
+    "other": "athae + las(s)",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i athelas"
+      },
+      {
+        "type": "Plural",
+        "form": "ethelais"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "in ethelais"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an athelas"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "en-athelas"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin athelas"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor athelas"
+      },
+      {
+        "type": "Stop",
+        "form": "od athelas"
+      },
+      {
+        "type": "H",
+        "form": "ah athelas"
+      },
+      {
+        "type": "DH",
+        "form": "nedh athelas"
+      }
+    ]
+  },
+  {
+    "dict_form": "athgar",
+    "part": "adjective",
+    "english": "easy(to do sth.)",
+    "definition": "（做某事）容易，简单，轻松",
+    "sentence": "\n",
+    "other": "ath- + car-",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "athgar"
+      },
+      {
+        "type": "Plural",
+        "form": "ethgair"
+      },
+      {
+        "type": "Comparative",
+        "form": "anathgar"
+      },
+      {
+        "type": "Superlative",
+        "form": "roathgar"
+      }
+    ]
+  },
+  {
+    "dict_form": "athgen",
+    "part": "adjective",
+    "english": "easily seen",
+    "definition": "容易看见的，容易发现的；可见的，可视的",
+    "sentence": "\n",
+    "other": "ath- + cen-",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "athgen"
+      },
+      {
+        "type": "Plural",
+        "form": "ethgin"
+      },
+      {
+        "type": "Comparative",
+        "form": "anathgen"
+      },
+      {
+        "type": "Superlative",
+        "form": "roathgen"
+      }
+    ]
+  },
+  {
+    "dict_form": "athra-",
+    "part": "verb",
+    "english": "to cross(to and fro)",
+    "definition": "（来回）穿过，交错",
+    "sentence": "\n",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Present",
+        "form": "athra/athra(o)-"
+      },
+      {
+        "type": "Past",
+        "form": "athrant/athranne-"
+      },
+      {
+        "type": "Future",
+        "form": "athratha/athratha(o)-"
+      },
+      {
+        "type": "Imperative",
+        "form": "athro"
+      },
+      {
+        "type": "Gerund",
+        "form": "athrad"
+      },
+      {
+        "type": "PastParticiple",
+        "form": "athrannen"
+      },
+      {
+        "type": "PresentParticiple",
+        "form": "athrol"
+      },
+      {
+        "type": "PeferctParticle",
+        "form": "ethriel"
+      }
+    ]
+  },
+  {
+    "dict_form": "athra-",
+    "part": "verb",
+    "english": "to treat medically",
+    "definition": "医治，医疗，治疗",
+    "sentence": "\n",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Present",
+        "form": "athra/athra(o)-"
+      },
+      {
+        "type": "Past",
+        "form": "athrant/athranne-"
+      },
+      {
+        "type": "Future",
+        "form": "athratha/athratha(o)-"
+      },
+      {
+        "type": "Imperative",
+        "form": "athro"
+      },
+      {
+        "type": "Gerund",
+        "form": "athrad"
+      },
+      {
+        "type": "PastParticiple",
+        "form": "athrannen"
+      },
+      {
+        "type": "PresentParticiple",
+        "form": "athrol"
+      },
+      {
+        "type": "PeferctParticle",
+        "form": "ethriel"
+      }
+    ]
+  },
+  {
+    "dict_form": "athrabeth",
+    "part": "noun",
+    "english": "conversation, debate",
+    "definition": "对话，交谈；辩论",
+    "sentence": "[MR/329]\nAthrabeth Finrod ah Andreth.\n芬罗德与安德瑞丝的辩论\n",
+    "other": "athra- + peth",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i athrabeth"
+      },
+      {
+        "type": "Plural",
+        "form": "ethrebith"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "in ethrebith"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an athrabeth"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "en-athrabeth"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin athrabeth"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor athrabeth"
+      },
+      {
+        "type": "Stop",
+        "form": "od athrabeth"
+      },
+      {
+        "type": "H",
+        "form": "ah athrabeth"
+      },
+      {
+        "type": "DH",
+        "form": "nedh athrabeth"
+      }
+    ]
+  },
+  {
+    "dict_form": "athrad",
+    "part": "noun",
+    "english": "ford, crossing",
+    "definition": "浅滩，渡口，津渡；交叉口，十字路口",
+    "sentence": "[UTI]\nAthrad Angren.\n艾森河渡口\n",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i athrad"
+      },
+      {
+        "type": "Plural",
+        "form": "ethraid"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "in ethraid"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an athrad"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "en-athrad"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin athrad"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor athrad"
+      },
+      {
+        "type": "Stop",
+        "form": "od athrad"
+      },
+      {
+        "type": "H",
+        "form": "ah athrad"
+      },
+      {
+        "type": "DH",
+        "form": "nedh athrad"
+      }
+    ]
+  },
+  {
+    "dict_form": "athragared",
+    "part": "noun",
+    "english": "interaction",
+    "definition": "互动",
+    "sentence": "\n",
+    "other": "athra- + car-",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i athragared"
+      },
+      {
+        "type": "Plural",
+        "form": "动名词无复数形式"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "*in + athragared不合法"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an athragared"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "en-athragared"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin athragared"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor athragared"
+      },
+      {
+        "type": "Stop",
+        "form": "od athragared"
+      },
+      {
+        "type": "H",
+        "form": "ah athragared"
+      },
+      {
+        "type": "DH",
+        "form": "nedh athragared"
+      }
+    ]
+  },
+  {
+    "dict_form": "aur",
+    "part": "noun",
+    "english": "(whole)day",
+    "definition": "一天，一整天，一日",
+    "sentence": "\n",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i aur"
+      },
+      {
+        "type": "Plural",
+        "form": "oer"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "in oer"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an aur"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "en-aur"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin aur"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor aur"
+      },
+      {
+        "type": "Stop",
+        "form": "od aur"
+      },
+      {
+        "type": "H",
+        "form": "ah aur"
+      },
+      {
+        "type": "DH",
+        "form": "nedh aur"
+      }
+    ]
+  },
+  {
+    "dict_form": "auth",
+    "part": "noun",
+    "english": "dim shape, spectral or vague apparition",
+    "definition": "黯淡的身形，幽灵似的外形，模糊的身影",
+    "sentence": "\n",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "auth"
+      },
+      {
+        "type": "Plural",
+        "form": "oeth"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "in oeth"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an auth"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "en-auth"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin auth"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor auth"
+      },
+      {
+        "type": "Stop",
+        "form": "od auth"
+      },
+      {
+        "type": "H",
+        "form": "ah auth"
+      },
+      {
+        "type": "DH",
+        "form": "nedh auth"
+      }
+    ]
+  },
+  {
+    "dict_form": "ava-",
+    "part": "verb",
+    "english": "will not, do not",
+    "definition": "不将要，不要，不会",
+    "sentence": "[WJ/371]\navo garo.\n别这样做\n\n",
+    "other": "对应atha的否定形式",
+    "morphology": [
+      {
+        "type": "Present",
+        "form": "ava/ava(o)-"
+      },
+      {
+        "type": "Past",
+        "form": "avant/avanne-仅限非将来含义"
+      },
+      {
+        "type": "Future",
+        "form": "本身可以表将来"
+      },
+      {
+        "type": "Imperative",
+        "form": "avo"
+      },
+      {
+        "type": "Gerund",
+        "form": "avad"
+      },
+      {
+        "type": "PastParticiple",
+        "form": "无此形式"
+      },
+      {
+        "type": "PresentParticiple",
+        "form": "无此形式"
+      },
+      {
+        "type": "PeferctParticle",
+        "form": "无此形式"
+      }
+    ]
+  },
+  {
+    "dict_form": "avad",
+    "part": "noun",
+    "english": "refusal, reluctance",
+    "definition": "拒绝；勉强",
+    "sentence": "\n",
+    "other": "ava-的动名词形式",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i avad"
+      },
+      {
+        "type": "Plural",
+        "form": "动名词无复数形式"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "*in + avad不合法"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an avad"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "en-avad"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin avad"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor avad"
+      },
+      {
+        "type": "Stop",
+        "form": "od avad"
+      },
+      {
+        "type": "H",
+        "form": "ah avad"
+      },
+      {
+        "type": "DH",
+        "form": "nedh avad"
+      }
+    ]
+  },
+  {
+    "dict_form": "avras",
+    "part": "noun",
+    "english": "precipice",
+    "definition": "悬崖，峭壁",
+    "sentence": "\n",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i avras"
+      },
+      {
+        "type": "Plural",
+        "form": "evrais"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "in evrais"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an avras"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "en-avras"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin avras"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor avras"
+      },
+      {
+        "type": "Stop",
+        "form": "od avras"
+      },
+      {
+        "type": "H",
+        "form": "ah avras"
+      },
+      {
+        "type": "DH",
+        "form": "nedh avras"
       }
     ]
   }

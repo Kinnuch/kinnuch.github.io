@@ -70,6 +70,7 @@ class DictionaryApp:
                 self.entries.sort(key=lambda x: x["dict_form"])
         else:
             self.entries = []
+        print("已经收录", self.entries.__len__(), "个词条")
 
     def save_data(self):
         with open(self.data_file, 'w', encoding='utf-8') as f:

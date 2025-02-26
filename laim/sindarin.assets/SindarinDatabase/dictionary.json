@@ -1,5 +1,507 @@
 [
   {
+    "dict_form": "(m)band",
+    "part": "noun",
+    "english": "prison, custody, duress",
+    "definition": "监狱；拘禁，囚禁；强迫，胁迫",
+    "sentence": "\n",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i mand"
+      },
+      {
+        "type": "Plural",
+        "form": "bend"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i mbend"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "am band"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-mband"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin band"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor band"
+      },
+      {
+        "type": "Stop",
+        "form": "o mband"
+      },
+      {
+        "type": "H",
+        "form": "ah band"
+      },
+      {
+        "type": "DH",
+        "form": "nedh band"
+      }
+    ]
+  },
+  {
+    "dict_form": "(m)bardh",
+    "part": "noun",
+    "english": "home",
+    "definition": "家，家园",
+    "sentence": "\n",
+    "other": "与bâr相比，该词更偏向精神领域的家园",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i mardh"
+      },
+      {
+        "type": "Plural",
+        "form": "berdh"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i mberdh"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "am bardh"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-mbardh"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin bardh"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor bardh"
+      },
+      {
+        "type": "Stop",
+        "form": "o mbardh"
+      },
+      {
+        "type": "H",
+        "form": "ah bardh"
+      },
+      {
+        "type": "DH",
+        "form": "nedh bardh"
+      }
+    ]
+  },
+  {
+    "dict_form": "(m)bardor",
+    "part": "noun",
+    "english": "home land, native land",
+    "definition": "家园，出生地，家乡；母国",
+    "sentence": "\n",
+    "other": "bâr + dôr",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i mardor"
+      },
+      {
+        "type": "Plural",
+        "form": "berdyr"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i mberdyr"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "am bardor"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-mbardor"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin bardor"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor bardor"
+      },
+      {
+        "type": "Stop",
+        "form": "o mbardor"
+      },
+      {
+        "type": "H",
+        "form": "ah bardor"
+      },
+      {
+        "type": "DH",
+        "form": "nedh bardor"
+      }
+    ]
+  },
+  {
+    "dict_form": "(m)barthan",
+    "part": "noun",
+    "english": "dwelling-house, large building of masonry used as a dwelling",
+    "definition": "宅邸，府邸，府院；住宅",
+    "sentence": "\n",
+    "other": "北部辛达方言拼作bartham",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i marthan"
+      },
+      {
+        "type": "Plural",
+        "form": "berthain"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i mberthain"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "am barthan"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-mbarthan"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin barthan"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor barthan"
+      },
+      {
+        "type": "Stop",
+        "form": "o mbarthan"
+      },
+      {
+        "type": "H",
+        "form": "ah barthan"
+      },
+      {
+        "type": "DH",
+        "form": "nedh barthan"
+      }
+    ]
+  },
+  {
+    "dict_form": "(m)bas(t)",
+    "part": "noun",
+    "english": "bread",
+    "definition": "面包",
+    "sentence": "[VT44/21]\nanno ammen sír i mbas ilaurui vín.\n在这天给我们每天的面包\n",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i mast"
+      },
+      {
+        "type": "Plural",
+        "form": "best"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i mbest"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "am bast"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-mbast"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin bast"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor bast"
+      },
+      {
+        "type": "Stop",
+        "form": "o mbast"
+      },
+      {
+        "type": "H",
+        "form": "ah bast"
+      },
+      {
+        "type": "DH",
+        "form": "nedh bast"
+      }
+    ]
+  },
+  {
+    "dict_form": "(m)bauglir",
+    "part": "noun",
+    "english": "constrainer, tyrant, oppressor",
+    "definition": "限制者，约束者；暴君，抑制者，压迫者；包格力尔，魔苟斯",
+    "sentence": "\n",
+    "other": "baugla- + dîr",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i mauglir"
+      },
+      {
+        "type": "Plural",
+        "form": "bauglir"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i mbauglir"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "am bauglir"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-mbauglir"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin bauglir"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor bauglir"
+      },
+      {
+        "type": "Stop",
+        "form": "o mbauglir"
+      },
+      {
+        "type": "H",
+        "form": "ah bauglir"
+      },
+      {
+        "type": "DH",
+        "form": "nedh bauglir"
+      }
+    ]
+  },
+  {
+    "dict_form": "(m)baw",
+    "part": "noun",
+    "english": "howling",
+    "definition": "嚎叫，吠叫；（风的）呼啸",
+    "sentence": "\n",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i maw"
+      },
+      {
+        "type": "Plural",
+        "form": "boe"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i mboe"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "am baw"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-mbaw"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin baw"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor baw"
+      },
+      {
+        "type": "Stop",
+        "form": "o mbaw"
+      },
+      {
+        "type": "H",
+        "form": "ah baw"
+      },
+      {
+        "type": "DH",
+        "form": "nedh baw"
+      }
+    ]
+  },
+  {
+    "dict_form": "(m)belaith",
+    "part": "adjective",
+    "english": "mighty",
+    "definition": "有力量的，强大的",
+    "sentence": "\n\n",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "melaith"
+      },
+      {
+        "type": "Plural",
+        "form": "belaith"
+      },
+      {
+        "type": "Comparative",
+        "form": "ambelaith"
+      },
+      {
+        "type": "Superlative",
+        "form": "romelaith"
+      }
+    ]
+  },
+  {
+    "dict_form": "(m)besain",
+    "part": "noun",
+    "english": "the Lady, breadgiver",
+    "definition": "女士",
+    "sentence": "\n",
+    "other": "特指给予兰巴斯的贵族精灵女士，另一词源可能拼写为basoneth",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i mesain"
+      },
+      {
+        "type": "Plural",
+        "form": "besain"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i mbesain"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "am besain"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-mbesain"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin besain"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor besain"
+      },
+      {
+        "type": "Stop",
+        "form": "o mbesain"
+      },
+      {
+        "type": "H",
+        "form": "ah besain"
+      },
+      {
+        "type": "DH",
+        "form": "nedh besain"
+      }
+    ]
+  },
+  {
+    "dict_form": "(m)born",
+    "part": "adjective",
+    "english": "hot, red",
+    "definition": "热的，烧红的，火红的，炽红的",
+    "sentence": "[Let/427]\nBorgil.\n玻吉尔，炽红之星\n",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "morn"
+      },
+      {
+        "type": "Plural",
+        "form": "byrn"
+      },
+      {
+        "type": "Comparative",
+        "form": "amborn"
+      },
+      {
+        "type": "Superlative",
+        "form": "romorn"
+      }
+    ]
+  },
+  {
+    "dict_form": "(m)bâr",
+    "part": "noun",
+    "english": "house, dwelling, home",
+    "definition": "房子，住所；栖息地；家园，家乡；家族",
+    "sentence": "[MR/373]\nNarn e·mbar Hador.\n哈多家族的故事\n",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i mâr"
+      },
+      {
+        "type": "Plural",
+        "form": "bair"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i mbair"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "am bâr"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-mbâr"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin bâr"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor bâr"
+      },
+      {
+        "type": "Stop",
+        "form": "o mbâr"
+      },
+      {
+        "type": "H",
+        "form": "ah bâr"
+      },
+      {
+        "type": "DH",
+        "form": "nedh bâr"
+      }
+    ]
+  },
+  {
     "dict_form": "Adan",
     "part": "noun",
     "english": "Man(as a species)",
@@ -96,6 +598,56 @@
       {
         "type": "DH",
         "form": "nedh Anor"
+      }
+    ]
+  },
+  {
+    "dict_form": "Balan",
+    "part": "noun",
+    "english": "Vala",
+    "definition": "维拉",
+    "sentence": "\n",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i Valan"
+      },
+      {
+        "type": "Plural",
+        "form": "Belain"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i Melain"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "am Balan"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-Balan"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin Balan"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor Valan"
+      },
+      {
+        "type": "Stop",
+        "form": "o Balan"
+      },
+      {
+        "type": "H",
+        "form": "ah Balan"
+      },
+      {
+        "type": "DH",
+        "form": "nedh Balan"
       }
     ]
   },
@@ -4154,56 +4706,6 @@
     ]
   },
   {
-    "dict_form": "bâd",
-    "part": "noun",
-    "english": "road, path",
-    "definition": "路，径，道路，通道",
-    "sentence": "\n",
-    "other": "",
-    "morphology": [
-      {
-        "type": "Soft",
-        "form": "i vâd"
-      },
-      {
-        "type": "Plural",
-        "form": "baid"
-      },
-      {
-        "type": "NasalⅠ",
-        "form": "i maid"
-      },
-      {
-        "type": "NasalⅡ",
-        "form": "am bâd"
-      },
-      {
-        "type": "MixedⅠ",
-        "form": "e-bâd"
-      },
-      {
-        "type": "MixedⅡ",
-        "form": "anin bâd"
-      },
-      {
-        "type": "Liquid",
-        "form": "egor vâd"
-      },
-      {
-        "type": "Stop",
-        "form": "o bâd"
-      },
-      {
-        "type": "H",
-        "form": "ah bâd"
-      },
-      {
-        "type": "DH",
-        "form": "nedh bâd"
-      }
-    ]
-  },
-  {
     "dict_form": "bain",
     "part": "adjective",
     "english": "fair, beautiful, good, wholesome, favorable, fair-haired",
@@ -4268,56 +4770,6 @@
       {
         "type": "PeferctParticle",
         "form": "bóliel"
-      }
-    ]
-  },
-  {
-    "dict_form": "Balan",
-    "part": "noun",
-    "english": "Vala",
-    "definition": "维拉",
-    "sentence": "\n",
-    "other": "",
-    "morphology": [
-      {
-        "type": "Soft",
-        "form": "i Valan"
-      },
-      {
-        "type": "Plural",
-        "form": "Belain"
-      },
-      {
-        "type": "NasalⅠ",
-        "form": "i Melain"
-      },
-      {
-        "type": "NasalⅡ",
-        "form": "am Balan"
-      },
-      {
-        "type": "MixedⅠ",
-        "form": "e-Balan"
-      },
-      {
-        "type": "MixedⅡ",
-        "form": "anin Balan"
-      },
-      {
-        "type": "Liquid",
-        "form": "egor Valan"
-      },
-      {
-        "type": "Stop",
-        "form": "o Balan"
-      },
-      {
-        "type": "H",
-        "form": "ah Balan"
-      },
-      {
-        "type": "DH",
-        "form": "nedh Balan"
       }
     ]
   },
@@ -4398,106 +4850,6 @@
     ]
   },
   {
-    "dict_form": "(m)band",
-    "part": "noun",
-    "english": "prison, custody, duress",
-    "definition": "监狱；拘禁，囚禁；强迫，胁迫",
-    "sentence": "\n",
-    "other": "",
-    "morphology": [
-      {
-        "type": "Soft",
-        "form": "i mand"
-      },
-      {
-        "type": "Plural",
-        "form": "bend"
-      },
-      {
-        "type": "NasalⅠ",
-        "form": "i mbend"
-      },
-      {
-        "type": "NasalⅡ",
-        "form": "am band"
-      },
-      {
-        "type": "MixedⅠ",
-        "form": "e-mband"
-      },
-      {
-        "type": "MixedⅡ",
-        "form": "anin band"
-      },
-      {
-        "type": "Liquid",
-        "form": "egor band"
-      },
-      {
-        "type": "Stop",
-        "form": "o mband"
-      },
-      {
-        "type": "H",
-        "form": "ah band"
-      },
-      {
-        "type": "DH",
-        "form": "nedh band"
-      }
-    ]
-  },
-  {
-    "dict_form": "(m)bâr",
-    "part": "noun",
-    "english": "house, dwelling, home",
-    "definition": "房子，住所；栖息地；家园，家乡；家族",
-    "sentence": "[MR/373]\nNarn e·mbar Hador.\n哈多家族的故事\n",
-    "other": "",
-    "morphology": [
-      {
-        "type": "Soft",
-        "form": "i mâr"
-      },
-      {
-        "type": "Plural",
-        "form": "bair"
-      },
-      {
-        "type": "NasalⅠ",
-        "form": "i mbair"
-      },
-      {
-        "type": "NasalⅡ",
-        "form": "am bâr"
-      },
-      {
-        "type": "MixedⅠ",
-        "form": "e-mbâr"
-      },
-      {
-        "type": "MixedⅡ",
-        "form": "anin bâr"
-      },
-      {
-        "type": "Liquid",
-        "form": "egor bâr"
-      },
-      {
-        "type": "Stop",
-        "form": "o mbâr"
-      },
-      {
-        "type": "H",
-        "form": "ah bâr"
-      },
-      {
-        "type": "DH",
-        "form": "nedh bâr"
-      }
-    ]
-  },
-  {
     "dict_form": "barad",
     "part": "noun",
     "english": "tower, great towering building",
@@ -4574,256 +4926,6 @@
     ]
   },
   {
-    "dict_form": "(m)bardh",
-    "part": "noun",
-    "english": "home",
-    "definition": "家，家园",
-    "sentence": "\n",
-    "other": "与bâr相比，该词更偏向精神领域的家园",
-    "morphology": [
-      {
-        "type": "Soft",
-        "form": "i mardh"
-      },
-      {
-        "type": "Plural",
-        "form": "berdh"
-      },
-      {
-        "type": "NasalⅠ",
-        "form": "i mberdh"
-      },
-      {
-        "type": "NasalⅡ",
-        "form": "am bardh"
-      },
-      {
-        "type": "MixedⅠ",
-        "form": "e-mbardh"
-      },
-      {
-        "type": "MixedⅡ",
-        "form": "anin bardh"
-      },
-      {
-        "type": "Liquid",
-        "form": "egor bardh"
-      },
-      {
-        "type": "Stop",
-        "form": "o mbardh"
-      },
-      {
-        "type": "H",
-        "form": "ah bardh"
-      },
-      {
-        "type": "DH",
-        "form": "nedh bardh"
-      }
-    ]
-  },
-  {
-    "dict_form": "(m)bardor",
-    "part": "noun",
-    "english": "home land, native land",
-    "definition": "家园，出生地，家乡；母国",
-    "sentence": "\n",
-    "other": "bâr + dôr",
-    "morphology": [
-      {
-        "type": "Soft",
-        "form": "i mardor"
-      },
-      {
-        "type": "Plural",
-        "form": "berdyr"
-      },
-      {
-        "type": "NasalⅠ",
-        "form": "i mberdyr"
-      },
-      {
-        "type": "NasalⅡ",
-        "form": "am bardor"
-      },
-      {
-        "type": "MixedⅠ",
-        "form": "e-mbardor"
-      },
-      {
-        "type": "MixedⅡ",
-        "form": "anin bardor"
-      },
-      {
-        "type": "Liquid",
-        "form": "egor bardor"
-      },
-      {
-        "type": "Stop",
-        "form": "o mbardor"
-      },
-      {
-        "type": "H",
-        "form": "ah bardor"
-      },
-      {
-        "type": "DH",
-        "form": "nedh bardor"
-      }
-    ]
-  },
-  {
-    "dict_form": "(m)barthan",
-    "part": "noun",
-    "english": "dwelling-house, large building of masonry used as a dwelling",
-    "definition": "宅邸，府邸，府院；住宅",
-    "sentence": "\n",
-    "other": "北部辛达方言拼作bartham",
-    "morphology": [
-      {
-        "type": "Soft",
-        "form": "i marthan"
-      },
-      {
-        "type": "Plural",
-        "form": "berthain"
-      },
-      {
-        "type": "NasalⅠ",
-        "form": "i mberthain"
-      },
-      {
-        "type": "NasalⅡ",
-        "form": "am barthan"
-      },
-      {
-        "type": "MixedⅠ",
-        "form": "e-mbarthan"
-      },
-      {
-        "type": "MixedⅡ",
-        "form": "anin barthan"
-      },
-      {
-        "type": "Liquid",
-        "form": "egor barthan"
-      },
-      {
-        "type": "Stop",
-        "form": "o mbarthan"
-      },
-      {
-        "type": "H",
-        "form": "ah barthan"
-      },
-      {
-        "type": "DH",
-        "form": "nedh barthan"
-      }
-    ]
-  },
-  {
-    "dict_form": "(m)bas(t)",
-    "part": "noun",
-    "english": "bread",
-    "definition": "面包",
-    "sentence": "[VT44/21]\nanno ammen sír i mbas ilaurui vín.\n在这天给我们每天的面包\n",
-    "other": "",
-    "morphology": [
-      {
-        "type": "Soft",
-        "form": "i mast"
-      },
-      {
-        "type": "Plural",
-        "form": "best"
-      },
-      {
-        "type": "NasalⅠ",
-        "form": "i mbest"
-      },
-      {
-        "type": "NasalⅡ",
-        "form": "am bast"
-      },
-      {
-        "type": "MixedⅠ",
-        "form": "e-mbast"
-      },
-      {
-        "type": "MixedⅡ",
-        "form": "anin bast"
-      },
-      {
-        "type": "Liquid",
-        "form": "egor bast"
-      },
-      {
-        "type": "Stop",
-        "form": "o mbast"
-      },
-      {
-        "type": "H",
-        "form": "ah bast"
-      },
-      {
-        "type": "DH",
-        "form": "nedh bast"
-      }
-    ]
-  },
-  {
-    "dict_form": "(m)bauglir",
-    "part": "noun",
-    "english": "constrainer, tyrant, oppressor",
-    "definition": "限制者，约束者；暴君，抑制者，压迫者；包格力尔，魔苟斯",
-    "sentence": "\n",
-    "other": "baugla- + dîr",
-    "morphology": [
-      {
-        "type": "Soft",
-        "form": "i mauglir"
-      },
-      {
-        "type": "Plural",
-        "form": "bauglir"
-      },
-      {
-        "type": "NasalⅠ",
-        "form": "i mbauglir"
-      },
-      {
-        "type": "NasalⅡ",
-        "form": "am bauglir"
-      },
-      {
-        "type": "MixedⅠ",
-        "form": "e-mbauglir"
-      },
-      {
-        "type": "MixedⅡ",
-        "form": "anin bauglir"
-      },
-      {
-        "type": "Liquid",
-        "form": "egor bauglir"
-      },
-      {
-        "type": "Stop",
-        "form": "o mbauglir"
-      },
-      {
-        "type": "H",
-        "form": "ah bauglir"
-      },
-      {
-        "type": "DH",
-        "form": "nedh bauglir"
-      }
-    ]
-  },
-  {
     "dict_form": "baw",
     "part": "other",
     "english": "no, do not!",
@@ -4833,56 +4935,6 @@
     "morphology": []
   },
   {
-    "dict_form": "(m)baw",
-    "part": "noun",
-    "english": "howling",
-    "definition": "嚎叫，吠叫；（风的）呼啸",
-    "sentence": "\n",
-    "other": "",
-    "morphology": [
-      {
-        "type": "Soft",
-        "form": "i maw"
-      },
-      {
-        "type": "Plural",
-        "form": "boe"
-      },
-      {
-        "type": "NasalⅠ",
-        "form": "i mboe"
-      },
-      {
-        "type": "NasalⅡ",
-        "form": "am baw"
-      },
-      {
-        "type": "MixedⅠ",
-        "form": "e-mbaw"
-      },
-      {
-        "type": "MixedⅡ",
-        "form": "anin baw"
-      },
-      {
-        "type": "Liquid",
-        "form": "egor baw"
-      },
-      {
-        "type": "Stop",
-        "form": "o mbaw"
-      },
-      {
-        "type": "H",
-        "form": "ah baw"
-      },
-      {
-        "type": "DH",
-        "form": "nedh baw"
-      }
-    ]
-  },
-  {
     "dict_form": "be",
     "part": "preposition",
     "english": "in",
@@ -4890,32 +4942,6 @@
     "sentence": "[AotM/62][SD/129]\negor ben genediad Drannail erin Gwirith edwen.\n或者说在夏尔纪年法中四月的第二天\n\n",
     "other": "引发软音变；be表示抽象概念中，mi表示地点中，ned表示时间中",
     "morphology": []
-  },
-  {
-    "dict_form": "(m)belaith",
-    "part": "adjective",
-    "english": "mighty",
-    "definition": "有力量的，强大的",
-    "sentence": "\n\n",
-    "other": "",
-    "morphology": [
-      {
-        "type": "Soft",
-        "form": "melaith"
-      },
-      {
-        "type": "Plural",
-        "form": "belaith"
-      },
-      {
-        "type": "Comparative",
-        "form": "ambelaith"
-      },
-      {
-        "type": "Superlative",
-        "form": "romelaith"
-      }
-    ]
   },
   {
     "dict_form": "beleg",
@@ -5016,56 +5042,6 @@
       {
         "type": "Superlative",
         "form": "rovereth"
-      }
-    ]
-  },
-  {
-    "dict_form": "(m)besain",
-    "part": "noun",
-    "english": "the Lady, breadgiver",
-    "definition": "女士",
-    "sentence": "\n",
-    "other": "特指给予兰巴斯的贵族精灵女士，另一词源可能拼写为basoneth",
-    "morphology": [
-      {
-        "type": "Soft",
-        "form": "i mesain"
-      },
-      {
-        "type": "Plural",
-        "form": "besain"
-      },
-      {
-        "type": "NasalⅠ",
-        "form": "i mbesain"
-      },
-      {
-        "type": "NasalⅡ",
-        "form": "am besain"
-      },
-      {
-        "type": "MixedⅠ",
-        "form": "e-mbesain"
-      },
-      {
-        "type": "MixedⅡ",
-        "form": "anin besain"
-      },
-      {
-        "type": "Liquid",
-        "form": "egor besain"
-      },
-      {
-        "type": "Stop",
-        "form": "o mbesain"
-      },
-      {
-        "type": "H",
-        "form": "ah besain"
-      },
-      {
-        "type": "DH",
-        "form": "nedh besain"
       }
     ]
   },
@@ -5171,32 +5147,6 @@
     ]
   },
   {
-    "dict_form": "(m)born",
-    "part": "adjective",
-    "english": "hot, red",
-    "definition": "热的，烧红的，火红的，炽红的",
-    "sentence": "[Let/427]\nBorgil.\n玻吉尔，炽红之星\n",
-    "other": "",
-    "morphology": [
-      {
-        "type": "Soft",
-        "form": "morn"
-      },
-      {
-        "type": "Plural",
-        "form": "byrn"
-      },
-      {
-        "type": "Comparative",
-        "form": "amborn"
-      },
-      {
-        "type": "Superlative",
-        "form": "romorn"
-      }
-    ]
-  },
-  {
     "dict_form": "both",
     "part": "noun",
     "english": "fen, marsh",
@@ -5243,56 +5193,6 @@
       {
         "type": "DH",
         "form": "nedh both"
-      }
-    ]
-  },
-  {
-    "dict_form": "bregollach",
-    "part": "noun",
-    "english": "sudden flame",
-    "definition": "骤火",
-    "sentence": "[S/151]\nDagor Bragollach.\n骤火之战，达戈·布拉戈拉赫\n",
-    "other": "旧拼bragollach疑似有误",
-    "morphology": [
-      {
-        "type": "Soft",
-        "form": "i vregollach"
-      },
-      {
-        "type": "Plural",
-        "form": "bregellaich"
-      },
-      {
-        "type": "NasalⅠ",
-        "form": "i mregellaich"
-      },
-      {
-        "type": "NasalⅡ",
-        "form": "am bregollach"
-      },
-      {
-        "type": "MixedⅠ",
-        "form": "e-bregollach"
-      },
-      {
-        "type": "MixedⅡ",
-        "form": "anin bregollach"
-      },
-      {
-        "type": "Liquid",
-        "form": "egor vregollach"
-      },
-      {
-        "type": "Stop",
-        "form": "o bregollach"
-      },
-      {
-        "type": "H",
-        "form": "ah bregollach"
-      },
-      {
-        "type": "DH",
-        "form": "nedh bregollach"
       }
     ]
   },
@@ -5461,6 +5361,384 @@
       {
         "type": "PeferctParticle",
         "form": "brestiel"
+      }
+    ]
+  },
+  {
+    "dict_form": "bregollach",
+    "part": "noun",
+    "english": "sudden flame",
+    "definition": "骤火",
+    "sentence": "[S/151]\nDagor Bragollach.\n骤火之战，达戈·布拉戈拉赫\n",
+    "other": "旧拼bragollach疑似有误",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i vregollach"
+      },
+      {
+        "type": "Plural",
+        "form": "bregellaich"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i mregellaich"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "am bregollach"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-bregollach"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin bregollach"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor vregollach"
+      },
+      {
+        "type": "Stop",
+        "form": "o bregollach"
+      },
+      {
+        "type": "H",
+        "form": "ah bregollach"
+      },
+      {
+        "type": "DH",
+        "form": "nedh bregollach"
+      }
+    ]
+  },
+  {
+    "dict_form": "bâd",
+    "part": "noun",
+    "english": "road, path",
+    "definition": "路，径，道路，通道",
+    "sentence": "\n",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i vâd"
+      },
+      {
+        "type": "Plural",
+        "form": "baid"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i maid"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "am bâd"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-bâd"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin bâd"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor vâd"
+      },
+      {
+        "type": "Stop",
+        "form": "o bâd"
+      },
+      {
+        "type": "H",
+        "form": "ah bâd"
+      },
+      {
+        "type": "DH",
+        "form": "nedh bâd"
+      }
+    ]
+  },
+  {
+    "dict_form": "bregol",
+    "part": "adjective",
+    "english": "quick, sudden",
+    "definition": "快速的，突然的，骤然的",
+    "sentence": "[LotR/482]\nBregalad.\n急楸，急性子的树\n",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "vregol"
+      },
+      {
+        "type": "Plural",
+        "form": "bregyl"
+      },
+      {
+        "type": "Comparative",
+        "form": "ambregol/ammregol"
+      },
+      {
+        "type": "Superlative",
+        "form": "rovregol"
+      }
+    ]
+  },
+  {
+    "dict_form": "brethil",
+    "part": "noun",
+    "english": "silver birch",
+    "definition": "白桦树，银桦树",
+    "sentence": "[PE17/19]\nNimbrethil.\n宁布瑞希尔，白桦林\n",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i vrethil"
+      },
+      {
+        "type": "Plural",
+        "form": "brethil"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i mrethil"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "am brethil"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-brethil"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin brethil"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor vrethil"
+      },
+      {
+        "type": "Stop",
+        "form": "o brethil"
+      },
+      {
+        "type": "H",
+        "form": "ah brethil"
+      },
+      {
+        "type": "DH",
+        "form": "nedh brethil"
+      }
+    ]
+  },
+  {
+    "dict_form": "brethil",
+    "part": "noun",
+    "english": "princess, queen-daughter",
+    "definition": "公主，女王的女儿",
+    "sentence": "\n",
+    "other": "bereth + -il",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i vrethil"
+      },
+      {
+        "type": "Plural",
+        "form": "brethil"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i mrethil"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "am brethil"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-brethil"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin brethil"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor vrethil"
+      },
+      {
+        "type": "Stop",
+        "form": "o brethil"
+      },
+      {
+        "type": "H",
+        "form": "ah brethil"
+      },
+      {
+        "type": "DH",
+        "form": "nedh brethil"
+      }
+    ]
+  },
+  {
+    "dict_form": "bril",
+    "part": "noun",
+    "english": "glass, crystal",
+    "definition": "玻璃，水晶，晶体，琉璃",
+    "sentence": "\n",
+    "other": "伊尔科尔语词源",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i vril"
+      },
+      {
+        "type": "Plural",
+        "form": "bril"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i mril"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "am bril"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-bril"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin bril"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor vril"
+      },
+      {
+        "type": "Stop",
+        "form": "o bril"
+      },
+      {
+        "type": "H",
+        "form": "ah bril"
+      },
+      {
+        "type": "DH",
+        "form": "nedh bril"
+      }
+    ]
+  },
+  {
+    "dict_form": "brith",
+    "part": "noun",
+    "english": "gravel",
+    "definition": "沙砾，砾石",
+    "sentence": "[UT/54]\nBrithiach.\n布砾希阿赫渡口，砾石渡口\n",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i vrith"
+      },
+      {
+        "type": "Plural",
+        "form": "brith"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i mrith"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "am brith"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-brith"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin brith"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor vrith"
+      },
+      {
+        "type": "Stop",
+        "form": "o brith"
+      },
+      {
+        "type": "H",
+        "form": "ah brith"
+      },
+      {
+        "type": "DH",
+        "form": "nedh brith"
+      }
+    ]
+  },
+  {
+    "dict_form": "brithon",
+    "part": "adjective",
+    "english": "pebbly",
+    "definition": "鹅卵石样的，布满鹅卵石的，鹅卵石花纹的",
+    "sentence": "\n",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "vrithon"
+      },
+      {
+        "type": "Plural",
+        "form": "brithyn"
+      },
+      {
+        "type": "Comparative",
+        "form": "ambrithon/ammrithon"
+      },
+      {
+        "type": "Superlative",
+        "form": "rovrithon"
+      }
+    ]
+  },
+  {
+    "dict_form": "brui",
+    "part": "adjective",
+    "english": "loud",
+    "definition": "大声的，吵闹的，响的，喧哗的",
+    "sentence": "[LotR/200]\nBruinen.\n布茹伊能河，响水河\n",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "vrui"
+      },
+      {
+        "type": "Plural",
+        "form": "brui"
+      },
+      {
+        "type": "Comparative",
+        "form": "ambrui/ammrui"
+      },
+      {
+        "type": "Superlative",
+        "form": "rovrui"
       }
     ]
   }

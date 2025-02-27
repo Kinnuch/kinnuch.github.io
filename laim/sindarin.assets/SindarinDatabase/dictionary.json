@@ -5365,6 +5365,32 @@
     ]
   },
   {
+    "dict_form": "bregol",
+    "part": "adjective",
+    "english": "quick, sudden",
+    "definition": "快速的，突然的，骤然的",
+    "sentence": "[LotR/482]\nBregalad.\n急楸，急性子的树\n",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "vregol"
+      },
+      {
+        "type": "Plural",
+        "form": "bregyl"
+      },
+      {
+        "type": "Comparative",
+        "form": "ambregol/ammregol"
+      },
+      {
+        "type": "Superlative",
+        "form": "rovregol"
+      }
+    ]
+  },
+  {
     "dict_form": "bregollach",
     "part": "noun",
     "english": "sudden flame",
@@ -5411,82 +5437,6 @@
       {
         "type": "DH",
         "form": "nedh bregollach"
-      }
-    ]
-  },
-  {
-    "dict_form": "bâd",
-    "part": "noun",
-    "english": "road, path",
-    "definition": "路，径，道路，通道",
-    "sentence": "\n",
-    "other": "",
-    "morphology": [
-      {
-        "type": "Soft",
-        "form": "i vâd"
-      },
-      {
-        "type": "Plural",
-        "form": "baid"
-      },
-      {
-        "type": "NasalⅠ",
-        "form": "i maid"
-      },
-      {
-        "type": "NasalⅡ",
-        "form": "am bâd"
-      },
-      {
-        "type": "MixedⅠ",
-        "form": "e-bâd"
-      },
-      {
-        "type": "MixedⅡ",
-        "form": "anin bâd"
-      },
-      {
-        "type": "Liquid",
-        "form": "egor vâd"
-      },
-      {
-        "type": "Stop",
-        "form": "o bâd"
-      },
-      {
-        "type": "H",
-        "form": "ah bâd"
-      },
-      {
-        "type": "DH",
-        "form": "nedh bâd"
-      }
-    ]
-  },
-  {
-    "dict_form": "bregol",
-    "part": "adjective",
-    "english": "quick, sudden",
-    "definition": "快速的，突然的，骤然的",
-    "sentence": "[LotR/482]\nBregalad.\n急楸，急性子的树\n",
-    "other": "",
-    "morphology": [
-      {
-        "type": "Soft",
-        "form": "vregol"
-      },
-      {
-        "type": "Plural",
-        "form": "bregyl"
-      },
-      {
-        "type": "Comparative",
-        "form": "ambregol/ammregol"
-      },
-      {
-        "type": "Superlative",
-        "form": "rovregol"
       }
     ]
   },
@@ -5739,6 +5689,1061 @@
       {
         "type": "Superlative",
         "form": "rovrui"
+      }
+    ]
+  },
+  {
+    "dict_form": "bâd",
+    "part": "noun",
+    "english": "road, path",
+    "definition": "路，径，道路，通道",
+    "sentence": "\n",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i vâd"
+      },
+      {
+        "type": "Plural",
+        "form": "baid"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i maid"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "am bâd"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-bâd"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin bâd"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor vâd"
+      },
+      {
+        "type": "Stop",
+        "form": "o bâd"
+      },
+      {
+        "type": "H",
+        "form": "ah bâd"
+      },
+      {
+        "type": "DH",
+        "form": "nedh bâd"
+      }
+    ]
+  },
+  {
+    "dict_form": "budhu",
+    "part": "noun",
+    "english": "big fly",
+    "definition": "大苍蝇；大型飞行昆虫",
+    "sentence": "\n",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i vudhu"
+      },
+      {
+        "type": "Plural",
+        "form": "bydhu"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i mydhu"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "am budhu"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-budhu"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin budhu"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor vudhu"
+      },
+      {
+        "type": "Stop",
+        "form": "o budhu"
+      },
+      {
+        "type": "H",
+        "form": "ah budhu"
+      },
+      {
+        "type": "DH",
+        "form": "nedh budhu"
+      }
+    ]
+  },
+  {
+    "dict_form": "cab-",
+    "part": "verb",
+    "english": "to leap",
+    "definition": "跳，蹦，跃",
+    "sentence": "\n",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Present",
+        "form": "câb/cebi-"
+      },
+      {
+        "type": "Past",
+        "form": "agamp/agamme-"
+      },
+      {
+        "type": "Future",
+        "form": "cabatha/cabatha(o)-"
+      },
+      {
+        "type": "Imperative",
+        "form": "cabo"
+      },
+      {
+        "type": "Gerund",
+        "form": "cabed"
+      },
+      {
+        "type": "PastParticiple",
+        "form": "cammen"
+      },
+      {
+        "type": "PresentParticiple",
+        "form": "cabel"
+      },
+      {
+        "type": "PeferctParticle",
+        "form": "cóbiel"
+      }
+    ]
+  },
+  {
+    "dict_form": "cabed",
+    "part": "noun",
+    "english": "leap",
+    "definition": "一跳，一跃",
+    "sentence": "[S/224]\nCabed Naeramarth.\n恐怖的命运一跃，卡贝得·奈阿玛尔斯\n",
+    "other": "动词cab的动名词形式",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i gabed"
+      },
+      {
+        "type": "Plural",
+        "form": "动名词无复数形式"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "*in + cabed不合法"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "a chabed"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-gabed"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin gabed"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor chabed"
+      },
+      {
+        "type": "Stop",
+        "form": "o chabed"
+      },
+      {
+        "type": "H",
+        "form": "a chabed"
+      },
+      {
+        "type": "DH",
+        "form": "ne chabed"
+      }
+    ]
+  },
+  {
+    "dict_form": "cad",
+    "part": "adverb",
+    "english": "after",
+    "definition": "在...后",
+    "sentence": "[PM/136]\nCadlaer.\n七月，夏季之后\n",
+    "other": "",
+    "morphology": []
+  },
+  {
+    "dict_form": "cadhad",
+    "part": "noun",
+    "english": "dwarf",
+    "definition": "矮人",
+    "sentence": "\n",
+    "other": "与库兹都语Khuzd和昆雅语Casar同源",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i gadhad"
+      },
+      {
+        "type": "Plural",
+        "form": "cedhaid"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i chedhaid"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "a chadhad"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-gadhad"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin gadhad"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor chadhad"
+      },
+      {
+        "type": "Stop",
+        "form": "o chadhad"
+      },
+      {
+        "type": "H",
+        "form": "a chadhad"
+      },
+      {
+        "type": "DH",
+        "form": "ne chadhad"
+      }
+    ]
+  },
+  {
+    "dict_form": "caen",
+    "part": "other",
+    "english": "ten",
+    "definition": "十",
+    "sentence": "\n",
+    "other": "数词",
+    "morphology": []
+  },
+  {
+    "dict_form": "caer",
+    "part": "noun",
+    "english": "flat isle on a river",
+    "definition": "湖心岛，河中岛，河流中的平坦小岛，河流冲积处的平坦小岛",
+    "sentence": "\n",
+    "other": "该词意思不确定，存疑",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i gaer"
+      },
+      {
+        "type": "Plural",
+        "form": "caer"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i chaer"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "a chaer"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-gaer"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin gaer"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor chaer"
+      },
+      {
+        "type": "Stop",
+        "form": "o chaer"
+      },
+      {
+        "type": "H",
+        "form": "a chaer"
+      },
+      {
+        "type": "DH",
+        "form": "ne chaer"
+      }
+    ]
+  },
+  {
+    "dict_form": "cafor",
+    "part": "noun",
+    "english": "flea",
+    "definition": "蚤，跳蚤，虱子",
+    "sentence": "\n",
+    "other": "该词写作*cáfru但该形式本不应该存在于辛达语中，故在Neo-Sindarin中演化为cafor",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i gafor"
+      },
+      {
+        "type": "Plural",
+        "form": "cefyr"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i chefyr"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "a chafor"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-gafor"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin gafor"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor chafor"
+      },
+      {
+        "type": "Stop",
+        "form": "o chafor"
+      },
+      {
+        "type": "H",
+        "form": "a chafor"
+      },
+      {
+        "type": "DH",
+        "form": "ne chafor"
+      }
+    ]
+  },
+  {
+    "dict_form": "cai",
+    "part": "noun",
+    "english": "hedge",
+    "definition": "篱笆，围栏；防护，保护",
+    "sentence": "[PE17/101][UT/282]\nMorgai.\n魔盖，黑暗围栏\n",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i gai"
+      },
+      {
+        "type": "Plural",
+        "form": "cai"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i chai"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "a chai"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-gai"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin gai"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor chai"
+      },
+      {
+        "type": "Stop",
+        "form": "o chai"
+      },
+      {
+        "type": "H",
+        "form": "a chai"
+      },
+      {
+        "type": "DH",
+        "form": "ne chai"
+      }
+    ]
+  },
+  {
+    "dict_form": "cail",
+    "part": "noun",
+    "english": "fence, palisade of spikes or sharp stakes",
+    "definition": "围栏，护栏，栅栏；带尖点或尖锐桩子的护栏",
+    "sentence": "[UT/281]\nthangail.\n桑盖尔，努门诺尔军队防御阵型\n",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i gail"
+      },
+      {
+        "type": "Plural",
+        "form": "cail"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i chail"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "a chail"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-gail"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin gail"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor chail"
+      },
+      {
+        "type": "Stop",
+        "form": "o chail"
+      },
+      {
+        "type": "H",
+        "form": "a chail"
+      },
+      {
+        "type": "DH",
+        "form": "ne chail"
+      }
+    ]
+  },
+  {
+    "dict_form": "cair",
+    "part": "noun",
+    "english": "ship",
+    "definition": "船，舰，舟",
+    "sentence": "[PE17/147]\naran cîr lim.\n迅捷船只中的王者\n",
+    "other": "古-YA类词，干元音i",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i gair"
+      },
+      {
+        "type": "Plural",
+        "form": "cîr"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i chîr"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "a chair"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-gair"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin gair"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor chair"
+      },
+      {
+        "type": "Stop",
+        "form": "o chair"
+      },
+      {
+        "type": "H",
+        "form": "a chair"
+      },
+      {
+        "type": "DH",
+        "form": "ne chair"
+      }
+    ]
+  },
+  {
+    "dict_form": "cal-",
+    "part": "verb",
+    "english": "to shine",
+    "definition": "照耀，照射",
+    "sentence": "\n",
+    "other": "主要指太阳或金色光源的照射",
+    "morphology": [
+      {
+        "type": "Present",
+        "form": "câl/celi-"
+      },
+      {
+        "type": "Past",
+        "form": "agol/agóle-"
+      },
+      {
+        "type": "Future",
+        "form": "calatha/calatha(o)-"
+      },
+      {
+        "type": "Imperative",
+        "form": "calo"
+      },
+      {
+        "type": "Gerund",
+        "form": "caled"
+      },
+      {
+        "type": "PastParticiple",
+        "form": "callen"
+      },
+      {
+        "type": "PresentParticiple",
+        "form": "calel"
+      },
+      {
+        "type": "PeferctParticle",
+        "form": "cóliel"
+      }
+    ]
+  },
+  {
+    "dict_form": "calad",
+    "part": "noun",
+    "english": "light, fire, brightness, shining",
+    "definition": "光，照耀，亮度；火焰（作为光源）",
+    "sentence": "[UT/65]\nLacho calad!Drego morn!.\n光明点燃！黑夜退散！\n",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i galad"
+      },
+      {
+        "type": "Plural",
+        "form": "celaid"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i chelaid"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "a chalad"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-galad"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin galad"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor chalad"
+      },
+      {
+        "type": "Stop",
+        "form": "o chalad"
+      },
+      {
+        "type": "H",
+        "form": "a chalad"
+      },
+      {
+        "type": "DH",
+        "form": "ne chalad"
+      }
+    ]
+  },
+  {
+    "dict_form": "calan",
+    "part": "noun",
+    "english": "day(light)",
+    "definition": "日光，白昼光，天光",
+    "sentence": "\n",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i galan"
+      },
+      {
+        "type": "Plural",
+        "form": "celain"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i chelain"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "a chalan"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-galan"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin galan"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor chalan"
+      },
+      {
+        "type": "Stop",
+        "form": "o chalan"
+      },
+      {
+        "type": "H",
+        "form": "a chalan"
+      },
+      {
+        "type": "DH",
+        "form": "ne chalan"
+      }
+    ]
+  },
+  {
+    "dict_form": "calar",
+    "part": "noun",
+    "english": "(portable)lamp",
+    "definition": "灯笼，灯（可携带的）",
+    "sentence": "[PE17/96][RC/523]\ncalardan.\n灯匠\n",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i galar"
+      },
+      {
+        "type": "Plural",
+        "form": "celair"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i chelair"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "a chalar"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-galar"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin galar"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor chalar"
+      },
+      {
+        "type": "Stop",
+        "form": "o chalar"
+      },
+      {
+        "type": "H",
+        "form": "a chalar"
+      },
+      {
+        "type": "DH",
+        "form": "ne chalar"
+      }
+    ]
+  },
+  {
+    "dict_form": "calardan",
+    "part": "noun",
+    "english": "lampwright",
+    "definition": "灯匠",
+    "sentence": "[PE17/96][RC/523]\nRath Celerdain.\n灯匠街，拉斯凯勒尔丹\n",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i galardan"
+      },
+      {
+        "type": "Plural",
+        "form": "celerdain"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i chelerdain"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "a chalardan"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-galardan"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin galardan"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor chalardan"
+      },
+      {
+        "type": "Stop",
+        "form": "o chalardan"
+      },
+      {
+        "type": "H",
+        "form": "a chalardan"
+      },
+      {
+        "type": "DH",
+        "form": "ne chalardan"
+      }
+    ]
+  },
+  {
+    "dict_form": "calen",
+    "part": "adjective",
+    "english": "green, fresh, vigorous",
+    "definition": "绿色的；新鲜的，有活力的，活跃的",
+    "sentence": "[UT/281]\nEryn Galen.\n黑森林(直译是绿森林)\n",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "galen"
+      },
+      {
+        "type": "Plural",
+        "form": "celin"
+      },
+      {
+        "type": "Comparative",
+        "form": "achalen"
+      },
+      {
+        "type": "Superlative",
+        "form": "rogalen"
+      }
+    ]
+  },
+  {
+    "dict_form": "cam",
+    "part": "noun",
+    "english": "(cupped)hand, holding hand, handful",
+    "definition": "（捧着的，托举状的）手；（一撮，一小缕，少，一小把）的量",
+    "sentence": "[VT50/5]\nsí il chem en i Naugrim en ir Ellath thor den ammen.\n现在所有矮人和精灵都将站在我们的对立面\n",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i gam"
+      },
+      {
+        "type": "Plural",
+        "form": "cem"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i chem"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "a cham"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-gam"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin gam"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor cham"
+      },
+      {
+        "type": "Stop",
+        "form": "o cham"
+      },
+      {
+        "type": "H",
+        "form": "a cham"
+      },
+      {
+        "type": "DH",
+        "form": "ne cham"
+      }
+    ]
+  },
+  {
+    "dict_form": "can-",
+    "part": "verb",
+    "english": "to cry out, shout, call",
+    "definition": "哭喊，嚎叫，吼叫，大喊，大叫，咆哮",
+    "sentence": "\n",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Present",
+        "form": "cân/ceni-"
+      },
+      {
+        "type": "Past",
+        "form": "agon/agónne-"
+      },
+      {
+        "type": "Future",
+        "form": "canatha/canatha(o)-"
+      },
+      {
+        "type": "Imperative",
+        "form": "cano"
+      },
+      {
+        "type": "Gerund",
+        "form": "caned"
+      },
+      {
+        "type": "PastParticiple",
+        "form": "cannen"
+      },
+      {
+        "type": "PresentParticiple",
+        "form": "canel"
+      },
+      {
+        "type": "PeferctParticle",
+        "form": "cóniel"
+      }
+    ]
+  },
+  {
+    "dict_form": "canad",
+    "part": "other",
+    "english": "four",
+    "definition": "四",
+    "sentence": "\n",
+    "other": "数词",
+    "morphology": []
+  },
+  {
+    "dict_form": "canath",
+    "part": "noun",
+    "english": "quarter",
+    "definition": "四分之一；（刚铎）银币；一季，一刻",
+    "sentence": "\n",
+    "other": "西部语中称银币为沙尼Tharni",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i ganath"
+      },
+      {
+        "type": "Plural",
+        "form": "cenaith"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i chenaith"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "a chanath"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-ganath"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin ganath"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor chanath"
+      },
+      {
+        "type": "Stop",
+        "form": "o chanath"
+      },
+      {
+        "type": "H",
+        "form": "a chanath"
+      },
+      {
+        "type": "DH",
+        "form": "ne chanath"
+      }
+    ]
+  },
+  {
+    "dict_form": "cannas",
+    "part": "noun",
+    "english": "(abstract)shape",
+    "definition": "（抽象的）形状；身影",
+    "sentence": "[WJ/192]\ndorgannas.\n地理，多尔甘那斯\n\n",
+    "other": "cant + -as",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i gannas"
+      },
+      {
+        "type": "Plural",
+        "form": "cennais"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i chennais"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "a channas"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-gannas"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin gannas"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor channas"
+      },
+      {
+        "type": "Stop",
+        "form": "o channas"
+      },
+      {
+        "type": "H",
+        "form": "a channas"
+      },
+      {
+        "type": "DH",
+        "form": "ne channas"
+      }
+    ]
+  },
+  {
+    "dict_form": "cant",
+    "part": "noun",
+    "english": "shape",
+    "definition": "形状，身形",
+    "sentence": "\n",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i gant"
+      },
+      {
+        "type": "Plural",
+        "form": "cent"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i chent"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "a chant"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-gant"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin gant"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor chant"
+      },
+      {
+        "type": "Stop",
+        "form": "o chant"
+      },
+      {
+        "type": "H",
+        "form": "a chant"
+      },
+      {
+        "type": "DH",
+        "form": "ne chant"
+      }
+    ]
+  },
+  {
+    "dict_form": "canthui",
+    "part": "adjective",
+    "english": "fourth",
+    "definition": "第四的，（伯仲叔）季的",
+    "sentence": "\n",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "ganthui"
+      },
+      {
+        "type": "Plural",
+        "form": "centhui"
+      },
+      {
+        "type": "Comparative",
+        "form": "无比较级形式"
+      },
+      {
+        "type": "Superlative",
+        "form": "无最高级形式"
       }
     ]
   }

@@ -121,8 +121,8 @@ function setupSearch() {
     const searchInput = document.getElementById('searchInput');
     searchInput.addEventListener('input', (e) => {
         const queryTotal = e.target.value.toLowerCase();
-        const classifier = '';
-        const query = queryTotal;
+        let classifier = '';
+        let query = queryTotal;
         if (queryTotal.includes('=')) {
             [classifier, query] = queryTotal.split('=');
         }
@@ -158,6 +158,10 @@ function toggleDropdownGuide() {
     document.getElementById("dropdownContentGuide").classList.toggle("show");
 }
 
+function toggleDropdownSearch() {
+    document.getElementById("dropdownContentSearch").classList.toggle("show");
+}
+
 // 点击外部关闭下拉
 window.onclick = function(e) {
     if (!e.target.matches('.utility-btn')) {
@@ -168,6 +172,10 @@ window.onclick = function(e) {
         const dropdownsguide = document.getElementsByClassName("dropdownguide-content");
         for (let i = 0; i < dropdownsguide.length; i++) {
             dropdownsguide[i].classList.remove('show');
+        }
+        const dropdownssearch = document.getElementsByClassName("dropdownsearch-content");
+        for (let i = 0; i < dropdownssearch.length; i++) {
+            dropdownssearch[i].classList.remove('show');
         }
     }
 }

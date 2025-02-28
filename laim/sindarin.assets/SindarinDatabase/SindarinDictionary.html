@@ -13,11 +13,11 @@
                 🏠 返回
             </a>
             
-            <div class="dropdowninfo">
+            <div class="dropdown">
                 <button class="utility-btn" onclick="toggleDropdownInfo()">
                     ℹ️ 符号说明
                 </button>
-                <div class="dropdowninfo-content" id="dropdownContentInfo">
+                <div class="dropdown-content" id="dropdownContentInfo">
                     <p><strong>Soft</strong> - 软音变/弱化</p>
                     <p><strong>Plural</strong> - 复数</p>
                     <p><strong>NasalⅠ</strong> - 鼻音音变Ⅰ型（软鼻音音变）</p>
@@ -41,14 +41,25 @@
                 </div>
             </div>
 
-            <div class="dropdownguide">
+            <div class="dropdown">
                 <button class="utility-btn" onclick="toggleDropdownGuide()">
                     🧭 使用指南
                 </button>
-                <div class="dropdownguide-content" id="dropdownContentGuide">
+                <div class="dropdown-content" id="dropdownContentGuide">
                     <p><strong>名词形态</strong> - 展示了每种音变的变化</p>
                     <p><strong>动词形态</strong> - 斜杠左侧为三单形式，右侧为未添加人称的非三单形式；如果有逗号则代表两种形式均可</p>
                     <p><strong>形容词形态</strong> - 展示了形容词软化，复数，比较级和最高级</p>
+                </div>
+            </div>
+
+            <div class="dropdown">
+                <button class="utility-btn" onclick="toggleDropdownSearch()">
+                    🔍 高级搜索
+                </button>
+                <div class="dropdown-content" id="dropdownContentSearch">
+                    <p><strong>仅搜索单词</strong> - 在要搜索的词前添加word=</p>
+                    <p><strong>仅搜索英文解释</strong> - 在要搜索的词前添加gloss=</p>
+                    <p><strong>按照词性过滤</strong> - 在要搜索的词性前添加part=</p>
                 </div>
             </div>
         </div>

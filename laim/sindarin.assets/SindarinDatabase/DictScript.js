@@ -165,17 +165,9 @@ function toggleDropdownSearch() {
 // 点击外部关闭下拉
 window.onclick = function(e) {
     if (!e.target.matches('.utility-btn')) {
-        const dropdownsinfo = document.getElementsByClassName("dropdowninfo-content");
+        const dropdownsinfo = document.getElementsByClassName("dropdown-content");
         for (let i = 0; i < dropdownsinfo.length; i++) {
             dropdownsinfo[i].classList.remove('show');
-        }
-        const dropdownsguide = document.getElementsByClassName("dropdownguide-content");
-        for (let i = 0; i < dropdownsguide.length; i++) {
-            dropdownsguide[i].classList.remove('show');
-        }
-        const dropdownssearch = document.getElementsByClassName("dropdownsearch-content");
-        for (let i = 0; i < dropdownssearch.length; i++) {
-            dropdownssearch[i].classList.remove('show');
         }
     }
 }

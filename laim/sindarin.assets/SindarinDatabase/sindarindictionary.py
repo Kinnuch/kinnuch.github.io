@@ -80,7 +80,15 @@ class DictionaryApp:
         self.listbox.delete(0, tk.END)
         self.filtered_entries = []
         for entry in self.entries:
-            if not filter_text or filter_text.lower() in entry["dict_form"].lower():
+            has_word = False
+            if filter_text:
+                has_word = filter_text.lower() in entry["dict_form"].lower()
+                has_word |= filter_text.lower() in entry["english"].lower()
+                has_word |= filter_text.lower() in entry["definition"].lower()
+                has_word |= filter_text.lower() in entry["sentence"].lower()
+                has_word |= filter_text.lower() in entry["other"].lower()
+                has_word |= filter_text.lower() in entry["part"].lower()
+            if not filter_text or has_word:
                 self.filtered_entries.append(entry)
                 display_text = f"{entry['dict_form']} - {entry['part']} - {entry['english']} - {entry['definition']}"
                 self.listbox.insert(tk.END, display_text)

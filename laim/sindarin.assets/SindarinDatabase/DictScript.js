@@ -120,11 +120,19 @@ function loadMore() {
 function setupSearch() {
     const searchInput = document.getElementById('searchInput');
     searchInput.addEventListener('input', (e) => {
-        const query = e.target.value.toLowerCase();
+        const queryTotal = e.target.value.toLowerCase();
+        const classifier = '';
+        const query = queryTotal;
+        if (queryTotal.includes('=')) {
+            [classifier, query] = queryTotal.split('=');
+        }
         filteredEntries = allEntries.filter(entry => 
-            entry.dict_form.toLowerCase().includes(query) ||
-            entry.english.toLowerCase().includes(query) ||
-            entry.definition.toLowerCase().includes(query)
+            ((classifier === '' || classifier === 'word') && entry.dict_form.toLowerCase().includes(query)) ||
+            ((classifier === '' || classifier === 'gloss') && entry.english.toLowerCase().includes(query)) ||
+            entry.definition.toLowerCase().includes(query) ||
+            entry.sentence.toLowerCase().includes(query) ||
+            (classifier === 'part' && entry.part.toLowerCase().includes(query)) ||
+            entry.other.toLowerCase().includes(query)
         );
         page = 0;
         document.getElementById('entriesContainer').innerHTML = '';

@@ -5693,56 +5693,6 @@
     ]
   },
   {
-    "dict_form": "bâd",
-    "part": "noun",
-    "english": "road, path",
-    "definition": "路，径，道路，通道",
-    "sentence": "\n",
-    "other": "",
-    "morphology": [
-      {
-        "type": "Soft",
-        "form": "i vâd"
-      },
-      {
-        "type": "Plural",
-        "form": "baid"
-      },
-      {
-        "type": "NasalⅠ",
-        "form": "i maid"
-      },
-      {
-        "type": "NasalⅡ",
-        "form": "am bâd"
-      },
-      {
-        "type": "MixedⅠ",
-        "form": "e-bâd"
-      },
-      {
-        "type": "MixedⅡ",
-        "form": "anin bâd"
-      },
-      {
-        "type": "Liquid",
-        "form": "egor vâd"
-      },
-      {
-        "type": "Stop",
-        "form": "o bâd"
-      },
-      {
-        "type": "H",
-        "form": "ah bâd"
-      },
-      {
-        "type": "DH",
-        "form": "nedh bâd"
-      }
-    ]
-  },
-  {
     "dict_form": "budhu",
     "part": "noun",
     "english": "big fly",
@@ -5789,6 +5739,56 @@
       {
         "type": "DH",
         "form": "nedh budhu"
+      }
+    ]
+  },
+  {
+    "dict_form": "bâd",
+    "part": "noun",
+    "english": "road, path",
+    "definition": "路，径，道路，通道",
+    "sentence": "\n",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i vâd"
+      },
+      {
+        "type": "Plural",
+        "form": "baid"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i maid"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "am bâd"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-bâd"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin bâd"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor vâd"
+      },
+      {
+        "type": "Stop",
+        "form": "o bâd"
+      },
+      {
+        "type": "H",
+        "form": "ah bâd"
+      },
+      {
+        "type": "DH",
+        "form": "nedh bâd"
       }
     ]
   },
@@ -6744,6 +6744,124 @@
       {
         "type": "Superlative",
         "form": "无最高级形式"
+      }
+    ]
+  },
+  {
+    "dict_form": "car-",
+    "part": "verb",
+    "english": "to do, make",
+    "definition": "做，制作，制造，干某事，基本动词",
+    "sentence": "[VT50/5]\nos i Veleglinn i edain agorer vi Veleriann.\n来自人类在贝烈瑞安德创作的宏大乐章\n",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Present",
+        "form": "câr/ceri-"
+      },
+      {
+        "type": "Past",
+        "form": "agor/agóre-"
+      },
+      {
+        "type": "Future",
+        "form": "caratha/caratha(o)-"
+      },
+      {
+        "type": "Imperative",
+        "form": "caro"
+      },
+      {
+        "type": "Gerund",
+        "form": "cared"
+      },
+      {
+        "type": "PastParticiple",
+        "form": "carnen"
+      },
+      {
+        "type": "PresentParticiple",
+        "form": "carel"
+      },
+      {
+        "type": "PeferctParticle",
+        "form": "córiel"
+      }
+    ]
+  },
+  {
+    "dict_form": "carach",
+    "part": "noun",
+    "english": "jaws, rows of teeth",
+    "definition": "下颌，下巴，颚；一排牙齿",
+    "sentence": "\n",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i garach"
+      },
+      {
+        "type": "Plural",
+        "form": "ceraich"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i cheraich"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "a charach"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-garach"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin garach"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor charach"
+      },
+      {
+        "type": "Stop",
+        "form": "o charach"
+      },
+      {
+        "type": "H",
+        "form": "a charach"
+      },
+      {
+        "type": "DH",
+        "form": "ne charach"
+      }
+    ]
+  },
+  {
+    "dict_form": "caran",
+    "part": "adjective",
+    "english": "red",
+    "definition": "红色的，猩红的，赤色的",
+    "sentence": "\n",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "garan"
+      },
+      {
+        "type": "Plural",
+        "form": "cerain"
+      },
+      {
+        "type": "Comparative",
+        "form": "acharan"
+      },
+      {
+        "type": "Superlative",
+        "form": "ro-garan"
       }
     ]
   }

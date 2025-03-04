@@ -354,7 +354,7 @@
     "part": "adjective",
     "english": "mighty",
     "definition": "有力量的，强大的",
-    "sentence": "\n\n",
+    "sentence": "\n\n\n",
     "other": "",
     "morphology": [
       {
@@ -371,7 +371,7 @@
       },
       {
         "type": "Superlative",
-        "form": "romelaith"
+        "form": "ro-melaith"
       }
     ]
   },
@@ -430,7 +430,7 @@
     "part": "adjective",
     "english": "hot, red",
     "definition": "热的，烧红的，火红的，炽红的",
-    "sentence": "[Let/427]\nBorgil.\n玻吉尔，炽红之星\n",
+    "sentence": "[Let/427]\nBorgil.\n玻吉尔，炽红之星\n\n",
     "other": "",
     "morphology": [
       {
@@ -447,7 +447,7 @@
       },
       {
         "type": "Superlative",
-        "form": "romorn"
+        "form": "ro-morn"
       }
     ]
   },
@@ -1471,7 +1471,7 @@
     "part": "adjective",
     "english": "sharp",
     "definition": "尖锐的，尖的，尖端的，顶端的",
-    "sentence": "\n\n\n",
+    "sentence": "\n\n\n\n",
     "other": "",
     "morphology": [
       {
@@ -1488,7 +1488,7 @@
       },
       {
         "type": "Superlative",
-        "form": "roaeg"
+        "form": "ro-aeg"
       }
     ]
   },
@@ -1692,7 +1692,7 @@
     "part": "adjective",
     "english": "hallowed, holy",
     "definition": "神圣的",
-    "sentence": "[VT44/21]\nNo aer i eneth lín.\n愿汝名祝圣\n\n\n\n",
+    "sentence": "[VT44/21]\nNo aer i eneth lín.\n愿汝名祝圣\n\n\n\n\n",
     "other": "",
     "morphology": [
       {
@@ -1709,7 +1709,7 @@
       },
       {
         "type": "Superlative",
-        "form": "roaer"
+        "form": "ro-aer"
       }
     ]
   },
@@ -1984,7 +1984,7 @@
     "part": "adjective",
     "english": "glorious, brilliant",
     "definition": "荣耀的，光荣的，荣光的",
-    "sentence": "[S/115]\nDagor Aglareb.\n荣耀之战（达戈·阿格拉瑞布）\n\n\n\n",
+    "sentence": "[S/115]\nDagor Aglareb.\n荣耀之战（达戈·阿格拉瑞布）\n\n\n\n\n",
     "other": "aglar + -eb",
     "morphology": [
       {
@@ -2001,7 +2001,7 @@
       },
       {
         "type": "Superlative",
-        "form": "roaglareb"
+        "form": "ro-aglareb"
       }
     ]
   },
@@ -2010,7 +2010,7 @@
     "part": "adjective",
     "english": "glorious, brilliant",
     "definition": "荣耀的，光荣的，荣光的",
-    "sentence": "\n\n\n",
+    "sentence": "\n\n\n\n",
     "other": "同aglareb",
     "morphology": [
       {
@@ -2027,7 +2027,7 @@
       },
       {
         "type": "Superlative",
-        "form": "roaglor"
+        "form": "ro-aglor"
       }
     ]
   },
@@ -2066,7 +2066,7 @@
     "part": "adjective",
     "english": "lonely",
     "definition": "孤独的，独自的，仅剩的，孑然",
-    "sentence": "[VT50/5]\nI glinn hen agorer Edain mi Velerian, ach hí in Ellath îr ed epholar.\n人类在贝烈瑞安德创作了这首歌，但如今独有精灵（？记得）它了。\n\n\n\n",
+    "sentence": "[VT50/5]\nI glinn hen agorer Edain mi Velerian, ach hí in Ellath îr ed epholar.\n人类在贝烈瑞安德创作了这首歌，但如今独有精灵（？记得）它了。\n\n\n\n\n",
     "other": "属于古-ya词，干元音i",
     "morphology": [
       {
@@ -2083,7 +2083,7 @@
       },
       {
         "type": "Superlative",
-        "form": "roair"
+        "form": "ro-air"
       }
     ]
   },
@@ -2277,7 +2277,7 @@
     "part": "adjective",
     "english": "immortal, not dying",
     "definition": "永生的，不会死亡的，不朽的，不会凋零的",
-    "sentence": "\n\n\n",
+    "sentence": "\n\n\n\n",
     "other": "al- + firin",
     "morphology": [
       {
@@ -2294,7 +2294,7 @@
       },
       {
         "type": "Superlative",
-        "form": "roalfirin"
+        "form": "ro-alfirin"
       }
     ]
   },
@@ -2353,7 +2353,7 @@
     "part": "adjective",
     "english": "wholesome",
     "definition": "有益的，有益健康的",
-    "sentence": "\n",
+    "sentence": "\n\n",
     "other": "",
     "morphology": [
       {
@@ -2370,7 +2370,7 @@
       },
       {
         "type": "Superlative",
-        "form": "roalu"
+        "form": "ro-alu"
       }
     ]
   },
@@ -2379,7 +2379,7 @@
     "part": "adjective",
     "english": "prosperous, fortunate",
     "definition": "繁荣的，富裕的；辛运的",
-    "sentence": "\n",
+    "sentence": "\n\n",
     "other": "",
     "morphology": [
       {
@@ -2396,7 +2396,7 @@
       },
       {
         "type": "Superlative",
-        "form": "roalwed"
+        "form": "ro-alwed"
       }
     ]
   },
@@ -2774,7 +2774,7 @@
     "part": "adjective",
     "english": "long",
     "definition": "长的",
-    "sentence": "[PE17/147]\ni arben na megil and.\n长剑骑士\n",
+    "sentence": "[PE17/147]\ni arben na megil and.\n长剑骑士\n\n",
     "other": "",
     "morphology": [
       {
@@ -2791,7 +2791,7 @@
       },
       {
         "type": "Superlative",
-        "form": "roand"
+        "form": "ro-and"
       }
     ]
   },
@@ -3210,7 +3210,7 @@
     "part": "adjective",
     "english": "west, western",
     "definition": "西方，西方的",
-    "sentence": "[AotM/62][SD/128]\naran Gondor ar Arnor ar Hîr i Mbair Annui.\n刚铎与阿尔诺的国王暨西境之主\n",
+    "sentence": "[AotM/62][SD/128]\naran Gondor ar Arnor ar Hîr i Mbair Annui.\n刚铎与阿尔诺的国王暨西境之主\n\n",
     "other": "",
     "morphology": [
       {
@@ -3227,7 +3227,7 @@
       },
       {
         "type": "Superlative",
-        "form": "roannui"
+        "form": "ro-annui"
       }
     ]
   },
@@ -3738,7 +3738,7 @@
     "part": "adjective",
     "english": "noble",
     "definition": "高贵的，贵族的；道德的，高尚的，伟大的",
-    "sentence": "\n",
+    "sentence": "\n\n",
     "other": "",
     "morphology": [
       {
@@ -3755,7 +3755,7 @@
       },
       {
         "type": "Superlative",
-        "form": "roarod"
+        "form": "ro-arod"
       }
     ]
   },
@@ -4056,7 +4056,7 @@
     "part": "adjective",
     "english": "healing",
     "definition": "治愈的，疗伤的，恢复的；有帮助的",
-    "sentence": "\n",
+    "sentence": "\n\n",
     "other": "Le athae是FJ版本的thank you(lit. you're helpful)；注意和VLDS通用的annon allen区分",
     "morphology": [
       {
@@ -4073,7 +4073,7 @@
       },
       {
         "type": "Superlative",
-        "form": "roathae"
+        "form": "ro-athae"
       }
     ]
   },
@@ -4182,7 +4182,7 @@
     "part": "adjective",
     "english": "easy(to do sth.)",
     "definition": "（做某事）容易，简单，轻松",
-    "sentence": "\n",
+    "sentence": "\n\n",
     "other": "ath- + car-",
     "morphology": [
       {
@@ -4199,7 +4199,7 @@
       },
       {
         "type": "Superlative",
-        "form": "roathgar"
+        "form": "ro-athgar"
       }
     ]
   },
@@ -4208,7 +4208,7 @@
     "part": "adjective",
     "english": "easily seen",
     "definition": "容易看见的，容易发现的；可见的，可视的",
-    "sentence": "\n",
+    "sentence": "\n\n",
     "other": "ath- + cen-",
     "morphology": [
       {
@@ -4225,7 +4225,7 @@
       },
       {
         "type": "Superlative",
-        "form": "roathgen"
+        "form": "ro-athgen"
       }
     ]
   },
@@ -4710,7 +4710,7 @@
     "part": "adjective",
     "english": "fair, beautiful, good, wholesome, favorable, fair-haired",
     "definition": "漂亮的，美丽的，好看的；有益的；金发的",
-    "sentence": "\n",
+    "sentence": "\n\n",
     "other": "",
     "morphology": [
       {
@@ -4727,7 +4727,7 @@
       },
       {
         "type": "Superlative",
-        "form": "rovain"
+        "form": "ro-vain"
       }
     ]
   },
@@ -4778,7 +4778,7 @@
     "part": "adjective",
     "english": "fierce, ferocious",
     "definition": "激烈的，猛烈的；凶猛的，凶残的",
-    "sentence": "\n",
+    "sentence": "\n\n",
     "other": "",
     "morphology": [
       {
@@ -4795,7 +4795,7 @@
       },
       {
         "type": "Superlative",
-        "form": "rovalch"
+        "form": "ro-valch"
       }
     ]
   },
@@ -4904,7 +4904,7 @@
     "part": "adjective",
     "english": "brown, golden-brown",
     "definition": "棕色的，咖啡色的；金棕色的，金黄色的，栗色的，小麦色的",
-    "sentence": "[LotR/1138][PM/54][RC/765]\nBaranduin.\n巴兰都因河，白兰地河\n",
+    "sentence": "[LotR/1138][PM/54][RC/765]\nBaranduin.\n巴兰都因河，白兰地河\n\n",
     "other": "",
     "morphology": [
       {
@@ -4921,7 +4921,7 @@
       },
       {
         "type": "Superlative",
-        "form": "rovaran"
+        "form": "ro-varan"
       }
     ]
   },
@@ -4948,7 +4948,7 @@
     "part": "adjective",
     "english": "great, mighty, large, big",
     "definition": "大的，巨大的，伟大的，宏伟的；有力的，强的，强壮的",
-    "sentence": "[SA/beleg]\nBelegaer.\n贝烈盖尔，大海\n",
+    "sentence": "[SA/beleg]\nBelegaer.\n贝烈盖尔，大海\n\n",
     "other": "",
     "morphology": [
       {
@@ -4965,7 +4965,7 @@
       },
       {
         "type": "Superlative",
-        "form": "roveleg"
+        "form": "ro-veleg"
       }
     ]
   },
@@ -5024,7 +5024,7 @@
     "part": "adjective",
     "english": "supreme, sublime",
     "definition": "至高的，极好的",
-    "sentence": "\n",
+    "sentence": "\n\n",
     "other": "",
     "morphology": [
       {
@@ -5041,7 +5041,7 @@
       },
       {
         "type": "Superlative",
-        "form": "rovereth"
+        "form": "ro-vereth"
       }
     ]
   },
@@ -5201,7 +5201,7 @@
     "part": "adjective",
     "english": "towering, tall and massive",
     "definition": "高耸的，矗立的；高大的",
-    "sentence": "\n",
+    "sentence": "\n\n",
     "other": "",
     "morphology": [
       {
@@ -5218,7 +5218,7 @@
       },
       {
         "type": "Superlative",
-        "form": "rovrand"
+        "form": "ro-vrand"
       }
     ]
   },
@@ -5369,7 +5369,7 @@
     "part": "adjective",
     "english": "quick, sudden",
     "definition": "快速的，突然的，骤然的",
-    "sentence": "[LotR/482]\nBregalad.\n急楸，急性子的树\n",
+    "sentence": "[LotR/482]\nBregalad.\n急楸，急性子的树\n\n",
     "other": "",
     "morphology": [
       {
@@ -5386,7 +5386,7 @@
       },
       {
         "type": "Superlative",
-        "form": "rovregol"
+        "form": "ro-vregol"
       }
     ]
   },
@@ -5645,7 +5645,7 @@
     "part": "adjective",
     "english": "pebbly",
     "definition": "鹅卵石样的，布满鹅卵石的，鹅卵石花纹的",
-    "sentence": "\n",
+    "sentence": "\n\n",
     "other": "",
     "morphology": [
       {
@@ -5662,7 +5662,7 @@
       },
       {
         "type": "Superlative",
-        "form": "rovrithon"
+        "form": "ro-vrithon"
       }
     ]
   },
@@ -5671,7 +5671,7 @@
     "part": "adjective",
     "english": "loud",
     "definition": "大声的，吵闹的，响的，喧哗的",
-    "sentence": "[LotR/200]\nBruinen.\n布茹伊能河，响水河\n",
+    "sentence": "[LotR/200]\nBruinen.\n布茹伊能河，响水河\n\n",
     "other": "",
     "morphology": [
       {
@@ -5688,7 +5688,7 @@
       },
       {
         "type": "Superlative",
-        "form": "rovrui"
+        "form": "ro-vrui"
       }
     ]
   },
@@ -6449,7 +6449,7 @@
     "part": "adjective",
     "english": "green, fresh, vigorous",
     "definition": "绿色的；新鲜的，有活力的，活跃的",
-    "sentence": "[UT/281]\nEryn Galen.\n黑森林(直译是绿森林)\n",
+    "sentence": "[UT/281]\nEryn Galen.\n黑森林(直译是绿森林)\n\n",
     "other": "",
     "morphology": [
       {
@@ -6466,7 +6466,7 @@
       },
       {
         "type": "Superlative",
-        "form": "rogalen"
+        "form": "ro-galen"
       }
     ]
   },

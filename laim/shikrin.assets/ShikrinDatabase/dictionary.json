@@ -241,5 +241,68 @@
         "form": "sdfhsdfh"
       }
     ]
+  },
+  {
+    "dict_form": "ᵐbregʷst",
+    "root": "ᵐbregʷ-",
+    "definition": "大的；扩大，增大",
+    "sentence": "",
+    "os_form": "",
+    "cs_form": "",
+    "mins_form": "",
+    "miss_form": "",
+    "mcps_form": "",
+    "mcss_form": "",
+    "mcms_form": "",
+    "morphology": [
+      {
+        "voice": "",
+        "person": "",
+        "tense": "",
+        "form": ""
+      }
+    ]
+  },
+  {
+    "dict_form": "ᵐbeh₁st",
+    "root": "ᵐbeh₁-",
+    "definition": "温暖；点燃；紧贴；摩擦",
+    "sentence": "",
+    "os_form": "",
+    "cs_form": "",
+    "mins_form": "",
+    "miss_form": "",
+    "mcps_form": "",
+    "mcss_form": "",
+    "mcms_form": "",
+    "morphology": [
+      {
+        "voice": "",
+        "person": "",
+        "tense": "",
+        "form": ""
+      }
+    ]
+  },
+  {
+    "dict_form": "ᵐbeh₂st",
+    "root": "ᵐbeh₂-",
+    "definition": "说话",
+    "sentence": "",
+    "os_form": "",
+    "cs_form": "",
+    "mins_form": "",
+    "miss_form": "",
+    "mcps_form": "",
+    "mcss_form": "",
+    "mcms_form": "",
+    "morphology": [
+      {
+        "voice": "",
+        "person": "",
+        "tense": "",
+        "form": ""
+      }
+    ]
   }
 ]

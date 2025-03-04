@@ -7020,8 +7020,8 @@
     "part": "verb",
     "english": "to talk, speak, use tongue",
     "definition": "说话，开口讲话",
-    "sentence": "[PE17/126]\nagarfant beth.\n他说了些话\n",
-    "other": "",
+    "sentence": "[PE17/126]\nagarfant beth.\n他说了些话\n\n",
+    "other": "有时被视为carf-，该词变化究极不规则",
     "morphology": [
       {
         "type": "Present",
@@ -7029,7 +7029,7 @@
       },
       {
         "type": "Past",
-        "form": "agarfant, agarfas/agarfanne-, agarfasse-"
+        "form": "agramp, agarfant, agarfast/agramme-, agarfanne-, agarfasse-"
       },
       {
         "type": "Future",
@@ -7045,7 +7045,7 @@
       },
       {
         "type": "PastParticiple",
-        "form": "agarfannen"
+        "form": "crammen"
       },
       {
         "type": "PresentParticiple",
@@ -7430,6 +7430,1094 @@
       {
         "type": "DH",
         "form": "ne chaun"
+      }
+    ]
+  },
+  {
+    "dict_form": "caun",
+    "part": "noun",
+    "english": "outcry, clamour",
+    "definition": "大吼大叫，（大声的）抱怨；喊声",
+    "sentence": "[PM/362]\nnaergon.\n悲痛的挽歌\n",
+    "other": "常见集体复数conath",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i gaun"
+      },
+      {
+        "type": "Plural",
+        "form": "coen"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i choen"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "a chaun"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-gaun"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin gaun"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor chaun"
+      },
+      {
+        "type": "Stop",
+        "form": "o chaun"
+      },
+      {
+        "type": "H",
+        "form": "a chaun"
+      },
+      {
+        "type": "DH",
+        "form": "ne chaun"
+      }
+    ]
+  },
+  {
+    "dict_form": "caw-",
+    "part": "verb",
+    "english": "to taste",
+    "definition": "品尝，品味",
+    "sentence": "\n",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Present",
+        "form": "caw/cewi-"
+      },
+      {
+        "type": "Past",
+        "form": "cawn/agowe-"
+      },
+      {
+        "type": "Future",
+        "form": "cautha/cautha(o)-"
+      },
+      {
+        "type": "Imperative",
+        "form": "cawo"
+      },
+      {
+        "type": "Gerund",
+        "form": "cawed"
+      },
+      {
+        "type": "PastParticiple",
+        "form": "caun"
+      },
+      {
+        "type": "PresentParticiple",
+        "form": "cawol"
+      },
+      {
+        "type": "PeferctParticle",
+        "form": "不确定"
+      }
+    ]
+  },
+  {
+    "dict_form": "ceber",
+    "part": "noun",
+    "english": "stake, spike",
+    "definition": "柱状物，刺状物，尖刺",
+    "sentence": "[RC/327]\nSarn Gebir.\n萨恩盖比尔，岩石尖刺\n",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i geber"
+      },
+      {
+        "type": "Plural",
+        "form": "cebir"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i chebir"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "a cheber"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-geber"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin geber"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor cheber"
+      },
+      {
+        "type": "Stop",
+        "form": "o cheber"
+      },
+      {
+        "type": "H",
+        "form": "a cheber"
+      },
+      {
+        "type": "DH",
+        "form": "ne cheber"
+      }
+    ]
+  },
+  {
+    "dict_form": "celeb",
+    "part": "noun",
+    "english": "silver",
+    "definition": "银，银色",
+    "sentence": "\n",
+    "other": "人名。地名中\"凯勒\"前缀的通常都是该词的音译",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i geleb"
+      },
+      {
+        "type": "Plural",
+        "form": "celib"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i chelib"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "a cheleb"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-geleb"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin geleb"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor cheleb"
+      },
+      {
+        "type": "Stop",
+        "form": "o cheleb"
+      },
+      {
+        "type": "H",
+        "form": "a cheleb"
+      },
+      {
+        "type": "DH",
+        "form": "ne cheleb"
+      }
+    ]
+  },
+  {
+    "dict_form": "celebrin",
+    "part": "adjective",
+    "english": "like silber(in hue or worth)",
+    "definition": "像银一样的（不论是色调上还是价值上）",
+    "sentence": "\n",
+    "other": "celeb + -ren",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "gelebrin"
+      },
+      {
+        "type": "Plural",
+        "form": "celebrin"
+      },
+      {
+        "type": "Comparative",
+        "form": "achelebrin"
+      },
+      {
+        "type": "Superlative",
+        "form": "ro-gelebrin"
+      }
+    ]
+  },
+  {
+    "dict_form": "celeg",
+    "part": "adjective",
+    "english": "hasty",
+    "definition": "仓促的，轻率的",
+    "sentence": "\n",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "geleg"
+      },
+      {
+        "type": "Plural",
+        "form": "celig"
+      },
+      {
+        "type": "Comparative",
+        "form": "acheleg"
+      },
+      {
+        "type": "Superlative",
+        "form": "ro-geleg"
+      }
+    ]
+  },
+  {
+    "dict_form": "cen-",
+    "part": "verb",
+    "english": "to see, perceive, look",
+    "definition": "看，看见；感知，察觉",
+    "sentence": "[PE17/148]\nathgen.\n容易看见的\n",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Present",
+        "form": "cên/ceni-"
+      },
+      {
+        "type": "Past",
+        "form": "egin/egíne-"
+      },
+      {
+        "type": "Future",
+        "form": "cenatha/cenatha(o)-"
+      },
+      {
+        "type": "Imperative",
+        "form": "ceno"
+      },
+      {
+        "type": "Gerund",
+        "form": "cened"
+      },
+      {
+        "type": "PastParticiple",
+        "form": "cennen"
+      },
+      {
+        "type": "PresentParticiple",
+        "form": "cenel"
+      },
+      {
+        "type": "PeferctParticle",
+        "form": "cíniel"
+      }
+    ]
+  },
+  {
+    "dict_form": "cened",
+    "part": "noun",
+    "english": "looking",
+    "definition": "看（这一动作）",
+    "sentence": "\n",
+    "other": "cen的动名词形式",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i gened"
+      },
+      {
+        "type": "Plural",
+        "form": "动名词无复数形式"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "*in + cened不合法"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "a chened"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-gened"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin gened"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor chened"
+      },
+      {
+        "type": "Stop",
+        "form": "o chened"
+      },
+      {
+        "type": "H",
+        "form": "a chened"
+      },
+      {
+        "type": "DH",
+        "form": "ne chened"
+      }
+    ]
+  },
+  {
+    "dict_form": "cenedril",
+    "part": "noun",
+    "english": "mirror, looking-glass, looking-crystal",
+    "definition": "镜子，用来观察的水晶",
+    "sentence": "\n",
+    "other": "cened + bril",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i genedril"
+      },
+      {
+        "type": "Plural",
+        "form": "cenedril"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i chenedril"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "a chenedril"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-genedril"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin genedril"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor chenedril"
+      },
+      {
+        "type": "Stop",
+        "form": "o chenedril"
+      },
+      {
+        "type": "H",
+        "form": "a chenedril"
+      },
+      {
+        "type": "DH",
+        "form": "ne chenedril"
+      }
+    ]
+  },
+  {
+    "dict_form": "cerin",
+    "part": "noun",
+    "english": "circular mound, artificial hill, round enclosure",
+    "definition": "圆丘，环形闭合，人造丘陵，",
+    "sentence": "[RC/309]\nCerin Amroth.\n凯林阿姆洛斯，阿姆洛斯的圆丘\n",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i gerin"
+      },
+      {
+        "type": "Plural",
+        "form": "cerin"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i cherin"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "a cherin"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-gerin"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin gerin"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor cherin"
+      },
+      {
+        "type": "Stop",
+        "form": "o cherin"
+      },
+      {
+        "type": "H",
+        "form": "a cherin"
+      },
+      {
+        "type": "DH",
+        "form": "ne cherin"
+      }
+    ]
+  },
+  {
+    "dict_form": "certh",
+    "part": "noun",
+    "english": "rune",
+    "definition": "符文，如尼文，如尼字母",
+    "sentence": "[NM/164]\ni Cirdh Daeron.\n戴隆的如尼文\n\n",
+    "other": "例句中的复数属于古形，根据PE22现在复数一般规则变化为cirth",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i gerth"
+      },
+      {
+        "type": "Plural",
+        "form": "cirth"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i chirth"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "a cherth"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-gerth"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin gerth"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor cherth"
+      },
+      {
+        "type": "Stop",
+        "form": "o cherth"
+      },
+      {
+        "type": "H",
+        "form": "a cherth"
+      },
+      {
+        "type": "DH",
+        "form": "ne cherth"
+      }
+    ]
+  },
+  {
+    "dict_form": "certhas",
+    "part": "noun",
+    "english": "runes-rows, runic alphabet",
+    "definition": "符文列，如尼文序列，如尼字母表",
+    "sentence": "[LotR/1123]\nCerthas Daeron.\n戴隆的如尼文\n",
+    "other": "certh + -as",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i gerthas"
+      },
+      {
+        "type": "Plural",
+        "form": "certhais"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i cherthais"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "a cherthas"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-gerthas"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin gerthas"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor cherthas"
+      },
+      {
+        "type": "Stop",
+        "form": "o cherthas"
+      },
+      {
+        "type": "H",
+        "form": "a cherthas"
+      },
+      {
+        "type": "DH",
+        "form": "ne cherthas"
+      }
+    ]
+  },
+  {
+    "dict_form": "Cerveth",
+    "part": "noun",
+    "english": "July",
+    "definition": "七月",
+    "sentence": "\n",
+    "other": "另一个可能的名字是Cadloer，意为after-summer",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i Gerveth"
+      },
+      {
+        "type": "Plural",
+        "form": "Cervith"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i Chervith"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "a Cherveth"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-Gerveth"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin Gerveth"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor Cherveth"
+      },
+      {
+        "type": "Stop",
+        "form": "o Cherveth"
+      },
+      {
+        "type": "H",
+        "form": "a Cherveth"
+      },
+      {
+        "type": "DH",
+        "form": "ne Cherveth"
+      }
+    ]
+  },
+  {
+    "dict_form": "ceven",
+    "part": "noun",
+    "english": "Earth",
+    "definition": "大地，土地；地球，世界",
+    "sentence": "[VT44/21]\nbo Ceven sui vi Menel.\n（愿汝旨意）行在地上，如同行在天上\n",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i geven"
+      },
+      {
+        "type": "Plural",
+        "form": "cevin"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i chevin"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "a cheven"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-geven"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin geven"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor cheven"
+      },
+      {
+        "type": "Stop",
+        "form": "o cheven"
+      },
+      {
+        "type": "H",
+        "form": "a cheven"
+      },
+      {
+        "type": "DH",
+        "form": "ne cheven"
+      }
+    ]
+  },
+  {
+    "dict_form": "círdan",
+    "part": "noun",
+    "english": "shipbuilder, shipwright",
+    "definition": "造船者，船匠",
+    "sentence": "\n",
+    "other": "círdan指设计师和主建造者，ciriaeth指普通的造船工人",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i gírdan"
+      },
+      {
+        "type": "Plural",
+        "form": "círdain"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i chírdain"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "a chírdan"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-gírdan"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin gírdan"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor chírdan"
+      },
+      {
+        "type": "Stop",
+        "form": "o chírdan"
+      },
+      {
+        "type": "H",
+        "form": "a chírdan"
+      },
+      {
+        "type": "DH",
+        "form": "ne chírdan"
+      }
+    ]
+  },
+  {
+    "dict_form": "cirith",
+    "part": "noun",
+    "english": "cleft, ravine, defile",
+    "definition": "（岩石，土地）裂缝；（山中）狭径，狭路；峡谷，裂谷，深谷",
+    "sentence": "[RC/767]\nCirith Ungol.\n奇立斯乌苟\n",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i girith"
+      },
+      {
+        "type": "Plural",
+        "form": "cirith"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i chirith"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "a chirith"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-girith"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin girith"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor chirith"
+      },
+      {
+        "type": "Stop",
+        "form": "o chirith"
+      },
+      {
+        "type": "H",
+        "form": "a chirith"
+      },
+      {
+        "type": "DH",
+        "form": "ne chirith"
+      }
+    ]
+  },
+  {
+    "dict_form": "cîw",
+    "part": "adjective",
+    "english": "fresh, new, renewed",
+    "definition": "新鲜的；崭新的；复兴的",
+    "sentence": "\n",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "gîw"
+      },
+      {
+        "type": "Plural",
+        "form": "cîw"
+      },
+      {
+        "type": "Comparative",
+        "form": "echíw"
+      },
+      {
+        "type": "Superlative",
+        "form": "ro-gíw"
+      }
+    ]
+  },
+  {
+    "dict_form": "coll",
+    "part": "noun",
+    "english": "cloak, mantle",
+    "definition": "披风，斗篷",
+    "sentence": "[PE17/72]\nThingol.\n辛葛，灰袍\n",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i goll"
+      },
+      {
+        "type": "Plural",
+        "form": "cyll"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i chyll"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "a choll"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-goll"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin goll"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor choll"
+      },
+      {
+        "type": "Stop",
+        "form": "o choll"
+      },
+      {
+        "type": "H",
+        "form": "a choll"
+      },
+      {
+        "type": "DH",
+        "form": "ne choll"
+      }
+    ]
+  },
+  {
+    "dict_form": "coll",
+    "part": "adjective",
+    "english": "hollow",
+    "definition": "空的，中空的，空洞的",
+    "sentence": "[WJ/414]\nBar-goll.\n诺格罗德，中空的住地\n",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "goll"
+      },
+      {
+        "type": "Plural",
+        "form": "cyll"
+      },
+      {
+        "type": "Comparative",
+        "form": "acholl"
+      },
+      {
+        "type": "Superlative",
+        "form": "ro-goll"
+      }
+    ]
+  },
+  {
+    "dict_form": "condir",
+    "part": "noun",
+    "english": "mayor, chief-man",
+    "definition": "市长",
+    "sentence": "[AotM/62][SD/129]\nEdregol e aníra tírad i Cherdir Perhael (i sennui Panthael estathar aen) Condir i Drann.\n他尤其希望迎接夏尔的市长山姆怀斯（恰如其分的称谓应当是“睿智的”）大人\n",
+    "other": "caun + dîr",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i gondir"
+      },
+      {
+        "type": "Plural",
+        "form": "condir"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i chondir"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "a chondir"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-gondir"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin gondir"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor chondir"
+      },
+      {
+        "type": "Stop",
+        "form": "o chondir"
+      },
+      {
+        "type": "H",
+        "form": "a chondir"
+      },
+      {
+        "type": "DH",
+        "form": "ne chondir"
+      }
+    ]
+  },
+  {
+    "dict_form": "cor",
+    "part": "noun",
+    "english": "ring, circle",
+    "definition": "戒指，指环；环，圆，圈",
+    "sentence": "[RC/625]\nCormallen.\n科瑁兰，金色圆环\n",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i gor"
+      },
+      {
+        "type": "Plural",
+        "form": "cyr"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i chyr"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "a chor"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-gor"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin gor"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor chor"
+      },
+      {
+        "type": "Stop",
+        "form": "o chor"
+      },
+      {
+        "type": "H",
+        "form": "a chor"
+      },
+      {
+        "type": "DH",
+        "form": "ne chor"
+      }
+    ]
+  },
+  {
+    "dict_form": "cordof",
+    "part": "noun",
+    "english": "pippin, a type of yellow and red apple",
+    "definition": "皮平；一种果实较小的苹果",
+    "sentence": "\n",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i gordof"
+      },
+      {
+        "type": "Plural",
+        "form": "cerdyf"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i cherdyf"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "a chordof"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-gordof"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin gordof"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor chordof"
+      },
+      {
+        "type": "Stop",
+        "form": "o chordof"
+      },
+      {
+        "type": "H",
+        "form": "a chordof"
+      },
+      {
+        "type": "DH",
+        "form": "ne chordof"
+      }
+    ]
+  },
+  {
+    "dict_form": "corod",
+    "part": "noun",
+    "english": "circle",
+    "definition": "圆，圈",
+    "sentence": "\n",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i gorod"
+      },
+      {
+        "type": "Plural",
+        "form": "ceryd"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i cheryd"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "a chorod"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-gorod"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin gorod"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor chorod"
+      },
+      {
+        "type": "Stop",
+        "form": "o chorod"
+      },
+      {
+        "type": "H",
+        "form": "a chorod"
+      },
+      {
+        "type": "DH",
+        "form": "ne chorod"
+      }
+    ]
+  },
+  {
+    "dict_form": "coth",
+    "part": "noun",
+    "english": "enemy, foe",
+    "definition": "敌人，敌方，大敌",
+    "sentence": "\n",
+    "other": "魔苟斯的名字即为黑暗大敌",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i goth"
+      },
+      {
+        "type": "Plural",
+        "form": "cyth"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i chyth"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "a choth"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-goth"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin goth"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor choth"
+      },
+      {
+        "type": "Stop",
+        "form": "o choth"
+      },
+      {
+        "type": "H",
+        "form": "a choth"
+      },
+      {
+        "type": "DH",
+        "form": "ne choth"
       }
     ]
   }

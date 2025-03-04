@@ -6864,5 +6864,573 @@
         "form": "ro-garan"
       }
     ]
+  },
+  {
+    "dict_form": "caras",
+    "part": "noun",
+    "english": "city, fort or dwelling surrounded by bulwarks, circular earthwall with dike",
+    "definition": "城市（带城墙或沟渠）；堡垒；环状墙体配沟渠",
+    "sentence": "[RC/311]\nCaras Galadhon.\n卡拉斯加拉松\n",
+    "other": "car- + -as",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i garas"
+      },
+      {
+        "type": "Plural",
+        "form": "cerais"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i cherais"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "a charas"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-garas"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin garas"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor charas"
+      },
+      {
+        "type": "Stop",
+        "form": "o charas"
+      },
+      {
+        "type": "H",
+        "form": "a charas"
+      },
+      {
+        "type": "DH",
+        "form": "ne charas"
+      }
+    ]
+  },
+  {
+    "dict_form": "carch",
+    "part": "noun",
+    "english": "fang",
+    "definition": "尖牙，锋利的牙",
+    "sentence": "\n",
+    "other": "普通的牙一般使用neleg",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i garch"
+      },
+      {
+        "type": "Plural",
+        "form": "cerch"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i cherch"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "a charch"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-garch"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin garch"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor charch"
+      },
+      {
+        "type": "Stop",
+        "form": "o charch"
+      },
+      {
+        "type": "H",
+        "form": "a charch"
+      },
+      {
+        "type": "DH",
+        "form": "ne charch"
+      }
+    ]
+  },
+  {
+    "dict_form": "cared",
+    "part": "noun",
+    "english": "action",
+    "definition": "行为，行动",
+    "sentence": "\n",
+    "other": "更笼统，描述过程，如果偏具体动作请使用caur",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i gared"
+      },
+      {
+        "type": "Plural",
+        "form": "动名词无复数形式"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "*in + cared不合法"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "a chared"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-gared"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin gared"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor chared"
+      },
+      {
+        "type": "Stop",
+        "form": "o chared"
+      },
+      {
+        "type": "H",
+        "form": "a chared"
+      },
+      {
+        "type": "DH",
+        "form": "ne chared"
+      }
+    ]
+  },
+  {
+    "dict_form": "carfa-",
+    "part": "verb",
+    "english": "to talk, speak, use tongue",
+    "definition": "说话，开口讲话",
+    "sentence": "[PE17/126]\nagarfant beth.\n他说了些话\n",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Present",
+        "form": "carfa/carfa(o)-"
+      },
+      {
+        "type": "Past",
+        "form": "agarfant, agarfas/agarfanne-, agarfasse-"
+      },
+      {
+        "type": "Future",
+        "form": "carfatha/carfatha(o)-"
+      },
+      {
+        "type": "Imperative",
+        "form": "carfo"
+      },
+      {
+        "type": "Gerund",
+        "form": "carfad"
+      },
+      {
+        "type": "PastParticiple",
+        "form": "agarfannen"
+      },
+      {
+        "type": "PresentParticiple",
+        "form": "carfol"
+      },
+      {
+        "type": "PeferctParticle",
+        "form": "cerfiel"
+      }
+    ]
+  },
+  {
+    "dict_form": "carth",
+    "part": "noun",
+    "english": "deed",
+    "definition": "好事，善事，好的行为",
+    "sentence": "[VT44/28]\núgerth.\n不道德，恶事\n",
+    "other": "othgarn里出现的carn是该词的变体",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i garth"
+      },
+      {
+        "type": "Plural",
+        "form": "certh"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i cherth"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "a charth"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-garth"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin garth"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor charth"
+      },
+      {
+        "type": "Stop",
+        "form": "o charth"
+      },
+      {
+        "type": "H",
+        "form": "a charth"
+      },
+      {
+        "type": "DH",
+        "form": "ne charth"
+      }
+    ]
+  },
+  {
+    "dict_form": "carweg",
+    "part": "adjective",
+    "english": "active, busy",
+    "definition": "活跃的；忙碌的，繁忙的",
+    "sentence": "\n",
+    "other": "car- + -weg",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "garweg"
+      },
+      {
+        "type": "Plural",
+        "form": "cerwig"
+      },
+      {
+        "type": "Comparative",
+        "form": "acharweg"
+      },
+      {
+        "type": "Superlative",
+        "form": "ro-garweg"
+      }
+    ]
+  },
+  {
+    "dict_form": "cast",
+    "part": "noun",
+    "english": "cape, headland",
+    "definition": "（大陆）角，岬，海岬",
+    "sentence": "[VT42/8]\nAngast.\n安德拉斯特，狭长的海岬\n",
+    "other": "现在多用ras(t)",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i gast"
+      },
+      {
+        "type": "Plural",
+        "form": "cest"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i chest"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "a chast"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-gast"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin gast"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor chast"
+      },
+      {
+        "type": "Stop",
+        "form": "o chast"
+      },
+      {
+        "type": "H",
+        "form": "a chast"
+      },
+      {
+        "type": "DH",
+        "form": "ne chast"
+      }
+    ]
+  },
+  {
+    "dict_form": "castol",
+    "part": "noun",
+    "english": "helmet",
+    "definition": "头盔",
+    "sentence": "\n",
+    "other": "kas + thôl",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i gastol"
+      },
+      {
+        "type": "Plural",
+        "form": "cestyl"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i chestyl"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "a chastol"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-gastol"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin gastol"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor chastol"
+      },
+      {
+        "type": "Stop",
+        "form": "o chastol"
+      },
+      {
+        "type": "H",
+        "form": "a chastol"
+      },
+      {
+        "type": "DH",
+        "form": "ne chastol"
+      }
+    ]
+  },
+  {
+    "dict_form": "cathor",
+    "part": "noun",
+    "english": "carpenter",
+    "definition": "木匠",
+    "sentence": "\n",
+    "other": "也有形式写为cathr",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i gathor"
+      },
+      {
+        "type": "Plural",
+        "form": "cethyr"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i chethyr"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "a chathor"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-gathor"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin gathor"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor chathor"
+      },
+      {
+        "type": "Stop",
+        "form": "o chathor"
+      },
+      {
+        "type": "H",
+        "form": "a chathor"
+      },
+      {
+        "type": "DH",
+        "form": "ne chathor"
+      }
+    ]
+  },
+  {
+    "dict_form": "cathrae",
+    "part": "noun",
+    "english": "tressure, headdress",
+    "definition": "（饰有鸢尾花）的头饰；头饰",
+    "sentence": "\n",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i gathrae"
+      },
+      {
+        "type": "Plural",
+        "form": "cethrae"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i chethrae"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "a chathrae"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-gathrae"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin gathrae"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor chathrae"
+      },
+      {
+        "type": "Stop",
+        "form": "o chathrae"
+      },
+      {
+        "type": "H",
+        "form": "a chathrae"
+      },
+      {
+        "type": "DH",
+        "form": "ne chathrae"
+      }
+    ]
+  },
+  {
+    "dict_form": "caul",
+    "part": "noun",
+    "english": "great burden, affliction",
+    "definition": "（极大的）负担，痛苦",
+    "sentence": "\n",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i gaul"
+      },
+      {
+        "type": "Plural",
+        "form": "coel"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i choel"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "a chaul"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-gaul"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin gaul"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor chaul"
+      },
+      {
+        "type": "Stop",
+        "form": "o chaul"
+      },
+      {
+        "type": "H",
+        "form": "a chaul"
+      },
+      {
+        "type": "DH",
+        "form": "ne chaul"
+      }
+    ]
+  },
+  {
+    "dict_form": "caun",
+    "part": "noun",
+    "english": "prince, chief, head",
+    "definition": "王子，亲王；主管，负责人，领头，首脑",
+    "sentence": "[Let/448][LotR/953]\nDaur a Berhael, Conin en Annûn.\n弗罗多和山姆，来自西方的王子\n",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i gaun"
+      },
+      {
+        "type": "Plural",
+        "form": "conin"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i chonin"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "a chaun"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-gaun"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin gaun"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor chaun"
+      },
+      {
+        "type": "Stop",
+        "form": "o chaun"
+      },
+      {
+        "type": "H",
+        "form": "a chaun"
+      },
+      {
+        "type": "DH",
+        "form": "ne chaun"
+      }
+    ]
   }
 ]

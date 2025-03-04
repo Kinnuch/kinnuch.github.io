@@ -162,6 +162,10 @@ function toggleDropdownSearch() {
     document.getElementById("dropdownContentSearch").classList.toggle("show");
 }
 
+function toggleDropdownPay() {
+    document.getElementById("dropdownContentPay").classList.toggle("show");
+}
+
 // 点击外部关闭下拉
 window.onclick = function(e) {
     if (!e.target.matches('.utility-btn')) {

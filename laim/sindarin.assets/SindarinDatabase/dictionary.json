@@ -652,6 +652,56 @@
     ]
   },
   {
+    "dict_form": "Cerveth",
+    "part": "noun",
+    "english": "July",
+    "definition": "七月",
+    "sentence": "\n",
+    "other": "另一个可能的名字是Cadloer，意为after-summer",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i Gerveth"
+      },
+      {
+        "type": "Plural",
+        "form": "Cervith"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i Chervith"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "a Cherveth"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-Gerveth"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin Gerveth"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor Cherveth"
+      },
+      {
+        "type": "Stop",
+        "form": "o Cherveth"
+      },
+      {
+        "type": "H",
+        "form": "a Cherveth"
+      },
+      {
+        "type": "DH",
+        "form": "ne Cherveth"
+      }
+    ]
+  },
+  {
     "dict_form": "a(ar)/ah",
     "part": "conjunction",
     "english": "and",
@@ -7388,8 +7438,8 @@
     "part": "noun",
     "english": "prince, chief, head",
     "definition": "王子，亲王；主管，负责人，领头，首脑",
-    "sentence": "[Let/448][LotR/953]\nDaur a Berhael, Conin en Annûn.\n弗罗多和山姆，来自西方的王子\n",
-    "other": "",
+    "sentence": "[Let/448][LotR/953]\nDaur a Berhael, Conin en Annûn.\n弗罗多和山姆，来自西方的王子\n\n",
+    "other": "Felagund中出现的cund被认为是更旧的词",
     "morphology": [
       {
         "type": "Soft",
@@ -7970,56 +8020,6 @@
     ]
   },
   {
-    "dict_form": "Cerveth",
-    "part": "noun",
-    "english": "July",
-    "definition": "七月",
-    "sentence": "\n",
-    "other": "另一个可能的名字是Cadloer，意为after-summer",
-    "morphology": [
-      {
-        "type": "Soft",
-        "form": "i Gerveth"
-      },
-      {
-        "type": "Plural",
-        "form": "Cervith"
-      },
-      {
-        "type": "NasalⅠ",
-        "form": "i Chervith"
-      },
-      {
-        "type": "NasalⅡ",
-        "form": "a Cherveth"
-      },
-      {
-        "type": "MixedⅠ",
-        "form": "e-Gerveth"
-      },
-      {
-        "type": "MixedⅡ",
-        "form": "anin Gerveth"
-      },
-      {
-        "type": "Liquid",
-        "form": "egor Cherveth"
-      },
-      {
-        "type": "Stop",
-        "form": "o Cherveth"
-      },
-      {
-        "type": "H",
-        "form": "a Cherveth"
-      },
-      {
-        "type": "DH",
-        "form": "ne Cherveth"
-      }
-    ]
-  },
-  {
     "dict_form": "ceven",
     "part": "noun",
     "english": "Earth",
@@ -8070,56 +8070,6 @@
     ]
   },
   {
-    "dict_form": "círdan",
-    "part": "noun",
-    "english": "shipbuilder, shipwright",
-    "definition": "造船者，船匠",
-    "sentence": "\n",
-    "other": "círdan指设计师和主建造者，ciriaeth指普通的造船工人",
-    "morphology": [
-      {
-        "type": "Soft",
-        "form": "i gírdan"
-      },
-      {
-        "type": "Plural",
-        "form": "círdain"
-      },
-      {
-        "type": "NasalⅠ",
-        "form": "i chírdain"
-      },
-      {
-        "type": "NasalⅡ",
-        "form": "a chírdan"
-      },
-      {
-        "type": "MixedⅠ",
-        "form": "e-gírdan"
-      },
-      {
-        "type": "MixedⅡ",
-        "form": "anin gírdan"
-      },
-      {
-        "type": "Liquid",
-        "form": "egor chírdan"
-      },
-      {
-        "type": "Stop",
-        "form": "o chírdan"
-      },
-      {
-        "type": "H",
-        "form": "a chírdan"
-      },
-      {
-        "type": "DH",
-        "form": "ne chírdan"
-      }
-    ]
-  },
-  {
     "dict_form": "cirith",
     "part": "noun",
     "english": "cleft, ravine, defile",
@@ -8166,32 +8116,6 @@
       {
         "type": "DH",
         "form": "ne chirith"
-      }
-    ]
-  },
-  {
-    "dict_form": "cîw",
-    "part": "adjective",
-    "english": "fresh, new, renewed",
-    "definition": "新鲜的；崭新的；复兴的",
-    "sentence": "\n",
-    "other": "",
-    "morphology": [
-      {
-        "type": "Soft",
-        "form": "gîw"
-      },
-      {
-        "type": "Plural",
-        "form": "cîw"
-      },
-      {
-        "type": "Comparative",
-        "form": "echíw"
-      },
-      {
-        "type": "Superlative",
-        "form": "ro-gíw"
       }
     ]
   },
@@ -8520,5 +8444,871 @@
         "form": "ne choth"
       }
     ]
+  },
+  {
+    "dict_form": "círdan",
+    "part": "noun",
+    "english": "shipbuilder, shipwright",
+    "definition": "造船者，船匠",
+    "sentence": "\n",
+    "other": "círdan指设计师和主建造者，ciriaeth指普通的造船工人",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i gírdan"
+      },
+      {
+        "type": "Plural",
+        "form": "círdain"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i chírdain"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "a chírdan"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-gírdan"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin gírdan"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor chírdan"
+      },
+      {
+        "type": "Stop",
+        "form": "o chírdan"
+      },
+      {
+        "type": "H",
+        "form": "a chírdan"
+      },
+      {
+        "type": "DH",
+        "form": "ne chírdan"
+      }
+    ]
+  },
+  {
+    "dict_form": "cîw",
+    "part": "adjective",
+    "english": "fresh, new, renewed",
+    "definition": "新鲜的；崭新的；复兴的",
+    "sentence": "\n",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "gîw"
+      },
+      {
+        "type": "Plural",
+        "form": "cîw"
+      },
+      {
+        "type": "Comparative",
+        "form": "echíw"
+      },
+      {
+        "type": "Superlative",
+        "form": "ro-gíw"
+      }
+    ]
+  },
+  {
+    "dict_form": "cova-",
+    "part": "verb",
+    "english": "to come together, meet, to gather, assemble",
+    "definition": "见面，会面；召集，聚集",
+    "sentence": "[Let/308][LotR/209][PE17/158]\nmae govannen.\n你好（字面意：很好地见面）\n",
+    "other": "也有拼作covada-的",
+    "morphology": [
+      {
+        "type": "Present",
+        "form": "cova/cova(o)-"
+      },
+      {
+        "type": "Past",
+        "form": "covant/covanne-"
+      },
+      {
+        "type": "Future",
+        "form": "covatha/covatha(o)-"
+      },
+      {
+        "type": "Imperative",
+        "form": "covo"
+      },
+      {
+        "type": "Gerund",
+        "form": "covad"
+      },
+      {
+        "type": "PastParticiple",
+        "form": "covannen"
+      },
+      {
+        "type": "PresentParticiple",
+        "form": "covol"
+      },
+      {
+        "type": "PeferctParticle",
+        "form": "ceviel"
+      }
+    ]
+  },
+  {
+    "dict_form": "craban",
+    "part": "noun",
+    "english": "bird of crow-kind, raven",
+    "definition": "克拉班；大乌鸦，渡鸦",
+    "sentence": "\n",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i graban"
+      },
+      {
+        "type": "Plural",
+        "form": "crebain"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i chrebain"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "a chraban"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-graban"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin graban"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor chraban"
+      },
+      {
+        "type": "Stop",
+        "form": "o chraban"
+      },
+      {
+        "type": "H",
+        "form": "a chraban"
+      },
+      {
+        "type": "DH",
+        "form": "ne chraban"
+      }
+    ]
+  },
+  {
+    "dict_form": "criss",
+    "part": "noun",
+    "english": "cleft",
+    "definition": "（地理上的）裂缝，裂口；（劈砍等大型）裂口，伤口，切口",
+    "sentence": "\n",
+    "other": "更普通，温和，简单的切口裂口请参考rest",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i griss"
+      },
+      {
+        "type": "Plural",
+        "form": "criss"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i chriss"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "a chriss"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-griss"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin griss"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor chriss"
+      },
+      {
+        "type": "Stop",
+        "form": "o chriss"
+      },
+      {
+        "type": "H",
+        "form": "a chriss"
+      },
+      {
+        "type": "DH",
+        "form": "ne chriss"
+      }
+    ]
+  },
+  {
+    "dict_form": "crist",
+    "part": "noun",
+    "english": "cleaver",
+    "definition": "砍刀，剁刀，大刀",
+    "sentence": "[SA/ris]\nOrcist.\n奥克锐斯特，兽咬剑\n",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i grist"
+      },
+      {
+        "type": "Plural",
+        "form": "crist"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i christ"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "a christ"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-grist"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin grist"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor christ"
+      },
+      {
+        "type": "Stop",
+        "form": "o christ"
+      },
+      {
+        "type": "H",
+        "form": "a christ"
+      },
+      {
+        "type": "DH",
+        "form": "ne christ"
+      }
+    ]
+  },
+  {
+    "dict_form": "cû",
+    "part": "noun",
+    "english": "bow",
+    "definition": "弓",
+    "sentence": "[S/209]\nLaer Cú Beleg.\n籁尔·库·贝烈格，强弓之歌\n",
+    "other": "在新辛达语中可能替代了peng",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "cû"
+      },
+      {
+        "type": "Plural",
+        "form": "cuin"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i chuin"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "a chû"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-gû"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin gû"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor chû"
+      },
+      {
+        "type": "Stop",
+        "form": "o chû"
+      },
+      {
+        "type": "H",
+        "form": "a chû"
+      },
+      {
+        "type": "DH",
+        "form": "ne chû"
+      }
+    ]
+  },
+  {
+    "dict_form": "cûd",
+    "part": "noun",
+    "english": "foe",
+    "definition": "敌人",
+    "sentence": "[WJ/256]\nThuringud.\n夙林，隐藏的敌人\n",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i gûd"
+      },
+      {
+        "type": "Plural",
+        "form": "cuid"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i chuid"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "a chûd"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-gûd"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin gûd"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor chûd"
+      },
+      {
+        "type": "Stop",
+        "form": "o chûd"
+      },
+      {
+        "type": "H",
+        "form": "a chûd"
+      },
+      {
+        "type": "DH",
+        "form": "na chûd"
+      }
+    ]
+  },
+  {
+    "dict_form": "cuia-",
+    "part": "verb",
+    "english": "to live",
+    "definition": "生存，生活，活着",
+    "sentence": "[Let/448][LotR/953][PE17/102]\ncuio i Pheriain anann.\n愿半身人长盛不衰\n",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Present",
+        "form": "cuia/cuia(o)-"
+      },
+      {
+        "type": "Past",
+        "form": "cuias/cuiasse-"
+      },
+      {
+        "type": "Future",
+        "form": "cuiatha/cuiatha(o)-"
+      },
+      {
+        "type": "Imperative",
+        "form": "cuio"
+      },
+      {
+        "type": "Gerund",
+        "form": "cuiad"
+      },
+      {
+        "type": "PastParticiple",
+        "form": "cuiassen"
+      },
+      {
+        "type": "PresentParticiple",
+        "form": "cuiol"
+      },
+      {
+        "type": "PeferctParticle",
+        "form": "cuiel"
+      }
+    ]
+  },
+  {
+    "dict_form": "cuina-",
+    "part": "verb",
+    "english": "to be alive",
+    "definition": "活着，生存着",
+    "sentence": "[S/188]\nDor Firn-i-Guinar.\n多尔费恩-伊-圭那，死而复生者之地\n",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Present",
+        "form": "cuina/cuina(o)-"
+      },
+      {
+        "type": "Past",
+        "form": "cuinas/cuinasse-"
+      },
+      {
+        "type": "Future",
+        "form": "cuinatha/cuinatha(o)-"
+      },
+      {
+        "type": "Imperative",
+        "form": "cuino"
+      },
+      {
+        "type": "Gerund",
+        "form": "cuinad"
+      },
+      {
+        "type": "PastParticiple",
+        "form": "cuinassen"
+      },
+      {
+        "type": "PresentParticiple",
+        "form": "cuinol"
+      },
+      {
+        "type": "PeferctParticle",
+        "form": "cuiniel"
+      }
+    ]
+  },
+  {
+    "dict_form": "cûl",
+    "part": "noun",
+    "english": "load",
+    "definition": "负担；负载，装载量",
+    "sentence": "[RC/536]\nCûl Veleg.\n库维列格\n",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i gûl"
+      },
+      {
+        "type": "Plural",
+        "form": "cuil"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i chuil"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "a chûl"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-gûl"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin gûl"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor chûl"
+      },
+      {
+        "type": "Stop",
+        "form": "o chûl"
+      },
+      {
+        "type": "H",
+        "form": "a chûl"
+      },
+      {
+        "type": "DH",
+        "form": "ne chûl"
+      }
+    ]
+  },
+  {
+    "dict_form": "curu",
+    "part": "noun",
+    "english": "skill(of the hand), craft, magic",
+    "definition": "（锻造）技术；手艺；魔法",
+    "sentence": "[VT41/10]\nCurufin.\n库茹芬（“有技艺的芬威族人”）\n",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i guru"
+      },
+      {
+        "type": "Plural",
+        "form": "cyru"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i chyru"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "a churu"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-guru"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin guru"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor churu"
+      },
+      {
+        "type": "Stop",
+        "form": "o churu"
+      },
+      {
+        "type": "H",
+        "form": "a churu"
+      },
+      {
+        "type": "DH",
+        "form": "ne churu"
+      }
+    ]
+  },
+  {
+    "dict_form": "curunír",
+    "part": "noun",
+    "english": "wizard",
+    "definition": "（男性）巫师，（男性）法师",
+    "sentence": "\n",
+    "other": "curu + (n)dîr",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i gurunír"
+      },
+      {
+        "type": "Plural",
+        "form": "cyrunír"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i chyrunír"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "a churunír"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-gurunír"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin gurunír"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor churunír"
+      },
+      {
+        "type": "Stop",
+        "form": "o churunír"
+      },
+      {
+        "type": "H",
+        "form": "a churunír"
+      },
+      {
+        "type": "DH",
+        "form": "ne churunír"
+      }
+    ]
+  },
+  {
+    "dict_form": "cŷl",
+    "part": "noun",
+    "english": "renewal",
+    "definition": "更新，复兴，革新",
+    "sentence": "\n",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i gŷl"
+      },
+      {
+        "type": "Plural",
+        "form": "cŷl"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i chŷl"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "a chŷl"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-gŷl"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin gŷl"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor chŷl"
+      },
+      {
+        "type": "Stop",
+        "form": "o chŷl"
+      },
+      {
+        "type": "H",
+        "form": "a chŷl"
+      },
+      {
+        "type": "DH",
+        "form": "ne chŷl"
+      }
+    ]
+  },
+  {
+    "dict_form": "cŷr",
+    "part": "adjective",
+    "english": "renewed",
+    "definition": "复兴的，更新的，革新的；新的，复苏的",
+    "sentence": "[VT48/7]\ncýron.\n新月\n",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "gŷr"
+      },
+      {
+        "type": "Plural",
+        "form": "cŷr"
+      },
+      {
+        "type": "Comparative",
+        "form": "achýr"
+      },
+      {
+        "type": "Superlative",
+        "form": "ro-gýr"
+      }
+    ]
+  },
+  {
+    "dict_form": "cýra-",
+    "part": "verb",
+    "english": "to renew",
+    "definition": "（使）更新，（使）革新，（使）复兴；（使）复苏，恢复",
+    "sentence": "\n",
+    "other": "泰勒瑞语ceura-的同源词",
+    "morphology": [
+      {
+        "type": "Present",
+        "form": "cýra/cýra(o)-"
+      },
+      {
+        "type": "Past",
+        "form": "cýrant/cýranne-"
+      },
+      {
+        "type": "Future",
+        "form": "cýratha/cýratha(o)-"
+      },
+      {
+        "type": "Imperative",
+        "form": "cýro"
+      },
+      {
+        "type": "Gerund",
+        "form": "cýrad"
+      },
+      {
+        "type": "PastParticiple",
+        "form": "cýrannen"
+      },
+      {
+        "type": "PresentParticiple",
+        "form": "cýrol"
+      },
+      {
+        "type": "PeferctParticle",
+        "form": "cýriel"
+      }
+    ]
+  },
+  {
+    "dict_form": "cýron",
+    "part": "noun",
+    "english": "new-moon",
+    "definition": "新月",
+    "sentence": "\n",
+    "other": "\ncŷr + Raun",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "gýron"
+      },
+      {
+        "type": "Plural",
+        "form": "cýroen"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i chýroen"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "a chýron"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-gýron"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin gýron"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor chýron"
+      },
+      {
+        "type": "Stop",
+        "form": "o chýron"
+      },
+      {
+        "type": "H",
+        "form": "a chýron"
+      },
+      {
+        "type": "DH",
+        "form": "ne chýron"
+      }
+    ]
+  },
+  {
+    "dict_form": "(n)dadwen-",
+    "part": "verb",
+    "english": "to return, go back",
+    "definition": "返回，回去",
+    "sentence": "\n",
+    "other": "和(n)dandol表示的“回来”相对，新辛达语中更推荐使用(n)dammen-",
+    "morphology": [
+      {
+        "type": "Present",
+        "form": "(n)dadwen/(n)dedweni-"
+      },
+      {
+        "type": "Past",
+        "form": "(n)dadwin/(n)dadwíne-"
+      },
+      {
+        "type": "Future",
+        "form": "(n)dadwenatha/(n)dadwenatha(o)-"
+      },
+      {
+        "type": "Imperative",
+        "form": "(n)dadweno"
+      },
+      {
+        "type": "Gerund",
+        "form": "(n)dadwened"
+      },
+      {
+        "type": "PastParticiple",
+        "form": "(n)dadwennen"
+      },
+      {
+        "type": "PresentParticiple",
+        "form": "(n)dadwenel"
+      },
+      {
+        "type": "PeferctParticle",
+        "form": "(n)dadwíniel"
+      }
+    ]
+  },
+  {
+    "dict_form": "ad-",
+    "part": "adverb",
+    "english": "back, again, re-",
+    "definition": "返回，回；再次，重新",
+    "sentence": "\n",
+    "other": "副词前缀，引发闭锁音变",
+    "morphology": []
+  },
+  {
+    "dict_form": "al-",
+    "part": "adverb",
+    "english": "no, not",
+    "definition": "否定前缀",
+    "sentence": "\n",
+    "other": "副词前缀，引发流音音变",
+    "morphology": []
+  },
+  {
+    "dict_form": "al-",
+    "part": "adverb",
+    "english": "well, happily",
+    "definition": "很好地，快乐地，幸福地",
+    "sentence": "\n",
+    "other": "来自词根al(a)，副词前缀，引发软音变",
+    "morphology": []
+  },
+  {
+    "dict_form": "an-",
+    "part": "adverb",
+    "english": "intensive prefix, comparative, forth or movement towards somewhere",
+    "definition": "强化前缀；比较级前缀；朝向，朝某方向的移动",
+    "sentence": "\n",
+    "other": "副词前缀，引发鼻音音变Ⅱ型",
+    "morphology": []
+  },
+  {
+    "dict_form": "ar-",
+    "part": "adverb",
+    "english": "without, by",
+    "definition": "没有；在...旁",
+    "sentence": "\n",
+    "other": "副词前缀，引发流音音变",
+    "morphology": []
+  },
+  {
+    "dict_form": "ath-",
+    "part": "adverb",
+    "english": "easily",
+    "definition": "简单地，容易地",
+    "sentence": "\n",
+    "other": "副词前缀，引发软音变",
+    "morphology": []
   }
 ]

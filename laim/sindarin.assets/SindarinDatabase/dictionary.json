@@ -506,7 +506,7 @@
     "part": "verb",
     "english": "to return, go back",
     "definition": "返回，回去",
-    "sentence": "\n",
+    "sentence": "\n\n",
     "other": "和(n)dandol表示的“回来”相对，新辛达语中更推荐使用(n)dammen-",
     "morphology": [
       {
@@ -515,7 +515,7 @@
       },
       {
         "type": "Past",
-        "form": "(n)dadwin/(n)dadwíne-"
+        "form": "(n)dadevin/(n)dadevíne-"
       },
       {
         "type": "Future",
@@ -540,6 +540,602 @@
       {
         "type": "PeferctParticle",
         "form": "(n)dadwíniel"
+      }
+    ]
+  },
+  {
+    "dict_form": "(n)dae-",
+    "part": "adverb",
+    "english": "dreafully, abominably, detestably",
+    "definition": "可怕地，糟糕地；恶劣地，可恶地，令人憎恨地",
+    "sentence": "\n",
+    "other": "副词前缀，引发软音变",
+    "morphology": []
+  },
+  {
+    "dict_form": "(n)daebeth",
+    "part": "noun",
+    "english": "blasphemy",
+    "definition": "亵渎，亵渎的话（尤其对神）",
+    "sentence": "\n",
+    "other": "(n)dae- + peth",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i naebeth"
+      },
+      {
+        "type": "Plural",
+        "form": "daebith"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i ndaebith"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an daebeth"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-ndaebeth"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin daebeth"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor daebeth"
+      },
+      {
+        "type": "Stop",
+        "form": "o ndaebeth"
+      },
+      {
+        "type": "H",
+        "form": "ah daebeth"
+      },
+      {
+        "type": "DH",
+        "form": "nedh daebeth"
+      }
+    ]
+  },
+  {
+    "dict_form": "(n)daedelos",
+    "part": "noun",
+    "english": "horrible fear",
+    "definition": "（非常）恐怖，令人颤栗的恐惧",
+    "sentence": "[LotR/1134]\nTaur e-Ndaedelos.\n陶尔·埃-恩戴歹洛斯，黑森林的其中一个别名，意为大恐怖之林\n",
+    "other": "(n)dae- + dael + oth",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i naedelos"
+      },
+      {
+        "type": "Plural",
+        "form": "daedelys"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i ndaedelys"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an daedelos"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-ndaedelos"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin daedelos"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor daedelos"
+      },
+      {
+        "type": "Stop",
+        "form": "o ndaedelos"
+      },
+      {
+        "type": "H",
+        "form": "ah daedelos"
+      },
+      {
+        "type": "DH",
+        "form": "nedh daedelos"
+      }
+    ]
+  },
+  {
+    "dict_form": "(n)dael",
+    "part": "noun",
+    "english": "horror",
+    "definition": "恐怖，恐惧",
+    "sentence": "\n\n",
+    "other": "意思相同的词有del，但两者词源不同",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i nael"
+      },
+      {
+        "type": "Plural",
+        "form": "dael"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i ndael"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an dael"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-ndael"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin dael"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor dael"
+      },
+      {
+        "type": "Stop",
+        "form": "o ndael"
+      },
+      {
+        "type": "H",
+        "form": "ah dael"
+      },
+      {
+        "type": "DH",
+        "form": "nedh dael"
+      }
+    ]
+  },
+  {
+    "dict_form": "(n)daer",
+    "part": "adjective",
+    "english": "dreadful, abominable, detestable",
+    "definition": "可怕的，糟糕的；恶劣的，可恶的，令人憎恨的",
+    "sentence": "\n\n",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "naer"
+      },
+      {
+        "type": "Plural",
+        "form": "(n)daer"
+      },
+      {
+        "type": "Comparative",
+        "form": "andaer"
+      },
+      {
+        "type": "Superlative",
+        "form": "ro-naer"
+      }
+    ]
+  },
+  {
+    "dict_form": "(n)dag-",
+    "part": "verb",
+    "english": "to slay, kill",
+    "definition": "杀，弑杀",
+    "sentence": "\n",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Present",
+        "form": "dâg/degi-"
+      },
+      {
+        "type": "Past",
+        "form": "ananc/anange-"
+      },
+      {
+        "type": "Future",
+        "form": "dagatha/dagatha(o)-"
+      },
+      {
+        "type": "Imperative",
+        "form": "dago"
+      },
+      {
+        "type": "Gerund",
+        "form": "daged"
+      },
+      {
+        "type": "PastParticiple",
+        "form": "dangen"
+      },
+      {
+        "type": "PresentParticiple",
+        "form": "dagel"
+      },
+      {
+        "type": "PeferctParticle",
+        "form": "dógiel"
+      }
+    ]
+  },
+  {
+    "dict_form": "(n)dagnir",
+    "part": "noun",
+    "english": "slayer, bane",
+    "definition": "杀手，击杀者，克星；死亡，灾祸",
+    "sentence": "[S/226]\nTúrin Turambar Dagnir Glaurunga.\n图林·图伦拔，格劳龙的克星\n",
+    "other": "(n)dag- + (n)îr",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i nagnir"
+      },
+      {
+        "type": "Plural",
+        "form": "degnir"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i ndegnir"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an dagnir"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-ndagnir"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin dagnir"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor dagnir"
+      },
+      {
+        "type": "Stop",
+        "form": "o ndagnir"
+      },
+      {
+        "type": "H",
+        "form": "ah dagnir"
+      },
+      {
+        "type": "DH",
+        "form": "nedh dagnir"
+      }
+    ]
+  },
+  {
+    "dict_form": "(n)dagor",
+    "part": "noun",
+    "english": "battle",
+    "definition": "战斗，战场，战役",
+    "sentence": "[S/106]\nDagor-nuin-Giliath.\n达戈-努因-吉利亚斯，星下之战\n",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i nagor"
+      },
+      {
+        "type": "Plural",
+        "form": "degyr"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i ndegyr"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an dagor"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-ndagor"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin dagor"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor dagor"
+      },
+      {
+        "type": "Stop",
+        "form": "o ndagor"
+      },
+      {
+        "type": "H",
+        "form": "ah dagor"
+      },
+      {
+        "type": "DH",
+        "form": "nedh dagor"
+      }
+    ]
+  },
+  {
+    "dict_form": "(n)dan",
+    "part": "preposition",
+    "english": "back to, against, down upon, back on, back again",
+    "definition": "返回，回到，再次；对抗，与...相反；倚在",
+    "sentence": "\n",
+    "other": "介词，引发鼻音音变Ⅰ型",
+    "morphology": []
+  },
+  {
+    "dict_form": "(n)dandol-",
+    "part": "verb",
+    "english": "to return, come back",
+    "definition": "返回，回来",
+    "sentence": "\n\n",
+    "other": "与(n)dadwen-相对",
+    "morphology": [
+      {
+        "type": "Present",
+        "form": "(n)dandol/(n)dendeli-"
+      },
+      {
+        "type": "Past",
+        "form": "(n)danodul/(n)danodúle-"
+      },
+      {
+        "type": "Future",
+        "form": "(n)dandolatha/(n)dandolatha(o)-"
+      },
+      {
+        "type": "Imperative",
+        "form": "(n)dandolo"
+      },
+      {
+        "type": "Gerund",
+        "form": "(n)dandoled"
+      },
+      {
+        "type": "PastParticiple",
+        "form": "(n)dandollen"
+      },
+      {
+        "type": "PresentParticiple",
+        "form": "(n)dandolel"
+      },
+      {
+        "type": "PeferctParticle",
+        "form": "(n)dandúliel"
+      }
+    ]
+  },
+  {
+    "dict_form": "(n)dangar-",
+    "part": "verb",
+    "english": "to undo",
+    "definition": "撤销，不做",
+    "sentence": "\n\n",
+    "other": "dan + car-",
+    "morphology": [
+      {
+        "type": "Present",
+        "form": "(n)dangar/(n)dengeri-"
+      },
+      {
+        "type": "Past",
+        "form": "(n)danagor/(n)danagóre-"
+      },
+      {
+        "type": "Future",
+        "form": "(n)dangaratha/(n)dangarathaa(o)-"
+      },
+      {
+        "type": "Imperative",
+        "form": "(n)dangaro"
+      },
+      {
+        "type": "Gerund",
+        "form": "(n)dangared"
+      },
+      {
+        "type": "PastParticiple",
+        "form": "(n)dangarnen"
+      },
+      {
+        "type": "PresentParticiple",
+        "form": "(n)dangarel"
+      },
+      {
+        "type": "PeferctParticle",
+        "form": "(n)dangóriel"
+      }
+    ]
+  },
+  {
+    "dict_form": "(n)dangen",
+    "part": "adjective",
+    "english": "slain",
+    "definition": "被击杀的，死亡的",
+    "sentence": "[PE17/133]\nHaudh-en-Ndengin.\n阵亡者之丘，大丘\n",
+    "other": "(n)dag-的过去分词",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "nangen"
+      },
+      {
+        "type": "Plural",
+        "form": "(n)dengin"
+      },
+      {
+        "type": "Comparative",
+        "form": "无比较级形式"
+      },
+      {
+        "type": "Superlative",
+        "form": "无最高级形式"
+      }
+    ]
+  },
+  {
+    "dict_form": "(n)dangweth",
+    "part": "noun",
+    "english": "answer, back-report",
+    "definition": "回答，应答，答复",
+    "sentence": "[PM/395]\nDangweth Pengolodh.\n朋戈洛兹的答复\n",
+    "other": "dan + gweth-",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i nangweth"
+      },
+      {
+        "type": "Plural",
+        "form": "dengwith"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i ndengwith"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an dangweth"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-ndangweth"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin dangweth"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor dangweth"
+      },
+      {
+        "type": "Stop",
+        "form": "o ndangweth"
+      },
+      {
+        "type": "H",
+        "form": "ah dangweth"
+      },
+      {
+        "type": "DH",
+        "form": "nedh dangweth"
+      }
+    ]
+  },
+  {
+    "dict_form": "(n)dannen",
+    "part": "noun",
+    "english": "ebb, lowtide",
+    "definition": "低潮，退潮",
+    "sentence": "\n",
+    "other": "(n)dan + nen",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i nannen"
+      },
+      {
+        "type": "Plural",
+        "form": "dennin"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i ndennin"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an dannen"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-ndannen"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin dannen"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor dannen"
+      },
+      {
+        "type": "Stop",
+        "form": "o ndannen"
+      },
+      {
+        "type": "H",
+        "form": "ah dannen"
+      },
+      {
+        "type": "DH",
+        "form": "nedh dannen"
+      }
+    ]
+  },
+  {
+    "dict_form": "(n)danwedh",
+    "part": "noun",
+    "english": "ransom",
+    "definition": "赎金，赎款",
+    "sentence": "[S-203]\nBar-en-Danwedh.\n巴尔-恩-当威兹，赎金之居，小矮人之家\n",
+    "other": "(n)dan + gwedh",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i nanwedh"
+      },
+      {
+        "type": "Plural",
+        "form": "denwidh"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i ndenwidh"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an danwedh"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-ndanwedh"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin danwedh"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor danwedh"
+      },
+      {
+        "type": "Stop",
+        "form": "o ndanwedh"
+      },
+      {
+        "type": "H",
+        "form": "ah danwedh"
+      },
+      {
+        "type": "DH",
+        "form": "nedh danwedh"
       }
     ]
   },
@@ -967,48 +1563,40 @@
     "part": "verb",
     "english": "to avenge, do back, react, requite",
     "definition": "报仇，以牙还牙；回应，回报",
-    "sentence": "\n\n\n\n\n",
-    "other": "",
+    "sentence": "\n\n\n\n\n\n",
+    "other": "词根√KAR，前缀可分离，过去时需要增音",
     "morphology": [
       {
         "type": "Present",
-        "form": "achar/echeri-",
-        "other_form": ""
+        "form": "achar/echeri-"
       },
       {
         "type": "Past",
-        "form": "achor/achóre-",
-        "other_form": ""
+        "form": "adagor/adagóre-"
       },
       {
         "type": "Future",
-        "form": "acharatha/acharatha(o)-",
-        "other_form": ""
+        "form": "acharatha/acharatha(o)-"
       },
       {
         "type": "Imperative",
-        "form": "acharo",
-        "other_form": ""
+        "form": "acharo"
       },
       {
         "type": "Gerund",
-        "form": "achared",
-        "other_form": ""
+        "form": "achared"
       },
       {
         "type": "PastParticiple",
-        "form": "acharnen",
-        "other_form": ""
+        "form": "acharnen"
       },
       {
         "type": "PresentParticiple",
-        "form": "acharel",
-        "other_form": ""
+        "form": "acharel"
       },
       {
         "type": "PeferctParticle",
-        "form": "achóriel",
-        "other_form": ""
+        "form": "achóriel"
       }
     ]
   },
@@ -1266,48 +1854,40 @@
     "part": "verb",
     "english": "to rephrase",
     "definition": "重新措辞，改述；换个说法说",
-    "sentence": "\n\n\n",
+    "sentence": "\n\n\n\n",
     "other": "ad- + ped-",
     "morphology": [
       {
         "type": "Present",
-        "form": "adbed/edbedi-",
-        "other_form": ""
+        "form": "adbed/edbedi-"
       },
       {
         "type": "Past",
-        "form": "adbent/adbenne-",
-        "other_form": ""
+        "form": "adebent/adebenne-"
       },
       {
         "type": "Future",
-        "form": "adbedatha/adbedatha(o)-",
-        "other_form": ""
+        "form": "adbedatha/adbedatha(o)-"
       },
       {
         "type": "Imperative",
-        "form": "adbedo",
-        "other_form": ""
+        "form": "adbedo"
       },
       {
         "type": "Gerund",
-        "form": "adbeded",
-        "other_form": ""
+        "form": "adbeded"
       },
       {
         "type": "PastParticiple",
-        "form": "adbennen",
-        "other_form": ""
+        "form": "adbennen"
       },
       {
         "type": "PresentParticiple",
-        "form": "adbedel",
-        "other_form": ""
+        "form": "adbedel"
       },
       {
         "type": "PeferctParticle",
-        "form": "adbídiel",
-        "other_form": ""
+        "form": "adbídiel"
       }
     ]
   },
@@ -2152,15 +2732,9 @@
     "part": "pronoun",
     "english": "those who",
     "definition": "从句引导词（那些人）",
-    "sentence": "[VT44/21]\nsui mín i gohenam di ai gerir úgerth ammen.\n当我们原谅那些入侵对抗我们的人\n\n",
+    "sentence": "[VT44/21]\nsui mín i gohenam di ai gerir úgerth ammen.\n如同我们免了人们的债（主祷文的其中一句）\n\n\n",
     "other": "从句引导词",
-    "morphology": [
-      {
-        "type": "",
-        "form": "",
-        "other_form": ""
-      }
-    ]
+    "morphology": []
   },
   {
     "dict_form": "air",
@@ -3799,7 +4373,7 @@
     "part": "noun",
     "english": "kingdom",
     "definition": "国度，国家，王国，王土",
-    "sentence": "[VT44/21]\ntolo i arnad lín.\n你的王国降临了\n",
+    "sentence": "[VT44/21]\ntolo i arnad lín.\n愿汝的国降临\n",
     "other": "aran + -ad",
     "morphology": [
       {
@@ -4882,7 +5456,7 @@
     "part": "verb",
     "english": "to have power",
     "definition": "掌权，获得权力；获得（神圣的）力量",
-    "sentence": "\n",
+    "sentence": "\n\n",
     "other": "",
     "morphology": [
       {
@@ -4891,7 +5465,7 @@
       },
       {
         "type": "Past",
-        "form": "avol/avóle-"
+        "form": "aval/avóle-"
       },
       {
         "type": "Future",
@@ -9362,165 +9936,6 @@
     ]
   },
   {
-    "dict_form": "(n)dae-",
-    "part": "adverb",
-    "english": "dreafully, abominably, detestably",
-    "definition": "可怕地，糟糕地；恶劣地，可恶地，令人憎恨地",
-    "sentence": "\n",
-    "other": "副词前缀，引发软音变",
-    "morphology": []
-  },
-  {
-    "dict_form": "(n)daebeth",
-    "part": "noun",
-    "english": "blasphemy",
-    "definition": "亵渎，亵渎的话（尤其对神）",
-    "sentence": "\n",
-    "other": "(n)dae- + peth",
-    "morphology": [
-      {
-        "type": "Soft",
-        "form": "i naebeth"
-      },
-      {
-        "type": "Plural",
-        "form": "daebith"
-      },
-      {
-        "type": "NasalⅠ",
-        "form": "i ndaebith"
-      },
-      {
-        "type": "NasalⅡ",
-        "form": "an daebeth"
-      },
-      {
-        "type": "MixedⅠ",
-        "form": "e-ndaebeth"
-      },
-      {
-        "type": "MixedⅡ",
-        "form": "anin daebeth"
-      },
-      {
-        "type": "Liquid",
-        "form": "egor daebeth"
-      },
-      {
-        "type": "Stop",
-        "form": "o ndaebeth"
-      },
-      {
-        "type": "H",
-        "form": "ah daebeth"
-      },
-      {
-        "type": "DH",
-        "form": "nedh daebeth"
-      }
-    ]
-  },
-  {
-    "dict_form": "(n)daedelos",
-    "part": "noun",
-    "english": "horrible fear",
-    "definition": "（非常）恐怖，令人颤栗的恐惧",
-    "sentence": "[LotR/1134]\nTaur e-Ndaedelos.\n陶尔·埃-恩戴歹洛斯，黑森林的其中一个别名，意为大恐怖之林\n",
-    "other": "(n)dae- + dael + oth",
-    "morphology": [
-      {
-        "type": "Soft",
-        "form": "i naedelos"
-      },
-      {
-        "type": "Plural",
-        "form": "daedelys"
-      },
-      {
-        "type": "NasalⅠ",
-        "form": "i ndaedelys"
-      },
-      {
-        "type": "NasalⅡ",
-        "form": "an daedelos"
-      },
-      {
-        "type": "MixedⅠ",
-        "form": "e-ndaedelos"
-      },
-      {
-        "type": "MixedⅡ",
-        "form": "anin daedelos"
-      },
-      {
-        "type": "Liquid",
-        "form": "egor daedelos"
-      },
-      {
-        "type": "Stop",
-        "form": "o ndaedelos"
-      },
-      {
-        "type": "H",
-        "form": "ah daedelos"
-      },
-      {
-        "type": "DH",
-        "form": "nedh daedelos"
-      }
-    ]
-  },
-  {
-    "dict_form": "(n)dael",
-    "part": "noun",
-    "english": "horror",
-    "definition": "恐怖，恐惧",
-    "sentence": "\n",
-    "other": "",
-    "morphology": [
-      {
-        "type": "Soft",
-        "form": "i nael"
-      },
-      {
-        "type": "Plural",
-        "form": "dael"
-      },
-      {
-        "type": "NasalⅠ",
-        "form": "i ndael"
-      },
-      {
-        "type": "NasalⅡ",
-        "form": "an dael"
-      },
-      {
-        "type": "MixedⅠ",
-        "form": "e-ndael"
-      },
-      {
-        "type": "MixedⅡ",
-        "form": "anin dael"
-      },
-      {
-        "type": "Liquid",
-        "form": "egor dael"
-      },
-      {
-        "type": "Stop",
-        "form": "o ndael"
-      },
-      {
-        "type": "H",
-        "form": "ah dael"
-      },
-      {
-        "type": "DH",
-        "form": "nedh dael"
-      }
-    ]
-  },
-  {
     "dict_form": "daer",
     "part": "adjective",
     "english": "great, large",
@@ -9547,174 +9962,6 @@
     ]
   },
   {
-    "dict_form": "(n)daer",
-    "part": "adjective",
-    "english": "dreadful, abominable, detestable",
-    "definition": "可怕的，糟糕的；恶劣的，可恶的，令人憎恨的",
-    "sentence": "\n\n",
-    "other": "",
-    "morphology": [
-      {
-        "type": "Soft",
-        "form": "naer"
-      },
-      {
-        "type": "Plural",
-        "form": "(n)daer"
-      },
-      {
-        "type": "Comparative",
-        "form": "andaer"
-      },
-      {
-        "type": "Superlative",
-        "form": "ro-naer"
-      }
-    ]
-  },
-  {
-    "dict_form": "(n)dag-",
-    "part": "verb",
-    "english": "to slay, kill",
-    "definition": "杀，弑杀",
-    "sentence": "\n",
-    "other": "",
-    "morphology": [
-      {
-        "type": "Present",
-        "form": "dâg/degi-"
-      },
-      {
-        "type": "Past",
-        "form": "ananc/anange-"
-      },
-      {
-        "type": "Future",
-        "form": "dagatha/dagatha(o)-"
-      },
-      {
-        "type": "Imperative",
-        "form": "dago"
-      },
-      {
-        "type": "Gerund",
-        "form": "daged"
-      },
-      {
-        "type": "PastParticiple",
-        "form": "dangen"
-      },
-      {
-        "type": "PresentParticiple",
-        "form": "dagel"
-      },
-      {
-        "type": "PeferctParticle",
-        "form": "dógiel"
-      }
-    ]
-  },
-  {
-    "dict_form": "(n)dagnir",
-    "part": "noun",
-    "english": "slayer, bane",
-    "definition": "杀手，击杀者，克星；死亡，灾祸",
-    "sentence": "[S/226]\nTúrin Turambar Dagnir Glaurunga.\n图林·图伦拔，格劳龙的克星\n",
-    "other": "(n)dag- + (n)îr",
-    "morphology": [
-      {
-        "type": "Soft",
-        "form": "i nagnir"
-      },
-      {
-        "type": "Plural",
-        "form": "degnir"
-      },
-      {
-        "type": "NasalⅠ",
-        "form": "i ndegnir"
-      },
-      {
-        "type": "NasalⅡ",
-        "form": "an dagnir"
-      },
-      {
-        "type": "MixedⅠ",
-        "form": "e-ndagnir"
-      },
-      {
-        "type": "MixedⅡ",
-        "form": "anin dagnir"
-      },
-      {
-        "type": "Liquid",
-        "form": "egor dagnir"
-      },
-      {
-        "type": "Stop",
-        "form": "o ndagnir"
-      },
-      {
-        "type": "H",
-        "form": "ah dagnir"
-      },
-      {
-        "type": "DH",
-        "form": "nedh dagnir"
-      }
-    ]
-  },
-  {
-    "dict_form": "(n)dagor",
-    "part": "noun",
-    "english": "battle",
-    "definition": "战斗，战场，战役",
-    "sentence": "[S/106]\nDagor-nuin-Giliath.\n达戈-努因-吉利亚斯，星下之战\n",
-    "other": "",
-    "morphology": [
-      {
-        "type": "Soft",
-        "form": "i nagor"
-      },
-      {
-        "type": "Plural",
-        "form": "degyr"
-      },
-      {
-        "type": "NasalⅠ",
-        "form": "i ndegyr"
-      },
-      {
-        "type": "NasalⅡ",
-        "form": "an dagor"
-      },
-      {
-        "type": "MixedⅠ",
-        "form": "e-ndagor"
-      },
-      {
-        "type": "MixedⅡ",
-        "form": "anin dagor"
-      },
-      {
-        "type": "Liquid",
-        "form": "egor dagor"
-      },
-      {
-        "type": "Stop",
-        "form": "o ndagor"
-      },
-      {
-        "type": "H",
-        "form": "ah dagor"
-      },
-      {
-        "type": "DH",
-        "form": "nedh dagor"
-      }
-    ]
-  },
-  {
     "dict_form": "dail",
     "part": "adjective",
     "english": "beautiful, fine, delicate, lovely",
@@ -9737,175 +9984,6 @@
       {
         "type": "Superlative",
         "form": "ro-dhail"
-      }
-    ]
-  },
-  {
-    "dict_form": "(n)dan",
-    "part": "preposition",
-    "english": "back to, against, down upon, back on, back again",
-    "definition": "返回，回到，再次；对抗，与...相反；倚在",
-    "sentence": "\n",
-    "other": "介词，引发鼻音音变Ⅰ型",
-    "morphology": []
-  },
-  {
-    "dict_form": "(n)dandol-",
-    "part": "verb",
-    "english": "to return, come back",
-    "definition": "返回，回来",
-    "sentence": "\n",
-    "other": "与(n)dadwen-相对",
-    "morphology": [
-      {
-        "type": "Present",
-        "form": "(n)dandol/(n)dendeli-"
-      },
-      {
-        "type": "Past",
-        "form": "(n)dandul/(n)dandúle-"
-      },
-      {
-        "type": "Future",
-        "form": "(n)dandolatha/(n)dandolatha(o)-"
-      },
-      {
-        "type": "Imperative",
-        "form": "(n)dandolo"
-      },
-      {
-        "type": "Gerund",
-        "form": "(n)dandoled"
-      },
-      {
-        "type": "PastParticiple",
-        "form": "(n)dandollen"
-      },
-      {
-        "type": "PresentParticiple",
-        "form": "(n)dandolel"
-      },
-      {
-        "type": "PeferctParticle",
-        "form": "(n)dandúliel"
-      }
-    ]
-  },
-  {
-    "dict_form": "(n)dangar-",
-    "part": "verb",
-    "english": "to undo",
-    "definition": "撤销，不做",
-    "sentence": "\n",
-    "other": "dan + car-",
-    "morphology": [
-      {
-        "type": "Present",
-        "form": "(n)dangar/(n)dengeri-"
-      },
-      {
-        "type": "Past",
-        "form": "(n)dangor/(n)dangóre-"
-      },
-      {
-        "type": "Future",
-        "form": "(n)dangaratha/(n)dangarathaa(o)-"
-      },
-      {
-        "type": "Imperative",
-        "form": "(n)dangaro"
-      },
-      {
-        "type": "Gerund",
-        "form": "(n)dangared"
-      },
-      {
-        "type": "PastParticiple",
-        "form": "(n)dangarnen"
-      },
-      {
-        "type": "PresentParticiple",
-        "form": "(n)dangarel"
-      },
-      {
-        "type": "PeferctParticle",
-        "form": "(n)dangóriel"
-      }
-    ]
-  },
-  {
-    "dict_form": "(n)dangen",
-    "part": "adjective",
-    "english": "slain",
-    "definition": "被击杀的，死亡的",
-    "sentence": "[PE17/133]\nHaudh-en-Ndengin.\n阵亡者之丘，大丘\n",
-    "other": "(n)dag-的过去分词",
-    "morphology": [
-      {
-        "type": "Soft",
-        "form": "nangen"
-      },
-      {
-        "type": "Plural",
-        "form": "(n)dengin"
-      },
-      {
-        "type": "Comparative",
-        "form": "无比较级形式"
-      },
-      {
-        "type": "Superlative",
-        "form": "无最高级形式"
-      }
-    ]
-  },
-  {
-    "dict_form": "(n)dangweth",
-    "part": "noun",
-    "english": "answer, back-report",
-    "definition": "回答，应答，答复",
-    "sentence": "[PM/395]\nDangweth Pengolodh.\n朋戈洛兹的答复\n",
-    "other": "dan + gweth-",
-    "morphology": [
-      {
-        "type": "Soft",
-        "form": "i nangweth"
-      },
-      {
-        "type": "Plural",
-        "form": "dengwith"
-      },
-      {
-        "type": "NasalⅠ",
-        "form": "i ndengwith"
-      },
-      {
-        "type": "NasalⅡ",
-        "form": "an dangweth"
-      },
-      {
-        "type": "MixedⅠ",
-        "form": "e-ndangweth"
-      },
-      {
-        "type": "MixedⅡ",
-        "form": "anin dangweth"
-      },
-      {
-        "type": "Liquid",
-        "form": "egor dangweth"
-      },
-      {
-        "type": "Stop",
-        "form": "o ndangweth"
-      },
-      {
-        "type": "H",
-        "form": "ah dangweth"
-      },
-      {
-        "type": "DH",
-        "form": "nedh dangweth"
       }
     ]
   },
@@ -9948,56 +10026,6 @@
       {
         "type": "PeferctParticle",
         "form": "dóniel"
-      }
-    ]
-  },
-  {
-    "dict_form": "(n)dannen",
-    "part": "noun",
-    "english": "ebb, lowtide",
-    "definition": "低潮，退潮",
-    "sentence": "\n",
-    "other": "(n)dan + nen",
-    "morphology": [
-      {
-        "type": "Soft",
-        "form": "i nannen"
-      },
-      {
-        "type": "Plural",
-        "form": "dennin"
-      },
-      {
-        "type": "NasalⅠ",
-        "form": "i ndennin"
-      },
-      {
-        "type": "NasalⅡ",
-        "form": "an dannen"
-      },
-      {
-        "type": "MixedⅠ",
-        "form": "e-ndannen"
-      },
-      {
-        "type": "MixedⅡ",
-        "form": "anin dannen"
-      },
-      {
-        "type": "Liquid",
-        "form": "egor dannen"
-      },
-      {
-        "type": "Stop",
-        "form": "o ndannen"
-      },
-      {
-        "type": "H",
-        "form": "ah dannen"
-      },
-      {
-        "type": "DH",
-        "form": "nedh dannen"
       }
     ]
   },
@@ -10052,56 +10080,6 @@
     ]
   },
   {
-    "dict_form": "(n)danwedh",
-    "part": "noun",
-    "english": "ransom",
-    "definition": "赎金，赎款",
-    "sentence": "[S-203]\nBar-en-Danwedh.\n巴尔-恩-当威兹，赎金之居，小矮人之家\n",
-    "other": "(n)dan + gwedh",
-    "morphology": [
-      {
-        "type": "Soft",
-        "form": "i nanwedh"
-      },
-      {
-        "type": "Plural",
-        "form": "denwidh"
-      },
-      {
-        "type": "NasalⅠ",
-        "form": "i ndenwidh"
-      },
-      {
-        "type": "NasalⅡ",
-        "form": "an danwedh"
-      },
-      {
-        "type": "MixedⅠ",
-        "form": "e-ndanwedh"
-      },
-      {
-        "type": "MixedⅡ",
-        "form": "anin danwedh"
-      },
-      {
-        "type": "Liquid",
-        "form": "egor danwedh"
-      },
-      {
-        "type": "Stop",
-        "form": "o ndanwedh"
-      },
-      {
-        "type": "H",
-        "form": "ah danwedh"
-      },
-      {
-        "type": "DH",
-        "form": "nedh danwedh"
-      }
-    ]
-  },
-  {
     "dict_form": "dar-",
     "part": "verb",
     "english": "to stop, halt",
@@ -10140,6 +10118,665 @@
       {
         "type": "PeferctParticle",
         "form": "dóriel"
+      }
+    ]
+  },
+  {
+    "dict_form": "daur",
+    "part": "noun",
+    "english": "league",
+    "definition": "联盟",
+    "sentence": "\n",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i dhaur"
+      },
+      {
+        "type": "Plural",
+        "form": "doer"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i noer"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an daur"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-daur"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin daur"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor dhaur"
+      },
+      {
+        "type": "Stop",
+        "form": "o daur"
+      },
+      {
+        "type": "H",
+        "form": "ah daur"
+      },
+      {
+        "type": "DH",
+        "form": "nedh daur"
+      }
+    ]
+  },
+  {
+    "dict_form": "del",
+    "part": "noun",
+    "english": "horror",
+    "definition": "恐怖，恐惧",
+    "sentence": "\n",
+    "other": "与dael意思相同，但两者词源不同",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i dhel"
+      },
+      {
+        "type": "Plural",
+        "form": "dil"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i nil"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an del"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-del"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin del"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor dhel"
+      },
+      {
+        "type": "Stop",
+        "form": "o del"
+      },
+      {
+        "type": "H",
+        "form": "ah del"
+      },
+      {
+        "type": "DH",
+        "form": "nedh del"
+      }
+    ]
+  },
+  {
+    "dict_form": "deloth",
+    "part": "noun",
+    "english": "abhorrence",
+    "definition": "痛恨，憎恶",
+    "sentence": "\n",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i dheloth"
+      },
+      {
+        "type": "Plural",
+        "form": "delyth"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i nelyth"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an deloth"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-deloth"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin deloth"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor dheloth"
+      },
+      {
+        "type": "Stop",
+        "form": "o deloth"
+      },
+      {
+        "type": "H",
+        "form": "ah deloth"
+      },
+      {
+        "type": "DH",
+        "form": "nedh deloth"
+      }
+    ]
+  },
+  {
+    "dict_form": "dern",
+    "part": "adjective",
+    "english": "tough, thrawn",
+    "definition": "艰难的，棘手的，强硬的，弯曲的",
+    "sentence": "\n",
+    "other": "可能被dorn替代",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "dhern"
+      },
+      {
+        "type": "Plural",
+        "form": "dirn"
+      },
+      {
+        "type": "Comparative",
+        "form": "andern"
+      },
+      {
+        "type": "Superlative",
+        "form": "ro-dhern"
+      }
+    ]
+  },
+  {
+    "dict_form": "(n)dev-",
+    "part": "verb",
+    "english": "to try",
+    "definition": "尝试，试",
+    "sentence": "\n",
+    "other": "与ritha-有显著区别，本词用于描述具有能力但未知结果的尝试，而ritha-通常用于能力未知，只是刚上手的尝试",
+    "morphology": [
+      {
+        "type": "Present",
+        "form": "(n)dêv/(n)devi-"
+      },
+      {
+        "type": "Past",
+        "form": "(n)edhiv/(n)edhíve-"
+      },
+      {
+        "type": "Future",
+        "form": "(n)devatha/(n)devatha(o)-"
+      },
+      {
+        "type": "Imperative",
+        "form": "(n)devo"
+      },
+      {
+        "type": "Gerund",
+        "form": "(n)deved"
+      },
+      {
+        "type": "PastParticiple",
+        "form": "(n)demmen"
+      },
+      {
+        "type": "PresentParticiple",
+        "form": "(n)devel"
+      },
+      {
+        "type": "PeferctParticle",
+        "form": "(n)dóviel"
+      }
+    ]
+  },
+  {
+    "dict_form": "dew-",
+    "part": "verb",
+    "english": "to fail, miss",
+    "definition": "失败，失去，错过，辜负",
+    "sentence": "\n",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Present",
+        "form": "dêw/dewi-"
+      },
+      {
+        "type": "Past",
+        "form": "ediw/edíwe-"
+      },
+      {
+        "type": "Future",
+        "form": "dewatha/dewatha(o)-"
+      },
+      {
+        "type": "Imperative",
+        "form": "dewo"
+      },
+      {
+        "type": "Gerund",
+        "form": "dewed"
+      },
+      {
+        "type": "PastParticiple",
+        "form": "dewnen"
+      },
+      {
+        "type": "PresentParticiple",
+        "form": "dewel"
+      },
+      {
+        "type": "PeferctParticle",
+        "form": "díwiel"
+      }
+    ]
+  },
+  {
+    "dict_form": "dha",
+    "part": "other",
+    "english": "there is",
+    "definition": "这里有",
+    "sentence": "[PE22/165]\ninn dha v'im.\n我愿意这样做，我想这样做（字面意：我心中有一个想法）\n",
+    "other": "除了例句，在Neo-Sindarin中非常不推荐使用该词",
+    "morphology": []
+  },
+  {
+    "dict_form": "(n)di",
+    "part": "preposition",
+    "english": "beneath, under",
+    "definition": "在...下",
+    "sentence": "[LotR/729][RGEO/64]\nle nallon sí di’nguruthos.\n浸没在死亡的恐惧中我放声大喊\n",
+    "other": "介词（也可做副词前缀），引发软音变",
+    "morphology": []
+  },
+  {
+    "dict_form": "díhena-",
+    "part": "verb",
+    "english": "to forgive",
+    "definition": "原谅，宽恕，赦免",
+    "sentence": "[VT44/21]\nar díheno ammen i úgerth vin.\n免我们的债（主祷文中的一句）\n",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Present",
+        "form": "díhena/díhena(o)-"
+      },
+      {
+        "type": "Past",
+        "form": "díhenant/díhenanne-"
+      },
+      {
+        "type": "Future",
+        "form": "díhenatha/díhenatha(o)-"
+      },
+      {
+        "type": "Imperative",
+        "form": "díheno"
+      },
+      {
+        "type": "Gerund",
+        "form": "díhenad"
+      },
+      {
+        "type": "PastParticiple",
+        "form": "díhenannen"
+      },
+      {
+        "type": "PresentParticiple",
+        "form": "díhenol"
+      },
+      {
+        "type": "PeferctParticle",
+        "form": "díheniel"
+      }
+    ]
+  },
+  {
+    "dict_form": "dim",
+    "part": "noun",
+    "english": "stair",
+    "definition": "阶梯，楼梯",
+    "sentence": "[S/220]\nDimrost.\n丁洛斯特，雨之阶梯\n",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i dhim"
+      },
+      {
+        "type": "Plural",
+        "form": "dim"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i nim"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an dim"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-dim"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin dim"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor dhim"
+      },
+      {
+        "type": "Stop",
+        "form": "o dim"
+      },
+      {
+        "type": "H",
+        "form": "ah dim"
+      },
+      {
+        "type": "DH",
+        "form": "nedh dim"
+      }
+    ]
+  },
+  {
+    "dict_form": "dîn",
+    "part": "noun",
+    "english": "silence",
+    "definition": "寂静，沉寂，沉默",
+    "sentence": "[LB/354]\nsi loth a galadh lasto dîn.\n花与木在寂静中倾听\n",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i dhîn"
+      },
+      {
+        "type": "Plural",
+        "form": "dîn"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i nîn"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an dîn"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-dîn"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin dîn"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor dhîn"
+      },
+      {
+        "type": "Stop",
+        "form": "o dîn"
+      },
+      {
+        "type": "H",
+        "form": "ah dîn"
+      },
+      {
+        "type": "DH",
+        "form": "nedh dîn"
+      }
+    ]
+  },
+  {
+    "dict_form": "dîn",
+    "part": "adjective",
+    "english": "silent, quiet",
+    "definition": "安静的，寂静的，沉默的",
+    "sentence": "[PE17/95][PE17/98]\nAmon Dîn.\n阿蒙丁，寂静的山丘\n",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "dhîn"
+      },
+      {
+        "type": "Plural",
+        "form": "dîn"
+      },
+      {
+        "type": "Comparative",
+        "form": "andín"
+      },
+      {
+        "type": "Superlative",
+        "form": "ro-dhín"
+      }
+    ]
+  },
+  {
+    "dict_form": "dínen",
+    "part": "adjective",
+    "english": "silent",
+    "definition": "寂静的，安静的，沉默的",
+    "sentence": "[S/121][WJ/333]\nDor Dínen.\n多尔迪能，寂静之地\n",
+    "other": "和dîn同义",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "dhínen"
+      },
+      {
+        "type": "Plural",
+        "form": "dínin"
+      },
+      {
+        "type": "Comparative",
+        "form": "andinen"
+      },
+      {
+        "type": "Superlative",
+        "form": "ro-dhinen"
+      }
+    ]
+  },
+  {
+    "dict_form": "(n)dîr",
+    "part": "noun",
+    "english": "man",
+    "definition": "男人，男性",
+    "sentence": "\n",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i nîr"
+      },
+      {
+        "type": "Plural",
+        "form": "dîr"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i ndîr"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an dîr"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-ndîr"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin dîr"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor dîr"
+      },
+      {
+        "type": "Stop",
+        "form": "o ndîr"
+      },
+      {
+        "type": "H",
+        "form": "ah dîr"
+      },
+      {
+        "type": "DH",
+        "form": "nedh dîr"
+      }
+    ]
+  },
+  {
+    "dict_form": "dîr",
+    "part": "adjective",
+    "english": "hard, difficult",
+    "definition": "难的，困难的",
+    "sentence": "\n",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "dhîr"
+      },
+      {
+        "type": "Plural",
+        "form": "dîr"
+      },
+      {
+        "type": "Comparative",
+        "form": "andír"
+      },
+      {
+        "type": "Superlative",
+        "form": "ro-dhír"
+      }
+    ]
+  },
+  {
+    "dict_form": "dírbedui",
+    "part": "adjective",
+    "english": "hard to utter, difficult to pronounce",
+    "definition": "难说的，难发音的，不好发声的",
+    "sentence": "\n",
+    "other": "dîr + pedui",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "dhírbedui"
+      },
+      {
+        "type": "Plural",
+        "form": "dírbedui"
+      },
+      {
+        "type": "Comparative",
+        "form": "andirbedui"
+      },
+      {
+        "type": "Superlative",
+        "form": "ro-dhirbedui"
+      }
+    ]
+  },
+  {
+    "dict_form": "dír-",
+    "part": "adverb",
+    "english": "toughly, difficultly",
+    "definition": "艰难地，困难地",
+    "sentence": "\n",
+    "other": "副词前缀，引发流音音变",
+    "morphology": []
+  },
+  {
+    "dict_form": "(n)dírnaith",
+    "part": "noun",
+    "english": "wedge-shaped battle-formation, man-spearhead",
+    "definition": "狄尔耐斯，努门诺尔人的楔形攻击阵型",
+    "sentence": "\n",
+    "other": "\n(n)dîr + naith",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i nírnaith"
+      },
+      {
+        "type": "Plural",
+        "form": "dírnaith"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i ndírnaith"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an dírnaith"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-ndírnaith"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin dírnaith"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor dírnaith"
+      },
+      {
+        "type": "Stop",
+        "form": "o ndírnaith"
+      },
+      {
+        "type": "H",
+        "form": "ah dírnaith"
+      },
+      {
+        "type": "DH",
+        "form": "nedh dírnaith"
+      }
+    ]
+  },
+  {
+    "dict_form": "dolen",
+    "part": "adjective",
+    "english": "hidden",
+    "definition": "隐藏的，隐没的",
+    "sentence": "[WJ/201]\nGondolin.\n刚多林，隐匿之岩\n",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "dholen"
+      },
+      {
+        "type": "Plural",
+        "form": "dolin"
+      },
+      {
+        "type": "Comparative",
+        "form": "andolen"
+      },
+      {
+        "type": "Superlative",
+        "form": "ro-dholen"
       }
     ]
   }

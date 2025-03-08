@@ -1140,6 +1140,333 @@
     ]
   },
   {
+    "dict_form": "(n)dev-",
+    "part": "verb",
+    "english": "to try",
+    "definition": "尝试，试",
+    "sentence": "\n",
+    "other": "与ritha-有显著区别，本词用于描述具有能力但未知结果的尝试，而ritha-通常用于能力未知，只是刚上手的尝试",
+    "morphology": [
+      {
+        "type": "Present",
+        "form": "(n)dêv/(n)devi-"
+      },
+      {
+        "type": "Past",
+        "form": "(n)edhiv/(n)edhíve-"
+      },
+      {
+        "type": "Future",
+        "form": "(n)devatha/(n)devatha(o)-"
+      },
+      {
+        "type": "Imperative",
+        "form": "(n)devo"
+      },
+      {
+        "type": "Gerund",
+        "form": "(n)deved"
+      },
+      {
+        "type": "PastParticiple",
+        "form": "(n)demmen"
+      },
+      {
+        "type": "PresentParticiple",
+        "form": "(n)devel"
+      },
+      {
+        "type": "PeferctParticle",
+        "form": "(n)dóviel"
+      }
+    ]
+  },
+  {
+    "dict_form": "(n)di",
+    "part": "preposition",
+    "english": "beneath, under",
+    "definition": "在...下",
+    "sentence": "[LotR/729][RGEO/64]\nle nallon sí di’nguruthos.\n浸没在死亡的恐惧中我放声大喊\n",
+    "other": "介词（也可做副词前缀），引发软音变",
+    "morphology": []
+  },
+  {
+    "dict_form": "(n)dorgannas",
+    "part": "noun",
+    "english": "shapes of the lands, geography",
+    "definition": "地形，地理",
+    "sentence": "[WJ/192]\nDorgannas Iaur.\n多尔甘那斯·伊阿乌，古地形学识书\n",
+    "other": "(n)dôr + cannas",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i norgannas"
+      },
+      {
+        "type": "Plural",
+        "form": "dergennais"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i ndergennais"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an dorgannas"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-ndorgannas"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin dorgannas"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor dorgannas"
+      },
+      {
+        "type": "Stop",
+        "form": "o ndorgannas"
+      },
+      {
+        "type": "H",
+        "form": "ah dorgannas"
+      },
+      {
+        "type": "DH",
+        "form": "nedh dorgannas"
+      }
+    ]
+  },
+  {
+    "dict_form": "(n)dírnaith",
+    "part": "noun",
+    "english": "wedge-shaped battle-formation, man-spearhead",
+    "definition": "狄尔耐斯，努门诺尔人的楔形攻击阵型",
+    "sentence": "\n",
+    "other": "\n(n)dîr + naith",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i nírnaith"
+      },
+      {
+        "type": "Plural",
+        "form": "dírnaith"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i ndírnaith"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an dírnaith"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-ndírnaith"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin dírnaith"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor dírnaith"
+      },
+      {
+        "type": "Stop",
+        "form": "o ndírnaith"
+      },
+      {
+        "type": "H",
+        "form": "ah dírnaith"
+      },
+      {
+        "type": "DH",
+        "form": "nedh dírnaith"
+      }
+    ]
+  },
+  {
+    "dict_form": "(n)dîr",
+    "part": "noun",
+    "english": "man",
+    "definition": "男人，男性",
+    "sentence": "\n",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i nîr"
+      },
+      {
+        "type": "Plural",
+        "form": "dîr"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i ndîr"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an dîr"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-ndîr"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin dîr"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor dîr"
+      },
+      {
+        "type": "Stop",
+        "form": "o ndîr"
+      },
+      {
+        "type": "H",
+        "form": "ah dîr"
+      },
+      {
+        "type": "DH",
+        "form": "nedh dîr"
+      }
+    ]
+  },
+  {
+    "dict_form": "(n)dôr",
+    "part": "noun",
+    "english": "land",
+    "definition": "土地，地，陆地；国，家园",
+    "sentence": "[UT/245]\nDor-en-Ernil.\n多尔-恩-埃尔尼尔，亲王之地\n",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i nôr"
+      },
+      {
+        "type": "Plural",
+        "form": "duir"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i nduir"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an dôr"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-ndôr"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin dôr"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor dôr"
+      },
+      {
+        "type": "Stop",
+        "form": "o ndôr"
+      },
+      {
+        "type": "H",
+        "form": "ah dôr"
+      },
+      {
+        "type": "DH",
+        "form": "nedh dôr"
+      }
+    ]
+  },
+  {
+    "dict_form": "(n)dûn",
+    "part": "noun",
+    "english": "west",
+    "definition": "西方，西边",
+    "sentence": "[PE17/18]\nDúnadan.\n伊甸人，杜内丹人，人类\n",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i nûn"
+      },
+      {
+        "type": "Plural",
+        "form": "duin"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i nduin"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an dûn"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-ndûn"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin dûn"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor dûn"
+      },
+      {
+        "type": "Stop",
+        "form": "o ndûn"
+      },
+      {
+        "type": "H",
+        "form": "ah dûn"
+      },
+      {
+        "type": "DH",
+        "form": "nedh dûn"
+      }
+    ]
+  },
+  {
+    "dict_form": "(n)dûr",
+    "part": "adjective",
+    "english": "dark(with evil implications), gloomy, hellish",
+    "definition": "（通常有邪恶意味）黑暗的，阴郁的，令人讨厌的",
+    "sentence": "[PE17/22][PE17/31][PE17/85][RC/274]\nBarad-dûr.\n巴拉督尔，邪黑塔\n",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "nûr"
+      },
+      {
+        "type": "Plural",
+        "form": "duir"
+      },
+      {
+        "type": "Comparative",
+        "form": "andúr"
+      },
+      {
+        "type": "Superlative",
+        "form": "ro-núr"
+      }
+    ]
+  },
+  {
     "dict_form": "Adan",
     "part": "noun",
     "english": "Man(as a species)",
@@ -6365,7 +6692,7 @@
     "part": "adjective",
     "english": "pebbly",
     "definition": "鹅卵石样的，布满鹅卵石的，鹅卵石花纹的",
-    "sentence": "\n\n",
+    "sentence": "\n\n\n",
     "other": "",
     "morphology": [
       {
@@ -6378,7 +6705,7 @@
       },
       {
         "type": "Comparative",
-        "form": "ambrithon/ammrithon"
+        "form": "embrithon/emmrithon"
       },
       {
         "type": "Superlative",
@@ -10298,48 +10625,6 @@
     ]
   },
   {
-    "dict_form": "(n)dev-",
-    "part": "verb",
-    "english": "to try",
-    "definition": "尝试，试",
-    "sentence": "\n",
-    "other": "与ritha-有显著区别，本词用于描述具有能力但未知结果的尝试，而ritha-通常用于能力未知，只是刚上手的尝试",
-    "morphology": [
-      {
-        "type": "Present",
-        "form": "(n)dêv/(n)devi-"
-      },
-      {
-        "type": "Past",
-        "form": "(n)edhiv/(n)edhíve-"
-      },
-      {
-        "type": "Future",
-        "form": "(n)devatha/(n)devatha(o)-"
-      },
-      {
-        "type": "Imperative",
-        "form": "(n)devo"
-      },
-      {
-        "type": "Gerund",
-        "form": "(n)deved"
-      },
-      {
-        "type": "PastParticiple",
-        "form": "(n)demmen"
-      },
-      {
-        "type": "PresentParticiple",
-        "form": "(n)devel"
-      },
-      {
-        "type": "PeferctParticle",
-        "form": "(n)dóviel"
-      }
-    ]
-  },
-  {
     "dict_form": "dew-",
     "part": "verb",
     "english": "to fail, miss",
@@ -10391,57 +10676,6 @@
     "morphology": []
   },
   {
-    "dict_form": "(n)di",
-    "part": "preposition",
-    "english": "beneath, under",
-    "definition": "在...下",
-    "sentence": "[LotR/729][RGEO/64]\nle nallon sí di’nguruthos.\n浸没在死亡的恐惧中我放声大喊\n",
-    "other": "介词（也可做副词前缀），引发软音变",
-    "morphology": []
-  },
-  {
-    "dict_form": "díhena-",
-    "part": "verb",
-    "english": "to forgive",
-    "definition": "原谅，宽恕，赦免",
-    "sentence": "[VT44/21]\nar díheno ammen i úgerth vin.\n免我们的债（主祷文中的一句）\n",
-    "other": "",
-    "morphology": [
-      {
-        "type": "Present",
-        "form": "díhena/díhena(o)-"
-      },
-      {
-        "type": "Past",
-        "form": "díhenant/díhenanne-"
-      },
-      {
-        "type": "Future",
-        "form": "díhenatha/díhenatha(o)-"
-      },
-      {
-        "type": "Imperative",
-        "form": "díheno"
-      },
-      {
-        "type": "Gerund",
-        "form": "díhenad"
-      },
-      {
-        "type": "PastParticiple",
-        "form": "díhenannen"
-      },
-      {
-        "type": "PresentParticiple",
-        "form": "díhenol"
-      },
-      {
-        "type": "PeferctParticle",
-        "form": "díheniel"
-      }
-    ]
-  },
-  {
     "dict_form": "dim",
     "part": "noun",
     "english": "stair",
@@ -10488,6 +10722,529 @@
       {
         "type": "DH",
         "form": "nedh dim"
+      }
+    ]
+  },
+  {
+    "dict_form": "dolen",
+    "part": "adjective",
+    "english": "hidden",
+    "definition": "隐藏的，隐没的",
+    "sentence": "[WJ/201]\nGondolin.\n刚多林，隐匿之岩\n",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "dholen"
+      },
+      {
+        "type": "Plural",
+        "form": "dolin"
+      },
+      {
+        "type": "Comparative",
+        "form": "andolen"
+      },
+      {
+        "type": "Superlative",
+        "form": "ro-dholen"
+      }
+    ]
+  },
+  {
+    "dict_form": "doll",
+    "part": "noun",
+    "english": "head, hill(with no sharp apex)",
+    "definition": "头，头部；（没有尖峰的）山丘",
+    "sentence": "[PE17/32][PE17/36]\nDol Guldur.\n多古尔都，妖术山丘\n",
+    "other": "出现在复合词中时通常拼为dol，其复数有dyll和duil两种形式",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i dholl"
+      },
+      {
+        "type": "Plural",
+        "form": "duil"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i nuil"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an doll"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-doll"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin doll"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor dholl"
+      },
+      {
+        "type": "Stop",
+        "form": "o doll"
+      },
+      {
+        "type": "H",
+        "form": "ah doll"
+      },
+      {
+        "type": "DH",
+        "form": "nedh doll"
+      }
+    ]
+  },
+  {
+    "dict_form": "dom",
+    "part": "adjective",
+    "english": "blind",
+    "definition": "盲的，瞎的，看不见的；短视的，盲目的",
+    "sentence": "\n",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "dhom"
+      },
+      {
+        "type": "Plural",
+        "form": "dym"
+      },
+      {
+        "type": "Comparative",
+        "form": "andom"
+      },
+      {
+        "type": "Superlative",
+        "form": "ro-dhom"
+      }
+    ]
+  },
+  {
+    "dict_form": "dond",
+    "part": "noun",
+    "english": "fist",
+    "definition": "拳头",
+    "sentence": "\n",
+    "other": "一说拼为donn",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i dhond"
+      },
+      {
+        "type": "Plural",
+        "form": "dynd"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i nynd"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an dond"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-dond"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin dond"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor dhond"
+      },
+      {
+        "type": "Stop",
+        "form": "o dond"
+      },
+      {
+        "type": "H",
+        "form": "ah dond"
+      },
+      {
+        "type": "DH",
+        "form": "nedh dond"
+      }
+    ]
+  },
+  {
+    "dict_form": "dorn",
+    "part": "adjective",
+    "english": "tough, stiff, thrawn, obdurate",
+    "definition": "艰难的，僵硬的，扭曲的，顽固的，执拗的，倔强的",
+    "sentence": "\n",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "dhorn"
+      },
+      {
+        "type": "Plural",
+        "form": "dyrn"
+      },
+      {
+        "type": "Comparative",
+        "form": "andorn"
+      },
+      {
+        "type": "Superlative",
+        "form": "ro-dhorn"
+      }
+    ]
+  },
+  {
+    "dict_form": "draug",
+    "part": "noun",
+    "english": "wolf",
+    "definition": "狼",
+    "sentence": "[SA/draug]\nDraugluin.\n肇格路因，妖狼之首\n",
+    "other": "词根√DARAK",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i dhraug"
+      },
+      {
+        "type": "Plural",
+        "form": "droeg"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "in droeg"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an draug"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "en-draug"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin draug"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor dhraug"
+      },
+      {
+        "type": "Stop",
+        "form": "o draug"
+      },
+      {
+        "type": "H",
+        "form": "ah draug"
+      },
+      {
+        "type": "DH",
+        "form": "nedh draug"
+      }
+    ]
+  },
+  {
+    "dict_form": "drega-",
+    "part": "verb",
+    "english": "to flee",
+    "definition": "逃，逃走，逃窜，溜走，逃跑",
+    "sentence": "[UT/65]\nLacho calad!Drego morn!.\n光明点燃！黑夜退散！\n",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Present",
+        "form": "drega/drega(o)-"
+      },
+      {
+        "type": "Past",
+        "form": "dregas/dregasse-"
+      },
+      {
+        "type": "Future",
+        "form": "dregatha/dregatha(o)-"
+      },
+      {
+        "type": "Imperative",
+        "form": "drego"
+      },
+      {
+        "type": "Gerund",
+        "form": "dregad"
+      },
+      {
+        "type": "PastParticiple",
+        "form": "dregassen"
+      },
+      {
+        "type": "PresentParticiple",
+        "form": "dregol"
+      },
+      {
+        "type": "PeferctParticle",
+        "form": "dregiel"
+      }
+    ]
+  },
+  {
+    "dict_form": "dring",
+    "part": "noun",
+    "english": "hammer",
+    "definition": "锤子",
+    "sentence": "[PE17/84]\nGlamdring.\n格拉姆德凛，敌击剑\n",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i dhring"
+      },
+      {
+        "type": "Plural",
+        "form": "dring"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "in dring"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an dring"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "en-dring"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin dring"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor dhring"
+      },
+      {
+        "type": "Stop",
+        "form": "o dring"
+      },
+      {
+        "type": "H",
+        "form": "ah dring"
+      },
+      {
+        "type": "DH",
+        "form": "nedh dring"
+      }
+    ]
+  },
+  {
+    "dict_form": "duin",
+    "part": "noun",
+    "english": "(large)river",
+    "definition": "大河，江，河流",
+    "sentence": "[RC/765]\nAnduin.\n安都因河，长河\n",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i dhuin"
+      },
+      {
+        "type": "Plural",
+        "form": "duin"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i nuin"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an duin"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-duin"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin duin"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor dhuin"
+      },
+      {
+        "type": "Stop",
+        "form": "o duin"
+      },
+      {
+        "type": "H",
+        "form": "ah duin"
+      },
+      {
+        "type": "DH",
+        "form": "nedh duin"
+      }
+    ]
+  },
+  {
+    "dict_form": "duinen",
+    "part": "noun",
+    "english": "flodd, high tide",
+    "definition": "水流，潮水；高潮，涨潮",
+    "sentence": "\n",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i dhuinen"
+      },
+      {
+        "type": "Plural",
+        "form": "duinin"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i nuinin"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an duinen"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-duinen"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin duinen"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor dhuinen"
+      },
+      {
+        "type": "Stop",
+        "form": "o duinen"
+      },
+      {
+        "type": "H",
+        "form": "ah duinen"
+      },
+      {
+        "type": "DH",
+        "form": "nedh duinen"
+      }
+    ]
+  },
+  {
+    "dict_form": "díhena-",
+    "part": "verb",
+    "english": "to forgive",
+    "definition": "原谅，宽恕，赦免",
+    "sentence": "[VT44/21]\nar díheno ammen i úgerth vin.\n免我们的债（主祷文中的一句）\n",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Present",
+        "form": "díhena/díhena(o)-"
+      },
+      {
+        "type": "Past",
+        "form": "díhenant/díhenanne-"
+      },
+      {
+        "type": "Future",
+        "form": "díhenatha/díhenatha(o)-"
+      },
+      {
+        "type": "Imperative",
+        "form": "díheno"
+      },
+      {
+        "type": "Gerund",
+        "form": "díhenad"
+      },
+      {
+        "type": "PastParticiple",
+        "form": "díhenannen"
+      },
+      {
+        "type": "PresentParticiple",
+        "form": "díhenol"
+      },
+      {
+        "type": "PeferctParticle",
+        "form": "díheniel"
+      }
+    ]
+  },
+  {
+    "dict_form": "dínen",
+    "part": "adjective",
+    "english": "silent",
+    "definition": "寂静的，安静的，沉默的",
+    "sentence": "[S/121][WJ/333]\nDor Dínen.\n多尔迪能，寂静之地\n\n",
+    "other": "和dîn同义",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "dhínen"
+      },
+      {
+        "type": "Plural",
+        "form": "dínin"
+      },
+      {
+        "type": "Comparative",
+        "form": "endinen"
+      },
+      {
+        "type": "Superlative",
+        "form": "ro-dhinen"
+      }
+    ]
+  },
+  {
+    "dict_form": "dír-",
+    "part": "adverb",
+    "english": "toughly, difficultly",
+    "definition": "艰难地，困难地",
+    "sentence": "\n",
+    "other": "副词前缀，引发流音音变",
+    "morphology": []
+  },
+  {
+    "dict_form": "dírbedui",
+    "part": "adjective",
+    "english": "hard to utter, difficult to pronounce",
+    "definition": "难说的，难发音的，不好发声的",
+    "sentence": "\n\n",
+    "other": "dîr + pedui",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "dhírbedui"
+      },
+      {
+        "type": "Plural",
+        "form": "dírbedui"
+      },
+      {
+        "type": "Comparative",
+        "form": "endirbedui"
+      },
+      {
+        "type": "Superlative",
+        "form": "ro-dhirbedui"
       }
     ]
   },
@@ -10546,7 +11303,7 @@
     "part": "adjective",
     "english": "silent, quiet",
     "definition": "安静的，寂静的，沉默的",
-    "sentence": "[PE17/95][PE17/98]\nAmon Dîn.\n阿蒙丁，寂静的山丘\n",
+    "sentence": "[PE17/95][PE17/98]\nAmon Dîn.\n阿蒙丁，寂静的山丘\n\n",
     "other": "",
     "morphology": [
       {
@@ -10559,7 +11316,7 @@
       },
       {
         "type": "Comparative",
-        "form": "andín"
+        "form": "endín"
       },
       {
         "type": "Superlative",
@@ -10568,87 +11325,11 @@
     ]
   },
   {
-    "dict_form": "dínen",
-    "part": "adjective",
-    "english": "silent",
-    "definition": "寂静的，安静的，沉默的",
-    "sentence": "[S/121][WJ/333]\nDor Dínen.\n多尔迪能，寂静之地\n",
-    "other": "和dîn同义",
-    "morphology": [
-      {
-        "type": "Soft",
-        "form": "dhínen"
-      },
-      {
-        "type": "Plural",
-        "form": "dínin"
-      },
-      {
-        "type": "Comparative",
-        "form": "andinen"
-      },
-      {
-        "type": "Superlative",
-        "form": "ro-dhinen"
-      }
-    ]
-  },
-  {
-    "dict_form": "(n)dîr",
-    "part": "noun",
-    "english": "man",
-    "definition": "男人，男性",
-    "sentence": "\n",
-    "other": "",
-    "morphology": [
-      {
-        "type": "Soft",
-        "form": "i nîr"
-      },
-      {
-        "type": "Plural",
-        "form": "dîr"
-      },
-      {
-        "type": "NasalⅠ",
-        "form": "i ndîr"
-      },
-      {
-        "type": "NasalⅡ",
-        "form": "an dîr"
-      },
-      {
-        "type": "MixedⅠ",
-        "form": "e-ndîr"
-      },
-      {
-        "type": "MixedⅡ",
-        "form": "anin dîr"
-      },
-      {
-        "type": "Liquid",
-        "form": "egor dîr"
-      },
-      {
-        "type": "Stop",
-        "form": "o ndîr"
-      },
-      {
-        "type": "H",
-        "form": "ah dîr"
-      },
-      {
-        "type": "DH",
-        "form": "nedh dîr"
-      }
-    ]
-  },
-  {
     "dict_form": "dîr",
     "part": "adjective",
     "english": "hard, difficult",
     "definition": "难的，困难的",
-    "sentence": "\n",
+    "sentence": "\n\n",
     "other": "",
     "morphology": [
       {
@@ -10661,7 +11342,7 @@
       },
       {
         "type": "Comparative",
-        "form": "andír"
+        "form": "endír"
       },
       {
         "type": "Superlative",
@@ -10670,113 +11351,472 @@
     ]
   },
   {
-    "dict_form": "dírbedui",
-    "part": "adjective",
-    "english": "hard to utter, difficult to pronounce",
-    "definition": "难说的，难发音的，不好发声的",
-    "sentence": "\n",
-    "other": "dîr + pedui",
-    "morphology": [
-      {
-        "type": "Soft",
-        "form": "dhírbedui"
-      },
-      {
-        "type": "Plural",
-        "form": "dírbedui"
-      },
-      {
-        "type": "Comparative",
-        "form": "andirbedui"
-      },
-      {
-        "type": "Superlative",
-        "form": "ro-dhirbedui"
-      }
-    ]
-  },
-  {
-    "dict_form": "dír-",
-    "part": "adverb",
-    "english": "toughly, difficultly",
-    "definition": "艰难地，困难地",
-    "sentence": "\n",
-    "other": "副词前缀，引发流音音变",
-    "morphology": []
-  },
-  {
-    "dict_form": "(n)dírnaith",
+    "dict_form": "dúath",
     "part": "noun",
-    "english": "wedge-shaped battle-formation, man-spearhead",
-    "definition": "狄尔耐斯，努门诺尔人的楔形攻击阵型",
-    "sentence": "\n",
-    "other": "\n(n)dîr + naith",
+    "english": "night shadow, dark/black shadow",
+    "definition": "夜影，暗影，黑影",
+    "sentence": "[PE17/152]\nEphel Dúath.\n埃斐尔度阿斯，阴影山脉\n",
+    "other": "dû + gwath",
     "morphology": [
       {
         "type": "Soft",
-        "form": "i nírnaith"
+        "form": "i dhúath"
       },
       {
         "type": "Plural",
-        "form": "dírnaith"
+        "form": "dúaith"
       },
       {
         "type": "NasalⅠ",
-        "form": "i ndírnaith"
+        "form": "i núaith"
       },
       {
         "type": "NasalⅡ",
-        "form": "an dírnaith"
+        "form": "an dúath"
       },
       {
         "type": "MixedⅠ",
-        "form": "e-ndírnaith"
+        "form": "e-dúath"
       },
       {
         "type": "MixedⅡ",
-        "form": "anin dírnaith"
+        "form": "anin dúath"
       },
       {
         "type": "Liquid",
-        "form": "egor dírnaith"
+        "form": "egor dhúath"
       },
       {
         "type": "Stop",
-        "form": "o ndírnaith"
+        "form": "o dúath"
       },
       {
         "type": "H",
-        "form": "ah dírnaith"
+        "form": "ah dúath"
       },
       {
         "type": "DH",
-        "form": "nedh dírnaith"
+        "form": "nedh dúath"
       }
     ]
   },
   {
-    "dict_form": "dolen",
-    "part": "adjective",
-    "english": "hidden",
-    "definition": "隐藏的，隐没的",
-    "sentence": "[WJ/201]\nGondolin.\n刚多林，隐匿之岩\n",
+    "dict_form": "dúlin",
+    "part": "noun",
+    "english": "nightingale",
+    "definition": "夜莺",
+    "sentence": "\n",
+    "other": "dû + lind",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i dhúlin"
+      },
+      {
+        "type": "Plural",
+        "form": "dúlin"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i núlin"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an dúlin"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-dúlin"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin dúlin"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor dhúlin"
+      },
+      {
+        "type": "Stop",
+        "form": "o dúlin"
+      },
+      {
+        "type": "H",
+        "form": "ah dúlin"
+      },
+      {
+        "type": "DH",
+        "form": "nedh dúlin"
+      }
+    ]
+  },
+  {
+    "dict_form": "dúnad",
+    "part": "noun",
+    "english": "descent",
+    "definition": "下降（的方向/的路），降落",
+    "sentence": "\n",
     "other": "",
     "morphology": [
       {
         "type": "Soft",
-        "form": "dholen"
+        "form": "i dhúnad"
       },
       {
         "type": "Plural",
-        "form": "dolin"
+        "form": "dúnaid"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i núnaid"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an dúnad"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-dúnad"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin dúnad"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor dhúnad"
+      },
+      {
+        "type": "Stop",
+        "form": "o dúnad"
+      },
+      {
+        "type": "H",
+        "form": "ah dúnad"
+      },
+      {
+        "type": "DH",
+        "form": "nedh dúnad"
+      }
+    ]
+  },
+  {
+    "dict_form": "dû",
+    "part": "noun",
+    "english": "night, dimness",
+    "definition": "夜晚，昏暗，黑夜，黑暗",
+    "sentence": "[PE17/87]\ndúath.\n夜影，暗影\n",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i dhû"
+      },
+      {
+        "type": "Plural",
+        "form": "dui"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i nui"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an dû"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-dû"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin dû"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor dhû"
+      },
+      {
+        "type": "Stop",
+        "form": "o dû"
+      },
+      {
+        "type": "H",
+        "form": "ah dû"
+      },
+      {
+        "type": "DH",
+        "form": "nedh dû"
+      }
+    ]
+  },
+  {
+    "dict_form": "dý-",
+    "part": "adverb",
+    "english": "mistakenly",
+    "definition": "错误地",
+    "sentence": "\n",
+    "other": "副词前缀，引发软音变",
+    "morphology": []
+  },
+  {
+    "dict_form": "dýgar",
+    "part": "noun",
+    "english": "mistaken act. doing a wrong thing",
+    "definition": "错误的行为，错事",
+    "sentence": "\n",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i dhýgar"
+      },
+      {
+        "type": "Plural",
+        "form": "dýgair"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i nýgair"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an dýgar"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-dýgar"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin dýgar"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor dhýgar"
+      },
+      {
+        "type": "Stop",
+        "form": "o dýgar"
+      },
+      {
+        "type": "H",
+        "form": "ah dýgar"
+      },
+      {
+        "type": "DH",
+        "form": "nedh dýgar"
+      }
+    ]
+  },
+  {
+    "dict_form": "dýgar",
+    "part": "adjective",
+    "english": "doing a wrong thing",
+    "definition": "做错事的",
+    "sentence": "\n",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "dhýgar"
+      },
+      {
+        "type": "Plural",
+        "form": "dýgair"
       },
       {
         "type": "Comparative",
-        "form": "andolen"
+        "form": "andygar"
       },
       {
         "type": "Superlative",
-        "form": "ro-dholen"
+        "form": "ro-dhygar"
+      }
+    ]
+  },
+  {
+    "dict_form": "dŷl",
+    "part": "noun",
+    "english": "mistake",
+    "definition": "错误，错",
+    "sentence": "\n",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i dhŷl"
+      },
+      {
+        "type": "Plural",
+        "form": "dŷl"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i nŷl"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an dŷl"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-dŷl"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin dŷl"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor dhŷl"
+      },
+      {
+        "type": "Stop",
+        "form": "o dŷl"
+      },
+      {
+        "type": "H",
+        "form": "ah dŷl"
+      },
+      {
+        "type": "DH",
+        "form": "nedh dŷl"
+      }
+    ]
+  },
+  {
+    "dict_form": "dŷr",
+    "part": "adjective",
+    "english": "mistaken, off point, not right",
+    "definition": "错误的，离题的，不对的",
+    "sentence": "\n",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "dhŷr"
+      },
+      {
+        "type": "Plural",
+        "form": "dŷr"
+      },
+      {
+        "type": "Comparative",
+        "form": "andýr"
+      },
+      {
+        "type": "Superlative",
+        "form": "ro-dhýr"
+      }
+    ]
+  },
+  {
+    "dict_form": "eb",
+    "part": "preposition",
+    "english": "before",
+    "definition": "在...前",
+    "sentence": "[PM/136]\nEblaer.\n六月，夏天之前\n",
+    "other": "介词，引发闭锁音变",
+    "morphology": []
+  },
+  {
+    "dict_form": "Eblaer",
+    "part": "noun",
+    "english": "June, before-summer",
+    "definition": "六月，夏天之前",
+    "sentence": "\n",
+    "other": "eb + laer",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i Eblaer"
+      },
+      {
+        "type": "Plural",
+        "form": "Eblaer"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "in Eblaer"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an Eblaer"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "en-Eblaer"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin Eblaer"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor Eblaer"
+      },
+      {
+        "type": "Stop",
+        "form": "od Eblaer"
+      },
+      {
+        "type": "H",
+        "form": "ah Eblaer"
+      },
+      {
+        "type": "DH",
+        "form": "nedh Eblaer"
+      }
+    ]
+  },
+  {
+    "dict_form": "echad",
+    "part": "noun",
+    "english": "camp",
+    "definition": "营地",
+    "sentence": "[UT/153]\nEchad i Sedryn.\n埃哈德·伊·色德林，忠诚者营地\n",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i echad"
+      },
+      {
+        "type": "Plural",
+        "form": "echaid"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "in echaid"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an echad"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "en-echad"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin echad"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor echad"
+      },
+      {
+        "type": "Stop",
+        "form": "o echad"
+      },
+      {
+        "type": "H",
+        "form": "ah echad"
+      },
+      {
+        "type": "DH",
+        "form": "nedh echad"
       }
     ]
   }

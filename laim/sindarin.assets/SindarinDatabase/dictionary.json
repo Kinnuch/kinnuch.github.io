@@ -1667,6 +1667,56 @@
     ]
   },
   {
+    "dict_form": "Eblaer",
+    "part": "noun",
+    "english": "June, before-summer",
+    "definition": "六月，夏天之前",
+    "sentence": "\n",
+    "other": "eb + laer",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i Eblaer"
+      },
+      {
+        "type": "Plural",
+        "form": "Eblaer"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "in Eblaer"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an Eblaer"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "en-Eblaer"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin Eblaer"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor Eblaer"
+      },
+      {
+        "type": "Stop",
+        "form": "od Eblaer"
+      },
+      {
+        "type": "H",
+        "form": "ah Eblaer"
+      },
+      {
+        "type": "DH",
+        "form": "nedh Eblaer"
+      }
+    ]
+  },
+  {
     "dict_form": "a(ar)/ah",
     "part": "conjunction",
     "english": "and",
@@ -11721,56 +11771,6 @@
     "morphology": []
   },
   {
-    "dict_form": "Eblaer",
-    "part": "noun",
-    "english": "June, before-summer",
-    "definition": "六月，夏天之前",
-    "sentence": "\n",
-    "other": "eb + laer",
-    "morphology": [
-      {
-        "type": "Soft",
-        "form": "i Eblaer"
-      },
-      {
-        "type": "Plural",
-        "form": "Eblaer"
-      },
-      {
-        "type": "NasalⅠ",
-        "form": "in Eblaer"
-      },
-      {
-        "type": "NasalⅡ",
-        "form": "an Eblaer"
-      },
-      {
-        "type": "MixedⅠ",
-        "form": "en-Eblaer"
-      },
-      {
-        "type": "MixedⅡ",
-        "form": "anin Eblaer"
-      },
-      {
-        "type": "Liquid",
-        "form": "egor Eblaer"
-      },
-      {
-        "type": "Stop",
-        "form": "od Eblaer"
-      },
-      {
-        "type": "H",
-        "form": "ah Eblaer"
-      },
-      {
-        "type": "DH",
-        "form": "nedh Eblaer"
-      }
-    ]
-  },
-  {
     "dict_form": "echad",
     "part": "noun",
     "english": "camp",
@@ -11817,6 +11817,309 @@
       {
         "type": "DH",
         "form": "nedh echad"
+      }
+    ]
+  },
+  {
+    "dict_form": "echad-",
+    "part": "verb",
+    "english": "to form, make, shape, cut out",
+    "definition": "形成，制作，塑造，刻制",
+    "sentence": "[LotR/305][PE17/40]\nim Narvi hain echant.\n我，纳维，制作了它们\n",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Present",
+        "form": "echad/echedi-"
+      },
+      {
+        "type": "Past",
+        "form": "echant/echanne-"
+      },
+      {
+        "type": "Future",
+        "form": "echatha/echatha(o)-"
+      },
+      {
+        "type": "Imperative",
+        "form": "echado"
+      },
+      {
+        "type": "Gerund",
+        "form": "echaded"
+      },
+      {
+        "type": "PastParticiple",
+        "form": "echannen"
+      },
+      {
+        "type": "PresentParticiple",
+        "form": "echadel"
+      },
+      {
+        "type": "PeferctParticle",
+        "form": "echódiel"
+      }
+    ]
+  },
+  {
+    "dict_form": "echil",
+    "part": "noun",
+    "english": "follower",
+    "definition": "跟随者，追随者",
+    "sentence": "\n",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i echil"
+      },
+      {
+        "type": "Plural",
+        "form": "echil"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "in echil"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an echil"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "en-echil"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin echil"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor echil"
+      },
+      {
+        "type": "Stop",
+        "form": "od echil"
+      },
+      {
+        "type": "H",
+        "form": "ah echil"
+      },
+      {
+        "type": "DH",
+        "form": "nedh echil"
+      }
+    ]
+  },
+  {
+    "dict_form": "echor",
+    "part": "noun",
+    "english": "out circle",
+    "definition": "外环，环",
+    "sentence": "[RC/512]\nRammas Echor.\n拉马斯埃霍尔，拉马斯外环\n",
+    "other": "ed + cor",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i edcor"
+      },
+      {
+        "type": "Plural",
+        "form": "edcyr"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "in edcyr"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an edcor"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "en-edcor"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin edcor"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor edcor"
+      },
+      {
+        "type": "Stop",
+        "form": "od edcor"
+      },
+      {
+        "type": "H",
+        "form": "ah edcor"
+      },
+      {
+        "type": "DH",
+        "form": "nedh edcor"
+      }
+    ]
+  },
+  {
+    "dict_form": "echor",
+    "part": "adjective",
+    "english": "encircling",
+    "definition": "环抱的，围绕的，外环的",
+    "sentence": "[SA/echor]\nEchoriath.\n埃霍瑞亚斯，环抱山脉\n",
+    "other": "ed + cor",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "echor"
+      },
+      {
+        "type": "Plural",
+        "form": "echyr"
+      },
+      {
+        "type": "Comparative",
+        "form": "anechor"
+      },
+      {
+        "type": "Superlative",
+        "form": "ro-echor"
+      }
+    ]
+  },
+  {
+    "dict_form": "echui",
+    "part": "noun",
+    "english": "awakening",
+    "definition": "苏醒，复苏，觉醒",
+    "sentence": "[LR/406]\nNen Echui.\n能埃胡伊，奎维耶能，苏醒之水\n",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i echui"
+      },
+      {
+        "type": "Plural",
+        "form": "echui"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "in echui"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an echui"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "en-echui"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin echui"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor echui"
+      },
+      {
+        "type": "Stop",
+        "form": "od echui"
+      },
+      {
+        "type": "H",
+        "form": "ah echui"
+      },
+      {
+        "type": "DH",
+        "form": "nedh echui"
+      }
+    ]
+  },
+  {
+    "dict_form": "echuir",
+    "part": "noun",
+    "english": "early Spring, stirring",
+    "definition": "早春，萌芽季，苏季",
+    "sentence": "[SD/129]\nA Pherhael ar am Meril suilad uin aran o Minas Tirith nelchaenen uin Echuir.\n向山姆怀斯与罗丝献上来自米那斯提力斯的国王的问候。写于萌芽季的第三十一日。\n",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i echuir"
+      },
+      {
+        "type": "Plural",
+        "form": "echuir"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "in echuir"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an echuir"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "en-echuir"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin echuir"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor echuir"
+      },
+      {
+        "type": "Stop",
+        "form": "od echuir"
+      },
+      {
+        "type": "H",
+        "form": "ah echuir"
+      },
+      {
+        "type": "DH",
+        "form": "nedh echuir"
+      }
+    ]
+  },
+  {
+    "dict_form": "ed",
+    "part": "preposition",
+    "english": "out, out of",
+    "definition": "向外，出去，在...外，排除在外",
+    "sentence": "[PE17/141]\nedlon.\n外地人，异乡人，外国人\n",
+    "other": "介词或者副词前缀，引发闭锁音变",
+    "morphology": []
+  },
+  {
+    "dict_form": "edaid",
+    "part": "adjective",
+    "english": "double",
+    "definition": "两倍的，翻番的",
+    "sentence": "\n",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "edaid"
+      },
+      {
+        "type": "Plural",
+        "form": "无复数形式"
+      },
+      {
+        "type": "Comparative",
+        "form": "无比较级形式"
+      },
+      {
+        "type": "Superlative",
+        "form": "无最高级形式"
       }
     ]
   }

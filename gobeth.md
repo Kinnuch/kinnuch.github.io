@@ -7,6 +7,7 @@ title: Gobeth
 ## Gobeth Sindarin
 
 - [Gobeth Sindarin](https://kinnuch.github.io/laim/sindarin.assets/SindarinDatabase/SindarinDictionary.html) **汉语-辛达语词典**←应该是国内中土圈的第一本汉语-辛达语词典（小声
+- [Tharbeth](https://kinnuch.github.io/laim/sindarin.assets/SindarinDatabase/Tharbeth.html) **辛达语填字游戏**
 
 ## Gobeth Shikrin
 

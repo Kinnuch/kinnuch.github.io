@@ -1,21 +1,4 @@
-// 示例JSON数据结构
-const wordData = {
-    "words": [
-        {
-            "word": "apple",
-            "definition": "A popular fruit",
-            "partOfSpeech": "noun",
-            "clue": "红红的圆水果"
-        },
-        {
-            "word": "python",
-            "definition": "A programming language",
-            "partOfSpeech": "noun",
-            "clue": "一种流行的编程语言"
-        },
-        // 添加更多单词...
-    ]
-};
+let wordData = { "words":[] };
 
 class CrosswordGenerator {
     constructor(size = 15) {
@@ -23,22 +6,27 @@ class CrosswordGenerator {
         this.grid = Array(size).fill().map(() => Array(size).fill(''));
         this.clues = { across: [], down: [] };
         this.currentNumber = 1;
+        this.placedWords = [];
     }
 
     generate(words) {
         // 按单词长度排序（简单布局策略）
-        const sortedWords = [...words].sort((a, b) => b.word.length - a.word.length);
-        
+        const sortedWords = [...words].sort((a, b) => b.dict_form.length - a.dict_form.length);
+
         sortedWords.forEach(wordObj => {
-            const word = wordObj.dict_form.toUpperCase();
+            let word = wordObj.dict_form.toUpperCase();
+            if (word.indexOf('(') === 0) word = word.slice(3);
             const placed = this.tryPlaceWord(word, wordObj);
             if (placed) this.currentNumber++;
         });
+
+        this.addPreFilledLetters();
     }
 
     tryPlaceWord(word, meta) {
         // 简化的布局算法（实际需要更复杂的冲突检测）
-        for (let attempt = 0; attempt < 100; attempt++) {
+        const AllQuery = Math.floor(Math.random() + 15);
+        for (let attempt = 0; attempt < AllQuery; attempt++) {
             const direction = Math.random() < 0.5 ? 'across' : 'down';
             const maxStart = this.size - word.length;
             const x = Math.floor(Math.random() * (direction === 'across' ? maxStart : this.size));
@@ -53,40 +41,70 @@ class CrosswordGenerator {
     }
 
     canPlaceWord(word, x, y, direction) {
+        let hasIntersection = false;
         for (let i = 0; i < word.length; i++) {
             const xi = direction === 'across' ? x + i : x;
             const yi = direction === 'down' ? y + i : y;
             
             if (xi >= this.size || yi >= this.size) return false;
-            if (this.grid[yi][xi] !== '' && this.grid[yi][xi] !== word[i]) return false;
+            const existing = this.grid[yi][xi];
+                    
+            if (existing) {
+                if (existing.letter !== word[i]) return false;
+                hasIntersection = true;
+            }
         }
-        return true;
+        return hasIntersection || word.length > 1;
     }
 
     placeWord(word, x, y, direction, meta) {
         const number = this.currentNumber;
+        const positions = [];
         for (let i = 0; i < word.length; i++) {
             const xi = direction === 'across' ? x + i : x;
             const yi = direction === 'down' ? y + i : y;
             
-            if (i === 0) {
-                this.grid[yi][xi] = {
-                    letter: word[i],
-                    number,
-                    [direction]: number
-                };
-            } else {
-                this.grid[yi][xi] = { ...this.grid[yi][xi], letter: word[i] };
-            }
+            const cell = this.grid[yi][xi] || { letter: word[i] };
+            cell.letter = word[i];
+            if (i === 0) cell.number = number;
+            
+            this.grid[yi][xi] = cell;
+            positions.push({x: xi, y: yi});
         }
+
+        this.placedWords.push({
+            word,
+            positions,
+            direction,
+            meta
+        });
 
         this.clues[direction].push({
             number,
-            clue: meta.other,
+            clue: meta.definition,
             word: meta.dict_form,
-            definition: meta.definition,
             partOfSpeech: meta.part
         });
+    }
+
+    addPreFilledLetters() {
+        this.placedWords.forEach(word => {
+            const count = Math.random() < 0.2 ? 2 : 1;
+            const indexes = this.getRandomIndexes(word.word.length, count);
+            
+            indexes.forEach(i => {
+                const pos = word.positions[i];
+                this.grid[pos.y][pos.x].prefilled = true;
+            });
+        });
+    }
+
+    getRandomIndexes(length, count) {
+        const indexes = new Set();
+        while(indexes.size < Math.min(count, length)) {
+            indexes.add(Math.floor(Math.random() * length));
+        }
+        return [...indexes];
     }
 
     render(container) {
@@ -103,6 +121,11 @@ class CrosswordGenerator {
                     input.dataset.answer = cell.letter;
                     input.addEventListener('input', (e) => this.validateInput(e.target));
                     
+                    if (cell.prefilled) {
+                        input.value = cell.letter;
+                        input.disabled = true;
+                    }
+
                     if (cell.number) {
                         const numberSpan = document.createElement('span');
                         numberSpan.className = 'number';
@@ -112,6 +135,7 @@ class CrosswordGenerator {
                     
                     td.appendChild(input);
                 }
+                else td.style.backgroundColor = '#ecf0f1';
                 tr.appendChild(td);
             });
             table.appendChild(tr);
@@ -145,7 +169,7 @@ class CrosswordGenerator {
     validateInput(input) {
         const answer = input.dataset.answer;
         input.style.backgroundColor = 
-            input.value.toUpperCase() === answer ? '#cfc' : '#fcc';
+            input.value.toUpperCase() === answer ? '#e8f5e9' : '#ffebee';
     }
 }
 
@@ -160,6 +184,8 @@ function generateNewCrossword() {
 const data = "https://kinnuch.github.io/laim/sindarin.assets/SindarinDatabase/dictionary.json";
 fetch(data)
     .then(response => response.json())
-    .then(data => wordData.words = data);
-generateNewCrossword();
-setInterval(generateNewCrossword, 60 * 60 * 1000);
+    .then(data => {
+        wordData.words = data;
+        generateNewCrossword();
+        setInterval(generateNewCrossword, 60 * 60 * 1000);
+    });

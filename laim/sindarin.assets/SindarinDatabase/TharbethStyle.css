@@ -1,33 +1,87 @@
+:root {
+    --primary-color: #2c3e50;
+    --secondary-color: #34495e;
+    --accent-color: #3498db;
+}
+
+body {
+    font-family: 'Segoe UI', sans-serif;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+    background: #f8f9fa;
+}
+
 .crossword {
     border-collapse: collapse;
-    margin: 20px;
+    margin: 20px auto;
+    background: white;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
+
 .crossword td {
-    width: 30px;
-    height: 30px;
-    border: 1px solid #ccc;
+    width: 40px;
+    height: 40px;
+    border: 2px solid var(--primary-color);
     text-align: center;
     position: relative;
+    background: white;
 }
+
 .crossword input {
     width: 100%;
     height: 100%;
     border: 0;
     text-align: center;
-    font-size: 18px;
+    font-size: 20px;
+    font-weight: 500;
     text-transform: uppercase;
+    color: var(--secondary-color);
+    background: transparent;
 }
+
+.crossword input:disabled {
+    background: #ecf0f1;
+    color: #7f8c8d;
+    font-weight: bold;
+}
+
+.crossword input:focus {
+    outline: 2px solid var(--accent-color);
+    z-index: 2;
+}
+
 .number {
     position: absolute;
     top: 2px;
     left: 2px;
-    font-size: 8px;
+    font-size: 10px;
+    font-weight: bold;
+    color: var(--accent-color);
 }
+
 .hints {
-    margin: 20px;
-    padding: 20px;
-    background: #f5f5f5;
+    margin: 30px auto;
+    padding: 25px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
+
+.hints h3 {
+    color: var(--primary-color);
+    border-bottom: 2px solid var(--accent-color);
+    padding-bottom: 8px;
+    margin: 20px 0;
+}
+
 .hint-item {
-    margin: 10px 0;
+    margin: 15px 0;
+    line-height: 1.6;
+    color: var(--secondary-color);
+}
+
+.hint-item b {
+    color: var(--accent-color);
+    margin-right: 8px;
 }

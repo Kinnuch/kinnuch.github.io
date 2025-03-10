@@ -13,27 +13,33 @@ class CrosswordGenerator {
         // 按单词长度排序（简单布局策略）
         const sortedWords = [...words].sort((a, b) => b.dict_form.length - a.dict_form.length);
 
-        sortedWords.forEach(wordObj => {
+        const neededNumber = Math.floor(Math.random() * 5 + 15);
+        for (let now = 0; now < sortedWords.length; now++) {
+            let wordObj = sortedWords[now];
+            if (Math.random() < 0.06 * wordObj.dict_form.length) continue;
             let word = wordObj.dict_form.toUpperCase();
-            if (word.indexOf('(') === 0) word = word.slice(3);
+            if (word.includes('/')) continue;
+            if (word.includes('(')) word = word.replace(/\([^)]*\)/g, '').trim();
             const placed = this.tryPlaceWord(word, wordObj);
             if (placed) this.currentNumber++;
-        });
+            if (this.currentNumber > neededNumber) break;
+        }
 
         this.addPreFilledLetters();
     }
 
     tryPlaceWord(word, meta) {
         // 简化的布局算法（实际需要更复杂的冲突检测）
-        const AllQuery = Math.floor(Math.random() + 15);
-        for (let attempt = 0; attempt < AllQuery; attempt++) {
-            const direction = Math.random() < 0.5 ? 'across' : 'down';
+        let balanceRandom = 0.5;
+        for (let attempt = 0; attempt < 15; attempt++) {
+            const direction = Math.random() < balanceRandom ? 'across' : 'down';
             const maxStart = this.size - word.length;
             const x = Math.floor(Math.random() * (direction === 'across' ? maxStart : this.size));
             const y = Math.floor(Math.random() * (direction === 'down' ? maxStart : this.size));
 
             if (this.canPlaceWord(word, x, y, direction)) {
                 this.placeWord(word, x, y, direction, meta);
+                balanceRandom = balanceRandom + direction === 'across'? -0.03 : 0.03;
                 return true;
             }
         }
@@ -42,6 +48,7 @@ class CrosswordGenerator {
 
     canPlaceWord(word, x, y, direction) {
         let hasIntersection = false;
+        let closeParam = 0;
         for (let i = 0; i < word.length; i++) {
             const xi = direction === 'across' ? x + i : x;
             const yi = direction === 'down' ? y + i : y;
@@ -53,6 +60,17 @@ class CrosswordGenerator {
                 if (existing.letter !== word[i]) return false;
                 hasIntersection = true;
             }
+
+            // 避免粘连
+            if (direction === 'across') {
+                if (y > 0 && this.grid[y - 1][xi]) closeParam++;
+                if (y < this.size - 1 && this.grid[y + 1][xi]) closeParam++;
+            }
+            else {
+                if (x > 0 && this.grid[yi][x - 1]) closeParam++;
+                if (x < this.size - 1 && this.grid[yi][x + 1]) closeParam++;
+            }
+            if (closeParam > word.length * 3.0 / 5) return false;
         }
         return hasIntersection || word.length > 1;
     }
@@ -119,7 +137,7 @@ class CrosswordGenerator {
                     const input = document.createElement('input');
                     input.maxLength = 1;
                     input.dataset.answer = cell.letter;
-                    input.addEventListener('input', (e) => this.validateInput(e.target));
+                    input.addEventListener('input', (e) => { this.validateInput(e.target); });
                     
                     if (cell.prefilled) {
                         input.value = cell.letter;
@@ -135,7 +153,7 @@ class CrosswordGenerator {
                     
                     td.appendChild(input);
                 }
-                else td.style.backgroundColor = '#ecf0f1';
+                else td.style.backgroundColor = 'white';
                 tr.appendChild(td);
             });
             table.appendChild(tr);

@@ -19,7 +19,7 @@ class CrosswordGenerator {
             if (Math.random() < 0.06 * wordObj.dict_form.length) continue;
             let word = wordObj.dict_form.toUpperCase();
             if (word.includes('/')) continue;
-            if (word.includes('-')) word.replace('-', '').trim();
+            if (word.includes('-')) word = word.replace('-', '').trim();
             if (word.includes('(')) word = word.replace(/\([^)]*\)/g, '').trim();
             const placed = this.tryPlaceWord(word, wordObj);
             if (placed) this.currentNumber++;

@@ -5331,8 +5331,8 @@
     "part": "verb",
     "english": "to cross(to and fro)",
     "definition": "（来回）穿过，交错",
-    "sentence": "\n",
-    "other": "",
+    "sentence": "\n\n",
+    "other": "√A-THAR",
     "morphology": [
       {
         "type": "Present",
@@ -5373,8 +5373,8 @@
     "part": "verb",
     "english": "to treat medically",
     "definition": "医治，医疗，治疗",
-    "sentence": "\n",
-    "other": "",
+    "sentence": "\n\n",
+    "other": "√ATHA",
     "morphology": [
       {
         "type": "Present",
@@ -8485,8 +8485,8 @@
     "part": "noun",
     "english": "prince, chief, head",
     "definition": "王子，亲王；主管，负责人，领头，首脑",
-    "sentence": "[Let/448][LotR/953]\nDaur a Berhael, Conin en Annûn.\n弗罗多和山姆，来自西方的王子\n\n",
-    "other": "Felagund中出现的cund被认为是更旧的词",
+    "sentence": "[Let/448][LotR/953]\nDaur a Berhael, Conin en Annûn.\n弗罗多和山姆，来自西方的王子\n\n\n",
+    "other": "Felagund中出现的cund被认为是更旧的词；词源√KUN(DU)",
     "morphology": [
       {
         "type": "Soft",
@@ -8535,8 +8535,8 @@
     "part": "noun",
     "english": "outcry, clamour",
     "definition": "大吼大叫，（大声的）抱怨；喊声",
-    "sentence": "[PM/362]\nnaergon.\n悲痛的挽歌\n",
-    "other": "常见集体复数conath",
+    "sentence": "[PM/362]\nnaergon.\n悲痛的挽歌\n\n",
+    "other": "常见集体复数conath；词源√KAN",
     "morphology": [
       {
         "type": "Soft",
@@ -12122,5 +12122,999 @@
         "form": "无最高级形式"
       }
     ]
+  },
+  {
+    "dict_form": "Edhel",
+    "part": "noun",
+    "english": "Elf",
+    "definition": "精灵（尤其辛达族）",
+    "sentence": "\n\n",
+    "other": "诺多一般称为(g)Ódhel；另外有和Elen同源的Eledh，但目前已不使用该拼写，转而使用Edhel",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i Edhel"
+      },
+      {
+        "type": "Plural",
+        "form": "Edhil"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "in Edhil"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an Edhel"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "en-Edhel"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin Edhel"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor Edhel"
+      },
+      {
+        "type": "Stop",
+        "form": "od Edhel"
+      },
+      {
+        "type": "H",
+        "form": "ah Edhel"
+      },
+      {
+        "type": "DH",
+        "form": "nedh Edhel"
+      }
+    ]
+  },
+  {
+    "dict_form": "edhellen",
+    "part": "adjective",
+    "english": "elvish",
+    "definition": "精灵的，也指精灵语",
+    "sentence": "[LotR/307][PE17/45]\nannon edhellen, edro hi ammen.\n精灵之门，为吾而开\n",
+    "other": "Edhel + -ren",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "edhellen"
+      },
+      {
+        "type": "Plural",
+        "form": "edhellin"
+      },
+      {
+        "type": "Comparative",
+        "form": "anedhellen"
+      },
+      {
+        "type": "Superlative",
+        "form": "ro-edhellen"
+      }
+    ]
+  },
+  {
+    "dict_form": "edhelvein",
+    "part": "noun",
+    "english": "elven fair",
+    "definition": "精灵美人，精灵美女",
+    "sentence": "\n",
+    "other": "wanedhel是该词的变体",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i edhelvein"
+      },
+      {
+        "type": "Plural",
+        "form": "edhelvein"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "in edhelvein"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an edhelvein"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "en-edhelvein"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin edhelvein"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor edhelvein"
+      },
+      {
+        "type": "Stop",
+        "form": "od edhelvein"
+      },
+      {
+        "type": "H",
+        "form": "ah edhelvein"
+      },
+      {
+        "type": "DH",
+        "form": "nedh edhelvein"
+      }
+    ]
+  },
+  {
+    "dict_form": "edlen(n)",
+    "part": "adjective",
+    "english": "exiled",
+    "definition": "被流放的，被放逐的",
+    "sentence": "\n",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "edlen"
+      },
+      {
+        "type": "Plural",
+        "form": "edlin"
+      },
+      {
+        "type": "Comparative",
+        "form": "无比较级形式"
+      },
+      {
+        "type": "Superlative",
+        "form": "无最高级形式"
+      }
+    ]
+  },
+  {
+    "dict_form": "edlon",
+    "part": "noun",
+    "english": "outsider, stranger",
+    "definition": "外地人，异乡人，外国人；陌生人",
+    "sentence": "\n",
+    "other": "原拼eglon",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i edlon"
+      },
+      {
+        "type": "Plural",
+        "form": "edlyn"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "in edlyn"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an edlon"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "en-edlon"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin edlon"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor edlon"
+      },
+      {
+        "type": "Stop",
+        "form": "od edlon"
+      },
+      {
+        "type": "H",
+        "form": "ah edlon"
+      },
+      {
+        "type": "DH",
+        "form": "nedh edlon"
+      }
+    ]
+  },
+  {
+    "dict_form": "edra-",
+    "part": "verb",
+    "english": "to open out",
+    "definition": "（物体）开了，打开了",
+    "sentence": "[LotR/307][PE17/45]\nannon edhellen, edro hi ammen.\n精灵之门，为吾而开\n",
+    "other": "该动词不及物，属于自动词",
+    "morphology": [
+      {
+        "type": "Present",
+        "form": "edra/edra(o)-"
+      },
+      {
+        "type": "Past",
+        "form": "edras/edrasse-"
+      },
+      {
+        "type": "Future",
+        "form": "edratha/edratha(o)-"
+      },
+      {
+        "type": "Imperative",
+        "form": "edro"
+      },
+      {
+        "type": "Gerund",
+        "form": "edrad"
+      },
+      {
+        "type": "PastParticiple",
+        "form": "edrassen"
+      },
+      {
+        "type": "PresentParticiple",
+        "form": "edrol"
+      },
+      {
+        "type": "PeferctParticle",
+        "form": "edriel"
+      }
+    ]
+  },
+  {
+    "dict_form": "edraith",
+    "part": "noun",
+    "english": "rescue, saving",
+    "definition": "拯救（名词）",
+    "sentence": "[LotR/290][LotR/299][PE17/38]\nnaur an edraith ammen.\n愿火焰拯救我们\n",
+    "other": "ed + √REK",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i edraith"
+      },
+      {
+        "type": "Plural",
+        "form": "edraith"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "in edraith"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an edraith"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "en-edraith"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin edraith"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor edraith"
+      },
+      {
+        "type": "Stop",
+        "form": "od edraith"
+      },
+      {
+        "type": "H",
+        "form": "ah edraith"
+      },
+      {
+        "type": "DH",
+        "form": "nedh edraith"
+      }
+    ]
+  },
+  {
+    "dict_form": "edregol",
+    "part": "adverb",
+    "english": "in especial, especially",
+    "definition": "尤其地，特别地",
+    "sentence": "[AotM/62][SD/129]\nedregol e aníra tírad i Cherdir Perhael (i sennui Panthael estathar aen) Condir i Drann.\n他尤其希望迎接夏尔的市长山姆怀斯（恰如其分的称谓应当是“睿智的”）大人\n",
+    "other": "独立副词",
+    "morphology": []
+  },
+  {
+    "dict_form": "edwen",
+    "part": "adjective",
+    "english": "second",
+    "definition": "第二的，（伯）仲（叔季）的",
+    "sentence": "[AotM/62][SD/129]\negor ben genediad Drannail erin Gwirith edwen.\n亦即夏尔纪年四月的第二日\n",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "edwen"
+      },
+      {
+        "type": "Plural",
+        "form": "edwin"
+      },
+      {
+        "type": "Comparative",
+        "form": "无比较级形式"
+      },
+      {
+        "type": "Superlative",
+        "form": "无最高级形式"
+      }
+    ]
+  },
+  {
+    "dict_form": "eglan",
+    "part": "adjective",
+    "english": "forsaken",
+    "definition": "被抛弃的，被舍弃的，被革除的",
+    "sentence": "\n",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "eglan"
+      },
+      {
+        "type": "Plural",
+        "form": "eglain"
+      },
+      {
+        "type": "Comparative",
+        "form": "无比较级形式"
+      },
+      {
+        "type": "Superlative",
+        "form": "无最高级形式"
+      }
+    ]
+  },
+  {
+    "dict_form": "egleria-",
+    "part": "verb",
+    "english": "to glorify",
+    "definition": "赞扬，称赞，崇拜，使光荣",
+    "sentence": "[LotR/953]\neglerio.\n赞美他们！\n\n",
+    "other": "aglar的动词形式",
+    "morphology": [
+      {
+        "type": "Present",
+        "form": "egleria/egleria(o)-"
+      },
+      {
+        "type": "Past",
+        "form": "egleriant/eglerianne-"
+      },
+      {
+        "type": "Future",
+        "form": "egleriatha/egleriatha(o)-"
+      },
+      {
+        "type": "Imperative",
+        "form": "eglerio"
+      },
+      {
+        "type": "Gerund",
+        "form": "egleriad"
+      },
+      {
+        "type": "PastParticiple",
+        "form": "egleriannen"
+      },
+      {
+        "type": "PresentParticiple",
+        "form": "egleriol"
+      },
+      {
+        "type": "PeferctParticle",
+        "form": "eglóriel"
+      }
+    ]
+  },
+  {
+    "dict_form": "ego",
+    "part": "other",
+    "english": "be off!",
+    "definition": "滚！",
+    "sentence": "\n",
+    "other": "詈词",
+    "morphology": []
+  },
+  {
+    "dict_form": "egor",
+    "part": "conjunction",
+    "english": "or",
+    "definition": "或，或者，亦或",
+    "sentence": "[AotM/62][SD/129]\negor ben genediad Drannail erin Gwirith edwen.\n亦即夏尔纪年四月的第二日\n",
+    "other": "连词，引发流音音变",
+    "morphology": []
+  },
+  {
+    "dict_form": "ein-",
+    "part": "adverb",
+    "english": "excellently, admirably, well, properly",
+    "definition": "极好地，合适地，令人敬仰地",
+    "sentence": "\n\n",
+    "other": "副词前缀，引发鼻音音变Ⅱ型",
+    "morphology": []
+  },
+  {
+    "dict_form": "einior",
+    "part": "adjective",
+    "english": "elder",
+    "definition": "年长的，更年老的，年龄更大的",
+    "sentence": "[PM/358]\nAran Einior.\n大君王，阿兰，曼威\n",
+    "other": "iaur的比较级形式",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "einior"
+      },
+      {
+        "type": "Plural",
+        "form": "einior"
+      },
+      {
+        "type": "Comparative",
+        "form": "无比较级形式"
+      },
+      {
+        "type": "Superlative",
+        "form": "无最高级形式"
+      }
+    ]
+  },
+  {
+    "dict_form": "eirien",
+    "part": "noun",
+    "english": "daisy",
+    "definition": "雏菊",
+    "sentence": "\n",
+    "other": "可能来源于昆雅语Arien",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i eirien"
+      },
+      {
+        "type": "Plural",
+        "form": "eirin"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "in eirin"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an eirien"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "en-eirien"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin eirien"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor eirien"
+      },
+      {
+        "type": "Stop",
+        "form": "od eirien"
+      },
+      {
+        "type": "H",
+        "form": "ah eirien"
+      },
+      {
+        "type": "DH",
+        "form": "nedh eirien"
+      }
+    ]
+  },
+  {
+    "dict_form": "eitha-",
+    "part": "verb",
+    "english": "to prick with a sharp point, stab, to treat with scorn, insult",
+    "definition": "（用尖点，尖端）戳刺，捅；（用言语）侮辱，羞辱；（态度）蔑视",
+    "sentence": "\n",
+    "other": "√EK-TA",
+    "morphology": [
+      {
+        "type": "Present",
+        "form": "eitha/eitha(o)-"
+      },
+      {
+        "type": "Past",
+        "form": "eithant/eithanne-"
+      },
+      {
+        "type": "Future",
+        "form": "eithatha/eithatha(o)-"
+      },
+      {
+        "type": "Imperative",
+        "form": "eitho"
+      },
+      {
+        "type": "Gerund",
+        "form": "eithad"
+      },
+      {
+        "type": "PastParticiple",
+        "form": "eithannen"
+      },
+      {
+        "type": "PresentParticiple",
+        "form": "eithol"
+      },
+      {
+        "type": "PeferctParticle",
+        "form": "eithiel"
+      }
+    ]
+  },
+  {
+    "dict_form": "eitha-",
+    "part": "verb",
+    "english": "to ease, assist",
+    "definition": "缓解，放松；协助",
+    "sentence": "\n",
+    "other": "√ATHA",
+    "morphology": [
+      {
+        "type": "Present",
+        "form": "eitha/eitha(o)-"
+      },
+      {
+        "type": "Past",
+        "form": "eithant/eithanne-"
+      },
+      {
+        "type": "Future",
+        "form": "eithatha/eithatha(o)-"
+      },
+      {
+        "type": "Imperative",
+        "form": "eitho"
+      },
+      {
+        "type": "Gerund",
+        "form": "eithad"
+      },
+      {
+        "type": "PastParticiple",
+        "form": "eithannen"
+      },
+      {
+        "type": "PresentParticiple",
+        "form": "eithol"
+      },
+      {
+        "type": "PeferctParticle",
+        "form": "eithiel"
+      }
+    ]
+  },
+  {
+    "dict_form": "eithad",
+    "part": "noun",
+    "english": "insult",
+    "definition": "侮辱，羞辱",
+    "sentence": "\n",
+    "other": "eitha的动名词形式",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i eithad"
+      },
+      {
+        "type": "Plural",
+        "form": "动名词没有复数"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "*in + eithad不合法"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an eithad"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "en-eithad"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin eithad"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor eithad"
+      },
+      {
+        "type": "Stop",
+        "form": "od eithad"
+      },
+      {
+        "type": "H",
+        "form": "ah eithad"
+      },
+      {
+        "type": "DH",
+        "form": "nedh eithad"
+      }
+    ]
+  },
+  {
+    "dict_form": "eithel",
+    "part": "noun",
+    "english": "source, spring, well",
+    "definition": "源泉，泉水，井水，喷泉，涌泉",
+    "sentence": "[WJ/139]\nEithel Ivrin.\n伊芙林湖，水晶之泉\n",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i eithel"
+      },
+      {
+        "type": "Plural",
+        "form": "eithil"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "in eithil"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an eithel"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "en-eithel"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin eithel"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor eithel"
+      },
+      {
+        "type": "Stop",
+        "form": "od eithel"
+      },
+      {
+        "type": "H",
+        "form": "ah eithel"
+      },
+      {
+        "type": "DH",
+        "form": "nedh eithel"
+      }
+    ]
+  },
+  {
+    "dict_form": "eithro",
+    "part": "adverb",
+    "english": "also",
+    "definition": "也",
+    "sentence": "[VT50/5]\ni·Veleglind i eithro en estar i·Chîn Húrin.\n这史诗也被称为《胡林的子女》\n",
+    "other": "",
+    "morphology": []
+  },
+  {
+    "dict_form": "êl",
+    "part": "noun",
+    "english": "star",
+    "definition": "星星，星辰",
+    "sentence": "[MR/373]\nNarn e·Dant Gondolin ar Orthad en·Êl.\n刚多林的陷落和星辰的升起的传说\n",
+    "other": "该词相比(n)gil显得更加古老，常见于诗歌和古体文本；常用集合复数elenath表示繁星",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i êl"
+      },
+      {
+        "type": "Plural",
+        "form": "elin"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "in elin"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an êl"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "en-êl"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin êl"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor êl"
+      },
+      {
+        "type": "Stop",
+        "form": "od êl"
+      },
+      {
+        "type": "H",
+        "form": "ah êl"
+      },
+      {
+        "type": "DH",
+        "form": "nedh êl"
+      }
+    ]
+  },
+  {
+    "dict_form": "elanor",
+    "part": "noun",
+    "english": "pimpernel, small golden star-shaped flower, sun-flower",
+    "definition": "埃拉诺，太阳花，平佩内尔（樱草科草本植物），金色星型小花",
+    "sentence": "\n",
+    "other": "êl + Anor",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i elanor"
+      },
+      {
+        "type": "Plural",
+        "form": "elenyr"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "in elenyr"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an elanor"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "en-elanor"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin elanor"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor elanor"
+      },
+      {
+        "type": "Stop",
+        "form": "od elanor"
+      },
+      {
+        "type": "H",
+        "form": "ah elanor"
+      },
+      {
+        "type": "DH",
+        "form": "nedh elanor"
+      }
+    ]
+  },
+  {
+    "dict_form": "elia-",
+    "part": "verb",
+    "english": "to cause to prosper, bless (a work), help one",
+    "definition": "祝福，使繁荣，帮助",
+    "sentence": "\n",
+    "other": "与natha-相比更偏向于具体任务驱动或者表示祝福",
+    "morphology": [
+      {
+        "type": "Present",
+        "form": "elia/elia(o)-"
+      },
+      {
+        "type": "Past",
+        "form": "elias/eliasse-"
+      },
+      {
+        "type": "Future",
+        "form": "eliatha/eliatha(o)-"
+      },
+      {
+        "type": "Imperative",
+        "form": "elio"
+      },
+      {
+        "type": "Gerund",
+        "form": "eliad"
+      },
+      {
+        "type": "PastParticiple",
+        "form": "eliassen"
+      },
+      {
+        "type": "PresentParticiple",
+        "form": "eliol"
+      },
+      {
+        "type": "PeferctParticle",
+        "form": "óliel"
+      }
+    ]
+  },
+  {
+    "dict_form": "Elleth",
+    "part": "noun",
+    "english": "Elf-maid",
+    "definition": "精灵少女",
+    "sentence": "[PE17/141][S/216]\nHaudh-en-Elleth.\n豪兹-恩-埃列斯，精灵少女之丘\n",
+    "other": "Ell是精灵的古拼",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i Elleth"
+      },
+      {
+        "type": "Plural",
+        "form": "Ellith"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "in Ellith"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an Elleth"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "en-Elleth"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin Elleth"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor Elleth"
+      },
+      {
+        "type": "Stop",
+        "form": "od Elleth"
+      },
+      {
+        "type": "H",
+        "form": "ah Elleth"
+      },
+      {
+        "type": "DH",
+        "form": "nedh Elleth"
+      }
+    ]
+  },
+  {
+    "dict_form": "Ellon",
+    "part": "noun",
+    "english": "Elf-man",
+    "definition": "成年男性精灵",
+    "sentence": "\n",
+    "other": "Ell是精灵的古拼 + -ron",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i Ellon"
+      },
+      {
+        "type": "Plural",
+        "form": "Ellyn"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "in Ellyn"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an Ellon"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "en-Ellon"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin Ellon"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor Ellon"
+      },
+      {
+        "type": "Stop",
+        "form": "od Ellon"
+      },
+      {
+        "type": "H",
+        "form": "ah Ellon"
+      },
+      {
+        "type": "DH",
+        "form": "nedh Ellon"
+      }
+    ]
+  },
+  {
+    "dict_form": "elloth",
+    "part": "noun",
+    "english": "single flower",
+    "definition": "（独自的）一朵花；一簇花",
+    "sentence": "\n",
+    "other": "er + loth",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i elloth"
+      },
+      {
+        "type": "Plural",
+        "form": "ellyth"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "in ellyth"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an elloth"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "en-elloth"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin elloth"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor elloth"
+      },
+      {
+        "type": "Stop",
+        "form": "od elloth"
+      },
+      {
+        "type": "H",
+        "form": "ah elloth"
+      },
+      {
+        "type": "DH",
+        "form": "nedh elloth"
+      }
+    ]
+  },
+  {
+    "dict_form": "elo",
+    "part": "other",
+    "english": "behold!",
+    "definition": "瞧，看呀！",
+    "sentence": "\n",
+    "other": "感叹词",
+    "morphology": []
   }
 ]

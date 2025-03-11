@@ -11,7 +11,6 @@ class CrosswordGenerator {
     }
 
     generate(words) {
-        // 按单词长度排序（简单布局策略）
         const sortedWords = [...words].sort((a, b) => b.dict_form.length - a.dict_form.length);
 
         for (let now = 0; now < sortedWords.length; now++) {
@@ -30,7 +29,6 @@ class CrosswordGenerator {
     }
 
     tryPlaceWord(word, meta) {
-        // 简化的布局算法（实际需要更复杂的冲突检测）
         let balanceRandom = 0.5;
         for (let attempt = 0; attempt < 25; attempt++) {
             const direction = Math.random() < balanceRandom ? 'across' : 'down';
@@ -202,14 +200,12 @@ class CrosswordGenerator {
     }
 }
 
-// 初始化并生成填字游戏
 function generateNewCrossword() {
     const generator = new CrosswordGenerator();
     generator.generate(wordData.words);
     generator.render(document.getElementById('crossword-container'));
 }
 
-// 定期更新（每小时）
 const data = "https://kinnuch.github.io/laim/sindarin.assets/SindarinDatabase/dictionary.json";
 fetch(data)
     .then(response => response.json())
@@ -218,3 +214,7 @@ fetch(data)
         generateNewCrossword();
         //setInterval(generateNewCrossword, 60 * 60 * 1000);
     });
+// Todo List:
+// 1. 增加每词尝试次数
+// 2. 增加登陆
+// 3. 增加排行榜

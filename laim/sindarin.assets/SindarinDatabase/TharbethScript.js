@@ -5,6 +5,7 @@ class CrosswordGenerator {
         this.size = size;
         this.grid = Array(size).fill().map(() => Array(size).fill(''));
         this.clues = { across: [], down: [] };
+        this.neededNumber = Math.floor(Math.random() * 5 + 15);
         this.currentNumber = 1;
         this.placedWords = [];
     }
@@ -13,16 +14,16 @@ class CrosswordGenerator {
         // 按单词长度排序（简单布局策略）
         const sortedWords = [...words].sort((a, b) => b.dict_form.length - a.dict_form.length);
 
-        const neededNumber = Math.floor(Math.random() * 5 + 15);
         for (let now = 0; now < sortedWords.length; now++) {
             let wordObj = sortedWords[now];
             if (Math.random() < 0.06 * wordObj.dict_form.length) continue;
             let word = wordObj.dict_form.toUpperCase();
             if (word.includes('/')) continue;
+            if (word.includes('-')) word.replace('-', '').trim();
             if (word.includes('(')) word = word.replace(/\([^)]*\)/g, '').trim();
             const placed = this.tryPlaceWord(word, wordObj);
             if (placed) this.currentNumber++;
-            if (this.currentNumber > neededNumber) break;
+            if (this.currentNumber > this.neededNumber) break;
         }
 
         this.addPreFilledLetters();
@@ -31,7 +32,7 @@ class CrosswordGenerator {
     tryPlaceWord(word, meta) {
         // 简化的布局算法（实际需要更复杂的冲突检测）
         let balanceRandom = 0.5;
-        for (let attempt = 0; attempt < 15; attempt++) {
+        for (let attempt = 0; attempt < 25; attempt++) {
             const direction = Math.random() < balanceRandom ? 'across' : 'down';
             const maxStart = this.size - word.length;
             const x = Math.floor(Math.random() * (direction === 'across' ? maxStart : this.size));
@@ -65,14 +66,21 @@ class CrosswordGenerator {
             if (direction === 'across') {
                 if (y > 0 && this.grid[y - 1][xi]) closeParam++;
                 if (y < this.size - 1 && this.grid[y + 1][xi]) closeParam++;
+                // 头尾不能出现非交叉粘连
+                if (i === 0 && xi > 0 && this.grid[y][xi - 1]) return false;
+                if (i === word.length - 1 && xi < this.size - 1 && this.grid[y][xi + 1]) return false;
             }
             else {
                 if (x > 0 && this.grid[yi][x - 1]) closeParam++;
                 if (x < this.size - 1 && this.grid[yi][x + 1]) closeParam++;
+                // 头尾不能出现非交叉粘连
+                if (i === 0 && yi > 0 && this.grid[yi - 1][x]) return false;
+                if (i === word.length - 1 && yi < this.size - 1 && this.grid[yi + 1][x]) return false;
             }
             if (closeParam > word.length * 3.0 / 5) return false;
         }
-        return hasIntersection || word.length > 1;
+        if (this.currentNumber * 1.0 / this.neededNumber < 0.33) return hasIntersection || word.length > 1;
+        else return hasIntersection && word.length > 1;
     }
 
     placeWord(word, x, y, direction, meta) {
@@ -84,7 +92,10 @@ class CrosswordGenerator {
             
             const cell = this.grid[yi][xi] || { letter: word[i] };
             cell.letter = word[i];
-            if (i === 0) cell.number = number;
+            if (i === 0) {
+                if (!cell.number) cell.number = number;
+                else cell.number += `&${number}`;
+            }
             
             this.grid[yi][xi] = cell;
             positions.push({x: xi, y: yi});
@@ -205,5 +216,5 @@ fetch(data)
     .then(data => {
         wordData.words = data;
         generateNewCrossword();
-        setInterval(generateNewCrossword, 60 * 60 * 1000);
+        //setInterval(generateNewCrossword, 60 * 60 * 1000);
     });

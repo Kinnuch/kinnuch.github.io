@@ -1717,6 +1717,156 @@
     ]
   },
   {
+    "dict_form": "Edhel",
+    "part": "noun",
+    "english": "Elf",
+    "definition": "精灵（尤其辛达族）",
+    "sentence": "\n\n",
+    "other": "诺多一般称为(g)Ódhel；另外有和Elen同源的Eledh，但目前已不使用该拼写，转而使用Edhel",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i Edhel"
+      },
+      {
+        "type": "Plural",
+        "form": "Edhil"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "in Edhil"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an Edhel"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "en-Edhel"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin Edhel"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor Edhel"
+      },
+      {
+        "type": "Stop",
+        "form": "od Edhel"
+      },
+      {
+        "type": "H",
+        "form": "ah Edhel"
+      },
+      {
+        "type": "DH",
+        "form": "nedh Edhel"
+      }
+    ]
+  },
+  {
+    "dict_form": "Elleth",
+    "part": "noun",
+    "english": "Elf-maid",
+    "definition": "精灵少女",
+    "sentence": "[PE17/141][S/216]\nHaudh-en-Elleth.\n豪兹-恩-埃列斯，精灵少女之丘\n",
+    "other": "Ell是精灵的古拼",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i Elleth"
+      },
+      {
+        "type": "Plural",
+        "form": "Ellith"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "in Ellith"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an Elleth"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "en-Elleth"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin Elleth"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor Elleth"
+      },
+      {
+        "type": "Stop",
+        "form": "od Elleth"
+      },
+      {
+        "type": "H",
+        "form": "ah Elleth"
+      },
+      {
+        "type": "DH",
+        "form": "nedh Elleth"
+      }
+    ]
+  },
+  {
+    "dict_form": "Ellon",
+    "part": "noun",
+    "english": "Elf-man",
+    "definition": "成年男性精灵",
+    "sentence": "\n",
+    "other": "Ell是精灵的古拼 + -ron",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i Ellon"
+      },
+      {
+        "type": "Plural",
+        "form": "Ellyn"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "in Ellyn"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an Ellon"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "en-Ellon"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin Ellon"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor Ellon"
+      },
+      {
+        "type": "Stop",
+        "form": "od Ellon"
+      },
+      {
+        "type": "H",
+        "form": "ah Ellon"
+      },
+      {
+        "type": "DH",
+        "form": "nedh Ellon"
+      }
+    ]
+  },
+  {
     "dict_form": "a(ar)/ah",
     "part": "conjunction",
     "english": "and",
@@ -4289,7 +4439,7 @@
     "part": "adjective",
     "english": "west, western",
     "definition": "西方，西方的",
-    "sentence": "[AotM/62][SD/128]\naran Gondor ar Arnor ar Hîr i Mbair Annui.\n刚铎与阿尔诺的国王暨西境之主\n\n",
+    "sentence": "[AotM/62][SD/128]\naran Gondor ar Arnor ar Hîr i Mbair Annui.\n刚铎与阿尔诺的国王暨西境之主\n\n\n",
     "other": "",
     "morphology": [
       {
@@ -4298,7 +4448,7 @@
       },
       {
         "type": "Plural",
-        "form": "ennui"
+        "form": "annui"
       },
       {
         "type": "Comparative",
@@ -4415,7 +4565,7 @@
     "part": "verb",
     "english": "to desire",
     "definition": "渴望，需要，渴求，想要",
-    "sentence": "[AotM/62][SD/129]\nar e aníra ennas suilannad mhellyn în phain.\n而且他想要在那里见见他所有的朋友\n",
+    "sentence": "[AotM/62][SD/129]\nar e aníra ennas suilannad mhellyn în phain.\n他希望能够在彼地迎接所有的朋友们\n",
     "other": "",
     "morphology": [
       {
@@ -5807,8 +5957,8 @@
     "part": "adjective",
     "english": "fair, beautiful, good, wholesome, favorable, fair-haired",
     "definition": "漂亮的，美丽的，好看的；有益的；金发的",
-    "sentence": "\n\n",
-    "other": "",
+    "sentence": "\n\n\n",
+    "other": "古-YA类词，干元音a",
     "morphology": [
       {
         "type": "Soft",
@@ -6197,7 +6347,7 @@
     "part": "preposition",
     "english": "on",
     "definition": "在...上",
-    "sentence": "[VT44/21]\nbo Ceven sui vi Menel.\n（愿汝旨意）行在地上，如同行在天上\n",
+    "sentence": "[VT44/21]\nbo Ceven sui vi Menel.\n愿（汝旨意）行在地上，如同行在天上\n\n",
     "other": "",
     "morphology": []
   },
@@ -7823,7 +7973,7 @@
     "part": "adjective",
     "english": "fourth",
     "definition": "第四的，（伯仲叔）季的",
-    "sentence": "\n",
+    "sentence": "\n\n",
     "other": "",
     "morphology": [
       {
@@ -7832,7 +7982,7 @@
       },
       {
         "type": "Plural",
-        "form": "centhui"
+        "form": "canthui"
       },
       {
         "type": "Comparative",
@@ -9071,7 +9221,7 @@
     "part": "noun",
     "english": "Earth",
     "definition": "大地，土地；地球，世界",
-    "sentence": "[VT44/21]\nbo Ceven sui vi Menel.\n（愿汝旨意）行在地上，如同行在天上\n",
+    "sentence": "[VT44/21]\nbo Ceven sui vi Menel.\n愿（汝旨意）行在地上，如同行在天上\n\n",
     "other": "",
     "morphology": [
       {
@@ -9497,8 +9647,8 @@
     "part": "verb",
     "english": "to come together, meet, to gather, assemble",
     "definition": "见面，会面；召集，聚集",
-    "sentence": "[Let/308][LotR/209][PE17/158]\nmae govannen.\n你好（字面意：很好地见面）\n",
-    "other": "也有拼作covada-的",
+    "sentence": "[Let/308][LotR/209][PE17/158]\nmae govannen.\n你好（字面意：很好地见面）\n\n",
+    "other": "半强动词covad(a)-",
     "morphology": [
       {
         "type": "Present",
@@ -12124,56 +12274,6 @@
     ]
   },
   {
-    "dict_form": "Edhel",
-    "part": "noun",
-    "english": "Elf",
-    "definition": "精灵（尤其辛达族）",
-    "sentence": "\n\n",
-    "other": "诺多一般称为(g)Ódhel；另外有和Elen同源的Eledh，但目前已不使用该拼写，转而使用Edhel",
-    "morphology": [
-      {
-        "type": "Soft",
-        "form": "i Edhel"
-      },
-      {
-        "type": "Plural",
-        "form": "Edhil"
-      },
-      {
-        "type": "NasalⅠ",
-        "form": "in Edhil"
-      },
-      {
-        "type": "NasalⅡ",
-        "form": "an Edhel"
-      },
-      {
-        "type": "MixedⅠ",
-        "form": "en-Edhel"
-      },
-      {
-        "type": "MixedⅡ",
-        "form": "anin Edhel"
-      },
-      {
-        "type": "Liquid",
-        "form": "egor Edhel"
-      },
-      {
-        "type": "Stop",
-        "form": "od Edhel"
-      },
-      {
-        "type": "H",
-        "form": "ah Edhel"
-      },
-      {
-        "type": "DH",
-        "form": "nedh Edhel"
-      }
-    ]
-  },
-  {
     "dict_form": "edhellen",
     "part": "adjective",
     "english": "elvish",
@@ -12817,56 +12917,6 @@
     "morphology": []
   },
   {
-    "dict_form": "êl",
-    "part": "noun",
-    "english": "star",
-    "definition": "星星，星辰",
-    "sentence": "[MR/373]\nNarn e·Dant Gondolin ar Orthad en·Êl.\n刚多林的陷落和星辰的升起的传说\n",
-    "other": "该词相比(n)gil显得更加古老，常见于诗歌和古体文本；常用集合复数elenath表示繁星",
-    "morphology": [
-      {
-        "type": "Soft",
-        "form": "i êl"
-      },
-      {
-        "type": "Plural",
-        "form": "elin"
-      },
-      {
-        "type": "NasalⅠ",
-        "form": "in elin"
-      },
-      {
-        "type": "NasalⅡ",
-        "form": "an êl"
-      },
-      {
-        "type": "MixedⅠ",
-        "form": "en-êl"
-      },
-      {
-        "type": "MixedⅡ",
-        "form": "anin êl"
-      },
-      {
-        "type": "Liquid",
-        "form": "egor êl"
-      },
-      {
-        "type": "Stop",
-        "form": "od êl"
-      },
-      {
-        "type": "H",
-        "form": "ah êl"
-      },
-      {
-        "type": "DH",
-        "form": "nedh êl"
-      }
-    ]
-  },
-  {
     "dict_form": "elanor",
     "part": "noun",
     "english": "pimpernel, small golden star-shaped flower, sun-flower",
@@ -12959,106 +13009,6 @@
     ]
   },
   {
-    "dict_form": "Elleth",
-    "part": "noun",
-    "english": "Elf-maid",
-    "definition": "精灵少女",
-    "sentence": "[PE17/141][S/216]\nHaudh-en-Elleth.\n豪兹-恩-埃列斯，精灵少女之丘\n",
-    "other": "Ell是精灵的古拼",
-    "morphology": [
-      {
-        "type": "Soft",
-        "form": "i Elleth"
-      },
-      {
-        "type": "Plural",
-        "form": "Ellith"
-      },
-      {
-        "type": "NasalⅠ",
-        "form": "in Ellith"
-      },
-      {
-        "type": "NasalⅡ",
-        "form": "an Elleth"
-      },
-      {
-        "type": "MixedⅠ",
-        "form": "en-Elleth"
-      },
-      {
-        "type": "MixedⅡ",
-        "form": "anin Elleth"
-      },
-      {
-        "type": "Liquid",
-        "form": "egor Elleth"
-      },
-      {
-        "type": "Stop",
-        "form": "od Elleth"
-      },
-      {
-        "type": "H",
-        "form": "ah Elleth"
-      },
-      {
-        "type": "DH",
-        "form": "nedh Elleth"
-      }
-    ]
-  },
-  {
-    "dict_form": "Ellon",
-    "part": "noun",
-    "english": "Elf-man",
-    "definition": "成年男性精灵",
-    "sentence": "\n",
-    "other": "Ell是精灵的古拼 + -ron",
-    "morphology": [
-      {
-        "type": "Soft",
-        "form": "i Ellon"
-      },
-      {
-        "type": "Plural",
-        "form": "Ellyn"
-      },
-      {
-        "type": "NasalⅠ",
-        "form": "in Ellyn"
-      },
-      {
-        "type": "NasalⅡ",
-        "form": "an Ellon"
-      },
-      {
-        "type": "MixedⅠ",
-        "form": "en-Ellon"
-      },
-      {
-        "type": "MixedⅡ",
-        "form": "anin Ellon"
-      },
-      {
-        "type": "Liquid",
-        "form": "egor Ellon"
-      },
-      {
-        "type": "Stop",
-        "form": "od Ellon"
-      },
-      {
-        "type": "H",
-        "form": "ah Ellon"
-      },
-      {
-        "type": "DH",
-        "form": "nedh Ellon"
-      }
-    ]
-  },
-  {
     "dict_form": "elloth",
     "part": "noun",
     "english": "single flower",
@@ -13116,5 +13066,1241 @@
     "sentence": "\n",
     "other": "感叹词",
     "morphology": []
+  },
+  {
+    "dict_form": "êl",
+    "part": "noun",
+    "english": "star",
+    "definition": "星星，星辰",
+    "sentence": "[MR/373]\nNarn e·Dant Gondolin ar Orthad en·Êl.\n刚多林的陷落和星辰的升起的传说\n",
+    "other": "该词相比(n)gil显得更加古老，常见于诗歌和古体文本；常用集合复数elenath表示繁星",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i êl"
+      },
+      {
+        "type": "Plural",
+        "form": "elin"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "in elin"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an êl"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "en-êl"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin êl"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor êl"
+      },
+      {
+        "type": "Stop",
+        "form": "od êl"
+      },
+      {
+        "type": "H",
+        "form": "ah êl"
+      },
+      {
+        "type": "DH",
+        "form": "nedh êl"
+      }
+    ]
+  },
+  {
+    "dict_form": "emel",
+    "part": "noun",
+    "english": "mother",
+    "definition": "妈妈，娘，母亲",
+    "sentence": "\n",
+    "other": "旧拼emil",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i emel"
+      },
+      {
+        "type": "Plural",
+        "form": "emil"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "in emil"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an emel"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "en-emel"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin emel"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor emel"
+      },
+      {
+        "type": "Stop",
+        "form": "od emel"
+      },
+      {
+        "type": "H",
+        "form": "ah emel"
+      },
+      {
+        "type": "DH",
+        "form": "nedh emel"
+      }
+    ]
+  },
+  {
+    "dict_form": "emig",
+    "part": "noun",
+    "english": "mother-diminutive, mommy",
+    "definition": "妈咪，对母亲的亲昵称呼",
+    "sentence": "\n",
+    "other": "emel + -eg",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i emig"
+      },
+      {
+        "type": "Plural",
+        "form": "emig"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "in emig"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an emig"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "en-emig"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin emig"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor emig"
+      },
+      {
+        "type": "Stop",
+        "form": "od emig"
+      },
+      {
+        "type": "H",
+        "form": "ah emig"
+      },
+      {
+        "type": "DH",
+        "form": "nedh emig"
+      }
+    ]
+  },
+  {
+    "dict_form": "en-",
+    "part": "verb",
+    "english": "to name",
+    "definition": "命名，起名",
+    "sentence": "\n",
+    "other": "构造自eneth",
+    "morphology": [
+      {
+        "type": "Present",
+        "form": "ên/eni-"
+      },
+      {
+        "type": "Past",
+        "form": "in/íne-"
+      },
+      {
+        "type": "Future",
+        "form": "enatha/enatha(o)-"
+      },
+      {
+        "type": "Imperative",
+        "form": "eno"
+      },
+      {
+        "type": "Gerund",
+        "form": "ened"
+      },
+      {
+        "type": "PastParticiple",
+        "form": "ennen"
+      },
+      {
+        "type": "PresentParticiple",
+        "form": "enel"
+      },
+      {
+        "type": "PeferctParticle",
+        "form": "íniel"
+      }
+    ]
+  },
+  {
+    "dict_form": "en",
+    "part": "preposition",
+    "english": "of the",
+    "definition": "属于...的（定指）",
+    "sentence": "[S-203]\nBar-en-Danwedh.\n巴尔-恩-当威兹，赎金之居，小矮人之家\n",
+    "other": "需要连字符或分隔点，引发混合音变",
+    "morphology": []
+  },
+  {
+    "dict_form": "enaid",
+    "part": "adjective",
+    "english": "central, middle",
+    "definition": "中央的，中间的",
+    "sentence": "\n",
+    "other": "√HENET",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "enaid"
+      },
+      {
+        "type": "Plural",
+        "form": "enaid"
+      },
+      {
+        "type": "Comparative",
+        "form": "anenaid"
+      },
+      {
+        "type": "Superlative",
+        "form": "ro-enaid"
+      }
+    ]
+  },
+  {
+    "dict_form": "enchui",
+    "part": "adjective",
+    "english": "sixth",
+    "definition": "第六的",
+    "sentence": "\n",
+    "other": "eneg + -ui",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "enchui"
+      },
+      {
+        "type": "Plural",
+        "form": "enchui"
+      },
+      {
+        "type": "Comparative",
+        "form": "无比较级形式"
+      },
+      {
+        "type": "Superlative",
+        "form": "无最高级形式"
+      }
+    ]
+  },
+  {
+    "dict_form": "enedh",
+    "part": "noun",
+    "english": "centre, middle",
+    "definition": "中央，中间",
+    "sentence": "[UT/264]\nLond Daer Enedh.\n泷德戴尔，中间的大港\n",
+    "other": "旧拼ened，√ENED",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i enedh"
+      },
+      {
+        "type": "Plural",
+        "form": "enidh"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "in enidh"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an enedh"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "en-enedh"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin enedh"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor enedh"
+      },
+      {
+        "type": "Stop",
+        "form": "od enedh"
+      },
+      {
+        "type": "H",
+        "form": "ah enedh"
+      },
+      {
+        "type": "DH",
+        "form": "nedh enedh"
+      }
+    ]
+  },
+  {
+    "dict_form": "eneg",
+    "part": "other",
+    "english": "six",
+    "definition": "六",
+    "sentence": "\n",
+    "other": "数词",
+    "morphology": []
+  },
+  {
+    "dict_form": "eneth",
+    "part": "noun",
+    "english": "name",
+    "definition": "名字",
+    "sentence": "[VT44/21]\nNo aer i eneth lín.\n愿汝名祝圣\n\n",
+    "other": "en- + -th",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i eneth"
+      },
+      {
+        "type": "Plural",
+        "form": "enith"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "in enith"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an eneth"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "en-eneth"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin eneth"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor eneth"
+      },
+      {
+        "type": "Stop",
+        "form": "od eneth"
+      },
+      {
+        "type": "H",
+        "form": "ah eneth"
+      },
+      {
+        "type": "DH",
+        "form": "nedh eneth"
+      }
+    ]
+  },
+  {
+    "dict_form": "ennas",
+    "part": "adverb",
+    "english": "there",
+    "definition": "在那里",
+    "sentence": "[AotM/62][SD/129]\nar e aníra ennas suilannad mhellyn în phain.\n他希望能够在彼地迎接所有的朋友们\n",
+    "other": "独立副词",
+    "morphology": []
+  },
+  {
+    "dict_form": "eno",
+    "part": "adverb",
+    "english": "still",
+    "definition": "仍然",
+    "sentence": "[VT50/5]\nar in Ellath epholar eno vi Eressai.\n精灵们仍然有着埃瑞西亚的记忆\n",
+    "other": "独立副词",
+    "morphology": []
+  },
+  {
+    "dict_form": "ephed-",
+    "part": "verb",
+    "english": "to say out",
+    "definition": "说出，坦白",
+    "sentence": "\n",
+    "other": "来自古泰勒瑞语et-pet-",
+    "morphology": [
+      {
+        "type": "Present",
+        "form": "ephed/ephedi-"
+      },
+      {
+        "type": "Past",
+        "form": "ephent/ephenne-"
+      },
+      {
+        "type": "Future",
+        "form": "ephedatha/ephedatha(o)-"
+      },
+      {
+        "type": "Imperative",
+        "form": "ephedo"
+      },
+      {
+        "type": "Gerund",
+        "form": "epheded"
+      },
+      {
+        "type": "PastParticiple",
+        "form": "ephennen"
+      },
+      {
+        "type": "PresentParticiple",
+        "form": "ephedel"
+      },
+      {
+        "type": "PeferctParticle",
+        "form": "ephídiel"
+      }
+    ]
+  },
+  {
+    "dict_form": "ephel",
+    "part": "noun",
+    "english": "outer fence, surrounding ring",
+    "definition": "外围围墙，合围的环形结构",
+    "sentence": "[SA/pel]\nEphel Brandir.\n埃斐尔布兰迪尔，布兰迪尔的环抱屏障\n",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i ephel"
+      },
+      {
+        "type": "Plural",
+        "form": "ephil"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "in ephil"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an ephel"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "en-ephel"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin ephel"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor ephel"
+      },
+      {
+        "type": "Stop",
+        "form": "od ephel"
+      },
+      {
+        "type": "H",
+        "form": "ah ephel"
+      },
+      {
+        "type": "DH",
+        "form": "nedh ephel"
+      }
+    ]
+  },
+  {
+    "dict_form": "ephola-",
+    "part": "verb",
+    "english": "to remember",
+    "definition": "记得，记起",
+    "sentence": "[VT50/5]\nI glinn hen agorer Edain mi Velerian, ach hí in Ellath îr ed epholar.\n人类在贝烈瑞安德创作了这首歌，但如今独有精灵（？记得）它了。\n",
+    "other": "意思存疑，不推荐使用该词",
+    "morphology": [
+      {
+        "type": "Present",
+        "form": "ephola/ephola(o)-"
+      },
+      {
+        "type": "Past",
+        "form": "epholant/epholanne-"
+      },
+      {
+        "type": "Future",
+        "form": "epholatha/epholatha(o)-"
+      },
+      {
+        "type": "Imperative",
+        "form": "epholo"
+      },
+      {
+        "type": "Gerund",
+        "form": "epholad"
+      },
+      {
+        "type": "PastParticiple",
+        "form": "epholannen"
+      },
+      {
+        "type": "PresentParticiple",
+        "form": "epholol"
+      },
+      {
+        "type": "PeferctParticle",
+        "form": "epheliel"
+      }
+    ]
+  },
+  {
+    "dict_form": "er",
+    "part": "adjective",
+    "english": "one, alone",
+    "definition": "独自的，单个的，孤独的，孑然的",
+    "sentence": "[SA/er]\nErchamion.\n埃尔哈米安，独手，贝伦在断手后的称呼\n",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "er"
+      },
+      {
+        "type": "Plural",
+        "form": "不适用复数形式"
+      },
+      {
+        "type": "Comparative",
+        "form": "aner"
+      },
+      {
+        "type": "Superlative",
+        "form": "ro-er"
+      }
+    ]
+  },
+  {
+    "dict_form": "ereb",
+    "part": "adjective",
+    "english": "single, alone, lonely",
+    "definition": "单独的，独自的，孤独的，孑然的",
+    "sentence": "[LotR/1072]\nErebor.\n埃瑞博，孤山\n",
+    "other": "和er同义",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "ereb"
+      },
+      {
+        "type": "Plural",
+        "form": "erib"
+      },
+      {
+        "type": "Comparative",
+        "form": "anereb"
+      },
+      {
+        "type": "Superlative",
+        "form": "ro-ereb"
+      }
+    ]
+  },
+  {
+    "dict_form": "ereg",
+    "part": "noun",
+    "english": "holly, thorn",
+    "definition": "冬青；荆棘，（植物的）刺",
+    "sentence": "[PE17/42]\nEregion.\n埃瑞吉安，冬青之地，冬青郡\n",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i ereg"
+      },
+      {
+        "type": "Plural",
+        "form": "erig"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "in erig"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an ereg"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "en-ereg"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin ereg"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor ereg"
+      },
+      {
+        "type": "Stop",
+        "form": "od ereg"
+      },
+      {
+        "type": "H",
+        "form": "ah ereg"
+      },
+      {
+        "type": "DH",
+        "form": "nedh ereg"
+      }
+    ]
+  },
+  {
+    "dict_form": "erin",
+    "part": "preposition",
+    "english": "on the (day)",
+    "definition": "在...（哪一天）（定指）",
+    "sentence": "\n",
+    "other": "一说为√AR + 定冠词，一说是√OR + 定冠词",
+    "morphology": []
+  },
+  {
+    "dict_form": "ernil",
+    "part": "noun",
+    "english": "prince",
+    "definition": "王子，亲王",
+    "sentence": "[UT/245]\nDor-en-Ernil.\n多尔-恩-埃尔尼尔，亲王之地\n",
+    "other": "aran + hîl?",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i ernil"
+      },
+      {
+        "type": "Plural",
+        "form": "ernil"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "in ernil"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an ernil"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "en-ernil"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin ernil"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor ernil"
+      },
+      {
+        "type": "Stop",
+        "form": "od ernil"
+      },
+      {
+        "type": "H",
+        "form": "ah ernil"
+      },
+      {
+        "type": "DH",
+        "form": "nedh ernil"
+      }
+    ]
+  },
+  {
+    "dict_form": "ero",
+    "part": "adverb",
+    "english": "only, alone",
+    "definition": "只有，仅，独自地",
+    "sentence": "[VT50/5]\nI glinn hen agorer Edain mi Velerian, ach hí in Ellath îr ed epholar.\n人类在贝烈瑞安德创作了这首歌，但如今独有精灵（？记得）它了。\n",
+    "other": "ero > îr，一说îr来源于air",
+    "morphology": []
+  },
+  {
+    "dict_form": "ertha",
+    "part": "verb",
+    "english": "to unite",
+    "definition": "联合，统合，聚合，形成联盟，统一",
+    "sentence": "\n",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Present",
+        "form": "ertha/ertha(o)-"
+      },
+      {
+        "type": "Past",
+        "form": "erthant,erthas/erthanne-,erthasse-"
+      },
+      {
+        "type": "Future",
+        "form": "erthatha/erthatha(o)-"
+      },
+      {
+        "type": "Imperative",
+        "form": "ertho"
+      },
+      {
+        "type": "Gerund",
+        "form": "erthad"
+      },
+      {
+        "type": "PastParticiple",
+        "form": "erthannen/erthassen"
+      },
+      {
+        "type": "PresentParticiple",
+        "form": "erthol"
+      },
+      {
+        "type": "PeferctParticle",
+        "form": "erthiel"
+      }
+    ]
+  },
+  {
+    "dict_form": "eryn",
+    "part": "noun",
+    "english": "wood, forest(of trees)",
+    "definition": "森林，树林",
+    "sentence": "[PE17/33]\nEryn Lasgalen.\n黑森林（直译是绿叶之森）\n",
+    "other": "是orn的词源的复数形式*oron-ī的演化结果",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i eryn"
+      },
+      {
+        "type": "Plural",
+        "form": "eryn"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "in eryn"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an eryn"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "en-eryn"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin eryn"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor eryn"
+      },
+      {
+        "type": "Stop",
+        "form": "od eryn"
+      },
+      {
+        "type": "H",
+        "form": "ah eryn"
+      },
+      {
+        "type": "DH",
+        "form": "nedh eryn"
+      }
+    ]
+  },
+  {
+    "dict_form": "esbin",
+    "part": "noun",
+    "english": "thin thread, tress",
+    "definition": "细线，细丝；（尤其女子的）一缕发丝",
+    "sentence": "\n",
+    "other": "√SPIN(ID)",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i esbin"
+      },
+      {
+        "type": "Plural",
+        "form": "esbin"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "in esbin"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an esbin"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "en-esbin"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin esbin"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor esbin"
+      },
+      {
+        "type": "Stop",
+        "form": "od esbin"
+      },
+      {
+        "type": "H",
+        "form": "ah esbin"
+      },
+      {
+        "type": "DH",
+        "form": "nedh esbin"
+      }
+    ]
+  },
+  {
+    "dict_form": "esgal",
+    "part": "noun",
+    "english": "cast shadow, shade, screen, hiding, veil",
+    "definition": "面纱，不透明的遮挡物；（不透明遮挡物下的）阴影",
+    "sentence": "[PE17/184]\nEsgalduin.\n埃斯加尔都因河，遮着面纱的河流\n",
+    "other": "只用于表示不透明的遮罩，如果透明请使用fân",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i esgal"
+      },
+      {
+        "type": "Plural",
+        "form": "esgail"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "in esgail"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an esgal"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "en-esgal"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin esgal"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor esgal"
+      },
+      {
+        "type": "Stop",
+        "form": "od esgal"
+      },
+      {
+        "type": "H",
+        "form": "ah esgal"
+      },
+      {
+        "type": "DH",
+        "form": "nedh esgal"
+      }
+    ]
+  },
+  {
+    "dict_form": "esta-",
+    "part": "verb",
+    "english": "to call, name",
+    "definition": "称呼；命名",
+    "sentence": "[AotM/62][SD/129]\nedregol e aníra tírad i Cherdir Perhael (i sennui Panthael estathar aen) Condir i Drann.\n他尤其希望迎接夏尔的市长山姆怀斯（恰如其分的称谓应当是“睿智的”）大人\n",
+    "other": "自我介绍常用的句式：Im xxx estannen.我被称为xxx=我叫xxx",
+    "morphology": [
+      {
+        "type": "Present",
+        "form": "esta/esta(o)-"
+      },
+      {
+        "type": "Past",
+        "form": "estant/estanne-"
+      },
+      {
+        "type": "Future",
+        "form": "estatha/estatha(o)-"
+      },
+      {
+        "type": "Imperative",
+        "form": "esto"
+      },
+      {
+        "type": "Gerund",
+        "form": "estad"
+      },
+      {
+        "type": "PastParticiple",
+        "form": "estannen"
+      },
+      {
+        "type": "PresentParticiple",
+        "form": "estol"
+      },
+      {
+        "type": "PeferctParticle",
+        "form": "estiel"
+      }
+    ]
+  },
+  {
+    "dict_form": "estel",
+    "part": "noun",
+    "english": "hope, trust",
+    "definition": "希望，信仰，信任",
+    "sentence": "[LotR/1061][PE17/117]\nú-chebin estel anim.\n我却并未为自己保留希望\n",
+    "other": "与amdir需要理由不同，estel强调无条件的相信和希望",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i estel"
+      },
+      {
+        "type": "Plural",
+        "form": "estil"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "in estil"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an estel"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "en-estel"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin estel"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor estel"
+      },
+      {
+        "type": "Stop",
+        "form": "od estel"
+      },
+      {
+        "type": "H",
+        "form": "ah estel"
+      },
+      {
+        "type": "DH",
+        "form": "nedh estel"
+      }
+    ]
+  },
+  {
+    "dict_form": "esten(t)",
+    "part": "adjective",
+    "english": "short",
+    "definition": "短的，短小的",
+    "sentence": "\n",
+    "other": "与thent同义",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "estent"
+      },
+      {
+        "type": "Plural",
+        "form": "estint"
+      },
+      {
+        "type": "Comparative",
+        "form": "anestent"
+      },
+      {
+        "type": "Superlative",
+        "form": "ro-estent"
+      }
+    ]
+  },
+  {
+    "dict_form": "estola-",
+    "part": "verb",
+    "english": "to encamp, erect tents",
+    "definition": "安营扎寨，搭帐篷，露营",
+    "sentence": "\n",
+    "other": "从Estolad拆解构造而成，存疑",
+    "morphology": [
+      {
+        "type": "Present",
+        "form": "estola/estola(o)-"
+      },
+      {
+        "type": "Past",
+        "form": "estolas/estolasse-"
+      },
+      {
+        "type": "Future",
+        "form": "estolatha/estolatha(o)-"
+      },
+      {
+        "type": "Imperative",
+        "form": "estolo"
+      },
+      {
+        "type": "Gerund",
+        "form": "estolad"
+      },
+      {
+        "type": "PastParticiple",
+        "form": "estolassen"
+      },
+      {
+        "type": "PresentParticiple",
+        "form": "estolol"
+      },
+      {
+        "type": "PeferctParticle",
+        "form": "esteliel"
+      }
+    ]
+  },
+  {
+    "dict_form": "estolad",
+    "part": "noun",
+    "english": "encampment",
+    "definition": "营地，露营地",
+    "sentence": "[S/142]\nEstolad.\n埃斯托拉德，扎营之地\n",
+    "other": "√ET + √TOL + -ad",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i estolad"
+      },
+      {
+        "type": "Plural",
+        "form": "动名词无复数形式"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "*in + estolad不合法"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an estolad"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "en-estolad"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin estolad"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor estolad"
+      },
+      {
+        "type": "Stop",
+        "form": "od estolad"
+      },
+      {
+        "type": "H",
+        "form": "ah estolad"
+      },
+      {
+        "type": "DH",
+        "form": "nedh estolad"
+      }
+    ]
+  },
+  {
+    "dict_form": "ethir",
+    "part": "noun",
+    "english": "mouth of a river, outflow",
+    "definition": "河口，河流三角洲",
+    "sentence": "[RC/350]\nEthir Anduin.\n埃希尔安都因，安都因河口\n",
+    "other": "ed + sîr",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i ethir"
+      },
+      {
+        "type": "Plural",
+        "form": "ethir"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "in ethir"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an ethir"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "en-ethir"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin ethir"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor ethir"
+      },
+      {
+        "type": "Stop",
+        "form": "od ethir"
+      },
+      {
+        "type": "H",
+        "form": "ah ethir"
+      },
+      {
+        "type": "DH",
+        "form": "nedh ethir"
+      }
+    ]
+  },
+  {
+    "dict_form": "ethir",
+    "part": "noun",
+    "english": "spy",
+    "definition": "间谍，密探，侦察",
+    "sentence": "[S/217]\nAmon Ethir.\n阿蒙埃希尔，侦察山丘\n",
+    "other": "ed + tir-",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i ethir"
+      },
+      {
+        "type": "Plural",
+        "form": "ethir"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "in ethir"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an ethir"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "en-ethir"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin ethir"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor ethir"
+      },
+      {
+        "type": "Stop",
+        "form": "od ethir"
+      },
+      {
+        "type": "H",
+        "form": "ah ethir"
+      },
+      {
+        "type": "DH",
+        "form": "nedh ethir"
+      }
+    ]
+  },
+  {
+    "dict_form": "ethuil",
+    "part": "noun",
+    "english": "spring",
+    "definition": "春天，春",
+    "sentence": "[AotM/62][SD/129]\nanglennatha i Varanduiniant erin dolothen Ethuil.\n阿拉贡将会在春季的第八天接近白兰地河大桥\n",
+    "other": "tuil是该词的短形，同昆雅语tuilë同源",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i ethuil"
+      },
+      {
+        "type": "Plural",
+        "form": "ethuil"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "in ethuil"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an ethuil"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "en-ethuil"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin ethuil"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor ethuil"
+      },
+      {
+        "type": "Stop",
+        "form": "od ethuil"
+      },
+      {
+        "type": "H",
+        "form": "ah ethuil"
+      },
+      {
+        "type": "DH",
+        "form": "nedh ethuil"
+      }
+    ]
   }
 ]

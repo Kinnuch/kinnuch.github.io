@@ -13068,56 +13068,6 @@
     "morphology": []
   },
   {
-    "dict_form": "êl",
-    "part": "noun",
-    "english": "star",
-    "definition": "星星，星辰",
-    "sentence": "[MR/373]\nNarn e·Dant Gondolin ar Orthad en·Êl.\n刚多林的陷落和星辰的升起的传说\n",
-    "other": "该词相比(n)gil显得更加古老，常见于诗歌和古体文本；常用集合复数elenath表示繁星",
-    "morphology": [
-      {
-        "type": "Soft",
-        "form": "i êl"
-      },
-      {
-        "type": "Plural",
-        "form": "elin"
-      },
-      {
-        "type": "NasalⅠ",
-        "form": "in elin"
-      },
-      {
-        "type": "NasalⅡ",
-        "form": "an êl"
-      },
-      {
-        "type": "MixedⅠ",
-        "form": "en-êl"
-      },
-      {
-        "type": "MixedⅡ",
-        "form": "anin êl"
-      },
-      {
-        "type": "Liquid",
-        "form": "egor êl"
-      },
-      {
-        "type": "Stop",
-        "form": "od êl"
-      },
-      {
-        "type": "H",
-        "form": "ah êl"
-      },
-      {
-        "type": "DH",
-        "form": "nedh êl"
-      }
-    ]
-  },
-  {
     "dict_form": "emel",
     "part": "noun",
     "english": "mother",
@@ -13218,6 +13168,15 @@
     ]
   },
   {
+    "dict_form": "en",
+    "part": "preposition",
+    "english": "of the",
+    "definition": "属于...的（定指）",
+    "sentence": "[S-203]\nBar-en-Danwedh.\n巴尔-恩-当威兹，赎金之居，小矮人之家\n",
+    "other": "需要连字符或分隔点，引发混合音变",
+    "morphology": []
+  },
+  {
     "dict_form": "en-",
     "part": "verb",
     "english": "to name",
@@ -13258,15 +13217,6 @@
         "form": "íniel"
       }
     ]
-  },
-  {
-    "dict_form": "en",
-    "part": "preposition",
-    "english": "of the",
-    "definition": "属于...的（定指）",
-    "sentence": "[S-203]\nBar-en-Danwedh.\n巴尔-恩-当威兹，赎金之居，小矮人之家\n",
-    "other": "需要连字符或分隔点，引发混合音变",
-    "morphology": []
   },
   {
     "dict_form": "enaid",
@@ -14300,6 +14250,954 @@
       {
         "type": "DH",
         "form": "nedh ethuil"
+      }
+    ]
+  },
+  {
+    "dict_form": "êl",
+    "part": "noun",
+    "english": "star",
+    "definition": "星星，星辰",
+    "sentence": "[MR/373]\nNarn e·Dant Gondolin ar Orthad en·Êl.\n刚多林的陷落和星辰的升起的传说\n",
+    "other": "该词相比(n)gil显得更加古老，常见于诗歌和古体文本；常用集合复数elenath表示繁星",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i êl"
+      },
+      {
+        "type": "Plural",
+        "form": "elin"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "in elin"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an êl"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "en-êl"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin êl"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor êl"
+      },
+      {
+        "type": "Stop",
+        "form": "od êl"
+      },
+      {
+        "type": "H",
+        "form": "ah êl"
+      },
+      {
+        "type": "DH",
+        "form": "nedh êl"
+      }
+    ]
+  },
+  {
+    "dict_form": "fae",
+    "part": "noun",
+    "english": "incarnate spirit",
+    "definition": "（人体化身的）灵魂，灵体",
+    "sentence": "\n",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i fae"
+      },
+      {
+        "type": "Plural",
+        "form": "fae"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i fae"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an fae"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "en-fae"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin fae"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor fae"
+      },
+      {
+        "type": "Stop",
+        "form": "oph fae"
+      },
+      {
+        "type": "H",
+        "form": "ah fae"
+      },
+      {
+        "type": "DH",
+        "form": "nedh fae"
+      }
+    ]
+  },
+  {
+    "dict_form": "fael",
+    "part": "noun",
+    "english": "gleam of the sun",
+    "definition": "日光，太阳光",
+    "sentence": "[S/210]\nFaelivrin.\n法埃丽芙林，芬杜伊拉丝，伊芙林湖上闪亮的日光\n",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i fael"
+      },
+      {
+        "type": "Plural",
+        "form": "fael"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i fael"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an fael"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "en-fael"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin fael"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor fael"
+      },
+      {
+        "type": "Stop",
+        "form": "oph fael"
+      },
+      {
+        "type": "H",
+        "form": "ah fael"
+      },
+      {
+        "type": "DH",
+        "form": "nedh fael"
+      }
+    ]
+  },
+  {
+    "dict_form": "fael",
+    "part": "adjective",
+    "english": "gleaming",
+    "definition": "发光的，闪光的，闪亮的",
+    "sentence": "\n",
+    "other": "可能源自√PHAY，虽然该词根后续意思转变为灵魂",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "fael"
+      },
+      {
+        "type": "Plural",
+        "form": "fael"
+      },
+      {
+        "type": "Comparative",
+        "form": "anfael"
+      },
+      {
+        "type": "Superlative",
+        "form": "ro-fael"
+      }
+    ]
+  },
+  {
+    "dict_form": "fael",
+    "part": "adjective",
+    "english": "fair-minded, just, generous",
+    "definition": "一视同仁的，公正的，正直的；宽宏大量的，仁慈的",
+    "sentence": "[PM/352]\nFelagon.\n费拉贡德，芬罗德，正直的领主\n",
+    "other": "√PHAYA",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "fael"
+      },
+      {
+        "type": "Plural",
+        "form": "fael"
+      },
+      {
+        "type": "Comparative",
+        "form": "anfael"
+      },
+      {
+        "type": "Superlative",
+        "form": "ro-fael"
+      }
+    ]
+  },
+  {
+    "dict_form": "fean",
+    "part": "noun",
+    "english": "vapour, disembodied spirit",
+    "definition": "蒸汽；（无化身的）灵体",
+    "sentence": "\n",
+    "other": "现多用faer表示无化身的灵体，faen更多指蒸汽",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i faen"
+      },
+      {
+        "type": "Plural",
+        "form": "faen"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i faen"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an faen"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "en-faen"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin faen"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor faen"
+      },
+      {
+        "type": "Stop",
+        "form": "oph faen"
+      },
+      {
+        "type": "H",
+        "form": "ah faen"
+      },
+      {
+        "type": "DH",
+        "form": "nedh faen"
+      }
+    ]
+  },
+  {
+    "dict_form": "faer",
+    "part": "noun",
+    "english": "spirit(in general)",
+    "definition": "灵魂，灵体",
+    "sentence": "\n",
+    "other": "与昆雅fairë同源",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i faer"
+      },
+      {
+        "type": "Plural",
+        "form": "faer"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i faer"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an faer"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "en-faer"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin faer"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor faer"
+      },
+      {
+        "type": "Stop",
+        "form": "oph faer"
+      },
+      {
+        "type": "H",
+        "form": "ah faer"
+      },
+      {
+        "type": "DH",
+        "form": "nedh faer"
+      }
+    ]
+  },
+  {
+    "dict_form": "fain",
+    "part": "noun",
+    "english": "white, white and shining thing, vague apparition, cloud",
+    "definition": "白色；白色发光的物体；模糊的鬼魂，幽灵；云",
+    "sentence": "[RC/268]\nfanui.\n多云的\n",
+    "other": "古-YA类词，干元音a",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i fain"
+      },
+      {
+        "type": "Plural",
+        "form": "fain"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i fain"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an fain"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "en-fain"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin fain"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor fain"
+      },
+      {
+        "type": "Stop",
+        "form": "oph fain"
+      },
+      {
+        "type": "H",
+        "form": "ah fain"
+      },
+      {
+        "type": "DH",
+        "form": "nedh fain"
+      }
+    ]
+  },
+  {
+    "dict_form": "fain",
+    "part": "adjective",
+    "english": "white, shimmering, shining, dim, filmy, fine-woven",
+    "definition": "白色的；闪光的，发光的；昏暗的，黯淡的；薄而透明的；细密编织的",
+    "sentence": "\n",
+    "other": "古-YA类词，干元音a",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "fain"
+      },
+      {
+        "type": "Plural",
+        "form": "fain"
+      },
+      {
+        "type": "Comparative",
+        "form": "anfain"
+      },
+      {
+        "type": "Superlative",
+        "form": "ro-fain"
+      }
+    ]
+  },
+  {
+    "dict_form": "fair",
+    "part": "adjective",
+    "english": "quick, ready, prompt",
+    "definition": "快的，快速的，敏捷的",
+    "sentence": "\n",
+    "other": "古-YA类词，干元音e",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "fair"
+      },
+      {
+        "type": "Plural",
+        "form": "fîr"
+      },
+      {
+        "type": "Comparative",
+        "form": "anfair"
+      },
+      {
+        "type": "Superlative",
+        "form": "ro-fair"
+      }
+    ]
+  },
+  {
+    "dict_form": "falas",
+    "part": "noun",
+    "english": "beach, shore, strand, surf(line)",
+    "definition": "沙滩，海滩，海岸，海礁，浅滩，海浪线",
+    "sentence": "[PE17/73][PE17/97][VT42/15]\nAnfalas.\n安法拉斯，长滩\n",
+    "other": "√PHAL 泡沫，水浪",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i falas"
+      },
+      {
+        "type": "Plural",
+        "form": "felais"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i felais"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an falas"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "en-falas"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin falas"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor falas"
+      },
+      {
+        "type": "Stop",
+        "form": "oph falas"
+      },
+      {
+        "type": "H",
+        "form": "ah falas"
+      },
+      {
+        "type": "DH",
+        "form": "nedh falas"
+      }
+    ]
+  },
+  {
+    "dict_form": "falch",
+    "part": "noun",
+    "english": "cleft, ravine",
+    "definition": "裂谷，深谷，山谷，峡谷",
+    "sentence": "[SA/echor]\nOrfalch Echor.\n欧尔法赫·埃霍尔，穿过环抱山脉通往刚多林的大裂谷\n",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i falch"
+      },
+      {
+        "type": "Plural",
+        "form": "felch"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i felch"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an falch"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "en-falch"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin falch"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor falch"
+      },
+      {
+        "type": "Stop",
+        "form": "oph falch"
+      },
+      {
+        "type": "H",
+        "form": "ah falch"
+      },
+      {
+        "type": "DH",
+        "form": "nedh falch"
+      }
+    ]
+  },
+  {
+    "dict_form": "faloth",
+    "part": "noun",
+    "english": "large foamy wave",
+    "definition": "泡沫，海浪拍打岸边留下的泡沫链",
+    "sentence": "[PE17/18]\nAsfaloth.\n阿斯法洛斯，阳光下的泡沫\n",
+    "other": "√PHAL + -oth",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i faloth"
+      },
+      {
+        "type": "Plural",
+        "form": "felyth"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i felyth"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an faloth"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "en-faloth"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin faloth"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor faloth"
+      },
+      {
+        "type": "Stop",
+        "form": "oph faloth"
+      },
+      {
+        "type": "H",
+        "form": "ah faloth"
+      },
+      {
+        "type": "DH",
+        "form": "nedh faloth"
+      }
+    ]
+  },
+  {
+    "dict_form": "fân",
+    "part": "noun",
+    "english": "(white) cloud, veil, curtain, form or vision of a spiritual being",
+    "definition": "白云，云；面纱，帘幕；灵魂体的形体或具象",
+    "sentence": "[Let/278][PE17/26][PE17/174][PE17/176][PE/17/180][RGEO/66]\nFanuilos.\n永远洁白，法努伊洛斯\n",
+    "other": "古-YA类词，干元音a",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i fân"
+      },
+      {
+        "type": "Plural",
+        "form": "fain"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i fain"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an fân"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "en-fân"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin fân"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor fân"
+      },
+      {
+        "type": "Stop",
+        "form": "oph fân"
+      },
+      {
+        "type": "H",
+        "form": "ah fân"
+      },
+      {
+        "type": "DH",
+        "form": "nedh fân"
+      }
+    ]
+  },
+  {
+    "dict_form": "fang",
+    "part": "noun",
+    "english": "beard",
+    "definition": "胡须，根须",
+    "sentence": "[PE17/84]\nFangorn.\n树须，范贡森林\n",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i fang"
+      },
+      {
+        "type": "Plural",
+        "form": "feng"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i feng"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an fang"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "en-fang"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin fang"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor fang"
+      },
+      {
+        "type": "Stop",
+        "form": "oph fang"
+      },
+      {
+        "type": "H",
+        "form": "ah fang"
+      },
+      {
+        "type": "DH",
+        "form": "nedh fang"
+      }
+    ]
+  },
+  {
+    "dict_form": "fanna-",
+    "part": "verb",
+    "english": "to veil, cloak",
+    "definition": "（用面纱）遮挡；（用斗篷）遮蔽",
+    "sentence": "\n",
+    "other": "√PHAN",
+    "morphology": [
+      {
+        "type": "Present",
+        "form": "fanna/fanna(o)-"
+      },
+      {
+        "type": "Past",
+        "form": "fannant/fanne-"
+      },
+      {
+        "type": "Future",
+        "form": "fannatha/fannatha(o)-"
+      },
+      {
+        "type": "Imperative",
+        "form": "fanno"
+      },
+      {
+        "type": "Gerund",
+        "form": "fannad"
+      },
+      {
+        "type": "PastParticiple",
+        "form": "fannen"
+      },
+      {
+        "type": "PresentParticiple",
+        "form": "fannol"
+      },
+      {
+        "type": "PeferctParticle",
+        "form": "fenniel"
+      }
+    ]
+  },
+  {
+    "dict_form": "fanui",
+    "part": "adjective",
+    "english": "cloudy",
+    "definition": "多云的",
+    "sentence": "[PE17/26][PE17/36][PE17/173][RC/268][RGEO/66]\nFanuidhol.\n法努伊索尔，云顶峰，沙苏尔\n",
+    "other": "fân + -ui",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "fanui"
+      },
+      {
+        "type": "Plural",
+        "form": "fanui"
+      },
+      {
+        "type": "Comparative",
+        "form": "anfanui"
+      },
+      {
+        "type": "Superlative",
+        "form": "ro-fanui"
+      }
+    ]
+  },
+  {
+    "dict_form": "fanwos",
+    "part": "noun",
+    "english": "mind-picture(of apparition in dream)",
+    "definition": "精灵间意念交流时脑海中产生的影像",
+    "sentence": "\n",
+    "other": "参考昆雅词汇indemma，以及欧桑威",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i fanwos"
+      },
+      {
+        "type": "Plural",
+        "form": "可能的形式fanuis"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "可能的形式i fanuis"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an fanwos"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "en-fanwos"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin fanwos"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor fanwos"
+      },
+      {
+        "type": "Stop",
+        "form": "oph fanwos"
+      },
+      {
+        "type": "H",
+        "form": "ah fanwos"
+      },
+      {
+        "type": "DH",
+        "form": "nedh fanwos"
+      }
+    ]
+  },
+  {
+    "dict_form": "faran",
+    "part": "noun",
+    "english": "rowan",
+    "definition": "花楸树，红果花楸",
+    "sentence": "\n",
+    "other": "昆雅farnë的同源词",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i faran"
+      },
+      {
+        "type": "Plural",
+        "form": "ferain"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i ferain"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an faran"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "en-faran"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin faran"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor faran"
+      },
+      {
+        "type": "Stop",
+        "form": "oph faran"
+      },
+      {
+        "type": "H",
+        "form": "ah faran"
+      },
+      {
+        "type": "DH",
+        "form": "nedh faran"
+      }
+    ]
+  },
+  {
+    "dict_form": "faroth",
+    "part": "noun",
+    "english": "hunting",
+    "definition": "打猎（这一行为）",
+    "sentence": "[SA/faroth]\nTaur-en-faroth.\n陶尔-恩-法洛斯，猎之森林\n",
+    "other": "fara- + -th",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i faroth"
+      },
+      {
+        "type": "Plural",
+        "form": "feryth"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i feryth"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an faroth"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "en-faroth"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin faroth"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor faroth"
+      },
+      {
+        "type": "Stop",
+        "form": "oph faroth"
+      },
+      {
+        "type": "H",
+        "form": "ah faroth"
+      },
+      {
+        "type": "DH",
+        "form": "nedh faroth"
+      }
+    ]
+  },
+  {
+    "dict_form": "faug",
+    "part": "adjective",
+    "english": "gape, thirsty",
+    "definition": "张开的，裂开的；口渴的",
+    "sentence": "[SA/faug]\nAnfauglir.\n安法乌格力尔，卡哈洛斯，饥渴的大嘴\n",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "faug"
+      },
+      {
+        "type": "Plural",
+        "form": "foeg"
+      },
+      {
+        "type": "Comparative",
+        "form": "anfaug"
+      },
+      {
+        "type": "Superlative",
+        "form": "ro-faug"
+      }
+    ]
+  },
+  {
+    "dict_form": "faw",
+    "part": "noun",
+    "english": "breath, puff of breath",
+    "definition": "呼吸，呼出的气",
+    "sentence": "\n",
+    "other": "与昆雅föa同源",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i faw"
+      },
+      {
+        "type": "Plural",
+        "form": "foe"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i foe"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an faw"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "en-faw"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin faw"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor faw"
+      },
+      {
+        "type": "Stop",
+        "form": "oph faw"
+      },
+      {
+        "type": "H",
+        "form": "ah faw"
+      },
+      {
+        "type": "DH",
+        "form": "nedh faw"
       }
     ]
   }

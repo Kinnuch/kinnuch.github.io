@@ -15,7 +15,7 @@ languages = {
     "Elxiṛin": "亚希林语",
     "Theusṛin": "瑟乌丝林语",
     "Hor Belsham": "贝杉方言",
-    "Archepelago Shikṛin": "群岛希克林语",
+    "Archipelago Shikṛin": "群岛希克林语",
     "Hor Shug": "树格方言",
     "Ate Shikṛin": "荒原希克林语",
     "Itskan Shikṛin": "夜央希克林语"
@@ -34,8 +34,8 @@ edges = [
     ("Continental Shikṛin", "Modern Shikṛin"),
     ("Continental Shikṛin", "Elxiṛin"),
     ("Insular Shikṛin", "Hor Belsham"),
-    ("Insular Shikṛin", "Archepelago Shikṛin"),
-    ("Archepelago Shikṛin", "Hor Shug"),
+    ("Insular Shikṛin", "Archipelago Shikṛin"),
+    ("Archipelago Shikṛin", "Hor Shug"),
     ("Southern Shikṛin", "Ate Shikṛin"),
     ("Southern Shikṛin", "Itskan Shikṛin"),
     ("Continental Shikṛin", "Southern Shikṛin")
@@ -54,7 +54,7 @@ pos = {
     "Elxiṛin": (-1, 1),
     "Theusṛin": (-2, 4),
     "Hor Belsham": (1, 1),
-    "Archepelago Shikṛin": (2, 2),
+    "Archipelago Shikṛin": (2, 2),
     "Hor Shug": (2, 1),
     "Ate Shikṛin": (-3, 1),
     "Itskan Shikṛin": (-2, 1)

@@ -75,12 +75,13 @@ title: Proto-Shikṛin
 
 具体来说，单音节词根也被称为**强词根**，其结构只能是(s)CV/R(C)(C)。且不能同时出现两个浊阻碍音，也不能同时出现两个鼻冠音。词尾被允许的CC有CH/CR/sT。词根通常不允许以元音或响音开头，如果出现这种情况，词首通常会构拟H来规避。
 
+双音节词根也被称为**弱词根**，其结构只能是(s)CV(C)V(C)(C)。响音不被允许成为音节核。
+
 以下词根都是合法的：
 
 - √HOR “侧，旁边的”
 - √SK̂AN “月亮”
-
-双音节词根也被称为**弱词根**，其结构只能是(s)CV(C)V(C)(C)。响音不被允许成为音节核。
+- √
 
 语素基本来说是遵循**额外成分-词根-词干缀-范畴缀**的模式构成的，其中词根-词干缀构成的部分称为**词干(stem)**。
 
@@ -104,9 +105,13 @@ title: Proto-Shikṛin
 
 #### 1. 名词形态
 
+##### 简介
+
 原始希克林语区分三个数（**单数、双数、复数**），两个性（体现在不同的词干缀上），十个格（**主格、宾格、属格、与格、离格、向格、工具格、共格、方位格、经由格**）（不过原始希克林语存在一定程度的**分裂作格**特性），其中前五个格在其后代中出现频率较高，而后五个格或多或少都被并入或消失了。
 
-名词相关的常见**词干缀**如下表所示：
+##### 派生词干缀
+
+名词相关的常见**派生词干缀**如下表所示：
 
 | 转成方式 | 词干缀 |
 | :----: | :------: |
@@ -119,6 +124,31 @@ title: Proto-Shikṛin
 | 地点名词 | -són-, -snom- |
 | 方向名词 | -(y)eH-, -ye-, -aḱ- |
 | 方式名词 | -pu-, -r̩m-, -r̩n-, -nen- |
+
+##### 名词的性和词干缀
+
+影响词干缀的另一大因素便是名词的性。事实上原始希克林语并未明确区分性别，不过大量的名词词干体现出Thematic-Athematic的对立，因此后世学者通常将Thematic词干定义为**阳性**，将Athematic词干定义为**阴性**，以示区分。
+
+Thematic词干缀通常是-o-/-e-，Athematic词干缀则比较多样，其中-∅-/-s-/-g-/-w-比较常见。
+
+通常将词干缀为X的名词称为**X-Stem**名词。
+
+##### o-Stem名词
+
+o-Stem名词的变格形式是在希克林诸语言中增长最迅速的形式，其变格法如下：
+
+|        | 单数 | 双数 | 复数 |
+| :----: | :--: | :--: | :--: |
+|  主格  |      |      |      |
+|  宾格  |      |      |      |
+|  属格  |      |      |      |
+|  与格  |      |      |      |
+|  离格  |      |      |      |
+|  向格  |      |      |      |
+| 工具格 |      |      |      |
+|  共格  |      |      |      |
+| 方位格 |      |      |      |
+| 经由格 |      |      |      |
 
 
 
@@ -133,192 +163,6 @@ title: Proto-Shikṛin
 #### 6. 动词形态
 
 #### 7. 派生
-
-
-
-## 演化
-
-#### 1. 牵引(Coloring)
-
-> 所有 h~3~毗连的 e > a，所有 h~4~毗连的 e > o。
->
-
-#### 2. 硬腭组合并(Merge of Palatal Obstruents into Velar Counterparts)
-
-> *ḱ > *k, \*ǵ > *g, \*ḱ’ > *k’, \*^ɲ^ǵ > *^ŋ^g
-
-Insular and Continental Dialects differ from here. Following changes are from the insular variant, which is the main and dominant dialect in the world.
-
-#### 3. 唇化软腭组分离(Separation of Labio Velar Obstruents)
-
-> *k^w^ > *ku̯, \*g^w^ > *gu̯, \*k^w^’ > *k’u̯, \*^ŋ^g^w^ > *^ŋ^gu̯
-
-#### 4. 音节化(Syllablization)
-
-> *R̩ > *uR/ar, *R̩ = R > *ūR/ār
->
-> *RH > *Ra
-
-#### 5. 增音(Epenthesis)
-
-> *THR > *TXR, X = eh~2~, oh~4~, ah~1,3~
->
-> *TTR > *TaTR
-
-#### 6. 会厌化(Pharyngealization)
-
-> *T’HV > *TˤV
->
-> *T’R/T’T > *TR/TT
->
-> *T’V > *TV̄
-
-#### 7. 喉音脱落(Loss of Laryngreals)
-
-> *HV > *V
->
-> *VHR/VHT/VH# > *V̄R/V̄T/V̄#
->
-> *THT > *TT
->
-> *#h~2~T > *#eT, *#h~4~T > *#oT, *h~3~T > *#aT
->
-> *#Hs/#HR > *#s/#R
->
-> *VHV > *VV
-
-#### 8. 元音合并(Merge of Vowels)
-
-> 非重读的元音缩短: *V̄ > * V > *ə, * o > *a > * ə（前一音节可能抵抗）
->
-> *e + *a/ā > *ē
->
-> *e + *u > *i̯au
->
-> *e + *i > *ē, *e + *ī > * ī
->
-> *a + *e > *ae
-
-#### 9. 腭化(Palatalization)
-
-> *i/ī 毗连的 T 发生腭化
->
-> *^n^d > *^ɲ^ǵ > *ŋ
->
-> *t > *ḱ > *ki̯
->
-> *n > *ɲ > *ni̯
->
-> *p > *p^j^ > *pi̯
-
-Old Shikṛin falls here.
-
-#### 10. s 脱落(Loss of s)
-
-> *VRs# > *V̄R#, *Vps# > *Vð#, *Vts# > *Vǀ#, *Vks# > *Vʃ#
-
-#### 11. 词中缩合(Syncope)
-
-> 如果缩合后出现齿冠音+软腭音，发生移位
-
-#### 12. 元音间弱化(Lenition between Vowels)
-
-> *VpV > *VbV, *VbV > *VwV, *V^m^bV > *VmV
->
-> *VtV > *VdV, *VdV > *VðV, *V^n^dV > *VnV, *VsV > *VθV
->
-> *VkV > *VgV, *VgV > *VɣV, *V^ŋ^gV > *VŋV
->
-> *VŋV > *VnnV
-
-#### 13. 词首弱化(Lenition at head)
-
-> *#^m^b > *#b, *#b > *#p, *#p > *#ps, *#ps > *#s
->
-> *#^n^d > *#d, *#d > *#t, *#t > *#ǀ, *#s > *#x
->
-> *#^ŋ^g > *#g, *#g > *#k, *#k > *#x
->
-> *#ŋ > *#∅
-
-#### 14. 鼻冠音分离(Separation of Pre-Nazals)
-
-> *^m^b > *mb/mp#, *^n^d > *nd/nt#, *^ŋ^g > *ŋg/ŋk#
-
-#### 15. 滑音提升(Promotion of Glides)
-
-> *u̯# > *u#, thus *a/e...u# > *o...u#, *i...u# > *e...u#
->
-> other *u̯ > *w
->
-> *i̯# > *i#, thus *a/o...i# > *e...i#, *u...i# > *a...i#
->
-> other *i̯ > *j
-
-#### 16. 元音简化(Simplification of Vowels)
-
-> *V̄CC > *VCC
->
-> *auCC > *oCC
->
-> *aiCC/aeCC > *eCC
->
-> *eiCC > *iCC, 可能引起腭化
-
-#### 17. 辅音丛简化(Simplification of Clusters)
-
-> *VRn#/VRm#/V_p# > *V̄n#/V̄m#/V̄_#
->
-> *lnd/lnt > \*ld/lt, *rnd/rnt > *rd/rt, *rd > *hd
->
-> *mn/mnd > *nn, \*nnd > *nd, *nm/nnm > *mm, *md/dm > *nd
->
-> *rrh > *rr
->
-> *ss > *s, *tt > *st, *ts > *ǀ, *psl > *spl, *Vms/Vns > *sVm/sVn
->
-> *wj > *w, *dw/kw > *(e)rk, *jw > *(e)k, *tw > *(e)rh
->
-> *wo/wu/wə > *o/u, *ji > *i, *jə > *e
->
-> *#xk/xt/xp > *#kk/tt/pp, *#xg/xd/xb > *#g/d/b
-
-#### 18. 尾元音脱落(Loss of Ending Vowels)
-
-> only unstressed
-
-#### 19. 流音会厌化(Pharyngealization of Liquids)
-
-> *VlT/Vl# > *Vl^ˤ^T/Vl^ˤ^#
->
-> *VrT > *Vr^ˤ^T
->
-> *Vr# > *V∅#
-
-#### 20. 元音简化(Simplification of Vowels)
-
-> *rr 前的后元音脱落
->
-> *rt 前的后元音脱落且导致换位
-
-## 示例
-
-#### 1. dumst [to walk]
-
-root: *^n^dem-
-
-ᴅɪʀ
-
-| 人称(Person) | 过去时变位 | 非过去时变位 |
-| :----------: | :--------: | :----------: |
-|              |            |              |
-|              |            |              |
-|              |            |              |
-|              |            |              |
-|              |            |              |
-|              |            |              |
-|              |            |              |
-|              |            |              |
 
 
 

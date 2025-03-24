@@ -14254,56 +14254,6 @@
     ]
   },
   {
-    "dict_form": "êl",
-    "part": "noun",
-    "english": "star",
-    "definition": "星星，星辰",
-    "sentence": "[MR/373]\nNarn e·Dant Gondolin ar Orthad en·Êl.\n刚多林的陷落和星辰的升起的传说\n",
-    "other": "该词相比(n)gil显得更加古老，常见于诗歌和古体文本；常用集合复数elenath表示繁星",
-    "morphology": [
-      {
-        "type": "Soft",
-        "form": "i êl"
-      },
-      {
-        "type": "Plural",
-        "form": "elin"
-      },
-      {
-        "type": "NasalⅠ",
-        "form": "in elin"
-      },
-      {
-        "type": "NasalⅡ",
-        "form": "an êl"
-      },
-      {
-        "type": "MixedⅠ",
-        "form": "en-êl"
-      },
-      {
-        "type": "MixedⅡ",
-        "form": "anin êl"
-      },
-      {
-        "type": "Liquid",
-        "form": "egor êl"
-      },
-      {
-        "type": "Stop",
-        "form": "od êl"
-      },
-      {
-        "type": "H",
-        "form": "ah êl"
-      },
-      {
-        "type": "DH",
-        "form": "nedh êl"
-      }
-    ]
-  },
-  {
     "dict_form": "fae",
     "part": "noun",
     "english": "incarnate spirit",
@@ -14452,56 +14402,6 @@
       {
         "type": "Superlative",
         "form": "ro-fael"
-      }
-    ]
-  },
-  {
-    "dict_form": "fean",
-    "part": "noun",
-    "english": "vapour, disembodied spirit",
-    "definition": "蒸汽；（无化身的）灵体",
-    "sentence": "\n",
-    "other": "现多用faer表示无化身的灵体，faen更多指蒸汽",
-    "morphology": [
-      {
-        "type": "Soft",
-        "form": "i faen"
-      },
-      {
-        "type": "Plural",
-        "form": "faen"
-      },
-      {
-        "type": "NasalⅠ",
-        "form": "i faen"
-      },
-      {
-        "type": "NasalⅡ",
-        "form": "an faen"
-      },
-      {
-        "type": "MixedⅠ",
-        "form": "en-faen"
-      },
-      {
-        "type": "MixedⅡ",
-        "form": "anin faen"
-      },
-      {
-        "type": "Liquid",
-        "form": "egor faen"
-      },
-      {
-        "type": "Stop",
-        "form": "oph faen"
-      },
-      {
-        "type": "H",
-        "form": "ah faen"
-      },
-      {
-        "type": "DH",
-        "form": "nedh faen"
       }
     ]
   },
@@ -14804,56 +14704,6 @@
       {
         "type": "DH",
         "form": "nedh faloth"
-      }
-    ]
-  },
-  {
-    "dict_form": "fân",
-    "part": "noun",
-    "english": "(white) cloud, veil, curtain, form or vision of a spiritual being",
-    "definition": "白云，云；面纱，帘幕；灵魂体的形体或具象",
-    "sentence": "[Let/278][PE17/26][PE17/174][PE17/176][PE/17/180][RGEO/66]\nFanuilos.\n永远洁白，法努伊洛斯\n",
-    "other": "古-YA类词，干元音a",
-    "morphology": [
-      {
-        "type": "Soft",
-        "form": "i fân"
-      },
-      {
-        "type": "Plural",
-        "form": "fain"
-      },
-      {
-        "type": "NasalⅠ",
-        "form": "i fain"
-      },
-      {
-        "type": "NasalⅡ",
-        "form": "an fân"
-      },
-      {
-        "type": "MixedⅠ",
-        "form": "en-fân"
-      },
-      {
-        "type": "MixedⅡ",
-        "form": "anin fân"
-      },
-      {
-        "type": "Liquid",
-        "form": "egor fân"
-      },
-      {
-        "type": "Stop",
-        "form": "oph fân"
-      },
-      {
-        "type": "H",
-        "form": "ah fân"
-      },
-      {
-        "type": "DH",
-        "form": "nedh fân"
       }
     ]
   },
@@ -15198,6 +15048,156 @@
       {
         "type": "DH",
         "form": "nedh faw"
+      }
+    ]
+  },
+  {
+    "dict_form": "faen",
+    "part": "noun",
+    "english": "vapour, disembodied spirit",
+    "definition": "蒸汽；（无化身的）灵体",
+    "sentence": "\n\n",
+    "other": "现多用faer表示无化身的灵体，faen更多指蒸汽",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i faen"
+      },
+      {
+        "type": "Plural",
+        "form": "faen"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i faen"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an faen"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "en-faen"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin faen"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor faen"
+      },
+      {
+        "type": "Stop",
+        "form": "oph faen"
+      },
+      {
+        "type": "H",
+        "form": "ah faen"
+      },
+      {
+        "type": "DH",
+        "form": "nedh faen"
+      }
+    ]
+  },
+  {
+    "dict_form": "fân",
+    "part": "noun",
+    "english": "(white) cloud, veil, curtain, form or vision of a spiritual being",
+    "definition": "白云，云；面纱，帘幕；灵魂体的形体或具象",
+    "sentence": "[Let/278][PE17/26][PE17/174][PE17/176][PE/17/180][RGEO/66]\nFanuilos.\n永远洁白，法努伊洛斯\n",
+    "other": "古-YA类词，干元音a",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i fân"
+      },
+      {
+        "type": "Plural",
+        "form": "fain"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i fain"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an fân"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "en-fân"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin fân"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor fân"
+      },
+      {
+        "type": "Stop",
+        "form": "oph fân"
+      },
+      {
+        "type": "H",
+        "form": "ah fân"
+      },
+      {
+        "type": "DH",
+        "form": "nedh fân"
+      }
+    ]
+  },
+  {
+    "dict_form": "êl",
+    "part": "noun",
+    "english": "star",
+    "definition": "星星，星辰",
+    "sentence": "[MR/373]\nNarn e·Dant Gondolin ar Orthad en·Êl.\n刚多林的陷落和星辰的升起的传说\n",
+    "other": "该词相比(n)gil显得更加古老，常见于诗歌和古体文本；常用集合复数elenath表示繁星",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i êl"
+      },
+      {
+        "type": "Plural",
+        "form": "elin"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "in elin"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an êl"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "en-êl"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin êl"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor êl"
+      },
+      {
+        "type": "Stop",
+        "form": "od êl"
+      },
+      {
+        "type": "H",
+        "form": "ah êl"
+      },
+      {
+        "type": "DH",
+        "form": "nedh êl"
       }
     ]
   }

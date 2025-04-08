@@ -149,7 +149,7 @@ title: Proto-Shikṛin
 | 抽象名词 | -sal-, -ent-, -at- |
 | 物质名词 | -w-, -wr-, -ei- |
 | 集合名词 | -as-, -úm-, -ró- |
-| 关系名词 | -ur-, -nil-, -or- |
+| 关系名词 | -ur-, -nil-, -or-, -mó- |
 | 地点名词 | -són-, -snom- |
 | 方向名词 | -(y)eH-, -ye-, -aḱ- |
 | 方式名词 | -pu-, -r̩m-, -r̩n-, -nen- |

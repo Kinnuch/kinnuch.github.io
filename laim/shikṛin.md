@@ -8,5 +8,6 @@ title: Shikṛin
 
 [Proto-Shikṛin](https://kinnuch.github.io/laim/Proto-Shikṛin)
 
-[Proto-Shikṛin文件版](https://kinnuch.github.io/laim/shikrin.assets/Proto-Shikṛin.pdf)
+### Theusṛin | 瑟乌丝林语
 
+[Theusṛin](https://kinnuch.github.io/laim/Theusṛin)

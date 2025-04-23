@@ -1,4 +1,4 @@
-<!-- Lastly modified by Kinnuch in 2024/03/06 -->
+<!-- Lastly modified by Kinnuch in 2025/04/23 -->
 <!-- It is not recommended to modify this code, unless you are a Pro-->
 
 <!doctype html>
@@ -46,6 +46,9 @@
     </div><!--/ .headline-wrap -->
   {% endcomment %}
     <div class="article-wrap" itemprop="text">
+      {% if page.css %}
+          <link rel="stylesheet" href="{{ page.css }}">
+      {% endif %}
       {{ content }}
     </div><!-- /.article-wrap -->
   </article>

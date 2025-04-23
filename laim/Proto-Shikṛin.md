@@ -2,6 +2,7 @@
 layout: page
 permalink: /laim/Proto-Shikṛin/index.html
 title: Proto-Shikṛin
+css: /assets/css/whitey.css
 ---
 
 

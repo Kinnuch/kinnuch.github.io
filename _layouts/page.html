@@ -22,6 +22,10 @@
   gtag('config', 'G-T5N5JY1E21');
 </script>
 
+{% if page.css %}
+  <link rel="stylesheet" href="{{ page.css }}">
+{% endif %}
+
 </head>
 
 
@@ -46,9 +50,6 @@
     </div><!--/ .headline-wrap -->
   {% endcomment %}
     <div class="article-wrap" itemprop="text">
-      {% if page.css %}
-          <link rel="stylesheet" href="{{ page.css }}">
-      {% endif %}
       {{ content }}
     </div><!-- /.article-wrap -->
   </article>

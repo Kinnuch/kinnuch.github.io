@@ -5,7 +5,7 @@ title: Hittite
 hittite : true
 ---
 
-By Kinnuch <font face='Cuneiform'>𒆠𒉡𒅖</font>
+By Kinnuch <font face='Cuneiform'>𒆠𒉡𒍑</font>
 
 # Cuneiform | 楔形文字
 

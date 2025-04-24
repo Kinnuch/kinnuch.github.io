@@ -68,7 +68,7 @@
           {% endif %}
         {% endfor %}
       {% endcapture %}
-      {{ last_content | markdownify }}
+      {{ last_content | raw }}
     </div><!-- /.article-wrap -->
   </article>
 </div><!-- /#index -->

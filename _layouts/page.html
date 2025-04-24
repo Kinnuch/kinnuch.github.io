@@ -68,7 +68,7 @@
       .use(window.markdownitSup)
       .use(window.markdownitSub);
     const output = document.getElementById('main').querySelector('.article-wrap');
-    output.innerHTML = md.render(output.innerHTML);
+    output.innerHTML = md.render(output.innerText);
   });
 </script>
 </body>

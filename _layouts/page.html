@@ -24,7 +24,13 @@
 <script src="https://cdn.jsdelivr.net/npm/markdown-it/dist/markdown-it.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/markdown-it-sup/dist/markdown-it-sup.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/markdown-it-sub/dist/markdown-it-sub.min.js"></script>
-
+<script>
+  const md = window.markdownit()
+    .use(window.markdownitSup)
+    .use(window.markdownitSub);
+  const output = document.getElementById('article-wrap');
+  output.innerHTML = md.render(output.value);
+</script>
 <!--link rel="stylesheet" href="/assets/css/whitey.css"-->
 
 </head>

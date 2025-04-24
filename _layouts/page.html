@@ -24,13 +24,6 @@
 <script src="https://cdn.jsdelivr.net/npm/markdown-it/dist/markdown-it.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/markdown-it-sup/dist/markdown-it-sup.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/markdown-it-sub/dist/markdown-it-sub.min.js"></script>
-<script defer>
-  const md = window.markdownit()
-    .use(window.markdownitSup)
-    .use(window.markdownitSub);
-  const output = document.getElementById('article-wrap');
-  output.innerHTML = md.render(output.innerText);
-</script>
 <!--link rel="stylesheet" href="/assets/css/whitey.css"-->
 
 </head>
@@ -69,6 +62,14 @@
 </div><!-- /.footer-wrap -->
 
 {% include scripts.html %}
-
+<script defer>
+  document.addEventListener("DOMContentLoaded", () => {
+    const md = window.markdownit()
+      .use(window.markdownitSup)
+      .use(window.markdownitSub);
+    const output = document.getElementById('main').querySelector('.article-wrap');
+    output.innerHTML = md.render(output.innerHTML);
+  });
+</script>
 </body>
 </html>

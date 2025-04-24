@@ -45,6 +45,7 @@ table{border-collapse:collapse;border-spacing:0;margin-bottom:1.5em;}
 .unstyled-list{list-style:none;margin-left:0;padding-left:0;}.unstyled-list li{list-style-type:none;}
 @font-face{font-family:"Ampersand";src:local("Georgia"),local("Garamond"),local("Palatino"),local("Book Antiqua");unicode-range:U+270C;}@font-face{font-family:"Ampersand";src:local("Georgia");unicode-range:U+270C;}.ampersand-placeholder{font-family:Verdana,sans-serif;}
 @font-face{font-family:"NuranIrven";src:url(https://kinnuch.github.io/assets/fonts/NuranIrven.otf)}
+@font-face{font-family:"Cuneiform";src:url(https://kinnuch.github.io/assets/fonts/UllikummiA.woff2)}
 .breakword{word-wrap:break-word;}
 .normal-wrap{word-wrap:normal;}
 .inherit-wrap{word-wrap:auto;}

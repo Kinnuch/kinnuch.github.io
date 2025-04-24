@@ -24,13 +24,6 @@
 
 <!--link rel="stylesheet" href="/assets/css/whitey.css"-->
 
-<style>
-  @font-face {
-    font-family: 'Cuneiform', serif;
-    src: url('/assets/fonts/UllikummiA.woff2') format('woff2');
-  }
-</style>
-
 </head>
 
 
@@ -54,11 +47,7 @@
       <h1 itemprop="headline">{{ page.title }}</h1>
     </div><!--/ .headline-wrap -->
   {% endcomment %}
-    {% if page.hittite %}
-    <div class="article-wrap" itemprop="text" style = "font-family: 'Cuneiform', serif;">
-    {% else %}
-    <div class="article-wrap" itemprop="text"></div>
-    {% endif %}
+    <div class="article-wrap" itemprop="text">
       {{ content }}
     </div><!-- /.article-wrap -->
   </article>

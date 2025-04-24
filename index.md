@@ -17,6 +17,7 @@ layout: page
 - Isto i lam Elandis! Fabo [Shikṛin](https://kinnuch.github.io/laim/shikṛin) an istad. 点击链接浏览我的造语希克林语及其姊妹语言。
 - Fabo [Old Icelandic](https://kinnuch.github.io/laim/oldicelandic) an istad. 点击链接浏览古诺斯语及古冰岛语的学习笔记。
 - Fabo [Korean](https://kinnuch.github.io/laim/korean) an istad. 点击链接浏览韩语的学习笔记。
+- Fabo [Hittite](https://kinnuch.github.io/laim/hittite) an istad. 点击链接浏览赫梯语和楔形文字的学习笔记。
 
 <br>
 

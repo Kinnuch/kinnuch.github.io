@@ -20,9 +20,7 @@ Elandis lam vain nîn. Istad, ceno [Elandis](https://kinnuch.github.io/laim/elan
 
 ## Shikṛin | 希克林语
 
-Shikṛin lam neledh nîn. Istad, ceno [Shikṛin](https://kinnuch.github.io/laim/shikṛin). 希克林语是我的第三门造语。点击链接浏览相关信息。
-
-Istad, ceno [Gobeth Shikṛin](https://kinnuch.github.io/laim/shikrin.assets/ShikrinDatabase/ShikrinDictionary.html). 点击此处查看希克林语词典。
+Shikṛin lam neledh nîn. Istad, ceno [Shikṛin](https://kinnuch.github.io/laim/shikṛin). 希克林语和其姊妹语言是我的第三门造语（也是我完成度最高的造语~）。点击链接浏览相关信息。
 
 ## Scottish Gaelic | 苏格兰盖尔语
 
@@ -32,6 +30,10 @@ Istad, ceno [Gobeth Shikṛin](https://kinnuch.github.io/laim/shikrin.assets/Shi
 
 [Icelandic Haudhas](https://kinnuch.github.io/laim/oldicelandic) 古冰岛语学习笔记
 
-## Korean | 朝鲜语
+## Korean | 韩语
 
-[Korean](https://kinnuch.github.io/laim/korean) 朝鲜语学习笔记
+[Korean](https://kinnuch.github.io/laim/korean) 韩语学习笔记
+
+## Hittite | 赫梯语
+
+[Hittite](https://kinnuch.github.io/laim/hittite) 赫梯语及楔形文字学习笔记

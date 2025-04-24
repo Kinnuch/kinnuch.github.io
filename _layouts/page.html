@@ -1,4 +1,4 @@
-<!-- Lastly modified by Kinnuch in 2025/04/23 -->
+<!-- Lastly modified by Kinnuch in 2025/04/24 -->
 <!-- It is not recommended to modify this code, unless you are a Pro-->
 
 <!doctype html>
@@ -24,6 +24,13 @@
 
 <!--link rel="stylesheet" href="/assets/css/whitey.css"-->
 
+<style>
+  @font-face {
+    font-family: 'Cuneiform', serif;
+    src: url('/assets/fonts/UllikummiA.woff2') format('woff2');
+  }
+</style>
+
 </head>
 
 
@@ -47,7 +54,11 @@
       <h1 itemprop="headline">{{ page.title }}</h1>
     </div><!--/ .headline-wrap -->
   {% endcomment %}
-    <div class="article-wrap" itemprop="text">
+    {% if page.hittite %}
+    <div class="article-wrap" itemprop="text" style = "font-family: 'Cuneiform', serif;">
+    {% else %}
+    <div class="article-wrap" itemprop="text"></div>
+    {% endif %}
       {{ content }}
     </div><!-- /.article-wrap -->
   </article>

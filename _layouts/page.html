@@ -47,28 +47,7 @@
     </div><!--/ .headline-wrap -->
   {% endcomment %}
     <div class="article-wrap" itemprop="text">
-      {% assign content = page.content %}
-      {% capture modified_content %}
-        {% assign content_parts = content | split: '~' %}
-        {% for part in content_parts %}
-          {% if part.size <= 3 %}
-            <sub>{{ part }}</sub>
-          {% else %}
-            {{ part }}
-          {% endif %}
-        {% endfor %}
-      {% endcapture %}
-      {% capture last_content %}
-        {% assign content_parts = modified_content | split: '^' %}
-        {% for part in content_parts %}
-          {% if part.size <= 3 %}
-            <sup>{{ part }}</sup>
-          {% else %}
-            {{ part }}
-          {% endif %}
-        {% endfor %}
-      {% endcapture %}
-      {{ last_content | raw }}
+      {{ content }}
     </div><!-- /.article-wrap -->
   </article>
 </div><!-- /#index -->

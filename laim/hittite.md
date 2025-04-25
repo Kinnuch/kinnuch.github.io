@@ -41,6 +41,11 @@ By Kinnuch <font face='Cuneiform'>𒆠𒅔𒉡𒄴</font>
 | <font face='Cuneiform'>𒁉</font>  |       pí       |    56.08%    |      pé      |     35.02%     |  bi, BI, KAŠ, gaš, kaš   |
 | <font face='Cuneiform'>𒄑</font>  |      GIŠ       |    54.36%    |    ez, iz    | 24.17%, 21.47% |                          |
 | <font face='Cuneiform'>𒊑</font>  |       ri       |    84.61%    |   tal, re    |  8.08%, 5.76%  |            RI            |
+| <font face='Cuneiform'>𒅈</font>  |       ar       |   100.00%    |              |                |                          |
+| <font face='Cuneiform'>𒌋</font>  |       u        |    95.8%     |              |                |          U, UḪ7          |
+| <font face='Cuneiform'>𒄷</font>  |       ḫu       |    94.59%    |    MUŠEN     |     5.41%      |                          |
+| <font face='Cuneiform'>𒌑</font>  |       ú        |    94.45%    |      Ú       |     5.55%      |                          |
+| <font face='Cuneiform'>𒌍</font>  |       eš       |    99.33%    |              |                |          30, ìš          |
 
 <font face='Cuneiform'></font>
 

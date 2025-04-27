@@ -66,6 +66,16 @@ By Kinnuch <font face='Cuneiform'>𒆠𒅔𒉡𒄴</font>
 | <font face='Cuneiform'>𒈬</font>  |       mu       |    92.00%    |           MU            |                7.06%                 |          MUḪALDIM          |
 | <font face='Cuneiform'>𒈨</font>  |       me       |    96.80%    |                         |                                      |             ME             |
 | <font face='Cuneiform'>𒄯</font>  |      ḫar       |    51.18%    |        ḪUR, ḫur         |            23.1%, 19.16%             |       mur, ḪAR, ARA5       |
+| <font face='Cuneiform'>𒀝</font>  |       ak       |    87.11%    |           ag            |                8.98%                 |           AG, AK           |
+| <font face='Cuneiform'>𒅕</font>  |       er       |    64.61%    |           ir            |                34.74%                |             IR             |
+| <font face='Cuneiform'>𒅗</font>  |       ka       |    71.79%    |           KA            |                22.67%                |    INIM, ZÚ, KIR4, DU11    |
+| <font face='Cuneiform'>𒊒</font>  |       ru       |    97.33%    |                         |                                      |             RU             |
+| <font face='Cuneiform'>𒁳</font>  |       lu       |    74.59%    |         UDU, LU         |            13.41%, 9.88%             |       DAB, DIB, DUL8       |
+| <font face='Cuneiform'>𒊺</font>  |       še       |    97.64%    |                         |                                      |             ŠE             |
+| <font face='Cuneiform'>𒁇</font>  |      pár       |    83.19%    |        BAR, MAŠ         |             7.33%, 6.47%             |         maš, MÁŠDA         |
+| <font face='Cuneiform'>𒀊</font>  |       ap       |    91.92%    |           AB            |                5.77%                 |             ab             |
+| <font face='Cuneiform'>𒅅</font>  |       ik       |    57.99%    |       ek, ig, iq        |         20.45%, 5.58%, 5.58%         |      eg, GÁL, IG, eq       |
+| <font face='Cuneiform'>𒌅</font>  |       tu       |    96.97%    |                         |                                      |             TU             |
 
 <font face='Cuneiform'></font>
 

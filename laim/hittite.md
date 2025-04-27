@@ -76,6 +76,11 @@ By Kinnuch <font face='Cuneiform'>𒆠𒅔𒉡𒄴</font>
 | <font face='Cuneiform'>𒀊</font>  |       ap       |    91.92%    |           AB            |                5.77%                 |             ab             |
 | <font face='Cuneiform'>𒅅</font>  |       ik       |    57.99%    |       ek, ig, iq        |         20.45%, 5.58%, 5.58%         |      eg, GÁL, IG, eq       |
 | <font face='Cuneiform'>𒌅</font>  |       tu       |    96.97%    |                         |                                      |             TU             |
+| <font face='Cuneiform'>𒁍</font>  |       pu       |    94.76%    |                         |                                      |          BU, GÍD           |
+| <font face='Cuneiform'>𒂗</font>  |       en       |    79.68%    |           EN            |                18.33%                |         ENSI, in4          |
+| <font face='Cuneiform'>𒁹</font>  |       m        |    84.52%    |            1            |                15.08%                |            táš             |
+| <font face='Cuneiform'>𒁁</font>  |      pát       |    60.68%    |      pít, pád, píd      |         14.96%, 9.4%, 6.41%          |      BE, ÚŠ, TIL, BAD      |
+| <font face='Cuneiform'>𒉈</font>  |       ne       |    91.62%    |                         |                                      |  IZI, NE, BIL, LÁM, ÉRIM   |
 
 <font face='Cuneiform'></font>
 

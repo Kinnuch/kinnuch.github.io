@@ -81,6 +81,16 @@ By Kinnuch <font face='Cuneiform'>𒆠𒅔𒉡𒄴</font>
 | <font face='Cuneiform'>𒁹</font>  |       m        |    84.52%    |            1            |                15.08%                |            táš             |
 | <font face='Cuneiform'>𒁁</font>  |      pát       |    60.68%    |      pít, pád, píd      |         14.96%, 9.4%, 6.41%          |      BE, ÚŠ, TIL, BAD      |
 | <font face='Cuneiform'>𒉈</font>  |       ne       |    91.62%    |                         |                                      |  IZI, NE, BIL, LÁM, ÉRIM   |
+| <font face='Cuneiform'>𒊬</font>  |      šar       |    90.37%    |                         |                                      |       KIRI6, SAR, MÚ       |
+| <font face='Cuneiform'>𒅎</font>  |       im       |    46.41%    |         IM, NÍ          |            35.36%, 14.36%            |         em, GUDU12         |
+| <font face='Cuneiform'>𒌒</font>  |       up       |    93.25%    |           ub            |                6.75%                 |                            |
+| <font face='Cuneiform'>𒈨𒌍</font> |      MEŠ       |    95.75%    |                         |                                      |         eš17, meš          |
+| <font face='Cuneiform'>𒇽</font>  |       LÚ       |   100.00%    |                         |                                      |                            |
+| <font face='Cuneiform'>𒊩</font>  |     MUNUS      |    72.91%    |           šal           |                24.14%                |            SAL             |
+| <font face='Cuneiform'>𒄬</font>  |      ḫal       |    99.19%    |                         |                                      |            ḪAL             |
+| <font face='Cuneiform'>𒂖</font>  |       el       |    97.83%    |                         |                                      |           SIKIL            |
+| <font face='Cuneiform'>𒄠</font>  |       am       |    93.79%    |           AM            |                6.21%                 |                            |
+| <font face='Cuneiform'>𒊌</font>  |       uk       |    76.07%    |         uq, ug          |            14.11%, 8.59%             |             UG             |
 
 <font face='Cuneiform'></font>
 

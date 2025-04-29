@@ -91,12 +91,26 @@ By Kinnuch <font face='Cuneiform'>𒆠𒅔𒉡𒄴</font>
 | <font face='Cuneiform'>𒂖</font>  |       el       |    138     |    97.83%    |                         |                                      |           SIKIL            |
 | <font face='Cuneiform'>𒄠</font>  |       am       |    161     |    93.79%    |           AM            |                6.21%                 |                            |
 | <font face='Cuneiform'>𒊌</font>  |       uk       |    163     |    76.07%    |         uq, ug          |            14.11%, 8.59%             |             UG             |
-|              -[^4]               |       -        |            |      -       |            -            |                  -                   |             -              |
 | <font face='Cuneiform'>𒋡</font>  |       qa       |    103     |    61.17%    |        ka4, SAGI        |             32.04%, 6.8%             |                            |
 | <font face='Cuneiform'>𒁷</font>  |      tén       |    112     |    98.21%    |                         |                                      |         tanx, tin          |
 | <font face='Cuneiform'>𒃰</font>  |      kat       |    113     |    89.38%    |          GADA           |                7.08%                 |          kad, GAD          |
 | <font face='Cuneiform'>𒌉</font>  |      DUMU      |    150     |    75.33%    |           TUR           |                22.67%                |            KUN5            |
 | <font face='Cuneiform'>𒋼𒀀</font> |      kar       |    145     |    97.24%    |                         |                                      |            KAR             |
+| <font face='Cuneiform'>𒊕</font>  |      SAG       |    134     |    98.51%    |                         |                                      |           SUR14            |
+| <font face='Cuneiform'>𒁖</font>  |      ták       |    111     |    76.58%    |        tág, DAG         |            12.61%, 7.21%             |            BÀR             |
+| <font face='Cuneiform'>𒌌</font>  |       ul       |    126     |   100.00%    |                         |                                      |                            |
+| <font face='Cuneiform'>𒈗</font>  |     LUGAL      |     90     |   100.00%    |                         |                                      |                            |
+| <font face='Cuneiform'>𒃻</font>  |     NINDA      |    182     |    71.43%    |        NÍG, GAR         |            16.48%, 11.54%            |             ŠÁ             |
+| <font face='Cuneiform'>𒈥</font>  |      mar       |     98     |    92.86%    |           MAR           |                7.14%                 |                            |
+| <font face='Cuneiform'>𒌨</font>  |       ur       |    109     |    61.47%    |           UR            |                38.53%                |                            |
+| <font face='Cuneiform'>𒅁</font>  |       ip       |     87     |    50.57%    |         ep, IB          |             32.18%, 9.2%             |        ib, eb, URTA        |
+| <font face='Cuneiform'>𒆗</font>  |      kal       |     83     |    48.19%    |    LAMMA, GURUŠ, dan    |        18.07%, 12.05%, 8.43%         |   KALA, KAL, KALAG, tan    |
+| <font face='Cuneiform'>𒂕</font>  |      EGIR      |     89     |   100.00%    |                         |                                      |                            |
+| <font face='Cuneiform'> 𒂍</font> |       É        |    122     |   100.00%    |                         |                                      |                            |
+| <font face='Cuneiform'>𒍪</font>  |       zu       |    113     |    75.22%    |           ZU            |                21.24%                |            GÍN             |
+| <font face='Cuneiform'>𒄀</font>  |       GI       |    108     |    37.96%    |         gi, ge          |            33.33%, 28.7%             |                            |
+| <font face='Cuneiform'>𒆳</font>  |      KUR       |    113     |    76.99%    |           kur           |                23.01%                |                            |
+| <font face='Cuneiform'>𒁲</font>  |       di       |     84     |    70.59%    |         DI, SÁ          |            16.47%, 9.41%             |             de             |
 
 <font face='Cuneiform'></font>
 
@@ -105,4 +119,3 @@ By Kinnuch <font face='Cuneiform'>𒆠𒅔𒉡𒄴</font>
 [^1]: 占比最高
 [^2]: 占比高于5%
 [^3]: 占比低于5%
-[^4]: 分界线以下个数在赫梯语文本中分布较为稀少

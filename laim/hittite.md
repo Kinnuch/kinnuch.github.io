@@ -111,6 +111,11 @@ By Kinnuch <font face='Cuneiform'>𒆠𒅔𒉡𒄴</font>
 | <font face='Cuneiform'>𒄀</font>  |       GI       |    108     |    37.96%    |         gi, ge          |            33.33%, 28.7%             |                            |
 | <font face='Cuneiform'>𒆳</font>  |      KUR       |    113     |    76.99%    |           kur           |                23.01%                |                            |
 | <font face='Cuneiform'>𒁲</font>  |       di       |     84     |    70.59%    |         DI, SÁ          |            16.47%, 9.41%             |             de             |
+| <font face='Cuneiform'>𒉆</font>  |      nam       |     81     |    74.07%    |           NAM           |                25.93%                |                            |
+| <font face='Cuneiform'>𒊻</font>  |       uz       |     83     |   100.00%    |                         |                                      |                            |
+| <font face='Cuneiform'>𒉌𒌓</font> |      NA4       |     85     |   100.00%    |                         |                                      |                            |
+| <font face='Cuneiform'>𒄰</font>  |      KAM       |    111     |    61.26%    |     kam, TU7, ÚTUL      |        20.72%, 10.81%, 7.21%         |                            |
+| <font face='Cuneiform'>𒂁</font>  |      DUG       |    110     |    99.09%    |                         |                                      |           BÁḪAR            |
 
 <font face='Cuneiform'></font>
 

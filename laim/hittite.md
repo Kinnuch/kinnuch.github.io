@@ -116,6 +116,16 @@ By Kinnuch <font face='Cuneiform'>𒆠𒅔𒉡𒄴</font>
 | <font face='Cuneiform'>𒉌𒌓</font> |      NA4       |     85     |   100.00%    |                         |                                      |                            |
 | <font face='Cuneiform'>𒄰</font>  |      KAM       |    111     |    61.26%    |     kam, TU7, ÚTUL      |        20.72%, 10.81%, 7.21%         |                            |
 | <font face='Cuneiform'>𒂁</font>  |      DUG       |    110     |    99.09%    |                         |                                      |           BÁḪAR            |
+| <font face='Cuneiform'>𒆏</font>  |      kap       |     75     |    65.33%    |           GÙB           |                29.33%                |          ḪÚB, GÁB          |
+| <font face='Cuneiform'>𒄢</font>  |      gul       |     61     |    67.21%    |           GUL           |                32.79%                |                            |
+| <font face='Cuneiform'>𒌝</font>  |       um       |     59     |    86.44%    |           UM            |                13.56%                |                            |
+| <font face='Cuneiform'>𒌆</font>  |      TÚG       |     70     |    74.29%    |           GI7           |                 20%                  |       ZÀ, ZÍD, ÁZLAG       |
+| <font face='Cuneiform'>𒃲</font>  |      GAL       |    106     |    91.51%    |           gal           |                8.49%                 |                            |
+| <font face='Cuneiform'>𒁮</font>  |      dam       |     63     |    61.9%     |           DAM           |                38.1%                 |                            |
+| <font face='Cuneiform'>𒆕</font>  |       DÙ       |     62     |    58.06%    |           GAG           |                41.94%                |                            |
+| <font face='Cuneiform'>𒋠</font>  |      SÍG       |     52     |   100.00%    |                         |                                      |                            |
+| <font face='Cuneiform'>𒀀𒇉</font> |       ÍD       |     52     |    96.15%    |                         |                                      |             I7             |
+| <font face='Cuneiform'>𒅆𒌨</font> |      ḪUL       |     48     |    95.83%    |                         |                                      |            ḫul             |
 
 <font face='Cuneiform'></font>
 

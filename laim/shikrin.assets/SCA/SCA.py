@@ -1,264 +1,277 @@
 import re
 from dataclasses import dataclass
-from typing import List, Dict, Tuple, Optional, Any
+
+def load_categories(category_file: str) -> dict:
+    """
+    读取 Category.txt，返回音类字典
+    格式：{"V": "aeiou", "C": "bcdfg...", ...}
+    """
+    categories = {}
+    try:
+        with open(category_file, 'r', encoding='utf-8') as f:
+            for line in f:
+                line = line.strip()
+                if not line or line.startswith("#"):  # 跳过空行和注释
+                    continue
+                
+                # 分割键值对
+                if '=' not in line:
+                    continue  # 或抛出错误
+                key, value = line.split('=', 1)
+                key = key.strip()
+                value = value.strip().replace(' ', '')  # 移除空格
+                
+                # 验证键是否为单个大写字母
+                if len(key) != 1 or not key.isupper():
+                    continue  # 或抛出错误
+                
+                # 去重并保留顺序（例如 "aab" -> "ab"）
+                seen = set()
+                unique_value = ''.join([c for c in value if not (c in seen or seen.add(c))])
+                
+                categories[key] = unique_value
+    except FileNotFoundError:
+        raise Exception(f"Category file {category_file} not found")
+    
+    return categories
+
+def load_replacements(replace_file: str) -> list[tuple[str, str]]:
+    """
+    读取 Replace.txt，返回替换规则列表，按原始字符长度降序排列
+    格式：[(原始字符, 替换字符), ...]
+    """
+    replacements = []
+    try:
+        with open(replace_file, 'r', encoding='utf-8') as f:
+            for line in f:
+                line = line.strip()
+                if not line or line.startswith("#"):
+                    continue
+                if "|" not in line:
+                    continue  # 或抛出错误
+                original, replacement = line.split("|", 1)
+                original = original.strip()
+                replacement = replacement.strip()
+                replacements.append((original, replacement))
+                
+        # 按原始字符长度降序排列，确保长模式优先匹配
+        replacements.sort(key=lambda x: -len(x[0]))
+    except FileNotFoundError:
+        raise Exception(f"Replace file {replace_file} not found")
+    return replacements
+
+def apply_replacements(text: str, replacements: list) -> str:
+    """应用替换规则（原始→临时字符）"""
+    for original, replacement in replacements:
+        text = text.replace(original, replacement)
+    # 然后去掉用于隔开字符的点号
+    text = text.replace(".", "")
+    return text
+
+def revert_replacements(text: str, replacements: list) -> str:
+    """恢复替换规则（临时字符→原始）"""
+    for original, replacement in reversed(replacements):
+        text = text.replace(replacement, original)
+    return text
+
+def load_lexicon(lexicon_file: str) -> list[str]:
+    """
+    读取 Lexicon.txt，返回待处理词汇列表
+    格式：["word1", "word2", ...]
+    """
+    lexicon = []
+    try:
+        with open(lexicon_file, 'r', encoding='utf-8') as f:
+            for line in f:
+                line = line.strip()
+                if not line or line.startswith("#"):
+                    continue
+                lexicon.append(line)
+    except FileNotFoundError:
+        raise Exception(f"Lexicon file {lexicon_file} not found")
+    return lexicon
 
 @dataclass
-class SoundChangeRule:
-    target: str
-    replacement: str
-    environment: str
-    exception: Optional[str] = None
-    line_number: int = 0
-    is_intermediate_marker: bool = False
+class Rule:
+    target: str          # 目标音素（可能包含类别或临时类别）
+    replacement: str     # 替换音素（支持特殊符号如 \\, 2）
+    left_context: str    # 左上下文正则模式
+    right_context: str   # 右上下文正则模式
+    is_intermediate: bool = False  # 是否为中间体标记
 
-class SoundChangeApplier:
-    def __init__(self):
-        self.categories: Dict[str, str] = {}
-        self.rules: List[SoundChangeRule] = []
-        self.rewrite_rules: List[Tuple[str, str]] = []
-        self.intermediate_steps: List[int] = []
-        self.previous_output: List[str] = []
-        self.current_step = 0
-        self.report: List[str] = []
-        
-    def add_category(self, definition: str):
-        name, values = definition.split('=', 1)
-        self.categories[name.strip()] = values.strip()
+def parse_rule(rule_str: str, categories: dict) -> Rule:
+    """
+    解析单条音变规则，返回 Rule 对象
+    格式：目标 > 替换 / 左上下文_右上下文
+    """
+    # 判断中间体
+    if rule_str == "-*":
+        return Rule("", "", "", "", is_intermediate=True)
+
+    # 分割目标/替换和上下文
+    if "/" in rule_str:
+        rule_part, context_part = rule_str.split("/", 1)
+        left_context, right_context = context_part.strip().split("_", 1)
+    else:
+        rule_part = rule_str
+        left_context, right_context = "", ""
     
-    def add_rewrite_rule(self, rule: str):
-        if '|' in rule:
-            src, tgt = rule.split('|', 1)
-            self.rewrite_rules.append((src.strip(), tgt.strip()))
-    
-    def parse_rule(self, rule_str: str) -> SoundChangeRule:
-        rule_str = rule_str.strip()
-        if rule_str == '-*':
-            return SoundChangeRule('', '', '', None, 0, is_intermediate_marker=True)
-        
-        # parsing the exception part
-        exception = None
-        if '|' in rule_str:
-            main_part, exception = rule_str.split('|', 1)
+    # 分割目标和替换
+    target, replacement = rule_part.strip().split(">", 1)
+    target = target.strip()
+    replacement = replacement.strip()
+
+    # 处理目标/替换中的类别（如 V, [aei]）
+    target = _expand_category(target, categories)
+    replacement = _expand_category(replacement, categories)
+
+    # 处理左/右上下文中的符号（# 词边界、... 跨位置、() 可选元素）
+    left_pattern = _context_to_regex(left_context.strip(), categories)
+    right_pattern = _context_to_regex(right_context.strip(), categories)
+
+    return Rule(target, replacement, left_pattern, right_pattern)
+
+def _expand_category(s: str, categories: dict) -> str:
+    """
+    将字符串中的音类符号（如 V 或 [aei]）展开为字符集合
+    示例：V → aeiou，[ao] → ao
+    """
+    expanded = []
+    i = 0
+    while i < len(s):
+        if s[i] == '[':
+            # 临时类别 [ao]
+            j = i + 1
+            while j < len(s) and s[j] != ']':
+                j += 1
+            expanded.append(s[i+1:j])
+            i = j + 1
+        elif s[i].isupper() and s[i] in categories:
+            # 预定义类别（如 V=aeiou）
+            expanded.append(categories[s[i]])
+            i += 1
         else:
-            main_part = rule_str
-        
-        # parsing the target and the replacement
-        if '>' in main_part:
-            target, rest = main_part.split('>', 1)
-            if '/' in rest:
-                replacement, env = rest.split('/', 1)
-            else:
-                # environment is obligatory
-                error_msg = f"Invalid rule format: {rule_str}"
-                raise ValueError(error_msg)
+            # 普通字符
+            expanded.append(s[i])
+            i += 1
+    return ''.join(expanded)
+
+def _context_to_regex(context: str, categories: dict) -> str:
+    """
+    将上下文描述（如 "a(...)b#..."）转换为正则表达式模式
+    """
+    regex = []
+    i = 0
+    while i < len(context):
+        c = context[i]
+        if c == '#':
+            regex.append(r'\b')  # 词边界
+        elif c == '.' and i+2 < len(context) and context[i:i+3] == '...':
+            regex.append(r'.*')  # 跨位置匹配
+            i += 2
+        elif c == '(':
+            # 可选元素，如 (c) → (?:c)?
+            j = i + 1
+            while j < len(context) and context[j] != ')':
+                j += 1
+            inner = _expand_category(context[i+1:j], categories)
+            regex.append(f'(?:{re.escape(inner)})?')
+            i = j
         else:
-            error_msg = f"Invalid rule format: {rule_str}"
-            raise ValueError(error_msg)
-        
-        return SoundChangeRule(
-            target=target,
-            replacement=replacement,
-            environment=env,
-            exception=exception,
-            line_number=len(self.rules)+1
+            # 普通字符或类别
+            expanded = _expand_category(c, categories)
+            regex.append(re.escape(expanded))
+        i += 1
+    return ''.join(regex)
+
+def apply_rules(word: str, rules: list[Rule]) -> str:
+    """
+    对单个词汇按顺序应用所有音变规则
+    """
+    current = word
+    for rule in rules:
+        # 构建完整正则表达式：左上下文 + 目标 + 右上下文
+        pattern = re.compile(
+            f"({rule.left_context})({rule.target})({rule.right_context})"
         )
-    
-    def expand_pattern(self, pattern: str) -> str:
-        def replace_category(match):
-            cat = match.group(1)
-            if cat in self.categories:
-                return f'[{self.categories[cat]}]'
-            if cat.startswith('[') and cat.endswith(']'):
-                return cat[1:-1]
-            return cat
+        # 执行替换
+        current = pattern.sub(
+            lambda m: _apply_replacement(m.group(2), rule.replacement),
+            current
+        )
+    return current
+
+def _apply_replacement(target: str, replacement: str) -> str:
+    """
+    根据替换规则生成实际替换结果
+    """
+    if replacement == "\\":
+        return target[::-1]  # 翻转
+    elif replacement == "2":
+        return target * 2    # 双写
+    elif replacement == "":
+        return ""           # 脱落
+    else:
+        return replacement   # 直接替换或增生
+
+def load_rules(rule_file: str, categories: dict) -> list[Rule]:
+    """
+    读取 Rule.txt，返回解析后的规则列表
+    """
+    rules = []
+    try:
+        with open(rule_file, 'r', encoding='utf-8') as f:
+            for line in f:
+                line = line.strip()
+                if not line or line.startswith("#"):
+                    continue
+                rule = parse_rule(line, categories)
+                rules.append(rule)
+    except FileNotFoundError:
+        raise Exception(f"Rule file {rule_file} not found")
+    return rules
+
+def main():
+    # 加载输入文件
+    categories = load_categories("Category.txt")
+    replacements = load_replacements("Replace.txt")
+    lexicon = load_lexicon("Lexicon.txt")
+    rules = load_rules("Rule.txt", categories)
+    output_list = []
+
+    # 处理每个词汇
+    for word in lexicon:
+        # 预处理：应用字符替换（如 th→θ）
+        temp_word = apply_replacements(word, replacements)
+        current = temp_word
+        intermediates = []  # 记录中间体
         
-        pattern = re.sub(r'(\[.*?\])', replace_category, pattern)
-        pattern = pattern.replace('...', '.*')
-        pattern = pattern.replace('(', '(?:')
-        return f'(?:{pattern})'
-    
-    def apply_rewrite(self, word: str, reverse: bool = False) -> str:
-        rules = self.rewrite_rules
-        if reverse:
-            rules = reversed(rules)
-        for src, tgt in rules:
-            word = re.sub(re.escape(src), tgt, word)
-        return word
-    
-    def match_environment(self, word: str, pos: int, env: str) -> bool:
-        left, right = env.split('_', 1)
-        
-        left_pattern = self.expand_pattern(left)
-        right_pattern = self.expand_pattern(right)
-        
-        full_pattern = f'^{left_pattern}(.){right_pattern}$'
-        return re.search(full_pattern, word[:pos] + '?' + word[pos:]) is not None
-    
-    def check_exception(self, word: str, pos: int, exception: str) -> bool:
-        if not exception:
-            return False
-        return self.match_environment(word, pos, exception)
-    
-    def apply_sound_change(self, word: str, rule: SoundChangeRule) -> str:
-        if rule.is_intermediate_marker:
-            return word
-        
-        target = self.expand_pattern(rule.target)
-        replacement = rule.replacement
-        
-        if replacement == '\\':
-            replacement = rule.target[::-1]
-        
-        new_word = word
-        for match in re.finditer(target, word):
-            start, end = match.span()
-            if self.match_environment(word, start, rule.environment):
-                if not self.check_exception(word, start, rule.exception):
-                    matched = word[start:end]
-                    if replacement == '':
-                        new_word = new_word.replace(matched, '', 1)
-                    else:
-                        new_word = new_word[:start] + replacement + new_word[end:]
-                    self.report.append(f"{rule.target}→{rule.replacement} applies to {word} at {start}")
-                    break
-        
-        return new_word
-    
-    def process_word(self, word: str, report: bool = False) -> Tuple[str, List[str]]:
-        self.report.clear()
-        current = self.apply_rewrite(word)
-        intermediates = []
-        
-        for i, rule in enumerate(self.rules):
-            if rule.is_intermediate_marker:
-                intermediates.append(current)
-                continue
-            
-            prev = current
-            current = self.apply_sound_change(current, rule)
-            
-            if current != prev and report:
-                self.report.append(f"Rule {i+1} applied: {prev} → {current}")
-        
-        current = self.apply_rewrite(current, reverse=True)
-        return current, intermediates
-    
-    def format_output(self, original: str, transformed: str, gloss: str = None, 
-                     output_format: str = 'simple', diff: str = None) -> str:
-        if output_format == 'simple':
-            return transformed
-        elif output_format == 'dictionary':
-            if gloss:
-                return f"{transformed} ‣ {gloss}"
-            return transformed
-        elif output_format == 'comparison':
-            if gloss:
-                return f"{original} → {transformed} ‣ {gloss}"
-            return f"{original} → {transformed}"
-        return transformed
-    
-    def process_lexicon(self, lexicon: List[str], output_format: str = 'simple',
-                       report_rules: bool = False, show_diff: bool = False) -> List[str]:
-        results = []
-        current_output = []
-        
-        for entry in lexicon:
-            parts = entry.split('‣', 1)
-            word = parts[0].strip()
-            gloss = parts[1].strip() if len(parts) > 1 else None
-            
-            original_word = word
-            transformed, intermediates = self.process_word(word, report_rules)
-            
-            if show_diff and self.previous_output:
-                diff = self.calculate_diff(self.previous_output[len(results)], transformed)
-                formatted_diff = self.highlight_diff(diff)
-            else:
-                formatted_diff = transformed
-            
-            output = self.format_output(
-                original_word, 
-                formatted_diff,
-                gloss,
-                output_format
+        # 逐条应用规则
+        for rule in rules:
+            # 构建正则表达式
+            pattern = re.compile(
+                f"({rule.left_context})({rule.target})({rule.right_context})"
             )
-            
-            if report_rules:
-                output += '\n' + '\n'.join(self.report)
-            
-            current_output.append(transformed)
-            results.append(output)
+            # 执行替换
+            new_current = pattern.sub(
+                lambda m: _apply_replacement(m.group(2), rule.replacement),
+                current
+            )
+            # 如果规则是中间体标记，记录当前状态
+            if rule.is_intermediate:
+                intermediates.append(new_current)
+            current = new_current
         
-        self.previous_output = current_output
-        return results
-    
-    def calculate_diff(self, previous: str, current: str) -> List[Tuple[str, bool]]:
-        diff = []
-        prev_chars = list(previous)
-        curr_chars = list(current)
+        # 后处理：恢复原始字符（如 θ→th）
+        final_word = revert_replacements(current, replacements)
         
-        while prev_chars or curr_chars:
-            p = prev_chars.pop(0) if prev_chars else None
-            c = curr_chars.pop(0) if curr_chars else None
-            
-            if p == c:
-                diff.append((c, False))
-            else:
-                diff.append((c, True))
-                if p and c and p != c:
-                    while prev_chars and prev_chars[0] != c:
-                        prev_chars.pop(0)
+        # 构建输出格式：原始词 → 中间体1 → 中间体2 → ... → 最终词
+        output_parts = [word] + intermediates + [final_word]
+        output_list.append(' → '.join(output_parts))
         
-        return diff
-    
-    def highlight_diff(self, diff: List[Tuple[str, bool]]) -> str:
-        return ''.join([f'**{char}**' if changed else char for char, changed in diff])
+    # 输出最终结果    
+    with open("Output.txt", 'w', encoding='utf-8') as f:
+        f.write('\n'.join(output_list))
 
 if __name__ == "__main__":
-    sca = SoundChangeApplier()
-    
-    sca.add_category("V=aeiou")
-    sca.add_category("F=ie")
-    sca.add_category("S=ptk")
-    sca.add_category("Z=bdg")
-    
-    sca.add_rewrite_rule("kh|x")
-    sca.add_rewrite_rule("sh|ʃ")
-    sca.add_rewrite_rule("ng|ŋ")
-    
-    rules = [
-        "c>g/V_V",
-        "u>o/_#",
-        "S>Z/V_V",
-        "-*",
-        "s>/_#",
-        "nt>\\/_V",
-    ]
-    for rule in rules:
-        sca.rules.append(sca.parse_rule(rule))
-    
-    lexicon = [
-        "focus",
-        "kanta",
-        "operam",
-        "sensus",
-    ]
-    
-    def replace_category(match):
-            cat = match.group(1)
-            if cat in sca.categories:
-                return f'[{sca.categories[cat]}]'
-            if cat.startswith('[') and cat.endswith(']'):
-                return cat[1:-1]
-            return cat
-    print(re.sub(r'(\[.*?\])', replace_category, 'V'))
-
-    output = sca.process_lexicon(
-        lexicon,
-        output_format='comparison',
-        report_rules=True,
-        show_diff=True
-    )
-    with open('output.txt', 'w', encoding='utf-8') as f:
-        for item in output:
-            f.write(item + '\n')
+    main()

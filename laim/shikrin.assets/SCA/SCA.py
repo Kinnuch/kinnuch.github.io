@@ -1,4 +1,4 @@
-import re
+import regex
 from dataclasses import dataclass
 
 def load_categories(category_file: str) -> dict:
@@ -129,7 +129,7 @@ def parse_rule(rule_str: str, categories: dict, replacements: list) -> Rule:
 
     # 处理目标/替换中的类别（如 V, [aei]）
     target = _expand_category(target, categories)
-    replacement = _expand_category(replacement, categories)
+    # replacement = _expand_category(replacement, categories)
 
     # 处理左/右上下文中的符号（# 词边界、... 跨位置、() 可选元素）
     left_pattern = _context_to_regex(left_context.strip(), categories, 0)
@@ -142,10 +142,7 @@ def _expand_category(s: str, categories: dict) -> str:
     将字符串中的音类符号（如 V 或 [aei]）展开为字符集合
     示例：V → aeiou，[ao] → ao
     """
-    if s!= "" and s[0].upper() and s[0] in categories:
-        return '[' + categories[s[0]] + ']'
-    else:
-        return s
+    return regex.sub(r'[A-Z]', lambda m: '[' + categories[m.group(0)] + ']', s)
 
 def _context_to_regex(context: str, categories: dict, direction: int) -> str:
     """
@@ -181,11 +178,13 @@ def _context_to_regex(context: str, categories: dict, direction: int) -> str:
 def systematical_replacement(waitingstr: str, pos: int) -> str:
     """
     系统化替换，返回替换后的字符串
+    pos 是形如[aeiou]中本次匹配到的具体字符
+    waitingstr 是替换音素中被展开的范畴，等待将对应的字符替换，形如aei
     """
     if pos > len(waitingstr):
         return ""
     else:
-        return waitingstr[pos]
+        return waitingstr[pos - 1]
 
 def _apply_replacement(target: str, replacement: str, original: str, categories: dict) -> str:
     """
@@ -198,8 +197,7 @@ def _apply_replacement(target: str, replacement: str, original: str, categories:
     elif replacement == "":
         return ""           # 脱落
     else:
-        pos = original.find(target)
-        re.sub(r'[A-Z]', lambda m: systematical_replacement(categories[m.group(0)], pos), replacement)
+        replacement = regex.sub(r'[A-Z]', lambda m: systematical_replacement(categories[m.group(0)], original.find(target)), replacement)
         return replacement   # 直接替换或增生
 
 def load_rules(rule_file: str, categories: dict, replacements: list) -> list[Rule]:
@@ -238,12 +236,12 @@ def main():
         # 逐条应用规则
         for rule in rules:
             # 构建正则表达式
-            pattern = re.compile(
-                f"({rule.left_context})({rule.target})({rule.right_context})"
+            pattern = regex.compile(
+                f"(?<={rule.left_context})({rule.target})(?={rule.right_context})"
             )
             # 执行替换
             new_current = pattern.sub(
-                lambda m: m.group(1) + _apply_replacement(m.group(2), rule.replacement, rule.target, categories) + m.group(3),
+                lambda m: _apply_replacement(m.group(0), rule.replacement, rule.target, categories),
                 current
             )
             # 如果规则是中间体标记，记录当前状态

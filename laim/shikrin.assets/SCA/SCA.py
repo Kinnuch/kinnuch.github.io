@@ -99,7 +99,7 @@ class Rule:
     right_context: str   # 右上下文正则模式
     is_intermediate: bool = False  # 是否为中间体标记
 
-def parse_rule(rule_str: str, categories: dict) -> Rule:
+def parse_rule(rule_str: str, categories: dict, replacements: list) -> Rule:
     """
     解析单条音变规则，返回 Rule 对象
     格式：目标 > 替换 / 左上下文_右上下文
@@ -121,13 +121,19 @@ def parse_rule(rule_str: str, categories: dict) -> Rule:
     target = target.strip()
     replacement = replacement.strip()
 
+    # 替换目标中满足规则的连字
+    target = apply_replacements(target, replacements)
+    replacement = apply_replacements(replacement, replacements)
+    left_context = apply_replacements(left_context, replacements)
+    right_context = apply_replacements(right_context, replacements)
+
     # 处理目标/替换中的类别（如 V, [aei]）
     target = _expand_category(target, categories)
     replacement = _expand_category(replacement, categories)
 
     # 处理左/右上下文中的符号（# 词边界、... 跨位置、() 可选元素）
-    left_pattern = _context_to_regex(left_context.strip(), categories)
-    right_pattern = _context_to_regex(right_context.strip(), categories)
+    left_pattern = _context_to_regex(left_context.strip(), categories, 0)
+    right_pattern = _context_to_regex(right_context.strip(), categories, 1)
 
     return Rule(target, replacement, left_pattern, right_pattern)
 
@@ -136,27 +142,12 @@ def _expand_category(s: str, categories: dict) -> str:
     将字符串中的音类符号（如 V 或 [aei]）展开为字符集合
     示例：V → aeiou，[ao] → ao
     """
-    expanded = []
-    i = 0
-    while i < len(s):
-        if s[i] == '[':
-            # 临时类别 [ao]
-            j = i + 1
-            while j < len(s) and s[j] != ']':
-                j += 1
-            expanded.append(s[i+1:j])
-            i = j + 1
-        elif s[i].isupper() and s[i] in categories:
-            # 预定义类别（如 V=aeiou）
-            expanded.append(categories[s[i]])
-            i += 1
-        else:
-            # 普通字符
-            expanded.append(s[i])
-            i += 1
-    return ''.join(expanded)
+    if s!= "" and s[0].upper() and s[0] in categories:
+        return '[' + categories[s[0]] + ']'
+    else:
+        return s
 
-def _context_to_regex(context: str, categories: dict) -> str:
+def _context_to_regex(context: str, categories: dict, direction: int) -> str:
     """
     将上下文描述（如 "a(...)b#..."）转换为正则表达式模式
     """
@@ -165,9 +156,12 @@ def _context_to_regex(context: str, categories: dict) -> str:
     while i < len(context):
         c = context[i]
         if c == '#':
-            regex.append(r'\b')  # 词边界
+            if direction == 0:
+                regex.append('^')
+            else:
+                regex.append('$')
         elif c == '.' and i+2 < len(context) and context[i:i+3] == '...':
-            regex.append(r'.*')  # 跨位置匹配
+            regex.append('.*')  # 跨位置匹配
             i += 2
         elif c == '(':
             # 可选元素，如 (c) → (?:c)?
@@ -175,33 +169,25 @@ def _context_to_regex(context: str, categories: dict) -> str:
             while j < len(context) and context[j] != ')':
                 j += 1
             inner = _expand_category(context[i+1:j], categories)
-            regex.append(f'(?:{re.escape(inner)})?')
+            regex.append(f'(?:{inner})?')
             i = j
         else:
             # 普通字符或类别
             expanded = _expand_category(c, categories)
-            regex.append(re.escape(expanded))
+            regex.append(expanded)
         i += 1
     return ''.join(regex)
 
-def apply_rules(word: str, rules: list[Rule]) -> str:
+def systematical_replacement(waitingstr: str, pos: int) -> str:
     """
-    对单个词汇按顺序应用所有音变规则
+    系统化替换，返回替换后的字符串
     """
-    current = word
-    for rule in rules:
-        # 构建完整正则表达式：左上下文 + 目标 + 右上下文
-        pattern = re.compile(
-            f"({rule.left_context})({rule.target})({rule.right_context})"
-        )
-        # 执行替换
-        current = pattern.sub(
-            lambda m: _apply_replacement(m.group(2), rule.replacement),
-            current
-        )
-    return current
+    if pos > len(waitingstr):
+        return ""
+    else:
+        return waitingstr[pos]
 
-def _apply_replacement(target: str, replacement: str) -> str:
+def _apply_replacement(target: str, replacement: str, original: str, categories: dict) -> str:
     """
     根据替换规则生成实际替换结果
     """
@@ -212,9 +198,11 @@ def _apply_replacement(target: str, replacement: str) -> str:
     elif replacement == "":
         return ""           # 脱落
     else:
+        pos = original.find(target)
+        re.sub(r'[A-Z]', lambda m: systematical_replacement(categories[m.group(0)], pos), replacement)
         return replacement   # 直接替换或增生
 
-def load_rules(rule_file: str, categories: dict) -> list[Rule]:
+def load_rules(rule_file: str, categories: dict, replacements: list) -> list[Rule]:
     """
     读取 Rule.txt，返回解析后的规则列表
     """
@@ -225,7 +213,7 @@ def load_rules(rule_file: str, categories: dict) -> list[Rule]:
                 line = line.strip()
                 if not line or line.startswith("#"):
                     continue
-                rule = parse_rule(line, categories)
+                rule = parse_rule(line, categories, replacements)
                 rules.append(rule)
     except FileNotFoundError:
         raise Exception(f"Rule file {rule_file} not found")
@@ -236,8 +224,9 @@ def main():
     categories = load_categories("Category.txt")
     replacements = load_replacements("Replace.txt")
     lexicon = load_lexicon("Lexicon.txt")
-    rules = load_rules("Rule.txt", categories)
+    rules = load_rules("Rule.txt", categories, replacements)
     output_list = []
+    debug_output = []
 
     # 处理每个词汇
     for word in lexicon:
@@ -254,14 +243,18 @@ def main():
             )
             # 执行替换
             new_current = pattern.sub(
-                lambda m: _apply_replacement(m.group(2), rule.replacement),
+                lambda m: m.group(1) + _apply_replacement(m.group(2), rule.replacement, rule.target, categories) + m.group(3),
                 current
             )
             # 如果规则是中间体标记，记录当前状态
             if rule.is_intermediate:
-                intermediates.append(new_current)
+                intermediates.append(revert_replacements(new_current, replacements))
+            # 记录调试信息
+            if new_current != current:
+                debug_output.append(f"{current} → {new_current} ({rule.target} → {rule.replacement})")
+            
             current = new_current
-        
+            
         # 后处理：恢复原始字符（如 θ→th）
         final_word = revert_replacements(current, replacements)
         
@@ -272,6 +265,8 @@ def main():
     # 输出最终结果    
     with open("Output.txt", 'w', encoding='utf-8') as f:
         f.write('\n'.join(output_list))
+    with open("Debug.txt", 'w', encoding='utf-8') as f:
+        f.write('\n'.join(debug_output))
 
 if __name__ == "__main__":
     main()

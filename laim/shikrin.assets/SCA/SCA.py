@@ -95,8 +95,9 @@ def load_lexicon(lexicon_file: str) -> list[str]:
 class Rule:
     target: str          # 目标音素（可能包含类别或临时类别）
     replacement: str     # 替换音素（支持特殊符号如 \\, 2）
-    left_context: str    # 左上下文正则模式
-    right_context: str   # 右上下文正则模式
+    left_context: list[str]    # 左上下文正则模式
+    right_context: list[str]   # 右上下文正则模式
+    exceptions: str      # 需要排除的正则模式
     is_intermediate: bool = False  # 是否为中间体标记
 
 def parse_rule(rule_str: str, categories: dict, replacements: list) -> Rule:
@@ -106,15 +107,30 @@ def parse_rule(rule_str: str, categories: dict, replacements: list) -> Rule:
     """
     # 判断中间体
     if rule_str == "-*":
-        return Rule("", "", "", "", is_intermediate=True)
+        return Rule("", "", [""], [""], "", is_intermediate=True)
 
     # 分割目标/替换和上下文
+    left_context, right_context = [], []
     if "/" in rule_str:
-        rule_part, context_part = rule_str.split("/", 1)
-        left_context, right_context = context_part.strip().split("_", 1)
+        rule_part, context_part = rule_str.split("/", 1)    # 先分出替换部分和上下文部分
+        if "-" in context_part:
+            context_part, exception_part = context_part.strip().split("-", 1) # 再分出排除部分
+        else:
+            exception_part = ""
+        if "," in context_part:
+            context_array = context_part.strip().split(",")     # 再分出各条上下文
+            for each_context in context_array:
+                now_left_context, now_right_context = each_context.strip().split("_", 1)
+                left_context.append(now_left_context)
+                right_context.append(now_right_context)
+        else:
+            now_left_context, now_right_context = context_part.strip().split("_", 1)
+            left_context.append(now_left_context)
+            right_context.append(now_right_context)
     else:
         rule_part = rule_str
-        left_context, right_context = "", ""
+        left_context, right_context = [""], [""]
+        exception_part = ""
     
     # 分割目标和替换
     target, replacement = rule_part.strip().split(">", 1)
@@ -124,18 +140,18 @@ def parse_rule(rule_str: str, categories: dict, replacements: list) -> Rule:
     # 替换目标中满足规则的连字
     target = apply_replacements(target, replacements)
     replacement = apply_replacements(replacement, replacements)
-    left_context = apply_replacements(left_context, replacements)
-    right_context = apply_replacements(right_context, replacements)
+    left_context = [apply_replacements(each_context, replacements) for each_context in left_context]
+    right_context = [apply_replacements(each_context, replacements) for each_context in right_context]
 
     # 处理目标/替换中的类别（如 V, [aei]）
     target = _expand_category(target, categories)
     # replacement = _expand_category(replacement, categories)
 
     # 处理左/右上下文中的符号（# 词边界、... 跨位置、() 可选元素）
-    left_pattern = _context_to_regex(left_context.strip(), categories, 0)
-    right_pattern = _context_to_regex(right_context.strip(), categories, 1)
+    left_pattern = [_context_to_regex(each_context.strip(), categories, 0) for each_context in left_context]
+    right_pattern = [_context_to_regex(each_context.strip(), categories, 1) for each_context in right_context]
 
-    return Rule(target, replacement, left_pattern, right_pattern)
+    return Rule(target, replacement, left_pattern, right_pattern, exception_part)
 
 def _expand_category(s: str, categories: dict) -> str:
     """
@@ -236,14 +252,17 @@ def main():
         # 逐条应用规则
         for rule in rules:
             # 构建正则表达式
-            pattern = regex.compile(
-                f"(?<={rule.left_context})({rule.target})(?={rule.right_context})"
-            )
-            # 执行替换
-            new_current = pattern.sub(
-                lambda m: _apply_replacement(m.group(0), rule.replacement, rule.target, categories),
-                current
-            )
+            for i in range(len(rule.left_context)):
+                pattern = regex.compile(
+                    f"(?<={rule.left_context[i]})({rule.target})(?={rule.right_context[i]})"
+                )
+                # 执行替换
+                new_current = pattern.sub(
+                    lambda m: _apply_replacement(m.group(0), rule.replacement, rule.target, categories),
+                    current
+                )
+            # Todo: 排除规则
+
             # 如果规则是中间体标记，记录当前状态
             if rule.is_intermediate:
                 intermediates.append(revert_replacements(new_current, replacements))

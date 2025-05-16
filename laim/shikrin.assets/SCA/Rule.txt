@@ -1,19 +1,16 @@
-e > a / _h
-e > a / h_
-e > o / _x
-e > o / x_
+e > a / _h , h_
+e > o / _x , x_
 Y > M / _
 O > F / _
-n > en / #|C_C
-m > em / #|C_C
+> e / #|C_[nm]C
 l > al / #|C_C
 r > ur / #|C_C
 -*
-h > / V_V
-h > e / C_C
-x > / V_V
-x > e / C_C
+[hx] > / V_V
+[hx] > e / C_C
 [hx] > a / #_C
+w > u / _#
+w > / F_V , V_F
 B > Z / #_
 B > N / V_V
 s > th / #|V_V

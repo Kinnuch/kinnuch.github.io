@@ -252,6 +252,7 @@ def main():
         # 逐条应用规则
         for rule in rules:
             # 构建正则表达式
+            lst_current = current
             for i in range(len(rule.left_context)):
                 pattern = regex.compile(
                     f"(?<={rule.left_context[i]})({rule.target})(?={rule.right_context[i]})"
@@ -259,8 +260,9 @@ def main():
                 # 执行替换
                 new_current = pattern.sub(
                     lambda m: _apply_replacement(m.group(0), rule.replacement, rule.target, categories),
-                    current
+                    lst_current
                 )
+                lst_current = new_current
             # Todo: 排除规则
 
             # 如果规则是中间体标记，记录当前状态

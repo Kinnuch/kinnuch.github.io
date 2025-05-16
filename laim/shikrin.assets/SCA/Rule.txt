@@ -5,6 +5,7 @@ O > F / _
 > e / #|C_[nm]C
 l > al / #|C_C
 r > ur / #|C_C
+TR > \ / _
 -*
 [hx] > / V_V
 [hx] > e / C_C
@@ -16,3 +17,9 @@ B > N / V_V
 s > th / #|V_V
 n > l / _...m
 DD > L / _
+-*
+RR > R / _
+Q > Z / x_ , _x
+Z > Q / h_ , _h
+[hx] > / _
+Q > A / _

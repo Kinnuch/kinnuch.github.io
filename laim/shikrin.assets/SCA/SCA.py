@@ -257,12 +257,29 @@ def main():
                 pattern = regex.compile(
                     f"(?<={rule.left_context[i]})({rule.target})(?={rule.right_context[i]})"
                 )
+                if rule.exceptions != "":
+                    left_exclude, right_exclude = rule.exceptions.strip().split("_", 1)
+                    pattern_exclude = regex.compile(
+                        f"(?<={left_exclude})({rule.target})(?={right_exclude})"
+                    )
+                    exclude_ranges = [(m.start(), m.end()) for m in pattern_exclude.finditer(lst_current)]
+
+                    def replacer(match):
+                        start, end = match.start(), match.end()
+                        for ex_start, ex_end in exclude_ranges:
+                            if start >= ex_start and end <= ex_end:
+                                return match.group(0)
+                        return _apply_replacement(match.group(0), rule.replacement, rule.target, categories)
+
+                    new_current = pattern.sub(replacer, lst_current)
+                    lst_current = new_current
                 # 执行替换
-                new_current = pattern.sub(
-                    lambda m: _apply_replacement(m.group(0), rule.replacement, rule.target, categories),
-                    lst_current
-                )
-                lst_current = new_current
+                else:
+                    new_current = pattern.sub(
+                        lambda m: _apply_replacement(m.group(0), rule.replacement, rule.target, categories),
+                        lst_current
+                    )
+                    lst_current = new_current
             # Todo: 排除规则
 
             # 如果规则是中间体标记，记录当前状态

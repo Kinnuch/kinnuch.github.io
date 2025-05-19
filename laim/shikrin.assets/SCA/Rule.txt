@@ -22,4 +22,5 @@ RR > R / _
 Q > Z / x_ , _x
 Z > Q / h_ , _h
 [hx] > / _
-Q > A / _
+Q > A / V_V
+fh > / _ - #_

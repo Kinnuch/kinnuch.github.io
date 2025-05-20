@@ -1,4 +1,7 @@
+import os
 import regex
+import zipfile
+from pathlib import Path
 from dataclasses import dataclass
 
 def load_categories(category_file: str) -> dict:
@@ -173,9 +176,9 @@ def _context_to_regex(context: str, categories: dict, direction: int) -> str:
                 regex.append('^')
             else:
                 regex.append('$')
-        elif c == '.' and i+2 < len(context) and context[i:i+3] == '...':
+        elif c == '?': 
+            # 原...跨位置匹配，但.用于区分非二合字母导致去点时误伤，现改为?
             regex.append('.*')  # 跨位置匹配
-            i += 2
         elif c == '(':
             # 可选元素，如 (c) → (?:c)?
             j = i + 1
@@ -232,6 +235,27 @@ def load_rules(rule_file: str, categories: dict, replacements: list) -> list[Rul
     except FileNotFoundError:
         raise Exception(f"Rule file {rule_file} not found")
     return rules
+
+def pack_files(files_to_pack, output_dir='.', status=0):
+    if status == 0:
+        return
+    zip_name = input("Please input the name of the zip file: ").strip()
+    if not zip_name:
+        zip_name = 'archive'
+    zip_name = zip_name if zip_name.endswith('.zip') else f'{zip_name}.zip'
+    zip_path = os.path.join(output_dir, zip_name)
+
+    try:
+        with zipfile.ZipFile(zip_path, 'w', zipfile.ZIP_DEFLATED) as zf:
+            for file in files_to_pack:
+                if os.path.exists(file):
+                    zf.write(file, os.path.basename(file))
+                    print(f"Added {file} to {zip_path}")
+                else:
+                    print(f"File {file} not found, skipped.")
+        print(f"Done! The zip file has been saved to {zip_path}")
+    except Exception as e:
+        print(f"Error: {e}")
 
 def main():
     # 加载输入文件
@@ -303,6 +327,9 @@ def main():
         f.write('\n'.join(output_list))
     with open("Debug.txt", 'w', encoding='utf-8') as f:
         f.write('\n'.join(debug_output))
+
+    files_to_pack = ['Category.txt', 'Replace.txt', 'Lexicon.txt', 'Rule.txt', 'Output.txt', 'Debug.txt']
+    pack_files(files_to_pack, status=1)
 
 if __name__ == "__main__":
     main()

@@ -15,7 +15,7 @@ w > / F_V , V_F
 B > Z / #_
 B > N / V_V
 s > th / #|V_V
-n > l / _...m
+n > l / _?m
 DD > L / _
 -*
 RR > R / _

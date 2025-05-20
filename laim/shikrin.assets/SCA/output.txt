@@ -1,55 +1,55 @@
-Proto-Lang | Target-Lang
-ronós → ronós
-hadsón → aadsón
-ᵐbxᵐbxtí → ᵐbeᵐbetí
-k̂elepw → selep
-slkmó → salṇkó
-phbsé → pebsé
-marlón → marlón
-ulésin → ulésin
-khdéur → kedéur
-kesa → kes
-rbxaren → urbaren
-yoĝam → yozam
-ĝlka → zalk
-heisin → aeisin
-swosam → swosam
-gʷnsap → gensap
-dāts → dats
-bekʷhg → bekeg
-tmngwa → temeṇgw
-hk̂rgar → ssurgar
-ᵐbalarhg → ᵐbalareg
-haserw → aaser
-loraᵑgwe → loraᵑgw
-drbwar → durbwar
-reikwar → rkwar
-hᵑgmen → aṇᵑgen
-nrhno → enuren
-lerya → lery
-ᵐbaᵐbatweh → ᵐbaᵐbatw
-weu → weu
-hēm → aēm
-k̂a → s
-kek̂ → kes
-hōp → aōp
-yona → yon
-pei → pei
-ᶮĝax → nz
-yok̂ → yos
-lein → lein
-teus → teus
-yōn → yōn
-ⁿdelosgar → ⁿdelozgar
-weyaw → weya
-ᶮĝnrna → nzenurn
-sok̂ren → seusren
-yabarge → yabarg
-modra → mord
-popemw → popem
-nmĝ → elímz
-hotat → aotat
-hams → aams
-dow → do
-hotant → aotant
-yoms → yoms
+Proto-Shikrin | Early Proto-Theusrin | Middle Proto-Theusrin | Late Proto-Theusrin
+ronós → ronós → ronós → runós
+hadsón → hadsón → aadsón → ādsón
+ᵐbxᵐbxtí → ᵐbxᵐbxtí → ᵐbeᵐbetí → ᵐbeᵐbetí
+k̂elepw → selepw → selepu → syilep
+slkmó → salkmó → salghkó → salghkó
+phbsé → phbsé → pebsé → pebsé
+marlón → marlón → marlón → marrón
+ulésin → uléthin → uléthin → uléthin
+khdéur → khdéur → kedéur → kedéur
+kesa → ketha → ketha → keth
+rbxaren → urbxaren → urbaren → urbarin
+yoĝam → yozam → yozam → yozam
+ĝlka → zalka → zalka → zalk
+heisin → heithin → aeithin → eithin
+swosam → swotham → swotham → swotham
+gʷnsap → gensap → gensap → ginsap
+dāts → dāts → dats → dats
+bekʷhg → bekhg → bekeg → bekeg
+tmngwa → temengwa → temeṇguwa → timeṇguw
+hk̂rgar → hsurgar → asurgar → asurgar
+ᵐbalarhg → ᵐbalarhg → ᵐbalareg → ᵐbalareg
+haserw → hatherw → aatheru → āthir
+loraᵑgwe → loraᵑgwe → loraᵑgwe → luraᵑgw
+drbwar → durbwar → durbuwar → durbuwar
+reikwar → reikwar → reikuwar → reikuwar
+hᵑgmen → hᵑgmen → aṇᵑgen → aṇᵑgin
+nrhno → enurhno → enureno → inurin
+lerya → lerya → lerya → liry
+ᵐbaᵐbatweh → ᵐbaᵐbatwah → ᵐbaᵐbatwah → ᵐbaᵐbatwah
+weu → weu → weu → weu
+hēm → hēm → aēm → ēm
+k̂a → sa → sa → sa
+kek̂ → kes → kes → kis
+hōp → hōp → aōp → ōp
+yona → yona → yona → eun
+pei → pei → pei → pei
+ᶮĝax → nzax → nzax → nzax
+yok̂ → yos → yos → eus
+lein → lein → lein → lein
+teus → teus → teus → teus
+yōn → yōn → yōn → yōn
+ⁿdelosgar → ⁿdelosgar → ⁿdelozgar → ⁿdilozgar
+weyaw → weyaw → weyau → weya
+ᶮĝnrna → nzenurna → nzenurna → nzinurn
+sok̂ren → thosren → thosren → theusrin
+yabarge → yabarge → yabarge → yabarg
+modra → modra → morda → murd
+popemw → popemw → popemu → popim
+nmĝ → enemz → elemz → ilimz
+hotat → hotat → aotat → ātat
+hams → hams → aams → āms
+dow → dow → dou → do
+hotant → hotant → aotant → ātant
+yoms → yoms → yoms → eums

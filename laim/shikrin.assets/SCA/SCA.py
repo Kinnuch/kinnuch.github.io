@@ -100,7 +100,8 @@ class Rule:
     replacement: str     # 替换音素（支持特殊符号如 \\, 2）
     left_context: list[str]    # 左上下文正则模式
     right_context: list[str]   # 右上下文正则模式
-    exceptions: str      # 需要排除的正则模式
+    left_exception: str = ""    # 需要排除的左正则模式
+    right_exception: str = ""    # 需要排除的右正则模式
     is_intermediate: bool = False  # 是否为中间体标记
     period_name: str = "" # 中间体名称
 
@@ -112,7 +113,7 @@ def parse_rule(rule_str: str, categories: dict, replacements: list) -> Rule:
     # 判断中间体
     if "-*" in rule_str:
         tmp_period_name = rule_str.split("-*")[1].strip()
-        return Rule("", "", [""], [""], "", is_intermediate=True, period_name=tmp_period_name)
+        return Rule("", "", [""], [""], "", "", is_intermediate=True, period_name=tmp_period_name)
 
     # 分割目标/替换和上下文
     left_context, right_context = [], []
@@ -139,12 +140,18 @@ def parse_rule(rule_str: str, categories: dict, replacements: list) -> Rule:
     
     # 分割目标和替换
     target, replacement = rule_part.strip().split(">", 1)
+    if exception_part != "":
+        left_e, right_e = exception_part.strip().split("_", 1)
+    else:
+        left_e, right_e = "", ""
     target = target.strip()
     replacement = replacement.strip()
 
     # 替换目标中满足规则的连字
     target = apply_replacements(target, replacements)
     replacement = apply_replacements(replacement, replacements)
+    left_e = apply_replacements(left_e, replacements)
+    right_e = apply_replacements(right_e, replacements)
     left_context = [apply_replacements(each_context, replacements) for each_context in left_context]
     right_context = [apply_replacements(each_context, replacements) for each_context in right_context]
 
@@ -155,8 +162,10 @@ def parse_rule(rule_str: str, categories: dict, replacements: list) -> Rule:
     # 处理左/右上下文中的符号（# 词边界、... 跨位置、() 可选元素）
     left_pattern = [_context_to_regex(each_context.strip(), categories, 0) for each_context in left_context]
     right_pattern = [_context_to_regex(each_context.strip(), categories, 1) for each_context in right_context]
+    left_e = _context_to_regex(left_e.strip(), categories, 0)
+    right_e = _context_to_regex(right_e.strip(), categories, 1)
 
-    return Rule(target, replacement, left_pattern, right_pattern, exception_part)
+    return Rule(target, replacement, left_pattern, right_pattern, left_e, right_e)
 
 def _expand_category(s: str, categories: dict) -> str:
     """
@@ -267,7 +276,8 @@ def main():
     rules = load_rules("Rule.txt", categories, replacements)
     output_list = []
     debug_output = []
-    column_name = ['Proto-Lang']
+    #column_name = ['Proto-Lang']
+    column_name = []
     column_row = []
 
     # 处理每个词汇
@@ -285,10 +295,9 @@ def main():
                 pattern = regex.compile(
                     f"(?<={rule.left_context[i]})({rule.target})(?={rule.right_context[i]})"
                 )
-                if rule.exceptions != "":
-                    left_exclude, right_exclude = rule.exceptions.strip().split("_", 1)
+                if rule.left_exception != "" or rule.right_exception != "":
                     pattern_exclude = regex.compile(
-                        f"(?<={left_exclude})({rule.target})(?={right_exclude})"
+                        f"(?<={rule.left_exception})({rule.target})(?={rule.right_exception})"
                     )
                     exclude_ranges = [(m.start(), m.end()) for m in pattern_exclude.finditer(lst_current)]
 
@@ -327,11 +336,12 @@ def main():
         final_word = revert_replacements(current, replacements)
         
         # 构建输出格式：原始词 → 中间体1 → 中间体2 → ... → 最终词
-        output_parts = [word] + intermediates + [final_word]
+        # output_parts = [word] + intermediates + [final_word]
+        output_parts = intermediates
         output_list.append(' → '.join(output_parts))
         
     # 输出最终结果
-    column_name.append('Target-Lang')
+    # column_name.append('Target-Lang')
     with open("Output.txt", 'w', encoding='utf-8') as f:
         f.write(' | '.join(column_name) + '\n')
         f.write('\n'.join(output_list))

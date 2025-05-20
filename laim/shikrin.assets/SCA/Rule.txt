@@ -1,25 +1,40 @@
+-* Proto-Shikrin
 e > a / _h , h_
 e > o / _x , x_
+s > th / #|V_V
 Y > M / _
 O > F / _
 > e / #|C_[nm]C
 l > al / #|C_C
 r > ur / #|C_C
-Zx > I / _#, _S, S_
+-* Early Proto-Theusrin
+Zx > I / _# , _S , S_
+G > WG / LC|PC_V , VCC_V
 G > W / _#
-G > / L_
-Hs > ss / _
+G > / L|P_
 L > D / _CC
 H > e / C_C
 h > a / #_
+Hs > ss / _
 H > / _ - _#
 Z > / CM_
 TR > \ / _
 n > m / _[pbβ]
 m > n / _[tdδ]
 [nm] > ṇ / _F
-nV > lV / _?m
-rV > mV / _?l
+n > l / _V?m
+r > m / _V?l
+ṇ > n / _s
+ṇ > g / [lr]_V
+ṇ > gh / C_C
 s > z / _Z
-D > / _#
-o > eu / s|M_
+-* Middle Proto-Theusrin
+D > / _# - #C_#
+> y / #A|SC_[oe] - _[oe]C(C)S
+[oe] > W / _R|s
+yu > ò / _
+D > L / _D
+D > / L|P_ , _L|P
+r > l / l_
+l > r / r_
+-* Late Proto-Theusrin

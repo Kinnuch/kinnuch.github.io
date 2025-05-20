@@ -5,22 +5,21 @@ O > F / _
 > e / #|C_[nm]C
 l > al / #|C_C
 r > ur / #|C_C
+Zx > I / _#, _S, S_
+G > W / _#
+G > / L_
+Hs > ss / _
+L > D / _CC
+H > e / C_C
+h > a / #_
+H > / _ - _#
+Z > / CM_
 TR > \ / _
--*
-[hx] > / V_V
-[hx] > e / C_C
-[hx] > a / #_C
-w > u / _#
-w > / F_V , V_F
-B > Z / #_
-B > N / V_V
-s > th / #|V_V
-n > l / _?m
-DD > L / _
--*
-RR > R / _
-Q > Z / x_ , _x
-Z > Q / h_ , _h
-[hx] > / _
-Q > A / V_V
-fh > / _ - #_
+n > m / _[pbβ]
+m > n / _[tdδ]
+[nm] > ṇ / _F
+nV > lV / _?m
+rV > mV / _?l
+s > z / _Z
+D > / _#
+o > eu / s|M_

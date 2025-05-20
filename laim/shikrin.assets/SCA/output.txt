@@ -1,54 +1,55 @@
-ronós → ronós → ronós → ronós
-hadsón → hadsón → hadsón → adsón
-ᵐbxᵐbxtí → ᵐbxᵐbxtí → bemetí → bemethí
-k̂elepw → selepw → thelepu → theleu
-slkmó → salmkó → thalmkó → thalkó
-phbsé → phbsé → pebsé → pebsé
-marlón → marlón → marlón → malón
-ulésin → ulésin → uléthin → uléthin
-khdéur → khdéur → kedéur → kedéur
-kesa → kesa → ketha → ketha
-rbxaren → urbxaren → urbxaren → urbaren
-yoĝam → yozam → yozam → yozam
-ĝlka → zalka → zalka → zalka
-heisin → heisin → heithin → eithin
-swosam → swosam → swotham → swotham
-gʷnsap → gensap → gensap → gensap
-dāts → dāts → dāts → dāts
-bekʷhg → bekhg → bekeg → beheg
-tmngwa → temengwa → temenga → temenga
-hk̂rgar → hsurgar → athurgar → athurgar
-ᵐbalarhg → ᵐbalarhg → balareg → balareg
-haserw → haserw → hatheru → atheru
-loraᵑgwe → loraᵑgwe → loraxe → lorae
-drbwar → durbwar → durbwar → durbwar
-reikwar → reikwar → reikar → reihar
-hᵑgmen → hmᵑgen → amᵑgen → amᵑgen
-nrhno → enurhno → enureno → enureno
-lerya → lerya → lerya → lerya
-ᵐbaᵐbatweh → ᵐbaᵐbatwah → bamatwah → bamatwa
-weu → weu → weu → weu
-hēm → hēm → hēm → ēm
-k̂a → sa → tha → tha
-kek̂ → kes → kes → kes
-hōp → hōp → hōp → ōp
-yona → yona → yona → yona
-pei → pei → pei → pei
-ᶮĝax → nzax → nzax → nza
-yok̂ → yos → yos → yos
-lein → lein → lein → lein
-teus → teus → teus → teus
-yōn → yōn → yōn → yōn
-ⁿdelosgar → ⁿdelosgar → delosgar → delosgar
-weyaw → weyaw → weyei → weyei
-ᶮĝnrna → nzenurna → nzenurna → nzenula
-sok̂ren → sorsen → thorsen → thorsen
-yabarge → yabarge → yabarge → yabarge
-modra → morda → morda → morda
-popemw → popemw → popemu → poemu
-nmĝ → enemz → elemz → elemz
-hotat → hotat → hotat → othat
-hams → hams → hams → ams
-dow → dow → dei → dei
-hotant → hotant → hotant → othant
-yoms → yoms → yoms → yoms
+Proto-Lang | Target-Lang
+ronós → ronós
+hadsón → aadsón
+ᵐbxᵐbxtí → ᵐbeᵐbetí
+k̂elepw → selep
+slkmó → salṇkó
+phbsé → pebsé
+marlón → marlón
+ulésin → ulésin
+khdéur → kedéur
+kesa → kes
+rbxaren → urbaren
+yoĝam → yozam
+ĝlka → zalk
+heisin → aeisin
+swosam → swosam
+gʷnsap → gensap
+dāts → dats
+bekʷhg → bekeg
+tmngwa → temeṇgw
+hk̂rgar → ssurgar
+ᵐbalarhg → ᵐbalareg
+haserw → aaser
+loraᵑgwe → loraᵑgw
+drbwar → durbwar
+reikwar → rkwar
+hᵑgmen → aṇᵑgen
+nrhno → enuren
+lerya → lery
+ᵐbaᵐbatweh → ᵐbaᵐbatw
+weu → weu
+hēm → aēm
+k̂a → s
+kek̂ → kes
+hōp → aōp
+yona → yon
+pei → pei
+ᶮĝax → nz
+yok̂ → yos
+lein → lein
+teus → teus
+yōn → yōn
+ⁿdelosgar → ⁿdelozgar
+weyaw → weya
+ᶮĝnrna → nzenurn
+sok̂ren → seusren
+yabarge → yabarg
+modra → mord
+popemw → popem
+nmĝ → elímz
+hotat → aotat
+hams → aams
+dow → do
+hotant → aotant
+yoms → yoms

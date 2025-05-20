@@ -102,6 +102,7 @@ class Rule:
     right_context: list[str]   # 右上下文正则模式
     exceptions: str      # 需要排除的正则模式
     is_intermediate: bool = False  # 是否为中间体标记
+    period_name: str = "" # 中间体名称
 
 def parse_rule(rule_str: str, categories: dict, replacements: list) -> Rule:
     """
@@ -109,8 +110,9 @@ def parse_rule(rule_str: str, categories: dict, replacements: list) -> Rule:
     格式：目标 > 替换 / 左上下文_右上下文
     """
     # 判断中间体
-    if rule_str == "-*":
-        return Rule("", "", [""], [""], "", is_intermediate=True)
+    if "-*" in rule_str:
+        tmp_period_name = rule_str.split("-*")[1].strip()
+        return Rule("", "", [""], [""], "", is_intermediate=True, period_name=tmp_period_name)
 
     # 分割目标/替换和上下文
     left_context, right_context = [], []
@@ -265,6 +267,8 @@ def main():
     rules = load_rules("Rule.txt", categories, replacements)
     output_list = []
     debug_output = []
+    column_name = ['Proto-Lang']
+    column_row = []
 
     # 处理每个词汇
     for word in lexicon:
@@ -309,6 +313,10 @@ def main():
             # 如果规则是中间体标记，记录当前状态
             if rule.is_intermediate:
                 intermediates.append(revert_replacements(new_current, replacements))
+                if rule.period_name in column_name:
+                    continue
+                else:
+                    column_name.append(rule.period_name)
             # 记录调试信息
             if new_current != current:
                 debug_output.append(f"{current} → {new_current} ({rule.target} → {rule.replacement})")
@@ -322,14 +330,16 @@ def main():
         output_parts = [word] + intermediates + [final_word]
         output_list.append(' → '.join(output_parts))
         
-    # 输出最终结果    
+    # 输出最终结果
+    column_name.append('Target-Lang')
     with open("Output.txt", 'w', encoding='utf-8') as f:
+        f.write(' | '.join(column_name) + '\n')
         f.write('\n'.join(output_list))
     with open("Debug.txt", 'w', encoding='utf-8') as f:
         f.write('\n'.join(debug_output))
 
     files_to_pack = ['Category.txt', 'Replace.txt', 'Lexicon.txt', 'Rule.txt', 'Output.txt', 'Debug.txt']
-    pack_files(files_to_pack, status=1)
+    pack_files(files_to_pack, status=0)
 
 if __name__ == "__main__":
     main()

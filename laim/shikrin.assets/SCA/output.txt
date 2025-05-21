@@ -1,55 +1,55 @@
-Proto-Shikrin | Early Proto-Theusrin | Middle Proto-Theusrin | Late Proto-Theusrin
-ronós → ronós → ronós → runós
-hadsón → hadsón → aadsón → ādsón
-ᵐbxᵐbxtí → ᵐbxᵐbxtí → ᵐbeᵐbetí → ᵐbeᵐbetí
-k̂elepw → selepw → selepu → syilep
-slkmó → salkmó → salghkó → salghkó
-phbsé → phbsé → pebsé → pebsé
-marlón → marlón → marlón → marrón
-ulésin → uléthin → uléthin → uléthin
-khdéur → khdéur → kedéur → kedéur
-kesa → ketha → ketha → keth
-rbxaren → urbxaren → urbaren → urbarin
-yoĝam → yozam → yozam → yozam
-ĝlka → zalka → zalka → zalk
-heisin → heithin → aeithin → eithin
-swosam → swotham → swotham → swotham
-gʷnsap → gensap → gensap → ginsap
-dāts → dāts → dats → dats
-bekʷhg → bekhg → bekeg → bekeg
-tmngwa → temengwa → temeṇguwa → timeṇguw
-hk̂rgar → hsurgar → asurgar → asurgar
-ᵐbalarhg → ᵐbalarhg → ᵐbalareg → ᵐbalareg
-haserw → hatherw → aatheru → āthir
-loraᵑgwe → loraᵑgwe → loraᵑgwe → luraᵑgw
-drbwar → durbwar → durbuwar → durbuwar
-reikwar → reikwar → reikuwar → reikuwar
-hᵑgmen → hᵑgmen → aṇᵑgen → aṇᵑgin
-nrhno → enurhno → enureno → inurin
-lerya → lerya → lerya → liry
-ᵐbaᵐbatweh → ᵐbaᵐbatwah → ᵐbaᵐbatwah → ᵐbaᵐbatwah
-weu → weu → weu → weu
-hēm → hēm → aēm → ēm
-k̂a → sa → sa → sa
-kek̂ → kes → kes → kis
-hōp → hōp → aōp → ōp
-yona → yona → yona → eun
-pei → pei → pei → pei
-ᶮĝax → nzax → nzax → nzax
-yok̂ → yos → yos → eus
-lein → lein → lein → lein
-teus → teus → teus → teus
-yōn → yōn → yōn → yōn
-ⁿdelosgar → ⁿdelosgar → ⁿdelozgar → ⁿdilozgar
-weyaw → weyaw → weyau → weya
-ᶮĝnrna → nzenurna → nzenurna → nzinurn
-sok̂ren → thosren → thosren → theusrin
-yabarge → yabarge → yabarge → yabarg
-modra → modra → morda → murd
-popemw → popemw → popemu → popim
-nmĝ → enemz → elemz → ilimz
-hotat → hotat → aotat → ātat
-hams → hams → aams → āms
-dow → dow → dou → do
-hotant → hotant → aotant → ātant
-yoms → yoms → yoms → eums
+PSkr | EPTsr | MPTsr | LPTsr | OTsr
+ronós → ronós → ronós → runós → runós
+hadsón → hadsón → aadsón → ādsón → ātzón
+ᵐbxᵐbxtí → ᵐbxᵐbxtí → ᵐbeᵐbetí → ᵐbeᵐbetí → bemdhí
+k̂elepw → selepw → selepu → syilep → syilefh
+slkmó → salkmó → salghkó → salghkó → salghghó
+phbsé → phbsé → pebsé → pebsé → fhepzé
+marlón → marlón → marlón → marlón → marrón
+ulésin → uléthin → uléthin → uléthin → uléthin
+khdéur → khdéur → kedéur → kedéur → xetéur
+kesa → ketha → ketha → keth → xeth
+rbxaren → urbxaren → urbaren → urbarin → urparin
+yoĝam → yozam → yozam → yozam → yozam
+ĝlka → zalka → zalka → zalk → zalx
+heisin → heithin → aeithin → eithin → eithin
+swosam → swotham → swotham → swotham → swotham
+gʷnsap → gensap → gensap → ginsap → kissafh
+dāts → dāts → dats → dats → taths
+bekʷhg → bekhg → bekeg → bekeg → pexek
+tmngwa → temengwa → temeṇguwa → timeṇguw → thimeṇkuw
+hk̂rgar → hsurgar → asurgar → asurgar → asurkar
+ᵐbalarhg → ᵐbalarhg → ᵐbalareg → ᵐbalareg → ballek
+haserw → hatherw → aatheru → āthir → āthir
+loraᵑgwe → loraᵑgwe → loraᵑgwe → luraᵑgw → luraṇw
+drbwar → durbwar → durbuwar → durbuwar → turpuwar
+reikwar → reikwar → reikuwar → reikuwar → reixuwar
+hᵑgmen → hᵑgmen → aṇᵑgen → aṇᵑgin → aṇṇin
+nrhno → enurhno → enureno → inurin → inurin
+lerya → lerya → lerya → liry → liry
+ᵐbaᵐbatweh → ᵐbaᵐbatwah → ᵐbaᵐbatwah → ᵐbaᵐbatwah → bamathwah
+weu → weu → weu → weu → weu
+hēm → hēm → aēm → ēm → ēm
+k̂a → sa → sa → sa → sa
+kek̂ → kes → kes → kis → xis
+hōp → hōp → aōp → ōp → ōfh
+yona → yona → yona → eun → eun
+pei → pei → pei → pei → fhei
+ᶮĝax → nzax → nzax → nzax → nzax
+yok̂ → yos → yos → eus → eus
+lein → lein → lein → lein → lein
+teus → teus → teus → teus → theus
+yōn → yōn → yōn → yōn → yōn
+ⁿdelosgar → ⁿdelosgar → ⁿdelosgar → ⁿdilusgar → diluskar
+weyaw → weyaw → weyau → weya → weya
+ᶮĝnrna → nzenurna → nzenurna → nzinurn → nzinurn
+sok̂ren → thosren → thosren → theusrin → theusrin
+yabarge → yabarge → yabarge → yabarg → yapark
+modra → modra → morda → murd → murt
+popemw → popemw → popemu → popim → fhofhim
+nmĝ → enemz → elemz → ilimz → ilimz
+hotat → hotat → aotat → ātat → āthath
+hams → hams → aams → āms → āss
+dow → dow → dou → do → to
+hotant → hotant → aotant → ātant → āthanth
+yoms → yoms → yoms → eums → euss

@@ -14406,6 +14406,56 @@
     ]
   },
   {
+    "dict_form": "faen",
+    "part": "noun",
+    "english": "vapour, disembodied spirit",
+    "definition": "蒸汽；（无化身的）灵体",
+    "sentence": "\n\n",
+    "other": "现多用faer表示无化身的灵体，faen更多指蒸汽",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i faen"
+      },
+      {
+        "type": "Plural",
+        "form": "faen"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i faen"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an faen"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "en-faen"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin faen"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor faen"
+      },
+      {
+        "type": "Stop",
+        "form": "oph faen"
+      },
+      {
+        "type": "H",
+        "form": "ah faen"
+      },
+      {
+        "type": "DH",
+        "form": "nedh faen"
+      }
+    ]
+  },
+  {
     "dict_form": "faer",
     "part": "noun",
     "english": "spirit(in general)",
@@ -15052,56 +15102,6 @@
     ]
   },
   {
-    "dict_form": "faen",
-    "part": "noun",
-    "english": "vapour, disembodied spirit",
-    "definition": "蒸汽；（无化身的）灵体",
-    "sentence": "\n\n",
-    "other": "现多用faer表示无化身的灵体，faen更多指蒸汽",
-    "morphology": [
-      {
-        "type": "Soft",
-        "form": "i faen"
-      },
-      {
-        "type": "Plural",
-        "form": "faen"
-      },
-      {
-        "type": "NasalⅠ",
-        "form": "i faen"
-      },
-      {
-        "type": "NasalⅡ",
-        "form": "an faen"
-      },
-      {
-        "type": "MixedⅠ",
-        "form": "en-faen"
-      },
-      {
-        "type": "MixedⅡ",
-        "form": "anin faen"
-      },
-      {
-        "type": "Liquid",
-        "form": "egor faen"
-      },
-      {
-        "type": "Stop",
-        "form": "oph faen"
-      },
-      {
-        "type": "H",
-        "form": "ah faen"
-      },
-      {
-        "type": "DH",
-        "form": "nedh faen"
-      }
-    ]
-  },
-  {
     "dict_form": "fân",
     "part": "noun",
     "english": "(white) cloud, veil, curtain, form or vision of a spiritual being",
@@ -15198,6 +15198,678 @@
       {
         "type": "DH",
         "form": "nedh êl"
+      }
+    ]
+  },
+  {
+    "dict_form": "feir",
+    "part": "noun",
+    "english": "Mortal",
+    "definition": "凡人，凡夫俗子",
+    "sentence": "\n",
+    "other": "古-YA类词，干元音i；集体复数firiath",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": " i feir"
+      },
+      {
+        "type": "Plural",
+        "form": "fîr"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i fîr"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an feir"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "en-feir"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin feir"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor feir"
+      },
+      {
+        "type": "Stop",
+        "form": "oph feir"
+      },
+      {
+        "type": "H",
+        "form": "ah feir"
+      },
+      {
+        "type": "DH",
+        "form": "nedh feir"
+      }
+    ]
+  },
+  {
+    "dict_form": "fela",
+    "part": "noun",
+    "english": "mine, boring, tunnel, underground dwelling, minor excavations, den",
+    "definition": "矿，洞，隧道，地下居所，小型采掘点，矿坑",
+    "sentence": "\n",
+    "other": "昆雅语同源词felya；复数特殊变化fili",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i fela"
+      },
+      {
+        "type": "Plural",
+        "form": "fili"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i fili"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an fela"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "en-fela"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin fela"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor fela"
+      },
+      {
+        "type": "Stop",
+        "form": "oph fela"
+      },
+      {
+        "type": "H",
+        "form": "ah fela"
+      },
+      {
+        "type": "DH",
+        "form": "nedh fela"
+      }
+    ]
+  },
+  {
+    "dict_form": "felagund",
+    "part": "noun",
+    "english": "den-dweller, brock, badger",
+    "definition": "穴居者；獾",
+    "sentence": "\n",
+    "other": "芬罗德的名字",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i felagund"
+      },
+      {
+        "type": "Plural",
+        "form": "felagynd"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i felagynd"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an felagund"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "en-felagund"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin felagund"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor felagund"
+      },
+      {
+        "type": "Stop",
+        "form": "oph felagund"
+      },
+      {
+        "type": "H",
+        "form": "ah felagund"
+      },
+      {
+        "type": "DH",
+        "form": "nedh felagund"
+      }
+    ]
+  },
+  {
+    "dict_form": "feleg",
+    "part": "noun",
+    "english": "cave, mine, underground dwelling",
+    "definition": "洞穴，矿洞，地下居所",
+    "sentence": "\n",
+    "other": "昆雅语同源词felco",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i feleg"
+      },
+      {
+        "type": "Plural",
+        "form": "felig"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i felig"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an feleg"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "en-feleg"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin feleg"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor feleg"
+      },
+      {
+        "type": "Stop",
+        "form": "oph feleg"
+      },
+      {
+        "type": "H",
+        "form": "ah feleg"
+      },
+      {
+        "type": "DH",
+        "form": "nedh feleg"
+      }
+    ]
+  },
+  {
+    "dict_form": "fend",
+    "part": "noun",
+    "english": "door",
+    "definition": "（大）门",
+    "sentence": "[PE17/45][PE17/98][RC/550]\nFen Hollen.\n分霍尔兰，紧闭的大门\n",
+    "other": "昆雅语同源词fenna(fendë)",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i fend"
+      },
+      {
+        "type": "Plural",
+        "form": "find"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i find"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an fend"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "en-fend"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin fend"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor fend"
+      },
+      {
+        "type": "Stop",
+        "form": "oph fend"
+      },
+      {
+        "type": "H",
+        "form": "ah fend"
+      },
+      {
+        "type": "DH",
+        "form": "nedh fend"
+      }
+    ]
+  },
+  {
+    "dict_form": "fennas",
+    "part": "noun",
+    "english": "great door, doorway, gateway",
+    "definition": "大门，大门入口",
+    "sentence": "[LotR/307][PE17/45][RGEO/67]\nFennas nogothrim, lasto beth lammen.\n矮人之门，听吾号令\n",
+    "other": "fend + -as",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i fennas"
+      },
+      {
+        "type": "Plural",
+        "form": "fennais"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i fennais"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an fennas"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "en-fennas"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin fennas"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor fennas"
+      },
+      {
+        "type": "Stop",
+        "form": "oph fennas"
+      },
+      {
+        "type": "H",
+        "form": "ah fennas"
+      },
+      {
+        "type": "DH",
+        "form": "nedh fennas"
+      }
+    ]
+  },
+  {
+    "dict_form": "fergar",
+    "part": "adjective",
+    "english": "soon done",
+    "definition": "快做完的，快弄好的",
+    "sentence": "\n",
+    "other": "fer- + car-",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "fergar"
+      },
+      {
+        "type": "Plural",
+        "form": "fergair"
+      },
+      {
+        "type": "Comparative",
+        "form": "anfergar"
+      },
+      {
+        "type": "Superlative",
+        "form": "ro-fergar"
+      }
+    ]
+  },
+  {
+    "dict_form": "fergenol",
+    "part": "adjective",
+    "english": "quick to see or perceive, sharp-sighted or witted",
+    "definition": "快速感知的，眼神锐利的，目光锐利的，洞察的",
+    "sentence": "\n",
+    "other": "fer- + cen- + -ol",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "fergenol"
+      },
+      {
+        "type": "Plural",
+        "form": "fergenyl"
+      },
+      {
+        "type": "Comparative",
+        "form": "anfergenol"
+      },
+      {
+        "type": "Superlative",
+        "form": "ro-fergenol"
+      }
+    ]
+  },
+  {
+    "dict_form": "feria-",
+    "part": "verb",
+    "english": "to make ready(promptly)",
+    "definition": "准备（及时地），做足准备",
+    "sentence": "\n",
+    "other": "昆雅语同源词ferya-",
+    "morphology": [
+      {
+        "type": "Present",
+        "form": "feria/feri(o)-"
+      },
+      {
+        "type": "Past",
+        "form": "feriant/ferianne-"
+      },
+      {
+        "type": "Future",
+        "form": "feriatha/feriath(o)-"
+      },
+      {
+        "type": "Imperative",
+        "form": "ferio"
+      },
+      {
+        "type": "Gerund",
+        "form": "feriad"
+      },
+      {
+        "type": "PastParticiple",
+        "form": "feriannen"
+      },
+      {
+        "type": "PresentParticiple",
+        "form": "feriol"
+      },
+      {
+        "type": "PeferctParticle",
+        "form": "feriel"
+      }
+    ]
+  },
+  {
+    "dict_form": "fern",
+    "part": "noun",
+    "english": "the dead",
+    "definition": "死者，亡者",
+    "sentence": "[S/188]\nDor Firn-i-Guinar.\n多尔费恩-伊-圭那，死而复生者之地\n",
+    "other": "√PHIR",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i fern"
+      },
+      {
+        "type": "Plural",
+        "form": "firn"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i firn"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an fern"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "en-fern"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin fern"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor fern"
+      },
+      {
+        "type": "Stop",
+        "form": "oph fern"
+      },
+      {
+        "type": "H",
+        "form": "ah fern"
+      },
+      {
+        "type": "DH",
+        "form": "nedh fern"
+      }
+    ]
+  },
+  {
+    "dict_form": "fern",
+    "part": "adjective",
+    "english": "dead",
+    "definition": "死亡的，死去的",
+    "sentence": "[S/188]\nDor Firn-i-Guinar.\n多尔费恩-伊-圭那，死而复生者之地\n",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "fern"
+      },
+      {
+        "type": "Plural",
+        "form": "firn"
+      },
+      {
+        "type": "Comparative",
+        "form": "anfern"
+      },
+      {
+        "type": "Superlative",
+        "form": "ro-fern"
+      }
+    ]
+  },
+  {
+    "dict_form": "ferui",
+    "part": "adjective",
+    "english": "ready to hand, (quickly) available",
+    "definition": "随时可用的，马上可用的",
+    "sentence": "\n",
+    "other": "昆雅语同源词férima",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "ferui"
+      },
+      {
+        "type": "Plural",
+        "form": "ferui"
+      },
+      {
+        "type": "Comparative",
+        "form": "anferui"
+      },
+      {
+        "type": "Superlative",
+        "form": "ro-ferui"
+      }
+    ]
+  },
+  {
+    "dict_form": "fim",
+    "part": "adjective",
+    "english": "slender, slim",
+    "definition": "苗条的，纤细的；瘦削的，瘦的",
+    "sentence": "[PE17/82]\nFimbrethil.\n菲姆布瑞希尔，嫩枝娘\n",
+    "other": "昆雅语同源词fimbë",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "fim"
+      },
+      {
+        "type": "Plural",
+        "form": "fim"
+      },
+      {
+        "type": "Comparative",
+        "form": "enfim"
+      },
+      {
+        "type": "Superlative",
+        "form": "ro-fim"
+      }
+    ]
+  },
+  {
+    "dict_form": "fîn",
+    "part": "noun",
+    "english": "(single) hair, filament",
+    "definition": "单根发丝；细丝，细线，长丝",
+    "sentence": "\n",
+    "other": "经常出现在人名中",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i fîn"
+      },
+      {
+        "type": "Plural",
+        "form": "fîn"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i fîn"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an fîn"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "en-fîn"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin fîn"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor fîn"
+      },
+      {
+        "type": "Stop",
+        "form": "oph fîn"
+      },
+      {
+        "type": "H",
+        "form": "ah fîn"
+      },
+      {
+        "type": "DH",
+        "form": "nedh fîn"
+      }
+    ]
+  },
+  {
+    "dict_form": "find",
+    "part": "noun",
+    "english": "tress",
+    "definition": "一缕发丝，一把头发，发束，一小撮头发",
+    "sentence": "\n",
+    "other": "fîn单根发丝，find一缕头发，finnel头发（整体）",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i find"
+      },
+      {
+        "type": "Plural",
+        "form": "find"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i find"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an find"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "en-find"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin find"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor find"
+      },
+      {
+        "type": "Stop",
+        "form": "oph find"
+      },
+      {
+        "type": "H",
+        "form": "ah find"
+      },
+      {
+        "type": "DH",
+        "form": "nedh find"
+      }
+    ]
+  },
+  {
+    "dict_form": "fing",
+    "part": "noun",
+    "english": "lock of hair",
+    "definition": "一缕头发",
+    "sentence": "[RC/760]\nFinglas.\n芬格拉斯，一缕树叶，树叶王\n",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i fing"
+      },
+      {
+        "type": "Plural",
+        "form": "fing"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i fing"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an fing"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "en-fing"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin fing"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor fing"
+      },
+      {
+        "type": "Stop",
+        "form": "oph fing"
+      },
+      {
+        "type": "H",
+        "form": "ah fing"
+      },
+      {
+        "type": "DH",
+        "form": "nedh fing"
       }
     ]
   }

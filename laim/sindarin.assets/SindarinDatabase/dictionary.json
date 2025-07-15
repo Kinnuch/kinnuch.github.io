@@ -15102,111 +15102,11 @@
     ]
   },
   {
-    "dict_form": "fân",
-    "part": "noun",
-    "english": "(white) cloud, veil, curtain, form or vision of a spiritual being",
-    "definition": "白云，云；面纱，帘幕；灵魂体的形体或具象",
-    "sentence": "[Let/278][PE17/26][PE17/174][PE17/176][PE/17/180][RGEO/66]\nFanuilos.\n永远洁白，法努伊洛斯\n",
-    "other": "古-YA类词，干元音a",
-    "morphology": [
-      {
-        "type": "Soft",
-        "form": "i fân"
-      },
-      {
-        "type": "Plural",
-        "form": "fain"
-      },
-      {
-        "type": "NasalⅠ",
-        "form": "i fain"
-      },
-      {
-        "type": "NasalⅡ",
-        "form": "an fân"
-      },
-      {
-        "type": "MixedⅠ",
-        "form": "en-fân"
-      },
-      {
-        "type": "MixedⅡ",
-        "form": "anin fân"
-      },
-      {
-        "type": "Liquid",
-        "form": "egor fân"
-      },
-      {
-        "type": "Stop",
-        "form": "oph fân"
-      },
-      {
-        "type": "H",
-        "form": "ah fân"
-      },
-      {
-        "type": "DH",
-        "form": "nedh fân"
-      }
-    ]
-  },
-  {
-    "dict_form": "êl",
-    "part": "noun",
-    "english": "star",
-    "definition": "星星，星辰",
-    "sentence": "[MR/373]\nNarn e·Dant Gondolin ar Orthad en·Êl.\n刚多林的陷落和星辰的升起的传说\n",
-    "other": "该词相比(n)gil显得更加古老，常见于诗歌和古体文本；常用集合复数elenath表示繁星",
-    "morphology": [
-      {
-        "type": "Soft",
-        "form": "i êl"
-      },
-      {
-        "type": "Plural",
-        "form": "elin"
-      },
-      {
-        "type": "NasalⅠ",
-        "form": "in elin"
-      },
-      {
-        "type": "NasalⅡ",
-        "form": "an êl"
-      },
-      {
-        "type": "MixedⅠ",
-        "form": "en-êl"
-      },
-      {
-        "type": "MixedⅡ",
-        "form": "anin êl"
-      },
-      {
-        "type": "Liquid",
-        "form": "egor êl"
-      },
-      {
-        "type": "Stop",
-        "form": "od êl"
-      },
-      {
-        "type": "H",
-        "form": "ah êl"
-      },
-      {
-        "type": "DH",
-        "form": "nedh êl"
-      }
-    ]
-  },
-  {
     "dict_form": "feir",
     "part": "noun",
-    "english": "Mortal",
+    "english": "mortal",
     "definition": "凡人，凡夫俗子",
-    "sentence": "\n",
+    "sentence": "\n\n\n\n",
     "other": "古-YA类词，干元音i；集体复数firiath",
     "morphology": [
       {
@@ -15724,56 +15624,6 @@
     ]
   },
   {
-    "dict_form": "fîn",
-    "part": "noun",
-    "english": "(single) hair, filament",
-    "definition": "单根发丝；细丝，细线，长丝",
-    "sentence": "\n",
-    "other": "经常出现在人名中",
-    "morphology": [
-      {
-        "type": "Soft",
-        "form": "i fîn"
-      },
-      {
-        "type": "Plural",
-        "form": "fîn"
-      },
-      {
-        "type": "NasalⅠ",
-        "form": "i fîn"
-      },
-      {
-        "type": "NasalⅡ",
-        "form": "an fîn"
-      },
-      {
-        "type": "MixedⅠ",
-        "form": "en-fîn"
-      },
-      {
-        "type": "MixedⅡ",
-        "form": "anin fîn"
-      },
-      {
-        "type": "Liquid",
-        "form": "egor fîn"
-      },
-      {
-        "type": "Stop",
-        "form": "oph fîn"
-      },
-      {
-        "type": "H",
-        "form": "ah fîn"
-      },
-      {
-        "type": "DH",
-        "form": "nedh fîn"
-      }
-    ]
-  },
-  {
     "dict_form": "find",
     "part": "noun",
     "english": "tress",
@@ -15870,6 +15720,852 @@
       {
         "type": "DH",
         "form": "nedh fing"
+      }
+    ]
+  },
+  {
+    "dict_form": "fân",
+    "part": "noun",
+    "english": "(white) cloud, veil, curtain, form or vision of a spiritual being",
+    "definition": "白云，云；面纱，帘幕；灵魂体的形体或具象",
+    "sentence": "[Let/278][PE17/26][PE17/174][PE17/176][PE/17/180][RGEO/66]\nFanuilos.\n永远洁白，法努伊洛斯\n",
+    "other": "古-YA类词，干元音a",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i fân"
+      },
+      {
+        "type": "Plural",
+        "form": "fain"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i fain"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an fân"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "en-fân"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin fân"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor fân"
+      },
+      {
+        "type": "Stop",
+        "form": "oph fân"
+      },
+      {
+        "type": "H",
+        "form": "ah fân"
+      },
+      {
+        "type": "DH",
+        "form": "nedh fân"
+      }
+    ]
+  },
+  {
+    "dict_form": "fîn",
+    "part": "noun",
+    "english": "(single) hair, filament",
+    "definition": "单根发丝；细丝，细线，长丝",
+    "sentence": "\n",
+    "other": "经常出现在人名中",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i fîn"
+      },
+      {
+        "type": "Plural",
+        "form": "fîn"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i fîn"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an fîn"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "en-fîn"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin fîn"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor fîn"
+      },
+      {
+        "type": "Stop",
+        "form": "oph fîn"
+      },
+      {
+        "type": "H",
+        "form": "ah fîn"
+      },
+      {
+        "type": "DH",
+        "form": "nedh fîn"
+      }
+    ]
+  },
+  {
+    "dict_form": "êl",
+    "part": "noun",
+    "english": "star",
+    "definition": "星星，星辰",
+    "sentence": "[MR/373]\nNarn e·Dant Gondolin ar Orthad en·Êl.\n刚多林的陷落和星辰的升起的传说\n",
+    "other": "该词相比(n)gil显得更加古老，常见于诗歌和古体文本；常用集合复数elenath表示繁星",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i êl"
+      },
+      {
+        "type": "Plural",
+        "form": "elin"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "in elin"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an êl"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "en-êl"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin êl"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor êl"
+      },
+      {
+        "type": "Stop",
+        "form": "od êl"
+      },
+      {
+        "type": "H",
+        "form": "ah êl"
+      },
+      {
+        "type": "DH",
+        "form": "nedh êl"
+      }
+    ]
+  },
+  {
+    "dict_form": "finnel",
+    "part": "noun",
+    "english": "head of hair",
+    "definition": "头发（整体）",
+    "sentence": "[PE17/17]\nGlorfindel.\n格罗芬德尔，“金发”\n",
+    "other": "昆雅语同源词findelë",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i finnel"
+      },
+      {
+        "type": "Plural",
+        "form": "finnil"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i finnil"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an finnel"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "en-finnel"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin finnel"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor finnel"
+      },
+      {
+        "type": "Stop",
+        "form": "oph finnel"
+      },
+      {
+        "type": "H",
+        "form": "ah finnel"
+      },
+      {
+        "type": "DH",
+        "form": "nedh finnel"
+      }
+    ]
+  },
+  {
+    "dict_form": "finnel",
+    "part": "adjective",
+    "english": "having fine or beautiful hair",
+    "definition": "有漂亮头发的",
+    "sentence": "\n",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "finnel"
+      },
+      {
+        "type": "Plural",
+        "form": "finnil"
+      },
+      {
+        "type": "Comparative",
+        "form": "anfinnel"
+      },
+      {
+        "type": "Superlative",
+        "form": "ro-finnel"
+      }
+    ]
+  },
+  {
+    "dict_form": "fir-",
+    "part": "verb",
+    "english": "to fade, to die",
+    "definition": "隐没，消逝，消失，褪去；死亡",
+    "sentence": "\n",
+    "other": "√PHIR",
+    "morphology": [
+      {
+        "type": "Present",
+        "form": "fîr/firi-"
+      },
+      {
+        "type": "Past",
+        "form": "ifir/ifíre-"
+      },
+      {
+        "type": "Future",
+        "form": "firatha/firath(o)-"
+      },
+      {
+        "type": "Imperative",
+        "form": "firo"
+      },
+      {
+        "type": "Gerund",
+        "form": "fired"
+      },
+      {
+        "type": "PastParticiple",
+        "form": "firnen"
+      },
+      {
+        "type": "PresentParticiple",
+        "form": "firel"
+      },
+      {
+        "type": "PeferctParticle",
+        "form": "fíriel"
+      }
+    ]
+  },
+  {
+    "dict_form": "fíreb",
+    "part": "noun",
+    "english": "mortal",
+    "definition": "凡人，凡夫俗子",
+    "sentence": "\n",
+    "other": "√PHIR，集体复数fírebrim",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i fíreb"
+      },
+      {
+        "type": "Plural",
+        "form": "fírib"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i fírib"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an fíreb"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "en-fíreb"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin fíreb"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor fíreb"
+      },
+      {
+        "type": "Stop",
+        "form": "oph fíreb"
+      },
+      {
+        "type": "H",
+        "form": "ah fíreb"
+      },
+      {
+        "type": "DH",
+        "form": "nedh fíreb"
+      }
+    ]
+  },
+  {
+    "dict_form": "fíreb",
+    "part": "adjective",
+    "english": "mortal",
+    "definition": "凡人的，终有一死的",
+    "sentence": "\n",
+    "other": "√PHIR",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "fíreb"
+      },
+      {
+        "type": "Plural",
+        "form": "fírib"
+      },
+      {
+        "type": "Comparative",
+        "form": "enfíreb"
+      },
+      {
+        "type": "Superlative",
+        "form": "ro-fíreb"
+      }
+    ]
+  },
+  {
+    "dict_form": "firieth",
+    "part": "noun",
+    "english": "mortal(female)",
+    "definition": "凡人，凡夫俗子（女性）",
+    "sentence": "\n\n",
+    "other": "feir + -eth",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i firieth"
+      },
+      {
+        "type": "Plural",
+        "form": "firith"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i firith"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an firieth"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "en-firieth"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin firieth"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor firieth"
+      },
+      {
+        "type": "Stop",
+        "form": "oph firieth"
+      },
+      {
+        "type": "H",
+        "form": "ah firieth"
+      },
+      {
+        "type": "DH",
+        "form": "nedh firieth"
+      }
+    ]
+  },
+  {
+    "dict_form": "firin",
+    "part": "adjective",
+    "english": "mortal, dying",
+    "definition": "凡人的，濒死的，快死亡的",
+    "sentence": "\n",
+    "other": "fir- + -en",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "firin"
+      },
+      {
+        "type": "Plural",
+        "form": "firin"
+      },
+      {
+        "type": "Comparative",
+        "form": "enfirin"
+      },
+      {
+        "type": "Superlative",
+        "form": "ro-firin"
+      }
+    ]
+  },
+  {
+    "dict_form": "firion",
+    "part": "noun",
+    "english": "mortal(male)",
+    "definition": "凡人，凡夫俗子（男性）",
+    "sentence": "\n",
+    "other": "feir + -on",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i firion"
+      },
+      {
+        "type": "Plural",
+        "form": "firyn"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i firyn"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an firion"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "en-firion"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin firion"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor firion"
+      },
+      {
+        "type": "Stop",
+        "form": "oph firion"
+      },
+      {
+        "type": "H",
+        "form": "ah firion"
+      },
+      {
+        "type": "DH",
+        "form": "nedh firion"
+      }
+    ]
+  },
+  {
+    "dict_form": "firith",
+    "part": "noun",
+    "english": "fading, (late)autumn",
+    "definition": "褪色，衰退，凋谢；深秋",
+    "sentence": "\n",
+    "other": "昆雅语同源词quellë，深秋的另一个词汇narbeleth",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i firith"
+      },
+      {
+        "type": "Plural",
+        "form": "firith"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i firith"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an firith"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "en-firith"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin firith"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor firith"
+      },
+      {
+        "type": "Stop",
+        "form": "oph firith"
+      },
+      {
+        "type": "H",
+        "form": "ah firith"
+      },
+      {
+        "type": "DH",
+        "form": "nedh firith"
+      }
+    ]
+  },
+  {
+    "dict_form": "flâd",
+    "part": "noun",
+    "english": "skin",
+    "definition": "皮肤，皮层，表皮",
+    "sentence": "[LotR/474]\nFladrif.\n弗拉德利夫，树皮王\n",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i flâd"
+      },
+      {
+        "type": "Plural",
+        "form": "flaid"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i flaid"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an flâd"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "en-flâd"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin flâd"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor flâd"
+      },
+      {
+        "type": "Stop",
+        "form": "oph flâd"
+      },
+      {
+        "type": "H",
+        "form": "ah flâd"
+      },
+      {
+        "type": "DH",
+        "form": "nedh flâd"
+      }
+    ]
+  },
+  {
+    "dict_form": "flinc",
+    "part": "noun",
+    "english": "finch",
+    "definition": "雀，雀科小鸟",
+    "sentence": "\n",
+    "other": "昆雅语同源词filincë",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i flinc"
+      },
+      {
+        "type": "Plural",
+        "form": "flinc"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i flinc"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an flinc"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "en-flinc"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin flinc"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor flinc"
+      },
+      {
+        "type": "Stop",
+        "form": "oph flinc"
+      },
+      {
+        "type": "H",
+        "form": "ah flinc"
+      },
+      {
+        "type": "DH",
+        "form": "nedh flinc"
+      }
+    ]
+  },
+  {
+    "dict_form": "foen",
+    "part": "noun",
+    "english": "long sight",
+    "definition": "远视，长目光，远望",
+    "sentence": "[WJ/187]\nFoen.\n弗恩山，远望山\n",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i foen"
+      },
+      {
+        "type": "Plural",
+        "form": "foen"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i foen"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an foen"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "en-foen"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin foen"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor foen"
+      },
+      {
+        "type": "Stop",
+        "form": "oph foen"
+      },
+      {
+        "type": "H",
+        "form": "ah foen"
+      },
+      {
+        "type": "DH",
+        "form": "nedh foen"
+      }
+    ]
+  },
+  {
+    "dict_form": "forn",
+    "part": "adjective",
+    "english": "north",
+    "definition": "北的，北方的",
+    "sentence": "[RC/774]\nFornost.\n佛诺斯特，北方要塞\n",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "forn"
+      },
+      {
+        "type": "Plural",
+        "form": "fyrn"
+      },
+      {
+        "type": "Comparative",
+        "form": "anforn"
+      },
+      {
+        "type": "Superlative",
+        "form": "ro-forn"
+      }
+    ]
+  },
+  {
+    "dict_form": "forod",
+    "part": "noun",
+    "english": "north",
+    "definition": "北，北方，北边",
+    "sentence": "[PE17/116]\nForochel.\n佛洛赫尔，北方寒冰\n",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i forod"
+      },
+      {
+        "type": "Plural",
+        "form": "feryd"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i feryd"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an forod"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "en-forod"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin forod"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor forod"
+      },
+      {
+        "type": "Stop",
+        "form": "oph forod"
+      },
+      {
+        "type": "H",
+        "form": "ah forod"
+      },
+      {
+        "type": "DH",
+        "form": "nedh forod"
+      }
+    ]
+  },
+  {
+    "dict_form": "forvo",
+    "part": "noun",
+    "english": "right hand, right side",
+    "definition": "右手；右手边，右边，右侧",
+    "sentence": "\n",
+    "other": "for- + maw",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i forvo"
+      },
+      {
+        "type": "Plural",
+        "form": "fervo"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i fervo"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an forvo"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "en-forvo"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin forvo"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor forvo"
+      },
+      {
+        "type": "Stop",
+        "form": "oph forvo"
+      },
+      {
+        "type": "H",
+        "form": "ah forvo"
+      },
+      {
+        "type": "DH",
+        "form": "nedh forvo"
+      }
+    ]
+  },
+  {
+    "dict_form": "fû",
+    "part": "noun",
+    "english": "path",
+    "definition": "路径，通道",
+    "sentence": "[RC/526]\nFui 'Ngorthrim.\n亡者之路\n",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i fû"
+      },
+      {
+        "type": "Plural",
+        "form": "fui"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i fui"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an fû"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "en-fû"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin fû"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor fû"
+      },
+      {
+        "type": "Stop",
+        "form": "oph fû"
+      },
+      {
+        "type": "H",
+        "form": "ah fû"
+      },
+      {
+        "type": "DH",
+        "form": "nedh fû"
       }
     ]
   }

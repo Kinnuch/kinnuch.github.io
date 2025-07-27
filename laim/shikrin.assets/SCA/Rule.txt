@@ -204,8 +204,8 @@ o > a / _u
 þþ > þ / _
 xx > x / _
 > e / C_R#
-> e / #k_F
-g > e / #_Q
+> e / #k_Q|F
+g > e / #_Q|F
 w > u / _(n)#
 rr > r / _#
 w[hx] > f / _

@@ -1,56 +1,435 @@
-PSkr | EPTsr | MPTsr | LPTsr | OTsr
-ronós → ronós → ronós → runós → runós
-hadsón → hadsón → aadsón → ādsón → ātzón
-ᵐbxᵐbxtí → ᵐbxᵐbxtí → ᵐbeᵐbetí → ᵐbeᵐbetí → bemdhí
-k̂elepw → selepw → selepu → syilep → syilefh
-slkmó → salkmó → salghkó → salghkó → salghghó
-phbsé → phbsé → pebsé → pebsé → fhepzé
-marlón → marlón → marlón → marlón → marrón
-ulésin → uléthin → uléthin → uléthin → uléthin
-khdéur → khdéur → kedéur → kedéur → xetéur
-kesa → ketha → ketha → keth → xeth
-rbxaren → urbxaren → urbaren → urbarin → urparin
-yoĝam → yozam → yozam → yozam → yozam
-ĝlka → zalka → zalka → zalk → zalx
-heisin → heithin → aeithin → eithin → eithin
-swosam → swotham → swotham → swotham → swotham
-gʷnsap → gensap → gensap → ginsap → kissafh
-dāts → dāts → dats → dats → taths
-bekʷhg → bekhg → bekeg → bekeg → pexek
-tmngwa → temengwa → temeṇguwa → timeṇguw → thimeṇkuw
-hk̂rgar → hsurgar → asurgar → asurgar → asurkar
-ᵐbalarhg → ᵐbalarhg → ᵐbalareg → ᵐbalareg → ballek
-haserw → hatherw → aatheru → āthir → āthir
-loraᵑgwe → loraᵑgwe → loraᵑgwe → luraᵑgw → luraṇw
-drbwar → durbwar → durbuwar → durbuwar → turpuwar
-reikwar → reikwar → reikuwar → reikuwar → reixuwar
-hᵑgmen → hᵑgmen → aṇᵑgen → aṇᵑgin → aṇṇin
-nrhno → enurhno → enureno → inurin → inurin
-lerya → lerya → lerya → liry → liry
-ᵐbaᵐbatweh → ᵐbaᵐbatwah → ᵐbaᵐbatwah → ᵐbaᵐbatwah → bamathwah
-weu → weu → weu → weu → weu
-hēm → hēm → aēm → ēm → ēm
-k̂a → sa → sa → sa → sa
-kek̂ → kes → kes → kis → xis
-hōp → hōp → aōp → ōp → ōfh
-yona → yona → yona → eun → eun
-pei → pei → pei → pei → fhei
-ᶮĝax → nzax → nzax → nzax → nzax
-yok̂ → yos → yos → eus → eus
-lein → lein → lein → lein → lein
-teus → teus → teus → teus → theus
-yōn → yōn → yōn → yōn → yōn
-ⁿdelosgar → ⁿdelosgar → ⁿdelosgar → ⁿdilusgar → diluskar
-weyaw → weyaw → weyau → weya → weya
-ᶮĝnrna → nzenurna → nzenurna → nzinurn → nzinurn
-sok̂ren → thosren → thosren → theusrin → theusrin
-yabarge → yabarge → yabarge → yabarg → yapark
-modra → modra → morda → murd → murt
-popemw → popemw → popemu → popim → fhofhim
-nmĝ → enemz → elemz → ilimz → ilimz
-hotat → hotat → aotat → ātat → āthath
-hams → hams → aams → āms → āss
-dow → dow → dou → do → to
-hotant → hotant → aotant → ātant → āthanth
-yoms → yoms → yoms → eums → euss
-dalekhg → dalekhg → dalekeg → dalekeg → talexek
+PSkr | PTsr | ATsr | OTsr | Tsr | Orthography
+sœcren → sœsren → sœsren → seusren → seoþer → seoþer
+ésœcren → ésœsren → ésœsren → éþeusren → éþeoþer → éþeoþer
+épebes → épebes → éphepes → éþepe → éþeb → éþeb
+épibis → épibis → éphipis → éþipi → éþiib → éþîb
+épibism → épibism → éphipisn → éþipinn → éþibin → éþibin
+pibistrs → pibisturs → phipisthurs → þipisþurs → þibiþos → þibiþos
+ómār → ómār → ómār → ómōr → ówaur → ówaur
+ómērs → ómērs → ómers → ómers → ówes → ówes
+ómērm → ómērm → ómern → ómern → ówern → ówern
+marétrs → maréturs → maréthurs → maréþurs → maréþos → maréþos
+éwel → éwel → éwer → éwer → éwer → éwer
+éwils → éwils → éwils → éwils → éwilt → éwilt
+éwilm → éwilm → éwiln → éwill → éwil → éwil
+wiltrs → wilturs → wilthurs → wilþurs → gwillos → gwillos
+éked → éked → ékhet → éþe → éþ → éþ
+ékeds → ékeds → ékhets → éþeþþ → éþes → éþes
+ékedm → ékedm → ékhetn → éþenn → éþen → éþen
+kdétrs → kdéturs → ktéthurs → kþéþurs → keþésos → keþésos
+kes → kes → khes → þeh → þē → þê
+kes → kes → khes → þeh → þē → þê
+kesm → kesm → khesn → þenn → þen → þen
+kastrs → kasturs → khasthurs → þasþurs → þassos → þassos
+rebh → rebh → reo → reo → rē → rê
+rebhs → rebhs → reus → reu → rē → rê
+rebhm → rebhm → reun → reun → rē → rê
+rabhtrs → rabhturs → rauthurs → rōþurs → rauþos → rauþos
+yœj → yœz → yœz → yeuz → yeor → yeor
+yœjs → yœzs → yœzs → yeuzs → yeos → yeos
+yœjm → yœzm → yœzn → yeuzn → yeorn → yeorn
+yojtrs → yozturs → yozthurs → yozþurs → yorþos → yorþos
+jlk → zalk → zalkh → zalþ → ðalt → ðalt
+jlks → zalks → zalkhs → zalþs → ðals → ðals
+jlkm → zalkm → zalkhn → zalþn → ðaln → ðaln
+jalktrs → zalkturs → zalkthurs → zalþþurs → ðalsos → ðalsos
+shæ → shæ → ræ → rī → ri → ri
+séhes → sōas → sōas → sōa → sa → sa
+séhem → sōam → sōan → sōan → sa → sa
+shētrs → shēturs → rēthurs → rēþurs → raeþos → raeþos
+shæhr → shæhr → rær → rīr → rīr → rîr
+swœ → swœ → swœ → xeu → hē → hê
+swœs → swœs → swœs → xeu → hē → hê
+swœm → swœm → swœn → xeun → hē → hê
+swotrs → swoturs → swothurs → xoþurs → hoþos → hoþos
+sgwana → sgana → skan → sxan → h → h
+ségwns → ségens → sékens → sékess → séges → séges
+ségwnm → ségenm → sékenn → sékenn → ségen → ségen
+sgwanatrs → sganaturs → skanathurs → sxanaþurs → hanaþos → hanaþos
+sdāt → sdāt → stāth → sþōt → þaud → þaud
+sdāts → sdāts → staths → sþaþs → þas → þas
+sdātm → sdātm → stathn → sþatþ → þats → þats
+sdattrs → sdatturs → stasthurs → sþasþurs → þassos → þassos
+gbekw → gbek → kpekh → kþeþ → keþes → keþes
+gbekws → gbeks → kpekhs → kþeþs → keþes → keþes
+gbekwm → gbekm → kpekhn → kþeþn → keþesn → keþesn
+gbakwtrs → gbakturs → kpakthurs → kþakþurs → keþaksos → keþaksos
+gtmn → gtemn → kthemn → kþemn → keþeun → keþeun
+gótmns → gótemens → kóthemens → kóþemess → kóþewes → kóþewes
+gótmnm → gótemenm → kóthemenn → kóþemenn → kóþewen → kóþewen
+gtmnótrs → gtemnóturs → kthemnóthurs → kþemnóþurs → keþewnóþos → keþewnóþos
+gtmnhr → gtemenhr → kthemenr → kþemenr → keþeweðer → keþeweðer
+ghecr → ghasr → ħasr → ħasr → ħaþer → ghaþer
+géhcrs → gōsurs → kōsurs → kōhurs → kawos → kawos
+géhcrm → gōsurm → kōsurn → kōhurn → kaworn → kaworn
+ghecrtrs → ghasurturs → ħasurthurs → aþurþurs → aþossos → aþossos
+gmbalar → gembalar → kempalar → kemþalar → kewþalar → kewþalar
+gémblrs → gémbalurs → kémpalurs → kémþalurs → kéwþalos → kéwþalos
+gémblrm → gémbalurm → kémpalurn → kémþalurn → kéwþalorn → kéwþalorn
+gmbalartrs → gembalarturs → kempalarthurs → kemþalarþurs → kewþalarþos → kewþalarþos
+whaser → whaser → xaser → xaher → haer → haer
+whasers → whasers → xasers → xahers → haes → haes
+whaserm → whaserm → xasern → xahern → haern → haern
+whasartrs → whasarturs → xasarthurs → xaharþurs → haarþos → hârþos
+ulorang → ulorang → uloraŋk → uloraŋþ → gloraŋþ → gloraŋþ
+wólorangs → wólorangs → waloraŋks → waloraŋþs → gwaloraŋs → gwaloraŋs
+wólorangm → wólorangm → waloraŋkn → waloraŋgn → gwaloraŋn → gwaloraŋn
+ulrngótrs → ulrengóturs → ulleŋkóthurs → ulleŋþóþurs → gleŋþósos → gleŋþósos
+ulorangst → ulorangst → uloraŋksth → uloraŋþst → gloraŋt → gloraŋt
+udereb → udereb → uterep → utere → eter → eter
+wédrbs → wédurbs → wéturps → wéturþs → gwédors → gwédors
+wédrbm → wédurbm → wéturpn → wéturbn → gwédurn → gwédurn
+uderebtrs → uderebturs → uterepthurs → uterepþurs → eterepþos → eterepþos
+uræk → uræk → urækh → urīþ → griþ → griþ
+uræks → uræks → urækhs → urīþs → griþ → griþ
+urækm → urækm → urækhn → urīþn → griþn → griþn
+urekétrs → urekéturs → urekhéthurs → ureþéþurs → greþésos → greþésos
+wérekhr → wérekhr → wérekhr → wéreþr → gwéreþer → gwéreþer
+éhedr → ōadr → ōatr → ōatr → awader → awader
+hedrs → aadurs → aaturs → aaturs → aados → âdos
+hedrm → aadurm → aaturn → aaturn → aadorn → âdorn
+hdrétrs → adréturs → atréthurs → atréþurs → adréþos → adréþos
+éhidrst → ōidurst → ōitursth → oiturst → oedost → oedost
+ódaros → ódaros → ótaros → ótaro → ódar → ódar
+ódaros → ódaros → ótaros → ótaro → ódar → ódar
+ódarosm → ódarosm → ótarosn → ótaronn → ódaron → ódaron
+drsótrs → dursóturs → tursóthurs → tursóþurs → tossóþos → tossóþos
+darost → darost → tarosth → tarost → tarost → tarost
+ébel → ébel → éper → éper → éber → éber
+ébils → ébils → épils → épils → ébilt → ébilt
+ébilm → ébilm → épiln → épill → ébil → ébil
+beltrs → belturs → pelthurs → pelþurs → pellos → pellos
+óscor → óssor → óssor → óssor → óssor → óssor
+óscors → óssors → óssors → óssors → óssos → óssos
+óscorm → óssorm → óssorn → óssorn → óssorn → óssorn
+scrótrs → ssróturs → ssróthurs → ssróþurs → sróþos → sróþos
+scorst → ssorst → ssorsth → ssorst → ssost → ssost
+éhepr → ōapr → ōaphr → ōaþr → awaþer → awaþer
+éheprs → ōapurs → ōaphurs → ōaþurs → awaþos → awaþos
+éheprm → ōapurm → ōaphurn → ōaþurn → awaþorn → awaþorn
+hprétrs → apréturs → aphréthurs → aþréþurs → aþrésos → aþrésos
+heprst → aapurst → aaphursth → aaþurst → aaþost → âþost
+ójltm → ózaltm → ózalthn → ózalþþ → óralþ → óralþ
+ójltms → ózaltems → ózalthems → ózalþess → óralles → óralles
+ójltm → ózaltm → ózalthn → ózalþþ → óralþ → óralþ
+jltmótrs → zaltmóturs → zalthmóthurs → zalþwóþurs → ðalwósos → ðalwósos
+jltmst → zaltemst → zalthemsth → zalþesst → ðallest → ðallest
+noc → nos → nos → noh → nō → nô
+nocs → noss → noss → noss → nos → nos
+nocm → nosm → losn → lonn → lon → lon
+nactrs → nasturs → nasthurs → nasþurs → naþos → naþos
+ubast → ubast → upasth → upast → epast → epast
+wébsts → wébsts → wépsths → wéþþþs → gwéþ → gwéþ
+wébstm → wébstm → wépsthn → wéþþtþ → gwéþ → gwéþ
+ubasttrs → ubastturs → upassthurs → upassþurs → epaþos → epaþos
+whoy → whoy → xoe → xoe → hō → hô
+whoys → whoys → xois → xui → ho → ho
+whoym → whoym → xoin → xuin → ho → ho
+whyótrs → whyóturs → xyóthurs → xyóþurs → hióþos → hióþos
+wéhyst → wōyst → woisth → uist → gwist → gwist
+ndatr → endatr → entathr → enþaþr → ennaþer → ennaþer
+ndatrs → endaturs → entathurs → enþaþurs → ennasos → ennasos
+ndatrm → endaturm → entathurn → enþaþurn → ennasorn → ennasorn
+ndatrs → endaturs → entathurs → enþaþurs → ennasos → ennasos
+ghade → ghade → ħat → ħat → ħād → ghâd
+géhades → gōades → kōates → kōate → kawad → kawad
+géhadem → gōadem → kōaten → kōaten → kawad → kawad
+ghdētrs → ghdēturs → xtēthurs → xtēþurs → taeþos → taeþos
+ghadehr → ghadōr → ħatōr → atōr → adaur → adaur
+ghœc → ghœs → ħœs → ħeuh → ħeo → gheo
+góhocs → gōoss → kōoss → kōoss → kawos → kawos
+góhocm → gōosm → kōosn → kōonn → kawon → kawon
+ghœctrs → ghœsturs → ħœsthurs → eusþurs → eoþos → eoþos
+hang → aang → aaŋk → aaŋþ → aaŋþ → âŋþ
+hangs → aangs → aaŋks → aaŋþs → aaŋs → âŋs
+hangm → aangm → aaŋkn → aaŋgn → aaŋn → âŋn
+hangtrs → aangturs → aaŋkthurs → aaŋþþurs → aaŋþos → âŋþos
+ghelek → ghalek → ħalekh → aleþ → aleþ → aleþ
+géhlks → gōalks → kōalkhs → kōalþs → kawals → kawals
+géhlkm → gōalkm → kōalkhn → kōalþn → kawaln → kawaln
+ghelektrs → ghalekturs → ħalekthurs → alekþurs → alekþos → alekþos
+éhokot → ōokot → ōokhoth → ōoþot → awoþod → awoþod
+éhekets → ōakets → ōakheths → ōaþeþs → awaþes → awaþes
+éheketm → ōaketm → ōakhethn → ōaþetþ → awaþets → awaþets
+hokottrs → aokotturs → aokhosthurs → aoþosþurs → aoþossos → aoþossos
+éklt → ékalt → ékhalth → éþalþ → éþalt → éþalt
+éklts → ékalts → ékhalths → éþalþs → éþals → éþals
+ékltm → ékaltm → ékhalthn → éþalþþ → éþals → éþals
+klttrs → kaltturs → khalsthurs → þalsþurs → þalsos → þalsos
+émæ → émæ → émæ → émī → éwi → éwi
+émes → émes → émes → éme → éu → éu
+émem → émem → émen → émen → éu → éu
+mētrs → mēturs → mēthurs → mēþurs → maeþos → maeþos
+mæhr → mæhr → mær → mīr → mīr → mîr
+njœn → enzœn → enzœn → enzeun → eðre → eðre
+njœns → enzœns → enzœns → enzeuss → eðreos → eðreos
+njœnm → enzœnm → enzœnn → enzeunn → eðreun → eðreun
+njonótrs → enzonóturs → enzonóthurs → enzonóþurs → eðronóþos → eðronóþos
+ónjonhr → ónzonhr → ónzonr → ónzonr → óðroðer → óðroðer
+énel → énel → éner → éner → éner → éner
+énils → énils → énils → énils → énilt → énilt
+énilm → énilm → éniln → énill → énil → énil
+ániltrs → ánilturs → ánilthurs → ánilþurs → ánillos → ánillos
+órœs → órœs → órœs → óreu → óre → óre
+óros → óros → óros → óro → ór → ór
+órosm → órosm → órosn → óronn → óron → óron
+rœstrs → rœsturs → rœsthurs → reusþurs → reoþos → reoþos
+oscan → ossan → ossan → ossan → os → os
+oscans → ossans → ossans → ossass → ossas → ossas
+oscanm → ossanm → ossann → ossann → ossan → ossan
+scnotrs → ssnoturs → ssnothurs → snnoþurs → snoþos → snoþos
+scanst → ssanst → ssansth → ssasst → ssast → ssast
+ósōh → ósō → ósō → óþo → óþ → óþ
+ósohs → ósōs → ósōs → óþo → óþ → óþ
+ósohm → ósōm → ósōn → óþōn → óþa → óþa
+sohótrs → sōóturs → sōóthurs → sōóþurs → sawóþos → sawóþos
+sōhhr → sōhr → sor → sor → sōr → sôr
+éwæl → éwæl → éwær → éwīr → éwir → éwir
+éwels → éwels → éwels → éwels → éwelt → éwelt
+éwelm → éwelm → éweln → éwell → éwel → éwel
+welétrs → weléturs → weléthurs → weléþurs → gweléþos → gweléþos
+wælhr → wælhr → wæll → wīll → gwil → gwil
+éhngws → ōengs → ōeŋks → ōeŋþs → aweŋs → aweŋs
+éhngws → ōengs → ōeŋks → ōeŋþs → aweŋs → aweŋs
+éhngwsm → ōengsm → ōeŋksn → ōeŋþnn → aweŋn → aweŋn
+hngwstrs → aengsturs → aeŋksthurs → aeŋþsþurs → aeŋþos → aeŋþos
+ébēw → ébēw → épēo → épēo → éba → éba
+ébews → ébews → épeus → épeu → ébe → ébe
+ébewm → ébewm → épeun → épeun → ébe → ébe
+bewétrs → bewéturs → pewéthurs → pewéþurs → pewéþos → pewéþos
+bēwhr → bēwhr → pexr → pexr → pexer → pexer
+éhehm → ōōm → ōōn → ōōn → awa → awa
+éhihms → ōōems → ōōems → ōōess → awawes → awawes
+éhihm → ōōm → ōōn → ōōn → awa → awa
+hehmtrs → aōemturs → aōenthurs → aōenþurs → aawennos → âwennos
+éndam → éndam → éntan → énþan → ént → ént
+éndms → éndems → éntems → énþess → énnes → énnes
+éndm → éndm → éntn → énnn → én → én
+ndamtrs → endamturs → entanthurs → enþanþurs → ennansos → ennansos
+umbanda → umbanda → umpant → umþanþ → gþans → gþans
+umbandas → umbandas → umpantas → umþanþa → gþans → gþans
+umbandam → umbandam → umpantan → umþanþan → gþans → gþans
+umbndétrs → umbendéturs → umpentéthurs → umþenþéþurs → gþensésos → gþensésos
+wémbndhr → wémbendhr → wémpenðr → wémþenðr → gwéwþener → gwéwþener
+whadar → whadar → xatar → xatar → hadar → hadar
+wéhdrs → wōdurs → wōturs → wōturs → gwaudos → gwaudos
+wéhdrm → wōdurm → wōturn → wōturn → gwaudorn → gwaudorn
+whadartrs → whadarturs → xatarthurs → xatarþurs → hadarþos → hadarþos
+usœr → usœr → usœr → uþeur → gþeor → gþeor
+usœrs → usœrs → usœrs → uþeurs → gþeos → gþeos
+usœrm → usœrm → usœrn → uþeurn → gþeorn → gþeorn
+usortrs → usorturs → usorthurs → uþorþurs → gþossos → gþossos
+undep → undep → unteph → unþeþ → gnes → gnes
+undeps → undeps → untephs → unþeþs → gnes → gnes
+undepm → undepm → untephn → unþeþn → gnesn → gnesn
+undaptrs → undapturs → untapthurs → unþapþurs → gnapsos → gnapsos
+ólœtr → ólœtr → ólœthr → óleuþr → óleoþer → óleoþer
+ólotrs → óloturs → ólothurs → óloþurs → óloþos → óloþos
+ólotrm → óloturm → ólothurn → óloþurn → óloþorn → óloþorn
+lœtrs → lœturs → lœthurs → leuþurs → leuþos → leuþos
+ulast → ulast → ulasth → ulast → glast → glast
+ulasts → ulasts → ulasths → ulasþs → glas → glas
+ulastm → ulastm → ulasthn → ulastþ → glaþ → glaþ
+ulstétrs → ulstéturs → ulsthéthurs → ulsþéþurs → gþésos → gþésos
+wélsthr → wélsthr → wélsthr → wélsþr → gwéler → gwéler
+hacat → aasat → aasath → aahat → aaad → âad
+hacats → aasats → aasaths → aahaþs → aaaþ → âaþ
+hacatm → aasatm → aasathn → aahatþ → aaatþ → âatþ
+hacattrs → aasatturs → aasasthurs → aahasþurs → aaaþos → âaþos
+usakm → usakm → usakhn → uþaþn → gþasn → gþasn
+usakms → usakems → usakhems → uþaþess → gþases → gþases
+usakm → usakm → usakhn → uþaþn → gþasn → gþasn
+usakmtrs → usakemturs → usakhenthurs → uþaþenþurs → gþasensos → gþasensos
+ukāh → ukā → ukhā → uþa → gþ → gþ
+wékahs → wékōs → wékhōs → wéþo → gwéþ → gwéþ
+wékahm → wékōm → wékhōn → wéþōn → gwéþa → gwéþa
+ukāhtrs → ukāturs → ukhāthurs → uþōþurs → gþauþos → gþauþos
+umodr → umodr → umotr → umotr → gmoder → gmoder
+wómdrs → wómdurs → wanturs → wanþurs → gwannos → gwannos
+wómdrm → wómdurm → wanturn → wanþurn → gwannorn → gwannorn
+umodrs → umodurs → umoturs → umoturs → gmodos → gmodos
+gwene → gene → ken → ken → k → k
+géwns → géwens → kéwens → kéwess → kéwes → kéwes
+géwnm → géwenm → kéwenn → kéwenn → kéwen → kéwen
+gwenetrs → geneturs → kenethurs → keneþurs → keneþos → keneþos
+undas → undas → untas → unþa → et → et
+undas → undas → untas → unþa → et → et
+undasm → undasm → untasn → unþann → gnan → gnan
+undastrs → undasturs → untasthurs → unþasþurs → gnassos → gnassos
+wapt → wapt → wapth → wapþ → gwapþ → gwapþ
+wéwapts → wéwapts → wéwapths → wéwapþs → gwéwaps → gwéwaps
+wéwaptm → wéwaptm → wéwapthn → wéwapþþ → gwéwapþ → gwéwapþ
+ūptétrs → ūptéturs → upthéthurs → upþéþurs → gþésos → gþésos
+wapthr → wapthr → wapthr → wapþr → gwaper → gwaper
+whoror → whoror → xoror → xoror → horor → horor
+wóhrrs → wōururs → wōururs → wōururs → gwawuros → gwawuros
+wóhrrm → wōururm → wōururn → wōururn → gwawurorn → gwawurorn
+whorortrs → whororturs → xororthurs → xororþurs → hororþos → hororþos
+umeht → umōt → umōth → umōt → gmaud → gmaud
+umehts → umōts → umoths → umoþs → gmoþ → gmoþ
+umehtm → umōtm → umothn → umotþ → gmotþ → gmotþ
+umhtétrs → umhtéturs → umxthéthurs → umxþéþurs → gþésos → gþésos
+wémhthr → wémhthr → wémxthr → wémxþr → gwéwer → gwéwer
+ulabat → ulabat → ulapath → ulapat → glabad → glabad
+ulabats → ulabats → ulapaths → ulapaþs → glabaþ → glabaþ
+ulabatm → ulabatm → ulapathn → ulapatþ → glabatþ → glabatþ
+ulabattrs → ulabatturs → ulapasthurs → ulapasþurs → glabaþos → glabaþos
+uhebs → ōabs → ōaps → ōaþþ → awaþ → awaþ
+uhebs → ōabs → ōaps → ōaþþ → awaþ → awaþ
+uhebsm → ōabsm → ōapsn → ōapnn → awabn → awabn
+uhabstrs → ōabsturs → ōapsthurs → ōaþþþurs → awaþos → awaþos
+jmtm → zemtm → zenthn → zenþþ → ðens → ðens
+jmtms → zemtems → zenthems → zenþess → ðenses → ðenses
+jmtm → zemtm → zenthn → zenþþ → ðens → ðens
+jmtmétrs → zemtméturs → zenthméthurs → zenþwéþurs → ðenwésos → ðenwésos
+éjmtmhr → ézemtemhr → ézenthemr → ézenþemr → érennewer → érennewer
+hanar → aanar → aanar → aanar → aanar → ânar
+hanars → aanars → aanars → aanars → aanas → ânas
+hanarm → aanarm → aanarn → aanarn → aanarn → ânarn
+hnratrs → aenraturs → aenrathurs → aenraþurs → aeðrasos → aeðrasos
+ahenerst → ōanerst → ōanersth → ōanerst → awanest → awanest
+kwān → kān → khān → þōn → þa → þa
+ekwans → ekans → ekhans → eþass → eþas → eþas
+ekwanm → ekanm → ekhann → eþann → eþan → eþan
+kwanetrs → kaneturs → khanethurs → þaneþurs → þaneþos → þaneþos
+kwānst → kānst → khansth → þasst → þast → þast
+peder → peder → pheter → þeter → þeder → þeder
+peders → peders → pheters → þeters → þedes → þedes
+pederm → pederm → phetern → þetern → þedern → þedern
+pdrœtrs → pdrœturs → ptrœthurs → pþreuþurs → preuþos → preuþos
+œpidirst → œpidirst → œphitirsth → euþitirst → eoþidist → eoþidist
+yaye → yaye → yay → yai → ya → ya
+īayes → īayes → īayes → īaie → ia → ia
+īayem → īayem → īayen → īaien → ia → ia
+ītrs → īturs → īthurs → īþurs → iþos → iþos
+yayest → yayest → yayesth → yaiest → yaeest → yaeest
+nehe → nōa → nō → no → n → n
+nehes → nōas → nōas → nōa → na → na
+nehem → nōam → lōan → lōan → la → la
+nhutrs → enhuturs → enuthurs → enuþurs → enþos → enþos
+unhst → unhst → unssth → ussst → et → et
+menel → menel → mener → mener → mener → mener
+menels → menels → menels → menels → menelt → menelt
+menelm → menelm → meneln → menell → menel → menel
+mnlétrs → emenléturs → emenléthurs → emenléþurs → ewelléþos → ewelléþos
+émnlhr → émenalhr → émenall → émenall → éwenal → éwenal
+njēl → enzēl → enzēr → enzēr → eðraer → eðraer
+njēls → enzēls → enzels → enzels → eðrelt → eðrelt
+njēlm → enzēlm → enzeln → enzell → eðrel → eðrel
+njelétrs → enzeléturs → enzeléthurs → enzeléþurs → eðreléþos → eðreléþos
+énjelhr → énzelhr → énzell → énzell → éðrel → éðrel
+seya → seya → sey → sei → se → se
+hseyas → aseyas → aseyas → aþeia → aþe → aþe
+hseyam → aseyam → aseyan → aþeian → aþe → aþe
+hsyétrs → asyéturs → asyéthurs → aþéþurs → aþésos → aþésos
+hésyst → aésyst → aésysth → aéþst → aéþt → aéþt
+weya → weya → wey → wei → gwe → gwe
+céweyas → séweyas → séweyas → séweia → séwe → séwe
+céweyam → séweyam → séweyan → séweian → séwe → séwe
+cwyétrs → swyéturs → swyéthurs → xyéþurs → hiéþos → hiéþos
+cweyast → sweyast → sweyasth → xeiast → heiast → heiast
+éngalan → éngalan → éŋkalan → éŋþalan → éŋþal → éŋþal
+énglns → énglens → éŋklens → éŋþless → éþles → éþles
+énglnm → énglenm → éŋklenn → éŋþlenn → éþlen → éþlen
+ngalantrs → engalanturs → eŋkalanthurs → eŋþalanþurs → eŋþalannos → eŋþalannos
+sngodek → sengodek → seŋkotekh → seŋþoteþ → seŋþodeþ → seŋþodeþ
+sóngdks → sóngdks → sóŋkkkhs → sóŋþþþs → sóŋs → sóŋs
+sóngdkm → sóngdkm → sóŋkkkhn → sóŋþþþn → sóŋn → sóŋn
+sngodektrs → sengodekturs → seŋkotekthurs → seŋþotekþurs → seŋþodekþos → seŋþodekþos
+nœs → nœs → nœs → neuh → neo → neo
+nœs → nœs → nœs → neuh → neo → neo
+nœsm → nœsm → lœsn → leunn → leun → leun
+nosótrs → nosóturs → nosóthurs → nohóþurs → noóþos → noóþos
+ónoshr → ónoshr → ónorr → ónorr → ónorer → ónorer
+lstēr → alstēr → alsthēr → alsþēr → alþaer → alþaer
+lésters → lésters → lésthers → lésþers → léþes → léþes
+lésterm → lésterm → lésthern → lésþern → léþern → léþern
+lsterétrs → alsteréturs → alstheréthurs → alsþréþurs → alrésos → alrésos
+lstērst → alstērst → alsthersth → alsþerst → alþest → alþest
+wahos → wōos → wōos → wōo → gwa → gwa
+wéwhs → wéwhs → wéxs → wéxs → gwéxs → gwéxs
+wéwhsm → wéwhsm → wéxsn → wéxnn → gwéxn → gwéxn
+uwahostrs → uwōosturs → uwōosthurs → uōosþurs → gwawoþos → gwawoþos
+shægw → shæg → ræk → rīk → rīg → rîg
+shægws → shægs → ræks → rīþþ → riþ → riþ
+shægwsm → shægsm → ræksn → rīknn → rign → rign
+shegwétrs → shagéturs → rakéthurs → rakéþurs → ragéþos → ragéþos
+séhegwhr → sōaghr → sōaħr → sōagr → sawaer → sawaer
+émbēh → émbē → émpē → émþe → éwþ → éwþ
+émbehs → émbōs → émpōs → émþo → éwþ → éwþ
+émbehm → émbōm → émpōn → émþōn → éwþa → éwþa
+mbehétrs → embōéturs → empōéthurs → emþōéþurs → ewþawéþos → ewþawéþos
+mbēhr → embēr → empēr → emþēr → ewþaer → ewþaer
+njnrn → enzenurn → enzenurn → enzenurn → eðrenorn → eðrenorn
+jnrns → zenrens → zenrens → zenress → ðeðres → ðeðres
+ésanam → ésanam → ésanan → éþanan → éþan → éþan
+ésnms → ésenems → ésenems → éþeness → éþenes → éþenes
+ésnm → ésenm → ésenn → éþenn → éþen → éþen
+sanamtrs → sanamturs → sananthurs → sananþurs → sanannos → sanannos
+ghams → ghams → ħams → ħass → ħas → ghas
+géhams → gōams → kōams → kōass → kawas → kawas
+géhamsm → gōamsm → kōamsn → kōasnn → kawasn → kawasn
+ghmsétrs → ghemséturs → ħemséthurs → esséþurs → esséþos → esséþos
+ghamshr → ghamshr → ħamrr → amrr → awer → awer
+émbalar → émbalar → émpalar → émþalar → éwþalar → éwþalar
+émbalars → émbalars → émpalars → émþalars → éwþalas → éwþalas
+émbalarm → émbalarm → émpalarn → émþalarn → éwþalarn → éwþalarn
+mblrétrs → embalréturs → empalléthurs → emþalléþurs → ewþalléþos → ewþalléþos
+mbalarhr → embalarhr → empalarr → emþalarr → ewþalarer → ewþalarer
+umboc → umbos → umpos → umþo → gþ → gþ
+umbocs → umboss → umposs → umþoss → gþos → gþos
+umbocm → umbosm → umposn → umþonn → gþon → gþon
+umbactrs → umbasturs → umpasthurs → umþasþurs → gþassos → gþassos
+ugœs → ugœs → ukœs → ukeu → eke → eke
+wógos → wógos → wakos → wako → gwag → gwag
+wógosm → wógosm → wakosn → wakonn → gwagon → gwagon
+ugosótrs → ugosóturs → ukosóthurs → ukohóþurs → ekoóþos → ekoóþos
+ugœshr → ugœshr → ukœrr → ukeurr → ekeorer → ekeorer
+óscœr → óssœr → óssœr → ósseur → ósseor → ósseor
+óscors → óssors → óssors → óssors → óssos → óssos
+óscorm → óssorm → óssorn → óssorn → óssorn → óssorn
+scœrtrs → ssœrturs → ssœrthurs → sseurþurs → sseorþos → sseorþos
+gnjatr → genzatr → kenzathr → kenzaþr → keðraser → keðraser
+gnjatrs → genzaturs → kenzathurs → kenzaþurs → keðrasos → keðrasos
+gnjatrm → genzaturm → kenzathurn → kenzaþurn → keðrasorn → keðrasorn
+gnjtrétrs → genztréturs → kenzthréthurs → kenzþréþurs → keðrésos → keðrésos
+génjtrst → génzturst → kénzthursth → kénzþurst → kéðþost → kéðþost
+glaban → glaban → klapan → klapan → klab → klab
+gélabans → gélabans → kélapans → kélapass → kélabas → kélabas
+gélabanm → gélabanm → kélapann → kélapann → kélaban → kélaban
+glbnétrs → galbnéturs → kalpnéthurs → kalbnéþurs → kalnéþos → kalnéþos
+glabanst → glabanst → klapansth → klapasst → klabast → klabast
+swēt → swēt → swēth → xēt → haed → haed
+swēts → swēts → sweths → xeþs → heþ → heþ
+swētm → swētm → swethn → xetþ → hetþ → hetþ
+swetétrs → swetéturs → swethéthurs → xeþéþurs → heþésos → heþésos
+séwetst → séwetst → séwethsth → séweþst → séweþt → séweþt
+égawah → égawō → ékawō → ékawo → égau → égau
+égawahs → égawōs → ékawōs → ékawo → égau → égau
+égawahm → égawōm → ékawōn → ékawōn → égau → égau
+gwhétrs → ghéturs → ħéthurs → éþurs → éþos → éþos
+gawahst → gawōst → kawosth → kawost → kaost → kaost
+bēr → bēr → pēr → pēr → paer → paer
+bērs → bērs → pers → pers → pes → pes
+bērm → bērm → pern → pern → pern → pern
+berétrs → beréturs → peréthurs → préþurs → préþos → préþos
+ébīrst → ébīrst → épirsth → épirst → ébist → ébist
+éjōp → ézōp → ézōph → ézōþ → érauþ → érauþ
+éjēps → ézēps → ézephs → ézeþs → éreþ → éreþ
+éjēpm → ézēpm → ézephn → ézeþn → éreþn → éreþn
+jōptrs → zōpturs → zopthurs → zopþurs → ðopsos → ðopsos
+éherek → ōarek → ōarekh → ōareþ → awareþ → awareþ
+éhereks → ōareks → ōarekhs → ōareþs → awareþ → awareþ
+éherekm → ōarekm → ōarekhn → ōareþn → awareþn → awareþn
+hrkétrs → aurkéturs → aurkhéthurs → ōrþéþurs → aurþésos → aurþésos
+herekhr → aarekhr → aarekhr → aareþr → aareþer → âreþer
+ghebo → ghabo → ħap → ħap → ħāb → ghâb
+ghebos → ghabos → ħapos → apo → āb → âb
+ghebom → ghabom → ħapon → apon → āb → âb
+ghbótrs → ghbóturs → póthurs → póþurs → póþos → póþos
+góhbhr → gōbhr → kour → kūr → kūr → kûr
+óbonam → óbonam → óponan → óponan → óbon → óbon
+óbonams → óbonams → óponams → óponass → óbonas → óbonas
+óbonam → óbonam → óponan → óponan → óbon → óbon
+bnmótrs → benmóturs → penmóthurs → penmóþurs → pembóþos → pembóþos
+bonamst → bonamst → ponamsth → ponasst → ponast → ponast

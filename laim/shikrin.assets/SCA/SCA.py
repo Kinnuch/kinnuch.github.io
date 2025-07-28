@@ -288,7 +288,7 @@ def main():
         intermediates = []  # 记录中间体
         
         # 逐条应用规则
-        for rule in rules:
+        for rule_index, rule in enumerate(rules):
             # 构建正则表达式
             lst_current = current
             for i in range(len(rule.left_context)):
@@ -328,7 +328,7 @@ def main():
                     column_name.append(rule.period_name)
             # 记录调试信息
             if new_current != current:
-                debug_output.append(f"{current} → {new_current} ({rule.target} → {rule.replacement})")
+                debug_output.append(f"{current} → {new_current} ({rule.target} → {rule.replacement}) at {rule_index + 1} line")
             
             current = new_current
             

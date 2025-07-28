@@ -8,7 +8,7 @@ j > z / _
 > e / #|C_[nm]C
 l > al / #|C_C
 r > ur / #|C_C
-h > a / #_
+h > a / #_ - #_V
 D[hx] > L / _
 S[hx] > L / _
 [hx] > / L_
@@ -150,6 +150,8 @@ xw > ux / _#
 x > h / #_
 xR > Rh / #_
 Q > Z / V_ - V_h|F
+p > b / s_V
+k > g / s_V
 D > L / #(C)(h)_(C)(h)#
 ħ > a / C_#
 ħi > ī / C_#

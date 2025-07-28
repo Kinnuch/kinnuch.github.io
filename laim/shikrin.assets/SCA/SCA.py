@@ -214,7 +214,7 @@ def systematical_replacement(waitingstr: str, pos: int) -> str:
     if pos > len(waitingstr):
         return ""
     else:
-        return waitingstr[pos - 1]
+        return waitingstr[pos]
 
 def _apply_replacement(target: str, replacement: str, original: str, categories: dict) -> str:
     """
@@ -227,7 +227,20 @@ def _apply_replacement(target: str, replacement: str, original: str, categories:
     elif replacement == "":
         return ""           # 脱落
     else:
-        replacement = regex.sub(r'[A-Z]', lambda m: systematical_replacement(categories[m.group(0)], original.find(target)), replacement)
+        lbrac = original.find('[')
+        rbrac = original.find(']')
+        pos = 9999
+        if (lbrac == -1 and rbrac == -1):
+            pos = original.find(target)
+        else:
+            lpart, temp = original.strip().split('[')
+            mpart, rpart = temp.strip().split(']')
+            for sel_index, sel in enumerate(mpart):
+                real_original = lpart + sel + rpart
+                if real_original.find(target) != -1:
+                    pos = sel_index
+                    break
+        replacement = regex.sub(r'[A-Z]', lambda m: systematical_replacement(categories[m.group(0)], pos), replacement)
         return replacement   # 直接替换或增生
 
 def load_rules(rule_file: str, categories: dict, replacements: list) -> list[Rule]:

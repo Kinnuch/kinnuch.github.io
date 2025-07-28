@@ -10,8 +10,8 @@ j > z / _
 l > al / #|C_C
 r > ur / #|C_C
 h > a / #_ - #_V
-D[hx] > L / _
-S[hx] > L / _
+Dh > L / _
+Sh > L / _
 [hx] > / L_
 -* PTsr
 bh > w / _
@@ -93,7 +93,6 @@ e > a / s(t)_#
 Q > F / #s_ - #s_h
 > h / QQ_ , AQ_ , ŋQ_ - _h
 Qh > F / _
-QQh > FF / _
 s > þ / #V_V
 ā > ō / _
 au > ō / _
@@ -106,7 +105,6 @@ oi > ui / _
 s > m / _m - #_m
 s > n / _n - #_n
 s > h / V_V , V_#
-Qs > FF / _
 r > l / _l
 y > / _(u)i
 w > / _u , u_
@@ -151,7 +149,7 @@ Ci > \ / V_#
 xw > ux / _#
 x > h / #_
 xR > Rh / #_
-Q > Z / V_ - V_h|F
+Q > Z / V_ - V_h|F|f
 p > b / s_V
 k > g / s_V
 D > L / #(C)(h)_(C)(h)#
@@ -213,8 +211,8 @@ o > a / _u
 þþ > þ / _
 xx > x / _
 > e / C_A#
-> e / #k_Q|F
-g > e / #_Q|F
+> e / #k_Q|F|f
+g > e / #_Q|F|f
 w > u / _(n)# , V_C
 rr > r / _#
 w[hx] > f / _
@@ -227,9 +225,11 @@ u > i / Cu_
 u > / Vu_
 u > w / V_V
 -* Tsr
+k > c / _
 ŋ > ñ / _
-lh > ł / _
-rh > ŕ / _
+þ > th / _
+ð > dh / _
+x > ch / _
 L > O / _
 aa > â / _
 ii > î / _

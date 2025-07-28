@@ -1,6 +1,7 @@
 PSkr | PTsr | ATsr | OTsr | Tsr | Orthography
 sœcren → sœsren → sœsren → seusren → seoþer → seoþer
 ésœcren → ésœsren → ésœsren → éþeusren → éþeoþer → éþeoþer
+gēssal → gēssal → kessar → kessar → kessar → kessar
 hac¢gēssal → has¢gēssal → as¢kessar → as¢kessar → askessar → askessar
 épebes → épebes → éphepes → éþepe → éþeb → éþeb
 épibis → épibis → éphipis → éþipi → éþiib → éþîb

@@ -360,40 +360,6 @@ class TheusrinSCA:
 
         self.create_widgets()
 
-    def start_deadkey(self, event):
-        self.compose_seq = 1
-        return "break"
-
-    def ensure_deadkey(self, event):
-        if self.compose_seq == 1:
-            self.compose_seq = 2
-        else:
-            self.compose_seq = 0
-        return "break"
-
-    def handle_deadkey(self, event):
-        if self.compose_seq == 2:
-            self.compose_seq = 0
-            
-            # 处理特殊字符组合
-            if event.char.lower() == 'e':
-                self.word_entry.insert(tk.INSERT, 'é')
-                return "break"
-            elif event.char.lower() == 'a':
-                self.word_entry.insert(tk.INSERT, 'á')
-                return "break"
-            elif event.char.lower() == 'i':
-                self.word_entry.insert(tk.INSERT, 'í')
-                return "break"
-            elif event.char.lower() == 'o':
-                self.word_entry.insert(tk.INSERT, 'ó')
-                return "break"
-            elif event.char.lower() == 'u':
-                self.word_entry.insert(tk.INSERT, 'ú')
-                return "break"
-            
-        return
-
     def create_widgets(self):
         tk.Label(self.root, text = "瑟乌丝林语音变", font = self.title_font).pack(pady = 10)
 
@@ -406,11 +372,12 @@ class TheusrinSCA:
         self.word_entry.pack(side = "left", padx = 10)
         self.word_entry.focus_set()  # 设置焦点
         self.word_entry.bind("<Return>", lambda event: self.evolve_word())  # 回车键绑定
-        self.compose_seq = 0
-        self.word_entry.bind("<Control_R>", self.start_deadkey)
-        self.word_entry.bind("<semicolon>", self.ensure_deadkey)
-        self.word_entry.bind("<Key>", self.handle_deadkey)
         
+        self.special_signs = tk.Text(input_frame, font = self.font, width = 20, height = 1)
+        self.special_signs.insert('1.0', 'áéíóúýñ·āēīōūë')
+        self.special_signs.pack(side = "left", padx = 100)
+        self.special_signs.config(state = "disabled")
+
         # 执行按钮
         tk.Button(
             self.root, text="执行音变", 

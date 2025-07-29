@@ -130,7 +130,7 @@ whoym → whoym → xoin → xuin → hoen → hoen
 whyówat → whyówat → xyówath → xyówat → hiówad → hiówad
 wéhyst → wēyst → weisth → weist → gweist → gweist
 ndatr → endatr → entathr → enþaþr → enaþer → enather
-ndawat → endawat → entawath → enþawat → enaud → enaud
+ndatrs → endaturs → entathurs → enþaþurs → enasos → enasos
 ndatrm → endaturm → entathurn → enþaþurn → enasor → enasor
 ndawat → endawat → entawath → enþawat → enaud → enaud
 ghade → ghade → ħat → ħat → ād → âd

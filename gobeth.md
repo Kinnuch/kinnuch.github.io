@@ -11,7 +11,7 @@ title: Gobeth
 
 ## Gobeth Shikrin
 
-- [Gobeth Shikrin](https://kinnuch.github.io/laim/shikrin.assets/ShikrinDatabase/ShikrinDictionary.html) 希克林语词典
+- [Gobeth Shikrin](https://docs.google.com/spreadsheets/d/1wglqQXgUjOqKqOM9OlOskpZVtzu9CGCkhqvg_op4V8I/edit?usp=sharing) 希克林语词典
 
 ## TEAE
 

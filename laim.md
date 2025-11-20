@@ -37,3 +37,7 @@ Shikṛin lam neledh nîn. Istad, ceno [Shikṛin](https://kinnuch.github.io/lai
 ## Hittite | 赫梯语
 
 [Hittite](https://kinnuch.github.io/laim/hittite) 赫梯语及楔形文字学习笔记
+
+## Japanese | 日语
+
+[Japanese](https://kinnuch.github.io/laim/japanese) 日语学习笔记

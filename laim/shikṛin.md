@@ -4,10 +4,14 @@ permalink: /laim/shikṛin/index.html
 title: Shikṛin
 ---
 
-### Proto-Shikṛin | 原始希克林语
+### Proto-Shikrin | 原始希克林语
 
 [Proto-Shikṛin](https://kinnuch.github.io/laim/Proto-Shikṛin)
 
-### Theusṛin | 瑟乌丝林语
+### Theusrin | 瑟乌丝林语
 
 [Theusṛin](https://kinnuch.github.io/laim/Theusṛin)
+
+### Archipelago Shikrin | 群岛希克林语
+
+[Archipelago Shikrin](https://kinnuch.github.io/laim/ArchipelagoShikrin)

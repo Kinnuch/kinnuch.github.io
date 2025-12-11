@@ -1,8 +1,9 @@
-C=ptkbdgfsmnlrwj
-B=ptkbdgfsmnlr
-S=pćcbźɟfśmńjð
-R=fhxwħħøhvtłr
-X=føçvĩĩøøvþhð
-V=aeiouɯyāēīōūɯ̄ȳəɤ
-D=aeiouɯyə
-L=āēīōūɯ̄ȳɤ
+C=ptkbdgfsmnlr5jh123wxŋ
+R=mnlr
+T=ptkbdg
+V=aeiouāēīōūáéíóúɤɯ89
+D=aeiou
+S=áéíóú
+L=āēīōū
+N=123
+M=mn

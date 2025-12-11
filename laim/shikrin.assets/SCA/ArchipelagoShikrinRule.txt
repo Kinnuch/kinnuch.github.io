@@ -1,22 +1,92 @@
 -* PSkr
-kw > p / p?_
-p > / #_
-gw > b / _
+e > a / h2_ , _h2
+é > á / h2_ , _h2
+e > o / h3_ , _h3
+é > ó / h3_ , _h3
+> 8 / ē_
+> 9 / ō_
 c > k / _
 j > g / _
 y > j / _
-mb > b / _
-nd > d / _
-ng > g / _
-dt > ss / _
-m > n / _#
-h > i / C[lr]_C
-h > a / #|C_C|#
-> a / C[nmlr]_C
+> a / #R|CR_hNR , CR_[bdg] , C_RhNV
+5 > u / C_C|# , #_C
+j > i / C_C|# , #_C
+m > n / _j
+m > / _5
+p > kw / _?kw
+hN > a / #_RC , #R|CR_[ptk]
+hN > / _V , V_CS , T_T - #(s)(M)T_T
+hN > ī / CR_jV
+hN > a / C_C
+Dh > L / _NC|N#
+D > S / #(s)(M)(C)(R)_ - _?S
+L > S4 / #(s)(M)(C)(R)_ - _?S
+hN > 4 / S_C|#
+S > 2 / _4
+N > / _
+4 > / _
+t[td] > ss / _
+d[td] > ss / _
+s > / Cs_ , Ls_ , SSs_
 -* PArskr
-
+5 > w / _
+gw > b / _ - n_
+m > / _b - #_b
+b > / #m_
+n > / _[dg] - #_[dg]
+d > / #n_
+ngw > w / #_V
+ngw > u / #_
+ng > j / #_
+e > a / _Ra
+é > á / _Ra
+> i / #[lr]|C[lr]_T
+> a / #|C_RC
+h > / _
+ē8 > īa / _
+éé8 > ía / _
+ē > ī / _
+éé > íí / _
+ō > ū / _(C)#
+óó > úú / _(C)#
+L > D / _RC
+S > / _SRC
+T > x / _T|s
+p > b / _[lr]
+p > w / _M
+p > f / _ - s_
+f > / #_
+kw > p / #_
+ō9 > ūa / _
+óó9 > úa / _
+ō > ā / _
+óó > áá / _
+ej > ē / _
+j > é / é_
+e > o / _w
+é > ó / _w
+u > o / _wa
+ú > ó / _wa
+a > / áá_ , ā_
+e > / éé_ , ē_
+i > / íí_ , ī_
+o > / óó_ , ō_
+u > / úú_ , ū_
+m > n / _[tdkg]
+n > m / _[pb]
 -* AArskr
-
+s > / V_V
+ou > ō / _
+óu > óó / _
+o > ɤ / _(C)#
+u > ɯ / _(C)#
+mp > bb / _
+nt > dd / _
+nk > gg / _
+mb > mm / _
+nd > nn / _
+ng > ŋŋ / _
+> n / n¢_V
 -* OArskr
 
 -* Arskr

@@ -78,8 +78,6 @@ n > m / _[pb]
 s > / V_V
 ou > ō / _
 óu > óó / _
-o > ɤ / _(C)#
-u > ɯ / _(C)#
 mp > bb / _
 nt > dd / _
 nk > gg / _
@@ -87,6 +85,17 @@ mb > mm / _
 nd > nn / _
 ng > ŋŋ / _
 > n / n¢_V
+e > a / _g(w)P
+é > á / _g(w)P
+e > i / _CG - _QG
+é > í / _CG - _QG
+o > u / _CG - _QG
+ó > ú / _CG - _QG
+i > e / _CA - _QA
+í > é / _CA - _QA
+u > o / _CA - _QA
+ú > ó / _CA - _QA
+> u / [aeo]_C(C)u(C)#|
 -* OArskr
 
 -* Arskr

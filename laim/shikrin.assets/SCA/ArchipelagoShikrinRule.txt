@@ -95,8 +95,7 @@ S > 4 / S?S_
 S4 > L / _
 S > D / S?_ - S_
 e > i / _sV
-é > í / _[jf][aou] - é_
-
+é > í / _[jhf][aou] - é_
 i > / _#
 V > / [þð]_[þð] , r_r
 é > á / _g(w)P
@@ -115,18 +114,13 @@ a > u / _C(C)u(C)#|C(C)ū#
 S > 4 / _S
 4S > 2 / _
 4 > / _
-o[shũm] > / C_#
-ā > / C_#
-u[sh] > / C_# , Co_#
-ūi > / C_#
-ū[sh] > u / C_#
-m[sh] > / Ca_#
-ā[sh] > a / C_#
-āt > a / C_#
-ai > / C_#
-i[sh] > / C_#
-ī > / C_#
-ī[sh] > i / C_#
+> 4 / [lr]_s#
+C > / _s#
+4 > / _
+D[mndtkũzðþxsh] > / _#
+L > / _#
+L > D4 / _[mndtkũzðþxsh]#
+4[mndtkũzðþxsh] > / _#
 z > nn / V_#
 l > ll / V_#
 > ə / C_R#
@@ -139,7 +133,7 @@ l > / S_V(V)l , V_S(S)l
 ũ > v / _
 z > r / V_gV|g# - S(C)_gV|g#
 L > D / _
-V > / S(C)C_
+V > / S(C)C_ - S(C)C_CC#
 ðð > dd / _
 ð > d / _d , d_
 d > t / _þ , þ_
@@ -174,6 +168,8 @@ t > d / _# , _V(C)(C)#
 þ > ð / _# , _V(C)(C)#
 f > v / _# , _V(C)(C)#
 x > ħ / P_# , P_V(C)(C)#
+e > i / _[aou](C)(C)#
+D > / V_C(C)V  - [iu]_C(C)V
 -* OArskr
 
 -* Arskr

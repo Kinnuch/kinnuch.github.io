@@ -143,7 +143,7 @@ h > / S_V(V)[hs] , V_S(S)[hs]
 l > / S_V(V)l , V_S(S)l
 ũ > v / _
 z > r / V_gV|g# - S(C)_gV|g#
-V > / S(C)(C)V(V)(C)(C)(C)V(V)(C)(C)_ - SS(C)(C)V(V)(C)(C)(C)V(V)(C)(C)_
+V > / S(C)CV(C)(C)CV(C)(C)C_
 V > / S(C)C_ - S(C)C_CC#
 ðð > dd / _
 ð > d / _d , d_

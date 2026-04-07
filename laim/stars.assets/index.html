@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>3D 夜空星图 - 交互式恒星观测</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<canvas id="sky"></canvas>
+<div id="hint">拖动旋转天球 · 滚轮缩放 · 点击恒星查看详情</div>
+
+<div id="panel">
+  <div class="row">
+    <label>详细程度 <span id="lvVal">2</span></label>
+    <input type="range" id="level" min="1" max="5" step="1" value="2">
+  </div>
+  <div class="row">
+    <label><input type="checkbox" id="chkConst"> 显示星座连线</label>
+  </div>
+  <div class="row">
+    <label><input type="checkbox" id="chkCoord" checked> 显示鼠标天球坐标</label>
+  </div>
+  <div class="row coord" id="coordBox">RA — / Dec —</div>
+</div>
+<div id="info">
+  <button id="closeBtn">×</button>
+  <h2 id="starName">—</h2>
+  <p><b>拜耳命名：</b><span id="bayer">—</span></p>
+  <p><b>所属星座：</b><span id="constellation">—</span></p>
+  <p><b>视星等：</b><span id="magnitude">—</span></p>
+  <p><b>距离：</b><span id="distance">—</span></p>
+  <p><b>光谱型：</b><span id="spectral">—</span></p>
+  <p><b>赤经/赤纬：</b><span id="radec">—</span></p>
+  <p><b>3D 直角坐标：</b><span id="xyz">—</span></p>
+  <p id="desc">—</p>
+</div>
+<script src="stars.js"></script>
+</body>
+</html>

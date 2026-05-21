@@ -349,6 +349,108 @@ def execute_sca(word: str):
     return final_word, intermediates, debug_output
     
 
+class DeadKeyHandler:
+    """让 tk 输入框接受键盘布局 OS 层合成出的命名字符事件。
+
+    在加拿大多语言标准等键盘布局下，OS 已在系统层完成 dead key + 字母
+    的合成，然后用 keysym='eacute' / 'egrave' / 'amacron' 等、event.char
+    为空、event.state 带 Alt 位的 KeyPress 事件传给 tk。tk 的默认绑定
+    只看 event.char，所以这些事件本应插入字符却什么都没发生——这就是
+    "输入框里输入不了"的原因。本类把这类事件按 keysym 映射回 Unicode
+    字符并主动插入。
+
+    紧随其后通常还会有一个 keysym 为单字母（如 'e'）但带 Alt(0x8) 修饰
+    的"裸键"重复事件，它会被 tk 的 <Alt-KeyPress> 类绑定自然吞掉，
+    所以不会出现双插入。
+
+    若想确认你的键盘合成出的是什么 keysym，把 debug 改为 True 后从
+    命令行启动，控制台会打印每次按键的 keysym / char / state。
+    """
+
+    KEYSYM_TO_CHAR = {
+        # 锐音符 ´
+        "aacute": "á", "eacute": "é", "iacute": "í", "oacute": "ó",
+        "uacute": "ú", "yacute": "ý",
+        "Aacute": "Á", "Eacute": "É", "Iacute": "Í", "Oacute": "Ó",
+        "Uacute": "Ú", "Yacute": "Ý",
+        "cacute": "ć", "Cacute": "Ć",
+        "nacute": "ń", "Nacute": "Ń",
+        "sacute": "ś", "Sacute": "Ś",
+        "zacute": "ź", "Zacute": "Ź",
+        # 抑音符 `
+        "agrave": "à", "egrave": "è", "igrave": "ì",
+        "ograve": "ò", "ugrave": "ù",
+        "Agrave": "À", "Egrave": "È", "Igrave": "Ì",
+        "Ograve": "Ò", "Ugrave": "Ù",
+        # 扬抑符 ^
+        "acircumflex": "â", "ecircumflex": "ê", "icircumflex": "î",
+        "ocircumflex": "ô", "ucircumflex": "û",
+        "Acircumflex": "Â", "Ecircumflex": "Ê", "Icircumflex": "Î",
+        "Ocircumflex": "Ô", "Ucircumflex": "Û",
+        # 波浪号 ~
+        "atilde": "ã", "ntilde": "ñ", "otilde": "õ",
+        "Atilde": "Ã", "Ntilde": "Ñ", "Otilde": "Õ",
+        # 分音符 ¨
+        "adiaeresis": "ä", "ediaeresis": "ë", "idiaeresis": "ï",
+        "odiaeresis": "ö", "udiaeresis": "ü", "ydiaeresis": "ÿ",
+        "Adiaeresis": "Ä", "Ediaeresis": "Ë", "Idiaeresis": "Ï",
+        "Odiaeresis": "Ö", "Udiaeresis": "Ü", "Ydiaeresis": "Ÿ",
+        # 长音符 ¯
+        "amacron": "ā", "emacron": "ē", "imacron": "ī",
+        "omacron": "ō", "umacron": "ū",
+        "Amacron": "Ā", "Emacron": "Ē", "Imacron": "Ī",
+        "Omacron": "Ō", "Umacron": "Ū",
+        # 软音符 ¸
+        "ccedilla": "ç", "Ccedilla": "Ç",
+        # 北欧字母
+        "aring": "å", "Aring": "Å",
+        "oslash": "ø", "Ooblique": "Ø",
+        "ae": "æ", "AE": "Æ",
+        # 死键符号本身（dead key + space 时 OS 给的 keysym）
+        "acute": "´", "grave": "`",
+        "asciicircum": "^", "asciitilde": "~",
+        "diaeresis": "¨", "cedilla": "¸",
+        "macron": "¯",
+        # 其它
+        "periodcentered": "·",
+    }
+
+    debug = True  # True 时在控制台打印每次按键事件，便于核对 keysym
+
+    def __init__(self, widget):
+        self.widget = widget
+        widget.bind("<KeyPress>", self._on_keypress, add="+")
+        # 覆盖 Tk 的 <Alt-KeyPress> 默认（"什么都不做"）。AltGr 风格布局
+        # （如加拿大多语言标准）下 Right Ctrl 被 Tk 当成 Alt，导致 state
+        # 带 0x8 位的字符按键都被吞掉。这里把它接管，正常插入字符。
+        widget.bind("<Alt-KeyPress>", self._on_alt_keypress)
+
+    def _on_keypress(self, event):
+        if self.debug:
+            print(f"[DeadKey] Key:  keysym={event.keysym!r} char={event.char!r} "
+                  f"state={hex(event.state)} keycode={event.keycode}")
+        return self._maybe_insert(event)
+
+    def _on_alt_keypress(self, event):
+        if self.debug:
+            print(f"[DeadKey] Alt:  keysym={event.keysym!r} char={event.char!r} "
+                  f"state={hex(event.state)} keycode={event.keycode}")
+        return self._maybe_insert(event)
+
+    def _maybe_insert(self, event):
+        # 优先用 OS 合成出的命名字符（keysym 如 eacute / amacron 等，char 为空）
+        ch = self.KEYSYM_TO_CHAR.get(event.keysym)
+        if ch is not None:
+            self.widget.insert("insert", ch)
+            return "break"
+        # 否则只要 event.char 是可见单字符，就照常插入
+        # （覆盖 <Alt-KeyPress> 默认的"吞键"行为，让 AltGr 布局也能打字）
+        if event.char and event.char.isprintable() and len(event.char) == 1:
+            self.widget.insert("insert", event.char)
+            return "break"
+        return None
+
+
 class TheusrinSCA:
     def __init__(self, root):
         self.root = root
@@ -372,6 +474,7 @@ class TheusrinSCA:
         self.word_entry.pack(side = "left", padx = 10)
         self.word_entry.focus_set()  # 设置焦点
         self.word_entry.bind("<Return>", lambda event: self.evolve_word())  # 回车键绑定
+        DeadKeyHandler(self.word_entry)  # 启用 Ctrl+死键 组合输入
         
         self.special_signs = tk.Text(input_frame, font = self.font, width = 20, height = 1)
         self.special_signs.insert('1.0', 'áéíóúýñ·āēīōūë')

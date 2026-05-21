@@ -10,6 +10,10 @@ title: Cerf
 
 á é í ó ú ý â ê î ô û ŷ ñ
 
+## Prestannath | 音变器
+
+- [Shikrin SCA](https://kinnuch.github.io/laim/shikrin.assets/SCA/SCA.html) **希克林语系音变器（网页版）**，内置「瑟乌丝林语」与「群岛希克林语」两种预设的 Category / Replace / Rule，也可自定义规则用于其他语言。
+
 ## Abdrab | 课后练习
 
 - Prestanneth 音变练习

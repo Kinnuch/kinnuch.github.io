@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(ls \"c:/Users/Administrator/Documents/GitHub/kinnuch.github.io/laim/shikrin.assets/\" | head -30)",
+      "Read(//c/Users/Administrator/Documents/GitHub/kinnuch.github.io/laim/shikrin.assets/**)",
+      "Bash(python -c \"import ast; ast.parse\\(open\\('TheusrinSCA.py', encoding='utf-8'\\).read\\(\\)\\); ast.parse\\(open\\('ArchipelagoShikrinSCA.py', encoding='utf-8'\\).read\\(\\)\\); print\\('OK'\\)\")"
+    ]
+  }
+}

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>希克林语系音变器 | Shikrin SCA</title>
+    <link rel="stylesheet" href="SCAStyle.css">
+</head>
+<body>
+    <div class="header-bar">
+        <div class="utility-bar">
+            <a href="https://kinnuch.github.io/cerf" class="utility-btn">🏠 返回工具页</a>
+            <div class="dropdown">
+                <button id="helpBtn" class="utility-btn" type="button">📖 规则语法</button>
+                <div class="dropdown-content" id="helpContent">
+                    <p><strong>基本格式</strong></p>
+                    <p><code>目标 &gt; 替换 / 左_右</code></p>
+                    <p>例如 <code>e &gt; a / _h</code> 表示 e 后接 h 时变为 a。</p>
+                    <p><strong>常用符号</strong></p>
+                    <p><code>#</code> 词首 / 词末</p>
+                    <p><code>?</code> 跨位置匹配</p>
+                    <p><code>|</code> 多选项（环境内）</p>
+                    <p><code>(x)</code> 可选元素</p>
+                    <p><code>[xyz]</code> 临时范畴</p>
+                    <p><code>大写字母</code> 引用 Category 范畴</p>
+                    <p><strong>多环境 / 排除</strong></p>
+                    <p><code>逗号</code> 分隔多个左右环境</p>
+                    <p><code>-</code> 之后是排除环境</p>
+                    <p><strong>特殊替换</strong></p>
+                    <p><code>\</code> 换位 / 倒序</p>
+                    <p><code>2</code> 双写</p>
+                    <p>替换为空 = 脱落</p>
+                    <p><strong>阶段标记</strong></p>
+                    <p><code>-* 名字</code> 标记一个阶段，输出中作为一列</p>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button id="aboutBtn" class="utility-btn" type="button" onclick="document.getElementById('aboutContent').classList.toggle('show')">ℹ️ 关于</button>
+                <div class="dropdown-content" id="aboutContent">
+                    <p>本工具是 Kinnuch 自用音变姬（<code>SCA.py</code>）的网页版。</p>
+                    <p>预设包含<strong>瑟乌丝林语</strong>与<strong>群岛希克林语</strong>从原始希克林语演化的完整规则。</p>
+                    <p>支持自定义 Category / Replace / Rule，并可粘贴多行单词批量处理。</p>
+                    <p>快捷键：<code>Ctrl/Cmd + Enter</code> 执行音变。</p>
+                </div>
+            </div>
+        </div>
+        <h1 class="page-title">Sound Change Applier · 希克林语系音变器</h1>
+        <div class="preset-bar">
+            <label for="presetSelect">预设配置：</label>
+            <select id="presetSelect">
+                <option value="theusrin">瑟乌丝林语 (Theusrin)</option>
+                <option value="archipelago">群岛希克林语 (Archipelago Shikrin)</option>
+            </select>
+            <button id="loadPresetBtn" class="primary-btn" type="button">加载到下方</button>
+        </div>
+    </div>
+
+    <div class="main-container">
+        <div class="config-grid">
+            <div class="config-card">
+                <h3>Category 范畴</h3>
+                <textarea id="categoryInput" class="config-textarea" spellcheck="false" placeholder="如：V=aeiou"></textarea>
+            </div>
+            <div class="config-card">
+                <h3>Replace 多合字母</h3>
+                <textarea id="replaceInput" class="config-textarea" spellcheck="false" placeholder="如：th|θ（每行一个，原字符|替换字符）"></textarea>
+            </div>
+            <div class="config-card config-card-rule">
+                <h3>Rule 音变规则</h3>
+                <textarea id="ruleInput" class="config-textarea" spellcheck="false" placeholder="如：&#10;-* 阶段名&#10;e > a / _h"></textarea>
+            </div>
+        </div>
+
+        <div class="input-card">
+            <h3>输入单词（每行一个）</h3>
+            <textarea id="wordInput" class="word-textarea" spellcheck="false" placeholder="一行一个原始词，例如：&#10;sken&#10;tregor"></textarea>
+            <button id="runBtn" class="primary-btn run-btn" type="button">执行音变 →</button>
+        </div>
+
+        <div class="result-card">
+            <h3>音变结果</h3>
+            <div id="resultArea" class="result-area">
+                <div class="empty-state">输入单词后点击「执行音变」</div>
+            </div>
+        </div>
+
+        <div class="result-card">
+            <h3>调试信息</h3>
+            <div id="debugArea" class="debug-area">
+                <div class="empty-state">每一条触发的规则及其改动会显示在这里</div>
+            </div>
+        </div>
+    </div>
+
+    <script src="SCAScript.js"></script>
+</body>
+</html>

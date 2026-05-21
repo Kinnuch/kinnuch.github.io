@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(node --check \"c:/Users/Administrator\\\\Documents\\\\GitHub\\\\kinnuch.github.io\\\\laim\\\\shikrin.assets\\\\SCA\\\\SCAScript.js\")",
+      "Bash(rm /tmp/sca_test.cjs)"
+    ],
+    "additionalDirectories": [
+      "\\tmp"
+    ]
+  }
+}

@@ -849,6 +849,39 @@ function run() {
     renderDebug(rows);
 }
 
+function setInputError(msg) {
+    const input = $('wordInput');
+    const errBox = $('inputError');
+    if (msg) {
+        input.classList.add('input-error');
+        errBox.textContent = msg;
+        errBox.classList.add('show');
+    } else {
+        input.classList.remove('input-error');
+        errBox.textContent = '';
+        errBox.classList.remove('show');
+    }
+}
+
+function expandTheusrinForms() {
+    const input = $('wordInput');
+    const lines = input.value.split(/\r?\n/).map(l => l.trim()).filter(l => l);
+
+    if (lines.length < 2 || lines.length > 3) {
+        setInputError(`需要输入 2 行（强形 A、弱形 B）或 3 行（A、B、中形 C），当前为 ${lines.length} 行。`);
+        return;
+    }
+    setInputError('');
+
+    const [A, B, C] = lines;
+    const expanded = (C === undefined)
+        ? [A, A + 's', A + 'm', B + 'wat', A + 'is', A + 'im']
+        : [A, A + 's', A + 'm', B + 'wat', C + 'hr', A + 'is', A + 'im', C + 'ihr'];
+
+    input.value = expanded.join('\n');
+    run();
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     // 默认加载第一个预设，便于上手
     $('presetSelect').value = 'theusrin';
@@ -861,6 +894,13 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     $('runBtn').addEventListener('click', run);
+    $('expandThsrBtn').addEventListener('click', expandTheusrinForms);
+
+    $('wordInput').addEventListener('input', () => {
+        if ($('wordInput').classList.contains('input-error')) {
+            setInputError('');
+        }
+    });
 
     $('wordInput').addEventListener('keydown', (e) => {
         if (e.key === 'Enter' && (e.ctrlKey || e.metaKey)) {

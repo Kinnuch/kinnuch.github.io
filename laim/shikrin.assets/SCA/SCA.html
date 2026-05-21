@@ -74,7 +74,11 @@
         <div class="input-card">
             <h3>输入单词（每行一个）</h3>
             <textarea id="wordInput" class="word-textarea" spellcheck="false" placeholder="一行一个原始词，例如：&#10;sken&#10;tregor"></textarea>
-            <button id="runBtn" class="primary-btn run-btn" type="button">执行音变 →</button>
+            <div id="inputError" class="input-error-message"></div>
+            <div class="button-row">
+                <button id="runBtn" class="primary-btn run-btn" type="button">执行音变 →</button>
+                <button id="expandThsrBtn" class="secondary-btn run-btn" type="button" title="输入 2 行 = A,B（强、弱）；3 行 = A,B,C（强、弱、中）。点击后自动展开为派生形式并执行音变。">⤴ 扩展 Theusrin 形式</button>
+            </div>
         </div>
 
         <div class="result-card">

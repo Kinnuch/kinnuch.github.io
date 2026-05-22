@@ -863,6 +863,15 @@ function setInputError(msg) {
     }
 }
 
+function expandABC(forms) {
+    // forms = [A, B] 或 [A, B, C]
+    const [A, B, C] = forms;
+    if (C === undefined) {
+        return [A, A + 's', A + 'm', B + 'wat', A + 'is', A + 'im'];
+    }
+    return [A, A + 's', A + 'm', B + 'wat', C + 'hr', A + 'is', A + 'im', C + 'ihr'];
+}
+
 function expandTheusrinForms() {
     const input = $('wordInput');
     const lines = input.value.split(/\r?\n/).map(l => l.trim()).filter(l => l);
@@ -878,7 +887,10 @@ function expandTheusrinForms() {
     for (let idx = 0; idx < lines.length; idx++) {
         try {
             const forms = deriveTheusrin(lines[idx]);
-            allExpanded.push(...forms);
+            if (forms.length < 2 || forms.length > 3) {
+                throw new Error(`派生结果应为 2 或 3 个形式，实际 ${forms.length} 个`);
+            }
+            allExpanded.push(...expandABC(forms));
         } catch (err) {
             errors.push(`第 ${idx + 1} 行「${lines[idx]}」：${err.message}`);
         }

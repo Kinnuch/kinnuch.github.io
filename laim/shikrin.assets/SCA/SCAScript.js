@@ -867,19 +867,212 @@ function expandTheusrinForms() {
     const input = $('wordInput');
     const lines = input.value.split(/\r?\n/).map(l => l.trim()).filter(l => l);
 
-    if (lines.length < 2 || lines.length > 3) {
-        setInputError(`需要输入 2 行（强形 A、弱形 B）或 3 行（A、B、中形 C），当前为 ${lines.length} 行。`);
+    if (lines.length === 0) {
+        setInputError('请输入至少一行：<词干缀>-<词干>-<派生缀> <模式><性>');
+        return;
+    }
+
+    const allExpanded = [];
+    const errors = [];
+
+    for (let idx = 0; idx < lines.length; idx++) {
+        try {
+            const forms = deriveTheusrin(lines[idx]);
+            allExpanded.push(...forms);
+        } catch (err) {
+            errors.push(`第 ${idx + 1} 行「${lines[idx]}」：${err.message}`);
+        }
+    }
+
+    if (errors.length) {
+        setInputError(errors.join('\n'));
         return;
     }
     setInputError('');
 
-    const [A, B, C] = lines;
-    const expanded = (C === undefined)
-        ? [A, A + 's', A + 'm', B + 'wat', A + 'is', A + 'im']
-        : [A, A + 's', A + 'm', B + 'wat', C + 'hr', A + 'is', A + 'im', C + 'ihr'];
-
-    input.value = expanded.join('\n');
+    input.value = allExpanded.join('\n');
     run();
+}
+
+// === Theusrin 派生表 ====================================================
+// 元音交替：高化（前接缀）
+const RAISING = {
+    'a': 'e', 'e': 'i', 'o': 'e',
+    'eu': 'eu', 'ei': 'ī',
+    'ā': 'ē', 'ē': 'ī', 'ō': 'ē'
+};
+// 元音交替：弱化（后接缀）
+const WEAKENING = {
+    'a': '', 'e': '', 'o': '',
+    'eu': 'o', 'ei': 'e',
+    'ā': 'a', 'ē': 'e', 'ō': 'o'
+};
+
+// 主元音偏 e 还是 o，决定 +é/ó
+function pickEorO(stemSegment) {
+    // 取末段最后一个元音（双合优先），按偏向判定
+    const matches = [...stemSegment.matchAll(/eu|ei|ā|ē|ī|ō|ū|á|é|í|ó|ú|[aeiouœæ]/g)];
+    if (!matches.length) return 'é'; // 无元音默认 é
+    const last = matches[matches.length - 1][0];
+    const eGroup = ['a', 'e', 'ei', 'i', 'ē', 'ī', 'ā', 'á', 'é', 'í', 'æ'];
+    const oGroup = ['o', 'u', 'eu', 'ō', 'ū', 'ó', 'ú', 'œ'];
+    if (eGroup.includes(last)) return 'é';
+    if (oGroup.includes(last)) return 'ó';
+    return 'é';
+}
+
+// 统计元音音节数
+function countSyllables(s) {
+    const m = s.match(/eu|ei|ā|ē|ī|ō|ū|á|é|í|ó|ú|[aeiouœæ]/g);
+    return m ? m.length : 0;
+}
+
+// 对一段做整体高化
+function applyRaising(seg) {
+    return seg.replace(/eu|ei|ā|ē|ī|ō|[aeo]/g, m => RAISING[m] ?? m);
+}
+
+// 对一段做整体弱化
+function applyWeakening(seg) {
+    return seg.replace(/eu|ei|ā|ē|ō|[aeo]/g, m => WEAKENING[m] ?? m);
+}
+
+// 词干变形："不变"：双音节及以下不变；3+ 音节保留末元音、前面弱化
+function stemAsIs(seg) {
+    if (countSyllables(seg) <= 2) return seg;
+    // 找末元音位置，前面部分弱化，末元音及之后保留
+    const re = /eu|ei|ā|ē|ī|ō|ū|á|é|í|ó|ú|[aeiouœæ]/g;
+    const matches = [...seg.matchAll(re)];
+    const last = matches[matches.length - 1];
+    const before = seg.slice(0, last.index);
+    const tail = seg.slice(last.index);
+    return applyWeakening(before) + tail;
+}
+
+// 派生缀变形 +é/ó：派生缀为空则直接是 é/ó；否则替换其主（末）元音
+function affixWithEO(affix, eo) {
+    if (!affix) return eo;
+    const re = /eu|ei|ā|ē|ī|ō|ū|á|é|í|ó|ú|[aeiouœæ]/g;
+    const matches = [...affix.matchAll(re)];
+    if (!matches.length) return affix + eo;
+    const last = matches[matches.length - 1];
+    return affix.slice(0, last.index) + eo + affix.slice(last.index + last[0].length);
+}
+
+// 词干缀变形：'∅' 原样（含 w/y 在辅音前的元音化）；'+EO' 追加 é/ó；'+á' 追加 á
+function shapeStemAffix(stemAffix, mark, eo, nextStartsWithConsonant) {
+    if (mark === 'asis') {
+        // 半元音在辅音前元音化
+        if (nextStartsWithConsonant && stemAffix === 'w') return 'u';
+        if (nextStartsWithConsonant && stemAffix === 'y') return 'i';
+        return stemAffix;
+    }
+    if (mark === 'add_eo') return stemAffix + eo;
+    if (mark === 'add_a') return stemAffix + 'á';
+    return stemAffix;
+}
+
+// 模式表：每个 (模式, 性, 形) → [词干缀标记, 词干变形, 派生缀标记]
+//   词干缀标记: 'asis' | 'add_eo' | 'add_a'
+//   词干变形:   'asis' | 'raise' | 'weaken'
+//   派生缀标记: 'asis' | 'add_eo'
+const MODE_TABLE = {
+    '1m': { A: ['add_eo', 'raise',  'asis'],
+            B: ['add_a',  'raise',  'asis'] },
+    '1f': { A: ['asis',   'asis',   'asis'],
+            B: ['asis',   'weaken', 'asis'] },
+    '2m': { A: ['add_eo', 'raise',  'asis'],
+            B: ['asis',   'asis',   'asis'] },
+    '2f': { A: ['add_eo', 'weaken', 'asis'],
+            B: ['asis',   'asis',   'asis'] },
+    '3m': { A: ['asis',   'asis',   'asis'],
+            B: ['asis',   'weaken', 'add_eo'],
+            C: ['add_eo', 'raise',  'asis'] },
+    '3f': { A: ['asis',   'asis',   'asis'],
+            B: ['asis',   'weaken', 'add_eo'],
+            C: ['add_eo', 'weaken', 'asis'] },
+    '4':  { A: ['add_eo', 'asis',   'asis'],
+            B: ['asis',   'weaken', 'add_eo'],
+            C: ['asis',   'asis',   'asis'] }
+};
+
+function deriveTheusrin(line) {
+    // 解析：<词干缀>-<词干>-<派生缀> <模式><性>
+    const parts = line.split(/\s+/);
+    if (parts.length < 2) {
+        throw new Error('格式应为：<词干缀>-<词干>-<派生缀> <模式><性>，如 s-dein-cln 3f');
+    }
+    const tag = parts[parts.length - 1];
+    const tokenStr = parts.slice(0, -1).join(' ');
+
+    // 模式 + 性
+    const m = tag.match(/^([1-4])([mf])?$/);
+    if (!m) throw new Error(`模式标记 "${tag}" 无效；应为 1m/1f/2m/2f/3m/3f/4/4m/4f`);
+    const modeNum = m[1];
+    let gender = m[2] || '';
+    let modeKey;
+    if (modeNum === '4') {
+        modeKey = '4';
+    } else {
+        if (!gender) throw new Error(`模式 ${modeNum} 必须指定性（m/f）`);
+        modeKey = modeNum + gender;
+    }
+
+    // 解析词干缀-词干-派生缀
+    // 词干可能含 '-'（复合），所以以首尾两个 '-' 为分隔
+    const firstDash = tokenStr.indexOf('-');
+    const lastDash = tokenStr.lastIndexOf('-');
+    if (firstDash === -1 || firstDash === lastDash) {
+        throw new Error('应至少包含两个 "-"：<词干缀>-<词干>-<派生缀>');
+    }
+    let stemAffix = tokenStr.slice(0, firstDash);
+    let stem = tokenStr.slice(firstDash + 1, lastDash);
+    let derivAffix = tokenStr.slice(lastDash + 1);
+
+    if (stemAffix === '0') stemAffix = '';
+    if (derivAffix === '0') derivAffix = '';
+
+    if (!stem) throw new Error('词干不能为空');
+
+    // 词干可能是复合：用 '-' 分段
+    const stemSegments = stem.split('-');
+    const lastSeg = stemSegments[stemSegments.length - 1];
+    const prefixSegments = stemSegments.slice(0, -1);
+
+    const eo = pickEorO(lastSeg);
+    const forms = MODE_TABLE[modeKey];
+    if (!forms) throw new Error(`无该模式：${modeKey}`);
+
+    // 复合词干前段：统一弱化拼接（用空串连接）
+    const prefixWeakened = prefixSegments.map(applyWeakening).join('');
+
+    const results = [];
+    for (const formName of Object.keys(forms)) {
+        const [saMark, stemMark, daMark] = forms[formName];
+
+        // 词干主段变形
+        let lastStem;
+        if (stemMark === 'asis') lastStem = stemAsIs(lastSeg);
+        else if (stemMark === 'raise') lastStem = applyRaising(lastSeg);
+        else if (stemMark === 'weaken') lastStem = applyWeakening(lastSeg);
+        else lastStem = lastSeg;
+
+        const fullStem = prefixWeakened + lastStem;
+
+        // 词干缀：判定下一字符是否辅音（用于半元音元音化）
+        const nextChar = fullStem.charAt(0) || derivAffix.charAt(0) || '';
+        const nextIsConsonant = nextChar && !/[aeiouœæāēīōūáéíóúy]/i.test(nextChar);
+        const sa = shapeStemAffix(stemAffix, saMark, eo, nextIsConsonant);
+
+        // 派生缀
+        let da;
+        if (daMark === 'asis') da = derivAffix;
+        else if (daMark === 'add_eo') da = affixWithEO(derivAffix, eo);
+        else da = derivAffix;
+
+        results.push(sa + fullStem + da);
+    }
+    return results;
 }
 
 document.addEventListener('DOMContentLoaded', () => {

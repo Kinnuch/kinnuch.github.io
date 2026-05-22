@@ -73,11 +73,11 @@
 
         <div class="input-card">
             <h3>输入单词（每行一个）</h3>
-            <textarea id="wordInput" class="word-textarea" spellcheck="false" placeholder="一行一个原始词，例如：&#10;sken&#10;tregor"></textarea>
+            <textarea id="wordInput" class="word-textarea" spellcheck="false" placeholder="一行一个原始词，例如：&#10;sken&#10;tregor&#10;&#10;或派生模式输入：&#10;s-dein-cln 3f&#10;0-hekw-0 1m"></textarea>
             <div id="inputError" class="input-error-message"></div>
             <div class="button-row">
                 <button id="runBtn" class="primary-btn run-btn" type="button">执行音变 →</button>
-                <button id="expandThsrBtn" class="secondary-btn run-btn" type="button" title="输入 2 行 = A,B（强、弱）；3 行 = A,B,C（强、弱、中）。点击后自动展开为派生形式并执行音变。">⤴ 扩展 Theusrin 形式</button>
+                <button id="expandThsrBtn" class="secondary-btn run-btn" type="button" title="输入格式：<词干缀>-<词干>-<派生缀> <模式><性>，如 s-dein-cln 3f。词干缀/派生缀为空写 0。词干可复合（用 - 再分段）。模式 1=极静 2=前动 3=后动 4=侧动；性 m=阳 f=阴；4 不区分性。多行可一次性派生。点击后自动派生 A/B/(C) 并执行音变。">⤴ 派生 Theusrin 形式</button>
             </div>
         </div>
 

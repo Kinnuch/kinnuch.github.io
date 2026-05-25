@@ -12,6 +12,9 @@ layout: page
     <img class="gallery-img active" src="https://kinnuch.github.io/images/Ondolinde.png" alt="Ondolinde">
     <img class="gallery-img" src="https://kinnuch.github.io/images/Valinor.png" alt="Valinor">
     <img class="gallery-img" src="https://kinnuch.github.io/images/Aldu.png" alt="Aldu">
+    <img class="gallery-img" src="https://kinnuch.github.io/images/Nargothrond.png" alt="Nargothrond">
+    <img class="gallery-img" src="https://kinnuch.github.io/images/Lothnor.png" alt="Lothnor">
+    <img class="gallery-img" src="https://kinnuch.github.io/images/Ondolinde2.png" alt="Ondolinde Back">
   </div>
   <button class="gallery-btn gallery-next" aria-label="Next image">&#10095;</button>
   <div class="gallery-dots"></div>

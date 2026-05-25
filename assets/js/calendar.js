@@ -6,6 +6,7 @@ var MandarinDay = ["星辰日", "太阳日", "月亮日", "双树日", "天穹�
 var MandarinWeek = ["一", "二", "三", "四", "五", "六", "七", "八", "九", "十", "十一", "十二"];
 
 var SeasonDays = [1, 54, 72, 54, 3, 54, 72, 54, 1];
+var SeasonOrder = [0, 1, 2, 3, 4, 5, 6, 7, 8];
 
 function getSeason(Year, Month, Day) {
     var Season = -1;
@@ -61,27 +62,40 @@ function getAc(Season, Month, Day) {
     return Ac;
 }
 
-function showCalendar(Year, Month, Day){
-    var Season = getSeason(Year, Month, Day);
-    var Ac = getAc(Season, Month, Day);
-    var SDay = -1, SWeek = -1;
-    var sy = String(Year);
-    var SYear = sy[3] + sy[2] + sy[1] + sy[0];
+var curDate = new Date();
+var curYear = curDate.getFullYear();
+var curMonth = curDate.getMonth() + 1;
+var curDay = curDate.getDate();
+var todaySeason = getSeason(curYear, curMonth, curDay);
+var todayAc = getAc(todaySeason, curMonth, curDay);
+var todaySDay = -1, todaySWeek = -1;
+if (todayAc != -1) {
+    todaySDay = todayAc % 6;
+    todaySWeek = (todayAc - todaySDay) / 6;
+}
 
-    if (Ac != -1){
-        SDay = Ac % 6;
-        SWeek = (Ac - SDay) / 6;
-    }
+var viewSeason = todaySeason;
+var viewYear = curYear;
 
-    var totalDays = SeasonDays[Season] || 1;
+function getYearStr(y) {
+    var sy = String(y);
+    return sy[3] + sy[2] + sy[1] + sy[0];
+}
+
+function renderCalendar(season, year) {
+    var SYear = getYearStr(year);
+    var totalDays = SeasonDays[season] || 1;
     var weeks = Math.ceil(totalDays / 6);
+    var isCurrentSeason = (season === todaySeason && year === curYear);
 
     var html = '<div class="cal-header">';
-    html += '<span class="cal-season">' + SindarinSeason[Season] + ' / ' + MandarinSeason[Season] + '</span>';
-    html += '<span class="cal-year">' + SYear + '</span>';
+    html += '<button class="cal-nav-btn" id="cal-prev" title="上一季">&#10094;</button>';
+    html += '<div class="cal-nav"><span class="cal-season">' + SindarinSeason[season] + ' / ' + MandarinSeason[season] + '</span></div>';
+    html += '<button class="cal-nav-btn" id="cal-next" title="下一季">&#10095;</button>';
     html += '</div>';
+    html += '<div class="cal-year-bar">' + SYear + '</div>';
 
-    if (totalDays > 1 && Season != 4 && Season != 9) {
+    if (totalDays > 1 && season != 4 && season != 9) {
         html += '<table class="cal-grid"><thead><tr>';
         for (var d = 0; d < 6; d++) {
             html += '<th title="' + MandarinDay[d] + '">' + SindarinDay[d].substring(0,3) + '</th>';
@@ -92,10 +106,9 @@ function showCalendar(Year, Month, Day){
             for (var d = 0; d < 6; d++) {
                 var dayNum = w * 6 + d;
                 if (dayNum < totalDays) {
-                    var isToday = (w === SWeek && d === SDay);
+                    var isToday = isCurrentSeason && (w === todaySWeek && d === todaySDay);
                     var cls = isToday ? ' class="cal-today"' : '';
-                    var weekLabel = MandarinWeek[w] + '周' + MandarinDay[d];
-                    html += '<td' + cls + ' title="' + weekLabel + '"><span class="cal-day-num">' + (dayNum+1) + '</span></td>';
+                    html += '<td' + cls + ' title="第' + MandarinWeek[w] + '周' + MandarinDay[d] + '"><span class="cal-day-num">' + (dayNum+1) + '</span></td>';
                 } else {
                     html += '<td></td>';
                 }
@@ -103,52 +116,62 @@ function showCalendar(Year, Month, Day){
             html += '</tr>';
         }
         html += '</tbody></table>';
-    } else if (Season == 4) {
+    } else if (season == 4) {
         html += '<div class="cal-special">';
         for (var i = 0; i < 3; i++) {
-            var isToday = (Day - 20 === i);
-            var cls = isToday ? ' cal-today' : '';
-            html += '<span class="cal-special-day' + cls + '">Arad ' + MandarinWeek[i] + '</span>';
+            var isToday2 = isCurrentSeason && (curDay - 20 === i);
+            var cls2 = isToday2 ? ' cal-today' : '';
+            html += '<span class="cal-special-day' + cls2 + '">Arad ' + MandarinWeek[i] + '</span>';
         }
         html += '</div>';
     } else {
-        var label = (Season == 0) ? 'Orvinui / 新年' : (Season == 8) ? 'Penninor / 除夕' : 'Penninor / 闰日';
-        html += '<div class="cal-special"><span class="cal-special-day cal-today">' + label + '</span></div>';
+        var label = (season == 0) ? 'Orvinui / 新年' : (season == 8) ? 'Penninor / 除夕' : 'Penninor / 闰日';
+        var todayCls = isCurrentSeason ? ' cal-today' : '';
+        html += '<div class="cal-special"><span class="cal-special-day' + todayCls + '">' + label + '</span></div>';
     }
 
-    html += '<div class="cal-detail" id="cal-detail" style="display:none;">';
-    if (SDay != -1) {
-        html += '<p>' + SindarinDay[SDay] + ' / ' + MandarinDay[SDay] + '</p>';
-        html += '<p>Odlad ' + SindarinWeek[SWeek] + ' / 第' + MandarinWeek[SWeek] + '周</p>';
-    } else if (Season == 4) {
-        html += '<p>Arad ' + MandarinWeek[Day - 20] + ' / 年半第' + MandarinWeek[Day - 20] + '天</p>';
-    } else if (Season == 9) {
-        var leap = ((Year % 100) % 12) / 4;
-        if (leap == 0) leap = 3;
-        html += '<p>Arad ' + SindarinWeek[2 + leap] + ' / 闰日</p>';
+    if (isCurrentSeason) {
+        html += '<div class="cal-detail" id="cal-detail" style="display:none;">';
+        if (todaySDay != -1) {
+            html += '<p>' + SindarinDay[todaySDay] + ' / ' + MandarinDay[todaySDay] + '</p>';
+            html += '<p>Odlad ' + SindarinWeek[todaySWeek] + ' / 第' + MandarinWeek[todaySWeek] + '周</p>';
+        } else if (season == 4) {
+            html += '<p>Arad ' + MandarinWeek[curDay - 20] + ' / 年半第' + MandarinWeek[curDay - 20] + '天</p>';
+        } else if (season == 9) {
+            var leap = ((curYear % 100) % 12) / 4;
+            if (leap == 0) leap = 3;
+            html += '<p>Arad ' + SindarinWeek[2 + leap] + ' / 闰日</p>';
+        }
+        html += '<p>' + SindarinSeason[season] + ' ' + SYear + '</p>';
+        html += '</div>';
     }
-    html += '<p>' + SindarinSeason[Season] + ' ' + SYear + '</p>';
-    html += '</div>';
 
     var frame = document.getElementById('CalendarFrame');
     frame.innerHTML = html;
 
-    var todayCells = frame.querySelectorAll('.cal-today');
-    var detail = document.getElementById('cal-detail');
-    for (var i = 0; i < todayCells.length; i++) {
-        todayCells[i].style.cursor = 'pointer';
-        todayCells[i].addEventListener('click', function() {
-            if (detail.style.display === 'none') {
-                detail.style.display = 'block';
-            } else {
-                detail.style.display = 'none';
-            }
-        });
+    document.getElementById('cal-prev').addEventListener('click', function() {
+        var idx = SeasonOrder.indexOf(viewSeason);
+        if (idx > 0) { viewSeason = SeasonOrder[idx - 1]; }
+        else { viewSeason = SeasonOrder[8]; viewYear--; }
+        renderCalendar(viewSeason, viewYear);
+    });
+    document.getElementById('cal-next').addEventListener('click', function() {
+        var idx = SeasonOrder.indexOf(viewSeason);
+        if (idx < 8) { viewSeason = SeasonOrder[idx + 1]; }
+        else { viewSeason = SeasonOrder[0]; viewYear++; }
+        renderCalendar(viewSeason, viewYear);
+    });
+
+    if (isCurrentSeason) {
+        var todayCells = frame.querySelectorAll('.cal-today');
+        var detail = document.getElementById('cal-detail');
+        for (var i = 0; i < todayCells.length; i++) {
+            todayCells[i].style.cursor = 'pointer';
+            todayCells[i].addEventListener('click', function() {
+                detail.style.display = (detail.style.display === 'none') ? 'block' : 'none';
+            });
+        }
     }
 }
 
-var curDate = new Date();
-var curYear = curDate.getFullYear();
-var curMonth = curDate.getMonth() + 1;
-var curDay = curDate.getDate();
-showCalendar(curYear, curMonth, curDay);
+renderCalendar(viewSeason, viewYear);

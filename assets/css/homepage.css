@@ -168,8 +168,43 @@
   font-weight: 700;
 }
 
+.cal-nav {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.cal-nav-btn {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 14px;
+  cursor: pointer;
+  padding: 2px 6px;
+  border-radius: 4px;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+}
+
+.cal-nav-btn:hover {
+  opacity: 1;
+  background: rgba(255,255,255,0.15);
+}
+
 .cal-season { font-size: 13px; }
 .cal-year { font-size: 12px; opacity: 0.8; }
+
+.cal-year-bar {
+  text-align: center;
+  font-size: 11px;
+  padding: 3px 0;
+  background: #34495e;
+  color: rgba(255,255,255,0.7);
+}
+
+[data-theme="dark"] .cal-year-bar {
+  background: #151f2b;
+}
 
 .cal-grid {
   width: 100%;
@@ -233,16 +268,17 @@
 }
 
 .cal-detail {
-  padding: 8px 12px;
+  padding: 10px 12px;
   border-top: 1px solid #eee;
   background: #fafafa;
-  font-size: 12px;
-  color: #555;
+  font-size: 18px;
+  color: #333;
 }
 
 .cal-detail p {
-  margin: 2px 0;
+  margin: 4px 0;
   text-indent: 0;
+  line-height: 1.5;
 }
 
 /* Calendar dark mode */
@@ -286,4 +322,95 @@
   background: #1a1a2e;
   border-top-color: #333;
   color: #aaa;
+}
+
+/* === Mobile Responsive === */
+@media only screen and (max-width: 37.5em) {
+  .gallery-wrap {
+    margin: 1em 0;
+    border-radius: 4px;
+  }
+
+  .gallery-btn {
+    padding: 8px 10px;
+    font-size: 1.2em;
+  }
+
+  .gallery-prev { left: 4px; }
+  .gallery-next { right: 4px; }
+
+  .me-weather {
+    display: block;
+    margin-left: 0;
+    margin-top: 6px;
+    font-size: 0.7em;
+  }
+
+  .blog-scroll-wrap {
+    max-height: 280px;
+    padding: 0.75em;
+  }
+
+  .cal-frame {
+    max-width: 100%;
+  }
+
+  .cal-grid th {
+    font-size: 10px;
+    padding: 3px 1px;
+  }
+
+  .cal-grid td {
+    padding: 3px 1px;
+  }
+
+  .cal-day-num {
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    font-size: 11px;
+  }
+
+  .cal-detail {
+    font-size: 16px;
+  }
+}
+
+@media only screen and (max-width: 30em) {
+  .gallery-wrap {
+    margin: 0.5em -4%;
+    border-radius: 0;
+    width: 108%;
+  }
+
+  .gallery-dots {
+    bottom: 4px;
+  }
+
+  .gallery-dot {
+    width: 8px;
+    height: 8px;
+  }
+
+  .top-navigation li {
+    margin-right: 10px;
+  }
+
+  .me-weather {
+    font-size: 0.65em;
+    padding: 2px 6px;
+  }
+
+  .cal-header {
+    padding: 6px 8px;
+  }
+
+  .cal-season {
+    font-size: 11px;
+  }
+
+  .cal-nav-btn {
+    font-size: 12px;
+    padding: 2px 4px;
+  }
 }

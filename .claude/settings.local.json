@@ -8,7 +8,8 @@
       "WebSearch",
       "WebFetch(domain:en.wikipedia.org)",
       "WebFetch(domain:www.wikiwand.com)",
-      "WebFetch(domain:slavica.indiana.edu)"
+      "WebFetch(domain:slavica.indiana.edu)",
+      "Bash(python3 -c ' *)"
     ],
     "additionalDirectories": [
       "\\tmp"

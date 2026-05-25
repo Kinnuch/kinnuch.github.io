@@ -9,9 +9,9 @@ layout: page
 <div class="gallery-wrap">
   <button class="gallery-btn gallery-prev" aria-label="Previous image">&#10094;</button>
   <div class="gallery-container">
-    <img class="gallery-img active" src="https://kinnuch.github.io/image/Ondolinde.png" alt="Ondolinde">
-    <img class="gallery-img" src="https://kinnuch.github.io/image/Valinor.png" alt="Valinor">
-    <img class="gallery-img" src="https://kinnuch.github.io/image/Aldu.png" alt="Aldu">
+    <img class="gallery-img active" src="https://kinnuch.github.io/images/Ondolinde.png" alt="Ondolinde">
+    <img class="gallery-img" src="https://kinnuch.github.io/images/Valinor.png" alt="Valinor">
+    <img class="gallery-img" src="https://kinnuch.github.io/images/Aldu.png" alt="Aldu">
   </div>
   <button class="gallery-btn gallery-next" aria-label="Next image">&#10095;</button>
   <div class="gallery-dots"></div>

@@ -4,7 +4,11 @@
       "Bash(node --check \"c:/Users/Administrator\\\\Documents\\\\GitHub\\\\kinnuch.github.io\\\\laim\\\\shikrin.assets\\\\SCA\\\\SCAScript.js\")",
       "Bash(rm /tmp/sca_test.cjs)",
       "Bash(node /tmp/sca_derive_test.cjs)",
-      "Bash(rm /tmp/sca_derive_test.cjs)"
+      "Bash(rm /tmp/sca_derive_test.cjs)",
+      "WebSearch",
+      "WebFetch(domain:en.wikipedia.org)",
+      "WebFetch(domain:www.wikiwand.com)",
+      "WebFetch(domain:slavica.indiana.edu)"
     ],
     "additionalDirectories": [
       "\\tmp"

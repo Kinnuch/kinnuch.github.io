@@ -268,21 +268,23 @@ title: Dyalan | 嘉兰语
 
 ### 9.2 生命之树·圆质
 
-古語宗教术语，在嘉兰语中作为借词保留（使用零级形）：
+古語远古宗教专名，保留古体词缀（-ma, -ura, -eret, -ut, -at 等），不走常规派生。在嘉兰语中作为借词原样保留。
 
-| # | 含义 | 嘉兰语名 | 构拟 |
+音系适配规则：原始宗教语中的 /h/→x, /f/→p, /ts/→s 或 ś
+
+| # | 含义 | 古語/嘉兰语名 | 音系适配 |
 |---|---|---|---|
-| 1 | 王冠 | **Kervja** | 零级√KARV-ja |
-| 2 | 智慧 | **Vdjo** | 零级√VĪD-jo |
-| 3 | 理解 | **Žnerja** | 零级√ǴNUR-ja |
-| 4 | 慈悲 | **Venajo** | 零级√VĒNA-jo (ē→e) |
-| 5 | 严厉 | **Bregjo** | 零级√BRUG-jo |
-| 6 | 美丽 | **Kelemjo** | 零级√KALM-jo |
-| 7 | 胜利 | **Keteljo** | 零级√KATL-jo |
-| 8 | 荣耀 | **Zljo** | 零级√ZVAL-jo |
-| 9 | 基础 | **Stelgjo** | 零级√STELG-jo (合流) |
-| 10 | 王国 | **Rež-dor** | 零级√REŽA-dor |
-| 隐 | 知识 | **Žnerjo** | 零级√ǴNUR-jo |
+| 1 | 王冠 | **Keter** | ← Kether; th→t |
+| 2 | 智慧 | **Śokma** | ← Chokmah; ch→ś, h→∅ |
+| 3 | 理解 | **Bīna** | ← Binah; h→∅ |
+| 4 | 慈悲 | **Śesed** | ← Chesed; ch→ś |
+| 5 | 严厉 | **Gebura** | ← Geburah; h→∅ |
+| 6 | 美丽 | **Tiperet** | ← Tiphereth; ph→p, th→t |
+| 7 | 胜利 | **Neśaś** | ← Netzach; tz→ś, ch→ś |
+| 8 | 荣耀 | **Xod** | ← Hod; h→x |
+| 9 | 基础 | **Jesod** | ← Yesod; y→j |
+| 10 | 王国 | **Malkut** | ← Malkuth; th→t |
+| 隐 | 知识 | **Daat** | ← Da'at; 喉塞音→长元音 |
 
 22条路径对应古語22个字母。
 

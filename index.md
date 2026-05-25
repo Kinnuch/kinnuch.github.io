@@ -4,11 +4,18 @@ layout: page
 
 # Maedol! | 欢迎！
 
-
-
 <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="https://music.163.com/outchain/player?type=2&id=31108432&auto=0&height=66" style="vertical-align: middle; display: inline-block;"></iframe>
 
-<img src="https://kinnuch.github.io/file/Ondolinde.png">
+<div class="gallery-wrap">
+  <button class="gallery-btn gallery-prev" aria-label="Previous image">&#10094;</button>
+  <div class="gallery-container">
+    <img class="gallery-img active" src="https://kinnuch.github.io/image/Ondolinde.png" alt="Ondolinde">
+    <img class="gallery-img" src="https://kinnuch.github.io/image/Valinor.png" alt="Valinor">
+    <img class="gallery-img" src="https://kinnuch.github.io/image/Aldu.png" alt="Aldu">
+  </div>
+  <button class="gallery-btn gallery-next" aria-label="Next image">&#10095;</button>
+  <div class="gallery-dots"></div>
+</div>
 
 ## Istad i laim | 学习语言
 
@@ -32,6 +39,8 @@ layout: page
 ---
 
 ## Pennas-e-vínimraef | 博客小记
+
+<div class="blog-scroll-wrap" markdown="1">
 
 - **Orithil, Odlad 7, Echuir 4202：** I vínimraef nîn edras! 
 
@@ -73,4 +82,4 @@ layout: page
 
   2025年春季第六周太阳日(2025.4.24)：完成了原始希克林语语法书的编写（入圈以来第一个没有咕咕的作品，大雾），并调整了文章主体的CSS格式。
 
-- 
+</div>

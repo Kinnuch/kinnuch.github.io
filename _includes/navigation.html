@@ -9,7 +9,7 @@
 		        {% for link in site.links %}
             <li><a href="{{ site.url }}{{ link.url }}" {% if url == link.url %}class="top-navigation-current"{% endif %}>{{ link.title }}</a></li>
 		        {% endfor %}
-		        <li><button id="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark/light mode">&#9790;</button></li>
+		        <li><button id="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark/light mode">&#9790;</button><span id="me-weather" class="me-weather"></span></li>
 		    </ul>
 		</nav>
 	</div><!-- /.top-navigation -->

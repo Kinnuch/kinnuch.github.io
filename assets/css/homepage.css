@@ -145,3 +145,145 @@
   pointer-events: none;
   z-index: 9999;
 }
+
+/* Calendar */
+.cal-frame {
+  max-width: 220px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  font-family: 'PT Sans Narrow', sans-serif;
+  font-size: 13px;
+  margin: 1em 0;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+
+.cal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 12px;
+  background: #2c3e50;
+  color: #fff;
+  font-weight: 700;
+}
+
+.cal-season { font-size: 13px; }
+.cal-year { font-size: 12px; opacity: 0.8; }
+
+.cal-grid {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+}
+
+.cal-grid th {
+  padding: 4px 2px;
+  font-size: 11px;
+  color: #888;
+  font-weight: 400;
+  border-bottom: 1px solid #eee;
+}
+
+.cal-grid td {
+  padding: 5px 2px;
+  text-align: center;
+  cursor: default;
+  transition: background 0.15s;
+}
+
+.cal-grid td:hover {
+  background: #f0f4f8;
+}
+
+.cal-day-num {
+  display: inline-block;
+  width: 22px;
+  height: 22px;
+  line-height: 22px;
+  border-radius: 50%;
+  font-size: 12px;
+}
+
+.cal-today .cal-day-num {
+  background: #3498db;
+  color: #fff;
+  font-weight: 700;
+}
+
+.cal-special {
+  padding: 12px;
+  text-align: center;
+  background: #fff;
+}
+
+.cal-special-day {
+  display: inline-block;
+  padding: 4px 10px;
+  margin: 3px;
+  border-radius: 12px;
+  background: #f0f0f0;
+  font-size: 12px;
+}
+
+.cal-special-day.cal-today {
+  background: #3498db;
+  color: #fff;
+  font-weight: 700;
+}
+
+.cal-detail {
+  padding: 8px 12px;
+  border-top: 1px solid #eee;
+  background: #fafafa;
+  font-size: 12px;
+  color: #555;
+}
+
+.cal-detail p {
+  margin: 2px 0;
+  text-indent: 0;
+}
+
+/* Calendar dark mode */
+[data-theme="dark"] .cal-frame {
+  border-color: #444;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+
+[data-theme="dark"] .cal-header {
+  background: #1a2533;
+}
+
+[data-theme="dark"] .cal-grid {
+  background: #1e1e30;
+}
+
+[data-theme="dark"] .cal-grid th {
+  color: #888;
+  border-bottom-color: #333;
+}
+
+[data-theme="dark"] .cal-grid td:hover {
+  background: #2a2a3e;
+}
+
+[data-theme="dark"] .cal-special {
+  background: #1e1e30;
+}
+
+[data-theme="dark"] .cal-special-day {
+  background: #2a2a3e;
+  color: #ccc;
+}
+
+[data-theme="dark"] .cal-special-day.cal-today {
+  background: #2980b9;
+  color: #fff;
+}
+
+[data-theme="dark"] .cal-detail {
+  background: #1a1a2e;
+  border-top-color: #333;
+  color: #aaa;
+}

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>造词灵感 | Etymology Inspiration</title>
+    <link rel="stylesheet" href="EtyStyle.css">
+    <script>
+    (function(){var t=localStorage.getItem('theme');if(t==='dark'||((!t)&&window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches)){document.documentElement.setAttribute('data-theme','dark');}})();
+    </script>
+</head>
+<body>
+    <div class="header-bar">
+        <div class="utility-bar">
+            <a href="https://kinnuch.github.io/cerf" class="utility-btn">🏠 返回工具页</a>
+            <button id="theme-toggle" class="utility-btn" onclick="toggleTheme()">☾ 模式</button>
+        </div>
+        <h1 class="page-title">Etymology Inspiration · 造词灵感</h1>
+        <p class="page-desc">输入中文或英文单词，获取词源信息作为造词参考。</p>
+    </div>
+
+    <div class="main-container">
+        <div class="input-card">
+            <div class="input-row">
+                <input type="text" id="wordInput" placeholder="输入单词（中文或英文）">
+                <button id="queryBtn" class="primary-btn" type="button">查询灵感</button>
+            </div>
+            <div class="input-error" id="inputError">请输入要查询的单词</div>
+        </div>
+
+        <div id="resultArea"></div>
+    </div>
+
+    <script src="EtyScript.js"></script>
+    <script>
+    function toggleTheme(){
+        var html=document.documentElement;
+        var btn=document.getElementById('theme-toggle');
+        var cur=html.getAttribute('data-theme');
+        var next=(cur==='dark')?'light':'dark';
+        html.setAttribute('data-theme',next);
+        btn.textContent=(next==='dark')?'☀ 模式':'☾ 模式';
+        localStorage.setItem('theme',next);
+    }
+    (function(){
+        var btn=document.getElementById('theme-toggle');
+        if(document.documentElement.getAttribute('data-theme')==='dark') btn.textContent='☀ 模式';
+    })();
+    </script>
+</body>
+</html>

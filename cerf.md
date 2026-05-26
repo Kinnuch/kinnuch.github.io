@@ -12,6 +12,6 @@ title: Cerf
 
 - [Sindarin Exercises](https://kinnuch.github.io/laim/sindarin.assets/Exercises/Exercises.html) **辛达语课后练习**，包含音变练习、动词过去时练习和句子翻译练习。
 
-## Ithil | 造词灵感
+## Thúnas | 造词灵感
 
 - [Etymology Inspiration](https://kinnuch.github.io/laim/etymology/Etymology.html) **造词灵感工具**，输入中文或英文单词，自动获取 Wiktionary 词源信息及多语言词源参考。

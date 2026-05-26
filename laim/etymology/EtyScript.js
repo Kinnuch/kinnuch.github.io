@@ -17,24 +17,50 @@
         return /[一-鿿]/.test(text);
     }
 
+    const STOP_WORDS = new Set([
+        'a','an','the','of','in','on','at','to','for','is','are','was','were',
+        'be','been','being','have','has','had','do','does','did','will','would',
+        'shall','should','may','might','can','could','it','its','this','that',
+        'these','those','and','or','but','not','no','with','by','from','as','up',
+        'out','into','over','after','before','between','under','above','very','so'
+    ]);
+
+    function isCompoundWord(text) {
+        return !text.includes(' ');
+    }
+
+    function extractContentWords(phrase) {
+        return phrase.split(/\s+/).filter(w => w.length > 1 && !STOP_WORDS.has(w));
+    }
+
     async function translateToEnglish(word) {
         const url = `https://api.mymemory.translated.net/get?q=${encodeURIComponent(word)}&langpair=zh|en`;
         const resp = await fetch(url);
         const data = await resp.json();
         if (data.responseStatus !== 200) throw new Error('Translation failed');
-        const results = [];
+        const allTranslations = [];
         const main = data.responseData.translatedText.toLowerCase().trim();
-        if (main && main !== word.toLowerCase()) results.push(main);
+        if (main && main !== word.toLowerCase()) allTranslations.push(main);
         if (data.matches) {
             for (const m of data.matches) {
                 const t = m.translation.toLowerCase().trim();
-                if (t && t !== word.toLowerCase() && !results.includes(t)) {
-                    results.push(t);
-                    if (results.length >= 4) break;
+                if (t && t !== word.toLowerCase() && !allTranslations.includes(t)) {
+                    allTranslations.push(t);
+                    if (allTranslations.length >= 6) break;
                 }
             }
         }
-        return results;
+        const singleWords = allTranslations.filter(isCompoundWord);
+        if (singleWords.length > 0) {
+            return { words: singleWords.slice(0, 4), raw: allTranslations, fromPhrase: false };
+        }
+        const contentWords = [];
+        for (const phrase of allTranslations) {
+            for (const w of extractContentWords(phrase)) {
+                if (!contentWords.includes(w)) contentWords.push(w);
+            }
+        }
+        return { words: contentWords.slice(0, 4), raw: allTranslations, fromPhrase: true };
     }
 
     async function fetchEtymology(word) {
@@ -120,12 +146,12 @@
             let englishWords = [];
             if (isChinese(word)) {
                 const translated = await translateToEnglish(word);
-                if (translated.length === 0) {
+                if (translated.words.length === 0) {
                     resultArea.innerHTML = '<div class="result-card"><div class="error-state">未能翻译该词，请尝试直接输入英文。</div></div>';
                     return;
                 }
-                englishWords = translated;
-                renderTranslation(word, englishWords);
+                englishWords = translated.words;
+                renderTranslation(word, translated);
             } else {
                 englishWords = [word.toLowerCase()];
             }
@@ -148,13 +174,20 @@
         }
     }
 
-    function renderTranslation(zh, enWords) {
+    function renderTranslation(zh, translated) {
         const card = document.createElement('div');
         card.className = 'result-card';
+        let detail = '';
+        if (translated.fromPhrase) {
+            detail = `<p>翻译结果为词组: ${translated.raw.join(', ')}</p>
+                <p>已提取实词分别查询: <strong>${translated.words.join(', ')}</strong></p>`;
+        } else {
+            detail = `<p>英文对应: <strong>${translated.words.join(', ')}</strong></p>`;
+        }
         card.innerHTML = `<h3>翻译结果</h3>
             <div class="ety-section">
                 <div class="ety-word">${zh}</div>
-                <p>英文对应: ${enWords.join(', ')}</p>
+                ${detail}
             </div>`;
         resultArea.appendChild(card);
     }

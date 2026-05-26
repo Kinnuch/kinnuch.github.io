@@ -71,29 +71,58 @@
         return parseEtymology(html, word);
     }
 
+    function isEtyContent(el) {
+        const tag = el.tagName;
+        if (['STYLE','SCRIPT','LINK','META','TABLE'].includes(tag)) return false;
+        if (tag === 'DIV' && el.classList.contains('sister-wikipedia')) return false;
+        return true;
+    }
+
+    function extractText(el) {
+        const tag = el.tagName;
+        if (tag === 'P' || tag === 'UL' || tag === 'OL' || tag === 'DL') {
+            return el.textContent.trim();
+        }
+        return '';
+    }
+
     function parseEtymology(html, word) {
         const parser = new DOMParser();
         const doc = parser.parseFromString(html, 'text/html');
         const sections = [];
-        const headings = doc.querySelectorAll('h3, h4');
-        for (const h of headings) {
-            const id = h.getAttribute('id') || '';
-            if (/etymology/i.test(id) || /etymology/i.test(h.textContent)) {
+        const sectionEls = doc.querySelectorAll('section');
+        for (const sec of sectionEls) {
+            const heading = sec.querySelector('h2, h3, h4');
+            if (!heading) continue;
+            const headText = heading.textContent.trim();
+            if (!/etymology/i.test(headText)) continue;
+            const langHeading = sec.closest('section[data-mw-section-id]');
+            const parentH2 = langHeading ? langHeading.querySelector('h2') : null;
+            if (parentH2 && !/english/i.test(parentH2.textContent)) continue;
+            let content = '';
+            for (const child of sec.children) {
+                if (child === heading) continue;
+                if (!isEtyContent(child)) continue;
+                const text = extractText(child);
+                if (text) content += text + '\n';
+            }
+            if (content.trim()) sections.push(content.trim());
+        }
+        if (sections.length === 0) {
+            const headings = doc.querySelectorAll('h3, h4');
+            for (const h of headings) {
+                if (!/etymology/i.test(h.textContent)) continue;
                 let content = '';
                 let el = h.nextElementSibling;
                 while (el && !['H2','H3','H4'].includes(el.tagName)) {
-                    content += el.textContent.trim() + '\n';
+                    if (isEtyContent(el)) {
+                        const text = extractText(el);
+                        if (text) content += text + '\n';
+                    }
                     el = el.nextElementSibling;
                 }
-                if (content.trim()) {
-                    sections.push(content.trim());
-                }
+                if (content.trim()) sections.push(content.trim());
             }
-        }
-        if (sections.length === 0) {
-            const body = doc.body.textContent || '';
-            const match = body.match(/From\s+[\s\S]{10,200}/);
-            if (match) sections.push(match[0]);
         }
         return sections.length > 0 ? sections : null;
     }
@@ -106,26 +135,27 @@
         const parser = new DOMParser();
         const doc = parser.parseFromString(html, 'text/html');
         const results = [];
-        const h2s = doc.querySelectorAll('h2');
-        for (const h2 of h2s) {
+        const topSections = doc.querySelectorAll('section[data-mw-section-id]');
+        for (const sec of topSections) {
+            const h2 = sec.querySelector(':scope > h2');
+            if (!h2) continue;
             const langName = h2.textContent.trim();
-            if (['English','Contents','References','See also','Anagrams'].includes(langName)) continue;
-            let el = h2.nextElementSibling;
-            while (el && el.tagName !== 'H2') {
-                const id = el.getAttribute('id') || '';
-                if (/etymology/i.test(id) || /etymology/i.test(el.textContent)) {
-                    let content = '';
-                    let next = el.nextElementSibling;
-                    while (next && !['H2','H3','H4'].includes(next.tagName)) {
-                        content += next.textContent.trim() + '\n';
-                        next = next.nextElementSibling;
-                    }
-                    if (content.trim()) {
-                        results.push({ lang: langName, ety: content.trim() });
-                    }
-                    break;
+            if (['English','Contents','References','See also','Anagrams','Further reading'].includes(langName)) continue;
+            const etySecs = sec.querySelectorAll('section');
+            for (const etySec of etySecs) {
+                const heading = etySec.querySelector('h3, h4');
+                if (!heading || !/etymology/i.test(heading.textContent)) continue;
+                let content = '';
+                for (const child of etySec.children) {
+                    if (child === heading) continue;
+                    if (!isEtyContent(child)) continue;
+                    const text = extractText(child);
+                    if (text) content += text + '\n';
                 }
-                el = el.nextElementSibling;
+                if (content.trim()) {
+                    results.push({ lang: langName, ety: content.trim() });
+                }
+                break;
             }
         }
         return results;

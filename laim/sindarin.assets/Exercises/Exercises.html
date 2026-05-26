@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>辛达语课后练习 | Sindarin Exercises</title>
+    <link rel="stylesheet" href="ExerciseStyle.css">
+    <script>
+    (function(){var t=localStorage.getItem('theme');if(t==='dark'||((!t)&&window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches)){document.documentElement.setAttribute('data-theme','dark');}})();
+    </script>
+</head>
+<body>
+    <div class="header-bar">
+        <div class="utility-bar">
+            <a href="https://kinnuch.github.io/cerf" class="utility-btn">🏠 返回工具页</a>
+            <button id="theme-toggle" class="utility-btn" onclick="toggleTheme()">☾ 模式</button>
+        </div>
+        <h1 class="page-title">Abdrab · 辛达语课后练习</h1>
+        <div class="special-chars">
+            <span class="char-label">特殊符号（点击复制）：</span>
+            <button class="char-btn" onclick="copyChar(this)">á</button>
+            <button class="char-btn" onclick="copyChar(this)">é</button>
+            <button class="char-btn" onclick="copyChar(this)">í</button>
+            <button class="char-btn" onclick="copyChar(this)">ó</button>
+            <button class="char-btn" onclick="copyChar(this)">ú</button>
+            <button class="char-btn" onclick="copyChar(this)">ý</button>
+            <button class="char-btn" onclick="copyChar(this)">â</button>
+            <button class="char-btn" onclick="copyChar(this)">ê</button>
+            <button class="char-btn" onclick="copyChar(this)">î</button>
+            <button class="char-btn" onclick="copyChar(this)">ô</button>
+            <button class="char-btn" onclick="copyChar(this)">û</button>
+            <button class="char-btn" onclick="copyChar(this)">ŷ</button>
+            <button class="char-btn" onclick="copyChar(this)">ñ</button>
+        </div>
+    </div>
+
+    <div class="main-container">
+        <div class="exercise-card">
+            <h2>Prestanneth · 音变练习</h2>
+            <div class="exercise-controls">
+                <select id="questionType">
+                    <option value="">Cilo i brestanneth 请选择音变类型</option>
+                    <option value="2">Prestanneth vae nan i 带i的软音变</option>
+                    <option value="3">hoth-e-bedui 名词的复数</option>
+                    <option value="4">Prestanneth munneb nan in 带in的鼻音音变</option>
+                    <option value="5">Prestanneth gang nan en 带en的混合音变</option>
+                    <option value="6">Prestanneth munneb nan an 带an的鼻音音变</option>
+                    <option value="7">Prestanneth gang nan anin 带anin的混合音变</option>
+                    <option value="8">Prestanneth hiriol nan egor 带egor的流音音变</option>
+                    <option value="9">Prestanneth dharnen nan od 带od的闭锁音变</option>
+                    <option value="10">Prestanneth 'hyarmen' nan ah 带ah的H音变</option>
+                    <option value="11">Prestanneth 'anto' na nedh 带nedh的DH音变</option>
+                </select>
+            </div>
+            <div id="Prestanneth" class="question-display"></div>
+            <div class="answer-row">
+                <input type="text" id="userInput" placeholder="Teitho hí 在此处填入答案">
+                <button id="checkAnswer" class="primary-btn">检查答案</button>
+                <button id="refreshButton" class="secondary-btn">切换题目</button>
+            </div>
+            <div id="resultFeedback" class="feedback"></div>
+        </div>
+
+        <div class="exercise-card">
+            <h2>Gwenwi-i-choer · 动词过去时</h2>
+            <div class="exercise-controls">
+                <select id="gwenwiType">
+                    <option value="">Cilo i onnas 请选择类型</option>
+                    <option value="1">带施事者的动词过去时</option>
+                    <option value="2">带施事者和受事者的动词过去时</option>
+                </select>
+            </div>
+            <div id="Gwenwi" class="question-display"></div>
+            <div class="answer-row">
+                <input type="text" id="GwenwiInput" placeholder="Teitho hí 在此处填入答案">
+                <button id="checkGwenwiAnswer" class="primary-btn">检查答案</button>
+                <button id="refreshGwenwiButton" class="secondary-btn">切换题目</button>
+            </div>
+            <div id="resultGwenwiFeedback" class="feedback"></div>
+        </div>
+
+        <div class="exercise-card">
+            <h2>Pethas · 句子翻译</h2>
+            <div class="question-display" id="Pethas"></div>
+            <div class="answer-row">
+                <input type="text" id="PethasInput" placeholder="Teitho hí 在此处填入答案">
+                <button id="checkPethasAnswer" class="primary-btn">检查答案</button>
+                <button id="refreshPethasButton" class="secondary-btn">切换题目</button>
+            </div>
+            <div id="resultPethasFeedback" class="feedback"></div>
+        </div>
+    </div>
+
+    <script src="https://kinnuch.github.io/assets/js/prestanneth.js"></script>
+    <script src="https://kinnuch.github.io/assets/js/gwenwi.js"></script>
+    <script src="https://kinnuch.github.io/assets/js/pethas.js"></script>
+    <script>
+    function copyChar(btn) {
+        navigator.clipboard.writeText(btn.textContent);
+        btn.classList.add('copied');
+        setTimeout(function(){ btn.classList.remove('copied'); }, 600);
+    }
+    function toggleTheme(){
+        var html=document.documentElement;
+        var btn=document.getElementById('theme-toggle');
+        var cur=html.getAttribute('data-theme');
+        var next=(cur==='dark')?'light':'dark';
+        html.setAttribute('data-theme',next);
+        btn.textContent=(next==='dark')?'☀ 模式':'☾ 模式';
+        localStorage.setItem('theme',next);
+    }
+    (function(){
+        var btn=document.getElementById('theme-toggle');
+        if(document.documentElement.getAttribute('data-theme')==='dark') btn.textContent='☀ 模式';
+    })();
+    </script>
+</body>
+</html>

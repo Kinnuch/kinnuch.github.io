@@ -15,6 +15,36 @@
             <a href="https://kinnuch.github.io/cerf" class="utility-btn">🏠 返回工具页</a>
             <button id="theme-toggle" class="utility-btn" onclick="toggleTheme()">☾ 模式</button>
             <div class="dropdown">
+                <button class="utility-btn" type="button" onclick="document.getElementById('rngContent').classList.toggle('show')">🎲 随机数</button>
+                <div class="dropdown-content rng-panel" id="rngContent">
+                    <p><strong>随机数生成器</strong></p>
+                    <div class="rng-row">
+                        <label>类型</label>
+                        <select id="rngType">
+                            <option value="int">整数</option>
+                            <option value="float">浮点数</option>
+                            <option value="choice">从列表选取</option>
+                        </select>
+                    </div>
+                    <div class="rng-row" id="rngRangeRow">
+                        <label>范围</label>
+                        <input type="number" id="rngMin" value="1" placeholder="最小值">
+                        <span>~</span>
+                        <input type="number" id="rngMax" value="100" placeholder="最大值">
+                    </div>
+                    <div class="rng-row" id="rngListRow" style="display:none;">
+                        <label>列表</label>
+                        <input type="text" id="rngList" placeholder="用逗号分隔，如 a,b,c">
+                    </div>
+                    <div class="rng-row">
+                        <label>数量</label>
+                        <input type="number" id="rngCount" value="1" min="1" max="100">
+                    </div>
+                    <button class="primary-btn rng-gen-btn" type="button" onclick="generateRandom()">生成</button>
+                    <div class="rng-result" id="rngResult"></div>
+                </div>
+            </div>
+            <div class="dropdown">
                 <button id="helpBtn" class="utility-btn" type="button">📖 规则语法</button>
                 <div class="dropdown-content" id="helpContent">
                     <p><strong>基本格式</strong></p>
@@ -115,6 +145,32 @@
         var btn=document.getElementById('theme-toggle');
         if(document.documentElement.getAttribute('data-theme')==='dark') btn.textContent='☀ 模式';
     })();
+
+    document.getElementById('rngType').addEventListener('change', function(){
+        var v = this.value;
+        document.getElementById('rngRangeRow').style.display = (v==='choice') ? 'none' : 'flex';
+        document.getElementById('rngListRow').style.display = (v==='choice') ? 'flex' : 'none';
+    });
+
+    function generateRandom(){
+        var type = document.getElementById('rngType').value;
+        var count = parseInt(document.getElementById('rngCount').value) || 1;
+        var results = [];
+        if (type === 'int') {
+            var min = parseInt(document.getElementById('rngMin').value) || 0;
+            var max = parseInt(document.getElementById('rngMax').value) || 100;
+            for (var i=0;i<count;i++) results.push(Math.floor(Math.random()*(max-min+1))+min);
+        } else if (type === 'float') {
+            var min = parseFloat(document.getElementById('rngMin').value) || 0;
+            var max = parseFloat(document.getElementById('rngMax').value) || 1;
+            for (var i=0;i<count;i++) results.push((Math.random()*(max-min)+min).toFixed(4));
+        } else {
+            var list = document.getElementById('rngList').value.split(',').map(function(s){return s.trim();}).filter(Boolean);
+            if (!list.length) { document.getElementById('rngResult').textContent='请输入列表'; return; }
+            for (var i=0;i<count;i++) results.push(list[Math.floor(Math.random()*list.length)]);
+        }
+        document.getElementById('rngResult').textContent = results.join(', ');
+    }
     </script>
 </body>
 </html>

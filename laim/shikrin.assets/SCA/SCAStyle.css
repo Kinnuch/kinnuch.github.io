@@ -598,3 +598,77 @@ body {
     background: #2a1a1a;
     color: #f08080;
 }
+
+/* Random Number Generator Panel */
+.rng-panel {
+    min-width: 260px;
+}
+
+.rng-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 10px 0;
+}
+
+.rng-row label {
+    font-size: 13px;
+    color: #7f8c8d;
+    min-width: 36px;
+}
+
+.rng-row select,
+.rng-row input {
+    padding: 6px 10px;
+    border: 1.5px solid #d8dee5;
+    border-radius: 8px;
+    font-size: 13px;
+    outline: none;
+    background: white;
+    color: #2c3e50;
+    transition: border-color 0.2s;
+}
+
+.rng-row select { flex: 1; }
+.rng-row input[type="number"] { width: 70px; }
+.rng-row input[type="text"] { flex: 1; }
+
+.rng-row select:focus,
+.rng-row input:focus {
+    border-color: #4a90e2;
+}
+
+.rng-gen-btn {
+    width: 100%;
+    margin-top: 8px;
+    padding: 8px;
+    font-size: 13px;
+}
+
+.rng-result {
+    margin-top: 10px;
+    padding: 8px 10px;
+    background: #f0f4f8;
+    border-radius: 6px;
+    font-family: Monaco, Consolas, monospace;
+    font-size: 13px;
+    color: #2c3e50;
+    min-height: 20px;
+    word-break: break-all;
+}
+
+.rng-result:empty { display: none; }
+
+[data-theme="dark"] .rng-row label { color: #999; }
+
+[data-theme="dark"] .rng-row select,
+[data-theme="dark"] .rng-row input {
+    background: #1a1a2e;
+    border-color: #444;
+    color: #e0e0e0;
+}
+
+[data-theme="dark"] .rng-result {
+    background: #1a1a2e;
+    color: #e0e0e0;
+}

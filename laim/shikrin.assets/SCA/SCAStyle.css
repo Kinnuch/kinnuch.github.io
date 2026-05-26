@@ -159,12 +159,38 @@ body {
     flex-direction: column;
 }
 
+details.config-card summary {
+    cursor: pointer;
+    list-style: none;
+    user-select: none;
+}
+
+details.config-card summary::-webkit-details-marker {
+    display: none;
+}
+
+details.config-card summary h3::after {
+    content: "▶";
+    font-size: 11px;
+    margin-left: auto;
+    transition: transform 0.2s;
+    color: #95a5a6;
+}
+
+details[open].config-card summary h3::after {
+    transform: rotate(90deg);
+}
+
+details.config-card .config-textarea {
+    margin-top: 10px;
+}
+
 .config-card-rule {
     grid-column: span 2;
 }
 
 .config-card h3 {
-    margin: 0 0 10px 0;
+    margin: 0;
     color: #2c3e50;
     font-size: 16px;
     font-weight: 600;
@@ -539,6 +565,10 @@ body {
 [data-theme="dark"] .input-card h3,
 [data-theme="dark"] .result-card h3 {
     color: #e8e8e8;
+}
+
+[data-theme="dark"] details.config-card summary h3::after {
+    color: #666;
 }
 
 [data-theme="dark"] .config-textarea,

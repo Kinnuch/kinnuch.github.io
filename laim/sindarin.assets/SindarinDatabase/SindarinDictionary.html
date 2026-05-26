@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>辛达语简约词典 | A Simple Sindarin Dictionary</title>
     <link rel="stylesheet" href="DictStyle.css">
+    <script>
+    (function(){var t=localStorage.getItem('theme');if(t==='dark'||((!t)&&window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches)){document.documentElement.setAttribute('data-theme','dark');}})();
+    </script>
 </head>
 <body>
     <div class="search-box">
@@ -12,6 +15,7 @@
             <a href="https://kinnuch.github.io/gobeth" class="utility-btn">
                 🏠 返回
             </a>
+            <button id="theme-toggle" class="utility-btn" onclick="toggleTheme()">☾ 模式</button>
             
             <div class="dropdown">
                 <button class="utility-btn" onclick="toggleDropdownInfo()">
@@ -80,5 +84,21 @@
     <div class="loading" id="loading">加载中...</div>
 
     <script src="DictScript.js"></script>
+    <script>
+    function toggleTheme(){
+        var html=document.documentElement;
+        var btn=document.getElementById('theme-toggle');
+        var cur=html.getAttribute('data-theme');
+        var next=(cur==='dark')?'light':'dark';
+        html.setAttribute('data-theme',next);
+        btn.textContent=(next==='dark')?'☀ 模式':'☾ 模式';
+        localStorage.setItem('theme',next);
+    }
+    (function(){
+        var t=localStorage.getItem('theme')||'';
+        var btn=document.getElementById('theme-toggle');
+        if(document.documentElement.getAttribute('data-theme')==='dark') btn.textContent='☀ 模式';
+    })();
+    </script>
 </body>
 </html>

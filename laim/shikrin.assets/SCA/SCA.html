@@ -5,11 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>希克林语系音变器 | Shikrin SCA</title>
     <link rel="stylesheet" href="SCAStyle.css">
+    <script>
+    (function(){var t=localStorage.getItem('theme');if(t==='dark'||((!t)&&window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches)){document.documentElement.setAttribute('data-theme','dark');}})();
+    </script>
 </head>
 <body>
     <div class="header-bar">
         <div class="utility-bar">
             <a href="https://kinnuch.github.io/cerf" class="utility-btn">🏠 返回工具页</a>
+            <button id="theme-toggle" class="utility-btn" onclick="toggleTheme()">☾ 模式</button>
             <div class="dropdown">
                 <button id="helpBtn" class="utility-btn" type="button">📖 规则语法</button>
                 <div class="dropdown-content" id="helpContent">
@@ -97,5 +101,20 @@
     </div>
 
     <script src="SCAScript.js"></script>
+    <script>
+    function toggleTheme(){
+        var html=document.documentElement;
+        var btn=document.getElementById('theme-toggle');
+        var cur=html.getAttribute('data-theme');
+        var next=(cur==='dark')?'light':'dark';
+        html.setAttribute('data-theme',next);
+        btn.textContent=(next==='dark')?'☀ 模式':'☾ 模式';
+        localStorage.setItem('theme',next);
+    }
+    (function(){
+        var btn=document.getElementById('theme-toggle');
+        if(document.documentElement.getAttribute('data-theme')==='dark') btn.textContent='☀ 模式';
+    })();
+    </script>
 </body>
 </html>

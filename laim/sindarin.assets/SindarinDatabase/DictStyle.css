@@ -239,3 +239,91 @@ body {
     padding: 20px;
     color: #7f8c8d;
 }
+
+/* Dark Mode */
+[data-theme="dark"] body {
+    background: #1a1a2e;
+    color: #e0e0e0;
+}
+
+[data-theme="dark"] .search-box {
+    background: #16213e;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+}
+
+[data-theme="dark"] #searchInput {
+    background: #1a1a2e;
+    border-color: #3a6db5;
+    color: #e0e0e0;
+}
+
+[data-theme="dark"] .utility-btn {
+    background: #1a1a2e;
+    border-color: #3a6db5;
+    color: #6cb4e8;
+}
+
+[data-theme="dark"] .utility-btn:hover {
+    background: #3a6db5;
+    color: #fff;
+}
+
+[data-theme="dark"] .dropdown-content {
+    background: #16213e;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+}
+
+[data-theme="dark"] .dropdown-content p {
+    color: #c0c0c0;
+}
+
+[data-theme="dark"] .entry {
+    background: #16213e;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+[data-theme="dark"] .entry:hover {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+[data-theme="dark"] .dict-form {
+    color: #e8e8e8;
+}
+
+[data-theme="dark"] .part,
+[data-theme="dark"] .english {
+    color: #999;
+}
+
+[data-theme="dark"] .definition {
+    color: #c8c8c8;
+}
+
+[data-theme="dark"] .sentence {
+    background: #1a1a2e;
+    color: #c8c8c8;
+}
+
+[data-theme="dark"] .sentence-chinese {
+    border-left-color: #27ae60;
+}
+
+[data-theme="dark"] .morphology {
+    border-left-color: #3a6db5;
+}
+
+[data-theme="dark"] .morph-item {
+    background: #1a1a2e;
+}
+
+[data-theme="dark"] .morph-item > :nth-child(odd) {
+    color: #999;
+}
+
+[data-theme="dark"] .morph-item > :nth-child(even) {
+    color: #e0e0e0;
+}
+
+[data-theme="dark"] .loading {
+    color: #888;
+}

@@ -247,6 +247,41 @@ body {
     margin-right: 8px;
 }
 
+.ety-chain {
+    margin-top: 8px;
+    padding-left: 4px;
+}
+
+.chain-step {
+    padding: 6px 10px;
+    background: #f0f4f8;
+    border-radius: 6px;
+    margin: 4px 0;
+}
+
+.chain-word {
+    font-weight: 600;
+    color: #2c3e50;
+    margin-right: 8px;
+    font-size: 13px;
+}
+
+.chain-ety {
+    display: block;
+    margin-top: 2px;
+    font-size: 13px;
+    color: #555;
+    line-height: 1.5;
+}
+
+.chain-arrow {
+    text-align: center;
+    color: #9b59b6;
+    font-size: 14px;
+    line-height: 1;
+    margin: 2px 0;
+}
+
 .error-state {
     color: #e74c3c;
     font-size: 14px;
@@ -358,6 +393,22 @@ body {
 }
 
 [data-theme="dark"] .multi-lang-item .lang-name {
+    color: #bb8fce;
+}
+
+[data-theme="dark"] .chain-step {
+    background: #1e2a3e;
+}
+
+[data-theme="dark"] .chain-word {
+    color: #e8e8e8;
+}
+
+[data-theme="dark"] .chain-ety {
+    color: #aaa;
+}
+
+[data-theme="dark"] .chain-arrow {
     color: #bb8fce;
 }
 

@@ -179,6 +179,43 @@
         return null;
     }
 
+    function extractSourceWord(etyText) {
+        const patterns = [
+            /[Ff]rom\s+(?:\w+\s+)?(\S+)\s*\(([^)]+)\)/,
+            /[Bb]orrowed\s+from\s+(?:\w+\s+)?(\S+)\s*\(([^)]+)\)/,
+            /[Ff]rom\s+(?:the\s+)?(?:[\w-]+\s+){0,2}(\p{L}[\p{L}\-]+)/u,
+            /[Bb]orrowed\s+from\s+(?:the\s+)?(?:[\w-]+\s+){0,2}(\p{L}[\p{L}\-]+)/u,
+        ];
+        for (const p of patterns) {
+            const m = etyText.match(p);
+            if (m) {
+                const word = m[2] || m[1];
+                const cleaned = word.replace(/[",.*]+$/, '').trim();
+                if (cleaned.length > 1 && !/^(the|a|an|from|or|and)$/i.test(cleaned)) {
+                    return cleaned;
+                }
+            }
+        }
+        return null;
+    }
+
+    async function traceEtymologyChain(word, maxDepth = 3) {
+        const chain = [];
+        const visited = new Set();
+        let current = word;
+        for (let i = 0; i < maxDepth; i++) {
+            if (visited.has(current.toLowerCase())) break;
+            visited.add(current.toLowerCase());
+            const ety = await fetchWordEtymology(current);
+            if (!ety) break;
+            chain.push({ word: current, ety: ety });
+            const next = extractSourceWord(ety);
+            if (!next || visited.has(next.toLowerCase())) break;
+            current = next;
+        }
+        return chain;
+    }
+
     async function fetchMultiLangEtymology(sourceWord, chineseWord) {
         const results = [];
         const queryWord = chineseWord || sourceWord;
@@ -186,12 +223,13 @@
             const fromWord = lang.pair.startsWith('zh') ? queryWord : sourceWord;
             const translated = await translateToLang(fromWord, lang.pair);
             if (!translated) return null;
-            const ety = await fetchWordEtymology(translated);
-            return { lang: lang.name, word: translated, ety: ety };
+            const chain = await traceEtymologyChain(translated, 5);
+            if (chain.length === 0) return null;
+            return { lang: lang.name, word: translated, chain: chain };
         });
         const settled = await Promise.allSettled(tasks);
         for (const r of settled) {
-            if (r.status === 'fulfilled' && r.value && r.value.ety) {
+            if (r.status === 'fulfilled' && r.value) {
                 results.push(r.value);
             }
         }
@@ -282,7 +320,14 @@
         card.className = 'result-card';
         let html = `<h3 class="multi-lang">其他语言词源参考</h3>`;
         for (const item of items) {
-            html += `<div class="multi-lang-item"><span class="lang-name">${escapeHtml(item.lang)}</span><strong>${escapeHtml(item.word)}</strong><p>${escapeHtml(item.ety)}</p></div>`;
+            html += `<div class="multi-lang-item"><span class="lang-name">${escapeHtml(item.lang)}</span><strong>${escapeHtml(item.word)}</strong>`;
+            html += `<div class="ety-chain">`;
+            for (let i = 0; i < item.chain.length; i++) {
+                const step = item.chain[i];
+                if (i > 0) html += `<div class="chain-arrow">↓</div>`;
+                html += `<div class="chain-step"><span class="chain-word">${escapeHtml(step.word)}</span><span class="chain-ety">${escapeHtml(step.ety)}</span></div>`;
+            }
+            html += `</div></div>`;
         }
         card.innerHTML = html;
         resultArea.appendChild(card);

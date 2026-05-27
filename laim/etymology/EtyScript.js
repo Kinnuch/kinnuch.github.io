@@ -179,27 +179,86 @@
         return null;
     }
 
-    function extractSourceWord(etyText) {
-        const patterns = [
-            /[Ff]rom\s+(?:\w+\s+)?(\S+)\s*\(([^)]+)\)/,
-            /[Bb]orrowed\s+from\s+(?:\w+\s+)?(\S+)\s*\(([^)]+)\)/,
-            /[Ff]rom\s+(?:the\s+)?(?:[\w-]+\s+){0,2}(\p{L}[\p{L}\-]+)/u,
-            /[Bb]orrowed\s+from\s+(?:the\s+)?(?:[\w-]+\s+){0,2}(\p{L}[\p{L}\-]+)/u,
-        ];
-        for (const p of patterns) {
-            const m = etyText.match(p);
-            if (m) {
-                const word = m[2] || m[1];
-                const cleaned = word.replace(/[",.*]+$/, '').trim();
-                if (cleaned.length > 1 && !/^(the|a|an|from|or|and)$/i.test(cleaned)) {
-                    return cleaned;
-                }
+    const LANG_WORDS = new Set([
+        'english','french','latin','greek','german','spanish','italian','portuguese',
+        'dutch','russian','polish','czech','swedish','norwegian','danish','finnish',
+        'hungarian','turkish','arabic','persian','hebrew','sanskrit','hindi','urdu',
+        'chinese','japanese','korean','malay','indonesian','thai','vietnamese',
+        'swahili','georgian','armenian','albanian','romanian','bulgarian','serbian',
+        'croatian','irish','welsh','scottish','basque','catalan','galician',
+        'ancient','old','middle','proto','classical','medieval','late','early',
+        'vulgar','modern','literary','dialectal','colloquial','borrowed','inherited',
+        'derived','from','the','a','an','and','or','of','in','to','with','by',
+        'germanic','slavic','romance','celtic','baltic','semitic','turkic',
+        'indo-european','west','east','north','south','central','upper','lower',
+    ]);
+
+    function extractSourceInfo(etyText) {
+        const results = [];
+        const re = /(?:From|Borrowed from|Derived from|Inherited from|from)\s+((?:(?:Ancient|Old|Middle|Proto-?|Classical|Medieval|Late|Early|Vulgar|Modern)\s+)*[\w-]+)\s+([^\s(,;.]+)\s*(?:\(([^)]+)\))?/gi;
+        let m;
+        while ((m = re.exec(etyText)) !== null) {
+            const lang = m[1].trim();
+            const scriptWord = m[2].trim().replace(/[",;.]+$/, '');
+            const paren = m[3] || '';
+            const translit = paren.split(',')[0].trim().replace(/^["']+|["']+$/g, '');
+            if (scriptWord.length > 1 && !LANG_WORDS.has(scriptWord.toLowerCase())) {
+                results.push({ script: scriptWord, translit: translit, lang: lang });
+            } else if (translit.length > 1 && !LANG_WORDS.has(translit.toLowerCase())) {
+                results.push({ script: translit, translit: translit, lang: lang });
             }
+        }
+        if (results.length === 0) {
+            const fallback = etyText.match(/(?:From|Borrowed from)\s+(?:[\w-]+\s+){1,3}(\*[\w-]+)/i);
+            if (fallback) {
+                results.push({ script: fallback[1], translit: fallback[1], lang: '' });
+            }
+        }
+        return results.length > 0 ? results[0] : null;
+    }
+
+    function cleanForLookup(word) {
+        let cleaned = word.replace(/^[؀-ۿݐ-ݿﭐ-﷿ﹰ-﻿\s]*/, '');
+        if (cleaned.length < 2) cleaned = word;
+        cleaned = cleaned.replace(/[ʔʕʾʿˀˁ]/g, '');
+        cleaned = cleaned.replace(/[̀-ًͯ-ٰٟ]/g, '');
+        cleaned = cleaned.replace(/^[-*]+/, '');
+        cleaned = cleaned.replace(/[-]+$/, '');
+        return cleaned.trim();
+    }
+
+    function generateLookupVariants(info) {
+        const variants = [];
+        if (info.script && info.script.length > 1) variants.push(info.script);
+        if (info.translit && info.translit.length > 1 && info.translit !== info.script) {
+            variants.push(info.translit);
+        }
+        const cleanedScript = cleanForLookup(info.script);
+        if (cleanedScript.length > 1 && !variants.includes(cleanedScript)) {
+            variants.push(cleanedScript);
+        }
+        if (info.translit) {
+            const cleanedTranslit = cleanForLookup(info.translit);
+            if (cleanedTranslit.length > 1 && !variants.includes(cleanedTranslit)) {
+                variants.push(cleanedTranslit);
+            }
+            const ascii = info.translit.normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[ʔʕʾʿˀˁ]/g, '');
+            if (ascii.length > 1 && !variants.includes(ascii)) {
+                variants.push(ascii);
+            }
+        }
+        return variants;
+    }
+
+    async function tryFetchEtymology(variants) {
+        for (const v of variants) {
+            const ety = await fetchWordEtymology(v);
+            if (ety) return { word: v, ety: ety };
         }
         return null;
     }
 
-    async function traceEtymologyChain(word, maxDepth = 3) {
+    async function traceEtymologyChain(word, maxDepth = 5) {
         const chain = [];
         const visited = new Set();
         let current = word;
@@ -209,9 +268,14 @@
             const ety = await fetchWordEtymology(current);
             if (!ety) break;
             chain.push({ word: current, ety: ety });
-            const next = extractSourceWord(ety);
-            if (!next || visited.has(next.toLowerCase())) break;
-            current = next;
+            const sourceInfo = extractSourceInfo(ety);
+            if (!sourceInfo) break;
+            const variants = generateLookupVariants(sourceInfo);
+            const validVariants = variants.filter(v => !visited.has(v.toLowerCase()));
+            if (validVariants.length === 0) break;
+            const found = await tryFetchEtymology(validVariants);
+            if (!found) break;
+            current = found.word;
         }
         return chain;
     }

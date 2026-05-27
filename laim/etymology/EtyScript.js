@@ -127,35 +127,72 @@
         return sections.length > 0 ? sections : null;
     }
 
-    async function fetchMultiLangEtymology(word) {
+    const TARGET_LANGS = [
+        { code: 'ja', name: '日语 Japanese', pair: 'zh|ja' },
+        { code: 'ko', name: '韩语 Korean', pair: 'zh|ko' },
+        { code: 'ar', name: '阿拉伯语 Arabic', pair: 'en|ar' },
+        { code: 'tr', name: '土耳其语 Turkish', pair: 'en|tr' },
+        { code: 'fi', name: '芬兰语 Finnish', pair: 'en|fi' },
+        { code: 'hu', name: '匈牙利语 Hungarian', pair: 'en|hu' },
+        { code: 'sw', name: '斯瓦希里语 Swahili', pair: 'en|sw' },
+        { code: 'ms', name: '马来语 Malay', pair: 'en|ms' },
+        { code: 'ta', name: '泰米尔语 Tamil', pair: 'en|ta' },
+        { code: 'he', name: '希伯来语 Hebrew', pair: 'en|he' },
+        { code: 'mn', name: '蒙古语 Mongolian', pair: 'en|mn' },
+        { code: 'ka', name: '格鲁吉亚语 Georgian', pair: 'en|ka' },
+    ];
+
+    async function translateToLang(word, langpair) {
+        const url = `https://api.mymemory.translated.net/get?q=${encodeURIComponent(word)}&langpair=${langpair}`;
+        try {
+            const resp = await fetch(url);
+            const data = await resp.json();
+            if (data.responseStatus !== 200) return null;
+            const t = data.responseData.translatedText.trim();
+            if (!t || t.toLowerCase() === word.toLowerCase()) return null;
+            return t;
+        } catch { return null; }
+    }
+
+    async function fetchWordEtymology(word) {
         const url = `https://en.wiktionary.org/api/rest_v1/page/html/${encodeURIComponent(word)}`;
-        const resp = await fetch(url);
-        if (!resp.ok) return [];
-        const html = await resp.text();
-        const parser = new DOMParser();
-        const doc = parser.parseFromString(html, 'text/html');
-        const results = [];
-        const topSections = doc.querySelectorAll('section[data-mw-section-id]');
-        for (const sec of topSections) {
-            const h2 = sec.querySelector(':scope > h2');
-            if (!h2) continue;
-            const langName = h2.textContent.trim();
-            if (['English','Contents','References','See also','Anagrams','Further reading'].includes(langName)) continue;
-            const etySecs = sec.querySelectorAll('section');
-            for (const etySec of etySecs) {
-                const heading = etySec.querySelector('h3, h4');
+        try {
+            const resp = await fetch(url);
+            if (!resp.ok) return null;
+            const html = await resp.text();
+            const parser = new DOMParser();
+            const doc = parser.parseFromString(html, 'text/html');
+            const allSections = doc.querySelectorAll('section');
+            for (const sec of allSections) {
+                const heading = sec.querySelector('h2, h3, h4');
                 if (!heading || !/etymology/i.test(heading.textContent)) continue;
                 let content = '';
-                for (const child of etySec.children) {
+                for (const child of sec.children) {
                     if (child === heading) continue;
                     if (!isEtyContent(child)) continue;
                     const text = extractText(child);
                     if (text) content += text + '\n';
                 }
-                if (content.trim()) {
-                    results.push({ lang: langName, ety: content.trim() });
-                }
-                break;
+                if (content.trim()) return content.trim();
+            }
+        } catch {}
+        return null;
+    }
+
+    async function fetchMultiLangEtymology(sourceWord, chineseWord) {
+        const results = [];
+        const queryWord = chineseWord || sourceWord;
+        const tasks = TARGET_LANGS.map(async (lang) => {
+            const fromWord = lang.pair.startsWith('zh') ? queryWord : sourceWord;
+            const translated = await translateToLang(fromWord, lang.pair);
+            if (!translated) return null;
+            const ety = await fetchWordEtymology(translated);
+            return { lang: lang.name, word: translated, ety: ety };
+        });
+        const settled = await Promise.allSettled(tasks);
+        for (const r of settled) {
+            if (r.status === 'fulfilled' && r.value && r.value.ety) {
+                results.push(r.value);
             }
         }
         return results;
@@ -192,9 +229,10 @@
             }
 
             const mainWord = englishWords[0];
-            const multiLang = await fetchMultiLangEtymology(mainWord);
+            const chineseWord = isChinese(word) ? word : null;
+            const multiLang = await fetchMultiLangEtymology(mainWord, chineseWord);
             if (multiLang.length > 0) {
-                renderMultiLang(mainWord, multiLang);
+                renderMultiLang(multiLang);
             }
         } catch (err) {
             resultArea.innerHTML += `<div class="result-card"><div class="error-state">查询出错: ${err.message}</div></div>`;
@@ -239,12 +277,12 @@
         resultArea.appendChild(card);
     }
 
-    function renderMultiLang(word, items) {
+    function renderMultiLang(items) {
         const card = document.createElement('div');
         card.className = 'result-card';
-        let html = `<h3 class="multi-lang">其他语言词源: ${word}</h3>`;
+        let html = `<h3 class="multi-lang">其他语言词源参考</h3>`;
         for (const item of items) {
-            html += `<div class="multi-lang-item"><span class="lang-name">${escapeHtml(item.lang)}</span>${escapeHtml(item.ety)}</div>`;
+            html += `<div class="multi-lang-item"><span class="lang-name">${escapeHtml(item.lang)}</span><strong>${escapeHtml(item.word)}</strong><p>${escapeHtml(item.ety)}</p></div>`;
         }
         card.innerHTML = html;
         resultArea.appendChild(card);

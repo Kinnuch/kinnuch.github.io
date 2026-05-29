@@ -10,7 +10,8 @@
       "WebFetch(domain:www.wikiwand.com)",
       "WebFetch(domain:slavica.indiana.edu)",
       "Bash(python3 -c ' *)",
-      "Bash(findstr /v \"\\\\.\")"
+      "Bash(findstr /v \"\\\\.\")",
+      "Bash(dir /b \"c:\\\\Users\\\\Administrator\\\\Documents\\\\GitHub\\\\kinnuch.github.io\")"
     ],
     "additionalDirectories": [
       "\\tmp"

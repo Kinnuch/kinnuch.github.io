@@ -9,7 +9,8 @@
       "WebFetch(domain:en.wikipedia.org)",
       "WebFetch(domain:www.wikiwand.com)",
       "WebFetch(domain:slavica.indiana.edu)",
-      "Bash(python3 -c ' *)"
+      "Bash(python3 -c ' *)",
+      "Bash(findstr /v \"\\\\.\")"
     ],
     "additionalDirectories": [
       "\\tmp"

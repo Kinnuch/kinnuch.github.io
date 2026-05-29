@@ -1,0 +1,58 @@
+{%- comment -%}
+  Comment gate.
+  Priority: page.comments (explicit) > path depth default.
+  Default rule: top-level pages (depth <= 1) off; deeper pages on.
+  Depth = count of non-empty segments in page.url.
+{%- endcomment -%}
+
+{%- assign _segments = page.url | split: "/" -%}
+{%- assign _depth = 0 -%}
+{%- for _seg in _segments -%}
+  {%- if _seg != "" -%}
+    {%- assign _depth = _depth | plus: 1 -%}
+  {%- endif -%}
+{%- endfor -%}
+
+{%- assign _show = false -%}
+{%- if page.comments == true -%}
+  {%- assign _show = true -%}
+{%- elsif page.comments == false -%}
+  {%- assign _show = false -%}
+{%- elsif _depth >= 2 -%}
+  {%- assign _show = true -%}
+{%- endif -%}
+
+{%- if _show -%}
+  {%- assign g = site.giscus -%}
+  {%- if g.repo_id and g.repo_id != "REPLACE_WITH_REPO_ID" and g.category_id and g.category_id != "REPLACE_WITH_CATEGORY_ID" -%}
+<section class="comments" aria-label="Comments">
+  <h3>Pinnas | 留言</h3>
+  <div class="giscus"></div>
+  <script>
+    (function () {
+      var t = document.documentElement.getAttribute('data-theme');
+      var theme = t === 'dark' ? {{ g.theme_dark | default: "dark_dimmed" | jsonify }} : {{ g.theme_light | default: "light" | jsonify }};
+      var s = document.createElement('script');
+      s.src = 'https://giscus.app/client.js';
+      s.setAttribute('data-repo', {{ g.repo | jsonify }});
+      s.setAttribute('data-repo-id', {{ g.repo_id | jsonify }});
+      s.setAttribute('data-category', {{ g.category | jsonify }});
+      s.setAttribute('data-category-id', {{ g.category_id | jsonify }});
+      s.setAttribute('data-mapping', {{ g.mapping | default: "pathname" | jsonify }});
+      s.setAttribute('data-strict', {{ g.strict | default: "0" | jsonify }});
+      s.setAttribute('data-reactions-enabled', {{ g.reactions_enabled | default: "1" | jsonify }});
+      s.setAttribute('data-emit-metadata', {{ g.emit_metadata | default: "0" | jsonify }});
+      s.setAttribute('data-input-position', {{ g.input_position | default: "top" | jsonify }});
+      s.setAttribute('data-theme', theme);
+      s.setAttribute('data-lang', {{ g.lang | default: "zh-CN" | jsonify }});
+      s.setAttribute('data-loading', {{ g.loading | default: "lazy" | jsonify }});
+      s.crossOrigin = 'anonymous';
+      s.async = true;
+      document.querySelector('.giscus').appendChild(s);
+    })();
+  </script>
+</section>
+  {%- else -%}
+<!-- giscus not configured: fill repo_id and category_id in _config.yml -->
+  {%- endif -%}
+{%- endif -%}

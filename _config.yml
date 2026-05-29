@@ -56,9 +56,23 @@ kramdown:
   #   coderay_css: class
 
 
-# disqus settings:
-disqus:
-  shortname: kinnuch
+# giscus (GitHub Discussions) comment settings.
+# Fill repo_id and category_id from https://giscus.app after enabling
+# Discussions on the repo and installing the giscus GitHub App.
+giscus:
+  repo: Kinnuch/kinnuch.github.io
+  repo_id: "R_kgDOLcXysA"
+  category: Comments
+  category_id: "DIC_kwDOLcXysM4C-EO1"
+  mapping: pathname
+  strict: "0"
+  reactions_enabled: "1"
+  emit_metadata: "0"
+  input_position: top
+  theme_light: light
+  theme_dark: dark_dimmed
+  lang: zh-CN
+  loading: lazy
 
 include: [".htaccess"]
 exclude: ["lib", "config.rb", "Capfile", "config", "log", "Rakefile", "Rakefile.rb", "tmp", "less", "minimal-mistakes.sublime-project", "minimal-mistakes.sublime-workspace"]

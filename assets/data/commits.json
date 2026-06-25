@@ -1,5 +1,19 @@
 [
   {
+    "hash": "6e44364d6ed83fd54b928b0078959f1435b4d4af",
+    "short": "6e44364",
+    "date": "2026-06-25T10:50:45+08:00",
+    "author": "Kinnuch",
+    "msg": "rework thunderstorm vfx"
+  },
+  {
+    "hash": "af5db56aa6cd91c5b97db99350709570ff2ef1a8",
+    "short": "af5db56",
+    "date": "2026-06-25T02:32:46Z",
+    "author": "github-actions[bot]",
+    "msg": "chore: refresh commits.json [skip ci]"
+  },
+  {
     "hash": "0a290511bc08f36e71b9ece561371406be3870f0",
     "short": "0a29051",
     "date": "2026-06-25T10:32:32+08:00",

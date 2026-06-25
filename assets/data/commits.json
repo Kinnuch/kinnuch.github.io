@@ -1,0 +1,3173 @@
+[
+  {
+    "hash": "c9a634d04d9f5780bfd3f4bc4d6bf89efbd1b9ce",
+    "short": "c9a634d",
+    "date": "2026-05-29T16:23:10+08:00",
+    "author": "wuyichen",
+    "msg": "update css"
+  },
+  {
+    "hash": "1cd36e2a3ed1731aceb3d9cb1a8c468ca7b8049c",
+    "short": "1cd36e2",
+    "date": "2026-05-29T16:18:26+08:00",
+    "author": "wuyichen",
+    "msg": "update css style"
+  },
+  {
+    "hash": "7f504c6548ab097dd007c995b6ee0d19c7a68bb4",
+    "short": "7f504c6",
+    "date": "2026-05-29T16:11:53+08:00",
+    "author": "wuyichen",
+    "msg": "update css style"
+  },
+  {
+    "hash": "d858096e57244548be0930a5da49e5ab9b3c92f2",
+    "short": "d858096",
+    "date": "2026-05-29T16:03:36+08:00",
+    "author": "wuyichen",
+    "msg": "update CSS style"
+  },
+  {
+    "hash": "0734f531ec2b1e2b18734082f003b8bc9fec551b",
+    "short": "0734f53",
+    "date": "2026-05-29T15:54:44+08:00",
+    "author": "wuyichen",
+    "msg": "update readme"
+  },
+  {
+    "hash": "c4286423c42cf0b9beeb8aae3363a3b4c48f38e2",
+    "short": "c428642",
+    "date": "2026-05-29T15:50:11+08:00",
+    "author": "wuyichen",
+    "msg": "update comment position"
+  },
+  {
+    "hash": "c44eb86936929801eb693b9227a132fff13b44f7",
+    "short": "c44eb86",
+    "date": "2026-05-29T15:32:52+08:00",
+    "author": "wuyichen",
+    "msg": "update Discussion Function"
+  },
+  {
+    "hash": "1aef09e8cae5f98910482d221d7f6375a15338b3",
+    "short": "1aef09e",
+    "date": "2026-05-27T15:53:47+08:00",
+    "author": "wuyichen",
+    "msg": "update Recursive Algorithm"
+  },
+  {
+    "hash": "b2a2f5c8c12db393acf071a44455117fd3858323",
+    "short": "b2a2f5c",
+    "date": "2026-05-27T15:45:45+08:00",
+    "author": "wuyichen",
+    "msg": "update Recursive Ety Extractor"
+  },
+  {
+    "hash": "ef8f2540cb8399fce86b362ea76db16f6973868b",
+    "short": "ef8f254",
+    "date": "2026-05-27T15:32:57+08:00",
+    "author": "wuyichen",
+    "msg": "update Ety other languages sources"
+  },
+  {
+    "hash": "96eb949dbda35a2a983fa783bd0c4e76331b183c",
+    "short": "96eb949",
+    "date": "2026-05-26T16:25:39+08:00",
+    "author": "wuyichen",
+    "msg": "optimize ety cerf content listing skill"
+  },
+  {
+    "hash": "5668ddf89e054ab4edb22ac67920e82645cda29d",
+    "short": "5668ddf",
+    "date": "2026-05-26T16:06:57+08:00",
+    "author": "wuyichen",
+    "msg": "hide modules that do not show up frequently"
+  },
+  {
+    "hash": "c3c12866e8293190e6ac6b7a8c932487ed548848",
+    "short": "c3c1286",
+    "date": "2026-05-26T16:03:15+08:00",
+    "author": "wuyichen",
+    "msg": "update Ety cerf"
+  },
+  {
+    "hash": "edee0153ab34ba547742b61e100a6420985cd1d6",
+    "short": "edee015",
+    "date": "2026-05-26T15:52:40+08:00",
+    "author": "wuyichen",
+    "msg": "update Etymology cerf"
+  },
+  {
+    "hash": "b23d7544c336faf1ebc896b8114ad19a596a3602",
+    "short": "b23d754",
+    "date": "2026-05-26T15:38:13+08:00",
+    "author": "wuyichen",
+    "msg": "update random number selector"
+  },
+  {
+    "hash": "c82023db6107bf9b4c49c36c4a44830cc5443943",
+    "short": "c82023d",
+    "date": "2026-05-26T15:35:35+08:00",
+    "author": "wuyichen",
+    "msg": "update cerf structure"
+  },
+  {
+    "hash": "3a81c3bb48d8f731849a11297a1c6b1b440eec9f",
+    "short": "3a81c3b",
+    "date": "2026-05-26T15:27:11+08:00",
+    "author": "wuyichen",
+    "msg": "fix bottom white artifact when screen is too long"
+  },
+  {
+    "hash": "0f63492ee2336ec59f46e2ec034bb413bfe7202e",
+    "short": "0f63492",
+    "date": "2026-05-26T12:22:19+08:00",
+    "author": "wuyichen",
+    "msg": "update Day/Night Mode in SCA and Sindarin Dictionary"
+  },
+  {
+    "hash": "b1d01031a17bc0df70c169e2053f14f7bfb192a6",
+    "short": "b1d0103",
+    "date": "2026-05-25T17:27:49+08:00",
+    "author": "wuyichen",
+    "msg": "Update dyalan.md"
+  },
+  {
+    "hash": "77edfc1223ecb0aaced246ebee83479406f16046",
+    "short": "77edfc1",
+    "date": "2026-05-25T17:16:56+08:00",
+    "author": "wuyichen",
+    "msg": "update gallery art pictures"
+  },
+  {
+    "hash": "73c2e217fbf025dc014f0435e44b8e2f90f41cd7",
+    "short": "73c2e21",
+    "date": "2026-05-25T16:58:19+08:00",
+    "author": "wuyichen",
+    "msg": "update Mobile environment settings and configs"
+  },
+  {
+    "hash": "bd0bc4a8cc3b0c9f2f88fd1636c94131e8d17407",
+    "short": "bd0bc4a",
+    "date": "2026-05-25T16:36:19+08:00",
+    "author": "wuyichen",
+    "msg": "update Calender module"
+  },
+  {
+    "hash": "6e57fc6bac91135c62458417949550dc5bcbbcb4",
+    "short": "6e57fc6",
+    "date": "2026-05-25T16:22:00+08:00",
+    "author": "wuyichen",
+    "msg": "fix wrong image path"
+  },
+  {
+    "hash": "437d8e376437cc782365bc025b4bd48de36dd78f",
+    "short": "437d8e3",
+    "date": "2026-05-25T16:18:30+08:00",
+    "author": "wuyichen",
+    "msg": "update homepage style"
+  },
+  {
+    "hash": "8deac04c1df4535f4c5c2e19411c25566f89e77b",
+    "short": "8deac04",
+    "date": "2026-05-25T15:55:15+08:00",
+    "author": "wuyichen",
+    "msg": "update Day/Night mode function"
+  },
+  {
+    "hash": "c334ee40a9a61325f14fc5eae5f8c586d5c6aee3",
+    "short": "c334ee4",
+    "date": "2026-05-25T15:45:19+08:00",
+    "author": "wuyichen",
+    "msg": "update dyalan.md"
+  },
+  {
+    "hash": "66f29d4a2ab69dddf35f66d8a12ddc6c94c10c5e",
+    "short": "66f29d4",
+    "date": "2026-05-25T11:54:02+08:00",
+    "author": "wuyichen",
+    "msg": "update Dyalan basic info"
+  },
+  {
+    "hash": "0edbd2a818f8e8c6b84643f919953a6ac70776ea",
+    "short": "0edbd2a",
+    "date": "2026-05-22T11:39:42+08:00",
+    "author": "wuyichen",
+    "msg": "update expand derivative forms"
+  },
+  {
+    "hash": "2d735d50d1bece2db7314d6432ea57f8aa8e3602",
+    "short": "2d735d5",
+    "date": "2026-05-22T11:30:41+08:00",
+    "author": "wuyichen",
+    "msg": "update Theusrin button"
+  },
+  {
+    "hash": "4ec6da4b9c52c022e867688ab227f10f08900492",
+    "short": "4ec6da4",
+    "date": "2026-05-21T19:49:17+08:00",
+    "author": "wuyichen",
+    "msg": "update auto-completion button"
+  },
+  {
+    "hash": "8c9b5a7d9bd0754e51ec9d07eeb924ad26fc29a0",
+    "short": "8c9b5a7",
+    "date": "2026-05-21T18:12:46+08:00",
+    "author": "wuyichen",
+    "msg": "update HTML version SCA"
+  },
+  {
+    "hash": "c810b204c9bb687e23e668a8c86fafeeb8756409",
+    "short": "c810b20",
+    "date": "2026-04-07T17:26:40+08:00",
+    "author": "wuyichen",
+    "msg": "上传星空资料网站"
+  },
+  {
+    "hash": "385d2146573fe5c4cd27775698204399f7584dac",
+    "short": "385d214",
+    "date": "2025-12-22T16:14:31+08:00",
+    "author": "Kinnuch",
+    "msg": "Update ArchipelagoShikrinRule.txt"
+  },
+  {
+    "hash": "452514a8d05aa3a53bc3ef773b6f3f5c302467ae",
+    "short": "452514a",
+    "date": "2025-12-22T16:09:42+08:00",
+    "author": "Kinnuch",
+    "msg": "Update ArchipelagoShikrinRule.txt"
+  },
+  {
+    "hash": "e7a6b7724a8f346a03465d54f67e90cedbbaf3d3",
+    "short": "e7a6b77",
+    "date": "2025-12-22T16:08:14+08:00",
+    "author": "Kinnuch",
+    "msg": "Update ArchipelagoShikrinRule.txt"
+  },
+  {
+    "hash": "78d8b85803d872ab172c27b497bd5b34340ed0a8",
+    "short": "78d8b85",
+    "date": "2025-12-14T18:45:37+08:00",
+    "author": "Kinnuch",
+    "msg": "Update N1.md"
+  },
+  {
+    "hash": "b64ed9611041b7ffcefcec0d8a77eb65cbbccc68",
+    "short": "b64ed96",
+    "date": "2025-12-14T17:03:44+08:00",
+    "author": "Kinnuch",
+    "msg": "Update ArchipelagoShikrinRule.txt"
+  },
+  {
+    "hash": "2984f481149f9d2fc53f0c50065d91432824c260",
+    "short": "2984f48",
+    "date": "2025-12-13T18:42:29+08:00",
+    "author": "Kinnuch",
+    "msg": "Update ArchipelagoShikrinRule.txt"
+  },
+  {
+    "hash": "41f801d2c4fb60eb7996184bca8c1707cbcf4d98",
+    "short": "41f801d",
+    "date": "2025-12-13T02:13:30+08:00",
+    "author": "Kinnuch",
+    "msg": "update ArSkr SCA"
+  },
+  {
+    "hash": "7fbfe5ec3e2fef1b1d332b63304bde67168f1a2d",
+    "short": "7fbfe5e",
+    "date": "2025-12-12T18:57:23+08:00",
+    "author": "Kinnuch",
+    "msg": "update ArSkr SCA"
+  },
+  {
+    "hash": "cbaf6a0735601c377678fdb0ed55dd45b52a2ac4",
+    "short": "cbaf6a0",
+    "date": "2025-12-12T01:51:54+08:00",
+    "author": "Kinnuch",
+    "msg": "update ArSkr SCA"
+  },
+  {
+    "hash": "9f3b15676941bd44c7f1b45b5050a84c823bc4e4",
+    "short": "9f3b156",
+    "date": "2025-12-11T19:00:46+08:00",
+    "author": "Kinnuch",
+    "msg": "Update N1.md"
+  },
+  {
+    "hash": "ee2a15fc541de3642410217164fa79df1a201d0a",
+    "short": "ee2a15f",
+    "date": "2025-12-11T01:58:46+08:00",
+    "author": "Kinnuch",
+    "msg": "update ArSkr SCA"
+  },
+  {
+    "hash": "70d53eb6447bdda13c67d303dfa46ea06cac1c25",
+    "short": "70d53eb",
+    "date": "2025-12-10T23:59:03+08:00",
+    "author": "Kinnuch",
+    "msg": "Upload a SCA tool for Archipelago Shikrin"
+  },
+  {
+    "hash": "584b297a13a3f860480b060746125a4997843ab2",
+    "short": "584b297",
+    "date": "2025-12-10T20:18:16+08:00",
+    "author": "Kinnuch",
+    "msg": "Update N1.md"
+  },
+  {
+    "hash": "3d1be0f399ce06a898c35ad0be583de87bc19323",
+    "short": "3d1be0f",
+    "date": "2025-12-09T20:03:28+08:00",
+    "author": "Kinnuch",
+    "msg": "Start to memorize words of N1 level"
+  },
+  {
+    "hash": "63c7255a6d36482b00ca65a56774dd3b571d06ba",
+    "short": "63c7255",
+    "date": "2025-12-09T17:06:24+08:00",
+    "author": "Kinnuch",
+    "msg": "Launch a new conlang project about Archipelago Shikrin"
+  },
+  {
+    "hash": "f2421e8aebdcea49294b6952b7e19bbba0330367",
+    "short": "f2421e8",
+    "date": "2025-12-07T11:47:05+08:00",
+    "author": "Kinnuch",
+    "msg": "Update N3.md"
+  },
+  {
+    "hash": "48a17a0fe561ecc38e3e31f1bba3436f45b98766",
+    "short": "48a17a0",
+    "date": "2025-12-07T11:23:08+08:00",
+    "author": "Kinnuch",
+    "msg": "Update N3.md"
+  },
+  {
+    "hash": "d7dcf73698e6665c8db57460ec0f2ec66c56b563",
+    "short": "d7dcf73",
+    "date": "2025-12-07T00:20:14+08:00",
+    "author": "Kinnuch",
+    "msg": "Update N3.md"
+  },
+  {
+    "hash": "1dfde02fd9b7cc31be283a402dd53521d5e75135",
+    "short": "1dfde02",
+    "date": "2025-12-06T18:48:24+08:00",
+    "author": "Kinnuch",
+    "msg": "Update N3.md"
+  },
+  {
+    "hash": "46f114eeaab02119eae9b427edad9129c39a8fa4",
+    "short": "46f114e",
+    "date": "2025-12-06T18:36:20+08:00",
+    "author": "Kinnuch",
+    "msg": "Update N3.md"
+  },
+  {
+    "hash": "f199d2447af4eda756613b599baa9203300218e1",
+    "short": "f199d24",
+    "date": "2025-12-06T13:45:40+08:00",
+    "author": "Kinnuch",
+    "msg": "Update N3.md"
+  },
+  {
+    "hash": "d6a6433af96b99fc1c21e8133d8b65109f4571d8",
+    "short": "d6a6433",
+    "date": "2025-12-06T13:29:45+08:00",
+    "author": "Kinnuch",
+    "msg": "Update N3.md"
+  },
+  {
+    "hash": "688f9baf8c67ee8f6cc61df50e0bda218e1f423f",
+    "short": "688f9ba",
+    "date": "2025-12-06T12:39:11+08:00",
+    "author": "Kinnuch",
+    "msg": "Update N3.md"
+  },
+  {
+    "hash": "1231c692e19e12d02c5e438f36306c4badb6a20d",
+    "short": "1231c69",
+    "date": "2025-12-06T01:49:13+08:00",
+    "author": "Kinnuch",
+    "msg": "Update N3.md"
+  },
+  {
+    "hash": "b07682b1daa4cc4cabfb272d6d8d0397871dd47c",
+    "short": "b07682b",
+    "date": "2025-12-06T01:23:49+08:00",
+    "author": "Kinnuch",
+    "msg": "Update N3.md"
+  },
+  {
+    "hash": "750747c686896f3e7c3f050ed56640c5505bce52",
+    "short": "750747c",
+    "date": "2025-12-06T01:13:42+08:00",
+    "author": "Kinnuch",
+    "msg": "Update N3.md"
+  },
+  {
+    "hash": "8f94cd6ae8753db15e3d035a8fa00d712a7ca08e",
+    "short": "8f94cd6",
+    "date": "2025-12-06T01:09:21+08:00",
+    "author": "Kinnuch",
+    "msg": "Update N3.md"
+  },
+  {
+    "hash": "02962d0939e553c12ec34d938ba95e18f380a014",
+    "short": "02962d0",
+    "date": "2025-12-05T20:27:27+08:00",
+    "author": "Kinnuch",
+    "msg": "Update N3.md"
+  },
+  {
+    "hash": "7afe7353efebd6bd592d65abcdf236aff4fa79d5",
+    "short": "7afe735",
+    "date": "2025-12-05T00:44:40+08:00",
+    "author": "Kinnuch",
+    "msg": "Update N3.md"
+  },
+  {
+    "hash": "1c1c0dbd9fa29a85068126367940c98ad97a6b24",
+    "short": "1c1c0db",
+    "date": "2025-12-04T23:37:38+08:00",
+    "author": "Kinnuch",
+    "msg": "Update N3.md"
+  },
+  {
+    "hash": "67c5841a5c8a7b1f9d66deb710e52edabc5930c7",
+    "short": "67c5841",
+    "date": "2025-12-04T19:06:07+08:00",
+    "author": "Kinnuch",
+    "msg": "Update N3.md"
+  },
+  {
+    "hash": "851c7153cbf75b264db313151408a1f399623352",
+    "short": "851c715",
+    "date": "2025-12-04T02:15:24+08:00",
+    "author": "Kinnuch",
+    "msg": "Update N3.md"
+  },
+  {
+    "hash": "d412da2d7c5eb226b84fef45f71828f425de529e",
+    "short": "d412da2",
+    "date": "2025-12-03T13:00:08+08:00",
+    "author": "Kinnuch",
+    "msg": "Update N3.md"
+  },
+  {
+    "hash": "e39233110c532881424ca66f5f4cb1a5e7b8dc00",
+    "short": "e392331",
+    "date": "2025-12-03T00:18:28+08:00",
+    "author": "Kinnuch",
+    "msg": "Update N3.md"
+  },
+  {
+    "hash": "08f0d52ec7f0fed5b84473681e738e5a8d30ea33",
+    "short": "08f0d52",
+    "date": "2025-12-02T02:06:35+08:00",
+    "author": "Kinnuch",
+    "msg": "Update N3.md"
+  },
+  {
+    "hash": "5787912b7fa7c2e6c7e596180da78a2394d321a7",
+    "short": "5787912",
+    "date": "2025-12-01T02:00:15+08:00",
+    "author": "Kinnuch",
+    "msg": "Update N3.md"
+  },
+  {
+    "hash": "fa5c47bb0f56ff7488778c88b03c03d3cdbb531e",
+    "short": "fa5c47b",
+    "date": "2025-11-30T23:21:35+08:00",
+    "author": "Kinnuch",
+    "msg": "Update N3.md"
+  },
+  {
+    "hash": "971efc3f0abf070c6ef7ad4e2b68eca66b8417cb",
+    "short": "971efc3",
+    "date": "2025-11-30T21:57:45+08:00",
+    "author": "Kinnuch",
+    "msg": "Update N3.md"
+  },
+  {
+    "hash": "0426da67e6fc59056f2d352e313b9cfed0633468",
+    "short": "0426da6",
+    "date": "2025-11-29T00:28:11+08:00",
+    "author": "Kinnuch",
+    "msg": "Update N3.md"
+  },
+  {
+    "hash": "08fd441785a900036fa0d94befd78a2e0595adfe",
+    "short": "08fd441",
+    "date": "2025-11-28T21:35:38+08:00",
+    "author": "Kinnuch",
+    "msg": "Update N3.md"
+  },
+  {
+    "hash": "2f9edaad5dd13bc1bf0fd227afa316dd3fa19039",
+    "short": "2f9edaa",
+    "date": "2025-11-27T22:38:22+08:00",
+    "author": "Kinnuch",
+    "msg": "Update N3.md"
+  },
+  {
+    "hash": "2ef81078f209c2236b92f320da849c5647ed2df1",
+    "short": "2ef8107",
+    "date": "2025-11-26T18:57:49+08:00",
+    "author": "Kinnuch",
+    "msg": "Update N3.md"
+  },
+  {
+    "hash": "414a0b3f107fcb8422ff3796a5a5a8c4d5c0324e",
+    "short": "414a0b3",
+    "date": "2025-11-26T13:29:56+08:00",
+    "author": "Kinnuch",
+    "msg": "Update N3.md"
+  },
+  {
+    "hash": "1fa7f6c1ec6aa89017c01f67c7c826ae2798a71b",
+    "short": "1fa7f6c",
+    "date": "2025-11-25T01:56:17+08:00",
+    "author": "Kinnuch",
+    "msg": "Update N3.md"
+  },
+  {
+    "hash": "53885d85ed07b845bec79f1f7f08bdd73f752575",
+    "short": "53885d8",
+    "date": "2025-11-24T22:27:57+08:00",
+    "author": "Kinnuch",
+    "msg": "Update N3.md"
+  },
+  {
+    "hash": "9e6c4a0284633a25530b7a024c7a34bb795a0f1d",
+    "short": "9e6c4a0",
+    "date": "2025-11-24T00:59:36+08:00",
+    "author": "Kinnuch",
+    "msg": "Update N3.md"
+  },
+  {
+    "hash": "3b5745ce42b7ee2cbe0dead24d425c5f85244f37",
+    "short": "3b5745c",
+    "date": "2025-11-23T01:45:08+08:00",
+    "author": "Kinnuch",
+    "msg": "Update N3.md"
+  },
+  {
+    "hash": "3df4284af9576e9eb1baea297d3040ce711b23c2",
+    "short": "3df4284",
+    "date": "2025-11-22T00:47:45+08:00",
+    "author": "Kinnuch",
+    "msg": "Update N3.md"
+  },
+  {
+    "hash": "801d32a5d8f4fa18c7ab4b93805727ba06ca612a",
+    "short": "801d32a",
+    "date": "2025-11-21T01:14:23+08:00",
+    "author": "Kinnuch",
+    "msg": "Update N3.md"
+  },
+  {
+    "hash": "52e0114ee5bd705017015dab92d6feda0557994d",
+    "short": "52e0114",
+    "date": "2025-11-21T00:50:31+08:00",
+    "author": "Kinnuch",
+    "msg": "Update gobeth.md"
+  },
+  {
+    "hash": "52a37c9941e5fc47ddd1bdd0459a3879ff9c8989",
+    "short": "52a37c9",
+    "date": "2025-11-21T00:44:01+08:00",
+    "author": "Kinnuch",
+    "msg": "Upload JLPT_N3 notes"
+  },
+  {
+    "hash": "7ff0449f41ce99e44f331bf0f9a44cee13e3893b",
+    "short": "7ff0449",
+    "date": "2025-09-06T00:39:08+08:00",
+    "author": "Kinnuch",
+    "msg": "Update theusrin.schema.yaml"
+  },
+  {
+    "hash": "4f03bf304b05d4363505a2903bfec3918279a5eb",
+    "short": "4f03bf3",
+    "date": "2025-09-05T23:44:17+08:00",
+    "author": "Kinnuch",
+    "msg": "Update theusrin.schema.yaml"
+  },
+  {
+    "hash": "431d99fe616db2ca73beb55689808ee42e45acc9",
+    "short": "431d99f",
+    "date": "2025-09-04T17:19:42+08:00",
+    "author": "Kinnuch",
+    "msg": "Update Theusrin input method"
+  },
+  {
+    "hash": "81a594513591eb90b5e5f86436e55e419d648701",
+    "short": "81a5945",
+    "date": "2025-08-22T20:04:49+08:00",
+    "author": "Kinnuch",
+    "msg": "Update Theusṛin.md"
+  },
+  {
+    "hash": "119d880df4c41cb6cb33da3845807be8de92d232",
+    "short": "119d880",
+    "date": "2025-08-21T19:21:41+08:00",
+    "author": "Kinnuch",
+    "msg": "Update Theusṛin.md"
+  },
+  {
+    "hash": "aedfe5f6c7f49b10ee15b496756b9f4132bb6f27",
+    "short": "aedfe5f",
+    "date": "2025-08-20T20:13:47+08:00",
+    "author": "Kinnuch",
+    "msg": "Update Thsr grammar"
+  },
+  {
+    "hash": "b51e991c1bb1b4b72610bdeb1241c44ea431e8d8",
+    "short": "b51e991",
+    "date": "2025-08-16T18:51:53+08:00",
+    "author": "Kinnuch",
+    "msg": "Allow s and z to be at the second place in a syllable"
+  },
+  {
+    "hash": "9f320be68cda376de237fc9253af0ca0d7a90156",
+    "short": "9f320be",
+    "date": "2025-08-14T01:06:51+08:00",
+    "author": "Kinnuch",
+    "msg": "Slightly changed the phonology by introducing ´z´ where VrVr > VzVr, VrVrVr > VzzVr"
+  },
+  {
+    "hash": "923bab9471adb9cfa4a7cccff8a2460d291b16a9",
+    "short": "923bab9",
+    "date": "2025-08-13T19:41:07+08:00",
+    "author": "Kinnuch",
+    "msg": "Update Theusṛin.md"
+  },
+  {
+    "hash": "b9d59baa34fe1f5f70712e5333cf708254b4985b",
+    "short": "b9d59ba",
+    "date": "2025-08-13T19:22:31+08:00",
+    "author": "Kinnuch",
+    "msg": "Update Theusṛin.md"
+  },
+  {
+    "hash": "546d9c4662d49ce66f7f50a7e4c497d98f6d232f",
+    "short": "546d9c4",
+    "date": "2025-08-10T01:18:48+08:00",
+    "author": "Kinnuch",
+    "msg": "Update Theusṛin.md"
+  },
+  {
+    "hash": "7595c2f522a1240d4ee9d173119fce03247412cc",
+    "short": "7595c2f",
+    "date": "2025-08-06T22:56:34+08:00",
+    "author": "Kinnuch",
+    "msg": "Update Theusṛin.md"
+  },
+  {
+    "hash": "ed2f60bba3f8d4f4e56baf45dd373d88d9109edd",
+    "short": "ed2f60b",
+    "date": "2025-08-06T22:32:36+08:00",
+    "author": "Kinnuch",
+    "msg": "Update Theusṛin.md"
+  },
+  {
+    "hash": "9615895c68360501b16a0803226efc6ab12488d4",
+    "short": "9615895",
+    "date": "2025-08-05T20:52:08+08:00",
+    "author": "Kinnuch",
+    "msg": "Update Theusṛin.md"
+  },
+  {
+    "hash": "0e0103dd584981901a1bf9c1c93e645029276b01",
+    "short": "0e0103d",
+    "date": "2025-08-05T01:33:16+08:00",
+    "author": "Kinnuch",
+    "msg": "Update Theusṛin.md"
+  },
+  {
+    "hash": "9146a53fa611f742141c4bd5262954fab31f0745",
+    "short": "9146a53",
+    "date": "2025-08-04T16:03:00+08:00",
+    "author": "Kinnuch",
+    "msg": "Update Theusṛin.md"
+  },
+  {
+    "hash": "19b8b3d154d4b7bd53b66eea21035fe257f26b98",
+    "short": "19b8b3d",
+    "date": "2025-08-01T01:22:27+08:00",
+    "author": "Kinnuch",
+    "msg": "Update Theusṛin.md"
+  },
+  {
+    "hash": "5f1de245a644ccff30673a51ba23ac16b0083552",
+    "short": "5f1de24",
+    "date": "2025-07-31T20:51:41+08:00",
+    "author": "Kinnuch",
+    "msg": "Update Theusṛin.md"
+  },
+  {
+    "hash": "e635e4ba23425bc856803c4f41720891fbf03618",
+    "short": "e635e4b",
+    "date": "2025-07-31T01:41:11+08:00",
+    "author": "Kinnuch",
+    "msg": "Update Theusṛin.md"
+  },
+  {
+    "hash": "f6d4321b73b9011653e7859a5c63f691948ab736",
+    "short": "f6d4321",
+    "date": "2025-07-30T20:59:55+08:00",
+    "author": "Kinnuch",
+    "msg": "Update Theusṛin.md"
+  },
+  {
+    "hash": "10fe246bd0fc5dfbf728a53a533d2c62674c972e",
+    "short": "10fe246",
+    "date": "2025-07-30T01:50:56+08:00",
+    "author": "Kinnuch",
+    "msg": "update Theusrin Grammar"
+  },
+  {
+    "hash": "1fe66bc905d874926e5ddd5a64eb364d211bbc03",
+    "short": "1fe66bc",
+    "date": "2025-07-29T20:53:45+08:00",
+    "author": "Kinnuch",
+    "msg": "update SCA and create TheusrinSCA pack"
+  },
+  {
+    "hash": "1e7c8c8b728920ccfccadf0ea893b0bd43bf9dfa",
+    "short": "1e7c8c8",
+    "date": "2025-07-29T15:20:22+08:00",
+    "author": "Kinnuch",
+    "msg": "Update Theusrin SCA"
+  },
+  {
+    "hash": "e25474f167c3965a60f079d98939e176a6364b02",
+    "short": "e25474f",
+    "date": "2025-07-29T01:16:58+08:00",
+    "author": "Kinnuch",
+    "msg": "Update Theusrin SCA"
+  },
+  {
+    "hash": "e6680305447cc2d172c552ee45267d8eeaa73511",
+    "short": "e668030",
+    "date": "2025-07-28T23:12:19+08:00",
+    "author": "Kinnuch",
+    "msg": "Update þeusrin SCA"
+  },
+  {
+    "hash": "0571612ada7d2988d3eab9e2f85b9b4d7f96c2a5",
+    "short": "0571612",
+    "date": "2025-07-28T18:58:46+08:00",
+    "author": "Kinnuch",
+    "msg": "Update þeoþer SCA"
+  },
+  {
+    "hash": "f73b75f8f2c756b6a0195cdfc5cd1c5647a32b30",
+    "short": "f73b75f",
+    "date": "2025-07-28T18:57:27+08:00",
+    "author": "Kinnuch",
+    "msg": "Update þeoþer SCA"
+  },
+  {
+    "hash": "ceb968d991f7a98d816ff976a5aad681192495cb",
+    "short": "ceb968d",
+    "date": "2025-07-28T02:23:03+08:00",
+    "author": "Kinnuch",
+    "msg": "Update þeoþer SCA"
+  },
+  {
+    "hash": "f78b36836bc8cb511f3fa048f3b204ae7b238608",
+    "short": "f78b368",
+    "date": "2025-07-28T02:12:59+08:00",
+    "author": "Kinnuch",
+    "msg": "Update Theusrin(þeoþer) SCA"
+  },
+  {
+    "hash": "0bf187ecbbb1476cc4d16984bbfd9038351ed43c",
+    "short": "0bf187e",
+    "date": "2025-07-16T20:59:21+08:00",
+    "author": "Kinnuch",
+    "msg": "Update dictionary.json"
+  },
+  {
+    "hash": "8c0ee695f906d27b60ad8d1d6aac0c4d2e4378f9",
+    "short": "8c0ee69",
+    "date": "2025-07-16T20:33:53+08:00",
+    "author": "Kinnuch",
+    "msg": "Update Theusṛin.md"
+  },
+  {
+    "hash": "2c82cb64d48aca1e2b7871e95daf271f8495a2ca",
+    "short": "2c82cb6",
+    "date": "2025-07-15T20:54:52+08:00",
+    "author": "Kinnuch",
+    "msg": "update Sindarin Dictionary"
+  },
+  {
+    "hash": "71438f9a79311b30138ccb8059d8b3e024dc1e29",
+    "short": "71438f9",
+    "date": "2025-07-15T16:35:04+08:00",
+    "author": "Kinnuch",
+    "msg": "Theusrin update"
+  },
+  {
+    "hash": "d8bb600253689674aa546b87da00e664b00283d0",
+    "short": "d8bb600",
+    "date": "2025-07-14T20:56:51+08:00",
+    "author": "Kinnuch",
+    "msg": "Update dictionary.json"
+  },
+  {
+    "hash": "b907d7b1ef9696aa84e5bde15f87139c00116fb3",
+    "short": "b907d7b",
+    "date": "2025-07-14T16:13:20+08:00",
+    "author": "Kinnuch",
+    "msg": "Create SindarinGuess.html"
+  },
+  {
+    "hash": "16b24b210e8855fc870fae679bc1d55ea9dfc96e",
+    "short": "16b24b2",
+    "date": "2025-05-21T20:13:27+08:00",
+    "author": "Kinnuch",
+    "msg": "update Theusrin Phonological Change by SCA"
+  },
+  {
+    "hash": "d8023f0e6c6fb98e0027c02385200a6d0670b87e",
+    "short": "d8023f0",
+    "date": "2025-05-21T01:55:00+08:00",
+    "author": "Kinnuch",
+    "msg": "update SCA with bugs fixed"
+  },
+  {
+    "hash": "f9102cdc2450df6878fb56819ce1bf66d1be2854",
+    "short": "f9102cd",
+    "date": "2025-05-20T20:59:33+08:00",
+    "author": "Kinnuch",
+    "msg": "update SCA with new Tsr chain"
+  },
+  {
+    "hash": "e6e5ce62a22ae02cb6cc59f18a62f88008aa8d18",
+    "short": "e6e5ce6",
+    "date": "2025-05-20T15:30:36+08:00",
+    "author": "Kinnuch",
+    "msg": "update SCA as the first stable version"
+  },
+  {
+    "hash": "d4ede07463b722c6f52fcc00406bcb3cd2e836fb",
+    "short": "d4ede07",
+    "date": "2025-05-19T17:44:07+08:00",
+    "author": "Kinnuch",
+    "msg": "update SCA with exception function"
+  },
+  {
+    "hash": "a80dc7d2d634a114e72376868aed2f14f62c8e99",
+    "short": "a80dc7d",
+    "date": "2025-05-16T19:02:12+08:00",
+    "author": "Kinnuch",
+    "msg": "update SCA"
+  },
+  {
+    "hash": "915376790d82fa1c2a612cbaf67aaf5b88c35599",
+    "short": "9153767",
+    "date": "2025-05-16T17:27:53+08:00",
+    "author": "Kinnuch",
+    "msg": "update SCA"
+  },
+  {
+    "hash": "cdec95565d0e89413bee838a0bb96ec00a78f116",
+    "short": "cdec955",
+    "date": "2025-05-16T01:44:20+08:00",
+    "author": "Kinnuch",
+    "msg": "update SCA"
+  },
+  {
+    "hash": "9bf9105c245d6cd71792208b4fd3e48c56f15e19",
+    "short": "9bf9105",
+    "date": "2025-05-15T20:59:38+08:00",
+    "author": "Kinnuch",
+    "msg": "update SCA"
+  },
+  {
+    "hash": "82d9bffb919516e2738040a55e5f864a9d84a0f2",
+    "short": "82d9bff",
+    "date": "2025-05-14T20:55:04+08:00",
+    "author": "Kinnuch",
+    "msg": "update SCA"
+  },
+  {
+    "hash": "0daf8093a6e18ffaac916d9e0c100a610b630aa9",
+    "short": "0daf809",
+    "date": "2025-05-13T20:47:52+08:00",
+    "author": "Kinnuch",
+    "msg": "update a Sound Change Applier"
+  },
+  {
+    "hash": "75de2716311100ecdb43c49a6128a01af4c1089e",
+    "short": "75de271",
+    "date": "2025-04-30T17:10:52+08:00",
+    "author": "Kinnuch",
+    "msg": "Update hittite.md"
+  },
+  {
+    "hash": "2e857ae8a92e5186531cb7d49400fecaa295b1cb",
+    "short": "2e857ae",
+    "date": "2025-04-29T19:46:11+08:00",
+    "author": "Kinnuch",
+    "msg": "Update hittite.md"
+  },
+  {
+    "hash": "abbbd82b96062b3b40ea4316bee57ff1ec5c2804",
+    "short": "abbbd82",
+    "date": "2025-04-29T16:53:27+08:00",
+    "author": "Kinnuch",
+    "msg": "Update hittite.md"
+  },
+  {
+    "hash": "c18eed5c47809bccc472c32ae1100fd53064a205",
+    "short": "c18eed5",
+    "date": "2025-04-28T20:11:32+08:00",
+    "author": "Kinnuch",
+    "msg": "Update hittite.md"
+  },
+  {
+    "hash": "3b0836c1d69510b8f65bcd79e229a4ae388606a6",
+    "short": "3b0836c",
+    "date": "2025-04-28T16:03:07+08:00",
+    "author": "Kinnuch",
+    "msg": "Update hittite.md"
+  },
+  {
+    "hash": "6b136faa89d519867fd37f026824d69f71b58b61",
+    "short": "6b136fa",
+    "date": "2025-04-27T18:34:43+08:00",
+    "author": "Kinnuch",
+    "msg": "Update hittite.md"
+  },
+  {
+    "hash": "3c165f2cce0f3bfe3dbe1e8b06375dfcb7e13941",
+    "short": "3c165f2",
+    "date": "2025-04-27T13:27:40+08:00",
+    "author": "Kinnuch",
+    "msg": "Update hittite.md"
+  },
+  {
+    "hash": "88604f3be4ecce11c4cd6be853a5a9a3dc86ecaa",
+    "short": "88604f3",
+    "date": "2025-04-26T23:38:36+08:00",
+    "author": "Kinnuch",
+    "msg": "Update hittite.md"
+  },
+  {
+    "hash": "bb097cd46793aaa52c69c8b8734abb7e9dc4143d",
+    "short": "bb097cd",
+    "date": "2025-04-25T18:38:22+08:00",
+    "author": "Kinnuch",
+    "msg": "Update hittite.md"
+  },
+  {
+    "hash": "cc7f6e8559498cce16400094aba74f4df4aeeeec",
+    "short": "cc7f6e8",
+    "date": "2025-04-25T10:06:29+08:00",
+    "author": "Kinnuch",
+    "msg": "Update hittite.md"
+  },
+  {
+    "hash": "9650cb9cb871dcd314e434cbf4e9118c10bfd28d",
+    "short": "9650cb9",
+    "date": "2025-04-25T00:59:00+08:00",
+    "author": "Kinnuch",
+    "msg": "Update hittite.md"
+  },
+  {
+    "hash": "393bb4bc92cf86456285845f3df0abecbfdb2241",
+    "short": "393bb4b",
+    "date": "2025-04-25T00:57:02+08:00",
+    "author": "Kinnuch",
+    "msg": "Update hittite.md"
+  },
+  {
+    "hash": "1bee3a11cbf27b9587714e61738a199816addefc",
+    "short": "1bee3a1",
+    "date": "2025-04-25T00:55:49+08:00",
+    "author": "Kinnuch",
+    "msg": "update My Hittite Name"
+  },
+  {
+    "hash": "5611576d10e96585c565c6b9d91e24319843b79c",
+    "short": "5611576",
+    "date": "2025-04-25T00:23:37+08:00",
+    "author": "Kinnuch",
+    "msg": "Update page.html"
+  },
+  {
+    "hash": "baeb068e86d6eb3fa0842a99f933be0cab736797",
+    "short": "baeb068",
+    "date": "2025-04-25T00:23:20+08:00",
+    "author": "Kinnuch",
+    "msg": "Use Reg expressions to fix the wrong format"
+  },
+  {
+    "hash": "d84dfc52cb0cd06e5daf25e74eb1772e73d2ddcb",
+    "short": "d84dfc5",
+    "date": "2025-04-24T23:56:11+08:00",
+    "author": "Kinnuch",
+    "msg": "Update page.html"
+  },
+  {
+    "hash": "373475c932b86bb60a7dfca27d510a6c664e3b2c",
+    "short": "373475c",
+    "date": "2025-04-24T23:49:08+08:00",
+    "author": "Kinnuch",
+    "msg": "Update page.html"
+  },
+  {
+    "hash": "21c6ef4c94a79e37ae1243d63637432deab4f3cf",
+    "short": "21c6ef4",
+    "date": "2025-04-24T23:41:33+08:00",
+    "author": "Kinnuch",
+    "msg": "Update page.html"
+  },
+  {
+    "hash": "4310abd7937672bdbfbb0c1720723de328f4e268",
+    "short": "4310abd",
+    "date": "2025-04-24T20:56:04+08:00",
+    "author": "Kinnuch",
+    "msg": "Update page.html"
+  },
+  {
+    "hash": "bcecc30e771029366789f22b8d086652594073ef",
+    "short": "bcecc30",
+    "date": "2025-04-24T20:52:21+08:00",
+    "author": "Kinnuch",
+    "msg": "Update page.html"
+  },
+  {
+    "hash": "603cd7448e0994f399cca49e84268d4898ad176c",
+    "short": "603cd74",
+    "date": "2025-04-24T20:41:35+08:00",
+    "author": "Kinnuch",
+    "msg": "Update page.html"
+  },
+  {
+    "hash": "d8656962e21200607b52b4fff25805d203fbbd73",
+    "short": "d865696",
+    "date": "2025-04-24T20:32:49+08:00",
+    "author": "Kinnuch",
+    "msg": "Update shikṛin.md"
+  },
+  {
+    "hash": "ec2970e7324b48946a43ecf395025c184acb7a94",
+    "short": "ec2970e",
+    "date": "2025-04-24T20:31:11+08:00",
+    "author": "Kinnuch",
+    "msg": "Update page.html"
+  },
+  {
+    "hash": "c3d49f377700a6431e283fae949eca8be770064e",
+    "short": "c3d49f3",
+    "date": "2025-04-24T20:21:35+08:00",
+    "author": "Kinnuch",
+    "msg": "Fix a bug where script is wrongly loaded before the content"
+  },
+  {
+    "hash": "9133c5c8940b838400ffbbc5adce436e586c6c34",
+    "short": "9133c5c",
+    "date": "2025-04-24T20:14:42+08:00",
+    "author": "Kinnuch",
+    "msg": "Update page.html"
+  },
+  {
+    "hash": "d6accf50812ecdf9bc1195f911ddcb7100a266da",
+    "short": "d6accf5",
+    "date": "2025-04-24T20:02:51+08:00",
+    "author": "Kinnuch",
+    "msg": "Fix a bug where ~~ & ^^ are not correctly rendered"
+  },
+  {
+    "hash": "6f2de0c8e60618bb3741486d53f0d70135c935b0",
+    "short": "6f2de0c",
+    "date": "2025-04-24T19:51:40+08:00",
+    "author": "Kinnuch",
+    "msg": "Update main.css"
+  },
+  {
+    "hash": "674dd92388971d2e24bf3ae7447125893a9042f8",
+    "short": "674dd92",
+    "date": "2025-04-24T19:41:31+08:00",
+    "author": "Kinnuch",
+    "msg": "Update main.css"
+  },
+  {
+    "hash": "7af59625ee8625a5e55d3ed38fae97481dc16090",
+    "short": "7af5962",
+    "date": "2025-04-24T19:28:10+08:00",
+    "author": "Kinnuch",
+    "msg": "Update author-bio.html"
+  },
+  {
+    "hash": "9b96c491dbdf0e770417fdc8ea2979e4419eb191",
+    "short": "9b96c49",
+    "date": "2025-04-24T19:01:42+08:00",
+    "author": "Kinnuch",
+    "msg": "Adjust the layout from embedded in Jekyll frame to a separate HTML"
+  },
+  {
+    "hash": "b4891d0282f0d9cc9cc6474db26f00a819bf123f",
+    "short": "b4891d0",
+    "date": "2025-04-24T16:27:07+08:00",
+    "author": "Kinnuch",
+    "msg": "Update hittite.md"
+  },
+  {
+    "hash": "40e28c8de4e24e554625182ce6d17d0174f9e831",
+    "short": "40e28c8",
+    "date": "2025-04-24T13:07:40+08:00",
+    "author": "Kinnuch",
+    "msg": "Fix a bug where Hittite Script could not be rendered correctly"
+  },
+  {
+    "hash": "7ef13ece4c845f70edfb848d57469a3fae5dfa59",
+    "short": "7ef13ec",
+    "date": "2025-04-24T13:01:55+08:00",
+    "author": "Kinnuch",
+    "msg": "Update hittite.md"
+  },
+  {
+    "hash": "dcab675d3923e47fb5da6a7eeb7d41187ac75663",
+    "short": "dcab675",
+    "date": "2025-04-24T12:35:35+08:00",
+    "author": "Kinnuch",
+    "msg": "Update hittite.md"
+  },
+  {
+    "hash": "d835d84b5d174fde16821d61dea94cd5c25545e3",
+    "short": "d835d84",
+    "date": "2025-04-24T12:31:44+08:00",
+    "author": "Kinnuch",
+    "msg": "Hittite Cuneiform Display Test"
+  },
+  {
+    "hash": "90a0a0870fd5e64202e76d65d1f2316d692cb82f",
+    "short": "90a0a08",
+    "date": "2025-04-24T00:19:12+08:00",
+    "author": "Kinnuch",
+    "msg": "Update page.html"
+  },
+  {
+    "hash": "adaa3af2ebc04a05cab2b61f9303379ad4ff2eac",
+    "short": "adaa3af",
+    "date": "2025-04-24T00:07:32+08:00",
+    "author": "Kinnuch",
+    "msg": "Update i Barphalt"
+  },
+  {
+    "hash": "5c86e3c30550dba805d8e74013e100a7da8a1be8",
+    "short": "5c86e3c",
+    "date": "2025-04-23T23:37:30+08:00",
+    "author": "Kinnuch",
+    "msg": "Update page.html"
+  },
+  {
+    "hash": "57ca6d4649113a5a78d6d47fde359c39a50f5235",
+    "short": "57ca6d4",
+    "date": "2025-04-23T23:32:31+08:00",
+    "author": "Kinnuch",
+    "msg": "Fixed a bug where .css is not rendered correctly"
+  },
+  {
+    "hash": "3526fda9fd15ae9f8b7fb7a1069e79247da8bf0a",
+    "short": "3526fda",
+    "date": "2025-04-23T23:18:53+08:00",
+    "author": "Kinnuch",
+    "msg": "Update page.html"
+  },
+  {
+    "hash": "17395e69346b95e9ea3002f9674ec54d2d767bae",
+    "short": "17395e6",
+    "date": "2025-04-23T23:07:56+08:00",
+    "author": "Kinnuch",
+    "msg": "Fix the error format in page, now using whitey style to render .md files"
+  },
+  {
+    "hash": "d50cd904bd1639d0eb3228222ceb12bbc323c9d5",
+    "short": "d50cd90",
+    "date": "2025-04-23T01:56:04+08:00",
+    "author": "Kinnuch",
+    "msg": "massive update about shikrin's syntax"
+  },
+  {
+    "hash": "011bb1d466ce19c804fbda0d96ec46e7c800708b",
+    "short": "011bb1d",
+    "date": "2025-04-22T20:58:46+08:00",
+    "author": "Kinnuch",
+    "msg": "Update Proto-Shikṛin.md"
+  },
+  {
+    "hash": "2d6261a72cf178e857b2ca7d42d51e0d0d6406f2",
+    "short": "2d6261a",
+    "date": "2025-04-22T01:10:44+08:00",
+    "author": "Kinnuch",
+    "msg": "Update Proto-Shikṛin.md"
+  },
+  {
+    "hash": "65fd2717a2ff52c021e5165ea2bf91b60b94dd33",
+    "short": "65fd271",
+    "date": "2025-04-20T23:38:04+08:00",
+    "author": "Kinnuch",
+    "msg": "Update Proto-Shikṛin.md"
+  },
+  {
+    "hash": "7d448d467a430bbef51a02c647579cb0908099ff",
+    "short": "7d448d4",
+    "date": "2025-04-20T15:48:53+08:00",
+    "author": "Kinnuch",
+    "msg": "Update Proto-Shikṛin.pdf"
+  },
+  {
+    "hash": "5f03cb42b3fedb009ab6f9574d14ebee8f19097f",
+    "short": "5f03cb4",
+    "date": "2025-04-20T15:46:54+08:00",
+    "author": "Kinnuch",
+    "msg": "Update Proto-Shikṛin.md"
+  },
+  {
+    "hash": "cffae1d92480ccec1c0a906d39fbc94e2057d0ee",
+    "short": "cffae1d",
+    "date": "2025-04-20T01:44:10+08:00",
+    "author": "Kinnuch",
+    "msg": "Update Proto-Shikṛin.md"
+  },
+  {
+    "hash": "0e92d9d1dbfd8b5b6abca167cc8c00414473891e",
+    "short": "0e92d9d",
+    "date": "2025-04-20T01:43:39+08:00",
+    "author": "Kinnuch",
+    "msg": "Update Proto-Shikṛin.md"
+  },
+  {
+    "hash": "581e68e1c9ad05d2e0bbb4c6c982468a32a87874",
+    "short": "581e68e",
+    "date": "2025-04-18T19:05:01+08:00",
+    "author": "Kinnuch",
+    "msg": "Update Proto-Shikṛin.md"
+  },
+  {
+    "hash": "795e0504a75c6d5255f90bde5735bb5a31f3760b",
+    "short": "795e050",
+    "date": "2025-04-18T01:17:40+08:00",
+    "author": "Kinnuch",
+    "msg": "Update Proto-Shikṛin.md"
+  },
+  {
+    "hash": "720b505be5098c2087c14d1cfbffe4fd0d760b35",
+    "short": "720b505",
+    "date": "2025-04-17T20:37:30+08:00",
+    "author": "Kinnuch",
+    "msg": "Update Proto-Shikṛin.md"
+  },
+  {
+    "hash": "2b15f5bfd045d60f360e0e06c142388ac965e9f1",
+    "short": "2b15f5b",
+    "date": "2025-04-17T01:21:37+08:00",
+    "author": "Kinnuch",
+    "msg": "Update Proto-Shikṛin.md"
+  },
+  {
+    "hash": "e2d2cded484c8d8e31e5b1f7829d14d6e2877640",
+    "short": "e2d2cde",
+    "date": "2025-04-16T20:57:42+08:00",
+    "author": "Kinnuch",
+    "msg": "Update Proto-Shikṛin.md"
+  },
+  {
+    "hash": "106b87d56c8eff02092236ce26b85a793e8400b9",
+    "short": "106b87d",
+    "date": "2025-04-16T00:31:40+08:00",
+    "author": "Kinnuch",
+    "msg": "Update Proto-Shikṛin.md"
+  },
+  {
+    "hash": "2aa74fadae4571dccf02e4aa26c8736c27a33038",
+    "short": "2aa74fa",
+    "date": "2025-04-15T23:27:06+08:00",
+    "author": "Kinnuch",
+    "msg": "Update Proto-Shikṛin.md"
+  },
+  {
+    "hash": "76fdfcdded6493b0512e79b7b218b7839d559dbf",
+    "short": "76fdfcd",
+    "date": "2025-04-15T20:53:35+08:00",
+    "author": "Kinnuch",
+    "msg": "Update Proto-Shikṛin.md"
+  },
+  {
+    "hash": "0cda1a63ce7f87b916de30871941b300ea21068a",
+    "short": "0cda1a6",
+    "date": "2025-04-15T01:00:21+08:00",
+    "author": "Kinnuch",
+    "msg": "Update Proto-Shikṛin.md"
+  },
+  {
+    "hash": "72a2d428a6a5c780ada8381905be082414e76bb0",
+    "short": "72a2d42",
+    "date": "2025-04-14T20:00:08+08:00",
+    "author": "Kinnuch",
+    "msg": "Update Proto-Shikṛin.md"
+  },
+  {
+    "hash": "4b3c18035993ffee1af289994ad41010fbbe62ec",
+    "short": "4b3c180",
+    "date": "2025-04-14T15:31:04+08:00",
+    "author": "Kinnuch",
+    "msg": "Update Proto-Shikṛin.md"
+  },
+  {
+    "hash": "e350fe69b9acde425baa6591772c6d8b79db8f21",
+    "short": "e350fe6",
+    "date": "2025-04-14T12:44:59+08:00",
+    "author": "Kinnuch",
+    "msg": "Update Proto-Shikṛin.md"
+  },
+  {
+    "hash": "557b92379f1d88775927acf931c8db8fde969862",
+    "short": "557b923",
+    "date": "2025-04-14T00:24:06+08:00",
+    "author": "Kinnuch",
+    "msg": "shikrin massive update"
+  },
+  {
+    "hash": "f609af0cfa787b327a32b19934f094e0698a5118",
+    "short": "f609af0",
+    "date": "2025-04-14T00:21:08+08:00",
+    "author": "Kinnuch",
+    "msg": "Update Proto-Shikṛin.md"
+  },
+  {
+    "hash": "a3b51809a261b3719d0c095a327210074ba8236a",
+    "short": "a3b5180",
+    "date": "2025-04-12T23:44:11+08:00",
+    "author": "Kinnuch",
+    "msg": "Update Proto-Shikṛin.md"
+  },
+  {
+    "hash": "ced1c985ca1505535f54d6fe10051ea4f2b680d6",
+    "short": "ced1c98",
+    "date": "2025-04-11T17:21:28+08:00",
+    "author": "Kinnuch",
+    "msg": "Update Proto-Shikṛin.md"
+  },
+  {
+    "hash": "c097617a902eba68df3777c6343873e9a5dc22ef",
+    "short": "c097617",
+    "date": "2025-04-10T20:13:27+08:00",
+    "author": "Kinnuch",
+    "msg": "Update Proto-Shikṛin.md"
+  },
+  {
+    "hash": "57eb51240ba28201358cd100ff4d2f962e514d2c",
+    "short": "57eb512",
+    "date": "2025-04-10T01:46:24+08:00",
+    "author": "Kinnuch",
+    "msg": "Update Proto-Shikṛin.md"
+  },
+  {
+    "hash": "299f5607ce32b18c28d59f2328ee7cff3fba2268",
+    "short": "299f560",
+    "date": "2025-04-09T01:46:58+08:00",
+    "author": "Kinnuch",
+    "msg": "Update Proto-Shikṛin.md"
+  },
+  {
+    "hash": "591bf9010b68b758436e68f2240de5907f1f8415",
+    "short": "591bf90",
+    "date": "2025-04-08T22:23:21+08:00",
+    "author": "Kinnuch",
+    "msg": "Update Proto-Shikṛin.md"
+  },
+  {
+    "hash": "442352b0e3c25117bfa7d2df83639755a0080e30",
+    "short": "442352b",
+    "date": "2025-04-02T01:02:42+08:00",
+    "author": "Kinnuch",
+    "msg": "Update 海蚀录·亚希林卷·相识.md"
+  },
+  {
+    "hash": "21d081e99ca9b1f708f5656474f20305651b4fb4",
+    "short": "21d081e",
+    "date": "2025-03-31T01:44:55+08:00",
+    "author": "Kinnuch",
+    "msg": "Update Proto-Shikṛin.md"
+  },
+  {
+    "hash": "06af1201b1ab19f8d4315693d7fc077d48d63f9a",
+    "short": "06af120",
+    "date": "2025-03-26T20:15:08+08:00",
+    "author": "Kinnuch",
+    "msg": "Update scottishgaelic.md"
+  },
+  {
+    "hash": "db0a0eb6e1d15a348f5f8ffbf80643c00907af7d",
+    "short": "db0a0eb",
+    "date": "2025-03-25T23:51:33+08:00",
+    "author": "Kinnuch",
+    "msg": "update Shikrin Essay"
+  },
+  {
+    "hash": "f3595bc38fecc6c2a8629601d69abd3a8c13ae76",
+    "short": "f3595bc",
+    "date": "2025-03-24T19:20:58+08:00",
+    "author": "Kinnuch",
+    "msg": "Update 海蚀录·亚希林卷.md"
+  },
+  {
+    "hash": "118dace96687c5cc7630f8d176a9f9e8dd291378",
+    "short": "118dace",
+    "date": "2025-03-24T18:40:59+08:00",
+    "author": "Kinnuch",
+    "msg": "Update dictionary.json"
+  },
+  {
+    "hash": "d3939e91fc12b545452c79045e3ef1a46d3f5d4b",
+    "short": "d3939e9",
+    "date": "2025-03-23T23:57:52+08:00",
+    "author": "Kinnuch",
+    "msg": "Update Proto-Shikṛin.md"
+  },
+  {
+    "hash": "95cf61d0582259a463b83d34d2bcc0ccb38ac77e",
+    "short": "95cf61d",
+    "date": "2025-03-22T02:43:55+08:00",
+    "author": "Kinnuch",
+    "msg": "Update 海蚀录·亚希林卷.md"
+  },
+  {
+    "hash": "2d5eb9908237241ba40adce32d76e98384950dc6",
+    "short": "2d5eb99",
+    "date": "2025-03-21T17:34:18+08:00",
+    "author": "Kinnuch",
+    "msg": "Update 海蚀录·亚希林卷.md"
+  },
+  {
+    "hash": "d9aeffc944c3ad3979c18a2e3deb9991fb73d2ed",
+    "short": "d9aeffc",
+    "date": "2025-03-20T20:36:53+08:00",
+    "author": "Kinnuch",
+    "msg": "Create 海蚀录·亚希林卷.md"
+  },
+  {
+    "hash": "788ed331b32efb2e78751da97a1a9c52823dccec",
+    "short": "788ed33",
+    "date": "2025-03-18T20:54:21+08:00",
+    "author": "Kinnuch",
+    "msg": "update a record file about Ae"
+  },
+  {
+    "hash": "948c272eedc279b510e1b218e3f5a724379bd37f",
+    "short": "948c272",
+    "date": "2025-03-18T00:47:27+08:00",
+    "author": "Kinnuch",
+    "msg": "Update Proto-Shikṛin.md"
+  },
+  {
+    "hash": "7a456d35056f1ae52d786a238da4e70559114ea9",
+    "short": "7a456d3",
+    "date": "2025-03-17T20:27:04+08:00",
+    "author": "Kinnuch",
+    "msg": "update shikrin"
+  },
+  {
+    "hash": "31f6147b399e3389463a0fc6f6c56e78622ab775",
+    "short": "31f6147",
+    "date": "2025-03-17T02:19:16+08:00",
+    "author": "Kinnuch",
+    "msg": "Update Proto-Shikṛin.md"
+  },
+  {
+    "hash": "01600f56a15c60b25302e2c50330192a805e7433",
+    "short": "01600f5",
+    "date": "2025-03-16T23:21:29+08:00",
+    "author": "Kinnuch",
+    "msg": "Fix a typo in the picture and text"
+  },
+  {
+    "hash": "825eca3963109042332bd824c37bfcc16f093c52",
+    "short": "825eca3",
+    "date": "2025-03-16T22:04:44+08:00",
+    "author": "Kinnuch",
+    "msg": "Update a story about the Shikṛin and their language evolution"
+  },
+  {
+    "hash": "bad8c88bbd1548c9132715ad20d51beaa200dd36",
+    "short": "bad8c88",
+    "date": "2025-03-16T19:42:24+08:00",
+    "author": "Kinnuch",
+    "msg": "update a map of ae dreamland"
+  },
+  {
+    "hash": "bce62f81427bf7a7ff2346dd4ba3e8b4693a55d7",
+    "short": "bce62f8",
+    "date": "2025-03-16T18:08:24+08:00",
+    "author": "Kinnuch",
+    "msg": "update a svg file about ae dreamland"
+  },
+  {
+    "hash": "1bf701ba08c66197cfdaaf2861ef3a1879541f65",
+    "short": "1bf701b",
+    "date": "2025-03-14T00:04:08+08:00",
+    "author": "Kinnuch",
+    "msg": "Update dictionary.json"
+  },
+  {
+    "hash": "fa613559e5649a151235aaf187dd171d2e807d72",
+    "short": "fa61355",
+    "date": "2025-03-13T20:59:16+08:00",
+    "author": "Kinnuch",
+    "msg": "Update Proto-Shikṛin.md"
+  },
+  {
+    "hash": "9f531485a69cdffdc6376fa1d362d9dca42502e8",
+    "short": "9f53148",
+    "date": "2025-03-12T20:58:09+08:00",
+    "author": "Kinnuch",
+    "msg": "branch the shikrin language with a backup"
+  },
+  {
+    "hash": "f4b315cae37e2f3666f5e2135a5df4069e765cc4",
+    "short": "f4b315c",
+    "date": "2025-03-12T17:15:25+08:00",
+    "author": "Kinnuch",
+    "msg": "Update dictionary.json"
+  },
+  {
+    "hash": "d384eb701a0f5f87aa849d483eb691537c6346b4",
+    "short": "d384eb7",
+    "date": "2025-03-11T20:56:20+08:00",
+    "author": "Kinnuch",
+    "msg": "update dictionary"
+  },
+  {
+    "hash": "2961feba2a2e3eeeeb3de1f6b6fe4591bb51777f",
+    "short": "2961feb",
+    "date": "2025-03-11T10:29:37+08:00",
+    "author": "Kinnuch",
+    "msg": "Tharbeth V1.1.1 closebeta"
+  },
+  {
+    "hash": "84d6d95f888810eef96484f64fca61efca36934f",
+    "short": "84d6d95",
+    "date": "2025-03-11T10:24:40+08:00",
+    "author": "Kinnuch",
+    "msg": "Tharbeth V1.1.0 closebeta"
+  },
+  {
+    "hash": "d753b6863952fb9d617da211f0ca439269c60a8a",
+    "short": "d753b68",
+    "date": "2025-03-11T01:33:20+08:00",
+    "author": "Kinnuch",
+    "msg": "TharBeth V1.0.0 closebeta"
+  },
+  {
+    "hash": "75af758dd747bd8933125166248aae8ae4352aef",
+    "short": "75af758",
+    "date": "2025-03-10T20:59:22+08:00",
+    "author": "Kinnuch",
+    "msg": "update Tharbeth"
+  },
+  {
+    "hash": "4b9ec8da6c99cb994ce78d6c6da5320676cd3cf6",
+    "short": "4b9ec8d",
+    "date": "2025-03-10T18:45:37+08:00",
+    "author": "Kinnuch",
+    "msg": "update CrossWord game in Sindarin"
+  },
+  {
+    "hash": "dfffb46e52c6930be66380455ea3fd75a6ded988",
+    "short": "dfffb46",
+    "date": "2025-03-08T15:14:44+08:00",
+    "author": "Kinnuch",
+    "msg": "Update dictionary.json"
+  },
+  {
+    "hash": "2317ef635703dc0fe9c22d47089ca0b2bb60562c",
+    "short": "2317ef6",
+    "date": "2025-03-07T21:28:41+08:00",
+    "author": "Kinnuch",
+    "msg": "Update dictionary.json"
+  },
+  {
+    "hash": "3bfd92b74cbbd067ea9d92b0f55ade0e90e6f1e4",
+    "short": "3bfd92b",
+    "date": "2025-03-07T01:22:17+08:00",
+    "author": "Kinnuch",
+    "msg": "Update dictionary.json"
+  },
+  {
+    "hash": "69abb330c4956ab8336e3d3e1b27d92dd4588b80",
+    "short": "69abb33",
+    "date": "2025-03-06T17:36:26+08:00",
+    "author": "Kinnuch",
+    "msg": "Update dictionary.json"
+  },
+  {
+    "hash": "abee46bb6facb5eb6dbcbae89f3b629e871f7ec7",
+    "short": "abee46b",
+    "date": "2025-03-05T01:01:24+08:00",
+    "author": "Kinnuch",
+    "msg": "update sindarin dictionary"
+  },
+  {
+    "hash": "02bbe6056bd95903aacfa34b4bdee033b0e3338e",
+    "short": "02bbe60",
+    "date": "2025-03-04T20:22:34+08:00",
+    "author": "Kinnuch",
+    "msg": "Update dictionary.json"
+  },
+  {
+    "hash": "8646c30e375593bd422be29330043af9b6693d47",
+    "short": "8646c30",
+    "date": "2025-03-04T12:53:05+08:00",
+    "author": "Kinnuch",
+    "msg": "Minor change to fit the donation picture into the HTML"
+  },
+  {
+    "hash": "f24024cc33154edaaa127f5a46812d16b782bd08",
+    "short": "f24024c",
+    "date": "2025-03-04T12:44:35+08:00",
+    "author": "Kinnuch",
+    "msg": "update a donation column"
+  },
+  {
+    "hash": "430325cb7b0d4e87f918f2742f0d2f5c6acf5507",
+    "short": "430325c",
+    "date": "2025-03-04T11:48:26+08:00",
+    "author": "Kinnuch",
+    "msg": "Update dictionary.json"
+  },
+  {
+    "hash": "da74a8b98b01295309131d9ce146f3129301682c",
+    "short": "da74a8b",
+    "date": "2025-02-28T17:31:46+08:00",
+    "author": "Kinnuch",
+    "msg": "Version 2.1.2"
+  },
+  {
+    "hash": "8ba8777e889a53ced0d46e615098ba1c988e262d",
+    "short": "8ba8777",
+    "date": "2025-02-28T17:28:05+08:00",
+    "author": "Kinnuch",
+    "msg": "Version2.1.1 update info of advance search mode"
+  },
+  {
+    "hash": "0ff25815a34418a1b86ca75b640eaaeb09988d2f",
+    "short": "0ff2581",
+    "date": "2025-02-28T17:15:08+08:00",
+    "author": "Kinnuch",
+    "msg": "Version2.1.0 update"
+  },
+  {
+    "hash": "6d35404188e8fb1aaf833bf6703e5e5c61a36d01",
+    "short": "6d35404",
+    "date": "2025-02-27T19:12:00+08:00",
+    "author": "Kinnuch",
+    "msg": "Update dictionary.json"
+  },
+  {
+    "hash": "5969c3b1a1eaca24676416fac31021638cbcefd6",
+    "short": "5969c3b",
+    "date": "2025-02-26T15:56:05+08:00",
+    "author": "Kinnuch",
+    "msg": "Update dictionary.json"
+  },
+  {
+    "hash": "bf39077c219001133b73f87a36b6f3c47e1d937f",
+    "short": "bf39077",
+    "date": "2025-02-25T16:41:27+08:00",
+    "author": "Kinnuch",
+    "msg": "Update dictionary.json"
+  },
+  {
+    "hash": "f093feca92babde2794ee1aa7c92869f8eb5654c",
+    "short": "f093fec",
+    "date": "2025-02-24T20:58:34+08:00",
+    "author": "Kinnuch",
+    "msg": "Minor update about a log of total words"
+  },
+  {
+    "hash": "df1cbd274bd87b741d63ebc793dd185da626bafe",
+    "short": "df1cbd2",
+    "date": "2025-02-24T20:55:32+08:00",
+    "author": "Kinnuch",
+    "msg": "Update dictionary.json"
+  },
+  {
+    "hash": "73e64eb9bb2bd08b2bcf36c6e24987332fffa5e6",
+    "short": "73e64eb",
+    "date": "2025-02-24T02:01:23+08:00",
+    "author": "Kinnuch",
+    "msg": "update Dictionary"
+  },
+  {
+    "hash": "b66769170caa6c659d35b5fe7086370b36faf810",
+    "short": "b667691",
+    "date": "2025-02-23T20:00:31+08:00",
+    "author": "Kinnuch",
+    "msg": "Ver2.0.0 accomplished"
+  },
+  {
+    "hash": "1fc36fda30f4550b6174e5d4cfe5f3e072a0eef8",
+    "short": "1fc36fd",
+    "date": "2025-02-22T16:43:18+08:00",
+    "author": "Kinnuch",
+    "msg": "Fix a bug where morphology cannot be added"
+  },
+  {
+    "hash": "15ab05d7cdbe89a04ade15b3fbda2d7a41e8a8b0",
+    "short": "15ab05d",
+    "date": "2025-02-22T16:35:21+08:00",
+    "author": "Kinnuch",
+    "msg": "update mixed pattern of dictionary"
+  },
+  {
+    "hash": "fd5657611c634d291faea656f3655000d555dbd9",
+    "short": "fd56576",
+    "date": "2025-02-21T19:04:20+08:00",
+    "author": "Kinnuch",
+    "msg": "update css style"
+  },
+  {
+    "hash": "71f9ce550ca6f55cd2e8ac882ebda78a1a57ad71",
+    "short": "71f9ce5",
+    "date": "2025-02-21T17:32:24+08:00",
+    "author": "Kinnuch",
+    "msg": "Massive update about the dictionary HTML with adjustment of the morphology part"
+  },
+  {
+    "hash": "316331b2ffe470829a5593c024865f9c7e038cf0",
+    "short": "316331b",
+    "date": "2025-02-21T01:37:00+08:00",
+    "author": "Kinnuch",
+    "msg": "Update dictionary.json"
+  },
+  {
+    "hash": "997b1658609e186a8453abdcf07810ce7ec711d1",
+    "short": "997b165",
+    "date": "2025-02-20T20:56:47+08:00",
+    "author": "Kinnuch",
+    "msg": "Fix a situation where new toggle window is not bind to original window"
+  },
+  {
+    "hash": "f4c2ed42687922bfe2f9819a3f2b3d8d80553ba4",
+    "short": "f4c2ed4",
+    "date": "2025-02-20T17:48:44+08:00",
+    "author": "Kinnuch",
+    "msg": "Fix a bug where selected item after searching is actually the item with the original index"
+  },
+  {
+    "hash": "fc1ff641cc06fdbfe2951334f30e8d961171755f",
+    "short": "fc1ff64",
+    "date": "2025-02-20T15:36:26+08:00",
+    "author": "Kinnuch",
+    "msg": "update sindarin dictionary"
+  },
+  {
+    "hash": "814958d282c0b0dfc03b4571369d6f23079328d2",
+    "short": "814958d",
+    "date": "2025-02-20T14:57:53+08:00",
+    "author": "Kinnuch",
+    "msg": "update return function and info function"
+  },
+  {
+    "hash": "27bed5a9c04d1d0b3c02be2aa2300b28467b5b8d",
+    "short": "27bed5a",
+    "date": "2025-02-20T14:20:42+08:00",
+    "author": "Kinnuch",
+    "msg": "update a method to display sentence & fix a bug where non-n./adj/v words display wrongly"
+  },
+  {
+    "hash": "e8518c580eddc6cf12995075f29a0aa372899772",
+    "short": "e8518c5",
+    "date": "2025-02-20T14:14:29+08:00",
+    "author": "Kinnuch",
+    "msg": "fix a bug in morphology display while overflowing"
+  },
+  {
+    "hash": "f8ffff12659d3fa9c975b3215a8303d9b63a53ea",
+    "short": "f8ffff1",
+    "date": "2025-02-20T13:43:22+08:00",
+    "author": "Kinnuch",
+    "msg": "update sindarin dictionary"
+  },
+  {
+    "hash": "82155bd0f2c26b00c44e830b0dd4ed0e8d9900e3",
+    "short": "82155bd",
+    "date": "2025-02-20T13:11:17+08:00",
+    "author": "Kinnuch",
+    "msg": "update an entry for dictionary and fix some bug in dict app"
+  },
+  {
+    "hash": "60f4537275847a9c3b345da5d2086bfef2021d30",
+    "short": "60f4537",
+    "date": "2025-02-20T10:39:15+08:00",
+    "author": "Kinnuch",
+    "msg": "Fix an error where python cannot find the working path"
+  },
+  {
+    "hash": "1137824f978663324aabd5913802909879543ff8",
+    "short": "1137824",
+    "date": "2025-02-20T10:31:33+08:00",
+    "author": "Kinnuch",
+    "msg": "Fix a path name error"
+  },
+  {
+    "hash": "461063dd291bade2ce03834d54dbd77b15d774ee",
+    "short": "461063d",
+    "date": "2025-02-19T18:00:52+08:00",
+    "author": "Kinnuch",
+    "msg": "update Sindarin and Shikrin Dictionary System"
+  },
+  {
+    "hash": "763644b10a6f22fbed55d0642749ef0224ed37e9",
+    "short": "763644b",
+    "date": "2025-02-19T17:52:44+08:00",
+    "author": "Kinnuch",
+    "msg": "Create icon of SindarinDictionary"
+  },
+  {
+    "hash": "735583487ea551f14c5911b14744b36ed8e4cec4",
+    "short": "7355834",
+    "date": "2025-02-19T16:09:56+08:00",
+    "author": "Kinnuch",
+    "msg": "update an entry to dictionary of Shikrin"
+  },
+  {
+    "hash": "b8517d6c14bcba878fb20bafd82a880fbdf008cb",
+    "short": "b8517d6",
+    "date": "2025-02-19T15:58:45+08:00",
+    "author": "Kinnuch",
+    "msg": "Update index.md"
+  },
+  {
+    "hash": "6269921c1ff0c651dcbcef3bce44a7916fc824c3",
+    "short": "6269921",
+    "date": "2025-02-19T15:53:50+08:00",
+    "author": "Kinnuch",
+    "msg": "update shikrin and shikrin dictionary"
+  },
+  {
+    "hash": "f6b934d31cf91c7fe7e2eaabb5b0a91de20727a4",
+    "short": "f6b934d",
+    "date": "2025-02-19T00:49:19+08:00",
+    "author": "Kinnuch",
+    "msg": "update shikrin dictionary"
+  },
+  {
+    "hash": "df09f4333b92b15157997f81b47271b663bdbc3a",
+    "short": "df09f43",
+    "date": "2025-02-18T20:49:23+08:00",
+    "author": "Kinnuch",
+    "msg": "update shikrin grammarbook"
+  },
+  {
+    "hash": "5a69bd5c550ba4f680d7ecd26f53ce0b07e5849a",
+    "short": "5a69bd5",
+    "date": "2025-02-18T19:42:01+08:00",
+    "author": "Kinnuch",
+    "msg": "update shikrin dictionary"
+  },
+  {
+    "hash": "78831aeee0c762d4114fb28187d414a1b4283d16",
+    "short": "78831ae",
+    "date": "2025-02-17T13:01:17+08:00",
+    "author": "Kinnuch",
+    "msg": "Update Shikrin Dictionary"
+  },
+  {
+    "hash": "e350bd163252a96c5bdacdae42e3183a94527e4c",
+    "short": "e350bd1",
+    "date": "2025-02-15T22:18:24+08:00",
+    "author": "Kinnuch",
+    "msg": "Index modification"
+  },
+  {
+    "hash": "99b9c2fa8d76ed45c3bc42faaf7b186a18104666",
+    "short": "99b9c2f",
+    "date": "2025-02-14T13:23:35+08:00",
+    "author": "Kinnuch",
+    "msg": "Create ServerBroadcast.txt"
+  },
+  {
+    "hash": "ddd5dd582582994a319ee9e421be89ea2eb71c12",
+    "short": "ddd5dd5",
+    "date": "2024-12-25T23:41:05+08:00",
+    "author": "Kinnuch",
+    "msg": "Update korean.md"
+  },
+  {
+    "hash": "f167036561a43d566a22ba61859c409b1f6da436",
+    "short": "f167036",
+    "date": "2024-12-23T00:04:44+08:00",
+    "author": "Kinnuch",
+    "msg": "Update korean.md"
+  },
+  {
+    "hash": "901ed788035b74d358e2e8eed283224c1ed9a4fd",
+    "short": "901ed78",
+    "date": "2024-12-18T22:01:33+08:00",
+    "author": "Kinnuch",
+    "msg": "Update korean.md"
+  },
+  {
+    "hash": "44dbfd38a257ee9623d268fce6e31f49afd2fa69",
+    "short": "44dbfd3",
+    "date": "2024-12-18T17:42:59+08:00",
+    "author": "Kinnuch",
+    "msg": "Update korean.md"
+  },
+  {
+    "hash": "ca17c0ad0717a3f37d134d6beb08bb61d6e53551",
+    "short": "ca17c0a",
+    "date": "2024-12-17T11:16:30+08:00",
+    "author": "Kinnuch",
+    "msg": "recent update"
+  },
+  {
+    "hash": "d136e4a9787e994054854c8ffbd6dc53fa628bf9",
+    "short": "d136e4a",
+    "date": "2024-11-18T16:42:55+08:00",
+    "author": "Kinnuch",
+    "msg": "Update 第二章.md"
+  },
+  {
+    "hash": "32ff5658aa06b4721c31589d714f156817e07775",
+    "short": "32ff565",
+    "date": "2024-11-16T19:54:35+08:00",
+    "author": "Kinnuch",
+    "msg": "Update 第二章.md"
+  },
+  {
+    "hash": "60353a964f8b04592e263485e7e58a64ecf64951",
+    "short": "60353a9",
+    "date": "2024-11-15T18:00:05+08:00",
+    "author": "Kinnuch",
+    "msg": "Update 第二章.md"
+  },
+  {
+    "hash": "ad1ac9111a5ca343569270c59c89d27c6046f276",
+    "short": "ad1ac91",
+    "date": "2024-11-09T17:57:08+08:00",
+    "author": "Kinnuch",
+    "msg": "update novel"
+  },
+  {
+    "hash": "0782d6d962b717da372035b431febc0dec659419",
+    "short": "0782d6d",
+    "date": "2024-11-07T20:49:25+08:00",
+    "author": "Kinnuch",
+    "msg": "novel update"
+  },
+  {
+    "hash": "86cfba2a9ec4921e60f936cd07a0326ad1ed86ec",
+    "short": "86cfba2",
+    "date": "2024-10-26T17:39:37+08:00",
+    "author": "Kinnuch",
+    "msg": "Update 引子.md"
+  },
+  {
+    "hash": "d670a68265c2141c96f15d16a72ea1747264c0ab",
+    "short": "d670a68",
+    "date": "2024-10-26T09:06:55+08:00",
+    "author": "Kinnuch",
+    "msg": "Create 引子.md"
+  },
+  {
+    "hash": "43bfe18305e23824ca5d9e79e8e5f2fe3feb503c",
+    "short": "43bfe18",
+    "date": "2024-09-04T20:26:44+08:00",
+    "author": "Kinnuch",
+    "msg": "Update Proto-Shikṛin.md"
+  },
+  {
+    "hash": "3ed2357632f46aad17aed75a8db7d694124e0fce",
+    "short": "3ed2357",
+    "date": "2024-09-03T13:20:29+08:00",
+    "author": "Kinnuch",
+    "msg": "update shikṛin family branch"
+  },
+  {
+    "hash": "4b0096631d67d66bcf521c603f6cb922656d18cd",
+    "short": "4b00966",
+    "date": "2024-09-03T13:12:38+08:00",
+    "author": "Kinnuch",
+    "msg": "update shikrin structure"
+  },
+  {
+    "hash": "1d77701444f278fa0cc848ec9c13ae9c210dbb85",
+    "short": "1d77701",
+    "date": "2024-08-30T21:44:29+08:00",
+    "author": "Kinnuch",
+    "msg": "Update 《魔戒》电影中的精灵语拾遗与迷思.md"
+  },
+  {
+    "hash": "f04e19b12137335213d99fb4722315c189eb5c5b",
+    "short": "f04e19b",
+    "date": "2024-08-30T21:16:25+08:00",
+    "author": "Kinnuch",
+    "msg": "Update WorldSetting.xlsx"
+  },
+  {
+    "hash": "bb52f9bce780dead9005d496366546c06d4723af",
+    "short": "bb52f9b",
+    "date": "2024-08-30T02:55:26+08:00",
+    "author": "Kinnuch",
+    "msg": "update shikrin"
+  },
+  {
+    "hash": "87215f39db7d4ec0aa88b01db525b7a62dd62a77",
+    "short": "87215f3",
+    "date": "2024-08-29T19:01:13+08:00",
+    "author": "Kinnuch",
+    "msg": "Update Proto-Shikṛin.md"
+  },
+  {
+    "hash": "380f45b7291878d88edb33fb21a4076c96e099b7",
+    "short": "380f45b",
+    "date": "2024-08-29T14:40:41+08:00",
+    "author": "Kinnuch",
+    "msg": "update shikrin dictionary"
+  },
+  {
+    "hash": "2849b1d4ebf81346ac94f37b9df97bbb23cd234a",
+    "short": "2849b1d",
+    "date": "2024-08-29T01:49:15+08:00",
+    "author": "Kinnuch",
+    "msg": "update shikrin language"
+  },
+  {
+    "hash": "b28ba0f749c0dcd3ef865da6168c0c83ca27c9b6",
+    "short": "b28ba0f",
+    "date": "2024-08-28T20:48:33+08:00",
+    "author": "Kinnuch",
+    "msg": "Update Proto-Shikṛin.pdf"
+  },
+  {
+    "hash": "9c676f72e33aa55f219c69db40d03e9cb7451a2f",
+    "short": "9c676f7",
+    "date": "2024-08-28T20:48:17+08:00",
+    "author": "Kinnuch",
+    "msg": "Update Proto-Shikṛin.md"
+  },
+  {
+    "hash": "03d7fc84260a2729ceb727ad229a978a9d429d78",
+    "short": "03d7fc8",
+    "date": "2024-08-26T00:17:48+08:00",
+    "author": "Kinnuch",
+    "msg": "update proto-shikrin"
+  },
+  {
+    "hash": "b1959d4daf88a2c3ce46a80089219e71376669dd",
+    "short": "b1959d4",
+    "date": "2024-08-24T18:01:19+08:00",
+    "author": "Kinnuch",
+    "msg": "Update Proto-Shikṛin.md"
+  },
+  {
+    "hash": "5bed13bd33f616d07c854717ea08032645ebd2a8",
+    "short": "5bed13b",
+    "date": "2024-08-24T17:57:48+08:00",
+    "author": "Kinnuch",
+    "msg": "Update Proto-Shikṛin.md"
+  },
+  {
+    "hash": "b6ffce1149fb2f8b172526a1f23477dc2b3b4ce1",
+    "short": "b6ffce1",
+    "date": "2024-08-24T01:51:49+08:00",
+    "author": "Kinnuch",
+    "msg": "Update Proto-Shikṛin.md"
+  },
+  {
+    "hash": "92e79a6e6485b178acd1ee53862fd77e2cedd9d0",
+    "short": "92e79a6",
+    "date": "2024-08-23T21:18:23+08:00",
+    "author": "Kinnuch",
+    "msg": "update language Shikṛin"
+  },
+  {
+    "hash": "646110770a8400fb67da1874f2742fd891935d41",
+    "short": "6461107",
+    "date": "2024-08-23T01:44:59+08:00",
+    "author": "Kinnuch",
+    "msg": "Create Proto-Shikṛin.md"
+  },
+  {
+    "hash": "5975e99ec097503e757d7e9929003e3af7e3349d",
+    "short": "5975e99",
+    "date": "2024-08-22T00:13:00+08:00",
+    "author": "Kinnuch",
+    "msg": "Update 《魔戒》电影中的精灵语拾遗与迷思.md"
+  },
+  {
+    "hash": "13a32eab593ee964ced3b343c9060585aae42777",
+    "short": "13a32ea",
+    "date": "2024-08-20T20:51:13+08:00",
+    "author": "Kinnuch",
+    "msg": "Create ConlangNote.md"
+  },
+  {
+    "hash": "e4c681c5099ce41bead953d56dae850c8bfd0d33",
+    "short": "e4c681c",
+    "date": "2024-08-19T19:48:09+08:00",
+    "author": "Kinnuch",
+    "msg": "Update 《魔戒》电影中的精灵语拾遗与迷思.md"
+  },
+  {
+    "hash": "0ad00306db6188f2e710fee5f7b10d886f272690",
+    "short": "0ad0030",
+    "date": "2024-08-17T17:55:37+08:00",
+    "author": "Kinnuch",
+    "msg": "Update 《魔戒》电影中的精灵语拾遗与迷思.md"
+  },
+  {
+    "hash": "4cc9058e44121bdc677680da90ace2cb893e54dc",
+    "short": "4cc9058",
+    "date": "2024-08-17T00:47:33+08:00",
+    "author": "Kinnuch",
+    "msg": "Update 《魔戒》电影中的精灵语拾遗与迷思.md"
+  },
+  {
+    "hash": "6e0df9c9c66a25b558151ee90143d47eb72f8f24",
+    "short": "6e0df9c",
+    "date": "2024-08-16T17:54:40+08:00",
+    "author": "Kinnuch",
+    "msg": "Update 《魔戒》电影中的精灵语拾遗与迷思.md"
+  },
+  {
+    "hash": "c4e674d9583e28e514bf88566105da1d4b8f9e72",
+    "short": "c4e674d",
+    "date": "2024-08-16T01:19:23+08:00",
+    "author": "Kinnuch",
+    "msg": "Update 《魔戒》电影中的精灵语拾遗与迷思.md"
+  },
+  {
+    "hash": "1b06923193f84cd4290864b32b211c0f7629c236",
+    "short": "1b06923",
+    "date": "2024-08-15T20:51:11+08:00",
+    "author": "Kinnuch",
+    "msg": "Update 《魔戒》电影中的精灵语拾遗与迷思.md"
+  },
+  {
+    "hash": "0d9932699d517d1af368d1487b39475affe2d2f3",
+    "short": "0d99326",
+    "date": "2024-08-15T19:27:54+08:00",
+    "author": "Kinnuch",
+    "msg": "update"
+  },
+  {
+    "hash": "93742c9da9666097579dc00e0cd7560c0f7741f4",
+    "short": "93742c9",
+    "date": "2024-08-15T19:10:02+08:00",
+    "author": "Kinnuch",
+    "msg": "Create WholePoem.png"
+  },
+  {
+    "hash": "8c5b8336934c5475b68b11e6c2a67c939132d498",
+    "short": "8c5b833",
+    "date": "2024-08-15T01:21:03+08:00",
+    "author": "Kinnuch",
+    "msg": "update elandis"
+  },
+  {
+    "hash": "68820059ad7fecc47203a594feb93957e3ae2fba",
+    "short": "6882005",
+    "date": "2024-08-14T20:52:40+08:00",
+    "author": "Kinnuch",
+    "msg": "Create 《魔戒》电影中的精灵语拾遗与迷思.md"
+  },
+  {
+    "hash": "86e17ea43db1560b819c3f048764ccf1d69e229e",
+    "short": "86e17ea",
+    "date": "2024-08-03T21:23:22+08:00",
+    "author": "Kinnuch",
+    "msg": "update Sindarin Course"
+  },
+  {
+    "hash": "4b9221119808b8b3a862c6b5e85003c8122df3b2",
+    "short": "4b92211",
+    "date": "2024-07-19T16:26:24+08:00",
+    "author": "Kinnuch",
+    "msg": "Update pethas.csv"
+  },
+  {
+    "hash": "4f52f09ee22fb0554f0c7cd84c09bb685dd16c85",
+    "short": "4f52f09",
+    "date": "2024-07-19T15:58:46+08:00",
+    "author": "Kinnuch",
+    "msg": "update sentence test parser"
+  },
+  {
+    "hash": "57b9a181db34e71e0d0a02a966878acf41859f26",
+    "short": "57b9a18",
+    "date": "2024-07-16T20:37:17+08:00",
+    "author": "Kinnuch",
+    "msg": "Update elandis.md"
+  },
+  {
+    "hash": "ab475b9a655cd53fde3c1abaeb2cf2984fb80d1b",
+    "short": "ab475b9",
+    "date": "2024-07-16T17:01:04+08:00",
+    "author": "Kinnuch",
+    "msg": "update past tense parser"
+  },
+  {
+    "hash": "2d261a8f4212a0899a68e4bb26d23f1e7dbc529b",
+    "short": "2d261a8",
+    "date": "2024-07-16T16:52:37+08:00",
+    "author": "Kinnuch",
+    "msg": "update past tense parser"
+  },
+  {
+    "hash": "6cdbaa70cb416915dd170a328480af54edc740f9",
+    "short": "6cdbaa7",
+    "date": "2024-07-16T16:22:09+08:00",
+    "author": "Kinnuch",
+    "msg": "update past tense parser"
+  },
+  {
+    "hash": "174b5dd1eb671f8ee9f117166841e41baa740ffb",
+    "short": "174b5dd",
+    "date": "2024-07-16T16:00:33+08:00",
+    "author": "Kinnuch",
+    "msg": "update past tense parser"
+  },
+  {
+    "hash": "d31b86fbb1b812e8a747955b34fc657046d482d3",
+    "short": "d31b86f",
+    "date": "2024-07-16T01:48:14+08:00",
+    "author": "Kinnuch",
+    "msg": "Update prestanneth.csv"
+  },
+  {
+    "hash": "7d1978ceb533a2286f1788505f74055cd55f37ca",
+    "short": "7d1978c",
+    "date": "2024-07-15T20:34:00+08:00",
+    "author": "Kinnuch",
+    "msg": "update past tense parser"
+  },
+  {
+    "hash": "660706598bc097450d0059533fe664ce06536df4",
+    "short": "6607065",
+    "date": "2024-07-15T20:29:11+08:00",
+    "author": "Kinnuch",
+    "msg": "update past tense parser"
+  },
+  {
+    "hash": "a09b27f3bf784f93079c90d6928a449ea6b8ad36",
+    "short": "a09b27f",
+    "date": "2024-07-15T20:13:16+08:00",
+    "author": "Kinnuch",
+    "msg": "update past tense parser"
+  },
+  {
+    "hash": "93aafa2207e84c13ed63a27330ba003d3203931e",
+    "short": "93aafa2",
+    "date": "2024-07-15T19:58:20+08:00",
+    "author": "Kinnuch",
+    "msg": "update past tense parser"
+  },
+  {
+    "hash": "431fa931fc10647001ae8ac34f9968d9915ea15b",
+    "short": "431fa93",
+    "date": "2024-07-15T19:52:57+08:00",
+    "author": "Kinnuch",
+    "msg": "update past tense parser"
+  },
+  {
+    "hash": "0ac10a867452f30e3d251576720219dcea5950cd",
+    "short": "0ac10a8",
+    "date": "2024-07-15T12:39:29+08:00",
+    "author": "Kinnuch",
+    "msg": "update past tense parser"
+  },
+  {
+    "hash": "76001487c8098a4fd75aff494eed0066033a8ab3",
+    "short": "7600148",
+    "date": "2024-07-15T12:34:26+08:00",
+    "author": "Kinnuch",
+    "msg": "update past tense parser"
+  },
+  {
+    "hash": "a75c45ad2f6bcba58c652bb857b293e85a6d042f",
+    "short": "a75c45a",
+    "date": "2024-07-15T12:29:03+08:00",
+    "author": "Kinnuch",
+    "msg": "update past tense parser"
+  },
+  {
+    "hash": "e05d2e6109beb7c53dcf4d9018d3fe4563d25260",
+    "short": "e05d2e6",
+    "date": "2024-07-15T12:20:05+08:00",
+    "author": "Kinnuch",
+    "msg": "update past tense parser"
+  },
+  {
+    "hash": "8e9d06df90bc7159734efcea846b1143a68148b1",
+    "short": "8e9d06d",
+    "date": "2024-07-15T12:05:27+08:00",
+    "author": "Kinnuch",
+    "msg": "update past tense parser"
+  },
+  {
+    "hash": "6ed53751045c9302146f0f1fa5edc2f060f953f1",
+    "short": "6ed5375",
+    "date": "2024-07-15T11:57:22+08:00",
+    "author": "Kinnuch",
+    "msg": "update past tense parser"
+  },
+  {
+    "hash": "137e5089d4ee8714f1183da9b3f25e901dd4e42e",
+    "short": "137e508",
+    "date": "2024-07-15T11:47:32+08:00",
+    "author": "Kinnuch",
+    "msg": "update past tense parser"
+  },
+  {
+    "hash": "b9589514264e511ec2f5f67ec0e0eb8ac2e5c92d",
+    "short": "b958951",
+    "date": "2024-07-15T02:56:30+08:00",
+    "author": "Kinnuch",
+    "msg": "update past tense parser"
+  },
+  {
+    "hash": "d7e1b8816896964be885647c3ae8ba3efc032c61",
+    "short": "d7e1b88",
+    "date": "2024-07-15T02:51:59+08:00",
+    "author": "Kinnuch",
+    "msg": "update past tense parser"
+  },
+  {
+    "hash": "85fa843cf08554a26e2748481b610c4a52727513",
+    "short": "85fa843",
+    "date": "2024-07-14T21:27:10+08:00",
+    "author": "Kinnuch",
+    "msg": "Update prestanneth.js"
+  },
+  {
+    "hash": "069471ffe929295626250f6045e6ed6153a60b75",
+    "short": "069471f",
+    "date": "2024-07-14T21:24:31+08:00",
+    "author": "Kinnuch",
+    "msg": "Update prestanneth.js"
+  },
+  {
+    "hash": "720df6c4c9d158dd578c12e324d5facc718b32c5",
+    "short": "720df6c",
+    "date": "2024-07-14T20:08:16+08:00",
+    "author": "Kinnuch",
+    "msg": "Update prestanneth.js"
+  },
+  {
+    "hash": "881e819144aea72c27066fc704f32944d69f6220",
+    "short": "881e819",
+    "date": "2024-07-14T18:04:07+08:00",
+    "author": "Kinnuch",
+    "msg": "Update prestanneth.js"
+  },
+  {
+    "hash": "2da78b3b74a91ca23e69d5469c4c4687c9d240d5",
+    "short": "2da78b3",
+    "date": "2024-07-14T16:46:05+08:00",
+    "author": "Kinnuch",
+    "msg": "Update prestanneth.js"
+  },
+  {
+    "hash": "9d405a679d0e1218420f8c30dc271456ca155cf1",
+    "short": "9d405a6",
+    "date": "2024-07-14T14:48:28+08:00",
+    "author": "Kinnuch",
+    "msg": "upload parsing method"
+  },
+  {
+    "hash": "10f058e4f60f66502900ace106560999a786142d",
+    "short": "10f058e",
+    "date": "2024-07-14T00:34:56+08:00",
+    "author": "Kinnuch",
+    "msg": "Update prestanneth.js"
+  },
+  {
+    "hash": "be1992f61e94b9933c7a55b6c26f8bcec5df7127",
+    "short": "be1992f",
+    "date": "2024-07-14T00:05:57+08:00",
+    "author": "Kinnuch",
+    "msg": "Update prestanneth.js"
+  },
+  {
+    "hash": "c0eb050edeaa8f14ed7d0e6fa845972e6bdd624e",
+    "short": "c0eb050",
+    "date": "2024-07-13T21:07:45+08:00",
+    "author": "Kinnuch",
+    "msg": "Update prestanneth.js"
+  },
+  {
+    "hash": "5d60cefb1b4eeca3aa6d85f7107a56ae47cfd905",
+    "short": "5d60cef",
+    "date": "2024-07-13T21:01:19+08:00",
+    "author": "Kinnuch",
+    "msg": "Update prestanneth.js"
+  },
+  {
+    "hash": "4a3041ad21f762f092bc58157fab32f1ad1eaa11",
+    "short": "4a3041a",
+    "date": "2024-07-13T20:45:31+08:00",
+    "author": "Kinnuch",
+    "msg": "Update prestanneth.js"
+  },
+  {
+    "hash": "8005001d225c532799ceec3dd3ac95284b8846c8",
+    "short": "8005001",
+    "date": "2024-07-13T17:35:46+08:00",
+    "author": "Kinnuch",
+    "msg": "Update prestanneth.js"
+  },
+  {
+    "hash": "20a64174fa3266a33afb882545a0f507a13f5f39",
+    "short": "20a6417",
+    "date": "2024-07-13T17:27:39+08:00",
+    "author": "Kinnuch",
+    "msg": "Update prestanneth.js"
+  },
+  {
+    "hash": "45b678befb99fdfcb32f5d0dd37ea24c3854ae98",
+    "short": "45b678b",
+    "date": "2024-07-13T17:25:38+08:00",
+    "author": "Kinnuch",
+    "msg": "Update prestanneth.js"
+  },
+  {
+    "hash": "c1d8086b94195683649d43638756ee273c348c8b",
+    "short": "c1d8086",
+    "date": "2024-07-13T17:22:17+08:00",
+    "author": "Kinnuch",
+    "msg": "Update prestanneth.js"
+  },
+  {
+    "hash": "459452d1bf22edd0c37d357af28e3e2fa9164eec",
+    "short": "459452d",
+    "date": "2024-07-13T17:14:49+08:00",
+    "author": "Kinnuch",
+    "msg": "Update prestanneth.js"
+  },
+  {
+    "hash": "9a8582e0f0ea92f25c3a24bfcd1dae1c272b791b",
+    "short": "9a8582e",
+    "date": "2024-07-13T17:09:04+08:00",
+    "author": "Kinnuch",
+    "msg": "fix compare error"
+  },
+  {
+    "hash": "42799856dfaee2491bf882b3d582f29acc27e21c",
+    "short": "4279985",
+    "date": "2024-07-13T17:04:25+08:00",
+    "author": "Kinnuch",
+    "msg": "Update prestanneth.js"
+  },
+  {
+    "hash": "8cc91198ded63ccf3ba4e575bd8e5f111e14d606",
+    "short": "8cc9119",
+    "date": "2024-07-13T16:59:31+08:00",
+    "author": "Kinnuch",
+    "msg": "Update prestanneth.js"
+  },
+  {
+    "hash": "ebfc72feaf9456caf3d2eebf365ce5f13e6fb6df",
+    "short": "ebfc72f",
+    "date": "2024-07-13T16:50:25+08:00",
+    "author": "Kinnuch",
+    "msg": "Update prestanneth.js"
+  },
+  {
+    "hash": "fb87451b231f48755bc01e210df400911be59d30",
+    "short": "fb87451",
+    "date": "2024-07-13T16:41:12+08:00",
+    "author": "Kinnuch",
+    "msg": "update prestanneth detecting method"
+  },
+  {
+    "hash": "e74cbfbbe28990024632bb2bddfdc157b854d73f",
+    "short": "e74cbfb",
+    "date": "2024-07-12T17:09:53+08:00",
+    "author": "Kinnuch",
+    "msg": "Update teae.md"
+  },
+  {
+    "hash": "7a996c22bfabb95e1fbd421a403b1e0c9acd1df5",
+    "short": "7a996c2",
+    "date": "2024-07-12T14:28:29+08:00",
+    "author": "Kinnuch",
+    "msg": "Update prestanneth.csv"
+  },
+  {
+    "hash": "ff15e6d3c0af1dd897d4ec82ca29091102b92a72",
+    "short": "ff15e6d",
+    "date": "2024-07-11T23:31:24+08:00",
+    "author": "Kinnuch",
+    "msg": "Update elandis.md"
+  },
+  {
+    "hash": "27f078792b79a7750cc58dcaaf1558347bf3b72f",
+    "short": "27f0787",
+    "date": "2024-07-11T23:13:24+08:00",
+    "author": "Kinnuch",
+    "msg": "Update elandis.md"
+  },
+  {
+    "hash": "715e3e28930eeeb5e65a75506ff20cfe026ab203",
+    "short": "715e3e2",
+    "date": "2024-07-11T23:07:11+08:00",
+    "author": "Kinnuch",
+    "msg": "Update elandis.md"
+  },
+  {
+    "hash": "0e827e934898268633a83fae2a561ecbfecd040b",
+    "short": "0e827e9",
+    "date": "2024-07-11T23:01:15+08:00",
+    "author": "Kinnuch",
+    "msg": "Update elandis.md"
+  },
+  {
+    "hash": "a4533454ddc4b3d01463d7994d96df3bddef516c",
+    "short": "a453345",
+    "date": "2024-07-11T22:59:33+08:00",
+    "author": "Kinnuch",
+    "msg": "update elandis"
+  },
+  {
+    "hash": "8554b66b3f63439d90923c31407f0f686eccef39",
+    "short": "8554b66",
+    "date": "2024-07-11T21:05:37+08:00",
+    "author": "Kinnuch",
+    "msg": "Update elandis.md"
+  },
+  {
+    "hash": "5742994d8416e91a5436d2b9ee82fd8c15a7aa07",
+    "short": "5742994",
+    "date": "2024-07-11T01:15:19+08:00",
+    "author": "Kinnuch",
+    "msg": "update cerf test"
+  },
+  {
+    "hash": "d20a6f3b446d118547ca9d2ed50c2badc0ee5aff",
+    "short": "d20a6f3",
+    "date": "2024-07-11T01:01:09+08:00",
+    "author": "Kinnuch",
+    "msg": "Update gwenwi.csv"
+  },
+  {
+    "hash": "a9dbe3f74cfa664924b5ab36e0bbe2f594afab8a",
+    "short": "a9dbe3f",
+    "date": "2024-07-11T00:00:09+08:00",
+    "author": "Kinnuch",
+    "msg": "Update gwenwi.js"
+  },
+  {
+    "hash": "4fdd2433f94a37c60cbebb8dd2f9b431ddca8bba",
+    "short": "4fdd243",
+    "date": "2024-07-10T23:56:16+08:00",
+    "author": "Kinnuch",
+    "msg": "update version and cerf"
+  },
+  {
+    "hash": "f2733bca7a35abab509d09237f1ee6880041cb17",
+    "short": "f2733bc",
+    "date": "2024-07-10T23:50:14+08:00",
+    "author": "Kinnuch",
+    "msg": "update cerf test"
+  },
+  {
+    "hash": "a9aa10aeef538ee0fbd353b1ab08fd72a800c113",
+    "short": "a9aa10a",
+    "date": "2024-07-10T20:55:13+08:00",
+    "author": "Kinnuch",
+    "msg": "Update elandis.md"
+  },
+  {
+    "hash": "1fb925651d2784b8157ce1c06c2353f3a7ca6fdf",
+    "short": "1fb9256",
+    "date": "2024-07-10T01:38:39+08:00",
+    "author": "Kinnuch",
+    "msg": "Update elandis.md"
+  },
+  {
+    "hash": "3d35c53675b1d0911a3c35c3385a13fc91d6aeb7",
+    "short": "3d35c53",
+    "date": "2024-07-06T14:22:37+08:00",
+    "author": "Kinnuch",
+    "msg": "Update prestanneth.js"
+  },
+  {
+    "hash": "c5da14b455bb1d255a259f90f61e0074087bc3f9",
+    "short": "c5da14b",
+    "date": "2024-07-06T14:17:48+08:00",
+    "author": "Kinnuch",
+    "msg": "update cerf test"
+  },
+  {
+    "hash": "e2c3a7b260d5f49f42fabb1eb67a1c58334c74ae",
+    "short": "e2c3a7b",
+    "date": "2024-07-06T12:00:15+08:00",
+    "author": "Kinnuch",
+    "msg": "update cerf test"
+  },
+  {
+    "hash": "1636aa2b8a27f0939e92a202fc80ae72badb3839",
+    "short": "1636aa2",
+    "date": "2024-07-05T23:04:20+08:00",
+    "author": "Kinnuch",
+    "msg": "update cerf test"
+  },
+  {
+    "hash": "01d2aa3e7d4cfa5c3a7aea6ee0bfa51f2906119a",
+    "short": "01d2aa3",
+    "date": "2024-07-05T22:38:47+08:00",
+    "author": "Kinnuch",
+    "msg": "Update prestanneth.js"
+  },
+  {
+    "hash": "e167370205fad100d54908d42b4bf6b66459b374",
+    "short": "e167370",
+    "date": "2024-07-05T22:36:44+08:00",
+    "author": "Kinnuch",
+    "msg": "update cerf test"
+  },
+  {
+    "hash": "296a6a5fbe51295ca5ea66f19fcebfb168972012",
+    "short": "296a6a5",
+    "date": "2024-07-05T21:55:59+08:00",
+    "author": "Kinnuch",
+    "msg": "Update prestanneth.js"
+  },
+  {
+    "hash": "da743843d2d8e116ed7ec9200d5531d8c8db57a7",
+    "short": "da74384",
+    "date": "2024-07-05T21:52:50+08:00",
+    "author": "Kinnuch",
+    "msg": "Update prestanneth.js"
+  },
+  {
+    "hash": "669da59dd8f11d413f62554c3d4007b958fc510c",
+    "short": "669da59",
+    "date": "2024-07-05T18:57:33+08:00",
+    "author": "Kinnuch",
+    "msg": "Update prestanneth.js"
+  },
+  {
+    "hash": "39887159294febab6db4ea588898ef8366a3ae8a",
+    "short": "3988715",
+    "date": "2024-07-05T18:54:04+08:00",
+    "author": "Kinnuch",
+    "msg": "update cerf test"
+  },
+  {
+    "hash": "99914c89b5b69e0d210595fa146c54c228ddb325",
+    "short": "99914c8",
+    "date": "2024-07-05T18:40:08+08:00",
+    "author": "Kinnuch",
+    "msg": "Update prestanneth.js"
+  },
+  {
+    "hash": "ef018ac83e46327f5bee3e2085c6a4470f046ea3",
+    "short": "ef018ac",
+    "date": "2024-07-05T18:31:49+08:00",
+    "author": "Kinnuch",
+    "msg": "update cerf test"
+  },
+  {
+    "hash": "a262a220a964b9a945bba5dd1256baef1a52b614",
+    "short": "a262a22",
+    "date": "2024-07-05T17:44:57+08:00",
+    "author": "Kinnuch",
+    "msg": "update cerf test"
+  },
+  {
+    "hash": "a57182b2a4eb97e941b01f64421f78b21ddda976",
+    "short": "a57182b",
+    "date": "2024-07-05T17:12:45+08:00",
+    "author": "Kinnuch",
+    "msg": "update cerf test"
+  },
+  {
+    "hash": "7d237f0a30755d02966fb6bf7f53274c21e0fa4a",
+    "short": "7d237f0",
+    "date": "2024-07-05T16:58:18+08:00",
+    "author": "Kinnuch",
+    "msg": "upload cerf test"
+  },
+  {
+    "hash": "9c32f92c12015319489a7cfd4dad706149959a2f",
+    "short": "9c32f92",
+    "date": "2024-05-22T19:57:01+08:00",
+    "author": "Kinnuch",
+    "msg": "Update haudhas.md"
+  },
+  {
+    "hash": "db85de101bc5e84f874843be4934ff64c5e80c2b",
+    "short": "db85de1",
+    "date": "2024-04-28T00:38:47+08:00",
+    "author": "Kinnuch",
+    "msg": "update sindarin course"
+  },
+  {
+    "hash": "4d74a1b6d7b3e0f67143f4edfb8169bdf572d116",
+    "short": "4d74a1b",
+    "date": "2024-04-26T11:36:38+08:00",
+    "author": "Kinnuch",
+    "msg": "upload test"
+  },
+  {
+    "hash": "a9293beb01bbdd22f112ce36da03182edb57b1ff",
+    "short": "a9293be",
+    "date": "2024-04-20T16:43:34+08:00",
+    "author": "Kinnuch",
+    "msg": "Update elandis.md"
+  },
+  {
+    "hash": "4d9131128e17cbda1b410ad53f4f4bea549b25e0",
+    "short": "4d91311",
+    "date": "2024-04-20T16:32:41+08:00",
+    "author": "Kinnuch",
+    "msg": "Update teae.md"
+  },
+  {
+    "hash": "acb115688b2147abbe9ed450725627e642e61da6",
+    "short": "acb1156",
+    "date": "2024-04-20T16:29:23+08:00",
+    "author": "Kinnuch",
+    "msg": "update TEAE"
+  },
+  {
+    "hash": "e59b779ffc3294977790999b9026706efc6881bc",
+    "short": "e59b779",
+    "date": "2024-03-30T19:48:28+08:00",
+    "author": "Kinnuch",
+    "msg": "Update oldicelandic.md"
+  },
+  {
+    "hash": "bd4058d8ecc82b3565643692caeb3133060c7911",
+    "short": "bd4058d",
+    "date": "2024-03-30T00:21:16+08:00",
+    "author": "Kinnuch",
+    "msg": "Update oldicelandic.md"
+  },
+  {
+    "hash": "c7c2d957e214c029e221fd14ba4e8be7eafadbad",
+    "short": "c7c2d95",
+    "date": "2024-03-29T23:52:47+08:00",
+    "author": "Kinnuch",
+    "msg": "Update oldicelandic.md"
+  },
+  {
+    "hash": "b15dd4f403487a2663174417efb641bf107afa22",
+    "short": "b15dd4f",
+    "date": "2024-03-27T01:06:07+08:00",
+    "author": "Kinnuch",
+    "msg": "update Old Icelandic"
+  },
+  {
+    "hash": "a8e0673a5cf38dfbd9b06f11c992533344f74048",
+    "short": "a8e0673",
+    "date": "2024-03-26T14:50:03+08:00",
+    "author": "Kinnuch",
+    "msg": "Update oldicelandic.md"
+  },
+  {
+    "hash": "2c667f0bb2cb3cd81cf484c74cdfb044130b063a",
+    "short": "2c667f0",
+    "date": "2024-03-26T13:54:39+08:00",
+    "author": "Kinnuch",
+    "msg": "Update author-bio.html"
+  },
+  {
+    "hash": "29e6e574c49ca000ef4bbbee29420054ad6d23da",
+    "short": "29e6e57",
+    "date": "2024-03-26T13:41:34+08:00",
+    "author": "Kinnuch",
+    "msg": "update friends' links"
+  },
+  {
+    "hash": "315becc89363d785b3844dfc47f85a2635ad2e19",
+    "short": "315becc",
+    "date": "2024-03-26T01:06:18+08:00",
+    "author": "Kinnuch",
+    "msg": "Update oldicelandic.md"
+  },
+  {
+    "hash": "b18570a5cb72c4cd08b3039a0dc356159adc9d7b",
+    "short": "b18570a",
+    "date": "2024-03-25T00:09:13+08:00",
+    "author": "Kinnuch",
+    "msg": "Update index.md"
+  },
+  {
+    "hash": "20049452f76390ead1d7869ff6f6186ce8702a4c",
+    "short": "2004945",
+    "date": "2024-03-25T00:01:28+08:00",
+    "author": "Kinnuch",
+    "msg": "update Old Icelandic note"
+  },
+  {
+    "hash": "ec096d5df5ba08d58511f439f84ee6bc76adc4ff",
+    "short": "ec096d5",
+    "date": "2024-03-24T21:52:05+08:00",
+    "author": "Kinnuch",
+    "msg": "update Oldicelandic note"
+  },
+  {
+    "hash": "b325b946fc7c53b88c67986eccc4e24d1e705810",
+    "short": "b325b94",
+    "date": "2024-03-24T21:35:03+08:00",
+    "author": "Kinnuch",
+    "msg": "update NuranIrven font and OldIcelandic note"
+  },
+  {
+    "hash": "4642484f347d0c8358d8f7309338b1c6b12491d4",
+    "short": "4642484",
+    "date": "2024-03-24T17:26:05+08:00",
+    "author": "Kinnuch",
+    "msg": "update Elandis content"
+  },
+  {
+    "hash": "67a698bac0bad25c61408e2d573153b3aa937206",
+    "short": "67a698b",
+    "date": "2024-03-23T12:41:45+08:00",
+    "author": "Kinnuch",
+    "msg": "update Old Icelandic Note"
+  },
+  {
+    "hash": "26fde5e74810644aaeb3268095b48449325b8701",
+    "short": "26fde5e",
+    "date": "2024-03-20T01:23:29+08:00",
+    "author": "Kinnuch",
+    "msg": "update diphthong"
+  },
+  {
+    "hash": "0f19b73aac2e67c22f4ca8d008fbb92f58eba624",
+    "short": "0f19b73",
+    "date": "2024-03-19T22:54:13+08:00",
+    "author": "Kinnuch",
+    "msg": "update music link"
+  },
+  {
+    "hash": "54d89c29ce21a0686c21cce4505c0278be9be280",
+    "short": "54d89c2",
+    "date": "2024-03-19T22:37:03+08:00",
+    "author": "Kinnuch",
+    "msg": "update vowel sounds"
+  },
+  {
+    "hash": "f03b8054e23d8ee7903e3537d87bf014d1ad5eba",
+    "short": "f03b805",
+    "date": "2024-03-17T21:01:25+08:00",
+    "author": "Kinnuch",
+    "msg": "update monophthong"
+  },
+  {
+    "hash": "1d2f21dbd066245b296f4dbd52190931f9077a28",
+    "short": "1d2f21d",
+    "date": "2024-03-17T19:52:34+08:00",
+    "author": "Kinnuch",
+    "msg": "update"
+  },
+  {
+    "hash": "2cd635c6449789ead4ee621f8f82f4b457bc1366",
+    "short": "2cd635c",
+    "date": "2024-03-17T19:44:07+08:00",
+    "author": "Kinnuch",
+    "msg": "update sindarin lesson"
+  },
+  {
+    "hash": "25ca058a781576726c8e04091a7dadddc14c7703",
+    "short": "25ca058",
+    "date": "2024-03-17T19:41:06+08:00",
+    "author": "Kinnuch",
+    "msg": "update sindarin lesson"
+  },
+  {
+    "hash": "d165acbfc583c9319d91cc2bab02cf410b232cab",
+    "short": "d165acb",
+    "date": "2024-03-17T19:13:52+08:00",
+    "author": "Kinnuch",
+    "msg": "update"
+  },
+  {
+    "hash": "944b48756a72294524fc05cb2708d186b6d61353",
+    "short": "944b487",
+    "date": "2024-03-17T19:12:07+08:00",
+    "author": "Kinnuch",
+    "msg": "update friends picture"
+  },
+  {
+    "hash": "405c948f2d7e7f92440b7faac8b700dcf25865a5",
+    "short": "405c948",
+    "date": "2024-03-12T19:59:34+08:00",
+    "author": "Kinnuch",
+    "msg": "update music and sindarin course"
+  },
+  {
+    "hash": "f57bba94b43aa48399df467124af8b33fd5d41ed",
+    "short": "f57bba9",
+    "date": "2024-03-12T16:57:02+08:00",
+    "author": "Kinnuch",
+    "msg": "Update calendar.js"
+  },
+  {
+    "hash": "5a0fb1dff6bc3117197435dd0e504e4c852c78e4",
+    "short": "5a0fb1d",
+    "date": "2024-03-12T16:47:40+08:00",
+    "author": "Kinnuch",
+    "msg": "Update calendar.js"
+  },
+  {
+    "hash": "46d33ef70c325f1ceeea08f45e4b71b88edec39f",
+    "short": "46d33ef",
+    "date": "2024-03-12T16:37:53+08:00",
+    "author": "Kinnuch",
+    "msg": "Update calendar.js"
+  },
+  {
+    "hash": "8a445052114c213396d75e22b136230b096dff14",
+    "short": "8a44505",
+    "date": "2024-03-12T16:19:01+08:00",
+    "author": "Kinnuch",
+    "msg": "Update author-bio.html"
+  },
+  {
+    "hash": "77e0d723342939cb432dcc5f9e26285152f8339d",
+    "short": "77e0d72",
+    "date": "2024-03-12T16:15:22+08:00",
+    "author": "Kinnuch",
+    "msg": "update Calendar"
+  },
+  {
+    "hash": "4123ed34847d0180123c5e736c3ffa5d80534175",
+    "short": "4123ed3",
+    "date": "2024-03-12T14:46:03+08:00",
+    "author": "Kinnuch",
+    "msg": "Update author-bio.html"
+  },
+  {
+    "hash": "181365a0b3a2a771c8715ad22d6f7390e65e73cb",
+    "short": "181365a",
+    "date": "2024-03-12T14:33:12+08:00",
+    "author": "Kinnuch",
+    "msg": "Update index.md"
+  },
+  {
+    "hash": "dcd55f589d996e1f4fa7a03477342821960d71c3",
+    "short": "dcd55f5",
+    "date": "2024-03-12T14:28:12+08:00",
+    "author": "Kinnuch",
+    "msg": "implement Calendar"
+  },
+  {
+    "hash": "d00d164e92b9a395e58c06d0cca5adc8cf345727",
+    "short": "d00d164",
+    "date": "2024-03-11T20:38:31+08:00",
+    "author": "Kinnuch",
+    "msg": "add Mandarin description"
+  },
+  {
+    "hash": "c8342732ea3c2918dc5eb42e467b4755f72c6f7d",
+    "short": "c834273",
+    "date": "2024-03-11T20:19:45+08:00",
+    "author": "Kinnuch",
+    "msg": "Update index.md"
+  },
+  {
+    "hash": "c8ed41ec63dfee762f7a0e6cbbaec79f17c70af9",
+    "short": "c8ed41e",
+    "date": "2024-03-11T20:13:50+08:00",
+    "author": "Kinnuch",
+    "msg": "Create sindarin.md"
+  },
+  {
+    "hash": "4a35562d62f577d3df9f048baaad6194a10a733b",
+    "short": "4a35562",
+    "date": "2024-03-11T00:39:35+08:00",
+    "author": "Kinnuch",
+    "msg": "Update scottishgaelic.md"
+  },
+  {
+    "hash": "e0021afa9274686436277a542ac86b6f2db4c3f9",
+    "short": "e0021af",
+    "date": "2024-03-10T22:12:50+08:00",
+    "author": "Kinnuch",
+    "msg": "Update author-bio.html"
+  },
+  {
+    "hash": "9bb706c3f8e0b9fca2277d8b10661572e7b0ce8b",
+    "short": "9bb706c",
+    "date": "2024-03-10T22:03:21+08:00",
+    "author": "Kinnuch",
+    "msg": "update icon and an img error"
+  },
+  {
+    "hash": "719ac466b7b98593af94044b1bced929fa958cea",
+    "short": "719ac46",
+    "date": "2024-03-10T21:58:54+08:00",
+    "author": "Kinnuch",
+    "msg": "update friend link and icon"
+  },
+  {
+    "hash": "9442ef90f46fcc6240da60e83f62c6021fe61baa",
+    "short": "9442ef9",
+    "date": "2024-03-10T21:25:54+08:00",
+    "author": "Kinnuch",
+    "msg": "update Elandis and SG notes"
+  },
+  {
+    "hash": "8d3a89b0feb38e78e9b71fb9456ce5a84ac9c414",
+    "short": "8d3a89b",
+    "date": "2024-03-10T18:07:53+08:00",
+    "author": "Kinnuch",
+    "msg": "update Elandis"
+  },
+  {
+    "hash": "fe7a8f4ad37f8b1146b6dc767934c21098cd1a38",
+    "short": "fe7a8f4",
+    "date": "2024-03-10T17:28:13+08:00",
+    "author": "Kinnuch",
+    "msg": "update laim"
+  },
+  {
+    "hash": "1734e1e316c27ecb605c926db61cde609af86e7f",
+    "short": "1734e1e",
+    "date": "2024-03-10T17:10:38+08:00",
+    "author": "Kinnuch",
+    "msg": "Update index.md"
+  },
+  {
+    "hash": "7be6990fe28554d10662fe045aa4d03a6ab82263",
+    "short": "7be6990",
+    "date": "2024-03-10T17:03:37+08:00",
+    "author": "Kinnuch",
+    "msg": "update link"
+  },
+  {
+    "hash": "f0c7d5fb17f218cb7b27ad6def95b4c0cb824dcb",
+    "short": "f0c7d5f",
+    "date": "2024-03-10T16:59:18+08:00",
+    "author": "Kinnuch",
+    "msg": "update link"
+  },
+  {
+    "hash": "3994c1614813041963ee5b95300af3b1d6be0433",
+    "short": "3994c16",
+    "date": "2024-03-10T16:56:11+08:00",
+    "author": "Kinnuch",
+    "msg": "update homepage"
+  },
+  {
+    "hash": "caf1a75697160579d5ffda09e71fa3b8d02a51e3",
+    "short": "caf1a75",
+    "date": "2024-03-10T16:40:25+08:00",
+    "author": "Kinnuch",
+    "msg": "cut the branch"
+  },
+  {
+    "hash": "6b5540ce8bb053b15fbbb15424c3286d14bb1cd8",
+    "short": "6b5540c",
+    "date": "2024-03-08T12:02:01+08:00",
+    "author": "Kinnuch",
+    "msg": "update the laim page"
+  },
+  {
+    "hash": "50dabdc111b80a803b4187b91dfe122a8553fa0f",
+    "short": "50dabdc",
+    "date": "2024-03-07T12:33:16+08:00",
+    "author": "Kinnuch",
+    "msg": "Update _config.yml"
+  },
+  {
+    "hash": "7015c143c52850ace30239645f67bdd9ccf1b46f",
+    "short": "7015c14",
+    "date": "2024-03-07T12:29:24+08:00",
+    "author": "Kinnuch",
+    "msg": "Update the homepage and content of it"
+  },
+  {
+    "hash": "e2b47857743025ba5dd745aff48219d74e1abaec",
+    "short": "e2b4785",
+    "date": "2024-03-07T11:54:57+08:00",
+    "author": "Kinnuch",
+    "msg": "Update head.html"
+  },
+  {
+    "hash": "660a41dd06dd65a50282aaed0a3ff116149b7649",
+    "short": "660a41d",
+    "date": "2024-03-06T21:36:53+08:00",
+    "author": "Kinnuch",
+    "msg": "Update head.html"
+  },
+  {
+    "hash": "eb50e24694c1832cd80d29b528d3ba6913a8ab32",
+    "short": "eb50e24",
+    "date": "2024-03-06T20:58:43+08:00",
+    "author": "Kinnuch",
+    "msg": "Update head.html"
+  },
+  {
+    "hash": "cc8e7e0571556e42b4bb28150e450efa01764dfd",
+    "short": "cc8e7e0",
+    "date": "2024-03-06T20:45:17+08:00",
+    "author": "Kinnuch",
+    "msg": "Update fav.ico"
+  },
+  {
+    "hash": "4a7a8cf7c8d632e9430c94668a25e4aefaba8a56",
+    "short": "4a7a8cf",
+    "date": "2024-03-06T20:29:35+08:00",
+    "author": "Kinnuch",
+    "msg": "Update the shorcut image"
+  },
+  {
+    "hash": "6afcc5f09321cd9041c3c73dfa16e69ccc42024f",
+    "short": "6afcc5f",
+    "date": "2024-03-06T20:22:22+08:00",
+    "author": "Kinnuch",
+    "msg": "remove unnecessary .idea folder"
+  },
+  {
+    "hash": "fac144a13205b4cfa0240c5adcc29916886962a1",
+    "short": "fac144a",
+    "date": "2024-03-06T20:17:55+08:00",
+    "author": "Kinnuch",
+    "msg": "Update fav.png"
+  },
+  {
+    "hash": "1a41f806816cbd6c4646c2cf88dcec79e2a65851",
+    "short": "1a41f80",
+    "date": "2024-03-06T20:12:01+08:00",
+    "author": "Kinnuch",
+    "msg": "Create arda.png"
+  },
+  {
+    "hash": "40ace2f750490969e2cea5f368022b86552ef6ed",
+    "short": "40ace2f",
+    "date": "2024-03-06T20:06:46+08:00",
+    "author": "Kinnuch",
+    "msg": "Update fav.ico"
+  },
+  {
+    "hash": "5ad71bb9f3c417999f4acc5ea76e4ba0d07b60c7",
+    "short": "5ad71bb",
+    "date": "2024-03-06T19:56:46+08:00",
+    "author": "Kinnuch",
+    "msg": "Massive update"
+  },
+  {
+    "hash": "2a877d272a7bd49da9ac6314d53be72775caa8a4",
+    "short": "2a877d2",
+    "date": "2024-03-06T16:03:00+08:00",
+    "author": "Kinnuch",
+    "msg": "This is the latest branch"
+  }
+]

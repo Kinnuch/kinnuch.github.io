@@ -15,7 +15,8 @@
       "Bash(awk -v line=423 'NR==line' \"c:\\\\Users\\\\Administrator\\\\Documents\\\\GitHub\\\\kinnuch.github.io\\\\assets\\\\css\\\\main.css\")",
       "Bash(awk 'NR==423' \"c:\\\\Users\\\\Administrator\\\\Documents\\\\GitHub\\\\kinnuch.github.io\\\\assets\\\\css\\\\main.css\")",
       "Bash(python -c ' *)",
-      "Bash(node --check \"c:\\\\Users\\\\Administrator\\\\Documents\\\\GitHub\\\\kinnuch.github.io\\\\assets\\\\js\\\\calendar.js\")"
+      "Bash(node --check \"c:\\\\Users\\\\Administrator\\\\Documents\\\\GitHub\\\\kinnuch.github.io\\\\assets\\\\js\\\\calendar.js\")",
+      "Bash(node --check \"c:\\\\Users\\\\Administrator\\\\Documents\\\\GitHub\\\\kinnuch.github.io\\\\assets\\\\js\\\\homepage.js\")"
     ],
     "additionalDirectories": [
       "\\tmp"

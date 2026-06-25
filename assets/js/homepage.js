@@ -116,7 +116,75 @@
       particles.push(createParticle(type, true));
     }
 
-    var flashTimer = 0;
+    var bolts = [];
+
+    function generateBolt() {
+      var startX = canvas.width * (0.15 + Math.random() * 0.7);
+      var endX = startX + (Math.random() - 0.5) * canvas.width * 0.4;
+      var endY = canvas.height * (0.55 + Math.random() * 0.35);
+      var segments = subdivide([{ x: startX, y: 0 }, { x: endX, y: endY }], 6, 90);
+      var branches = [];
+      for (var i = 1; i < segments.length - 1; i++) {
+        if (Math.random() < 0.35) {
+          var origin = segments[i];
+          var dx = (Math.random() - 0.5) * 220;
+          var dy = 60 + Math.random() * 140;
+          var bend = subdivide(
+            [origin, { x: origin.x + dx, y: origin.y + dy }],
+            4, 45
+          );
+          branches.push(bend);
+        }
+      }
+      bolts.push({ path: segments, branches: branches, life: 22, maxLife: 22 });
+    }
+
+    function subdivide(pts, depth, jitter) {
+      if (depth === 0) return pts;
+      var out = [pts[0]];
+      for (var i = 0; i < pts.length - 1; i++) {
+        var a = pts[i], b = pts[i + 1];
+        var mx = (a.x + b.x) / 2 + (Math.random() - 0.5) * jitter;
+        var my = (a.y + b.y) / 2 + (Math.random() - 0.5) * jitter * 0.4;
+        out.push({ x: mx, y: my });
+        out.push(b);
+      }
+      return subdivide(out, depth - 1, jitter * 0.55);
+    }
+
+    function drawPath(pts, alpha, width, color) {
+      if (pts.length < 2) return;
+      ctx.beginPath();
+      ctx.moveTo(pts[0].x, pts[0].y);
+      for (var i = 1; i < pts.length; i++) ctx.lineTo(pts[i].x, pts[i].y);
+      ctx.strokeStyle = color.replace('ALPHA', alpha);
+      ctx.lineWidth = width;
+      ctx.lineCap = 'round';
+      ctx.lineJoin = 'round';
+      ctx.stroke();
+    }
+
+    function drawBolt(b) {
+      var t = b.life / b.maxLife;
+      var head = b.path[Math.floor(b.path.length / 2)];
+      var glow = ctx.createRadialGradient(
+        head.x, head.y, 0,
+        head.x, head.y, 320
+      );
+      glow.addColorStop(0, 'rgba(220,230,255,' + (0.32 * t) + ')');
+      glow.addColorStop(0.5, 'rgba(180,200,240,' + (0.12 * t) + ')');
+      glow.addColorStop(1, 'rgba(180,200,240,0)');
+      ctx.fillStyle = glow;
+      ctx.fillRect(head.x - 320, head.y - 320, 640, 640);
+
+      drawPath(b.path, 0.35 * t, 9, 'rgba(180,200,255,ALPHA)');
+      drawPath(b.path, 0.7 * t, 4, 'rgba(220,230,255,ALPHA)');
+      drawPath(b.path, t, 1.2, 'rgba(255,255,255,ALPHA)');
+      for (var i = 0; i < b.branches.length; i++) {
+        drawPath(b.branches[i], 0.25 * t, 5, 'rgba(180,200,255,ALPHA)');
+        drawPath(b.branches[i], 0.55 * t, 1.5, 'rgba(255,255,255,ALPHA)');
+      }
+    }
 
     function createParticle(t, init) {
       var p = {
@@ -143,13 +211,13 @@
     function animate() {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-      if (type === 'thunder' && flashTimer > 0) {
-        ctx.fillStyle = 'rgba(255,255,255,' + (flashTimer * 0.15) + ')';
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
-        flashTimer--;
-      }
-      if (type === 'thunder' && Math.random() < 0.005) {
-        flashTimer = 4;
+      if (type === 'thunder') {
+        if (Math.random() < 0.004) generateBolt();
+        for (var bi = bolts.length - 1; bi >= 0; bi--) {
+          drawBolt(bolts[bi]);
+          bolts[bi].life--;
+          if (bolts[bi].life <= 0) bolts.splice(bi, 1);
+        }
       }
 
       for (var i = 0; i < particles.length; i++) {

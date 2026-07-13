@@ -1,5 +1,19 @@
 [
   {
+    "hash": "226d12877b8800079dd944684a9d8912a5c44661",
+    "short": "226d128",
+    "date": "2026-07-13T17:31:30+08:00",
+    "author": "wuyichen",
+    "msg": "update map location"
+  },
+  {
+    "hash": "7eb1ca69065b2f369d6deaf365350e212e93dae5",
+    "short": "7eb1ca6",
+    "date": "2026-07-13T08:59:23Z",
+    "author": "github-actions[bot]",
+    "msg": "chore: refresh commits.json [skip ci]"
+  },
+  {
     "hash": "fda4e286df5693766e665054414d0cd1cfa3c35a",
     "short": "fda4e28",
     "date": "2026-07-13T16:57:13+08:00",

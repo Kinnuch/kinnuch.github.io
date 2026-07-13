@@ -37,24 +37,24 @@
   // x/y are percentages on the SVG map (viewBox 1000x800).
   // x/y are percentages (0-100) relative to the reference map image.
   var cities = [
-    { name: 'Mithlond',    x: 24.5, y: 30 },
-    { name: 'Annúminas',   x: 34,   y: 25 },
-    { name: 'Fornost',     x: 40,   y: 25 },
-    { name: 'Hobbiton',    x: 34,   y: 30 },
-    { name: 'Bree',        x: 41.5, y: 30 },
-    { name: 'Rivendell',   x: 58,   y: 29 },
-    { name: 'Erebor',      x: 77.5, y: 23 },
-    { name: 'Lothlórien',  x: 62,   y: 40 },
-    { name: 'Isengard',    x: 53,   y: 48 },
-    { name: 'Edoras',      x: 59,   y: 53 },
-    { name: 'Minas Tirith',x: 74,   y: 59 },
-    { name: 'Osgiliath',   x: 75,   y: 59 },
-    { name: 'Minas Morgul',x: 78,   y: 60, region: 'mordor' },
-    { name: 'Cirith Ungol',x: 78,   y: 57, region: 'mordor' },
-    { name: 'Orodruin',    x: 82,   y: 56, region: 'mordor' },
-    { name: 'Barad-dûr',   x: 84,   y: 56, region: 'mordor' },
-    { name: 'Dol Amroth',  x: 57,   y: 64 },
-    { name: 'Pelargir',    x: 71.5, y: 65 }
+    { name: 'Mithlond',    x: 24.5, y: 30, terrain: 'coastal' },
+    { name: 'Annúminas',   x: 34,   y: 25, terrain: 'lake' },
+    { name: 'Fornost',     x: 40,   y: 25, terrain: 'plain' },
+    { name: 'Hobbiton',    x: 34,   y: 30, terrain: 'forest' },
+    { name: 'Bree',        x: 41.5, y: 30, terrain: 'plain' },
+    { name: 'Rivendell',   x: 58,   y: 29, terrain: 'mountain' },
+    { name: 'Erebor',      x: 77.5, y: 23, terrain: 'mountain' },
+    { name: 'Lothlórien',  x: 62,   y: 40, terrain: 'forest' },
+    { name: 'Isengard',    x: 53,   y: 48, terrain: 'plain' },
+    { name: 'Edoras',      x: 59,   y: 53, terrain: 'plain' },
+    { name: 'Minas Tirith',x: 74,   y: 59, terrain: 'mountain' },
+    { name: 'Osgiliath',   x: 75,   y: 59, terrain: 'river' },
+    { name: 'Minas Morgul',x: 78,   y: 60, terrain: 'mountain', region: 'mordor' },
+    { name: 'Cirith Ungol',x: 78,   y: 57, terrain: 'mountain', region: 'mordor' },
+    { name: 'Orodruin',    x: 82,   y: 56, terrain: 'volcanic', region: 'mordor' },
+    { name: 'Barad-dûr',   x: 84,   y: 56, terrain: 'plain',    region: 'mordor' },
+    { name: 'Dol Amroth',  x: 57,   y: 64, terrain: 'coastal' },
+    { name: 'Pelargir',    x: 71.5, y: 65, terrain: 'river' }
   ];
 
   var weatherTypes = {
@@ -68,41 +68,124 @@
     Windy:        { name: 'Windy',        icon: '💨', hasParticles: true,  particle: 'wind' },
     Lava:         { name: 'Lava',         icon: '🌋', hasParticles: true,  particle: 'lava' }
   };
-  var normalOrder = ['Clear','Cloudy','PartlyCloudy','Rain','Thunderstorm','Snow','Fog','Windy'];
-  var mordorOrder = ['Rain','Lava'];
-
   function seededRandom(seed) {
     var x = Math.sin(seed) * 10000;
     return x - Math.floor(x);
   }
 
+  // Smooth 2D noise: neighbouring (x,y) get similar values so nearby cities
+  // share regional weather. `salt` picks an independent channel (humidity,
+  // pressure, chaos).
+  function fieldNoise(x, y, seed, salt) {
+    var s = seed * 0.001 + salt;
+    return (
+      Math.sin(x * 0.13 + s * 1.7) +
+      Math.sin(y * 0.17 + s * 2.3) +
+      Math.sin((x + y * 0.6) * 0.09 + s * 0.8)
+    ) / 3;
+  }
+
+  function seasonBase(month) {
+    if (month >= 5 && month <= 8) return 22;
+    if (month >= 11 || month <= 1) return 3;
+    if (month >= 2 && month <= 4) return 12;
+    return 15;
+  }
+
+  // Per-terrain biases: humidity boost, fog boost, wind boost, temp offset.
+  var TERRAIN = {
+    coastal:  { humid: 0.20, fog: 0.10, wind: 0.20, temp:  1 },
+    lake:     { humid: 0.15, fog: 0.20, wind: 0.05, temp:  0 },
+    river:    { humid: 0.15, fog: 0.20, wind: 0.00, temp:  0 },
+    marsh:    { humid: 0.20, fog: 0.30, wind: 0.00, temp:  0 },
+    forest:   { humid: 0.08, fog: 0.05, wind: 0.00, temp:  0 },
+    plain:    { humid: 0.00, fog: 0.00, wind: 0.05, temp:  0 },
+    mountain: { humid: 0.15, fog: 0.05, wind: 0.10, temp: -5 },
+    volcanic: { humid: 0.00, fog: 0.00, wind: 0.00, temp: 15 }
+  };
+
   function computeCityWeather(city, hourSeed, cityIdx) {
     var s = hourSeed + cityIdx * 37;
     var month = new Date().getMonth();
-    var key;
+    var isWinter = (month >= 11 || month <= 1);
+    var isSummer = (month >= 5 && month <= 8);
+    var terrain = TERRAIN[city.terrain] || TERRAIN.plain;
+
+    // Regional field (all three in ~[-1, 1])
+    var humidity = fieldNoise(city.x, city.y, hourSeed, 10) + terrain.humid;
+    var pressure = fieldNoise(city.x, city.y, hourSeed, 20);
+    var chaos    = fieldNoise(city.x, city.y, hourSeed, 30);
+
+    // Mordor: bounded to Rain or Lava, but noise-driven so cluster trends together.
     if (city.region === 'mordor') {
-      key = mordorOrder[Math.floor(seededRandom(s + 1) * mordorOrder.length)];
+      var lavaBias = pressure * 0.5 + chaos * 0.3
+                   + (city.terrain === 'volcanic' ? 0.4 : 0);
+      var key = lavaBias > 0.15 ? 'Lava' : 'Rain';
+      var temp;
+      if (key === 'Lava') {
+        temp = 45 + Math.floor(seededRandom(s + 4) * 25);
+      } else {
+        var mBase = seasonBase(month) + terrain.temp + 6;
+        temp = Math.round(mBase + (city.y - 50) * 0.15
+                                + (seededRandom(s + 3) - 0.5) * 6);
+      }
+      return { key: key, weather: weatherTypes[key], temp: temp };
+    }
+
+    // Weather category selection driven by humidity + pressure + chaos.
+    var wKey;
+    var wet = humidity + (isWinter ? 0.05 : 0) + (isSummer ? -0.05 : 0);
+    if (wet > 0.55) {
+      // Precipitation regime
+      var cold = seasonBase(month) + terrain.temp + (city.y - 50) * 0.18;
+      if (cold < 2 && (isWinter || city.terrain === 'mountain')) {
+        wKey = 'Snow';
+      } else if (wet > 0.9 && chaos > 0.35 && !isWinter) {
+        wKey = 'Thunderstorm';
+      } else {
+        wKey = 'Rain';
+      }
+    } else if (wet > 0.15) {
+      // Damp but no rain
+      var fogScore = terrain.fog + (isWinter ? 0.1 : 0) - (pressure * 0.15);
+      if (fogScore > 0.25 && Math.abs(chaos) < 0.4) {
+        wKey = 'Fog';
+      } else if (pressure > 0.25) {
+        wKey = 'Cloudy';
+      } else {
+        wKey = 'PartlyCloudy';
+      }
+    } else if (wet > -0.3) {
+      // Dry-ish; consider wind or partial clouds
+      var windScore = terrain.wind + Math.abs(chaos) * 0.3;
+      if (windScore > 0.35 && Math.abs(pressure) > 0.2) {
+        wKey = 'Windy';
+      } else {
+        wKey = 'PartlyCloudy';
+      }
     } else {
-      var idx = Math.floor(seededRandom(s + 1) * normalOrder.length);
-      key = normalOrder[idx];
-      if (month >= 11 || month <= 1) {
-        if (seededRandom(s + 2) > 0.5) key = 'Snow';
-      } else if (month >= 3 && month <= 5) {
-        if (seededRandom(s + 2) > 0.7) key = 'Rain';
+      // Dry high pressure
+      if (Math.abs(chaos) > 0.55 && terrain.wind > 0) {
+        wKey = 'Windy';
+      } else {
+        wKey = 'Clear';
       }
     }
 
-    var baseTemp = 15;
-    if (month >= 5 && month <= 8) baseTemp = 25;
-    else if (month >= 11 || month <= 1) baseTemp = 2;
-    else if (month >= 2 && month <= 4) baseTemp = 12;
-    if (city.region === 'mordor') baseTemp += 8;
-    if (key === 'Lava') baseTemp = 45 + Math.floor(seededRandom(s + 4) * 20);
-    var temp = key === 'Lava'
-      ? baseTemp
-      : Math.round(baseTemp + (seededRandom(s + 3) - 0.5) * 14);
+    // Temperature: seasonal base + latitude + terrain + weather modifier.
+    var baseT = seasonBase(month);
+    var latAdj = (city.y - 50) * 0.18;
+    var wAdj = 0;
+    if (wKey === 'Snow') wAdj = -4;
+    else if (wKey === 'Rain') wAdj = -2;
+    else if (wKey === 'Thunderstorm') wAdj = -3;
+    else if (wKey === 'Fog') wAdj = -1;
+    else if (wKey === 'Clear' && isSummer) wAdj = 3;
+    else if (wKey === 'Clear' && isWinter) wAdj = -2;
+    var jitter = (seededRandom(s + 7) - 0.5) * 4;
+    var temp = Math.round(baseT + latAdj + terrain.temp + wAdj + jitter);
 
-    return { key: key, weather: weatherTypes[key], temp: temp };
+    return { key: wKey, weather: weatherTypes[wKey], temp: temp };
   }
 
   function getHourSeed() {

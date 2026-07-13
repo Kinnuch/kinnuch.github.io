@@ -35,26 +35,27 @@
 
   // === Middle-earth Weather ===
   // x/y are percentages on the SVG map (viewBox 1000x800).
+  // x/y are percentages (0-100) relative to the reference map image.
   var cities = [
-    { name: 'Mithlond',    x: 12, y: 34 },
-    { name: 'Annúminas',   x: 20, y: 26 },
-    { name: 'Fornost',     x: 24, y: 22 },
-    { name: 'Hobbiton',    x: 22, y: 33 },
-    { name: 'Bree',        x: 28, y: 33 },
-    { name: 'Rivendell',   x: 44, y: 30 },
-    { name: 'Erebor',      x: 74, y: 20 },
-    { name: 'Dale',        x: 76, y: 18 },
-    { name: 'Lothlórien',  x: 52, y: 43 },
-    { name: 'Isengard',    x: 44, y: 52 },
-    { name: 'Edoras',      x: 52, y: 60 },
-    { name: 'Minas Tirith',x: 62, y: 63 },
-    { name: 'Osgiliath',   x: 65, y: 62 },
-    { name: 'Minas Morgul',x: 70, y: 61, region: 'mordor' },
-    { name: 'Cirith Ungol',x: 73, y: 57, region: 'mordor' },
-    { name: 'Orodruin',    x: 78, y: 58, region: 'mordor' },
-    { name: 'Barad-dûr',   x: 84, y: 58, region: 'mordor' },
-    { name: 'Dol Amroth',  x: 54, y: 72 },
-    { name: 'Pelargir',    x: 63, y: 70 }
+    { name: 'Mithlond',    x: 15, y: 27 },
+    { name: 'Annúminas',   x: 22, y: 20 },
+    { name: 'Fornost',     x: 27, y: 20 },
+    { name: 'Hobbiton',    x: 25, y: 28 },
+    { name: 'Bree',        x: 32, y: 29 },
+    { name: 'Rivendell',   x: 42, y: 30 },
+    { name: 'Erebor',      x: 78, y: 25 },
+    { name: 'Dale',        x: 80, y: 23 },
+    { name: 'Lothlórien',  x: 55, y: 48 },
+    { name: 'Isengard',    x: 48, y: 63 },
+    { name: 'Edoras',      x: 55, y: 68 },
+    { name: 'Minas Tirith',x: 68, y: 70 },
+    { name: 'Osgiliath',   x: 71, y: 71 },
+    { name: 'Minas Morgul',x: 74, y: 72, region: 'mordor' },
+    { name: 'Cirith Ungol',x: 76, y: 68, region: 'mordor' },
+    { name: 'Orodruin',    x: 80, y: 71, region: 'mordor' },
+    { name: 'Barad-dûr',   x: 85, y: 70, region: 'mordor' },
+    { name: 'Dol Amroth',  x: 57, y: 83 },
+    { name: 'Pelargir',    x: 68, y: 78 }
   ];
 
   var weatherTypes = {
@@ -65,7 +66,7 @@
     Thunderstorm: { name: 'Thunderstorm', icon: '⛈', hasParticles: true,  particle: 'thunder' },
     Snow:         { name: 'Snow',         icon: '🌨', hasParticles: true,  particle: 'snow' },
     Fog:          { name: 'Fog',          icon: '🌫', hasParticles: false },
-    Windy:        { name: 'Windy',        icon: '💨', hasParticles: false },
+    Windy:        { name: 'Windy',        icon: '💨', hasParticles: true,  particle: 'wind' },
     Lava:         { name: 'Lava',         icon: '🌋', hasParticles: true,  particle: 'lava' }
   };
   var normalOrder = ['Clear','Cloudy','PartlyCloudy','Rain','Thunderstorm','Snow','Fog','Windy'];
@@ -207,45 +208,35 @@
     return modal;
   }
 
+  // viewBox roughly matches the reference map aspect ratio (1656:1932).
+  var MAP_VBW = 1000, MAP_VBH = 1167;
+
   function buildMapSVG() {
-    // Stylised Middle-earth. viewBox coordinates match city x/y percentages *10.
     return (
-      '<svg class="map-svg" viewBox="0 0 1000 800" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">' +
-        '<defs>' +
-          '<linearGradient id="sea" x1="0" x2="0" y1="0" y2="1">' +
-            '<stop offset="0" stop-color="#7fb0c9"/><stop offset="1" stop-color="#3a6b85"/></linearGradient>' +
-          '<linearGradient id="land" x1="0" x2="0" y1="0" y2="1">' +
-            '<stop offset="0" stop-color="#e0cfa1"/><stop offset="1" stop-color="#b39a68"/></linearGradient>' +
-          '<pattern id="mtn" width="18" height="14" patternUnits="userSpaceOnUse">' +
-            '<path d="M0 14 L9 2 L18 14 Z" fill="#6b5a3a" opacity="0.7"/></pattern>' +
-        '</defs>' +
-        '<rect width="1000" height="800" fill="url(#sea)"/>' +
-        // Main landmass
-        '<path d="M 60 120 Q 180 60 340 100 Q 500 80 620 140 Q 780 120 900 220 Q 960 340 920 500 Q 880 640 780 720 Q 620 780 480 740 Q 320 760 200 700 Q 90 620 70 460 Q 40 300 60 120 Z" fill="url(#land)"/>' +
-        // Forests
-        '<ellipse cx="500" cy="440" rx="60" ry="45" fill="#4a6f3a" opacity="0.55"/>' + // Lothlórien
-        '<ellipse cx="560" cy="360" rx="80" ry="55" fill="#3d5a2d" opacity="0.55"/>' + // Mirkwood
-        '<ellipse cx="220" cy="360" rx="60" ry="35" fill="#5a7040" opacity="0.4"/>' +  // Shire green
-        // Misty Mountains (north-south chain around x=430)
-        '<path d="M 400 180 Q 440 300 430 460 Q 420 520 440 580" stroke="url(#mtn)" stroke-width="26" fill="none" stroke-linecap="round"/>' +
-        // White Mountains (Gondor / Rohan border)
-        '<path d="M 480 620 Q 580 640 700 620" stroke="url(#mtn)" stroke-width="22" fill="none" stroke-linecap="round"/>' +
-        // Mordor (ash plain + volcano)
-        '<path d="M 680 500 L 890 480 L 890 640 L 700 660 Z" fill="#3a2a2a" opacity="0.85"/>' +
-        '<path d="M 680 500 L 890 480 L 890 640 L 700 660 Z" fill="none" stroke="#111" stroke-width="2" stroke-dasharray="4 3"/>' +
-        // Ered Lithui (Mordor north rim) + Ephel Dúath (west rim)
-        '<path d="M 680 500 L 890 480" stroke="url(#mtn)" stroke-width="20" fill="none"/>' +
-        '<path d="M 680 500 L 700 660" stroke="url(#mtn)" stroke-width="20" fill="none"/>' +
-        // Volcano marker (Orodruin)
-        '<circle cx="780" cy="580" r="26" fill="#7a1a1a" opacity="0.75"/>' +
-        '<circle cx="780" cy="580" r="14" fill="#ff8844" opacity="0.85"/>' +
-        // Anduin river
-        '<path d="M 580 200 Q 600 380 620 560 Q 630 680 640 740" stroke="#5a92b0" stroke-width="4" fill="none" opacity="0.85"/>' +
-        // City group placeholder
+      '<svg class="map-svg" viewBox="0 0 ' + MAP_VBW + ' ' + MAP_VBH + '" ' +
+        'xmlns="http://www.w3.org/2000/svg" ' +
+        'preserveAspectRatio="xMidYMid meet">' +
+        '<image href="/images/middle-earth.png" ' +
+          'x="0" y="0" width="' + MAP_VBW + '" height="' + MAP_VBH + '" ' +
+          'preserveAspectRatio="xMidYMid meet"/>' +
         '<g id="map-cities"></g>' +
       '</svg>'
     );
   }
+
+  // Per-city label overrides for the crowded Mordor/Gondor cluster.
+  var LABEL_OVERRIDE = {
+    'Minas Morgul': { anchor: 'start', dx: 8,  dy: 2 },
+    'Cirith Ungol': { anchor: 'end',   dx: -8, dy: -2 },
+    'Orodruin':     { anchor: 'start', dx: 8,  dy: 14 },
+    'Barad-dûr':    { anchor: 'start', dx: 8,  dy: -2 },
+    'Osgiliath':    { anchor: 'start', dx: 8,  dy: 14 },
+    'Minas Tirith': { anchor: 'end',   dx: -8, dy: -2 },
+    'Dale':         { anchor: 'end',   dx: -8, dy: -2 },
+    'Erebor':       { anchor: 'end',   dx: -8, dy: 14 },
+    'Annúminas':    { anchor: 'end',   dx: -8, dy: -2 },
+    'Fornost':      { anchor: 'start', dx: 8,  dy: -2 }
+  };
 
   function renderMapCities(modal) {
     var svg = modal.querySelector('.map-svg');
@@ -256,7 +247,8 @@
     for (var i = 0; i < cities.length; i++) {
       var c = cities[i];
       var cw = computeCityWeather(c, hourSeed, i);
-      var px = c.x * 10, py = c.y * 10;
+      var px = c.x * MAP_VBW / 100;
+      var py = c.y * MAP_VBH / 100;
       var isActive = c.name === sel.city.name;
       var g = document.createElementNS('http://www.w3.org/2000/svg', 'g');
       g.setAttribute('class',
@@ -265,14 +257,18 @@
         (isActive ? ' map-city--active' : '')
       );
       g.setAttribute('data-city', c.name);
-      var offsetX = c.x > 60 ? -6 : 6;
-      var anchor = c.x > 60 ? 'end' : 'start';
+
+      var ov = LABEL_OVERRIDE[c.name];
+      var anchor = ov ? ov.anchor : (c.x > 60 ? 'end' : 'start');
+      var dx = ov ? ov.dx : (c.x > 60 ? -8 : 8);
+      var dy = ov ? ov.dy : -6;
+
       g.innerHTML =
-        '<circle class="map-city__dot" cx="' + px + '" cy="' + py + '" r="5"/>' +
-        '<text class="map-city__label" x="' + (px + offsetX) + '" y="' + (py - 6) + '" text-anchor="' + anchor + '">' +
+        '<circle class="map-city__dot" cx="' + px + '" cy="' + py + '" r="6"/>' +
+        '<text class="map-city__label" x="' + (px + dx) + '" y="' + (py + dy) + '" text-anchor="' + anchor + '">' +
           escapeXML(c.name) +
         '</text>' +
-        '<text class="map-city__meta" x="' + (px + offsetX) + '" y="' + (py + 10) + '" text-anchor="' + anchor + '">' +
+        '<text class="map-city__meta" x="' + (px + dx) + '" y="' + (py + dy + 14) + '" text-anchor="' + anchor + '">' +
           cw.weather.icon + ' ' + cw.temp + '°' +
         '</text>';
       g.addEventListener('click', pickCity);
@@ -344,6 +340,7 @@
               : type === 'rain' ? 150
               : type === 'thunder' ? 100
               : type === 'lava' ? 110
+              : type === 'wind' ? 80
               : 0;
     for (var i = 0; i < count; i++) {
       particles.push(createParticle(type, true));
@@ -633,6 +630,28 @@
         p.wobbleSpd = 0.02 + Math.random() * 0.03;
         p.hot = Math.random() < 0.25;
         p.opacity = 0.35 + Math.random() * 0.4;
+      } else if (t === 'wind') {
+        p.y = Math.random() * canvas.height;
+        if (!init) p.x = -30;
+        p.kind = Math.random() < 0.45 ? 'line' : 'leaf';
+        if (p.kind === 'line') {
+          p.vx = 8 + Math.random() * 6;
+          p.vy = (Math.random() - 0.5) * 0.3;
+          p.len = 40 + Math.random() * 80;
+          p.opacity = 0.15 + Math.random() * 0.22;
+        } else {
+          p.vx = 3 + Math.random() * 3;
+          p.vy = 0.15 + Math.random() * 0.6;
+          p.rot = Math.random() * Math.PI * 2;
+          p.rotSpd = (Math.random() - 0.5) * 0.15;
+          p.wobble = Math.random() * Math.PI * 2;
+          p.wobbleSpd = 0.04 + Math.random() * 0.06;
+          p.size = 4 + Math.random() * 4;
+          p.hue = 20 + Math.random() * 45;
+          p.sat = 55 + Math.random() * 20;
+          p.light = 32 + Math.random() * 18;
+          p.opacity = 0.75 + Math.random() * 0.25;
+        }
       } else {
         p.speed = 9 + Math.random() * 7;
         p.len = 15 + Math.random() * 12;
@@ -658,7 +677,40 @@
 
       for (var i = 0; i < particles.length; i++) {
         var p = particles[i];
-        if (type === 'lava') {
+        if (type === 'wind') {
+          p.x += p.vx;
+          p.y += p.vy;
+          if (p.kind === 'line') {
+            ctx.strokeStyle = 'rgba(235,240,250,' + p.opacity + ')';
+            ctx.lineWidth = 1;
+            ctx.lineCap = 'round';
+            ctx.beginPath();
+            ctx.moveTo(p.x, p.y);
+            ctx.lineTo(p.x + p.len, p.y);
+            ctx.stroke();
+          } else {
+            p.wobble += p.wobbleSpd;
+            p.rot += p.rotSpd;
+            var yOsc = Math.sin(p.wobble) * 1.2;
+            ctx.save();
+            ctx.translate(p.x, p.y + yOsc);
+            ctx.rotate(p.rot);
+            ctx.fillStyle = 'hsla(' + p.hue + ',' + p.sat + '%,' + p.light + '%,' + p.opacity + ')';
+            ctx.beginPath();
+            ctx.ellipse(0, 0, p.size, p.size * 0.5, 0, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.strokeStyle = 'hsla(' + p.hue + ',' + p.sat + '%,' + (p.light - 18) + '%,0.7)';
+            ctx.lineWidth = 0.6;
+            ctx.beginPath();
+            ctx.moveTo(-p.size, 0);
+            ctx.lineTo(p.size, 0);
+            ctx.stroke();
+            ctx.restore();
+          }
+          if (p.x > canvas.width + 40 || p.y > canvas.height + 20) {
+            particles[i] = createParticle(type, false);
+          }
+        } else if (type === 'lava') {
           p.wobble += p.wobbleSpd;
           p.x += p.drift + Math.sin(p.wobble) * 0.5;
           p.y += p.speed;

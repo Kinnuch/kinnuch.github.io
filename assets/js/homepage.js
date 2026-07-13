@@ -60,12 +60,12 @@
 
   var weatherTypes = {
     Clear:        { name: 'Clear',        icon: '☀', hasParticles: true,  particle: 'grass' },
-    Cloudy:       { name: 'Cloudy',       icon: '☁', hasParticles: false },
-    PartlyCloudy: { name: 'Partly Cloudy',icon: '⛅', hasParticles: false },
+    Cloudy:       { name: 'Cloudy',       icon: '☁', hasParticles: true,  particle: 'sparse' },
+    PartlyCloudy: { name: 'Partly Cloudy',icon: '⛅', hasParticles: true,  particle: 'sparse' },
     Rain:         { name: 'Rain',         icon: '🌧', hasParticles: true,  particle: 'rain' },
     Thunderstorm: { name: 'Thunderstorm', icon: '⛈', hasParticles: true,  particle: 'thunder' },
     Snow:         { name: 'Snow',         icon: '🌨', hasParticles: true,  particle: 'snow' },
-    Fog:          { name: 'Fog',          icon: '🌫', hasParticles: false },
+    Fog:          { name: 'Fog',          icon: '🌫', hasParticles: true,  particle: 'sparse' },
     Windy:        { name: 'Windy',        icon: '💨', hasParticles: true,  particle: 'wind' },
     Lava:         { name: 'Lava',         icon: '🌋', hasParticles: true,  particle: 'lava' }
   };
@@ -191,7 +191,11 @@
       '<div class="map-modal__inner" role="dialog" aria-label="Middle-earth map">' +
         '<div class="map-modal__header">' +
           '<h3 class="map-modal__title">Ennorath | 中土地图</h3>' +
-          '<button class="map-modal__close" aria-label="关闭">×</button>' +
+          '<div class="map-modal__tools">' +
+            '<span class="map-readout" aria-live="polite"></span>' +
+            '<button class="map-grid-toggle" type="button" title="Toggle coordinate grid (G)">网格</button>' +
+            '<button class="map-modal__close" aria-label="关闭">×</button>' +
+          '</div>' +
         '</div>' +
         '<div class="map-modal__body">' +
           buildMapSVG() +
@@ -203,9 +207,103 @@
     });
     modal.querySelector('.map-modal__close').addEventListener('click', closeMapModal);
     document.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape' && modal.classList.contains('open')) closeMapModal();
+      if (!modal.classList.contains('open')) return;
+      if (e.key === 'Escape') closeMapModal();
+      else if (e.key === 'g' || e.key === 'G') toggleGrid(modal);
     });
+    modal.querySelector('.map-grid-toggle').addEventListener('click', function () {
+      toggleGrid(modal);
+    });
+    attachMapProbe(modal);
     return modal;
+  }
+
+  function toggleGrid(modal) {
+    var svg = modal.querySelector('.map-svg');
+    var existing = svg.querySelector('#map-grid');
+    if (existing) {
+      existing.parentNode.removeChild(existing);
+      modal.querySelector('.map-grid-toggle').classList.remove('is-active');
+    } else {
+      svg.insertAdjacentHTML('beforeend', buildMapGrid());
+      modal.querySelector('.map-grid-toggle').classList.add('is-active');
+    }
+  }
+
+  function buildMapGrid() {
+    var minor = '', major = '', labels = '';
+    // vertical lines every 5% (x)
+    for (var vx = 0; vx <= 100; vx += 5) {
+      var xPx = vx * MAP_VBW / 100;
+      var isMajor = vx % 10 === 0;
+      (isMajor ? function () { major += '<line x1="' + xPx + '" y1="0" x2="' + xPx + '" y2="' + MAP_VBH + '"/>'; }
+               : function () { minor += '<line x1="' + xPx + '" y1="0" x2="' + xPx + '" y2="' + MAP_VBH + '"/>'; })();
+      if (isMajor) {
+        labels += '<text class="map-grid__label" x="' + (xPx + 3) + '" y="14">' + vx + '</text>';
+      }
+    }
+    // horizontal lines every 5% (y)
+    for (var vy = 0; vy <= 100; vy += 5) {
+      var yPx = vy * MAP_VBH / 100;
+      var isMajorY = vy % 10 === 0;
+      (isMajorY ? function () { major += '<line x1="0" y1="' + yPx + '" x2="' + MAP_VBW + '" y2="' + yPx + '"/>'; }
+                : function () { minor += '<line x1="0" y1="' + yPx + '" x2="' + MAP_VBW + '" y2="' + yPx + '"/>'; })();
+      if (isMajorY) {
+        labels += '<text class="map-grid__label" x="3" y="' + (yPx + 12) + '">' + vy + '</text>';
+      }
+    }
+    return (
+      '<g id="map-grid" pointer-events="none">' +
+        '<g class="map-grid__minor">' + minor + '</g>' +
+        '<g class="map-grid__major">' + major + '</g>' +
+        labels +
+      '</g>'
+    );
+  }
+
+  function attachMapProbe(modal) {
+    var svg = modal.querySelector('.map-svg');
+    var readout = modal.querySelector('.map-readout');
+
+    function toPercent(evt) {
+      var pt = svg.createSVGPoint();
+      pt.x = evt.clientX;
+      pt.y = evt.clientY;
+      var m = svg.getScreenCTM();
+      if (!m) return null;
+      var loc = pt.matrixTransform(m.inverse());
+      var xp = loc.x / MAP_VBW * 100;
+      var yp = loc.y / MAP_VBH * 100;
+      return { x: xp, y: yp };
+    }
+
+    svg.addEventListener('pointermove', function (e) {
+      var p = toPercent(e);
+      if (!p) return;
+      readout.textContent = 'x: ' + p.x.toFixed(1) + '  y: ' + p.y.toFixed(1);
+    });
+    svg.addEventListener('pointerleave', function () {
+      readout.textContent = '';
+    });
+    svg.addEventListener('click', function (e) {
+      // Only if the click is not on a city marker
+      var isCity = e.target.closest && e.target.closest('.map-city');
+      if (isCity) return;
+      var p = toPercent(e);
+      if (!p) return;
+      var snippet = '{ x: ' + p.x.toFixed(1) + ', y: ' + p.y.toFixed(1) + ' }';
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(snippet).then(function () {
+          readout.textContent = 'copied: ' + snippet;
+        }, function () {
+          console.log('map coords:', snippet);
+          readout.textContent = 'console: ' + snippet;
+        });
+      } else {
+        console.log('map coords:', snippet);
+        readout.textContent = 'console: ' + snippet;
+      }
+    });
   }
 
   // viewBox roughly matches the reference map aspect ratio (1656:1932).
@@ -313,6 +411,9 @@
     var maxWaterLevel = 55;
     var splashes = [];
     var grassBlades = [];
+    var flowers = [];
+    var trees = [];
+    var butterflies = [];
     var lavaLevel = 0;
     var maxLavaLevel = 65;
     var embers = [];
@@ -350,21 +451,103 @@
       particles.push(createParticle(type, true));
     }
 
-    if (type === 'grass') {
-      var n = 30 + Math.floor(canvas.width / 24);
-      for (var gi = 0; gi < n; gi++) {
+    function createButterfly() {
+      var side = Math.random() < 0.5 ? -1 : 1;
+      return {
+        x: side > 0 ? -20 : canvas.width + 20,
+        y: canvas.height * (0.35 + Math.random() * 0.4),
+        vx: side * (0.4 + Math.random() * 0.7),
+        bobPhase: Math.random() * Math.PI * 2,
+        bobSpd: 0.025 + Math.random() * 0.025,
+        bobAmp: 6 + Math.random() * 10,
+        wingPhase: Math.random() * Math.PI * 2,
+        wingSpd: 0.35 + Math.random() * 0.2,
+        size: 4 + Math.random() * 3,
+        hue: [340, 45, 200, 280, 20, 320][Math.floor(Math.random() * 6)]
+      };
+    }
+
+    if (type === 'grass' || type === 'sparse') {
+      var isFull = (type === 'grass');
+      var density = isFull ? 1.0 : 0.35;
+      var growMult = isFull ? 1.0 : 0.4;
+
+      var bladeCount = Math.floor((30 + canvas.width / 24) * density);
+      for (var gi = 0; gi < bladeCount; gi++) {
+        var bladeLeaves = [];
+        // 60-80% chance of a lower side leaf
+        if (Math.random() < 0.75) {
+          bladeLeaves.push({
+            at: 0.4 + Math.random() * 0.15,
+            side: Math.random() < 0.5 ? -1 : 1,
+            len: 4 + Math.random() * 3.5,
+            curve: 0.5 + Math.random() * 0.4
+          });
+        }
+        // 50% chance of a second higher side leaf
+        if (Math.random() < 0.55) {
+          bladeLeaves.push({
+            at: 0.68 + Math.random() * 0.12,
+            side: Math.random() < 0.5 ? -1 : 1,
+            len: 3 + Math.random() * 3,
+            curve: 0.4 + Math.random() * 0.3
+          });
+        }
         grassBlades.push({
           x: Math.random() * canvas.width,
           target: 22 + Math.random() * 40,
           current: 0,
-          growSpeed: 0.06 + Math.random() * 0.08,
+          growSpeed: (0.06 + Math.random() * 0.08) * growMult,
           swayPhase: Math.random() * Math.PI * 2,
           swayAmp: 1.5 + Math.random() * 2,
           lean: (Math.random() - 0.5) * 0.35,
           hue: 90 + Math.random() * 40,
           sat: 45 + Math.random() * 20,
-          light: 38 + Math.random() * 15
+          light: 38 + Math.random() * 15,
+          leaves: bladeLeaves,
+          tipStyle: ['fork','seed','thin','fork'][Math.floor(Math.random() * 4)]
         });
+      }
+
+      var flowerCount = Math.floor((6 + canvas.width / 260) * density);
+      var flowerHues = [340, 45, 280, 15, 200, 320];
+      for (var fi = 0; fi < flowerCount; fi++) {
+        flowers.push({
+          x: Math.random() * canvas.width,
+          target: 3 + Math.random() * 2.5,
+          current: 0,
+          stemHeight: 22 + Math.random() * 20,
+          stemCurrent: 0,
+          growSpeed: (0.08 + Math.random() * 0.06) * growMult,
+          hue: flowerHues[Math.floor(Math.random() * flowerHues.length)],
+          swayPhase: Math.random() * Math.PI * 2
+        });
+      }
+
+      if (isFull) {
+        var treeCount = 2 + Math.floor(canvas.width / 640);
+        for (var ti = 0; ti < treeCount; ti++) {
+          trees.push({
+            x: 60 + Math.random() * (canvas.width - 120),
+            target: 58 + Math.random() * 42,
+            current: 0,
+            growSpeed: 0.03 + Math.random() * 0.025,
+            trunkHue: 22 + Math.random() * 14,
+            canopyHue: 90 + Math.random() * 40,
+            blobs: [
+              { dx: 0,   dy: -8, r: 22 },
+              { dx: -14, dy: 2,  r: 16 },
+              { dx: 14,  dy: 2,  r: 16 },
+              { dx: -7,  dy: -16,r: 14 },
+              { dx: 8,   dy: -16,r: 14 }
+            ],
+            swayPhase: Math.random() * Math.PI * 2
+          });
+        }
+        var bcCount = 2 + Math.floor(Math.random() * 2);
+        for (var bfi = 0; bfi < bcCount; bfi++) {
+          butterflies.push(createButterfly());
+        }
       }
     }
 
@@ -529,18 +712,183 @@
         var baseY = canvas.height;
         var topX = bl.x + sway;
         var topY = canvas.height - bl.current;
+        var midX = bl.x + sway * 0.5;
+        var midY = baseY - bl.current * 0.55;
+
+        var color = 'hsla(' + bl.hue + ',' + bl.sat + '%,' + bl.light + '%,0.82)';
+        var deep = 'hsla(' + bl.hue + ',' + bl.sat + '%,' + Math.max(20, bl.light - 12) + '%,0.85)';
+
         ctx.beginPath();
         ctx.moveTo(bl.x, baseY);
-        ctx.quadraticCurveTo(
-          bl.x + sway * 0.5,
-          baseY - bl.current * 0.55,
-          topX,
-          topY
-        );
-        ctx.strokeStyle = 'hsla(' + bl.hue + ',' + bl.sat + '%,' + bl.light + '%,0.78)';
+        ctx.quadraticCurveTo(midX, midY, topX, topY);
+        ctx.strokeStyle = color;
         ctx.lineWidth = 1.4;
         ctx.lineCap = 'round';
         ctx.stroke();
+
+        var progress = bl.current / bl.target;
+        for (var li = 0; li < bl.leaves.length; li++) {
+          var leaf = bl.leaves[li];
+          if (progress < leaf.at) continue;
+          var q = leaf.at;
+          var qx = (1 - q) * (1 - q) * bl.x + 2 * (1 - q) * q * midX + q * q * topX;
+          var qy = (1 - q) * (1 - q) * baseY + 2 * (1 - q) * q * midY + q * q * topY;
+          var appear = Math.min(1, (progress - leaf.at) / 0.12);
+          var lenNow = leaf.len * appear;
+          var dirX = leaf.side * lenNow;
+          var dirY = -lenNow * leaf.curve;
+          var endX = qx + dirX;
+          var endY = qy + dirY;
+          var ctrlX = qx + dirX * 0.45;
+          var ctrlY = qy + dirY * 1.4;
+          ctx.beginPath();
+          ctx.moveTo(qx, qy);
+          ctx.quadraticCurveTo(ctrlX, ctrlY, endX, endY);
+          ctx.strokeStyle = deep;
+          ctx.lineWidth = 1;
+          ctx.stroke();
+        }
+
+        if (progress >= 0.9) {
+          if (bl.tipStyle === 'fork') {
+            var forkAppear = Math.min(1, (progress - 0.9) / 0.1);
+            var forkLen = 4 * forkAppear;
+            ctx.strokeStyle = color;
+            ctx.lineWidth = 1;
+            ctx.lineCap = 'round';
+            ctx.beginPath();
+            ctx.moveTo(topX, topY);
+            ctx.lineTo(topX - forkLen * 0.7, topY - forkLen);
+            ctx.moveTo(topX, topY);
+            ctx.lineTo(topX + forkLen * 0.7, topY - forkLen);
+            ctx.stroke();
+          } else if (bl.tipStyle === 'seed') {
+            ctx.fillStyle = deep;
+            ctx.beginPath();
+            ctx.ellipse(topX, topY - 2, 1.3, 2.2, 0, 0, Math.PI * 2);
+            ctx.fill();
+          }
+        }
+      }
+    }
+
+    function drawFlowers() {
+      var t = performance.now() / 1000;
+      for (var f = 0; f < flowers.length; f++) {
+        var fl = flowers[f];
+        if (fl.stemCurrent < fl.stemHeight) fl.stemCurrent += fl.growSpeed * 3;
+        if (fl.stemCurrent >= fl.stemHeight * 0.85 && fl.current < fl.target) {
+          fl.current += fl.growSpeed * 0.5;
+        }
+        var sway = Math.sin(t * 0.9 + fl.swayPhase) * 1.4;
+        var stemBase = canvas.height;
+        var stemTop = canvas.height - fl.stemCurrent;
+        ctx.strokeStyle = 'hsla(100,50%,32%,0.85)';
+        ctx.lineWidth = 1;
+        ctx.beginPath();
+        ctx.moveTo(fl.x, stemBase);
+        ctx.quadraticCurveTo(
+          fl.x + sway * 0.5, stemBase - fl.stemCurrent * 0.5,
+          fl.x + sway, stemTop
+        );
+        ctx.stroke();
+        if (fl.current > 0.4) {
+          var cx = fl.x + sway;
+          var cy = stemTop;
+          var r = fl.current;
+          for (var pi = 0; pi < 5; pi++) {
+            var ang = pi * (Math.PI * 2 / 5) - Math.PI / 2;
+            ctx.save();
+            ctx.translate(cx + Math.cos(ang) * r * 0.7, cy + Math.sin(ang) * r * 0.7);
+            ctx.rotate(ang);
+            ctx.fillStyle = 'hsla(' + fl.hue + ',78%,68%,0.92)';
+            ctx.beginPath();
+            ctx.ellipse(0, 0, r * 0.9, r * 0.55, 0, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.restore();
+          }
+          ctx.fillStyle = 'hsla(50,85%,55%,1)';
+          ctx.beginPath();
+          ctx.arc(cx, cy, r * 0.38, 0, Math.PI * 2);
+          ctx.fill();
+        }
+      }
+    }
+
+    function drawTrees() {
+      var t = performance.now() / 1000;
+      for (var tr = 0; tr < trees.length; tr++) {
+        var tree = trees[tr];
+        if (tree.current < tree.target) tree.current += tree.growSpeed;
+        var h = tree.current;
+        if (h < 3) continue;
+        var sway = Math.sin(t * 0.55 + tree.swayPhase) * 0.9;
+        var baseY = canvas.height;
+        var topX = tree.x + sway;
+        var topY = baseY - h;
+        ctx.strokeStyle = 'hsla(' + tree.trunkHue + ',45%,26%,0.92)';
+        ctx.lineWidth = 5;
+        ctx.lineCap = 'round';
+        ctx.beginPath();
+        ctx.moveTo(tree.x, baseY);
+        ctx.quadraticCurveTo(tree.x + sway * 0.4, baseY - h * 0.6, topX, topY);
+        ctx.stroke();
+        var canopyScale = Math.min(1, h / tree.target);
+        var canopyR = Math.min(h * 0.55, 30) * canopyScale;
+        if (canopyR > 4) {
+          var s = canopyR / 22;
+          for (var bi = 0; bi < tree.blobs.length; bi++) {
+            var blob = tree.blobs[bi];
+            ctx.fillStyle = 'hsla(' + tree.canopyHue + ',55%,30%,0.9)';
+            ctx.beginPath();
+            ctx.arc(topX + blob.dx * s, topY + blob.dy * s, blob.r * s, 0, Math.PI * 2);
+            ctx.fill();
+          }
+          for (var bi2 = 0; bi2 < 3; bi2++) {
+            ctx.fillStyle = 'hsla(' + tree.canopyHue + ',60%,44%,0.55)';
+            ctx.beginPath();
+            ctx.arc(topX + (bi2 - 1) * 8 * s, topY - 8 * s, 5 * s, 0, Math.PI * 2);
+            ctx.fill();
+          }
+        }
+      }
+    }
+
+    function drawButterflies() {
+      for (var bi = butterflies.length - 1; bi >= 0; bi--) {
+        var bt = butterflies[bi];
+        bt.x += bt.vx;
+        bt.bobPhase += bt.bobSpd;
+        bt.wingPhase += bt.wingSpd;
+        var y = bt.y + Math.sin(bt.bobPhase) * bt.bobAmp;
+        var wingScale = Math.abs(Math.sin(bt.wingPhase)) * 0.7 + 0.3;
+        var dir = bt.vx > 0 ? 1 : -1;
+        ctx.save();
+        ctx.translate(bt.x, y);
+        ctx.scale(dir, 1);
+        ctx.fillStyle = 'rgba(30,22,18,0.9)';
+        ctx.beginPath();
+        ctx.ellipse(0, 0, 1, bt.size * 0.55, 0, 0, Math.PI * 2);
+        ctx.fill();
+        var wc = 'hsla(' + bt.hue + ',78%,62%,0.88)';
+        var wd = 'hsla(' + bt.hue + ',78%,45%,0.92)';
+        for (var ws = -1; ws <= 1; ws += 2) {
+          ctx.fillStyle = wc;
+          ctx.beginPath();
+          ctx.ellipse(ws * bt.size * wingScale * 0.7, -bt.size * 0.35,
+            bt.size * wingScale * 0.9, bt.size * 0.7, 0, 0, Math.PI * 2);
+          ctx.fill();
+          ctx.fillStyle = wd;
+          ctx.beginPath();
+          ctx.ellipse(ws * bt.size * wingScale * 0.6, bt.size * 0.3,
+            bt.size * wingScale * 0.65, bt.size * 0.5, 0, 0, Math.PI * 2);
+          ctx.fill();
+        }
+        ctx.restore();
+        if ((bt.vx > 0 && bt.x > canvas.width + 40) ||
+            (bt.vx < 0 && bt.x < -40)) {
+          butterflies[bi] = createButterfly();
+        }
       }
     }
 
@@ -778,8 +1126,11 @@
         drawSplashes();
       } else if (type === 'snow') {
         drawSnowPile();
-      } else if (type === 'grass') {
+      } else if (type === 'grass' || type === 'sparse') {
+        drawTrees();
         drawGrass();
+        drawFlowers();
+        drawButterflies();
       } else if (type === 'lava') {
         if (lavaLevel < maxLavaLevel) lavaLevel += 0.028;
         drawLava();

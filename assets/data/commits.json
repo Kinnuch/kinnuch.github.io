@@ -1,5 +1,19 @@
 [
   {
+    "hash": "a5a3b2ad35a14a16db6eb9eb5fe9db09c5d28ced",
+    "short": "a5a3b2a",
+    "date": "2026-07-13T19:33:57+08:00",
+    "author": "wuyichen",
+    "msg": "update cities' location"
+  },
+  {
+    "hash": "9961aa7d7c380ce067c6d5313dd24f6759681db9",
+    "short": "9961aa7",
+    "date": "2026-07-13T10:19:33Z",
+    "author": "github-actions[bot]",
+    "msg": "chore: refresh commits.json [skip ci]"
+  },
+  {
     "hash": "41307a024b3ea0faa0e478bde4608ac325b4565b",
     "short": "41307a0",
     "date": "2026-07-13T18:19:06+08:00",

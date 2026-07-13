@@ -1,5 +1,19 @@
 [
   {
+    "hash": "89537ddd7ae568e09ef353a5bccab9a042dba3ec",
+    "short": "89537dd",
+    "date": "2026-07-13T16:06:57+08:00",
+    "author": "Kinnuch",
+    "msg": "add weather map, lava biome, and ground interactions"
+  },
+  {
+    "hash": "1cf7022d6f7e0d653d4b4d6fe91df09b6566a32c",
+    "short": "1cf7022",
+    "date": "2026-06-25T02:51:48Z",
+    "author": "github-actions[bot]",
+    "msg": "chore: refresh commits.json [skip ci]"
+  },
+  {
     "hash": "6e44364d6ed83fd54b928b0078959f1435b4d4af",
     "short": "6e44364",
     "date": "2026-06-25T10:50:45+08:00",

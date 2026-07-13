@@ -37,25 +37,25 @@
   // x/y are percentages on the SVG map (viewBox 1000x800).
   // x/y are percentages (0-100) relative to the reference map image.
   var cities = [
-    { name: 'Mithlond',    x: 15, y: 27 },
-    { name: 'Annúminas',   x: 22, y: 20 },
-    { name: 'Fornost',     x: 27, y: 20 },
-    { name: 'Hobbiton',    x: 25, y: 28 },
-    { name: 'Bree',        x: 32, y: 29 },
-    { name: 'Rivendell',   x: 42, y: 30 },
-    { name: 'Erebor',      x: 78, y: 25 },
-    { name: 'Dale',        x: 80, y: 23 },
-    { name: 'Lothlórien',  x: 55, y: 48 },
-    { name: 'Isengard',    x: 48, y: 63 },
-    { name: 'Edoras',      x: 55, y: 68 },
-    { name: 'Minas Tirith',x: 68, y: 70 },
-    { name: 'Osgiliath',   x: 71, y: 71 },
-    { name: 'Minas Morgul',x: 74, y: 72, region: 'mordor' },
-    { name: 'Cirith Ungol',x: 76, y: 68, region: 'mordor' },
-    { name: 'Orodruin',    x: 80, y: 71, region: 'mordor' },
-    { name: 'Barad-dûr',   x: 85, y: 70, region: 'mordor' },
-    { name: 'Dol Amroth',  x: 57, y: 83 },
-    { name: 'Pelargir',    x: 68, y: 78 }
+    { name: 'Mithlond',    x: 17, y: 30 },
+    { name: 'Annúminas',   x: 28, y: 24 },
+    { name: 'Fornost',     x: 31, y: 23 },
+    { name: 'Hobbiton',    x: 32, y: 33 },
+    { name: 'Bree',        x: 39, y: 32 },
+    { name: 'Rivendell',   x: 51, y: 33 },
+    { name: 'Dale',        x: 79, y: 26 },
+    { name: 'Erebor',      x: 80, y: 30 },
+    { name: 'Lothlórien',  x: 62, y: 50 },
+    { name: 'Isengard',    x: 51, y: 63 },
+    { name: 'Edoras',      x: 60, y: 71 },
+    { name: 'Minas Tirith',x: 70, y: 76 },
+    { name: 'Osgiliath',   x: 72, y: 76 },
+    { name: 'Minas Morgul',x: 74, y: 77, region: 'mordor' },
+    { name: 'Cirith Ungol',x: 74, y: 74, region: 'mordor' },
+    { name: 'Orodruin',    x: 79, y: 77, region: 'mordor' },
+    { name: 'Barad-dûr',   x: 83, y: 77, region: 'mordor' },
+    { name: 'Dol Amroth',  x: 63, y: 91 },
+    { name: 'Pelargir',    x: 70, y: 87 }
   ];
 
   var weatherTypes = {
@@ -226,16 +226,20 @@
 
   // Per-city label overrides for the crowded Mordor/Gondor cluster.
   var LABEL_OVERRIDE = {
-    'Minas Morgul': { anchor: 'start', dx: 8,  dy: 2 },
-    'Cirith Ungol': { anchor: 'end',   dx: -8, dy: -2 },
-    'Orodruin':     { anchor: 'start', dx: 8,  dy: 14 },
-    'Barad-dûr':    { anchor: 'start', dx: 8,  dy: -2 },
-    'Osgiliath':    { anchor: 'start', dx: 8,  dy: 14 },
-    'Minas Tirith': { anchor: 'end',   dx: -8, dy: -2 },
-    'Dale':         { anchor: 'end',   dx: -8, dy: -2 },
-    'Erebor':       { anchor: 'end',   dx: -8, dy: 14 },
-    'Annúminas':    { anchor: 'end',   dx: -8, dy: -2 },
-    'Fornost':      { anchor: 'start', dx: 8,  dy: -2 }
+    'Minas Tirith': { anchor: 'end',    dx: -10, dy: -6 },
+    'Osgiliath':    { anchor: 'middle', dx: 0,   dy: 22 },
+    'Minas Morgul': { anchor: 'start',  dx: 10,  dy: 18 },
+    'Cirith Ungol': { anchor: 'end',    dx: -10, dy: -6 },
+    'Orodruin':     { anchor: 'middle', dx: 0,   dy: -10 },
+    'Barad-dûr':    { anchor: 'start',  dx: 10,  dy: 6 },
+    'Dale':         { anchor: 'end',    dx: -10, dy: -6 },
+    'Erebor':       { anchor: 'start',  dx: 10,  dy: 6 },
+    'Annúminas':    { anchor: 'end',    dx: -10, dy: -6 },
+    'Fornost':      { anchor: 'start',  dx: 10,  dy: -6 },
+    'Hobbiton':     { anchor: 'end',    dx: -10, dy: 6 },
+    'Bree':         { anchor: 'start',  dx: 10,  dy: -6 },
+    'Isengard':     { anchor: 'start',  dx: 10,  dy: -6 },
+    'Edoras':       { anchor: 'start',  dx: 10,  dy: 6 }
   };
 
   function renderMapCities(modal) {

@@ -1,5 +1,19 @@
 [
   {
+    "hash": "fda4e286df5693766e665054414d0cd1cfa3c35a",
+    "short": "fda4e28",
+    "date": "2026-07-13T16:57:13+08:00",
+    "author": "Kinnuch",
+    "msg": "update MiddleEarth map file"
+  },
+  {
+    "hash": "3f5794e059edc5d7af2397d9985d778e6ab535a4",
+    "short": "3f5794e",
+    "date": "2026-07-13T08:27:15Z",
+    "author": "github-actions[bot]",
+    "msg": "chore: refresh commits.json [skip ci]"
+  },
+  {
     "hash": "5fc852a361dbad7d00acf1b467a558bff20328a6",
     "short": "5fc852a",
     "date": "2026-07-13T16:07:50+08:00",

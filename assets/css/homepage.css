@@ -129,10 +129,107 @@
   font-family: 'PT Sans Narrow', sans-serif;
   font-weight: 400;
   text-transform: none;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.15s;
 }
+
+.me-weather:hover { background: rgba(0,0,0,0.12); transform: translateY(-1px); }
+[data-theme="dark"] .me-weather:hover { background: rgba(255,255,255,0.18); }
 
 [data-theme="dark"] .me-weather {
   background: rgba(255,255,255,0.1);
+}
+
+/* ===== Middle-earth map modal ===== */
+.map-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background: rgba(10, 14, 22, 0.55);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+.map-modal.open { display: flex; opacity: 1; }
+.map-modal__inner {
+  position: relative;
+  width: min(92vw, 1200px);
+  max-height: 92vh;
+  background: rgba(255,255,255,0.94);
+  border-radius: 14px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.45);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+[data-theme="dark"] .map-modal__inner {
+  background: rgba(26, 28, 36, 0.94);
+  color: #e6e6e6;
+}
+.map-modal__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 18px;
+  border-bottom: 1px solid rgba(127,127,127,0.2);
+}
+.map-modal__title { font-size: 15px; font-weight: 600; margin: 0; }
+.map-modal__close {
+  background: none; border: none;
+  font-size: 22px; line-height: 1;
+  cursor: pointer; color: inherit;
+  padding: 4px 10px; border-radius: 6px;
+}
+.map-modal__close:hover { background: rgba(127,127,127,0.18); }
+.map-modal__body {
+  flex: 1;
+  overflow: auto;
+  padding: 10px;
+}
+.map-svg {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 10px;
+  background: #d9c9a3;
+}
+[data-theme="dark"] .map-svg { background: #2a2620; }
+
+.map-city {
+  cursor: pointer;
+  transition: transform 0.15s;
+  transform-origin: center;
+  transform-box: fill-box;
+}
+.map-city:hover { transform: scale(1.15); }
+.map-city__dot { fill: #c53030; stroke: #fff; stroke-width: 1.4; }
+.map-city--mordor .map-city__dot { fill: #7a1a1a; }
+.map-city--active .map-city__dot { fill: #ffd54a; stroke: #7a5c00; }
+.map-city__label {
+  font: 600 11px/1 'PT Sans Narrow', sans-serif;
+  fill: #2a2a2a;
+  paint-order: stroke;
+  stroke: rgba(255,255,255,0.85);
+  stroke-width: 3;
+}
+[data-theme="dark"] .map-city__label {
+  fill: #f0f0f0;
+  stroke: rgba(0,0,0,0.75);
+}
+.map-city__meta {
+  font: 400 10px/1 'PT Sans Narrow', sans-serif;
+  fill: #4a4a4a;
+  paint-order: stroke;
+  stroke: rgba(255,255,255,0.85);
+  stroke-width: 3;
+}
+[data-theme="dark"] .map-city__meta {
+  fill: #cccccc;
+  stroke: rgba(0,0,0,0.75);
 }
 
 /* Weather particles canvas */

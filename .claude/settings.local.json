@@ -16,7 +16,12 @@
       "Bash(awk 'NR==423' \"c:\\\\Users\\\\Administrator\\\\Documents\\\\GitHub\\\\kinnuch.github.io\\\\assets\\\\css\\\\main.css\")",
       "Bash(python -c ' *)",
       "Bash(node --check \"c:\\\\Users\\\\Administrator\\\\Documents\\\\GitHub\\\\kinnuch.github.io\\\\assets\\\\js\\\\calendar.js\")",
-      "Bash(node --check \"c:\\\\Users\\\\Administrator\\\\Documents\\\\GitHub\\\\kinnuch.github.io\\\\assets\\\\js\\\\homepage.js\")"
+      "Bash(node --check \"c:\\\\Users\\\\Administrator\\\\Documents\\\\GitHub\\\\kinnuch.github.io\\\\assets\\\\js\\\\homepage.js\")",
+      "Bash(ls -la /c/Users/Administrator/Downloads/ | grep -i \"第一纪元\\\\|复数\\\\|.pptx\\\\|.ppt\")",
+      "Read(//c/Users/Administrator/Downloads//**)",
+      "Bash(git -C \"c:\\\\Users\\\\Administrator\\\\Documents\\\\GitHub\\\\kinnuch.github.io\" status --short)",
+      "Bash(git -C \"c:\\\\Users\\\\Administrator\\\\Documents\\\\GitHub\\\\kinnuch.github.io\" log --oneline -10)",
+      "Bash(git -C \"c:\\\\Users\\\\Administrator\\\\Documents\\\\GitHub\\\\kinnuch.github.io\" diff --stat HEAD -- assets/js/homepage.js assets/css/homepage.css)"
     ],
     "additionalDirectories": [
       "\\tmp"

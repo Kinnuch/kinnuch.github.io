@@ -34,89 +34,514 @@
   }
 
   // === Middle-earth Weather ===
-  var locations = [
-    'Minas Tirith', 'Rivendell', 'Hobbiton', 'Lothlórien',
-    'Edoras', 'Isengard', 'Dol Amroth', 'Bree',
-    'Osgiliath', 'Pelargir', 'Erebor', 'Dale',
-    'Mithlond', 'Annúminas', 'Fornost'
+  // x/y are percentages on the SVG map (viewBox 1000x800).
+  var cities = [
+    { name: 'Mithlond',    x: 12, y: 34 },
+    { name: 'Annúminas',   x: 20, y: 26 },
+    { name: 'Fornost',     x: 24, y: 22 },
+    { name: 'Hobbiton',    x: 22, y: 33 },
+    { name: 'Bree',        x: 28, y: 33 },
+    { name: 'Rivendell',   x: 44, y: 30 },
+    { name: 'Erebor',      x: 74, y: 20 },
+    { name: 'Dale',        x: 76, y: 18 },
+    { name: 'Lothlórien',  x: 52, y: 43 },
+    { name: 'Isengard',    x: 44, y: 52 },
+    { name: 'Edoras',      x: 52, y: 60 },
+    { name: 'Minas Tirith',x: 62, y: 63 },
+    { name: 'Osgiliath',   x: 65, y: 62 },
+    { name: 'Minas Morgul',x: 70, y: 61, region: 'mordor' },
+    { name: 'Cirith Ungol',x: 73, y: 57, region: 'mordor' },
+    { name: 'Orodruin',    x: 78, y: 58, region: 'mordor' },
+    { name: 'Barad-dûr',   x: 84, y: 58, region: 'mordor' },
+    { name: 'Dol Amroth',  x: 54, y: 72 },
+    { name: 'Pelargir',    x: 63, y: 70 }
   ];
 
-  var weatherTypes = [
-    { name: 'Clear', icon: '☀', hasParticles: false },
-    { name: 'Cloudy', icon: '☁', hasParticles: false },
-    { name: 'Partly Cloudy', icon: '⛅', hasParticles: false },
-    { name: 'Rain', icon: '🌧', hasParticles: true, particle: 'rain' },
-    { name: 'Thunderstorm', icon: '⛈', hasParticles: true, particle: 'thunder' },
-    { name: 'Snow', icon: '🌨', hasParticles: true, particle: 'snow' },
-    { name: 'Fog', icon: '🌫', hasParticles: false },
-    { name: 'Windy', icon: '💨', hasParticles: false }
-  ];
+  var weatherTypes = {
+    Clear:        { name: 'Clear',        icon: '☀', hasParticles: true,  particle: 'grass' },
+    Cloudy:       { name: 'Cloudy',       icon: '☁', hasParticles: false },
+    PartlyCloudy: { name: 'Partly Cloudy',icon: '⛅', hasParticles: false },
+    Rain:         { name: 'Rain',         icon: '🌧', hasParticles: true,  particle: 'rain' },
+    Thunderstorm: { name: 'Thunderstorm', icon: '⛈', hasParticles: true,  particle: 'thunder' },
+    Snow:         { name: 'Snow',         icon: '🌨', hasParticles: true,  particle: 'snow' },
+    Fog:          { name: 'Fog',          icon: '🌫', hasParticles: false },
+    Windy:        { name: 'Windy',        icon: '💨', hasParticles: false },
+    Lava:         { name: 'Lava',         icon: '🌋', hasParticles: true,  particle: 'lava' }
+  };
+  var normalOrder = ['Clear','Cloudy','PartlyCloudy','Rain','Thunderstorm','Snow','Fog','Windy'];
+  var mordorOrder = ['Rain','Lava'];
 
   function seededRandom(seed) {
     var x = Math.sin(seed) * 10000;
     return x - Math.floor(x);
   }
 
-  function getMiddleEarthWeather() {
-    var now = new Date();
-    var daySeed = now.getFullYear() * 10000 + (now.getMonth()+1) * 100 + now.getDate();
-    var hourSeed = daySeed * 100 + Math.floor(now.getHours() / 3);
-
-    var locIdx = Math.floor(seededRandom(daySeed) * locations.length);
-    var worIdx = Math.floor(seededRandom(hourSeed + 1) * weatherTypes.length);
-
-    var month = now.getMonth();
-    if (month >= 11 || month <= 1) {
-      if (seededRandom(hourSeed + 2) > 0.5) worIdx = 5;
-    } else if (month >= 3 && month <= 5) {
-      if (seededRandom(hourSeed + 2) > 0.7) worIdx = 3;
+  function computeCityWeather(city, hourSeed, cityIdx) {
+    var s = hourSeed + cityIdx * 37;
+    var month = new Date().getMonth();
+    var key;
+    if (city.region === 'mordor') {
+      key = mordorOrder[Math.floor(seededRandom(s + 1) * mordorOrder.length)];
+    } else {
+      var idx = Math.floor(seededRandom(s + 1) * normalOrder.length);
+      key = normalOrder[idx];
+      if (month >= 11 || month <= 1) {
+        if (seededRandom(s + 2) > 0.5) key = 'Snow';
+      } else if (month >= 3 && month <= 5) {
+        if (seededRandom(s + 2) > 0.7) key = 'Rain';
+      }
     }
 
     var baseTemp = 15;
     if (month >= 5 && month <= 8) baseTemp = 25;
     else if (month >= 11 || month <= 1) baseTemp = 2;
     else if (month >= 2 && month <= 4) baseTemp = 12;
-    var temp = Math.round(baseTemp + (seededRandom(hourSeed + 3) - 0.5) * 14);
+    if (city.region === 'mordor') baseTemp += 8;
+    if (key === 'Lava') baseTemp = 45 + Math.floor(seededRandom(s + 4) * 20);
+    var temp = key === 'Lava'
+      ? baseTemp
+      : Math.round(baseTemp + (seededRandom(s + 3) - 0.5) * 14);
 
-    return {
-      location: locations[locIdx],
-      weather: weatherTypes[worIdx],
-      temp: temp
-    };
+    return { key: key, weather: weatherTypes[key], temp: temp };
+  }
+
+  function getHourSeed() {
+    var now = new Date();
+    var daySeed = now.getFullYear() * 10000 + (now.getMonth() + 1) * 100 + now.getDate();
+    return daySeed * 100 + Math.floor(now.getHours() / 3);
+  }
+
+  function getDefaultCity() {
+    var now = new Date();
+    var daySeed = now.getFullYear() * 10000 + (now.getMonth() + 1) * 100 + now.getDate();
+    return cities[Math.floor(seededRandom(daySeed) * cities.length)];
+  }
+
+  function readOverride() {
+    try {
+      var raw = sessionStorage.getItem('meWeatherOverride');
+      return raw ? JSON.parse(raw) : null;
+    } catch (e) { return null; }
+  }
+  function writeOverride(cityName) {
+    try { sessionStorage.setItem('meWeatherOverride', JSON.stringify({ city: cityName })); }
+    catch (e) {}
+  }
+
+  function currentSelection() {
+    var ov = readOverride();
+    var hourSeed = getHourSeed();
+    var city, cityIdx;
+    if (ov) {
+      for (var i = 0; i < cities.length; i++) {
+        if (cities[i].name === ov.city) { city = cities[i]; cityIdx = i; break; }
+      }
+    }
+    if (!city) {
+      var def = getDefaultCity();
+      for (var j = 0; j < cities.length; j++) {
+        if (cities[j].name === def.name) { city = cities[j]; cityIdx = j; break; }
+      }
+    }
+    var cw = computeCityWeather(city, hourSeed, cityIdx);
+    return { city: city, weather: cw.weather, temp: cw.temp };
   }
 
   var weatherEl = document.getElementById('me-weather');
-  if (weatherEl) {
-    var w = getMiddleEarthWeather();
-    weatherEl.textContent = w.weather.icon + ' ' + w.location + ' ' + w.temp + '°C';
-    weatherEl.title = w.weather.name + ' in ' + w.location;
+  var currentAnim = null;
 
-    if (w.weather.hasParticles) {
-      startWeatherParticles(w.weather.particle);
+  function applySelection() {
+    var sel = currentSelection();
+    if (weatherEl) {
+      weatherEl.textContent = sel.weather.icon + ' ' + sel.city.name + ' ' + sel.temp + '°C';
+      weatherEl.title = sel.weather.name + ' in ' + sel.city.name + ' — click for map';
     }
+    if (currentAnim && currentAnim.stop) currentAnim.stop();
+    currentAnim = sel.weather.hasParticles
+      ? startWeatherParticles(sel.weather.particle)
+      : null;
+  }
+
+  if (weatherEl) {
+    applySelection();
+    weatherEl.addEventListener('click', openMapModal);
+  }
+
+  // ===== Map modal =====
+  function openMapModal() {
+    var modal = document.getElementById('map-modal');
+    if (!modal) modal = buildMapModal();
+    renderMapCities(modal);
+    modal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeMapModal() {
+    var modal = document.getElementById('map-modal');
+    if (!modal) return;
+    modal.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  function buildMapModal() {
+    var modal = document.createElement('div');
+    modal.id = 'map-modal';
+    modal.className = 'map-modal';
+    modal.innerHTML =
+      '<div class="map-modal__inner" role="dialog" aria-label="Middle-earth map">' +
+        '<div class="map-modal__header">' +
+          '<h3 class="map-modal__title">Ennorath | 中土地图</h3>' +
+          '<button class="map-modal__close" aria-label="关闭">×</button>' +
+        '</div>' +
+        '<div class="map-modal__body">' +
+          buildMapSVG() +
+        '</div>' +
+      '</div>';
+    document.body.appendChild(modal);
+    modal.addEventListener('click', function (e) {
+      if (e.target === modal) closeMapModal();
+    });
+    modal.querySelector('.map-modal__close').addEventListener('click', closeMapModal);
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && modal.classList.contains('open')) closeMapModal();
+    });
+    return modal;
+  }
+
+  function buildMapSVG() {
+    // Stylised Middle-earth. viewBox coordinates match city x/y percentages *10.
+    return (
+      '<svg class="map-svg" viewBox="0 0 1000 800" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">' +
+        '<defs>' +
+          '<linearGradient id="sea" x1="0" x2="0" y1="0" y2="1">' +
+            '<stop offset="0" stop-color="#7fb0c9"/><stop offset="1" stop-color="#3a6b85"/></linearGradient>' +
+          '<linearGradient id="land" x1="0" x2="0" y1="0" y2="1">' +
+            '<stop offset="0" stop-color="#e0cfa1"/><stop offset="1" stop-color="#b39a68"/></linearGradient>' +
+          '<pattern id="mtn" width="18" height="14" patternUnits="userSpaceOnUse">' +
+            '<path d="M0 14 L9 2 L18 14 Z" fill="#6b5a3a" opacity="0.7"/></pattern>' +
+        '</defs>' +
+        '<rect width="1000" height="800" fill="url(#sea)"/>' +
+        // Main landmass
+        '<path d="M 60 120 Q 180 60 340 100 Q 500 80 620 140 Q 780 120 900 220 Q 960 340 920 500 Q 880 640 780 720 Q 620 780 480 740 Q 320 760 200 700 Q 90 620 70 460 Q 40 300 60 120 Z" fill="url(#land)"/>' +
+        // Forests
+        '<ellipse cx="500" cy="440" rx="60" ry="45" fill="#4a6f3a" opacity="0.55"/>' + // Lothlórien
+        '<ellipse cx="560" cy="360" rx="80" ry="55" fill="#3d5a2d" opacity="0.55"/>' + // Mirkwood
+        '<ellipse cx="220" cy="360" rx="60" ry="35" fill="#5a7040" opacity="0.4"/>' +  // Shire green
+        // Misty Mountains (north-south chain around x=430)
+        '<path d="M 400 180 Q 440 300 430 460 Q 420 520 440 580" stroke="url(#mtn)" stroke-width="26" fill="none" stroke-linecap="round"/>' +
+        // White Mountains (Gondor / Rohan border)
+        '<path d="M 480 620 Q 580 640 700 620" stroke="url(#mtn)" stroke-width="22" fill="none" stroke-linecap="round"/>' +
+        // Mordor (ash plain + volcano)
+        '<path d="M 680 500 L 890 480 L 890 640 L 700 660 Z" fill="#3a2a2a" opacity="0.85"/>' +
+        '<path d="M 680 500 L 890 480 L 890 640 L 700 660 Z" fill="none" stroke="#111" stroke-width="2" stroke-dasharray="4 3"/>' +
+        // Ered Lithui (Mordor north rim) + Ephel Dúath (west rim)
+        '<path d="M 680 500 L 890 480" stroke="url(#mtn)" stroke-width="20" fill="none"/>' +
+        '<path d="M 680 500 L 700 660" stroke="url(#mtn)" stroke-width="20" fill="none"/>' +
+        // Volcano marker (Orodruin)
+        '<circle cx="780" cy="580" r="26" fill="#7a1a1a" opacity="0.75"/>' +
+        '<circle cx="780" cy="580" r="14" fill="#ff8844" opacity="0.85"/>' +
+        // Anduin river
+        '<path d="M 580 200 Q 600 380 620 560 Q 630 680 640 740" stroke="#5a92b0" stroke-width="4" fill="none" opacity="0.85"/>' +
+        // City group placeholder
+        '<g id="map-cities"></g>' +
+      '</svg>'
+    );
+  }
+
+  function renderMapCities(modal) {
+    var svg = modal.querySelector('.map-svg');
+    var group = svg.querySelector('#map-cities');
+    group.innerHTML = '';
+    var hourSeed = getHourSeed();
+    var sel = currentSelection();
+    for (var i = 0; i < cities.length; i++) {
+      var c = cities[i];
+      var cw = computeCityWeather(c, hourSeed, i);
+      var px = c.x * 10, py = c.y * 10;
+      var isActive = c.name === sel.city.name;
+      var g = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+      g.setAttribute('class',
+        'map-city' +
+        (c.region === 'mordor' ? ' map-city--mordor' : '') +
+        (isActive ? ' map-city--active' : '')
+      );
+      g.setAttribute('data-city', c.name);
+      var offsetX = c.x > 60 ? -6 : 6;
+      var anchor = c.x > 60 ? 'end' : 'start';
+      g.innerHTML =
+        '<circle class="map-city__dot" cx="' + px + '" cy="' + py + '" r="5"/>' +
+        '<text class="map-city__label" x="' + (px + offsetX) + '" y="' + (py - 6) + '" text-anchor="' + anchor + '">' +
+          escapeXML(c.name) +
+        '</text>' +
+        '<text class="map-city__meta" x="' + (px + offsetX) + '" y="' + (py + 10) + '" text-anchor="' + anchor + '">' +
+          cw.weather.icon + ' ' + cw.temp + '°' +
+        '</text>';
+      g.addEventListener('click', pickCity);
+      group.appendChild(g);
+    }
+  }
+
+  function pickCity(e) {
+    var g = e.currentTarget;
+    var name = g.getAttribute('data-city');
+    writeOverride(name);
+    applySelection();
+    var modal = document.getElementById('map-modal');
+    if (modal) renderMapCities(modal);
+    closeMapModal();
+  }
+
+  function escapeXML(s) {
+    return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
   }
 
   // === Weather Particles ===
   function startWeatherParticles(type) {
+    var prev = document.getElementById('weather-particles');
+    if (prev) prev.parentNode.removeChild(prev);
+
     var canvas = document.createElement('canvas');
     canvas.id = 'weather-particles';
     document.body.appendChild(canvas);
     var ctx = canvas.getContext('2d');
     var particles = [];
+    var rafId = null;
+    var stopped = false;
+
+    var snowColW = 8;
+    var snowColumns = null;
+    var waterLevel = 0;
+    var maxWaterLevel = 55;
+    var splashes = [];
+    var grassBlades = [];
+    var lavaLevel = 0;
+    var maxLavaLevel = 65;
+    var embers = [];
 
     function resize() {
+      var oldW = canvas.width;
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
+      if (type === 'snow') {
+        var newLen = Math.ceil(canvas.width / snowColW);
+        if (!snowColumns) {
+          snowColumns = new Array(newLen);
+          for (var k = 0; k < newLen; k++) snowColumns[k] = 0;
+        } else if (snowColumns.length !== newLen) {
+          var oldArr = snowColumns;
+          var oldLen = oldArr.length;
+          snowColumns = new Array(newLen);
+          for (var k2 = 0; k2 < newLen; k2++) {
+            var src = Math.floor(k2 * oldLen / newLen);
+            snowColumns[k2] = oldArr[src] || 0;
+          }
+        }
+      }
     }
     resize();
     window.addEventListener('resize', resize);
 
-    var count = type === 'snow' ? 80 : type === 'rain' ? 150 : 100;
+    var count = type === 'snow' ? 80
+              : type === 'rain' ? 150
+              : type === 'thunder' ? 100
+              : type === 'lava' ? 110
+              : 0;
     for (var i = 0; i < count; i++) {
       particles.push(createParticle(type, true));
     }
 
+    if (type === 'grass') {
+      var n = 30 + Math.floor(canvas.width / 24);
+      for (var gi = 0; gi < n; gi++) {
+        grassBlades.push({
+          x: Math.random() * canvas.width,
+          target: 22 + Math.random() * 40,
+          current: 0,
+          growSpeed: 0.06 + Math.random() * 0.08,
+          swayPhase: Math.random() * Math.PI * 2,
+          swayAmp: 1.5 + Math.random() * 2,
+          lean: (Math.random() - 0.5) * 0.35,
+          hue: 90 + Math.random() * 40,
+          sat: 45 + Math.random() * 20,
+          light: 38 + Math.random() * 15
+        });
+      }
+    }
+
     var bolts = [];
+
+    function createSplash(x, y) {
+      var num = 3 + Math.floor(Math.random() * 3);
+      for (var k = 0; k < num; k++) {
+        splashes.push({
+          x: x + (Math.random() - 0.5) * 4,
+          y: y,
+          vx: (Math.random() - 0.5) * 3.5,
+          vy: -1.5 - Math.random() * 2.5,
+          life: 18,
+          maxLife: 18
+        });
+      }
+    }
+
+    function drawSplashes() {
+      for (var s = splashes.length - 1; s >= 0; s--) {
+        var sp = splashes[s];
+        sp.x += sp.vx;
+        sp.y += sp.vy;
+        sp.vy += 0.28;
+        sp.life--;
+        var a = sp.life / sp.maxLife;
+        ctx.fillStyle = 'rgba(174,194,224,' + (a * 0.75) + ')';
+        ctx.fillRect(sp.x, sp.y, 1.6, 1.6);
+        if (sp.life <= 0 || sp.y > canvas.height) splashes.splice(s, 1);
+      }
+    }
+
+    function drawWater() {
+      if (waterLevel < 0.4) return;
+      var baseY = canvas.height - waterLevel;
+      var t = performance.now() / 1000;
+      ctx.beginPath();
+      ctx.moveTo(0, canvas.height);
+      ctx.lineTo(0, baseY);
+      for (var x = 0; x <= canvas.width; x += 6) {
+        var wave = Math.sin(x * 0.018 + t * 1.8) * 1.4
+                 + Math.sin(x * 0.05 + t * 0.9) * 0.7;
+        ctx.lineTo(x, baseY + wave);
+      }
+      ctx.lineTo(canvas.width, canvas.height);
+      ctx.closePath();
+      var grad = ctx.createLinearGradient(0, baseY - 6, 0, canvas.height);
+      grad.addColorStop(0, 'rgba(120,150,200,0.55)');
+      grad.addColorStop(1, 'rgba(60,90,140,0.32)');
+      ctx.fillStyle = grad;
+      ctx.fill();
+      ctx.strokeStyle = 'rgba(210,225,255,0.28)';
+      ctx.lineWidth = 1;
+      ctx.beginPath();
+      for (var x2 = 0; x2 <= canvas.width; x2 += 6) {
+        var wave2 = Math.sin(x2 * 0.018 + t * 1.8) * 1.4
+                  + Math.sin(x2 * 0.05 + t * 0.9) * 0.7;
+        if (x2 === 0) ctx.moveTo(x2, baseY + wave2);
+        else ctx.lineTo(x2, baseY + wave2);
+      }
+      ctx.stroke();
+    }
+
+    function drawSnowPile() {
+      if (!snowColumns) return;
+      ctx.beginPath();
+      ctx.moveTo(0, canvas.height);
+      for (var c = 0; c < snowColumns.length; c++) {
+        var x = c * snowColW;
+        var h = snowColumns[c];
+        var left = snowColumns[c - 1];
+        var right = snowColumns[c + 1];
+        if (left === undefined) left = h;
+        if (right === undefined) right = h;
+        h = (left + h * 2 + right) / 4;
+        ctx.lineTo(x, canvas.height - h);
+      }
+      ctx.lineTo(canvas.width, canvas.height);
+      ctx.closePath();
+      var grad = ctx.createLinearGradient(0, canvas.height - 80, 0, canvas.height);
+      grad.addColorStop(0, 'rgba(255,255,255,0.94)');
+      grad.addColorStop(1, 'rgba(220,232,248,0.72)');
+      ctx.fillStyle = grad;
+      ctx.fill();
+      ctx.strokeStyle = 'rgba(255,255,255,0.7)';
+      ctx.lineWidth = 1;
+      ctx.stroke();
+    }
+
+    function spawnEmber(x, y) {
+      embers.push({
+        x: x + (Math.random() - 0.5) * 6,
+        y: y,
+        vx: (Math.random() - 0.5) * 0.8,
+        vy: -1.2 - Math.random() * 1.8,
+        life: 40 + Math.floor(Math.random() * 30),
+        maxLife: 60,
+        r: 1 + Math.random() * 1.4
+      });
+    }
+    function drawEmbers() {
+      for (var e = embers.length - 1; e >= 0; e--) {
+        var em = embers[e];
+        em.x += em.vx;
+        em.y += em.vy;
+        em.vy += 0.008;
+        em.life--;
+        var a = Math.max(0, em.life / em.maxLife);
+        ctx.beginPath();
+        ctx.arc(em.x, em.y, em.r, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(255,' + Math.floor(120 + a * 80) + ',60,' + (a * 0.9) + ')';
+        ctx.fill();
+        if (em.life <= 0) embers.splice(e, 1);
+      }
+    }
+    function drawLava() {
+      if (lavaLevel < 0.4) return;
+      var baseY = canvas.height - lavaLevel;
+      var t = performance.now() / 1000;
+      ctx.beginPath();
+      ctx.moveTo(0, canvas.height);
+      ctx.lineTo(0, baseY);
+      for (var x = 0; x <= canvas.width; x += 6) {
+        var wave = Math.sin(x * 0.02 + t * 1.4) * 1.6
+                 + Math.sin(x * 0.06 + t * 2.1) * 0.9;
+        ctx.lineTo(x, baseY + wave);
+      }
+      ctx.lineTo(canvas.width, canvas.height);
+      ctx.closePath();
+      var grad = ctx.createLinearGradient(0, baseY - 8, 0, canvas.height);
+      grad.addColorStop(0, 'rgba(255,180,60,0.92)');
+      grad.addColorStop(0.4, 'rgba(230,90,30,0.9)');
+      grad.addColorStop(1, 'rgba(120,20,10,0.85)');
+      ctx.fillStyle = grad;
+      ctx.fill();
+      // pulsing bright surface stroke
+      var pulse = 0.55 + Math.sin(t * 3) * 0.15;
+      ctx.strokeStyle = 'rgba(255,220,140,' + pulse + ')';
+      ctx.lineWidth = 1.4;
+      ctx.beginPath();
+      for (var x2 = 0; x2 <= canvas.width; x2 += 6) {
+        var wave2 = Math.sin(x2 * 0.02 + t * 1.4) * 1.6
+                  + Math.sin(x2 * 0.06 + t * 2.1) * 0.9;
+        if (x2 === 0) ctx.moveTo(x2, baseY + wave2);
+        else ctx.lineTo(x2, baseY + wave2);
+      }
+      ctx.stroke();
+      // occasional spawn embers from surface
+      if (Math.random() < 0.35) {
+        spawnEmber(Math.random() * canvas.width, baseY);
+      }
+    }
+
+    function drawGrass() {
+      var t = performance.now() / 1000;
+      for (var b = 0; b < grassBlades.length; b++) {
+        var bl = grassBlades[b];
+        if (bl.current < bl.target) bl.current += bl.growSpeed;
+        var sway = Math.sin(t * 1.1 + bl.swayPhase) * bl.swayAmp
+                 + bl.lean * bl.current * 0.35;
+        var baseY = canvas.height;
+        var topX = bl.x + sway;
+        var topY = canvas.height - bl.current;
+        ctx.beginPath();
+        ctx.moveTo(bl.x, baseY);
+        ctx.quadraticCurveTo(
+          bl.x + sway * 0.5,
+          baseY - bl.current * 0.55,
+          topX,
+          topY
+        );
+        ctx.strokeStyle = 'hsla(' + bl.hue + ',' + bl.sat + '%,' + bl.light + '%,0.78)';
+        ctx.lineWidth = 1.4;
+        ctx.lineCap = 'round';
+        ctx.stroke();
+      }
+    }
 
     function generateBolt() {
       var startX = canvas.width * (0.15 + Math.random() * 0.7);
@@ -200,6 +625,14 @@
         p.radius = 2 + Math.random() * 3;
         p.drift = (Math.random() - 0.5) * 0.5;
         p.opacity = 0.5 + Math.random() * 0.4;
+      } else if (t === 'lava') {
+        p.speed = 0.6 + Math.random() * 1.4;
+        p.radius = 1.2 + Math.random() * 2.2;
+        p.drift = (Math.random() - 0.5) * 0.9;
+        p.wobble = Math.random() * Math.PI * 2;
+        p.wobbleSpd = 0.02 + Math.random() * 0.03;
+        p.hot = Math.random() < 0.25;
+        p.opacity = 0.35 + Math.random() * 0.4;
       } else {
         p.speed = 9 + Math.random() * 7;
         p.len = 15 + Math.random() * 12;
@@ -220,15 +653,51 @@
         }
       }
 
+      var waterLandY = canvas.height - waterLevel;
+      var lavaLandY = canvas.height - lavaLevel;
+
       for (var i = 0; i < particles.length; i++) {
         var p = particles[i];
-        if (type === 'snow') {
+        if (type === 'lava') {
+          p.wobble += p.wobbleSpd;
+          p.x += p.drift + Math.sin(p.wobble) * 0.5;
+          p.y += p.speed;
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+          if (p.hot) {
+            ctx.fillStyle = 'rgba(255,140,60,' + p.opacity + ')';
+          } else {
+            ctx.fillStyle = 'rgba(80,70,65,' + p.opacity + ')';
+          }
+          ctx.fill();
+          if (p.y > lavaLandY) {
+            if (p.hot) spawnEmber(p.x, lavaLandY);
+            particles[i] = createParticle(type, false);
+            particles[i].x = Math.random() * canvas.width;
+          }
+        } else if (type === 'snow') {
           p.y += p.speed;
           p.x += p.drift;
           ctx.beginPath();
           ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
           ctx.fillStyle = 'rgba(255,255,255,' + p.opacity + ')';
           ctx.fill();
+
+          var col = Math.floor(p.x / snowColW);
+          if (col < 0) col = 0;
+          if (col >= snowColumns.length) col = snowColumns.length - 1;
+          var pileTop = canvas.height - snowColumns[col];
+          if (p.y + p.radius > pileTop) {
+            snowColumns[col] += 0.55;
+            if (col > 0) snowColumns[col - 1] += 0.18;
+            if (col < snowColumns.length - 1) snowColumns[col + 1] += 0.18;
+            if (snowColumns[col] > 120) snowColumns[col] = 120;
+            particles[i] = createParticle(type, false);
+            particles[i].x = Math.random() * canvas.width;
+          } else if (p.y > canvas.height) {
+            particles[i] = createParticle(type, false);
+            particles[i].x = Math.random() * canvas.width;
+          }
         } else {
           p.y += p.speed;
           ctx.beginPath();
@@ -237,14 +706,41 @@
           ctx.strokeStyle = 'rgba(174,194,224,' + p.opacity + ')';
           ctx.lineWidth = 1.5;
           ctx.stroke();
-        }
-        if (p.y > canvas.height) {
-          particles[i] = createParticle(type, false);
-          particles[i].x = Math.random() * canvas.width;
+
+          if (p.y > waterLandY) {
+            createSplash(p.x, waterLandY);
+            particles[i] = createParticle(type, false);
+            particles[i].x = Math.random() * canvas.width;
+          }
         }
       }
-      requestAnimationFrame(animate);
+
+      if (type === 'rain' || type === 'thunder') {
+        var rate = type === 'thunder' ? 0.045 : 0.017;
+        if (waterLevel < maxWaterLevel) waterLevel += rate;
+        drawWater();
+        drawSplashes();
+      } else if (type === 'snow') {
+        drawSnowPile();
+      } else if (type === 'grass') {
+        drawGrass();
+      } else if (type === 'lava') {
+        if (lavaLevel < maxLavaLevel) lavaLevel += 0.028;
+        drawLava();
+        drawEmbers();
+      }
+
+      if (!stopped) rafId = requestAnimationFrame(animate);
     }
     animate();
+
+    return {
+      stop: function () {
+        stopped = true;
+        if (rafId) cancelAnimationFrame(rafId);
+        window.removeEventListener('resize', resize);
+        if (canvas.parentNode) canvas.parentNode.removeChild(canvas);
+      }
+    };
   }
 })();

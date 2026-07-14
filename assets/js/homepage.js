@@ -15,14 +15,36 @@
       dotsWrap.appendChild(dot);
     }
 
+    function ensureLoaded(idx) {
+      var img = imgs[(idx + imgs.length) % imgs.length];
+      var pending = img.getAttribute('data-src');
+      if (pending && !img.getAttribute('src')) {
+        img.setAttribute('src', pending);
+        img.removeAttribute('data-src');
+      }
+    }
+
+    function warmNeighbours(idx) {
+      ensureLoaded(idx - 1);
+      ensureLoaded(idx + 1);
+    }
+
     function showSlide(n) {
       imgs[current].classList.remove('active');
       var dots = dotsWrap.querySelectorAll('.gallery-dot');
       dots[current].classList.remove('active');
       current = (n + imgs.length) % imgs.length;
+      ensureLoaded(current);
       imgs[current].classList.add('active');
       dots[current].classList.add('active');
+      warmNeighbours(current);
     }
+
+    // Warm the images likely to be viewed next once the browser is idle,
+    // so navigation feels instant without slowing the initial paint.
+    (window.requestIdleCallback || function (fn) { setTimeout(fn, 1500); })(function () {
+      warmNeighbours(current);
+    });
 
     prev.addEventListener('click', function() { showSlide(current - 1); });
     next.addEventListener('click', function() { showSlide(current + 1); });
@@ -396,7 +418,7 @@
       '<svg class="map-svg" viewBox="0 0 ' + MAP_VBW + ' ' + MAP_VBH + '" ' +
         'xmlns="http://www.w3.org/2000/svg" ' +
         'preserveAspectRatio="xMidYMid meet">' +
-        '<image href="/images/middle-earth.png" ' +
+        '<image href="/images/middle-earth.webp" ' +
           'x="0" y="0" width="' + MAP_VBW + '" height="' + MAP_VBH + '" ' +
           'preserveAspectRatio="xMidYMid meet"/>' +
         '<g id="map-cities"></g>' +

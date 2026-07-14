@@ -9,12 +9,12 @@ layout: page
 <div class="gallery-wrap">
   <button class="gallery-btn gallery-prev" aria-label="Previous image">&#10094;</button>
   <div class="gallery-container">
-    <img class="gallery-img active" src="https://kinnuch.github.io/images/Ondolinde.png" alt="Ondolinde">
-    <img class="gallery-img" src="https://kinnuch.github.io/images/Valinor.png" alt="Valinor">
-    <img class="gallery-img" src="https://kinnuch.github.io/images/Aldu.png" alt="Aldu">
-    <img class="gallery-img" src="https://kinnuch.github.io/images/Nargothrond.png" alt="Nargothrond">
-    <img class="gallery-img" src="https://kinnuch.github.io/images/Lothnor.png" alt="Lothnor">
-    <img class="gallery-img" src="https://kinnuch.github.io/images/Ondolinde2.png" alt="Ondolinde Back">
+    <img class="gallery-img active" src="https://kinnuch.github.io/images/Ondolinde.webp" alt="Ondolinde" decoding="async" fetchpriority="high" width="1400" height="900">
+    <img class="gallery-img" data-src="https://kinnuch.github.io/images/Valinor.webp" alt="Valinor" decoding="async" loading="lazy" width="1400" height="900">
+    <img class="gallery-img" data-src="https://kinnuch.github.io/images/Aldu.webp" alt="Aldu" decoding="async" loading="lazy" width="1400" height="900">
+    <img class="gallery-img" data-src="https://kinnuch.github.io/images/Nargothrond.webp" alt="Nargothrond" decoding="async" loading="lazy" width="1400" height="900">
+    <img class="gallery-img" data-src="https://kinnuch.github.io/images/Lothnor.webp" alt="Lothnor" decoding="async" loading="lazy" width="1400" height="900">
+    <img class="gallery-img" data-src="https://kinnuch.github.io/images/Ondolinde2.webp" alt="Ondolinde Back" decoding="async" loading="lazy" width="1400" height="900">
   </div>
   <button class="gallery-btn gallery-next" aria-label="Next image">&#10095;</button>
   <div class="gallery-dots"></div>

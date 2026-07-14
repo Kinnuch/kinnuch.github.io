@@ -1,5 +1,19 @@
 [
   {
+    "hash": "57f89d0ebc6364c523d1a41ef7e751e20d121498",
+    "short": "57f89d0",
+    "date": "2026-07-14T10:53:25+08:00",
+    "author": "wuyichen",
+    "msg": "update cursor system"
+  },
+  {
+    "hash": "b0dd27999c610e08e944074b4304b5832be88c72",
+    "short": "b0dd279",
+    "date": "2026-07-13T11:45:15Z",
+    "author": "github-actions[bot]",
+    "msg": "chore: refresh commits.json [skip ci]"
+  },
+  {
     "hash": "d1276bee541775d9351cc6bbf1c426a093b08242",
     "short": "d1276be",
     "date": "2026-07-13T19:44:34+08:00",

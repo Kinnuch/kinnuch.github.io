@@ -1,0 +1,44 @@
+/* Middle-earth cursor set.
+   .cur files include their own hotspot; the trailing keyword is the fallback
+   for browsers that can't load the file (mostly .ani on non-Windows). */
+
+html, body {
+  cursor: url('/images/GaladrielCursor.ani'), url('/images/GaladrielCursor.cur'), default;
+}
+
+/* Links, buttons, and anything semantically clickable */
+a, a *,
+button, [role="button"],
+label[for], summary,
+.btn, .gallery-btn, .gallery-dot,
+input[type="button"], input[type="submit"], input[type="reset"],
+.me-weather, .map-city, .map-modal__close, .map-grid-toggle,
+.comments-fab, .comments-drawer__close,
+#theme-toggle {
+  cursor: url('/images/AragornCursor.cur'), pointer;
+}
+
+/* Text selection / editable fields */
+input[type="text"], input[type="search"], input[type="email"],
+input[type="url"], input[type="password"], input[type="number"],
+input[type="tel"], input:not([type]),
+textarea, [contenteditable="true"] {
+  cursor: url('/images/WizardstaffCursor.cur'), text;
+}
+
+/* Busy state (blocking wait) */
+[aria-busy="true"], .is-busy, html.is-busy, html.is-busy * {
+  cursor: url('/images/RingPointer.cur'), wait !important;
+}
+
+/* Background work in progress */
+[data-loading="true"], .is-loading,
+html.is-loading, html.is-loading * {
+  cursor: url('/images/RingCursor.cur'), progress !important;
+}
+
+/* Disabled controls fall back to the busy cursor */
+button:disabled, input:disabled, textarea:disabled, select:disabled,
+[aria-disabled="true"] {
+  cursor: url('/images/RingPointer.cur'), not-allowed;
+}

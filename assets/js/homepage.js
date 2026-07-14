@@ -498,6 +498,8 @@
     var lavaLevel = 0;
     var maxLavaLevel = 65;
     var embers = [];
+    var cursorPos = { x: null, y: null, lastMove: 0 };
+    var cursorTrail = [];
 
     function resize() {
       var oldW = canvas.width;
@@ -1093,6 +1095,105 @@
       return p;
     }
 
+    function drawGroundFade() {
+      // Erase a soft band above the accumulated ground so text underneath
+      // (grass, water, snow, lava) stays legible when scrolled behind it.
+      ctx.save();
+      ctx.globalCompositeOperation = 'destination-out';
+      var top = canvas.height - 150;
+      var bot = canvas.height - 40;
+      var g = ctx.createLinearGradient(0, top, 0, bot);
+      g.addColorStop(0,   'rgba(0,0,0,0.85)');
+      g.addColorStop(0.6, 'rgba(0,0,0,0.35)');
+      g.addColorStop(1,   'rgba(0,0,0,0)');
+      ctx.fillStyle = g;
+      ctx.fillRect(0, top, canvas.width, bot - top);
+      ctx.restore();
+    }
+
+    // Weather-matched glow palette for cursor trail.
+    var CURSOR_CONFIG = {
+      rain:    { perMove: 2, spread: 5, life: 26, size: [1.4, 2.4],
+                 hue: [200, 220], sat: 85, light: 68, glow: 10,
+                 vx: 0.4, vy: [0.5, 1.6], gravity: 0.06 },
+      thunder: { perMove: 3, spread: 6, life: 22, size: [1.2, 2.2],
+                 hue: [190, 230], sat: 95, light: 78, glow: 16,
+                 vx: 1.2, vy: [-0.4, 1.4], gravity: 0.02 },
+      snow:    { perMove: 1, spread: 6, life: 45, size: [1.6, 2.8],
+                 hue: [200, 220], sat: 25, light: 92, glow: 8,
+                 vx: 0.4, vy: [0.1, 0.5], gravity: 0.005 },
+      lava:    { perMove: 3, spread: 5, life: 30, size: [1.2, 2.4],
+                 hue: [10, 40],  sat: 95, light: 60, glow: 14,
+                 vx: 0.6, vy: [-1.2, -0.2], gravity: -0.02 },
+      wind:    { perMove: 2, spread: 8, life: 24, size: [1.4, 2.6],
+                 hue: [40, 90],  sat: 55, light: 60, glow: 6,
+                 vx: 2.5, vy: [-0.3, 0.3], gravity: 0 },
+      grass:   { perMove: 2, spread: 5, life: 34, size: [1.6, 2.6],
+                 hue: [45, 60],  sat: 95, light: 72, glow: 12,
+                 vx: 0.5, vy: [-0.6, 0.2], gravity: -0.01 },
+      sparse:  { perMove: 1, spread: 6, life: 30, size: [1.4, 2.4],
+                 hue: [190, 260], sat: 40, light: 80, glow: 8,
+                 vx: 0.4, vy: [-0.3, 0.3], gravity: 0 }
+    };
+
+    function pick(range) { return range[0] + Math.random() * (range[1] - range[0]); }
+
+    function spawnCursorParticles() {
+      var cfg = CURSOR_CONFIG[type];
+      if (!cfg || cursorPos.x === null) return;
+      for (var k = 0; k < cfg.perMove; k++) {
+        cursorTrail.push({
+          x: cursorPos.x + (Math.random() - 0.5) * cfg.spread,
+          y: cursorPos.y + (Math.random() - 0.5) * cfg.spread,
+          vx: (Math.random() - 0.5) * 2 * cfg.vx,
+          vy: pick(cfg.vy),
+          life: cfg.life,
+          maxLife: cfg.life,
+          hue: pick(cfg.hue),
+          sat: cfg.sat,
+          light: cfg.light,
+          size: pick(cfg.size),
+          glow: cfg.glow,
+          gravity: cfg.gravity
+        });
+      }
+    }
+
+    function drawCursorTrail() {
+      if (!cursorTrail.length) return;
+      ctx.save();
+      for (var i = cursorTrail.length - 1; i >= 0; i--) {
+        var p = cursorTrail[i];
+        p.x += p.vx;
+        p.y += p.vy;
+        p.vy += p.gravity;
+        p.life--;
+        var a = Math.max(0, p.life / p.maxLife);
+        var glowColor = 'hsla(' + p.hue + ',' + p.sat + '%,' + p.light + '%,' + (a * 0.9) + ')';
+        var coreColor = 'hsla(' + p.hue + ',' + Math.min(100, p.sat + 5) + '%,' +
+                         Math.min(96, p.light + 15) + '%,' + a + ')';
+        ctx.shadowBlur = p.glow;
+        ctx.shadowColor = glowColor;
+        ctx.fillStyle = coreColor;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.size * (0.4 + a * 0.6), 0, Math.PI * 2);
+        ctx.fill();
+        if (p.life <= 0) cursorTrail.splice(i, 1);
+      }
+      ctx.restore();
+    }
+
+    function onPointerMove(e) {
+      cursorPos.x = e.clientX;
+      cursorPos.y = e.clientY;
+      var now = performance.now();
+      if (now - cursorPos.lastMove > 12) {
+        spawnCursorParticles();
+        cursorPos.lastMove = now;
+      }
+    }
+    window.addEventListener('pointermove', onPointerMove, { passive: true });
+
     function animate() {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
@@ -1218,6 +1319,9 @@
         drawEmbers();
       }
 
+      drawGroundFade();
+      drawCursorTrail();
+
       if (!stopped) rafId = requestAnimationFrame(animate);
     }
     animate();
@@ -1227,6 +1331,7 @@
         stopped = true;
         if (rafId) cancelAnimationFrame(rafId);
         window.removeEventListener('resize', resize);
+        window.removeEventListener('pointermove', onPointerMove);
         if (canvas.parentNode) canvas.parentNode.removeChild(canvas);
       }
     };

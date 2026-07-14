@@ -1,5 +1,19 @@
 [
   {
+    "hash": "d1276bee541775d9351cc6bbf1c426a093b08242",
+    "short": "d1276be",
+    "date": "2026-07-13T19:44:34+08:00",
+    "author": "wuyichen",
+    "msg": "update weather field"
+  },
+  {
+    "hash": "38591ad8e32d1071b7ed0b2b488fbbbd94ed0a17",
+    "short": "38591ad",
+    "date": "2026-07-13T11:34:28Z",
+    "author": "github-actions[bot]",
+    "msg": "chore: refresh commits.json [skip ci]"
+  },
+  {
     "hash": "a5a3b2ad35a14a16db6eb9eb5fe9db09c5d28ced",
     "short": "a5a3b2a",
     "date": "2026-07-13T19:33:57+08:00",

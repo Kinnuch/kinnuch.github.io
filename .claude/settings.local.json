@@ -21,7 +21,8 @@
       "Read(//c/Users/Administrator/Downloads//**)",
       "Bash(git -C \"c:\\\\Users\\\\Administrator\\\\Documents\\\\GitHub\\\\kinnuch.github.io\" status --short)",
       "Bash(git -C \"c:\\\\Users\\\\Administrator\\\\Documents\\\\GitHub\\\\kinnuch.github.io\" log --oneline -10)",
-      "Bash(git -C \"c:\\\\Users\\\\Administrator\\\\Documents\\\\GitHub\\\\kinnuch.github.io\" diff --stat HEAD -- assets/js/homepage.js assets/css/homepage.css)"
+      "Bash(git -C \"c:\\\\Users\\\\Administrator\\\\Documents\\\\GitHub\\\\kinnuch.github.io\" diff --stat HEAD -- assets/js/homepage.js assets/css/homepage.css)",
+      "Bash(node --check \"c:\\\\Users\\\\Administrator\\\\Documents\\\\GitHub\\\\kinnuch.github.io\\\\assets\\\\js\\\\cursor.js\")"
     ],
     "additionalDirectories": [
       "\\tmp"

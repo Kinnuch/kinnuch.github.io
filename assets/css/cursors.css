@@ -1,6 +1,17 @@
 /* Middle-earth cursor set.
-   .cur files include their own hotspot; the trailing keyword is the fallback
-   for browsers that can't load the file (mostly .ani on non-Windows). */
+   Two-layer strategy:
+   - Fallback layer (rules below) uses native CSS cursors, whose display size
+     is baked into the .cur/.ani files.
+   - When cursor.js loads, it adds html.has-custom-cursor and takes over —
+     drawing a size-normalised <div> that follows the pointer.
+   The `cursor: none` rule wins because of the .has-custom-cursor class
+   (higher specificity than the plain selectors below). */
+
+html.has-custom-cursor,
+html.has-custom-cursor body,
+html.has-custom-cursor * {
+  cursor: none !important;
+}
 
 html, body {
   cursor: url('/images/GaladrielCursor.ani'), url('/images/GaladrielCursor.cur'), default;

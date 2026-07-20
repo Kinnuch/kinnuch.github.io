@@ -1,5 +1,19 @@
 [
   {
+    "hash": "25f1be1ff96b32ba655550fa092b292089aea071",
+    "short": "25f1be1",
+    "date": "2026-07-20T20:56:14+08:00",
+    "author": "wuyichen",
+    "msg": "update Barad Bith Game"
+  },
+  {
+    "hash": "7e019875ea1afc5ed478e833398c79ddb926d1e3",
+    "short": "7e01987",
+    "date": "2026-07-20T08:17:49Z",
+    "author": "github-actions[bot]",
+    "msg": "chore: refresh commits.json [skip ci]"
+  },
+  {
     "hash": "747fc6a91437c1f20f54fc567df84b2b72f97caa",
     "short": "747fc6a",
     "date": "2026-07-20T16:17:31+08:00",

@@ -10,6 +10,30 @@ body {
     color: #2c3e50;
 }
 
+.tengwar-img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin: 14px auto 4px;
+}
+
+[data-theme="dark"] .tengwar-img { filter: invert(1); }
+
+.title-latin {
+    font-size: 15px;
+    color: #7f8c8d;
+    margin: 0 0 10px;
+    line-height: 1.6;
+}
+
+.title-credit {
+    font-size: 11px;
+    color: #b2bec3;
+    margin: 4px 0 0;
+}
+
+.title-credit a { color: inherit; }
+
 .header-bar {
     max-width: 960px;
     margin: 0 auto 15px;
@@ -145,6 +169,8 @@ body {
     border-radius: 12px;
     background: linear-gradient(180deg, #f4f0fa, #ece5f5);
     margin-bottom: 16px;
+    border: 3px solid transparent;
+    transition: box-shadow 0.15s, border-color 0.15s;
 }
 
 .foe-name {
@@ -165,6 +191,11 @@ body {
     font-size: 14px;
     font-weight: 600;
     color: #c0392b;
+}
+
+.foe-box.drop-active {
+    border-color: #c0392b;
+    box-shadow: 0 0 0 6px rgba(192, 57, 43, 0.15);
 }
 
 /* 手牌 */
@@ -198,6 +229,42 @@ body {
 .card.mastered { border-color: #27ae60; background: #f6fdf8; }
 .card.unaffordable { opacity: 0.45; cursor: not-allowed; }
 .card.unaffordable:hover { transform: none; box-shadow: none; }
+
+.card.card-attack {
+    cursor: grab;
+    border-color: #e0a1a1;
+    touch-action: none;
+}
+.card.card-attack.unaffordable { cursor: not-allowed; }
+.card.card-attack.dragging { opacity: 0.35; }
+
+.card.card-exhaust {
+    background: linear-gradient(180deg, #fff, #fff7ec);
+    box-shadow: 0 0 0 1px #f0c674 inset;
+}
+
+.card-exhaust-hint {
+    font-size: 10.5px;
+    color: #b7791f;
+    font-weight: 600;
+    text-align: center;
+}
+
+.card-target-hint {
+    font-size: 11px;
+    color: #c0392b;
+    font-weight: 600;
+    text-align: center;
+}
+
+.card-ghost {
+    position: fixed;
+    z-index: 1000;
+    pointer-events: none;
+    cursor: grabbing;
+    transform: scale(1.06) rotate(-2deg);
+    box-shadow: 0 14px 30px rgba(0, 0, 0, 0.3);
+}
 
 .card-cost {
     position: absolute;
@@ -438,6 +505,11 @@ body {
 [data-theme="dark"] .card-word { color: #e8e8e8; }
 [data-theme="dark"] .card-effect { color: #c8c8c8; }
 [data-theme="dark"] .card.mastered { background: #16281f; border-color: #27ae60; }
+[data-theme="dark"] .card.card-attack { border-color: #8a3a3a; }
+[data-theme="dark"] .card.card-exhaust { background: linear-gradient(180deg, #1a1a2e, #2b2415); box-shadow: 0 0 0 1px #6b5628 inset; }
+[data-theme="dark"] .card-exhaust-hint { color: #e6bf88; }
+[data-theme="dark"] .card-target-hint { color: #ff7675; }
+[data-theme="dark"] .foe-box.drop-active { box-shadow: 0 0 0 6px rgba(255, 118, 117, 0.2); border-color: #ff7675; }
 [data-theme="dark"] .card-meaning { border-top-color: #2f3b5c; }
 [data-theme="dark"] .pip { background: #2f3b5c; }
 [data-theme="dark"] .log { background: #1a1a2e; }

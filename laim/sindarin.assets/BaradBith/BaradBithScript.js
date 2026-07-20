@@ -39,6 +39,9 @@ const CARD_DEFS = [
     { form: "calar", part: "noun", kind: "skill", cost: 0, energyGain: 1, name: "掌灯引路", flavorTpl: "提起{w}，0费获得1点能量" },
     { form: "brasta-", part: "verb", kind: "attack", cost: 2, dmg: 13, name: "昂首耸立", flavorTpl: "以{w}之势威压攻击，造成大量伤害" },
     { form: "(m)bas(t)", part: "noun", kind: "skill", cost: 1, heal: 6, exileAfterUse: true, name: "一块干粮", flavorTpl: "吃下{w}，恢复生命值（用后本局消失）" },
+    { form: "(n)dag-", part: "verb", kind: "attack", cost: 3, dmg: 22, exhaust: true, name: "斩杀", flavorTpl: "以{w}的决意终结敌人，造成巨额伤害（本场战斗只能使用一次）" },
+    { form: "bregollach", part: "noun", kind: "attack", cost: 2, dmg: 18, exhaust: true, name: "骤火轰击", flavorTpl: "唤出{w}般的爆燃，造成大量伤害（本场战斗只能使用一次）" },
+    { form: "(m)belaith", part: "adjective", kind: "power", cost: 2, buffStrength: 6, exhaust: true, name: "威能爆发", flavorTpl: "化为{w}之姿，力量永久+6（本场战斗只能使用一次）" },
     { form: "cam", part: "noun", kind: "attack", cost: 1, dmg: 6, name: "徒手一击", flavorTpl: "以{w}出手，造成伤害", isStarter: true },
     { form: "coll", part: "noun", kind: "skill", cost: 1, block: 6, name: "裹紧披风", flavorTpl: "裹紧{w}，获得护甲", isStarter: true }
 ];
@@ -168,7 +171,11 @@ function renderTitle() {
     const mastered = ALL_TERMS.filter(t => isEverMastered(t.form, t.part)).length;
     app.innerHTML = `
         <div style="text-align:center;padding:20px 0;">
-            <p style="font-size:15px;color:#7f8c8d;">Mae govannen, adan. I varad bith i-ngovannech ceni.<br>你好，旅人。这是一座用辛达语词汇筑成的塔。</p>
+            <img class="tengwar-img" src="TitleSindarin1.png" alt="Mae govannen, randir. Se barad adabannen o phith Edhellen.">
+            <p class="title-latin">Mae govannen, randir. Se barad adabannen o phith Edhellen.<br>你好，旅人。这座塔由辛达语的词汇筑成。</p>
+            <img class="tengwar-img" src="TitleSindarin2.png" alt="Amrado talan ab dalan, no thalion na phith Edhellen.">
+            <p class="title-latin">Amrado talan ab dalan, no thalion na phith Edhellen.<br>一步接一步地攀登，如英雄一般，用辛达语的词汇武装自己。</p>
+            <p class="title-credit">腾格瓦转写由 <a href="https://www.tecendil.com/" target="_blank" rel="noopener">tecendil.com</a> 生成</p>
             <div class="stat" style="margin:18px auto;display:inline-flex;">📖 累计学习进度：${mastered} / ${total} 词已掌握</div>
             <div class="btn-row">
                 <button class="primary-btn" onclick="startRun()">开始攀登 · Iestad</button>
@@ -241,7 +248,7 @@ function makeCardInstance(def) {
         draw: def.draw || 0, buffStrength: def.buffStrength || 0, energyGain: def.energyGain || 0,
         weakenEnemy: def.weakenEnemy || 0, retainBlock: !!def.retainBlock,
         startTurnBlock: def.startTurnBlock || 0, drawBonus: def.drawBonus || 0,
-        exileAfterUse: !!def.exileAfterUse, flavorTpl: def.flavorTpl, isStarter: !!def.isStarter,
+        exileAfterUse: !!def.exileAfterUse, exhaust: !!def.exhaust, flavorTpl: def.flavorTpl, isStarter: !!def.isStarter,
         mastered: isEverMastered(def.form, def.part)
     };
 }
@@ -261,6 +268,7 @@ function cardFlavor(card) {
 // 楼层地图
 // ============================================================
 function goToNextFloor() {
+    run.combat = null;
     run.floor++;
     if (run.floor > FLOOR_PLAN.length) { renderVictory(); return; }
     const options = FLOOR_PLAN[run.floor - 1];
@@ -300,14 +308,53 @@ function statusBarHtml() {
     const relicHtml = run.relics.length
         ? `<div class="relic-row">${run.relics.map(r => `<span class="relic"><span class="w">${r.form}</span> ${r.name}</span>`).join("")}</div>`
         : "";
+    const c = run.combat;
+    const pileBtn = c
+        ? `<button class="utility-btn" onclick="openPileViewer()">📚 牌堆 (抽${c.player.deck.length}/弃${c.player.discard.length}/耗${c.player.exile.length})</button>`
+        : `<button class="utility-btn" onclick="openPileViewer()">📚 查看牌组 (${run.deck.length})</button>`;
     return `
         <div class="status-bar">
             <span class="stat hp">❤ ${run.hp}/${run.maxHp}</span>
             <span class="stat coin">🪙 ${run.gold}</span>
             <span class="stat floor">🗼 第 ${run.floor} 层 / ${FLOOR_PLAN.length}</span>
+            ${pileBtn}
         </div>
         ${relicHtml}
     `;
+}
+
+// ---------- 牌堆查看（随时可查看抽牌堆/弃牌堆/消耗堆，或整体牌组） ----------
+function pileCardChip(card) {
+    const label = card.mastered ? `${card.form}（${card.name}）` : `${card.form}（${kindLabel(card.kind)}）`;
+    const star = card.mastered ? "★" : "☆";
+    return `<div class="deck-chip"><span class="w">${escapeHtml(label)}</span> <span class="m">${star}</span></div>`;
+}
+
+function pileSection(title, cards) {
+    const body = cards.length
+        ? `<div class="deck-list">${cards.map(pileCardChip).join("")}</div>`
+        : `<p style="color:#7f8c8d;font-size:13px;">（空）</p>`;
+    return `<h3 style="margin-bottom:8px;">${title}（${cards.length}）</h3>${body}`;
+}
+
+function openPileViewer() {
+    const c = run.combat;
+    let body;
+    if (c) {
+        body = `
+            ${pileSection("抽牌堆 · Deck", c.player.deck)}
+            ${pileSection("弃牌堆 · Discard", c.player.discard)}
+            ${pileSection("消耗堆 · Exile", c.player.exile)}
+        `;
+    } else {
+        body = pileSection("整体牌组 · Deck", run.deck);
+    }
+    showModal(`
+        <h3 style="margin-top:0;">📚 牌堆总览</h3>
+        <p class="modal-hint">${c ? "手牌请直接看战斗界面。抽牌堆顺序已打乱，仅供查看构成。" : "当前不在战斗中，显示整局牌组。"}</p>
+        ${body}
+        <div class="btn-row"><button class="secondary-btn" onclick="closeModal()">关闭</button></div>
+    `);
 }
 
 function enterRoom(type) {
@@ -388,11 +435,12 @@ function renderCombat() {
     const handHtml = p.hand.map(card => cardHtml(card)).join("") || "<p style='color:#7f8c8d;'>（手牌已空）</p>";
     app.innerHTML = `
         ${statusBarHtml()}
-        <div class="foe-box">
+        <div class="foe-box" id="foeBox">
             ${c.def.elite ? "<div style='color:#c0392b;font-weight:700;font-size:12px;'>⚠ 精英</div>" : ""}
             ${c.def.boss ? "<div style='color:#c0392b;font-weight:700;font-size:12px;'>👑 首领</div>" : ""}
             <div class="foe-name">${c.def.name}</div>
-            <div class="foe-gloss">${c.def.hp === c.enemyMaxHp ? "" : ""}HP ${c.enemyHp}/${c.enemyMaxHp}${c.enemyBlock ? " · 护甲 " + c.enemyBlock : ""}${c.enemyStrength ? " · 力量 +" + c.enemyStrength : ""}</div>
+            <div class="foe-gloss">${escapeHtml(shortDef(c.entry))}</div>
+            <div class="foe-gloss">HP ${c.enemyHp}/${c.enemyMaxHp}${c.enemyBlock ? " · 护甲 " + c.enemyBlock : ""}${c.enemyStrength ? " · 力量 +" + c.enemyStrength : ""}</div>
             <div class="bar-outer" style="max-width:320px;margin:8px auto 0;"><div class="bar-inner foe" style="width:${Math.max(0, c.enemyHp / c.enemyMaxHp * 100)}%;"></div></div>
             <div class="foe-intent">${enemyIntentText}</div>
         </div>
@@ -402,12 +450,67 @@ function renderCombat() {
             ${p.strength ? `<span class="stat">💪 力量 +${p.strength}</span>` : ""}
             ${p.vulnerable ? `<span class="stat" style="color:#c0392b;">☠ 易伤</span>` : ""}
         </div>
-        <div class="hand">${handHtml}</div>
+        <div class="hand" id="handArea">${handHtml}</div>
         <div class="btn-row">
             <button class="primary-btn" onclick="endPlayerTurn()">结束回合</button>
         </div>
         <div class="log">${c.log.map(l => `<div class="log-${l.cls}">${l.text}</div>`).join("")}</div>
     `;
+    attachDragHandlers();
+}
+
+// ---------- 拖拽出牌（攻击类卡牌需拖到敌人身上） ----------
+function attachDragHandlers() {
+    const handArea = document.getElementById("handArea");
+    const foeBox = document.getElementById("foeBox");
+    if (!handArea || !foeBox) return;
+    handArea.querySelectorAll(".card-attack[data-uid]").forEach(cardEl => {
+        cardEl.addEventListener("pointerdown", (ev) => startCardDrag(ev, cardEl, foeBox));
+    });
+}
+
+function startCardDrag(ev, cardEl, foeBox) {
+    ev.preventDefault();
+    const uid = cardEl.dataset.uid;
+    const rect = cardEl.getBoundingClientRect();
+    const ghost = cardEl.cloneNode(true);
+    ghost.classList.add("card-ghost");
+    ghost.style.width = rect.width + "px";
+    ghost.style.left = rect.left + "px";
+    ghost.style.top = rect.top + "px";
+    document.body.appendChild(ghost);
+    cardEl.classList.add("dragging");
+
+    const offsetX = ev.clientX - rect.left;
+    const offsetY = ev.clientY - rect.top;
+
+    function isOverFoe(x, y) {
+        const r = foeBox.getBoundingClientRect();
+        return x >= r.left && x <= r.right && y >= r.top && y <= r.bottom;
+    }
+
+    function onMove(e) {
+        const x = e.clientX, y = e.clientY;
+        ghost.style.left = (x - offsetX) + "px";
+        ghost.style.top = (y - offsetY) + "px";
+        foeBox.classList.toggle("drop-active", isOverFoe(x, y));
+    }
+
+    function onUp(e) {
+        document.removeEventListener("pointermove", onMove);
+        document.removeEventListener("pointerup", onUp);
+        foeBox.classList.remove("drop-active");
+        ghost.remove();
+        const hit = isOverFoe(e.clientX, e.clientY);
+        if (hit) {
+            playCard(uid);
+        } else {
+            cardEl.classList.remove("dragging");
+        }
+    }
+
+    document.addEventListener("pointermove", onMove);
+    document.addEventListener("pointerup", onUp);
 }
 
 function describeIntent(action, c) {
@@ -423,28 +526,46 @@ function describeIntent(action, c) {
     return "？";
 }
 
+function kindLabel(kind) {
+    return { attack: "⚔ 攻击", skill: "🛡 技能", power: "💠 能力" }[kind] || kind;
+}
+
+function mechanicalEffectParts(fields, mastered) {
+    const bonus = mastered ? 2 : 0;
+    const parts = [];
+    if (fields.dmg) parts.push(`造成 ${fields.dmg + (fields.dmg ? bonus : 0)} 点伤害`);
+    if (fields.block) parts.push(`获得 ${fields.block + (fields.block ? bonus : 0)} 点护甲`);
+    if (fields.heal) parts.push(`恢复 ${fields.heal + (fields.heal ? bonus : 0)} 点生命`);
+    if (fields.draw) parts.push(`抽 ${fields.draw} 张牌`);
+    if (fields.buffStrength) parts.push(`力量 +${fields.buffStrength}（永久）`);
+    if (fields.energyGain) parts.push(`获得 ${fields.energyGain} 点能量`);
+    if (fields.weakenEnemy) parts.push(`敌方下次攻击 -${fields.weakenEnemy}`);
+    if (fields.startTurnBlock) parts.push(`此后每回合开始获得 ${fields.startTurnBlock} 护甲`);
+    if (fields.drawBonus) parts.push(`此后每回合多抽 ${fields.drawBonus} 张牌`);
+    if (fields.retainBlock) parts.push(`护甲可保留至下回合`);
+    return parts;
+}
+
 function cardHtml(card) {
     const cost = cardCost(card);
     const affordable = cost <= run.combat.player.energy;
     const entry = cardEntry(card);
-    const meaning = card.mastered ? shortDef(entry) : "？？？（未掌握）";
-    const effectParts = [];
-    if (cardVal(card, "dmg")) effectParts.push(`造成 ${cardVal(card, "dmg")} 点伤害`);
-    if (cardVal(card, "block")) effectParts.push(`获得 ${cardVal(card, "block")} 点护甲`);
-    if (cardVal(card, "heal")) effectParts.push(`恢复 ${cardVal(card, "heal")} 点生命`);
-    if (card.draw) effectParts.push(`抽 ${card.draw} 张牌`);
-    if (card.buffStrength) effectParts.push(`力量 +${card.buffStrength}（永久）`);
-    if (card.energyGain) effectParts.push(`获得 ${card.energyGain} 点能量`);
-    if (card.weakenEnemy) effectParts.push(`敌方下次攻击 -${card.weakenEnemy}`);
-    if (card.startTurnBlock) effectParts.push(`此后每回合开始获得 ${card.startTurnBlock} 护甲`);
-    if (card.drawBonus) effectParts.push(`此后每回合多抽 ${card.drawBonus} 张牌`);
-    if (card.retainBlock) effectParts.push(`护甲可保留至下回合`);
+    const meaning = card.mastered ? shortDef(entry) : "？？？（未掌握，前往篝火钻研辞典可掌握）";
+    const effectParts = mechanicalEffectParts(card, card.mastered);
+    const typeLine = card.mastered ? `${card.part} · ${card.name}` : `${card.part} · ${kindLabel(card.kind)}`;
+    const isAttack = card.kind === "attack";
+    const clickAttr = isAttack ? "" : `onclick="playCard('${card.uid}')"`;
+    const dragAttrs = isAttack && affordable ? `data-uid="${card.uid}"` : "";
+    const targetHint = isAttack ? `<div class="card-target-hint">🎯 拖到敌人身上出牌</div>` : "";
+    const exhaustHint = card.exhaust ? `<div class="card-exhaust-hint">🔥 消耗：本场战斗仅可使用一次</div>` : "";
     return `
-        <div class="card ${card.mastered ? "mastered" : ""} ${affordable ? "" : "unaffordable"}" onclick="playCard('${card.uid}')">
+        <div class="card ${card.mastered ? "mastered" : ""} ${affordable ? "" : "unaffordable"} ${isAttack ? "card-attack" : ""} ${card.exhaust ? "card-exhaust" : ""}" ${clickAttr} ${dragAttrs}>
             <div class="card-cost">${cost}</div>
             <div class="card-word">${card.form}</div>
-            <div class="card-part">${card.part} · ${card.name}</div>
+            <div class="card-part">${typeLine}</div>
             <div class="card-effect">${effectParts.join("；")}</div>
+            ${targetHint}
+            ${exhaustHint}
             <div class="card-meaning">${meaning}</div>
         </div>
     `;
@@ -476,7 +597,7 @@ function playCard(uid) {
     if (card.startTurnBlock) p.startTurnBlock += card.startTurnBlock;
     if (card.drawBonus) p.drawBonus += card.drawBonus;
 
-    addLog(`你使用了 <b>${card.form}</b>（${card.name}）。`, "good");
+    addLog(`你使用了 <b>${card.form}</b>${card.mastered ? "（" + card.name + "）" : ""}。`, "good");
 
     // 移除手牌
     p.hand.splice(idx, 1);
@@ -484,8 +605,11 @@ function playCard(uid) {
         // power 卡不进入弃牌堆，效果已永久生效
     } else if (card.exileAfterUse) {
         p.exile.push(card);
-        // 同时从整局牌组中移除（这张具体实例）
+        // 消耗品，同时从整局牌组中永久移除（这张具体实例）
         run.deck = run.deck.filter(x => x.uid !== card.uid);
+    } else if (card.exhaust) {
+        p.exile.push(card);
+        // 仅本场战斗内不再进入抽牌轮换，牌组中仍保留，下一场战斗会重新出现
     } else {
         p.discard.push(card);
     }
@@ -567,9 +691,6 @@ function winCombat() {
     run.gold += gold;
     leaveRoomBonus();
 
-    // 把本场用过的卡收回真实牌组（去掉已用尽的消耗品）
-    run.deck = run.deck.filter(cd => !c.player.exile.some(ex => ex.uid === cd.uid));
-
     if (c.def.boss) { renderVictory(); return; }
 
     const relicReward = c.def.elite ? pickRelicReward() : null;
@@ -587,12 +708,14 @@ function offerCardReward(relicReward, goldEarned) {
     const pool = CARD_DEFS.filter(c => !STARTER_FORMS.includes(c.form));
     const picks = shuffle(pool.slice()).slice(0, 3);
     const cardsHtml = picks.map((def, i) => {
-        const entry = getEntry(def.form, def.part);
-        return `<div class="card" style="width:170px;" onclick="chooseReward(${i})">
+        const effectParts = mechanicalEffectParts(def, false);
+        const exhaustHint = def.exhaust ? `<div class="card-exhaust-hint">🔥 消耗：本场战斗仅可使用一次</div>` : "";
+        return `<div class="card ${def.exhaust ? "card-exhaust" : ""}" style="width:170px;" onclick="chooseReward(${i})">
             <div class="card-cost">${def.cost}</div>
             <div class="card-word">${def.form}</div>
-            <div class="card-part">${def.part} · ${def.name}</div>
-            <div class="card-effect">${def.flavorTpl.replace("{w}", def.form)}</div>
+            <div class="card-part">${def.part} · ${kindLabel(def.kind)}</div>
+            <div class="card-effect">${effectParts.join("；")}</div>
+            ${exhaustHint}
             <div class="card-meaning">？？？（选择后测验揭晓）</div>
         </div>`;
     }).join("");
@@ -723,7 +846,7 @@ function openRemoveCard() {
         <div class="card" style="width:150px;" onclick="removeCard(${i})">
             <div class="card-cost">${cardCost(c)}</div>
             <div class="card-word">${c.form}</div>
-            <div class="card-part">${c.part} · ${c.name}</div>
+            <div class="card-part">${c.part} · ${c.mastered ? c.name : kindLabel(c.kind)}</div>
         </div>
     `).join("");
     showModal(`

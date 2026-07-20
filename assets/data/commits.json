@@ -1,5 +1,19 @@
 [
   {
+    "hash": "747fc6a91437c1f20f54fc567df84b2b72f97caa",
+    "short": "747fc6a",
+    "date": "2026-07-20T16:17:31+08:00",
+    "author": "kinnuch",
+    "msg": "Create RogueLike miniGame Barad-Bith"
+  },
+  {
+    "hash": "815461f517a5506b499277aa365f85a3f5e577c9",
+    "short": "815461f",
+    "date": "2026-07-14T04:13:02Z",
+    "author": "github-actions[bot]",
+    "msg": "chore: refresh commits.json [skip ci]"
+  },
+  {
     "hash": "4209a238085c694c6b5a85149b5dd7785681d58c",
     "short": "4209a23",
     "date": "2026-07-14T12:11:53+08:00",

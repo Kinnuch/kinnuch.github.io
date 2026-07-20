@@ -27,7 +27,12 @@
       "Bash(ffmpeg -version)",
       "Bash(cwebp -version)",
       "Bash(python -c \"from PIL import Image; print\\('PIL', Image.__version__\\)\")",
-      "Bash(python -c \"import sys; print\\('python', sys.version.split\\(\\)[0]\\)\")"
+      "Bash(python -c \"import sys; print\\('python', sys.version.split\\(\\)[0]\\)\")",
+      "Bash(python -X utf8 -c ' *)",
+      "Bash(node --check BaradBithScript.js)",
+      "Read(//tmp/**)",
+      "Bash(awk '{print $2}')",
+      "Bash(node -e ' *)"
     ],
     "additionalDirectories": [
       "\\tmp"

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Barad Bith · 语塔爬塔录</title>
+    <link rel="stylesheet" href="BaradBithStyle.css">
+    <script>
+    (function(){var t=localStorage.getItem('theme');if(t==='dark'||((!t)&&window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches)){document.documentElement.setAttribute('data-theme','dark');}})();
+    </script>
+</head>
+<body>
+    <div class="header-bar">
+        <div class="utility-bar">
+            <a href="https://kinnuch.github.io/cerf" class="utility-btn">🏠 返回工具页</a>
+            <button id="theme-toggle" class="utility-btn" onclick="toggleTheme()">☾ 模式</button>
+            <button class="utility-btn" onclick="openGlossary()">📖 生词手册</button>
+        </div>
+        <h1 class="page-title">Barad Bith · 语塔</h1>
+        <p class="page-sub">Athro i mbith Edhellen, then i vared i thail. 一层一层地攀爬，用辛达语的词汇武装自己。</p>
+    </div>
+
+    <div class="main-container">
+        <div id="app" class="panel">
+            <div class="loading">Aphado... 正在加载辛达语词典...</div>
+        </div>
+    </div>
+
+    <div id="overlay" class="overlay hidden"></div>
+
+    <script src="BaradBithScript.js"></script>
+</body>
+</html>

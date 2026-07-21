@@ -53,7 +53,23 @@
       "Skill(artifact-design:*)",
       "Bash(grep -oE '\"props\":\\\\{[^}]{0,300}' /tmp/tecendil_page.html)",
       "Bash(ls -la ~/Downloads 2>/dev/null | grep -i tecendil *)",
-      "Read(//c/Users/Administrator/Downloads/**)"
+      "Read(//c/Users/Administrator/Downloads/**)",
+      "Bash(python3 -c \"css=open\\('BaradBithStyle.css',encoding='utf-8'\\).read\\(\\); print\\('balanced' if css.count\\('{'\\)==css.count\\('}'\\) else 'UNBALANCED %d/%d'%\\(css.count\\('{'\\),css.count\\('}'\\)\\)\\)\")",
+      "Bash(node -e \"require.resolve\\('jsdom'\\); console.log\\('jsdom available'\\)\")",
+      "Bash(npm ls *)",
+      "Bash(npm install *)",
+      "Bash(node -e \"console.log\\(require.resolve\\('jsdom'\\)?'jsdom OK':''\\)\")",
+      "Bash(node simtest.js)",
+      "Bash(sed -i 's/w\\\\.ALL_TERMS\\\\[/w.ALL_TERMS_ref\\(\\)[/g; s/w\\\\.run\\\\b/w.run_ref\\(\\)/g' simtest.js)",
+      "Bash(node simtest2.js)",
+      "Bash(python3 -)",
+      "Bash(node balance.js)",
+      "Bash(sed -i '699s/    attachTooltips\\(\\);//' BaradBithScript.js)",
+      "Bash(sed -i 's/overlay.classList.remove\\(\"hidden\"\\); attachTooltips\\(\\); }/overlay.classList.remove\\(\"hidden\"\\); }/' BaradBithScript.js)",
+      "Bash(python3 -c \"c=open\\('BaradBithStyle.css',encoding='utf-8'\\).read\\(\\); print\\('CSS braces:', 'OK' if c.count\\('{'\\)==c.count\\('}'\\) else 'BAD'\\)\")",
+      "Bash(grep -v '^if$')",
+      "Bash(grep -oE 'class=\"[^\"$]*\"' BaradBithScript.js)",
+      "Bash(grep -vE '^\\\\$|^$')"
     ],
     "additionalDirectories": [
       "\\tmp"

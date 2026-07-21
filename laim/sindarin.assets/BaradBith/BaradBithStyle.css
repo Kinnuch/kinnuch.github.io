@@ -34,6 +34,22 @@ body {
 
 .title-credit a { color: inherit; }
 
+.title-help {
+    margin: 22px auto 0;
+    max-width: 660px;
+    text-align: left;
+    font-size: 13px;
+    line-height: 1.85;
+    color: #7f8c8d;
+    background: #f8f9fa;
+    border: 1px solid #e6e9ef;
+    border-radius: 12px;
+    padding: 16px 20px;
+}
+.title-help b { color: #2c3e50; }
+[data-theme="dark"] .title-help { background: #14192b; border-color: #2f3b5c; color: #9aa4b5; }
+[data-theme="dark"] .title-help b { color: #e0e0e0; }
+
 .header-bar {
     max-width: 960px;
     margin: 0 auto 15px;
@@ -525,9 +541,210 @@ body {
 [data-theme="dark"] .relic { background: #2b2415; border-color: #6b5628; }
 [data-theme="dark"] .loading { color: #888; }
 
-@media (max-width: 600px) {
+/* ============================================================
+   新版：圣物顶栏 / 战斗舞台 / 角色 / 血条 / 能力 / 地图 / 商店
+   ============================================================ */
+
+/* —— 圣物常驻顶栏 —— */
+.relic-strip {
+    display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+    margin-bottom: 10px; padding: 8px 10px;
+    background: #fff7e6; border: 1px solid #f0c674; border-radius: 12px;
+}
+.relic-label { font-size: 12px; font-weight: 700; color: #b7791f; }
+.relic-chip {
+    display: inline-flex; align-items: center; gap: 5px;
+    background: #fff; border: 1px solid #f0c674; border-radius: 16px;
+    padding: 3px 10px; font-size: 13px; cursor: help;
+}
+.relic-w { font-style: italic; font-weight: 600; }
+
+/* —— 战斗顶部：回合 / 能量 / 结束回合 —— */
+.combat-top { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; flex-wrap: wrap; }
+.turn-chip { background: #eef1f6; border-radius: 16px; padding: 6px 14px; font-weight: 700; font-size: 14px; color: #5b6b7a; }
+.energy-orb {
+    background: radial-gradient(circle at 40% 35%, #ffd873, #e8a01e);
+    color: #4a2f00; border-radius: 16px; padding: 6px 14px; font-weight: 800; font-size: 15px; cursor: help;
+    box-shadow: 0 2px 6px rgba(232,160,30,.4);
+}
+.end-turn { margin-left: auto; }
+
+/* —— 战斗舞台：左人物 / 右怪物 —— */
+.battle-stage {
+    display: flex; align-items: flex-end; justify-content: space-around; gap: 8px;
+    padding: 20px 10px 22px; border-radius: 16px; margin-bottom: 14px; position: relative; overflow: hidden;
+    background: linear-gradient(180deg, #eef1f6 0%, #e4e9f1 65%, #d5dbe6 100%);
+    box-shadow: inset 0 -14px 24px -18px rgba(0,0,0,.3);
+}
+.stage-vs { align-self: center; font-size: 24px; color: #aeb8c6; padding-bottom: 40px; }
+.fighter { display: flex; flex-direction: column; align-items: center; gap: 5px; width: 44%; }
+.fighter-figure { position: relative; display: flex; justify-content: center; align-items: flex-end; }
+.fighter-figure::after {
+    content: ""; position: absolute; bottom: -6px; left: 50%; transform: translateX(-50%);
+    width: 92px; height: 14px; background: radial-gradient(ellipse, rgba(0,0,0,.22), transparent 70%); z-index: 0;
+}
+.fighter-svg { width: 132px; height: auto; position: relative; z-index: 1; filter: drop-shadow(0 6px 5px rgba(0,0,0,.16)); }
+.fighter-name { font-weight: 800; font-size: 16px; }
+.fighter-name.enemy { font-style: italic; color: #5b2c6f; }
+.fighter-gloss { font-size: 12px; color: #7f8c8d; }
+.fighter-player .fighter-svg { transform: scaleX(1); }
+
+.rank-tag { position: absolute; top: 0; right: 0; font-size: 11px; font-weight: 800; border-radius: 8px; padding: 2px 7px; color: #fff; z-index: 2; }
+.rank-tag.elite { background: #c0392b; }
+.rank-tag.boss { background: #8e44ad; }
+
+.fighter-enemy.drop-active { outline: 3px dashed #c0392b; outline-offset: 6px; border-radius: 16px; }
+.fighter-enemy.drop-active .fighter-figure { transform: scale(1.06); transition: transform .1s; }
+
+/* —— 血条（杀戮尖塔式：红条 + 居中数字） —— */
+.hpbar {
+    position: relative; width: 170px; max-width: 100%; height: 22px;
+    background: #4a1414; border-radius: 5px; overflow: hidden; border: 1px solid rgba(0,0,0,.25);
+}
+.hpbar-fill { position: absolute; inset: 0; background: linear-gradient(180deg, #e0483d, #b5271d); transition: width .35s; }
+.hpbar-text {
+    position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+    font-size: 12.5px; font-weight: 800; color: #fff; text-shadow: 0 1px 2px rgba(0,0,0,.6);
+    font-variant-numeric: tabular-nums; letter-spacing: .3px;
+}
+.block-badge {
+    position: absolute; left: -4px; bottom: 6px; z-index: 3;
+    background: #cdd6e4; color: #1c2b4a; border: 2px solid #8ea2c4; border-radius: 8px;
+    padding: 2px 7px; font-weight: 800; font-size: 13px; box-shadow: 0 2px 4px rgba(0,0,0,.25);
+}
+
+/* —— 状态图标（力量/易伤/虚弱） —— */
+.status-icons { display: flex; gap: 5px; flex-wrap: wrap; justify-content: center; min-height: 22px; margin-top: 4px; }
+.status-pill { font-size: 12px; font-weight: 700; border-radius: 12px; padding: 2px 8px; cursor: help; }
+.s-str { background: #fde7d6; color: #b9770f; }
+.s-vuln { background: #fbe0e0; color: #c0392b; }
+.s-weak { background: #e7e0f5; color: #7d3c98; }
+
+/* —— 敌方意图气泡 —— */
+.intent-bubble { min-height: 30px; margin-bottom: 4px; }
+.intent {
+    background: #fff; border-radius: 14px; padding: 4px 13px; font-weight: 800; font-size: 15px;
+    box-shadow: 0 2px 6px rgba(0,0,0,.15); display: inline-block;
+}
+.intent.atk { color: #c0392b; }
+.intent.def { color: #2980b9; }
+.intent.buff { color: #8e44ad; }
+.intent.heal { color: #27ae60; }
+.intent.debuff, .intent.doom { color: #7d3c98; }
+.intent-unknown { color: #b2bec3; font-weight: 800; }
+
+/* —— 人物身下能力卡区（可悬浮查看效果） —— */
+.powers-row { display: flex; gap: 6px; flex-wrap: wrap; justify-content: center; min-height: 24px; margin-top: 4px; }
+.power-chip {
+    display: inline-flex; align-items: center; gap: 4px;
+    background: #efe9fb; border: 1px solid #c9b6ec; border-radius: 14px; padding: 3px 9px; font-size: 12px; cursor: help;
+}
+.pw-w { font-style: italic; font-weight: 600; }
+
+/* —— 跟随鼠标的悬浮提示 —— */
+.hover-tip {
+    position: fixed; z-index: 2000; max-width: 240px;
+    background: #1c2333; color: #f0f0f0; font-size: 12.5px; line-height: 1.5;
+    padding: 8px 11px; border-radius: 8px; box-shadow: 0 6px 18px rgba(0,0,0,.35); pointer-events: none;
+}
+
+/* —— 卡牌：类型条 / 强化环 / 复习选中 —— */
+.card.k-attack { border-top: 3px solid #e07a5a; }
+.card.k-skill  { border-top: 3px solid #4a90e2; }
+.card.k-power  { border-top: 3px solid #9b59b6; }
+.card.tier-1 { box-shadow: 0 0 0 2px rgba(39,174,96,.55) inset; }
+.card.tier-2 { box-shadow: 0 0 0 2px rgba(201,162,39,.75) inset; }
+.card.review-selected { outline: 3px solid #4a90e2; outline-offset: 2px; }
+.tier-badge { position: absolute; top: -9px; right: -8px; font-size: 11px; font-weight: 800; border-radius: 10px; padding: 1px 6px; color: #fff; z-index: 2; }
+.tier-badge.t1 { background: #27ae60; }
+.tier-badge.t2 { background: #c9a227; }
+
+/* —— 地图：塔层进度 + 选择徽章 —— */
+.tower-map { display: flex; gap: 16px; align-items: stretch; }
+.floor-rail {
+    display: flex; flex-direction: column; gap: 6px; padding: 8px;
+    background: linear-gradient(180deg, #eae3d4, #d9cdb4); border-radius: 12px;
+}
+.floor-dot {
+    width: 34px; height: 34px; border-radius: 8px; display: flex; align-items: center; justify-content: center;
+    font-size: 15px; font-weight: 700; background: #fff; color: #8a7a55; border: 2px solid #cdbf9c;
+}
+.floor-dot.done { background: #efe7d3; color: #8a6d3b; }
+.floor-dot.current { background: #4a90e2; color: #fff; border-color: #357abd; transform: scale(1.08); }
+.floor-dot.locked { opacity: .5; }
+.tower-choice { flex: 1; }
+.map-title { margin-top: 0; }
+
+.choice-medallions { display: flex; align-items: stretch; justify-content: center; gap: 18px; flex-wrap: wrap; }
+.medallion {
+    flex: 1; min-width: 210px; max-width: 320px; border: 2px solid #dfe4ea; border-radius: 16px;
+    background: #fbfcfd; padding: 22px 18px; cursor: pointer; font: inherit; color: inherit;
+    display: flex; flex-direction: column; align-items: center; gap: 6px; text-align: center;
+    transition: transform .18s, box-shadow .18s, border-color .18s;
+}
+.medallion:hover { transform: translateY(-4px); box-shadow: 0 10px 24px rgba(0,0,0,.12); border-color: #4a90e2; }
+.medallion-icon { font-size: 44px; line-height: 1; }
+.medallion-name { font-size: 19px; font-weight: 700; }
+.medallion-desc { font-size: 13px; color: #7f8c8d; line-height: 1.5; }
+.medallion-or { align-self: center; color: #b2bec3; font-weight: 700; }
+.medallion.r-combat:hover { border-color: #e07a5a; }
+.medallion.r-elite:hover  { border-color: #c0392b; }
+.medallion.r-rest:hover   { border-color: #e67e22; }
+.medallion.r-shop:hover   { border-color: #16a085; }
+.medallion.r-event:hover  { border-color: #8e44ad; }
+.medallion.r-treasure:hover { border-color: #c9a227; }
+.medallion.r-boss:hover   { border-color: #8e44ad; }
+
+/* —— 商店 —— */
+.shop-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
+.shop-item { border: 2px solid #dfe4ea; border-radius: 14px; padding: 18px; text-align: center; background: #fbfcfd; }
+.shop-ic { font-size: 36px; }
+.shop-name { font-weight: 700; margin: 6px 0 4px; }
+.shop-desc { font-size: 13px; color: #7f8c8d; line-height: 1.5; }
+.shop-price { font-weight: 700; margin: 8px 0 4px; color: #7d6608; }
+
+/* —— 深色模式（新增部分） —— */
+[data-theme="dark"] .relic-strip { background: #2b2415; border-color: #6b5628; }
+[data-theme="dark"] .relic-label { color: #e6bf88; }
+[data-theme="dark"] .relic-chip { background: #1a1a2e; border-color: #6b5628; color: #e0e0e0; }
+[data-theme="dark"] .turn-chip { background: #1f2a48; color: #aab6c8; }
+[data-theme="dark"] .battle-stage { background: linear-gradient(180deg, #202a44 0%, #1a2036 65%, #141a2c 100%); }
+[data-theme="dark"] .stage-vs { color: #4a5772; }
+[data-theme="dark"] .fighter-name { color: #e8e8e8; }
+[data-theme="dark"] .fighter-name.enemy { color: #c39bd3; }
+[data-theme="dark"] .fighter-gloss { color: #999; }
+[data-theme="dark"] .intent { background: #16213e; }
+[data-theme="dark"] .hpbar { background: #2a0f0f; }
+[data-theme="dark"] .block-badge { background: #2a3856; color: #cdd6e4; border-color: #4a5f88; }
+[data-theme="dark"] .power-chip { background: #241d3a; border-color: #4a3a6e; color: #d8cff0; }
+[data-theme="dark"] .status-pill.s-str { background: #3a2c16; color: #f0c078; }
+[data-theme="dark"] .status-pill.s-vuln { background: #3a1a1a; color: #ff8a8a; }
+[data-theme="dark"] .status-pill.s-weak { background: #2a1f3d; color: #c9a6e6; }
+[data-theme="dark"] .card.k-attack { border-top-color: #b5563a; }
+[data-theme="dark"] .card.k-skill { border-top-color: #3a6db5; }
+[data-theme="dark"] .card.k-power { border-top-color: #7d3c98; }
+[data-theme="dark"] .floor-rail { background: linear-gradient(180deg, #2a2418, #201b10); }
+[data-theme="dark"] .floor-dot { background: #1a1a2e; color: #b3a077; border-color: #4a4128; }
+[data-theme="dark"] .floor-dot.done { background: #2a2418; color: #e6bf88; }
+[data-theme="dark"] .floor-dot.current { background: #3a6db5; border-color: #5a8fd0; color: #fff; }
+[data-theme="dark"] .medallion { background: #1a1a2e; border-color: #2f3b5c; }
+[data-theme="dark"] .medallion:hover { border-color: #3a6db5; }
+[data-theme="dark"] .medallion-desc { color: #999; }
+[data-theme="dark"] .medallion-or { color: #55607a; }
+[data-theme="dark"] .shop-item { background: #1a1a2e; border-color: #2f3b5c; }
+[data-theme="dark"] .shop-desc { color: #999; }
+[data-theme="dark"] .shop-price { color: #e5c76b; }
+[data-theme="dark"] .hover-tip { background: #0d1220; border: 1px solid #2f3b5c; }
+
+@media (max-width: 640px) {
     body { padding: 12px; }
     .panel { padding: 16px; }
-    .card { width: 130px; }
-    .foe-name { font-size: 24px; }
+    .card { width: 132px; }
+    .fighter-svg { width: 96px; }
+    .fighter-name { font-size: 14px; }
+    .hpbar { width: 128px; height: 20px; }
+    .stage-vs { font-size: 18px; padding-bottom: 30px; }
+    .battle-stage { padding: 14px 6px 18px; }
+    .medallion { min-width: 150px; padding: 18px 12px; }
+    .medallion-icon { font-size: 36px; }
 }

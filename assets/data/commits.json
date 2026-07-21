@@ -1,5 +1,19 @@
 [
   {
+    "hash": "985151788775eb406abcdb3401f6229ff0016844",
+    "short": "9851517",
+    "date": "2026-07-21T20:00:46+08:00",
+    "author": "wuyichen",
+    "msg": "update MiniGame Final Version"
+  },
+  {
+    "hash": "c364ca51a3be4ea4663b41b35b87045e8afddd5f",
+    "short": "c364ca5",
+    "date": "2026-07-21T07:20:32Z",
+    "author": "github-actions[bot]",
+    "msg": "chore: refresh commits.json [skip ci]"
+  },
+  {
     "hash": "32583fc032fd9bb2270af8d57ea4b17b08da670e",
     "short": "32583fc",
     "date": "2026-07-21T15:20:07+08:00",

@@ -69,7 +69,14 @@
       "Bash(python3 -c \"c=open\\('BaradBithStyle.css',encoding='utf-8'\\).read\\(\\); print\\('CSS braces:', 'OK' if c.count\\('{'\\)==c.count\\('}'\\) else 'BAD'\\)\")",
       "Bash(grep -v '^if$')",
       "Bash(grep -oE 'class=\"[^\"$]*\"' BaradBithScript.js)",
-      "Bash(grep -vE '^\\\\$|^$')"
+      "Bash(grep -vE '^\\\\$|^$')",
+      "Bash(timeout 240 node maptest.js)",
+      "Bash(timeout 400 node balance.js)",
+      "Bash(timeout 500 node --max-old-space-size=3000 balance.js)",
+      "Bash(timeout 300 node maptest.js)",
+      "Bash(timeout 500 node --max-old-space-size=3000 boss.js)",
+      "Bash(node --check \"c:/Users/Administrator/Documents/GitHub/kinnuch.github.io/laim/sindarin.assets/BaradBith/BaradBithScript.js\")",
+      "Bash(timeout 200 node keywords.js)"
     ],
     "additionalDirectories": [
       "\\tmp"

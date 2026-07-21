@@ -617,8 +617,11 @@ body {
 .status-icons { display: flex; gap: 5px; flex-wrap: wrap; justify-content: center; min-height: 22px; margin-top: 4px; }
 .status-pill { font-size: 12px; font-weight: 700; border-radius: 12px; padding: 2px 8px; cursor: help; }
 .s-str { background: #fde7d6; color: #b9770f; }
+.s-dex { background: #ddf3e4; color: #1e8449; }
 .s-vuln { background: #fbe0e0; color: #c0392b; }
 .s-weak { background: #e7e0f5; color: #7d3c98; }
+.s-frail { background: #efe2f7; color: #8e44ad; }
+.s-poison { background: #e2f5e2; color: #248232; }
 
 /* —— 敌方意图气泡 —— */
 .intent-bubble { min-height: 30px; margin-bottom: 4px; }
@@ -631,6 +634,7 @@ body {
 .intent.buff { color: #8e44ad; }
 .intent.heal { color: #27ae60; }
 .intent.debuff, .intent.doom { color: #7d3c98; }
+.intent.poison { color: #248232; }
 .intent-unknown { color: #b2bec3; font-weight: 800; }
 
 /* —— 人物身下能力卡区（可悬浮查看效果） —— */
@@ -659,21 +663,139 @@ body {
 .tier-badge.t1 { background: #27ae60; }
 .tier-badge.t2 { background: #c9a227; }
 
-/* —— 地图：塔层进度 + 选择徽章 —— */
-.tower-map { display: flex; gap: 16px; align-items: stretch; }
-.floor-rail {
-    display: flex; flex-direction: column; gap: 6px; padding: 8px;
-    background: linear-gradient(180deg, #eae3d4, #d9cdb4); border-radius: 12px;
+/* —— 地图：杀戮尖塔式分岔路线图 —— */
+.map-head { text-align: center; }
+.map-title { margin: 0 0 4px; }
+.map-sub { margin: 0 0 12px; font-size: 13px; color: #7f8c8d; }
+.map-scroll {
+    max-height: 460px; overflow-y: auto; overflow-x: auto;
+    border-radius: 14px; padding: 10px;
+    background: linear-gradient(180deg, #efe9db 0%, #e3dac6 60%, #d6cbb2 100%);
+    box-shadow: inset 0 0 30px -10px rgba(90, 70, 40, .35);
+    display: flex; justify-content: center;
 }
-.floor-dot {
-    width: 34px; height: 34px; border-radius: 8px; display: flex; align-items: center; justify-content: center;
-    font-size: 15px; font-weight: 700; background: #fff; color: #8a7a55; border: 2px solid #cdbf9c;
+.map-svg { display: block; }
+.map-edge { stroke: #b9a888; stroke-width: 2.5; stroke-linecap: round; stroke-dasharray: 5 5; opacity: .55; }
+.map-edge.walked { stroke: #8a6d3b; opacity: .95; stroke-dasharray: none; stroke-width: 3; }
+.map-edge.open { stroke: #4a90e2; opacity: 1; stroke-dasharray: none; stroke-width: 3.5; animation: edgeFlow 1.6s linear infinite; }
+@keyframes edgeFlow { from { stroke-dashoffset: 20; } to { stroke-dashoffset: 0; } }
+
+.map-node circle { fill: #fdfbf6; stroke: #b9a888; stroke-width: 2.5; transition: transform .18s, filter .18s; }
+.map-node text { font-size: 15px; pointer-events: none; }
+.map-node.visited circle { fill: #e6dcc4; stroke: #8a6d3b; }
+.map-node.current circle { fill: #fff3cf; stroke: #c9a227; stroke-width: 4; }
+.map-node.avail { cursor: pointer; }
+.map-node.avail circle { stroke: #4a90e2; stroke-width: 4; filter: drop-shadow(0 0 6px rgba(74,144,226,.75)); animation: nodePulse 1.5s ease-in-out infinite; }
+.map-node.avail:hover circle { fill: #eaf4ff; }
+.map-node:not(.avail):not(.visited):not(.current) circle { opacity: .8; }
+@keyframes nodePulse { 0%,100% { r: 15; } 50% { r: 17; } }
+.map-node.r-elite circle  { stroke: #c0392b; }
+.map-node.r-boss circle   { stroke: #8e44ad; stroke-width: 4; fill: #f3e8f8; }
+.map-node.r-rest circle   { stroke: #e67e22; }
+.map-node.r-shop circle   { stroke: #16a085; }
+.map-node.r-treasure circle { stroke: #c9a227; }
+
+.map-legend { display: flex; gap: 14px; flex-wrap: wrap; justify-content: center; margin-top: 12px; font-size: 12.5px; color: #7f8c8d; }
+.legend-item { display: inline-flex; align-items: center; gap: 5px; }
+.legend-ic {
+    width: 24px; height: 24px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center;
+    background: #fdfbf6; border: 2px solid #b9a888; font-size: 12px;
 }
-.floor-dot.done { background: #efe7d3; color: #8a6d3b; }
-.floor-dot.current { background: #4a90e2; color: #fff; border-color: #357abd; transform: scale(1.08); }
-.floor-dot.locked { opacity: .5; }
-.tower-choice { flex: 1; }
-.map-title { margin-top: 0; }
+.legend-ic.r-elite { border-color: #c0392b; }
+.legend-ic.r-boss { border-color: #8e44ad; }
+.legend-ic.r-rest { border-color: #e67e22; }
+.legend-ic.r-shop { border-color: #16a085; }
+.legend-ic.r-treasure { border-color: #c9a227; }
+
+/* —— 卡牌稀有度 —— */
+.rar-dot { display: inline-block; width: 9px; height: 9px; border-radius: 50%; margin-right: 2px; vertical-align: middle; }
+.rar-dot.rar-common { background: #b9c0cc; }
+.rar-dot.rar-uncommon { background: #3d7fd6; }
+.rar-dot.rar-rare { background: #d4a017; }
+.card.rar-common { border-color: #b9c0cc; }
+.card.rar-uncommon { border-color: #3d7fd6; }
+.card.rar-rare { border-color: #d4a017; box-shadow: 0 0 10px -2px rgba(212,160,23,.5); }
+.card-rarity { position: absolute; top: 6px; right: 8px; font-size: 11px; line-height: 1; }
+.card.rar-common .card-rarity { color: #a8b0be; }
+.card.rar-uncommon .card-rarity { color: #3d7fd6; }
+.card.rar-rare .card-rarity { color: #d4a017; }
+.deck-chip.rar-uncommon { box-shadow: inset 3px 0 0 #3d7fd6; }
+.deck-chip.rar-rare { box-shadow: inset 3px 0 0 #d4a017; }
+
+/* —— 动画 —— */
+@keyframes shakeX { 0%,100% { transform: translateX(0); } 20% { transform: translateX(-7px); } 40% { transform: translateX(6px); } 60% { transform: translateX(-4px); } 80% { transform: translateX(3px); } }
+.shake { animation: shakeX .38s ease-in-out; }
+@keyframes lungeL { 0%,100% { transform: translateX(0); } 45% { transform: translateX(-16px); } }
+@keyframes lungeR { 0%,100% { transform: translateX(0); } 45% { transform: translateX(16px); } }
+.lunge-left { animation: lungeL .34s ease-out; }
+.lunge-right { animation: lungeR .34s ease-out; }
+
+.float-num {
+    position: absolute; left: 50%; top: 26%; transform: translateX(-50%);
+    font-weight: 900; font-size: 21px; pointer-events: none; z-index: 6; white-space: nowrap;
+    text-shadow: 0 2px 4px rgba(0,0,0,.45); animation: floatUp .9s ease-out forwards;
+}
+@keyframes floatUp {
+    0% { opacity: 0; transform: translate(-50%, 8px) scale(.7); }
+    18% { opacity: 1; transform: translate(-50%, -4px) scale(1.15); }
+    100% { opacity: 0; transform: translate(-50%, -46px) scale(1); }
+}
+.fx-damage { color: #ff4d4d; }
+.fx-block { color: #7fb3ff; }
+.fx-heal { color: #4ade80; }
+.fx-buff { color: #ffd23f; font-size: 16px; }
+.fx-debuff { color: #d982ff; font-size: 16px; }
+.fx-poison { color: #7ee08a; }
+
+@keyframes dealIn { from { opacity: 0; transform: translateY(26px) rotate(-4deg); } to { opacity: 1; transform: none; } }
+.hand.dealing .card { animation: dealIn .3s ease-out backwards; animation-delay: calc(var(--i, 0) * 60ms); }
+
+/* —— 关键词：固有 / 保留 / 虚无 —— */
+.card-keywords { display: flex; gap: 4px; flex-wrap: wrap; }
+.kw-badge {
+    font-size: 10px; font-weight: 800; letter-spacing: .5px;
+    border-radius: 5px; padding: 1px 5px; cursor: help; border: 1px solid;
+}
+.kw-innate   { color: #1e8449; border-color: #7fcf9f; background: #e7f8ee; }
+.kw-retain   { color: #1f6fb2; border-color: #8dc0e8; background: #e8f3fb; }
+.kw-ethereal { color: #8e44ad; border-color: #cba7e0; background: #f4ebfa; }
+[data-theme="dark"] .kw-innate   { color: #6fcf97; border-color: #2c6b47; background: #142a1e; }
+[data-theme="dark"] .kw-retain   { color: #74b9ff; border-color: #2a4d78; background: #12203a; }
+[data-theme="dark"] .kw-ethereal { color: #c9a6e6; border-color: #55397a; background: #241a33; }
+
+/* —— 消耗牌的溶解消散特效 —— */
+.card-dissolve {
+    position: fixed; z-index: 1200; pointer-events: none; margin: 0;
+    animation: dissolveAway .68s ease-out forwards;
+}
+@keyframes dissolveAway {
+    0%   { opacity: 1; transform: scale(1) translateY(0); filter: blur(0) brightness(1); }
+    28%  { opacity: .95; transform: scale(1.09) translateY(-10px); filter: blur(0) brightness(1.9) saturate(1.5); }
+    100% { opacity: 0; transform: scale(1.28) translateY(-58px) rotate(4deg); filter: blur(7px) brightness(2.4); }
+}
+.dissolve-spark {
+    position: absolute; inset: -6px; border-radius: 14px; pointer-events: none;
+    background:
+        radial-gradient(circle at 24% 78%, rgba(255,196,84,.95) 0 2.5px, transparent 3px),
+        radial-gradient(circle at 68% 86%, rgba(255,150,60,.9) 0 2px, transparent 2.5px),
+        radial-gradient(circle at 44% 62%, rgba(255,226,140,.9) 0 2px, transparent 2.5px),
+        radial-gradient(circle at 82% 54%, rgba(255,170,70,.85) 0 1.8px, transparent 2.3px),
+        radial-gradient(circle at 14% 46%, rgba(255,210,110,.85) 0 1.8px, transparent 2.3px),
+        radial-gradient(circle at 58% 32%, rgba(255,180,80,.8) 0 2px, transparent 2.5px);
+    animation: sparkRise .68s ease-out forwards;
+}
+@keyframes sparkRise {
+    0%   { opacity: 0; transform: translateY(6px) scale(.9); }
+    25%  { opacity: 1; }
+    100% { opacity: 0; transform: translateY(-42px) scale(1.35); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .shake, .lunge-left, .lunge-right, .float-num, .hand.dealing .card,
+    .map-node.avail circle, .map-edge.open,
+    .card-dissolve, .dissolve-spark { animation: none !important; }
+    .card-dissolve { display: none !important; }
+}
 
 .choice-medallions { display: flex; align-items: stretch; justify-content: center; gap: 18px; flex-wrap: wrap; }
 .medallion {
@@ -723,10 +845,24 @@ body {
 [data-theme="dark"] .card.k-attack { border-top-color: #b5563a; }
 [data-theme="dark"] .card.k-skill { border-top-color: #3a6db5; }
 [data-theme="dark"] .card.k-power { border-top-color: #7d3c98; }
-[data-theme="dark"] .floor-rail { background: linear-gradient(180deg, #2a2418, #201b10); }
-[data-theme="dark"] .floor-dot { background: #1a1a2e; color: #b3a077; border-color: #4a4128; }
-[data-theme="dark"] .floor-dot.done { background: #2a2418; color: #e6bf88; }
-[data-theme="dark"] .floor-dot.current { background: #3a6db5; border-color: #5a8fd0; color: #fff; }
+[data-theme="dark"] .map-scroll { background: linear-gradient(180deg, #241f16 0%, #1d1810 60%, #15110b 100%); box-shadow: inset 0 0 30px -10px rgba(0,0,0,.6); }
+[data-theme="dark"] .map-sub { color: #999; }
+[data-theme="dark"] .map-edge { stroke: #5a4c33; }
+[data-theme="dark"] .map-edge.walked { stroke: #c9a227; }
+[data-theme="dark"] .map-edge.open { stroke: #5a9fe6; }
+[data-theme="dark"] .map-node circle { fill: #221d15; stroke: #5a4c33; }
+[data-theme="dark"] .map-node.visited circle { fill: #33291a; stroke: #c9a227; }
+[data-theme="dark"] .map-node.current circle { fill: #3a2f16; stroke: #ffd23f; }
+[data-theme="dark"] .map-node.avail circle { stroke: #5a9fe6; filter: drop-shadow(0 0 7px rgba(90,159,230,.8)); }
+[data-theme="dark"] .map-node.avail:hover circle { fill: #1f2a48; }
+[data-theme="dark"] .legend-ic { background: #221d15; border-color: #5a4c33; }
+[data-theme="dark"] .map-legend { color: #999; }
+[data-theme="dark"] .card.rar-common { border-color: #4a5261; }
+[data-theme="dark"] .card.rar-uncommon { border-color: #3a6db5; }
+[data-theme="dark"] .card.rar-rare { border-color: #b8860b; box-shadow: 0 0 10px -2px rgba(212,160,23,.45); }
+[data-theme="dark"] .status-pill.s-dex { background: #16281f; color: #6fcf97; }
+[data-theme="dark"] .status-pill.s-frail { background: #2a1f3d; color: #c9a6e6; }
+[data-theme="dark"] .status-pill.s-poison { background: #16281c; color: #7ee08a; }
 [data-theme="dark"] .medallion { background: #1a1a2e; border-color: #2f3b5c; }
 [data-theme="dark"] .medallion:hover { border-color: #3a6db5; }
 [data-theme="dark"] .medallion-desc { color: #999; }

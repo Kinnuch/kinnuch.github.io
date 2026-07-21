@@ -1,6 +1,6 @@
 /* ============================================================
    Barad Bith · 巴别塔
-   一个用辛达语真实词典条目驱动的 roguelike 卡牌爬塔小游戏。
+   用辛达语真实词典条目驱动的 roguelike 卡牌爬塔游戏。
    卡牌 / 敌人 / 圣物均取自 dictionary.json 中的真实辛达语词条。
    学习分两阶段：初次学习（词义）→ 弱强化；篝火复习（音变/变位）→ 强强化。
    ============================================================ */
@@ -18,131 +18,118 @@ const MUTATION_LABELS = {
 
 /* ------------------------------------------------------------
    卡牌定义
-   数值分三级：基础 / 弱强化(+w) / 强强化(+w+s)。
-   w、s 均为增量对象，可含 cost（通常为负，减费）。
-   字段：dmg 伤害, block 护甲, heal 治疗, draw 抽牌, buffStrength 永久力量,
-        energyGain 立即能量, vuln 对敌易伤(回合), weak 对敌虚弱(回合),
-        startTurnBlock 每回合起始护甲(能力), drawBonus 每回合多抽(能力),
-        retainBlock 护甲保留, exhaust 战斗内消耗, exileAfterUse 永久消耗品
+   rarity: common(白) / uncommon(蓝) / rare(金)
+   数值三档：基础 / 弱强化(+w) / 强强化(+w+s)，w、s 为增量（cost 可为负=减费）
+   字段：dmg 伤害, hits 攻击次数, block 护甲, heal 治疗, draw 抽牌,
+        buffStrength 力量, buffDex 敏捷, energyGain 能量,
+        vuln 对敌易伤, weak 对敌虚弱, cleanse 清除自身减益,
+        startTurnBlock/drawBonus 能力效果, retainBlock 护甲保留,
+        exhaust 战斗内消耗, exileAfterUse 永久消耗
    ------------------------------------------------------------ */
 const CARD_DEFS = [
-    // —— 起始牌 ——
-    { form: "cam", part: "noun", kind: "attack", cost: 1, dmg: 6, name: "徒手一击", isStarter: true,
+    // ===== 起始牌（4 打 4 防 + 1 特色）=====
+    { form: "cam", part: "noun", kind: "attack", rarity: "common", cost: 1, dmg: 6, name: "打击", isStarter: true,
       flavorTpl: "以{w}挥出一击", w: { dmg: 2 }, s: { dmg: 3 } },
-    { form: "coll", part: "noun", kind: "skill", cost: 1, block: 5, name: "裹身守御", isStarter: true,
-      flavorTpl: "裹紧{w}格挡来袭", w: { block: 3 }, s: { block: 3 } },
+    { form: "coll", part: "noun", kind: "skill", rarity: "common", cost: 1, block: 5, name: "防御", isStarter: true,
+      flavorTpl: "裹紧{w}格挡", w: { block: 3 }, s: { block: 3 } },
+    { form: "brasta-", part: "verb", kind: "attack", rarity: "common", cost: 2, dmg: 8, vuln: 2, name: "痛击", isStarter: true,
+      flavorTpl: "如{w}般压上，令敌易伤", w: { dmg: 2 }, s: { vuln: 1 } },
 
-    // —— 普通攻击 ——
-    { form: "crist", part: "noun", kind: "attack", cost: 2, dmg: 10, name: "巨斧重砍",
+    // ===== 普通（白） =====
+    { form: "crist", part: "noun", kind: "attack", rarity: "common", cost: 2, dmg: 10, name: "重砍",
       flavorTpl: "抡起{w}重劈", w: { dmg: 3 }, s: { dmg: 4 } },
-    { form: "cû", part: "noun", kind: "attack", cost: 1, dmg: 5, draw: 1, name: "疾矢",
+    { form: "cû", part: "noun", kind: "attack", rarity: "common", cost: 1, dmg: 5, draw: 1, name: "疾矢",
       flavorTpl: "以{w}速射并再取一牌", w: { dmg: 2 }, s: { draw: 1 } },
-    { form: "brasta-", part: "verb", kind: "attack", cost: 2, dmg: 8, vuln: 2, name: "威压",
-      flavorTpl: "如{w}般逼近，令敌易伤", w: { dmg: 2 }, s: { vuln: 1 } },
-    { form: "agar", part: "noun", kind: "attack", cost: 1, dmg: 6, heal: 2, name: "饮血",
-      flavorTpl: "以{w}为祭，伤敌并回血", w: { dmg: 2 }, s: { heal: 2 } },
-
-    // —— 防御 / 护甲 ——
-    { form: "castol", part: "noun", kind: "skill", cost: 1, block: 8, name: "盔甲",
+    { form: "agar", part: "noun", kind: "attack", rarity: "common", cost: 1, dmg: 4, hits: 2, name: "双击",
+      flavorTpl: "以{w}为誓，连击两次", w: { dmg: 1 }, s: { dmg: 2 } },
+    { form: "castol", part: "noun", kind: "skill", rarity: "common", cost: 1, block: 8, name: "盔甲",
       flavorTpl: "戴上{w}", w: { block: 3 }, s: { block: 3 } },
-    { form: "ang", part: "noun", kind: "skill", cost: 2, block: 11, name: "钢铁之壁",
-      flavorTpl: "以{w}铸壁", w: { block: 4 }, s: { block: 4 } },
-    { form: "ephel", part: "noun", kind: "skill", cost: 2, block: 12, name: "环围壁垒",
-      flavorTpl: "筑起{w}环墙", w: { block: 3 }, s: { block: 4 } },
-    { form: "celeb", part: "noun", kind: "skill", cost: 1, block: 7, name: "白银之甲",
-      flavorTpl: "以{w}护体", w: { block: 3 }, s: { cost: -1 } },
-    { form: "annon", part: "noun", kind: "skill", cost: 1, block: 6, retainBlock: true, name: "闭门留甲",
-      flavorTpl: "关闭{w}，护甲不散", w: { block: 3 }, s: { block: 3 } },
-    { form: "fennas", part: "noun", kind: "skill", cost: 0, block: 3, name: "虚掩",
+    { form: "fennas", part: "noun", kind: "skill", rarity: "common", cost: 0, block: 3, name: "虚掩",
       flavorTpl: "虚掩{w}", w: { block: 2 }, s: { block: 2 } },
-
-    // —— 增益 / 抽牌 / 能量 ——
-    { form: "craban", part: "noun", kind: "skill", cost: 1, draw: 2, name: "渡鸦侦察",
-      flavorTpl: "放出{w}探路", w: { cost: -1 }, s: { draw: 1 } },
-    { form: "calar", part: "noun", kind: "skill", cost: 1, energyGain: 2, exhaust: true, name: "掌灯疾行",
-      flavorTpl: "举起{w}，本回合能量激增（消耗）", w: { cost: -1 }, s: { draw: 1 } },
-    { form: "êl", part: "noun", kind: "skill", cost: 1, block: 5, weak: 2, name: "星辉削锐",
+    { form: "celeb", part: "noun", kind: "skill", rarity: "common", cost: 1, block: 7, name: "白银之甲",
+      flavorTpl: "以{w}护体", w: { block: 3 }, s: { cost: -1 } },
+    { form: "êl", part: "noun", kind: "skill", rarity: "common", cost: 1, block: 5, weak: 1, name: "星辉削锐",
       flavorTpl: "{w}微光令敌虚弱", w: { block: 2 }, s: { weak: 1 } },
 
-    // —— 治疗 ——
-    { form: "athelas", part: "noun", kind: "skill", cost: 1, heal: 7, name: "王叶疗愈",
-      flavorTpl: "嚼服{w}", w: { heal: 3 }, s: { heal: 3 } },
-    { form: "athae", part: "noun", kind: "skill", cost: 2, heal: 12, name: "灵草煎剂",
-      flavorTpl: "煎煮{w}", w: { heal: 4 }, s: { heal: 4 } },
-    { form: "elanor", part: "noun", kind: "skill", cost: 1, heal: 5, name: "金花之息",
-      flavorTpl: "{w}绽放芬芳", w: { heal: 2 }, s: { cost: -1 } },
-    { form: "estel", part: "noun", kind: "skill", cost: 1, block: 4, heal: 4, name: "希望",
-      flavorTpl: "心怀{w}，御守并回血", w: { block: 2 }, s: { heal: 3 } },
-    { form: "amdir", part: "noun", kind: "skill", cost: 1, heal: 5, draw: 1, name: "远见",
-      flavorTpl: "凭{w}回血并再取一牌", w: { heal: 2 }, s: { draw: 1 } },
-    { form: "(m)bas(t)", part: "noun", kind: "skill", cost: 1, heal: 6, exileAfterUse: true, name: "干粮",
-      flavorTpl: "吃下{w}回血（用后永久消失）", w: { heal: 3 }, s: { heal: 3 } },
-
-    // —— 能力（常驻，出牌后置于人物身下） ——
-    { form: "(n)dagor", part: "noun", kind: "power", cost: 1, buffStrength: 2, name: "战意",
+    // ===== 罕见（蓝） =====
+    { form: "ang", part: "noun", kind: "skill", rarity: "uncommon", cost: 2, block: 14, name: "钢铁之壁",
+      flavorTpl: "以{w}铸壁", w: { block: 4 }, s: { block: 4 } },
+    { form: "annon", part: "noun", kind: "skill", rarity: "uncommon", cost: 1, block: 6, retainBlock: true, name: "闭门留甲",
+      flavorTpl: "关闭{w}，护甲不散", w: { block: 3 }, s: { block: 3 } },
+    { form: "ephel", part: "noun", kind: "skill", rarity: "uncommon", cost: 2, block: 10, buffDex: 1, name: "环围壁垒",
+      flavorTpl: "筑起{w}，此后护甲更厚", w: { block: 3 }, s: { buffDex: 1 } },
+    { form: "craban", part: "noun", kind: "skill", rarity: "uncommon", cost: 1, draw: 2, name: "渡鸦侦察",
+      flavorTpl: "放出{w}探路", w: { cost: -1 }, s: { draw: 1 } },
+    { form: "calar", part: "noun", kind: "skill", rarity: "uncommon", cost: 1, energyGain: 2, exhaust: true, name: "掌灯疾行",
+      flavorTpl: "举起{w}，能量激增（消耗）", w: { cost: -1 }, s: { draw: 1 } },
+    { form: "(n)dagor", part: "noun", kind: "power", rarity: "uncommon", cost: 1, buffStrength: 2, name: "战意", innate: true,
       flavorTpl: "投入{w}的意志，永久增力", w: { buffStrength: 1 }, s: { cost: -1 } },
-    { form: "barad", part: "noun", kind: "power", cost: 2, startTurnBlock: 3, name: "高塔永固",
-      flavorTpl: "化身{w}，每回合起始得护甲", w: { startTurnBlock: 2 }, s: { cost: -1 } },
-    { form: "curu", part: "noun", kind: "power", cost: 2, drawBonus: 1, name: "巧智",
-      flavorTpl: "习得{w}，每回合多抽牌", w: { cost: -1 }, s: { drawBonus: 1 } },
+    { form: "estel", part: "noun", kind: "skill", rarity: "uncommon", cost: 1, block: 5, draw: 1, name: "振奋",
+      flavorTpl: "心怀{w}，御守并再取一牌", w: { block: 3 }, s: { draw: 1 } },
+    { form: "amdir", part: "noun", kind: "skill", rarity: "uncommon", cost: 1, weak: 2, draw: 1, name: "料敌",
+      flavorTpl: "凭{w}预判，削弱敌人并抽牌", w: { weak: 1 }, s: { draw: 1 } },
+    { form: "elanor", part: "noun", kind: "skill", rarity: "uncommon", cost: 1, buffDex: 2, name: "金花柔韧",
+      flavorTpl: "{w}绽放，此后护甲更厚", w: { buffDex: 1 }, s: { cost: -1 } },
+    { form: "(m)bas(t)", part: "noun", kind: "skill", rarity: "uncommon", cost: 1, block: 10, exhaust: true, retain: true, name: "囤粮固守",
+      flavorTpl: "备好{w}，稳守一回合（保留·消耗）", w: { block: 4 }, s: { block: 4 } },
+    { form: "athae", part: "adjective", kind: "skill", rarity: "uncommon", cost: 1, block: 4, cleanse: true, name: "净化",
+      flavorTpl: "{w}之力，清除自身所有减益", w: { block: 3 }, s: { cost: -1 } },
+    { form: "bregollach", part: "noun", kind: "attack", rarity: "uncommon", cost: 1, dmg: 12, vuln: 2, exhaust: true, ethereal: true, name: "骤火",
+      flavorTpl: "唤出{w}爆燃，转瞬即逝（虚无·消耗）", w: { dmg: 3 }, s: { vuln: 1 } },
 
-    // —— 强力消耗牌（本场战斗仅一次） ——
-    { form: "(n)dag-", part: "verb", kind: "attack", cost: 2, dmg: 14, exhaust: true, name: "斩杀",
-      flavorTpl: "以{w}的决意终结敌人（消耗）", w: { dmg: 3 }, s: { dmg: 4 } },
-    { form: "bregollach", part: "noun", kind: "attack", cost: 1, dmg: 8, vuln: 2, exhaust: true, name: "骤火",
-      flavorTpl: "唤出{w}爆燃，伤敌并易伤（消耗）", w: { dmg: 3 }, s: { vuln: 1 } },
-    { form: "(m)belaith", part: "adjective", kind: "power", cost: 2, buffStrength: 3, exhaust: true, name: "威能爆发",
-      flavorTpl: "化为{w}之姿，力量骤增（消耗）", w: { buffStrength: 1 }, s: { buffStrength: 2 } }
+    // ===== 稀有（金） =====
+    { form: "(n)dag-", part: "verb", kind: "attack", rarity: "rare", cost: 2, dmg: 16, exhaust: true, name: "斩杀",
+      flavorTpl: "以{w}的决意终结敌人（消耗）", w: { dmg: 4 }, s: { dmg: 5 } },
+    { form: "barad", part: "noun", kind: "power", rarity: "rare", cost: 2, startTurnBlock: 4, name: "高塔永固",
+      flavorTpl: "化身{w}，每回合起始得护甲", w: { startTurnBlock: 2 }, s: { cost: -1 } },
+    { form: "curu", part: "noun", kind: "power", rarity: "rare", cost: 2, drawBonus: 1, name: "巧智",
+      flavorTpl: "习得{w}，每回合多抽牌", w: { cost: -1 }, s: { drawBonus: 1 } },
+    { form: "(m)belaith", part: "adjective", kind: "power", rarity: "rare", cost: 2, buffStrength: 3, exhaust: true, name: "威能爆发",
+      flavorTpl: "化为{w}之姿，力量骤增（消耗）", w: { buffStrength: 1 }, s: { buffStrength: 2 } },
+    // 全牌池中唯一带回血的卡，设为稀有并消耗
+    { form: "athelas", part: "noun", kind: "skill", rarity: "rare", cost: 1, heal: 10, exhaust: true, name: "王叶疗愈",
+      flavorTpl: "嚼服{w}，恢复生命（消耗）", w: { heal: 4 }, s: { heal: 4 } }
 ];
 
-const STARTER_FORMS = ["cam", "coll"]; // 起始牌不进入奖励池
-
-// ---------- 敌人定义（art=图形原型, color=主色） ----------
-const ENEMY_DEFS = {
-    draug:    { form: "draug", part: "noun", art: "wolf", color: "#7a6a58", hp: 44,
-                pattern: [{ t: "attack", v: 10 }, { t: "attack", v: 7 }] },
-    auth:     { form: "auth", part: "noun", art: "wraith", color: "#7f8fb0", hp: 40,
-                pattern: [{ t: "attack", v: 7 }, { t: "defend", v: 6 }, { t: "attack", v: 11 }] },
-    esgal:    { form: "esgal", part: "noun", art: "wraith", color: "#5a6b7a", hp: 46,
-                pattern: [{ t: "defend", v: 8 }, { t: "attack", v: 13 }] },
-    duath:    { form: "dúath", part: "noun", art: "wraith", color: "#5a4a72", hp: 58,
-                pattern: [{ t: "attack", v: 10 }, { t: "attack", v: 10 }, { t: "buff", v: 3 }] },
-    fern:     { form: "fern", part: "adjective", art: "undead", color: "#9aa39a", hp: 56,
-                pattern: [{ t: "attack", v: 11 }, { t: "heal", v: 10 }, { t: "attack", v: 11 }] },
-    edlon:    { form: "edlon", part: "noun", art: "cloaked", color: "#586170", hp: 54,
-                pattern: [{ t: "attack", v: 9 }, { t: "frighten" }, { t: "attack", v: 14 }] },
-    ndur:     { form: "(n)dûr", part: "adjective", art: "demon", color: "#8a3030", hp: 88, elite: true,
-                pattern: [{ t: "attack", v: 16 }, { t: "defend", v: 10 }, { t: "attack", v: 18 }] },
-    daedelos: { form: "(n)daedelos", part: "noun", art: "eye", color: "#6d3a86", hp: 92, elite: true,
-                pattern: [{ t: "frighten" }, { t: "attack", v: 15 }, { t: "attack", v: 15 }] },
-    amarth:   { form: "amarth", part: "noun", art: "darklord", color: "#3a2f52", hp: 150, boss: true,
-                pattern: [{ t: "attack", v: 15 }, { t: "attack", v: 11 }, { t: "doom" }, { t: "attack", v: 20 }] }
+const STARTER_FORMS = ["cam", "coll", "brasta-"];
+const RARITY_META = {
+    common:   { label: "普通", cls: "rar-common", gem: "◇" },
+    uncommon: { label: "罕见", cls: "rar-uncommon", gem: "◆" },
+    rare:     { label: "稀有", cls: "rar-rare", gem: "★" }
 };
 
-// ---------- 圣物定义（常驻，顶栏显示） ----------
+// ---------- 敌人（意图混入各种减益） ----------
+const ENEMY_DEFS = {
+    draug:    { form: "draug", part: "noun", art: "wolf", color: "#7a6a58", hp: 44,
+                pattern: [{ t: "attack", v: 10 }, { t: "attack", v: 7 }, { t: "weak", v: 2 }] },
+    auth:     { form: "auth", part: "noun", art: "wraith", color: "#7f8fb0", hp: 40,
+                pattern: [{ t: "attack", v: 7 }, { t: "defend", v: 6 }, { t: "frail", v: 2 }, { t: "attack", v: 11 }] },
+    esgal:    { form: "esgal", part: "noun", art: "wraith", color: "#5a6b7a", hp: 46,
+                pattern: [{ t: "defend", v: 8 }, { t: "attack", v: 13 }, { t: "frail", v: 2 }] },
+    duath:    { form: "dúath", part: "noun", art: "wraith", color: "#5a4a72", hp: 58,
+                pattern: [{ t: "attack", v: 10 }, { t: "vuln", v: 2 }, { t: "attack", v: 10 }, { t: "buff", v: 3 }] },
+    fern:     { form: "fern", part: "adjective", art: "undead", color: "#9aa39a", hp: 56,
+                pattern: [{ t: "attack", v: 11 }, { t: "poison", v: 4 }, { t: "attack", v: 11 }] },
+    edlon:    { form: "edlon", part: "noun", art: "cloaked", color: "#586170", hp: 54,
+                pattern: [{ t: "attack", v: 9 }, { t: "vuln", v: 2 }, { t: "attack", v: 14 }, { t: "weak", v: 2 }] },
+    ndur:     { form: "(n)dûr", part: "adjective", art: "demon", color: "#8a3030", hp: 88, elite: true,
+                pattern: [{ t: "attack", v: 16 }, { t: "defend", v: 10 }, { t: "weak", v: 2 }, { t: "attack", v: 18 }] },
+    daedelos: { form: "(n)daedelos", part: "noun", art: "eye", color: "#6d3a86", hp: 92, elite: true,
+                pattern: [{ t: "vuln", v: 2 }, { t: "attack", v: 15 }, { t: "frail", v: 2 }, { t: "attack", v: 15 }] },
+    amarth:   { form: "amarth", part: "noun", art: "darklord", color: "#3a2f52", hp: 230, boss: true,
+                // 逐步升级的消耗战：两次「命运」叠力量，配合脆弱削护甲，拖得越久越致命
+                pattern: [{ t: "attack", v: 16 }, { t: "vuln", v: 2 }, { t: "attack", v: 13 }, { t: "doom" },
+                          { t: "frail", v: 2 }, { t: "attack", v: 22 }, { t: "poison", v: 6 },
+                          { t: "doom" }, { t: "attack", v: 26 }] }
+};
+
+// ---------- 圣物 ----------
 const RELIC_DEFS = [
     { form: "aran", part: "noun", icon: "👑", name: "王者之息", effect: "energyMax", desc: "每场战斗初始能量 +1" },
-    { form: "bereth", part: "noun", icon: "💠", name: "女王庇佑", effect: "healAfterCombat", desc: "每次战斗胜利后恢复 5 点生命" },
+    { form: "bereth", part: "noun", icon: "💠", name: "女王庇佑", effect: "healAfterCombat", desc: "每次战斗胜利后恢复 6 点生命" },
     { form: "arnad", part: "noun", icon: "🪙", name: "王土岁贡", effect: "goldBonus", desc: "每次离开房间额外获得 5 金币" },
     { form: "albeth", part: "noun", icon: "🍀", name: "吉兆之言", effect: "firstCardFree", desc: "每回合打出的第一张牌费用为 0" }
 ];
-
-// ---------- 楼层规划：每层两个房间二选一，第10层为首领 ----------
-const FLOOR_PLAN = [
-    ["combat", "event"],
-    ["combat", "rest"],
-    ["rest", "combat"],
-    ["elite", "combat"],
-    ["shop", "event"],
-    ["combat", "treasure"],
-    ["rest", "elite"],
-    ["combat", "shop"],
-    ["treasure", "rest"],
-    ["boss"]
-];
-const EASY_POOL = ["draug", "auth", "esgal"];
-const MID_POOL = ["duath", "fern", "edlon"];
-const ELITE_POOL = ["ndur", "daedelos"];
 
 // ============================================================
 // 全局状态
@@ -154,9 +141,6 @@ let run = null;
 const app = document.getElementById("app");
 const overlay = document.getElementById("overlay");
 
-// ============================================================
-// 初始化
-// ============================================================
 document.addEventListener("DOMContentLoaded", () => {
     initTooltips();
     fetch(DICT_URL)
@@ -178,31 +162,28 @@ function buildIndex(data) {
         const entry = getEntry(d.form, d.part);
         if (entry) { seen.add(key); ALL_TERMS.push({ form: d.form, part: d.part, entry }); }
     });
-    collect(CARD_DEFS);
-    collect(Object.values(ENEMY_DEFS));
-    collect(RELIC_DEFS);
+    collect(CARD_DEFS); collect(Object.values(ENEMY_DEFS)); collect(RELIC_DEFS);
 }
-
 function getEntry(form, part) { return WORD_INDEX[form + "|" + part] || WORD_INDEX[form] || null; }
-
 function shortDef(entry) {
     if (!entry) return "（未知词义）";
     let s = (entry.definition || entry.english || "").split(/[；;]/)[0].trim();
     if (!s) s = (entry.english || "").split(",")[0].trim();
     return s || "（未知词义）";
 }
-
 function escapeHtml(s) {
     return String(s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 }
+function pick(arr) { return arr[Math.floor(Math.random() * arr.length)]; }
+function shuffle(arr) {
+    for (let i = arr.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [arr[i], arr[j]] = [arr[j], arr[i]]; }
+    return arr;
+}
 
 // ============================================================
-// 掌握度持久化（跨局的词汇学习记录，独立于本局卡牌强化等级）
+// 掌握度持久化
 // ============================================================
-function loadMastery() {
-    try { return JSON.parse(localStorage.getItem(MASTERY_KEY)) || {}; }
-    catch (e) { return {}; }
-}
+function loadMastery() { try { return JSON.parse(localStorage.getItem(MASTERY_KEY)) || {}; } catch (e) { return {}; } }
 function saveMastery() { localStorage.setItem(MASTERY_KEY, JSON.stringify(mastery)); }
 function markMastery(form, part, correct) {
     const key = form + "|" + part;
@@ -211,74 +192,74 @@ function markMastery(form, part, correct) {
     if (correct) mastery[key].correct++;
     saveMastery();
 }
-function isEverMastered(form, part) {
-    const m = mastery[form + "|" + part];
-    return !!(m && m.correct > 0);
-}
+function isEverMastered(form, part) { const m = mastery[form + "|" + part]; return !!(m && m.correct > 0); }
 
 // ============================================================
-// 卡牌实例与数值计算
+// 卡牌实例与数值
 // ============================================================
 function findCardDef(form) { return CARD_DEFS.find(c => c.form === form); }
 function cardDef(card) { return findCardDef(card.form); }
-
 function makeCardInstance(def) {
     return {
         uid: Math.random().toString(36).slice(2),
-        form: def.form, part: def.part, kind: def.kind, name: def.name,
-        flavorTpl: def.flavorTpl, exhaust: !!def.exhaust, exileAfterUse: !!def.exileAfterUse,
-        tier: 0 // 0 基础 / 1 弱强化 / 2 强强化
+        form: def.form, part: def.part, kind: def.kind, name: def.name, rarity: def.rarity,
+        exhaust: !!def.exhaust, exileAfterUse: !!def.exileAfterUse,
+        innate: !!def.innate, retain: !!def.retain, ethereal: !!def.ethereal, tier: 0
     };
 }
-
-// 计算某张卡在其当前强化等级下的有效数值
 function eff(card) {
     const d = cardDef(card) || {};
     const t = card.tier || 0;
-    const add = (f) => (d[f] || 0)
-        + (t >= 1 && d.w && d.w[f] ? d.w[f] : 0)
-        + (t >= 2 && d.s && d.s[f] ? d.s[f] : 0);
-    const cost = Math.max(0, (d.cost || 0)
-        + (t >= 1 && d.w && d.w.cost ? d.w.cost : 0)
-        + (t >= 2 && d.s && d.s.cost ? d.s.cost : 0));
+    const add = (f) => (d[f] || 0) + (t >= 1 && d.w && d.w[f] ? d.w[f] : 0) + (t >= 2 && d.s && d.s[f] ? d.s[f] : 0);
+    const cost = Math.max(0, (d.cost || 0) + (t >= 1 && d.w && d.w.cost ? d.w.cost : 0) + (t >= 2 && d.s && d.s.cost ? d.s.cost : 0));
     return {
-        cost,
-        dmg: add("dmg"), block: add("block"), heal: add("heal"), draw: add("draw"),
-        buffStrength: add("buffStrength"), energyGain: add("energyGain"),
-        vuln: add("vuln"), weak: add("weak"),
+        cost, dmg: add("dmg"), hits: d.hits || 1, block: add("block"), heal: add("heal"), draw: add("draw"),
+        buffStrength: add("buffStrength"), buffDex: add("buffDex"), energyGain: add("energyGain"),
+        vuln: add("vuln"), weak: add("weak"), cleanse: !!d.cleanse,
         startTurnBlock: add("startTurnBlock"), drawBonus: add("drawBonus"),
         retainBlock: !!d.retainBlock, exhaust: !!d.exhaust, exileAfterUse: !!d.exileAfterUse
     };
 }
-
-// 用一个 def + 指定 tier 生成一个仅用于展示的伪卡
 function previewCard(def, tier) {
-    return { form: def.form, part: def.part, kind: def.kind, name: def.name,
-             exhaust: !!def.exhaust, exileAfterUse: !!def.exileAfterUse, tier: tier || 0 };
+    return { form: def.form, part: def.part, kind: def.kind, name: def.name, rarity: def.rarity,
+             exhaust: !!def.exhaust, exileAfterUse: !!def.exileAfterUse,
+             innate: !!def.innate, retain: !!def.retain, ethereal: !!def.ethereal, tier: tier || 0 };
 }
 
+// StS 式关键词：固有（起手必有）/ 保留（回合结束不弃）/ 虚无（回合结束仍在手则消耗）
+const KEYWORD_META = {
+    innate:   { label: "固有", tip: "固有：每场战斗的起手牌中必定包含这张牌。" },
+    retain:   { label: "保留", tip: "保留：回合结束时这张牌不会被弃掉，留在手上。" },
+    ethereal: { label: "虚无", tip: "虚无：若回合结束时它仍在手中，则被消耗（本场战斗不再出现）。" }
+};
+function keywordBadges(card) {
+    return Object.keys(KEYWORD_META).filter(k => card[k])
+        .map(k => `<span class="kw-badge kw-${k}" data-tip="${KEYWORD_META[k].tip}">${KEYWORD_META[k].label}</span>`)
+        .join("");
+}
 function meaningRevealed(card) { return isEverMastered(card.form, card.part); }
 function kindLabel(kind) { return { attack: "⚔ 攻击", skill: "🛡 技能", power: "💠 能力" }[kind] || kind; }
 
 function effectPartsFromEff(e) {
     const parts = [];
-    if (e.dmg) parts.push(`造成 ${e.dmg} 点伤害`);
+    if (e.dmg) parts.push(e.hits > 1 ? `造成 ${e.dmg} 点伤害 ×${e.hits}` : `造成 ${e.dmg} 点伤害`);
     if (e.block) parts.push(`获得 ${e.block} 点护甲`);
     if (e.heal) parts.push(`恢复 ${e.heal} 点生命`);
     if (e.draw) parts.push(`抽 ${e.draw} 张牌`);
-    if (e.buffStrength) parts.push(`力量 +${e.buffStrength}（本场永久）`);
+    if (e.buffStrength) parts.push(`力量 +${e.buffStrength}`);
+    if (e.buffDex) parts.push(`敏捷 +${e.buffDex}`);
     if (e.energyGain) parts.push(`获得 ${e.energyGain} 点能量`);
-    if (e.vuln) parts.push(`使敌人易伤 ${e.vuln} 回合（受伤 +50%）`);
-    if (e.weak) parts.push(`使敌人虚弱 ${e.weak} 回合（攻击 -25%）`);
-    if (e.startTurnBlock) parts.push(`此后每回合开始获得 ${e.startTurnBlock} 护甲`);
-    if (e.drawBonus) parts.push(`此后每回合多抽 ${e.drawBonus} 张牌`);
-    if (e.retainBlock) parts.push(`护甲可保留至下回合`);
+    if (e.vuln) parts.push(`敌方易伤 ${e.vuln} 回合`);
+    if (e.weak) parts.push(`敌方虚弱 ${e.weak} 回合`);
+    if (e.cleanse) parts.push(`清除自身所有减益`);
+    if (e.startTurnBlock) parts.push(`每回合开始获得 ${e.startTurnBlock} 护甲`);
+    if (e.drawBonus) parts.push(`每回合多抽 ${e.drawBonus} 张牌`);
+    if (e.retainBlock) parts.push(`护甲保留至下回合`);
     return parts;
 }
-
 function tierBadge(tier) {
-    if (tier >= 2) return `<span class="tier-badge t2" title="强强化">＋＋</span>`;
-    if (tier >= 1) return `<span class="tier-badge t1" title="弱强化">＋</span>`;
+    if (tier >= 2) return `<span class="tier-badge t2" data-tip="强强化：已通过篝火复习">＋＋</span>`;
+    if (tier >= 1) return `<span class="tier-badge t1" data-tip="弱强化：已通过初次学习">＋</span>`;
     return "";
 }
 
@@ -287,34 +268,37 @@ function tierBadge(tier) {
 // ============================================================
 function renderTitle() {
     const total = ALL_TERMS.length;
-    const mastered = ALL_TERMS.filter(t => isEverMastered(t.form, t.part)).length;
+    const done = ALL_TERMS.filter(t => isEverMastered(t.form, t.part)).length;
     app.innerHTML = `
         <div style="text-align:center;padding:20px 0;">
             <img class="tengwar-img" src="TitleSindarin1.png" alt="Mae govannen, randir. Se barad adabannen o phith Edhellen.">
             <p class="title-latin">Mae govannen, randir. Se barad adabannen o phith Edhellen.<br>你好，旅人。这座塔由辛达语的词汇筑成。</p>
             <p class="title-credit">腾格瓦转写由 <a href="https://www.tecendil.com/" target="_blank" rel="noopener">tecendil.com</a> 生成</p>
-            <div class="stat" style="margin:18px auto;display:inline-flex;">📖 累计学习进度：${mastered} / ${total} 词已掌握</div>
+            <div class="stat" style="margin:18px auto;display:inline-flex;">📖 累计学习进度：${done} / ${total} 词已掌握</div>
             <div class="btn-row">
                 <button class="primary-btn" onclick="startRun()">开始攀登 · Iestad</button>
                 <button class="secondary-btn" onclick="openGlossary()">生词手册</button>
             </div>
             <div class="title-help">
                 <b>玩法说明：</b><br>
-                · 每层塔在地图上二选一：战斗 / 精英 / 篝火 / 商店 / 奇遇 / 宝藏，塔顶迎战 boss。<br>
+                · 地图分岔，<b>自行规划路线</b>：只能沿连线走到上一层相邻的房间，选错路就走不回来。<br>
                 · 战斗中：<b>攻击牌需拖到右侧怪物身上</b>出牌，技能/能力牌点击即用。<br>
-                · <b>初次学习</b>——每次选取奖励卡后，会随机抽取牌组里一张牌考察<b>词义</b>；答对该牌获得<b>弱强化</b>（数值小幅提升）。<br>
-                · <b>复习</b>——篝火处自选两张已弱强化的牌，考察<b>音变/复数（名词）或时态（动词）</b>；答对升级为<b>强强化</b>（减费或大幅增强）。<br>
-                · 词汇的掌握记录跨局永久保存；死亡只重置本局牌组。
+                · 卡牌分 <span class="rar-dot rar-common"></span>普通 / <span class="rar-dot rar-uncommon"></span>罕见 / <span class="rar-dot rar-rare"></span>稀有 三档。<br>
+                · 关键词：<span class="kw-badge kw-innate">固有</span>起手必有 ·
+                  <span class="kw-badge kw-retain">保留</span>回合结束不弃 ·
+                  <span class="kw-badge kw-ethereal">虚无</span>留在手上则消散 ·
+                  🔥消耗 打出后本场不再出现。<br>
+                · 减益：易伤（受伤+50%）、虚弱（攻击-25%）、脆弱（护甲-25%）、中毒（每回合掉血）。<br>
+                · <b>初次学习</b>——每次选取奖励卡后，随机抽牌组一张考<b>词义</b>，答对得<b>弱强化</b>。<br>
+                · <b>复习</b>——篝火处自选两张已弱强化的牌，考<b>音变/复数（名词）或时态（动词）</b>，答对升<b>强强化</b>。<br>
+                · 词汇掌握记录跨局永久保存；死亡只重置本局牌组。
             </div>
-        </div>
-    `;
+        </div>`;
 }
-
 function openGlossary() {
     const rows = ALL_TERMS.slice().sort((a, b) => a.form.localeCompare(b.form)).map(t => {
-        const done = isEverMastered(t.form, t.part);
-        const meaning = done ? shortDef(t.entry) : "？？？";
-        return `<div class="deck-chip"><span class="w">${escapeHtml(t.form)}</span> <span style="color:#7f8c8d;">(${t.part})</span> — ${escapeHtml(meaning)} <span class="m">${done ? "★" : "☆"}</span></div>`;
+        const ok = isEverMastered(t.form, t.part);
+        return `<div class="deck-chip"><span class="w">${escapeHtml(t.form)}</span> <span style="color:#7f8c8d;">(${t.part})</span> — ${escapeHtml(ok ? shortDef(t.entry) : "？？？")} <span class="m">${ok ? "★" : "☆"}</span></div>`;
     }).join("");
     showModal(`
         <h3>📖 辛达语生词手册</h3>
@@ -323,109 +307,190 @@ function openGlossary() {
         <div class="btn-row">
             <button class="secondary-btn" onclick="closeModal()">关闭</button>
             <button class="secondary-btn" onclick="if(confirm('确定清空全部学习记录？此操作不可恢复。')){mastery={};saveMastery();closeModal();}">重置学习记录</button>
-        </div>
-    `);
+        </div>`);
 }
 
 // ============================================================
-// 开局
+// 地图：杀戮尖塔式分岔路线图
 // ============================================================
-function startRun() {
-    const startDeck = [];
-    for (let i = 0; i < 5; i++) startDeck.push(makeCardInstance(findCardDef("cam")));
-    for (let i = 0; i < 4; i++) startDeck.push(makeCardInstance(findCardDef("coll")));
-    startDeck.push(makeCardInstance(findCardDef("athelas")));
-    run = {
-        floor: 0, hp: 75, maxHp: 75, gold: 20,
-        deck: startDeck, relics: [], combat: null,
-        path: [], energyMaxBase: 3
-    };
-    goToNextFloor();
-}
+const MAP_ROWS = 12;   // 0..10 为普通层，11 为 boss
+const MAP_SLOTS = 6;
+const MAP_PATHS = 6;
 
-// ============================================================
-// 楼层地图
-// ============================================================
 const ROOM_META = {
-    combat:   { icon: "⚔️", name: "遭遇战", desc: "一只普通的塔中生物。", cls: "r-combat" },
-    elite:    { icon: "☠️", name: "精英战", desc: "强敌，胜利后获得圣物。", cls: "r-elite" },
-    rest:     { icon: "🏕️", name: "篝火", desc: "歇息回血，或复习升级卡牌。", cls: "r-rest" },
-    shop:     { icon: "🛒", name: "商店", desc: "cadhad 矮人贩售圣物与精简。", cls: "r-shop" },
-    event:    { icon: "❓", name: "奇遇", desc: "一次词义考验，答对有奖励。", cls: "r-event" },
-    treasure: { icon: "💎", name: "宝藏", desc: "解开辛达语谜题开启宝箱。", cls: "r-treasure" },
-    boss:     { icon: "🐉", name: "塔顶 · amarth", desc: "命运与终局在此等候。", cls: "r-boss" }
+    combat:   { icon: "⚔", name: "遭遇战", desc: "普通敌人，胜利可选一张卡。", cls: "r-combat" },
+    elite:    { icon: "☠", name: "精英战", desc: "强敌，额外掉落圣物。", cls: "r-elite" },
+    rest:     { icon: "🏕", name: "篝火", desc: "回血，或复习升级卡牌。", cls: "r-rest" },
+    shop:     { icon: "🛒", name: "商店", desc: "购买圣物、移除卡牌。", cls: "r-shop" },
+    event:    { icon: "❓", name: "奇遇", desc: "词义考验，答对有奖励。", cls: "r-event" },
+    treasure: { icon: "💎", name: "宝藏", desc: "解谜开箱。", cls: "r-treasure" },
+    boss:     { icon: "🐉", name: "塔顶", desc: "amarth：命运与终局。", cls: "r-boss" }
 };
 
-function goToNextFloor() {
-    run.combat = null;
-    run.floor++;
-    if (run.floor > FLOOR_PLAN.length) { renderVictory(); return; }
-    const options = FLOOR_PLAN[run.floor - 1];
-    if (options.length === 1) { run.path[run.floor - 1] = options[0]; enterRoom(options[0]); return; }
-    renderMap(options);
+function assignRoomType(row) {
+    if (row === 0) return "combat";                 // 首层必为战斗
+    if (row === 1) return Math.random() < 0.65 ? "combat" : "event";
+    if (row === 4) return "treasure";               // 固定宝藏层
+    if (row === MAP_ROWS - 2) return "rest";        // boss 前必为篝火
+    const roll = Math.random();
+    if (row >= 5 && roll < 0.16) return "elite";
+    if (row >= 2 && roll < 0.26) return "rest";
+    if (row >= 2 && roll < 0.36) return "shop";
+    if (roll < 0.58) return "event";
+    return "combat";
 }
 
-function towerRailHtml() {
-    // 竖向塔层进度：已过层显示所选图标，当前层高亮，未来层锁定
-    const dots = [];
-    for (let f = FLOOR_PLAN.length; f >= 1; f--) {
-        let cls = "floor-dot", inner = f;
-        if (f < run.floor) { cls += " done"; const t = run.path[f - 1]; inner = t ? ROOM_META[t].icon : "·"; }
-        else if (f === run.floor) { cls += " current"; }
-        else { cls += " locked"; inner = "🔒"; }
-        dots.push(`<div class="${cls}" title="第 ${f} 层">${inner}</div>`);
+function generateMap() {
+    const nodes = {};
+    const id = (r, s) => r + "-" + s;
+    const ensure = (r, s) => {
+        if (!nodes[id(r, s)]) nodes[id(r, s)] = { id: id(r, s), row: r, slot: s, next: [], visited: false, type: null };
+        return nodes[id(r, s)];
+    };
+    // 以「多条自底向上的路径」生成节点与连线，保证每个节点都可达且通向 boss
+    const firstSlots = shuffle([...Array(MAP_SLOTS).keys()]);
+    for (let p = 0; p < MAP_PATHS; p++) {
+        let s = p < 2 ? firstSlots[p] : Math.floor(Math.random() * MAP_SLOTS);
+        ensure(0, s);
+        for (let r = 0; r < MAP_ROWS - 2; r++) {
+            const cand = [s - 1, s, s + 1].filter(x => x >= 0 && x < MAP_SLOTS);
+            const s2 = cand[Math.floor(Math.random() * cand.length)];
+            ensure(r + 1, s2);
+            const from = nodes[id(r, s)];
+            if (!from.next.includes(id(r + 1, s2))) from.next.push(id(r + 1, s2));
+            s = s2;
+        }
     }
-    return `<div class="floor-rail">${dots.join("")}</div>`;
+    // boss 层：所有顶层节点汇聚
+    const bossSlot = Math.floor(MAP_SLOTS / 2);
+    const boss = ensure(MAP_ROWS - 1, bossSlot);
+    boss.type = "boss";
+    Object.values(nodes).forEach(n => {
+        if (n.row === MAP_ROWS - 2 && !n.next.length) n.next.push(boss.id);
+    });
+    // 分配房间类型
+    Object.values(nodes).forEach(n => { if (!n.type) n.type = assignRoomType(n.row); });
+    return { nodes, startIds: Object.values(nodes).filter(n => n.row === 0).map(n => n.id) };
 }
 
-function renderMap(options) {
-    const medallions = options.map((t) => {
-        const m = ROOM_META[t];
-        return `<button class="medallion ${m.cls}" onclick="enterRoom('${t}')">
-            <span class="medallion-icon">${m.icon}</span>
-            <span class="medallion-name">${m.name}</span>
-            <span class="medallion-desc">${m.desc}</span>
-        </button>`;
-    }).join(`<div class="medallion-or">或</div>`);
+function mapSvg() {
+    const m = run.map;
+    const colW = 62, rowH = 58, padX = 30, padY = 28;
+    const W = padX * 2 + (MAP_SLOTS - 1) * colW;
+    const H = padY * 2 + (MAP_ROWS - 1) * rowH;
+    const X = (s) => padX + s * colW;
+    const Y = (r) => padY + (MAP_ROWS - 1 - r) * rowH; // 底部为第 1 层
+    const avail = new Set(run.available || []);
+
+    let edges = "";
+    Object.values(m.nodes).forEach(n => {
+        n.next.forEach(nid => {
+            const t = m.nodes[nid];
+            if (!t) return;
+            const walked = n.visited && t.visited;
+            const open = n.id === run.currentNodeId && avail.has(nid);
+            edges += `<line x1="${X(n.slot)}" y1="${Y(n.row)}" x2="${X(t.slot)}" y2="${Y(t.row)}"
+                class="map-edge ${walked ? "walked" : ""} ${open ? "open" : ""}" />`;
+        });
+    });
+    let circles = "";
+    Object.values(m.nodes).forEach(n => {
+        const meta = ROOM_META[n.type];
+        const isAvail = avail.has(n.id);
+        const isCur = n.id === run.currentNodeId;
+        const cls = ["map-node", meta.cls, n.visited ? "visited" : "", isAvail ? "avail" : "", isCur ? "current" : ""].join(" ");
+        const click = isAvail ? `onclick="chooseMapNode('${n.id}')"` : "";
+        const tip = `${meta.name}（第 ${n.row + 1} 层）：${meta.desc}`;
+        circles += `<g class="${cls}" ${click} data-tip="${escapeHtml(tip)}">
+            <circle cx="${X(n.slot)}" cy="${Y(n.row)}" r="${n.type === "boss" ? 20 : 15}"/>
+            <text x="${X(n.slot)}" y="${Y(n.row)}" text-anchor="middle" dominant-baseline="central">${meta.icon}</text>
+        </g>`;
+    });
+    return `<svg class="map-svg" viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" role="img" aria-label="塔层地图">${edges}${circles}</svg>`;
+}
+
+function renderMap() {
+    const depth = run.currentNodeId ? run.map.nodes[run.currentNodeId].row + 1 : 0;
     app.innerHTML = `
         ${topBarHtml()}
-        <div class="tower-map">
-            ${towerRailHtml()}
-            <div class="tower-choice">
-                <h2 class="map-title">第 ${run.floor} 层 · 选择前路</h2>
-                <div class="choice-medallions">${medallions}</div>
-            </div>
+        <div class="map-head">
+            <h2 class="map-title">塔层地图</h2>
+            <p class="map-sub">${run.currentNodeId ? `当前位于第 ${depth} 层，` : "从底层任选一处入口，"}点击<b>发亮的节点</b>继续攀登。路线一旦选定无法回头。</p>
         </div>
-    `;
+        <div class="map-scroll">${mapSvg()}</div>
+        <div class="map-legend">
+            ${Object.entries(ROOM_META).map(([k, v]) => `<span class="legend-item"><span class="legend-ic ${v.cls}">${v.icon}</span>${v.name}</span>`).join("")}
+        </div>`;
+    const sc = document.querySelector(".map-scroll");
+    if (sc) sc.scrollTop = sc.scrollHeight; // 视角落在底部（当前进度）
+}
+
+function chooseMapNode(nid) {
+    const node = run.map.nodes[nid];
+    if (!node || !(run.available || []).includes(nid)) return;
+    run.pendingNodeId = nid;
+    enterRoom(node.type);
+}
+
+// 房间结束后回到地图（替代原来的「下一层」）
+function completeRoom() {
+    run.combat = null;
+    const node = run.map.nodes[run.pendingNodeId];
+    if (node) {
+        node.visited = true;
+        run.currentNodeId = node.id;
+        run.available = node.next.slice();
+    }
+    run.pendingNodeId = null;
+    if (node && node.type === "boss") { renderVictory(); return; }
+    if (!run.available || !run.available.length) { renderVictory(); return; }
+    renderMap();
 }
 
 function enterRoom(type) {
-    run.path[run.floor - 1] = type;
-    if (type === "combat") startCombat(pick(run.floor <= 5 ? EASY_POOL : EASY_POOL.concat(MID_POOL)));
-    else if (type === "elite") startCombat(pick(ELITE_POOL), true);
+    if (type === "combat") startCombat(pickCombatEnemy());
+    else if (type === "elite") startCombat(pick(["ndur", "daedelos"]), true);
     else if (type === "boss") startCombat("amarth", false, true);
     else if (type === "rest") renderRest();
     else if (type === "shop") renderShop();
     else if (type === "event") renderEvent();
     else if (type === "treasure") renderTreasure();
 }
-function pick(arr) { return arr[Math.floor(Math.random() * arr.length)]; }
+function pickCombatEnemy() {
+    const row = run.map.nodes[run.pendingNodeId] ? run.map.nodes[run.pendingNodeId].row : 0;
+    return row <= 4 ? pick(["draug", "auth", "esgal"]) : pick(["draug", "auth", "esgal", "duath", "fern", "edlon"]);
+}
 function leaveRoomBonus() { if (run.relics.some(r => r.effect === "goldBonus")) run.gold += 5; }
 
 // ============================================================
-// 顶栏：圣物（常驻）+ 资源 + 牌堆按钮
+// 开局
+// ============================================================
+function startRun() {
+    const deck = [];
+    for (let i = 0; i < 4; i++) deck.push(makeCardInstance(findCardDef("cam")));
+    for (let i = 0; i < 4; i++) deck.push(makeCardInstance(findCardDef("coll")));
+    deck.push(makeCardInstance(findCardDef("brasta-")));
+    run = {
+        hp: 75, maxHp: 75, gold: 20, deck, relics: [], combat: null,
+        map: generateMap(), currentNodeId: null, pendingNodeId: null, available: [],
+        energyMaxBase: 3
+    };
+    run.available = run.map.startIds.slice();
+    renderMap();
+}
+
+// ============================================================
+// 顶栏
 // ============================================================
 function relicStripHtml() {
     if (!run.relics.length) return "";
     const chips = run.relics.map(r =>
-        `<span class="relic-chip" data-tip="${escapeHtml(r.name + "：" + r.desc)}">
-            <span class="relic-ic">${r.icon || "💠"}</span><span class="relic-w">${escapeHtml(r.form)}</span>
-        </span>`).join("");
+        `<span class="relic-chip" data-tip="${escapeHtml(r.name + "：" + r.desc)}"><span class="relic-ic">${r.icon}</span><span class="relic-w">${escapeHtml(r.form)}</span></span>`).join("");
     return `<div class="relic-strip"><span class="relic-label">圣物</span>${chips}</div>`;
 }
-
 function topBarHtml() {
     const c = run.combat;
+    const depth = run.currentNodeId ? run.map.nodes[run.currentNodeId].row + 1 : 0;
     const pileBtn = c
         ? `<button class="utility-btn" onclick="openPileViewer()">📚 牌堆 抽${c.player.deck.length}/弃${c.player.discard.length}/耗${c.player.exile.length}</button>`
         : `<button class="utility-btn" onclick="openPileViewer()">📚 牌组 (${run.deck.length})</button>`;
@@ -434,38 +499,66 @@ function topBarHtml() {
         <div class="status-bar">
             <span class="stat hp">❤ ${run.hp}/${run.maxHp}</span>
             <span class="stat coin">🪙 ${run.gold}</span>
-            <span class="stat floor">🗼 第 ${run.floor} / ${FLOOR_PLAN.length} 层</span>
+            <span class="stat floor">🗼 第 ${depth} / ${MAP_ROWS} 层</span>
             ${pileBtn}
-        </div>
-    `;
+        </div>`;
 }
-
-// ---------- 牌堆查看 ----------
 function pileCardChip(card) {
     const label = meaningRevealed(card) ? `${card.form}（${card.name}）` : `${card.form}（${kindLabel(card.kind)}）`;
-    return `<div class="deck-chip"><span class="w">${escapeHtml(label)}</span> ${tierBadge(card.tier)}</div>`;
+    return `<div class="deck-chip ${RARITY_META[card.rarity].cls}"><span class="w">${escapeHtml(label)}</span> ${tierBadge(card.tier)}</div>`;
 }
 function pileSection(title, cards) {
-    const body = cards.length ? `<div class="deck-list">${cards.map(pileCardChip).join("")}</div>`
-        : `<p style="color:#7f8c8d;font-size:13px;">（空）</p>`;
-    return `<h3 style="margin-bottom:8px;">${title}（${cards.length}）</h3>${body}`;
+    return `<h3 style="margin-bottom:8px;">${title}（${cards.length}）</h3>` +
+        (cards.length ? `<div class="deck-list">${cards.map(pileCardChip).join("")}</div>` : `<p style="color:#7f8c8d;font-size:13px;">（空）</p>`);
 }
 function openPileViewer() {
     const c = run.combat;
-    let body;
-    if (c) {
-        body = pileSection("抽牌堆 · Deck", c.player.deck)
-             + pileSection("弃牌堆 · Discard", c.player.discard)
-             + pileSection("消耗堆 · Exile", c.player.exile);
-    } else {
-        body = pileSection("整体牌组 · Deck", run.deck);
-    }
-    showModal(`
-        <h3 style="margin-top:0;">📚 牌堆总览</h3>
-        <p class="modal-hint">${c ? "手牌见战斗界面；抽牌堆顺序已打乱，仅供查看构成。" : "当前不在战斗中，显示整局牌组。"}</p>
-        ${body}
-        <div class="btn-row"><button class="secondary-btn" onclick="closeModal()">关闭</button></div>
-    `);
+    const body = c
+        ? pileSection("抽牌堆 · Deck", c.player.deck) + pileSection("弃牌堆 · Discard", c.player.discard) + pileSection("消耗堆 · Exile", c.player.exile)
+        : pileSection("整体牌组 · Deck", run.deck);
+    showModal(`<h3 style="margin-top:0;">📚 牌堆总览</h3>
+        <p class="modal-hint">${c ? "手牌见战斗界面；抽牌堆顺序已打乱。" : "当前不在战斗中，显示整局牌组。"}</p>
+        ${body}<div class="btn-row"><button class="secondary-btn" onclick="closeModal()">关闭</button></div>`);
+}
+
+// ============================================================
+// 状态（buff / debuff）系统
+// ============================================================
+function newStatuses() { return { vuln: 0, weak: 0, frail: 0, poison: 0 }; }
+const STATUS_META = {
+    vuln:   { icon: "☠", cls: "s-vuln",  name: "易伤", tip: "受到攻击伤害 +50%" },
+    weak:   { icon: "🩸", cls: "s-weak",  name: "虚弱", tip: "造成攻击伤害 -25%" },
+    frail:  { icon: "🥀", cls: "s-frail", name: "脆弱", tip: "获得的护甲 -25%" },
+    poison: { icon: "☣", cls: "s-poison", name: "中毒", tip: "每回合开始按层数损失生命，然后层数 -1" }
+};
+function statusPills(entity) {
+    const out = [];
+    if (entity.strength) out.push(`<span class="status-pill s-str" data-tip="力量：攻击伤害 +${entity.strength}">💪 ${entity.strength}</span>`);
+    if (entity.dexterity) out.push(`<span class="status-pill s-dex" data-tip="敏捷：获得护甲 +${entity.dexterity}">🍃 ${entity.dexterity}</span>`);
+    Object.keys(STATUS_META).forEach(k => {
+        const v = entity.statuses[k];
+        if (v > 0) {
+            const m = STATUS_META[k];
+            out.push(`<span class="status-pill ${m.cls}" data-tip="${m.name}：${m.tip}（剩 ${v}）">${m.icon} ${v}</span>`);
+        }
+    });
+    return out.join("");
+}
+function tickStatuses(entity) {
+    ["vuln", "weak", "frail"].forEach(k => { if (entity.statuses[k] > 0) entity.statuses[k]--; });
+}
+function outgoingDamage(attacker, base) {
+    let v = base + (attacker.strength || 0);
+    if (attacker.statuses.weak > 0) v = Math.floor(v * 0.75);
+    return Math.max(0, v);
+}
+function incomingDamage(defender, dmg) {
+    return defender.statuses.vuln > 0 ? Math.floor(dmg * 1.5) : dmg;
+}
+function computeBlockGain(entity, base) {
+    let v = base + (entity.dexterity || 0);
+    if (entity.statuses.frail > 0) v = Math.floor(v * 0.75);
+    return Math.max(0, v);
 }
 
 // ============================================================
@@ -473,40 +566,39 @@ function openPileViewer() {
 // ============================================================
 function startCombat(enemyKey, isElite, isBoss) {
     const def = ENEMY_DEFS[enemyKey];
-    const entry = getEntry(def.form, def.part);
     const energyMax = run.energyMaxBase + (run.relics.some(r => r.effect === "energyMax") ? 1 : 0);
     run.combat = {
-        enemyKey, def, entry,
-        enemyHp: def.hp, enemyMaxHp: def.hp, enemyBlock: 0, enemyStrength: 0,
-        enemyVuln: 0, enemyWeak: 0,
-        enemyPatternIdx: 0, enemyNextAction: def.pattern[0],
+        def, entry: getEntry(def.form, def.part),
+        enemy: { hp: def.hp, maxHp: def.hp, block: 0, strength: 0, dexterity: 0, statuses: newStatuses() },
+        patternIdx: 0, nextAction: def.pattern[0],
         player: {
-            energy: energyMax, energyMax,
-            block: 0, strength: 0, vuln: 0,
+            energy: energyMax, energyMax, block: 0, strength: 0, dexterity: 0, statuses: newStatuses(),
             keepBlockNextTurn: false, drawBonus: 0, startTurnBlock: 0, firstCardFreeUsed: false,
-            powers: [],
-            deck: shuffle(run.deck.map(c => c)), hand: [], discard: [], exile: []
+            powers: [], deck: shuffle(run.deck.slice()), hand: [], discard: [], exile: []
         },
-        turn: 1, log: []
+        turn: 1, log: [], fx: [], dealAnim: true
     };
-    drawHand();
+    drawHand(true); // 起手：固有牌必进手
     renderCombat();
 }
-
-function shuffle(arr) {
-    for (let i = arr.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [arr[i], arr[j]] = [arr[j], arr[i]];
-    }
-    return arr;
-}
-function drawHand() {
+const HAND_LIMIT = 10;
+function drawHand(openingHand) {
     const p = run.combat.player;
-    const n = 5 + p.drawBonus;
+    let n = 5 + p.drawBonus;
+    if (openingHand) {
+        // 固有牌直接进起手牌，并占用抽牌数
+        const innate = p.deck.filter(c => c.innate);
+        innate.forEach(c => {
+            p.deck.splice(p.deck.indexOf(c), 1);
+            if (p.hand.length < HAND_LIMIT) p.hand.push(c);
+        });
+        n -= innate.length;
+    }
     for (let i = 0; i < n; i++) drawOne();
 }
 function drawOne() {
     const p = run.combat.player;
+    if (p.hand.length >= HAND_LIMIT) return;
     if (p.deck.length === 0) {
         if (p.discard.length === 0) return;
         addLog("牌堆已空，洗入弃牌堆。", "info");
@@ -518,8 +610,10 @@ function addLog(text, cls) {
     run.combat.log.unshift({ text, cls: cls || "info" });
     if (run.combat.log.length > 30) run.combat.log.pop();
 }
+// 动画事件队列：渲染后统一播放
+function queueFx(target, kind, text) { run.combat.fx.push({ target, kind, text }); }
 
-// ---------- 角色图形（内联 SVG，离线可用，深浅主题通用） ----------
+// ---------- 角色图形 ----------
 function playerArt() {
     return `<svg viewBox="0 0 120 150" class="fighter-svg" aria-hidden="true">
         <line x1="90" y1="24" x2="90" y2="140" stroke="#8a6d3b" stroke-width="4" stroke-linecap="round"/>
@@ -532,7 +626,7 @@ function playerArt() {
     </svg>`;
 }
 function enemyArt(def) {
-    const col = def.color || "#5b2c6f";
+    const col = def.color;
     const S = (inner) => `<svg viewBox="0 0 120 150" class="fighter-svg" style="color:${col}" aria-hidden="true">${inner}</svg>`;
     switch (def.art) {
         case "wolf":
@@ -554,9 +648,8 @@ function enemyArt(def) {
                 <polygon points="60,62 56,72 64,72" fill="#20261f"/>
                 <rect x="46" y="76" width="28" height="5" rx="2" fill="currentColor"/>
                 <g stroke="currentColor" stroke-width="5" stroke-linecap="round">
-                  <line x1="60" y1="84" x2="60" y2="128"/>
-                  <line x1="44" y1="94" x2="76" y2="94"/><line x1="42" y1="106" x2="78" y2="106"/><line x1="44" y1="118" x2="76" y2="118"/>
-                </g>`);
+                  <line x1="60" y1="84" x2="60" y2="128"/><line x1="44" y1="94" x2="76" y2="94"/>
+                  <line x1="42" y1="106" x2="78" y2="106"/><line x1="44" y1="118" x2="76" y2="118"/></g>`);
         case "cloaked":
             return S(`<path d="M60 40 L30 140 L90 140 Z" fill="currentColor"/>
                 <path d="M42 44 Q60 8 78 44 Q60 30 42 44 Z" fill="currentColor"/>
@@ -585,81 +678,61 @@ function enemyArt(def) {
                 <circle cx="60" cy="40" r="17" fill="currentColor"/>
                 <path d="M60 24 L52 34 L60 32 L68 34 Z" fill="#c9a227"/>
                 <circle cx="53" cy="42" r="3.2" fill="#ff3b3b"/><circle cx="67" cy="42" r="3.2" fill="#ff3b3b"/>`);
-        default:
-            return S(`<circle cx="60" cy="70" r="34" fill="currentColor"/>`);
+        default: return S(`<circle cx="60" cy="70" r="34" fill="currentColor"/>`);
     }
 }
-
 function hpBarHtml(cur, max) {
-    const pct = Math.max(0, cur / max * 100);
-    return `<div class="hpbar"><div class="hpbar-fill" style="width:${pct}%"></div><span class="hpbar-text">${Math.max(0, cur)} / ${max}</span></div>`;
+    return `<div class="hpbar"><div class="hpbar-fill" style="width:${Math.max(0, cur / max * 100)}%"></div><span class="hpbar-text">${Math.max(0, cur)} / ${max}</span></div>`;
 }
-function blockBadgeHtml(block) { return block > 0 ? `<div class="block-badge">🛡 ${block}</div>` : ""; }
-
-function playerStatusHtml(p) {
-    const pills = [];
-    if (p.strength) pills.push(`<span class="status-pill s-str" data-tip="力量：攻击伤害额外 +${p.strength}">💪 ${p.strength}</span>`);
-    if (p.vuln) pills.push(`<span class="status-pill s-vuln" data-tip="易伤：受到伤害 +50%，剩 ${p.vuln} 回合">☠ ${p.vuln}</span>`);
-    return pills.join("");
-}
-function enemyStatusHtml(c) {
-    const pills = [];
-    if (c.enemyStrength) pills.push(`<span class="status-pill s-str" data-tip="力量：攻击 +${c.enemyStrength}">💪 ${c.enemyStrength}</span>`);
-    if (c.enemyVuln) pills.push(`<span class="status-pill s-vuln" data-tip="易伤：受伤 +50%，剩 ${c.enemyVuln} 回合">☠ ${c.enemyVuln}</span>`);
-    if (c.enemyWeak) pills.push(`<span class="status-pill s-weak" data-tip="虚弱：攻击 -25%，剩 ${c.enemyWeak} 回合">🩸 ${c.enemyWeak}</span>`);
-    return pills.join("");
-}
-
+function blockBadgeHtml(b) { return b > 0 ? `<div class="block-badge" data-tip="护甲：抵挡伤害，回合结束清空">🛡 ${b}</div>` : ""; }
 function powersRowHtml(p) {
     if (!p.powers.length) return `<div class="powers-row"></div>`;
-    const chips = p.powers.map(pw =>
-        `<span class="power-chip" data-tip="${escapeHtml(pw.desc)}"><span class="pw-ic">${pw.icon}</span><span class="pw-w">${escapeHtml(pw.form)}</span></span>`
-    ).join("");
-    return `<div class="powers-row">${chips}</div>`;
+    return `<div class="powers-row">${p.powers.map(pw =>
+        `<span class="power-chip" data-tip="${escapeHtml(pw.desc)}"><span class="pw-ic">${pw.icon}</span><span class="pw-w">${escapeHtml(pw.form)}</span></span>`).join("")}</div>`;
 }
-
-function describeIntent(action, c) {
-    if (!action) return `<span class="intent-unknown">？</span>`;
-    if (action.t === "attack") {
-        let v = action.v + (c.enemyStrength || 0);
-        if (c.enemyWeak > 0) v = Math.floor(v * 0.75);
-        return `<span class="intent atk">⚔ ${v}</span>`;
+function describeIntent(a, c) {
+    if (!a) return `<span class="intent-unknown">？</span>`;
+    if (a.t === "attack") {
+        const v = outgoingDamage(c.enemy, a.v);
+        return `<span class="intent atk" data-tip="敌人将发动攻击">⚔ ${v}</span>`;
     }
-    if (action.t === "defend") return `<span class="intent def">🛡 ${action.v}</span>`;
-    if (action.t === "buff") return `<span class="intent buff">💪 蓄力</span>`;
-    if (action.t === "heal") return `<span class="intent heal">✚ 回复</span>`;
-    if (action.t === "frighten") return `<span class="intent debuff">☠ 恐吓</span>`;
-    if (action.t === "doom") return `<span class="intent doom">⏳ 命运</span>`;
+    if (a.t === "defend") return `<span class="intent def" data-tip="敌人将获得护甲">🛡 ${a.v}</span>`;
+    if (a.t === "buff") return `<span class="intent buff" data-tip="敌人将提升力量">💪 蓄力</span>`;
+    if (a.t === "heal") return `<span class="intent heal" data-tip="敌人将恢复生命">✚ 回复</span>`;
+    if (a.t === "vuln") return `<span class="intent debuff" data-tip="敌人将使你易伤：受伤 +50%">☠ 易伤</span>`;
+    if (a.t === "weak") return `<span class="intent debuff" data-tip="敌人将使你虚弱：攻击 -25%">🩸 虚弱</span>`;
+    if (a.t === "frail") return `<span class="intent debuff" data-tip="敌人将使你脆弱：护甲 -25%">🥀 脆弱</span>`;
+    if (a.t === "poison") return `<span class="intent poison" data-tip="敌人将使你中毒：每回合流失生命">☣ 中毒</span>`;
+    if (a.t === "doom") return `<span class="intent doom" data-tip="命运：力量永久 +3">⏳ 命运</span>`;
     return `<span class="intent-unknown">？</span>`;
 }
-
-function cardHtml(card) {
+function cardHtml(card, idx) {
     const e = eff(card);
-    const affordable = e.cost <= run.combat.player.energy;
+    const p = run.combat.player;
+    const affordable = e.cost <= p.energy;
     const revealed = meaningRevealed(card);
-    const meaning = revealed ? shortDef(getEntry(card.form, card.part)) : "？？？（词义未掌握）";
-    const typeLine = revealed ? `${card.part} · ${card.name}` : `${card.part} · ${kindLabel(card.kind)}`;
+    const rar = RARITY_META[card.rarity];
     const isAttack = card.kind === "attack";
-    const clickAttr = isAttack ? "" : `onclick="playCard('${card.uid}')"`;
-    const dragAttrs = isAttack && affordable ? `data-uid="${card.uid}"` : "";
-    const hint = isAttack ? `<div class="card-target-hint">🎯 拖到怪物出牌</div>` : "";
-    const exhaustHint = card.exhaust ? `<div class="card-exhaust-hint">🔥 消耗</div>` : "";
+    const kw = keywordBadges(card);
     return `
-        <div class="card k-${card.kind} ${affordable ? "" : "unaffordable"} ${isAttack ? "card-attack" : ""} ${card.exhaust ? "card-exhaust" : ""} tier-${card.tier}" ${clickAttr} ${dragAttrs}>
+        <div class="card k-${card.kind} ${rar.cls} tier-${card.tier} ${affordable ? "" : "unaffordable"} ${isAttack ? "card-attack" : ""} ${isAttack && affordable ? "can-drag" : ""} ${card.exhaust ? "card-exhaust" : ""}"
+             style="--i:${idx}" data-uid="${card.uid}" ${isAttack ? "" : `onclick="playCard('${card.uid}')"`}>
             <div class="card-cost">${e.cost}</div>
             ${tierBadge(card.tier)}
+            <div class="card-rarity" data-tip="${rar.label}卡">${rar.gem}</div>
             <div class="card-word">${card.form}</div>
-            <div class="card-part">${typeLine}</div>
+            <div class="card-part">${revealed ? `${card.part} · ${card.name}` : `${card.part} · ${kindLabel(card.kind)}`}</div>
             <div class="card-effect">${effectPartsFromEff(e).join("；")}</div>
-            ${hint}${exhaustHint}
-            <div class="card-meaning">${meaning}</div>
-        </div>
-    `;
+            ${kw ? `<div class="card-keywords">${kw}</div>` : ""}
+            ${isAttack ? `<div class="card-target-hint">🎯 拖到怪物出牌</div>` : ""}
+            ${card.exhaust ? `<div class="card-exhaust-hint" data-tip="消耗：打出后本场战斗不再出现">🔥 消耗</div>` : ""}
+            <div class="card-meaning">${revealed ? shortDef(getEntry(card.form, card.part)) : "？？？（词义未掌握）"}</div>
+        </div>`;
 }
 
 function renderCombat() {
-    const c = run.combat, p = c.player;
-    const handHtml = p.hand.map(cardHtml).join("") || "<p style='color:#7f8c8d;'>（手牌已空）</p>";
+    const c = run.combat, p = c.player, en = c.enemy;
+    const hand = p.hand.map((card, i) => cardHtml(card, i)).join("") || "<p style='color:#7f8c8d;'>（手牌已空）</p>";
     app.innerHTML = `
         ${topBarHtml()}
         <div class="combat-top">
@@ -668,76 +741,69 @@ function renderCombat() {
             <button class="primary-btn end-turn" onclick="endPlayerTurn()">结束回合 ▸</button>
         </div>
         <div class="battle-stage">
-            <div class="fighter fighter-player">
-                <div class="fighter-figure">
-                    ${blockBadgeHtml(p.block)}
-                    ${playerArt()}
-                </div>
+            <div class="fighter fighter-player" id="playerSide">
+                <div class="fighter-figure" id="playerFig">${blockBadgeHtml(p.block)}${playerArt()}</div>
                 <div class="fighter-name">你 · randir</div>
                 ${hpBarHtml(run.hp, run.maxHp)}
-                <div class="status-icons">${playerStatusHtml(p)}</div>
+                <div class="status-icons">${statusPills(p)}</div>
                 ${powersRowHtml(p)}
             </div>
             <div class="stage-vs">⚔</div>
             <div class="fighter fighter-enemy" id="enemySide">
-                <div class="intent-bubble">${describeIntent(c.enemyNextAction, c)}</div>
-                <div class="fighter-figure">
-                    ${blockBadgeHtml(c.enemyBlock)}
-                    ${enemyArt(c.def)}
+                <div class="intent-bubble">${describeIntent(c.nextAction, c)}</div>
+                <div class="fighter-figure" id="enemyFig">
+                    ${blockBadgeHtml(en.block)}${enemyArt(c.def)}
                     ${c.def.elite ? `<div class="rank-tag elite">精英</div>` : ""}
                     ${c.def.boss ? `<div class="rank-tag boss">首领</div>` : ""}
                 </div>
                 <div class="fighter-name enemy">${c.def.name}</div>
                 <div class="fighter-gloss">${escapeHtml(shortDef(c.entry))}</div>
-                ${hpBarHtml(c.enemyHp, c.enemyMaxHp)}
-                <div class="status-icons">${enemyStatusHtml(c)}</div>
+                ${hpBarHtml(en.hp, en.maxHp)}
+                <div class="status-icons">${statusPills(en)}</div>
             </div>
         </div>
-        <div class="hand" id="handArea">${handHtml}</div>
-        <div class="log">${c.log.map(l => `<div class="log-${l.cls}">${l.text}</div>`).join("")}</div>
-    `;
+        <div class="hand ${c.dealAnim ? "dealing" : ""}" id="handArea">${hand}</div>
+        <div class="log">${c.log.map(l => `<div class="log-${l.cls}">${l.text}</div>`).join("")}</div>`;
+    c.dealAnim = false;
     attachDragHandlers();
-
+    flushFx();
 }
 
-// ---------- 悬浮提示：用事件委托，一次绑定即可覆盖所有界面上的 [data-tip] ----------
-let tipEl = null;
-function initTooltips() {
-    if (tipEl) return;
-    tipEl = document.createElement("div");
-    tipEl.className = "hover-tip hidden";
-    document.body.appendChild(tipEl);
-    document.addEventListener("pointerover", (e) => {
-        const t = e.target.closest && e.target.closest("[data-tip]");
-        if (!t) return;
-        tipEl.textContent = t.getAttribute("data-tip");
-        tipEl.classList.remove("hidden");
-        moveTip(e);
+// 播放本次操作累积的动画（浮动数字 / 震动 / 突进）
+function flushFx() {
+    const c = run.combat;
+    if (!c || !c.fx.length) return;
+    const fx = c.fx.splice(0);
+    if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    fx.forEach((f, i) => {
+        const figId = f.target === "enemy" ? "enemyFig" : "playerFig";
+        const fig = document.getElementById(figId);
+        if (!fig) return;
+        setTimeout(() => {
+            const el = document.createElement("div");
+            el.className = "float-num fx-" + f.kind;
+            el.textContent = f.text;
+            fig.appendChild(el);
+            setTimeout(() => el.remove(), 900);
+            if (f.kind === "damage") {
+                fig.classList.remove("shake"); void fig.offsetWidth; fig.classList.add("shake");
+                setTimeout(() => fig.classList.remove("shake"), 400);
+            }
+            if (f.kind === "lunge") {
+                const side = f.target === "enemy" ? "lunge-left" : "lunge-right";
+                fig.classList.add(side);
+                setTimeout(() => fig.classList.remove(side), 350);
+            }
+        }, i * 120);
     });
-    document.addEventListener("pointermove", moveTip);
-    document.addEventListener("pointerout", (e) => {
-        const t = e.target.closest && e.target.closest("[data-tip]");
-        if (t) hideTip();
-    });
 }
-function moveTip(e) {
-    if (!tipEl || tipEl.classList.contains("hidden")) return;
-    const pad = 14;
-    let x = e.clientX + pad, y = e.clientY + pad;
-    const w = tipEl.offsetWidth, h = tipEl.offsetHeight;
-    if (x + w > window.innerWidth - 8) x = e.clientX - w - pad;
-    if (y + h > window.innerHeight - 8) y = e.clientY - h - pad;
-    tipEl.style.left = x + "px"; tipEl.style.top = y + "px";
-}
-function hideTip() { if (tipEl) tipEl.classList.add("hidden"); }
 
-// ---------- 拖拽出牌（攻击牌拖到怪物身上） ----------
 function attachDragHandlers() {
     const handArea = document.getElementById("handArea");
     const enemySide = document.getElementById("enemySide");
     if (!handArea || !enemySide) return;
-    handArea.querySelectorAll(".card-attack[data-uid]").forEach(cardEl => {
-        cardEl.addEventListener("pointerdown", (ev) => startCardDrag(ev, cardEl, enemySide));
+    handArea.querySelectorAll(".card-attack.can-drag[data-uid]").forEach(el => {
+        el.addEventListener("pointerdown", (ev) => startCardDrag(ev, el, enemySide));
     });
 }
 function startCardDrag(ev, cardEl, target) {
@@ -771,8 +837,28 @@ function startCardDrag(ev, cardEl, target) {
     document.addEventListener("pointerup", onUp);
 }
 
+// 消耗牌的溶解特效：在重新渲染前抓取卡牌位置，生成一个原地消散的副本
+function spawnDissolve(uid) {
+    if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const el = document.querySelector(`.card[data-uid="${uid}"]`);
+    if (!el) return;
+    const r = el.getBoundingClientRect();
+    const ghost = el.cloneNode(true);
+    ghost.classList.add("card-dissolve");
+    ghost.classList.remove("dragging");
+    ghost.style.left = r.left + "px";
+    ghost.style.top = r.top + "px";
+    ghost.style.width = r.width + "px";
+    ghost.style.height = r.height + "px";
+    const spark = document.createElement("div");
+    spark.className = "dissolve-spark";
+    ghost.appendChild(spark);
+    document.body.appendChild(ghost);
+    setTimeout(() => ghost.remove(), 700);
+}
+
 function playCard(uid) {
-    const c = run.combat, p = c.player;
+    const c = run.combat, p = c.player, en = c.enemy;
     const idx = p.hand.findIndex(x => x.uid === uid);
     if (idx === -1) return;
     const card = p.hand[idx];
@@ -784,140 +870,199 @@ function playCard(uid) {
     p.energy -= cost;
     if (firstFree) p.firstCardFreeUsed = true;
 
-    if (e.dmg) dealDamageToEnemy(e.dmg + (p.strength || 0));
-    if (e.block) { p.block += e.block; if (e.retainBlock) p.keepBlockNextTurn = true; }
-    if (e.heal) run.hp = Math.min(run.maxHp, run.hp + e.heal);
+    if (e.dmg) {
+        queueFx("player", "lunge", "");
+        for (let i = 0; i < e.hits; i++) {
+            const dealt = damageEnemy(outgoingDamage(p, e.dmg));
+            queueFx("enemy", "damage", "-" + dealt);
+        }
+    }
+    if (e.block) { const g = computeBlockGain(p, e.block); p.block += g; queueFx("player", "block", "+" + g); if (e.retainBlock) p.keepBlockNextTurn = true; }
+    if (e.heal) { run.hp = Math.min(run.maxHp, run.hp + e.heal); queueFx("player", "heal", "+" + e.heal); }
     if (e.draw) for (let i = 0; i < e.draw; i++) drawOne();
-    if (e.buffStrength) p.strength += e.buffStrength;
+    if (e.buffStrength) { p.strength += e.buffStrength; queueFx("player", "buff", "力量+" + e.buffStrength); }
+    if (e.buffDex) { p.dexterity += e.buffDex; queueFx("player", "buff", "敏捷+" + e.buffDex); }
     if (e.energyGain) p.energy += e.energyGain;
-    if (e.vuln) c.enemyVuln += e.vuln;
-    if (e.weak) c.enemyWeak += e.weak;
+    if (e.vuln) { en.statuses.vuln += e.vuln; queueFx("enemy", "debuff", "易伤+" + e.vuln); }
+    if (e.weak) { en.statuses.weak += e.weak; queueFx("enemy", "debuff", "虚弱+" + e.weak); }
+    if (e.cleanse) { p.statuses = newStatuses(); queueFx("player", "buff", "净化"); }
     if (e.startTurnBlock) p.startTurnBlock += e.startTurnBlock;
     if (e.drawBonus) p.drawBonus += e.drawBonus;
 
     addLog(`你使用了 <b>${card.form}</b>${meaningRevealed(card) ? "（" + card.name + "）" : ""}。`, "good");
 
+    const consumed = card.exhaust || card.exileAfterUse;
+    if (consumed) spawnDissolve(card.uid); // 必须在重新渲染前抓取位置
+
     p.hand.splice(idx, 1);
     if (card.kind === "power") {
-        p.powers.push({ form: card.form, icon: powerIcon(card), name: card.name, desc: powerDesc(card, e) });
+        p.powers.push({ form: card.form, icon: powerIcon(card), desc: powerDesc(card, e) });
         if (card.exhaust) p.exile.push(card);
     } else if (card.exileAfterUse) {
         p.exile.push(card);
         run.deck = run.deck.filter(x => x.uid !== card.uid);
-    } else if (card.exhaust) {
-        p.exile.push(card);
-    } else {
-        p.discard.push(card);
-    }
+    } else if (card.exhaust) p.exile.push(card);
+    else p.discard.push(card);
 
-    if (c.enemyHp <= 0) { winCombat(); return; }
+    if (en.hp <= 0) { renderCombat(); setTimeout(winCombat, 450); return; }
     renderCombat();
 }
-
 function powerIcon(card) {
-    if (card.form === "barad") return "🗼";
-    if (card.form === "curu") return "📖";
-    if (card.form === "(m)belaith") return "🔥";
-    return "💪";
+    return { barad: "🗼", curu: "📖", "(m)belaith": "🔥", "(n)dagor": "💪" }[card.form] || "💠";
 }
 function powerDesc(card, e) {
     const parts = [];
     if (e.buffStrength) parts.push(`力量 +${e.buffStrength}`);
+    if (e.buffDex) parts.push(`敏捷 +${e.buffDex}`);
     if (e.startTurnBlock) parts.push(`每回合起始 +${e.startTurnBlock} 护甲`);
     if (e.drawBonus) parts.push(`每回合多抽 ${e.drawBonus} 张牌`);
-    const label = meaningRevealed(card) ? card.name : "能力";
-    return `${label}：${parts.join("，") || "常驻效果"}`;
+    return `${meaningRevealed(card) ? card.name : "能力"}：${parts.join("，") || "常驻效果"}`;
 }
-
-function dealDamageToEnemy(amount) {
-    const c = run.combat;
-    let dmg = amount;
-    if (c.enemyVuln > 0) dmg = Math.floor(dmg * 1.5);
-    if (c.enemyBlock > 0) { const a = Math.min(c.enemyBlock, dmg); c.enemyBlock -= a; dmg -= a; }
-    c.enemyHp = Math.max(0, c.enemyHp - dmg);
+function damageEnemy(amount) {
+    const en = run.combat.enemy;
+    let dmg = incomingDamage(en, amount);
+    if (en.block > 0) { const a = Math.min(en.block, dmg); en.block -= a; dmg -= a; }
+    en.hp = Math.max(0, en.hp - dmg);
+    return dmg;
 }
 
 function endPlayerTurn() {
-    const c = run.combat, p = c.player;
-    p.discard.push(...p.hand.splice(0));
+    const c = run.combat, p = c.player, en = c.enemy;
+    // 手牌结算：保留→留在手上；虚无→消耗；其余→弃牌堆
+    const keep = [], toExile = [], toDiscard = [];
+    p.hand.forEach(card => {
+        if (card.ethereal) toExile.push(card);
+        else if (card.retain) keep.push(card);
+        else toDiscard.push(card);
+    });
+    if (toExile.length) {
+        toExile.forEach(card => addLog(`<b>${card.form}</b> 因「虚无」而消散。`, "info"));
+        queueFx("player", "debuff", "虚无消散");
+    }
+    p.hand = keep;
+    p.discard.push(...toDiscard);
+    p.exile.push(...toExile);
+    tickStatuses(p);
+
+    // 敌方回合：先结算中毒
+    if (en.statuses.poison > 0) {
+        en.hp = Math.max(0, en.hp - en.statuses.poison);
+        queueFx("enemy", "poison", "-" + en.statuses.poison);
+        en.statuses.poison--;
+        if (en.hp <= 0) { renderCombat(); setTimeout(winCombat, 450); return; }
+    }
     enemyAct();
-    if (run.hp <= 0) { renderDefeat(); return; }
-    if (c.enemyHp <= 0) { winCombat(); return; }
-    // 新回合
+    tickStatuses(en);
+    if (run.hp <= 0) { renderCombat(); setTimeout(renderDefeat, 450); return; }
+    if (en.hp <= 0) { renderCombat(); setTimeout(winCombat, 450); return; }
+
+    // 玩家新回合
     c.turn++;
     p.block = p.keepBlockNextTurn ? p.block : 0;
     p.keepBlockNextTurn = false;
-    if (p.startTurnBlock) p.block += p.startTurnBlock;
-    if (p.vuln > 0) p.vuln--;
+    if (p.startTurnBlock) p.block += computeBlockGain(p, p.startTurnBlock);
+    if (p.statuses.poison > 0) {
+        run.hp = Math.max(0, run.hp - p.statuses.poison);
+        queueFx("player", "poison", "-" + p.statuses.poison);
+        p.statuses.poison--;
+        if (run.hp <= 0) { renderCombat(); setTimeout(renderDefeat, 450); return; }
+    }
     p.energy = p.energyMax;
     p.firstCardFreeUsed = false;
+    c.dealAnim = true;
     drawHand();
     renderCombat();
 }
 
 function enemyAct() {
-    const c = run.combat, p = c.player;
-    const a = c.enemyNextAction;
+    const c = run.combat, p = c.player, en = c.enemy;
+    const a = c.nextAction;
     if (a.t === "attack") {
-        let val = a.v + (c.enemyStrength || 0);
-        if (c.enemyWeak > 0) val = Math.floor(val * 0.75);
-        if (p.vuln > 0) val = Math.floor(val * 1.5);
+        queueFx("enemy", "lunge", "");
+        let val = incomingDamage(p, outgoingDamage(en, a.v));
         let remain = val;
         if (p.block > 0) { const ab = Math.min(p.block, remain); p.block -= ab; remain -= ab; }
         run.hp -= remain;
+        queueFx("player", "damage", "-" + remain);
         addLog(`${c.def.name} 攻击，你受到 ${remain} 点伤害。`, "bad");
     } else if (a.t === "defend") {
-        c.enemyBlock += a.v; addLog(`${c.def.name} 获得 ${a.v} 点护甲。`, "info");
+        const g = computeBlockGain(en, a.v); en.block += g;
+        queueFx("enemy", "block", "+" + g);
+        addLog(`${c.def.name} 获得 ${g} 点护甲。`, "info");
     } else if (a.t === "buff") {
-        c.enemyStrength += a.v; addLog(`${c.def.name} 蓄力，力量 +${a.v}。`, "bad");
+        en.strength += a.v; queueFx("enemy", "buff", "力量+" + a.v);
+        addLog(`${c.def.name} 蓄力，力量 +${a.v}。`, "bad");
     } else if (a.t === "heal") {
-        c.enemyHp = Math.min(c.enemyMaxHp, c.enemyHp + a.v); addLog(`${c.def.name} 恢复 ${a.v} 点生命。`, "bad");
-    } else if (a.t === "frighten") {
-        p.vuln += 2; addLog(`${c.def.name} 令你陷入易伤！`, "bad");
+        en.hp = Math.min(en.maxHp, en.hp + a.v); queueFx("enemy", "heal", "+" + a.v);
+        addLog(`${c.def.name} 恢复 ${a.v} 点生命。`, "bad");
+    } else if (a.t === "vuln" || a.t === "weak" || a.t === "frail") {
+        p.statuses[a.t] += a.v;
+        const m = STATUS_META[a.t];
+        queueFx("player", "debuff", m.name + "+" + a.v);
+        addLog(`${c.def.name} 使你${m.name} ${a.v} 回合。`, "bad");
+    } else if (a.t === "poison") {
+        p.statuses.poison += a.v;
+        queueFx("player", "debuff", "中毒+" + a.v);
+        addLog(`${c.def.name} 令你中毒 ${a.v} 层。`, "bad");
     } else if (a.t === "doom") {
-        c.enemyStrength += 3; addLog(`${c.def.name} 的命运之力使力量永久 +3……`, "bad");
+        en.strength += 4; queueFx("enemy", "buff", "命运 力量+4");
+        addLog(`${c.def.name} 的命运之力使力量永久 +4……`, "bad");
     }
-    // 敌方减益回合结算
-    if (c.enemyVuln > 0) c.enemyVuln--;
-    if (c.enemyWeak > 0) c.enemyWeak--;
-    c.enemyPatternIdx = (c.enemyPatternIdx + 1) % c.def.pattern.length;
-    c.enemyNextAction = c.def.pattern[c.enemyPatternIdx];
+    c.patternIdx = (c.patternIdx + 1) % c.def.pattern.length;
+    c.nextAction = c.def.pattern[c.patternIdx];
 }
 
 function winCombat() {
     const c = run.combat;
-    addLog(`你击败了 ${c.def.name}！`, "good");
-    if (run.relics.some(r => r.effect === "healAfterCombat")) run.hp = Math.min(run.maxHp, run.hp + 5);
+    if (!c) return;
+    if (run.relics.some(r => r.effect === "healAfterCombat")) run.hp = Math.min(run.maxHp, run.hp + 6);
     const gold = c.def.boss ? 80 : c.def.elite ? 45 : 20 + Math.floor(Math.random() * 10);
     run.gold += gold;
     leaveRoomBonus();
-    if (c.def.boss) { renderVictory(); return; }
+    if (c.def.boss) { run.combat = null; renderVictory(); return; }
     const relicReward = c.def.elite ? pickRelicReward() : null;
     offerCardReward(relicReward, gold);
 }
-
 function pickRelicReward() {
     const owned = new Set(run.relics.map(r => r.form));
     const pool = RELIC_DEFS.filter(r => !owned.has(r.form));
-    return pool.length ? pool[Math.floor(Math.random() * pool.length)] : null;
+    return pool.length ? pick(pool) : null;
 }
 
 // ============================================================
-// 战斗奖励：选卡 → 随机初次学习（弱强化）
+// 奖励：按稀有度权重取 3 张 → 选一张 → 随机初次学习
 // ============================================================
-function offerCardReward(relicReward, goldEarned) {
-    run.combat = null; // 战斗已结束：牌堆按钮应显示整体牌组而非上一场的抽/弃堆
+function rollRarity() {
+    const r = Math.random();
+    if (r < 0.06) return "rare";
+    if (r < 0.35) return "uncommon";
+    return "common";
+}
+function rewardPicks(n) {
     const pool = CARD_DEFS.filter(c => !STARTER_FORMS.includes(c.form));
-    const picks = shuffle(pool.slice()).slice(0, 3);
+    const picks = [];
+    let guard = 0;
+    while (picks.length < n && guard++ < 200) {
+        const rar = rollRarity();
+        const cand = pool.filter(c => c.rarity === rar && !picks.includes(c));
+        if (!cand.length) continue;
+        picks.push(pick(cand));
+    }
+    return picks;
+}
+function offerCardReward(relicReward, goldEarned) {
+    run.combat = null;
+    const picks = rewardPicks(3);
     const cardsHtml = picks.map((def, i) => {
         const e = eff(previewCard(def, 0));
-        const exhaustHint = def.exhaust ? `<div class="card-exhaust-hint">🔥 消耗</div>` : "";
-        return `<div class="card k-${def.kind} ${def.exhaust ? "card-exhaust" : ""}" style="width:172px;" onclick="chooseReward(${i})">
+        const rar = RARITY_META[def.rarity];
+        return `<div class="card k-${def.kind} ${rar.cls} ${def.exhaust ? "card-exhaust" : ""}" style="width:172px;--i:${i}" onclick="chooseReward(${i})">
             <div class="card-cost">${e.cost}</div>
+            <div class="card-rarity" data-tip="${rar.label}卡">${rar.gem}</div>
             <div class="card-word">${def.form}</div>
             <div class="card-part">${def.part} · ${kindLabel(def.kind)}</div>
             <div class="card-effect">${effectPartsFromEff(e).join("；")}</div>
-            ${exhaustHint}
+            ${def.exhaust ? `<div class="card-exhaust-hint">🔥 消耗</div>` : ""}
             <div class="card-meaning">？？？（词义未掌握）</div>
         </div>`;
     }).join("");
@@ -925,126 +1070,108 @@ function offerCardReward(relicReward, goldEarned) {
         ${topBarHtml()}
         <h2 style="margin-top:0;">战斗胜利！获得 ${goldEarned} 金币</h2>
         ${relicReward ? `<p>精英战利品：圣物 <b>${relicReward.form}</b>（${relicReward.name}）。</p>` : ""}
-        <p style="color:#7f8c8d;">选择一张卡牌加入牌组。选定后会随机抽取牌组里的一张牌进行<b>初次学习（词义）</b>：答对该牌获得<b>弱强化</b>。</p>
-        <div class="hand">${cardsHtml}</div>
-        <div class="btn-row"><button class="secondary-btn" onclick="skipReward()">跳过取卡</button></div>
-    `;
+        <p style="color:#7f8c8d;">选择一张卡牌加入牌组。选定后会随机抽取牌组中的一张牌进行<b>初次学习（词义）</b>，答对即得<b>弱强化</b>。</p>
+        <div class="hand dealing">${cardsHtml}</div>
+        <div class="btn-row"><button class="secondary-btn" onclick="skipReward()">跳过取卡</button></div>`;
     run.pendingReward = { picks, relicReward };
 }
-
 function chooseReward(i) {
     const { picks, relicReward } = run.pendingReward;
     if (relicReward) run.relics.push(relicReward);
     run.deck.push(makeCardInstance(picks[i]));
     run.pendingReward = null;
-    runInitialLearning(() => goToNextFloor());
+    runInitialLearning(() => completeRoom());
 }
 function skipReward() {
     const { relicReward } = run.pendingReward || {};
     if (relicReward) run.relics.push(relicReward);
     run.pendingReward = null;
-    runInitialLearning(() => goToNextFloor());
+    runInitialLearning(() => completeRoom());
 }
-
-// 随机抽一张牌考察词义，答对→弱强化（tier 至少 1）
 function runInitialLearning(done) {
     if (!run.deck.length) { done(); return; }
-    const card = run.deck[Math.floor(Math.random() * run.deck.length)];
-    showModal(`
-        <h3>初次学习</h3>
-        <p class="modal-hint">命运从你的牌组中抽出了一张牌，考察它的词义：</p>
-        <div class="btn-row"><button class="primary-btn" onclick="closeModal();__startInitialQuiz()">开始考察</button></div>
-    `);
+    const card = pick(run.deck);
     window.__initLearn = { card, done };
+    showModal(`<h3>初次学习</h3>
+        <p class="modal-hint">命运从你的牌组中抽出了一张牌，考察它的词义：</p>
+        <div class="btn-row"><button class="primary-btn" onclick="closeModal();__startInitialQuiz()">开始考察</button></div>`);
 }
 function __startInitialQuiz() {
     const { card, done } = window.__initLearn;
     quizTranslation(card.form, card.part, (correct) => {
         if (correct && card.tier < 1) card.tier = 1;
         window.__afterInit = done;
-        showModal(`
-            <h3>初次学习结果</h3>
+        showModal(`<h3>初次学习结果</h3>
             <p>${correct ? `答对了！<b>${card.form}</b> 获得<b>弱强化</b>。` : `答错了，<b>${card.form}</b> 未获得强化，可在篝火复习时重新学习。`}</p>
-            <div class="btn-row"><button class="primary-btn" onclick="closeModal();window.__afterInit()">继续</button></div>
-        `);
+            <div class="btn-row"><button class="primary-btn" onclick="closeModal();window.__afterInit()">继续</button></div>`);
     });
 }
 
 // ============================================================
-// 篝火：歇息 / 复习（强强化）
+// 篝火
 // ============================================================
 function renderRest() {
     app.innerHTML = `
         ${topBarHtml()}
-        <h2 style="margin-top:0;">🏕️ 篝火 · Naur</h2>
+        <h2 style="margin-top:0;">🏕 篝火 · Naur</h2>
         <p style="color:#7f8c8d;">在火光旁二选一：安心歇息，或复习已弱强化的卡牌以获得强强化。</p>
         <div class="choice-medallions">
             <button class="medallion r-rest" onclick="restHeal()">
-                <span class="medallion-icon">🛌</span>
-                <span class="medallion-name">歇息</span>
+                <span class="medallion-icon">🛌</span><span class="medallion-name">歇息</span>
                 <span class="medallion-desc">恢复 30% 最大生命（${Math.round(run.maxHp * 0.3)} 点）。</span>
             </button>
             <div class="medallion-or">或</div>
             <button class="medallion r-event" onclick="startReview()">
-                <span class="medallion-icon">📚</span>
-                <span class="medallion-name">复习</span>
+                <span class="medallion-icon">📚</span><span class="medallion-name">复习</span>
                 <span class="medallion-desc">自选两张已弱强化的牌，考音变/时态，答对升为强强化。</span>
             </button>
-        </div>
-    `;
+        </div>`;
 }
 function restHeal() {
     run.hp = Math.min(run.maxHp, run.hp + Math.round(run.maxHp * 0.3));
     leaveRoomBonus();
-    goToNextFloor();
+    completeRoom();
 }
-
-// 复习入口
 function startReview() {
     const eligible = run.deck.filter(c => c.tier === 1);
     if (eligible.length === 0) {
-        // 没有可复习的牌 → 提示并随机抽两张进行初次学习（弱强化）
         const picks = shuffle(run.deck.slice()).slice(0, Math.min(2, run.deck.length));
-        showModal(`
-            <h3>暂无可复习的卡牌</h3>
-            <p class="modal-hint">你还没有处于「弱强化」状态的卡牌。将改为随机抽取 ${picks.length} 张牌进行<b>初次学习（词义）</b>。</p>
-            <div class="btn-row"><button class="primary-btn" onclick="closeModal();__reviewFallback()">开始</button></div>
-        `);
         window.__reviewPicks = picks;
+        showModal(`<h3>暂无可复习的卡牌</h3>
+            <p class="modal-hint">你还没有处于「弱强化」状态的卡牌。将改为随机抽取 ${picks.length} 张牌进行<b>初次学习（词义）</b>。</p>
+            <div class="btn-row"><button class="primary-btn" onclick="closeModal();__reviewFallback()">开始</button></div>`);
         return;
     }
     run.reviewSel = [];
     renderReviewSelect(eligible);
 }
 function __reviewFallback() {
-    const picks = window.__reviewPicks || [];
-    runQuizSequence(picks, "translation", (card, correct) => { if (correct && card.tier < 1) card.tier = 1; },
-        () => { leaveRoomBonus(); goToNextFloor(); });
+    runQuizSequence(window.__reviewPicks || [], "translation",
+        (card, ok) => { if (ok && card.tier < 1) card.tier = 1; },
+        () => { leaveRoomBonus(); completeRoom(); });
 }
-
 function renderReviewSelect(eligible) {
-    const cards = eligible.map(c => {
-        const selected = run.reviewSel.includes(c.uid);
+    const cards = eligible.map((c, i) => {
         const e = eff(c);
-        const name = meaningRevealed(c) ? c.name : kindLabel(c.kind);
-        return `<div class="card k-${c.kind} tier-${c.tier} ${selected ? "review-selected" : ""}" style="width:150px;" onclick="toggleReview('${c.uid}')">
-            <div class="card-cost">${e.cost}</div>
-            ${tierBadge(c.tier)}
+        const rar = RARITY_META[c.rarity];
+        return `<div class="card k-${c.kind} ${rar.cls} tier-${c.tier} ${run.reviewSel.includes(c.uid) ? "review-selected" : ""}"
+             style="width:150px;--i:${i}" onclick="toggleReview('${c.uid}')">
+            <div class="card-cost">${e.cost}</div>${tierBadge(c.tier)}
+            <div class="card-rarity">${rar.gem}</div>
             <div class="card-word">${c.form}</div>
-            <div class="card-part">${c.part} · ${name}</div>
+            <div class="card-part">${c.part} · ${meaningRevealed(c) ? c.name : kindLabel(c.kind)}</div>
             <div class="card-effect">${effectPartsFromEff(e).join("；")}</div>
         </div>`;
     }).join("");
     app.innerHTML = `
         ${topBarHtml()}
         <h2 style="margin-top:0;">📚 复习 · 自选两张</h2>
-        <p style="color:#7f8c8d;">选中最多两张（名词考复数/音变，动词考时态，形容词考比较级等）。已选 ${run.reviewSel.length}/2。</p>
+        <p style="color:#7f8c8d;">名词考复数/音变，动词考时态，形容词考比较级。已选 ${run.reviewSel.length}/2。</p>
         <div class="hand">${cards}</div>
         <div class="btn-row">
             <button class="primary-btn" ${run.reviewSel.length ? "" : "disabled"} onclick="confirmReview()">开始复习（${run.reviewSel.length}）</button>
             <button class="secondary-btn" onclick="restHeal()">放弃复习并歇息</button>
-        </div>
-    `;
+        </div>`;
 }
 function toggleReview(uid) {
     const i = run.reviewSel.indexOf(uid);
@@ -1054,36 +1181,33 @@ function toggleReview(uid) {
 }
 function confirmReview() {
     const cards = run.reviewSel.map(uid => run.deck.find(c => c.uid === uid)).filter(Boolean);
-    runQuizSequence(cards, "mutation", (card, correct) => { if (correct) card.tier = 2; },
-        () => { leaveRoomBonus(); goToNextFloor(); });
+    runQuizSequence(cards, "mutation", (card, ok) => { if (ok) card.tier = 2; },
+        () => { leaveRoomBonus(); completeRoom(); });
 }
-
-// 顺序执行一组测验
 function runQuizSequence(cards, mode, onEach, done) {
     let i = 0;
-    function next() {
+    (function next() {
         if (i >= cards.length) { done(); return; }
         const card = cards[i++];
-        const cb = (correct) => { onEach(card, correct); next(); };
+        const cb = (ok) => { onEach(card, ok); next(); };
         if (mode === "mutation") quizMutationOrFallback(card.form, card.part, cb);
         else quizTranslation(card.form, card.part, cb);
-    }
-    next();
+    })();
 }
 
 // ============================================================
-// 商店
+// 商店 / 奇遇 / 宝藏
 // ============================================================
 function renderShop() {
     const owned = new Set(run.relics.map(r => r.form));
-    const stock = shuffle(RELIC_DEFS.filter(r => !owned.has(r.form)).slice()).slice(0, 2);
-    run.shopStock = stock.map(r => ({ relic: r, price: 60 + Math.floor(Math.random() * 30), discounted: false }));
+    run.shopStock = shuffle(RELIC_DEFS.filter(r => !owned.has(r.form)).slice()).slice(0, 2)
+        .map(r => ({ relic: r, price: 60 + Math.floor(Math.random() * 30), discounted: false }));
     renderShopView();
 }
 function renderShopView() {
     const items = run.shopStock.map((item, i) => `
         <div class="shop-item">
-            <div class="shop-ic">${item.relic.icon || "💠"}</div>
+            <div class="shop-ic">${item.relic.icon}</div>
             <div class="shop-name">${item.relic.form} · ${item.relic.name}</div>
             <div class="shop-desc">${item.relic.desc}</div>
             <p class="shop-price">🪙 ${item.price}${item.discounted ? "（已折扣）" : ""}</p>
@@ -1091,25 +1215,23 @@ function renderShopView() {
                 ${!item.discounted ? `<button class="secondary-btn" onclick="shopQuizDiscount(${i})">答题享 8 折</button>` : ""}
                 <button class="primary-btn" onclick="buyRelic(${i})">购买</button>
             </div>
-        </div>
-    `).join("") || "<p style='color:#7f8c8d;'>圣物已售罄。</p>";
+        </div>`).join("") || "<p style='color:#7f8c8d;'>圣物已售罄。</p>";
     app.innerHTML = `
         ${topBarHtml()}
         <h2 style="margin-top:0;">🛒 矮人商店 · cadhad</h2>
-        <p style="color:#7f8c8d;">一位 cadhad（矮人）商人在此贩售圣物，也提供牌组精简。</p>
+        <p style="color:#7f8c8d;">一位 cadhad（矮人）商人贩售圣物，也提供牌组精简。</p>
         <div class="shop-grid">${items}</div>
-        <div class="panel" style="box-shadow:none;border:1px dashed var(--line,#dfe4ea);margin-top:16px;">
+        <div class="panel" style="box-shadow:none;border:1px dashed #dfe4ea;margin-top:16px;">
             <h3 style="margin-top:0;">移除一张卡牌 · 🪙40</h3>
             <p style="color:#7f8c8d;font-size:13px;">精简牌组，让核心卡更易抽到。</p>
             <button class="secondary-btn" ${run.deck.length ? "" : "disabled"} onclick="openRemoveCard()">选择要移除的卡牌</button>
         </div>
-        <div class="btn-row"><button class="primary-btn" onclick="leaveShop()">离开商店</button></div>
-    `;
+        <div class="btn-row"><button class="primary-btn" onclick="leaveShop()">离开商店</button></div>`;
 }
 function shopQuizDiscount(i) {
-    const term = randomTerm();
-    quizTranslation(term.form, term.part, (correct) => {
-        if (correct) { run.shopStock[i].price = Math.round(run.shopStock[i].price * 0.8); run.shopStock[i].discounted = true; }
+    const t = pick(ALL_TERMS);
+    quizTranslation(t.form, t.part, (ok) => {
+        if (ok) { run.shopStock[i].price = Math.round(run.shopStock[i].price * 0.8); run.shopStock[i].discounted = true; }
         renderShopView();
     });
 }
@@ -1121,98 +1243,89 @@ function buyRelic(i) {
 }
 function openRemoveCard() {
     const cards = run.deck.map((c, i) => {
-        const e = eff(c);
-        const name = meaningRevealed(c) ? c.name : kindLabel(c.kind);
-        return `<div class="card k-${c.kind} tier-${c.tier}" style="width:150px;" onclick="removeCard(${i})">
+        const e = eff(c), rar = RARITY_META[c.rarity];
+        return `<div class="card k-${c.kind} ${rar.cls} tier-${c.tier}" style="width:150px;--i:${i}" onclick="removeCard(${i})">
             <div class="card-cost">${e.cost}</div>${tierBadge(c.tier)}
+            <div class="card-rarity">${rar.gem}</div>
             <div class="card-word">${c.form}</div>
-            <div class="card-part">${c.part} · ${name}</div>
+            <div class="card-part">${c.part} · ${meaningRevealed(c) ? c.name : kindLabel(c.kind)}</div>
         </div>`;
     }).join("");
-    showModal(`<h3>选择要移除的卡牌</h3><div class="hand">${cards}</div><div class="btn-row"><button class="secondary-btn" onclick="closeModal()">取消</button></div>`);
+    showModal(`<h3>选择要移除的卡牌</h3><div class="hand">${cards}</div>
+        <div class="btn-row"><button class="secondary-btn" onclick="closeModal()">取消</button></div>`);
 }
 function removeCard(i) {
     if (run.gold < 40) { alert("金币不足！"); closeModal(); return; }
     run.gold -= 40; run.deck.splice(i, 1); closeModal(); renderShopView();
 }
-function leaveShop() { leaveRoomBonus(); goToNextFloor(); }
+function leaveShop() { leaveRoomBonus(); completeRoom(); }
 
-// ============================================================
-// 奇遇 / 宝藏
-// ============================================================
 function renderEvent() {
-    const term = randomTerm();
+    const t = pick(ALL_TERMS);
     app.innerHTML = `
         ${topBarHtml()}
         <h2 style="margin-top:0;">❓ 奇遇 · Aphadad</h2>
-        <p style="color:#7f8c8d;">一位游吟诗人考验你的辛达语——答对得金币与治疗，答错略有损失。</p>
-        <div class="btn-row"><button class="primary-btn" onclick="doEvent('${term.form}','${term.part}')">接受考验</button></div>
-    `;
+        <p style="color:#7f8c8d;">一位游吟诗人考验你的辛达语——答对得金币，答错略有损失。</p>
+        <div class="btn-row"><button class="primary-btn" onclick="doEvent('${t.form}','${t.part}')">接受考验</button></div>`;
 }
 function doEvent(form, part) {
-    quizTranslation(form, part, (correct) => {
+    quizTranslation(form, part, (ok) => {
         let text;
-        if (correct) { run.gold += 15; run.hp = Math.min(run.maxHp, run.hp + 5); text = "回答正确！获得 15 金币与 5 点生命。"; }
+        if (ok) { run.gold += 20; text = "回答正确！获得 20 金币。"; }
         else { run.hp = Math.max(1, run.hp - 5); text = "回答错误，损失 5 点生命。"; }
         leaveRoomBonus();
-        showModal(`<h3>奇遇结果</h3><p>${text}</p><div class="btn-row"><button class="primary-btn" onclick="closeModal();goToNextFloor();">继续</button></div>`);
+        showModal(`<h3>奇遇结果</h3><p>${text}</p><div class="btn-row"><button class="primary-btn" onclick="closeModal();completeRoom();">继续</button></div>`);
     });
 }
 function renderTreasure() {
-    const term = randomTerm();
+    const t = pick(ALL_TERMS);
     app.innerHTML = `
         ${topBarHtml()}
         <h2 style="margin-top:0;">💎 宝藏 · Aur</h2>
         <p style="color:#7f8c8d;">箱上刻着一个辛达语谜题，答对可开启完整宝藏。</p>
-        <div class="btn-row"><button class="primary-btn" onclick="doTreasure('${term.form}','${term.part}')">解谜开箱</button></div>
-    `;
+        <div class="btn-row"><button class="primary-btn" onclick="doTreasure('${t.form}','${t.part}')">解谜开箱</button></div>`;
 }
 function doTreasure(form, part) {
-    quizTranslation(form, part, (correct) => {
+    quizTranslation(form, part, (ok) => {
         let text;
-        if (correct) {
+        if (ok) {
             const relic = pickRelicReward(); run.gold += 40;
-            if (relic) { run.relics.push(relic); text = `解谜成功！获得圣物 <b>${relic.form}</b>（${relic.name}）与 40 金币。`; }
-            else text = `解谜成功！获得 40 金币。`;
+            text = relic ? (run.relics.push(relic), `解谜成功！获得圣物 <b>${relic.form}</b>（${relic.name}）与 40 金币。`) : `解谜成功！获得 40 金币。`;
         } else { run.gold += 15; text = `解谜失败，宝箱只弹出一半——获得 15 金币。`; }
         leaveRoomBonus();
-        showModal(`<h3>宝藏结果</h3><p>${text}</p><div class="btn-row"><button class="primary-btn" onclick="closeModal();goToNextFloor();">继续</button></div>`);
+        showModal(`<h3>宝藏结果</h3><p>${text}</p><div class="btn-row"><button class="primary-btn" onclick="closeModal();completeRoom();">继续</button></div>`);
     });
 }
-function randomTerm() { return ALL_TERMS[Math.floor(Math.random() * ALL_TERMS.length)]; }
 
 // ============================================================
-// 测验：词义选择
+// 测验
 // ============================================================
 function quizTranslation(form, part, callback) {
-    const entry = getEntry(form, part);
-    const correctDef = shortDef(entry);
+    const correctDef = shortDef(getEntry(form, part));
     const pool = ALL_TERMS.filter(t => !(t.form === form && t.part === part)).map(t => shortDef(t.entry)).filter(d => d !== correctDef);
     const distractors = shuffle(Array.from(new Set(pool))).slice(0, 3);
     const options = shuffle([{ text: correctDef, correct: true }, ...distractors.map(d => ({ text: d, correct: false }))]);
-    const optHtml = options.map((o, i) => `<button class="option-btn" onclick="answerTranslation(${i})">${escapeHtml(o.text)}</button>`).join("");
-    showModal(`
-        <h3>词义测验</h3>
+    showModal(`<h3>词义测验</h3>
         <p class="modal-hint">下面哪一项是它的意思？（词性：${part}）</p>
         <div class="modal-word">${form}</div>
-        ${optHtml}
-        <div id="quiz-result"></div>
-    `);
+        ${options.map((o, i) => `<button class="option-btn" onclick="answerTranslation(${i})">${escapeHtml(o.text)}</button>`).join("")}
+        <div id="quiz-result"></div>`);
     window.__quizPending = { form, part, callback };
     window.__quizOptions = options;
 }
 function answerTranslation(i) {
     const options = window.__quizOptions;
+    const resultEl = document.getElementById("quiz-result");
+    if (!options || !resultEl) return; // 弹窗已关闭时的迟到点击
     const chosen = options[i];
     document.querySelectorAll(".option-btn").forEach((btn, idx) => {
         btn.onclick = null;
         if (options[idx].correct) btn.classList.add("right");
         else if (idx === i) btn.classList.add("wrong");
     });
-    document.getElementById("quiz-result").innerHTML = `
-        <p style="margin-top:10px;font-weight:600;color:${chosen.correct ? "#27ae60" : "#c0392b"};">${chosen.correct ? "✔ 回答正确！" : "✘ 回答错误。"}</p>
-        <div class="btn-row"><button class="primary-btn" onclick="finishQuiz(${chosen.correct})">继续</button></div>
-    `;
+    resultEl.innerHTML =
+        `<p style="margin-top:10px;font-weight:600;color:${chosen.correct ? "#27ae60" : "#c0392b"};">${chosen.correct ? "✔ 回答正确！" : "✘ 回答错误。"}</p>
+         <div class="btn-row"><button class="primary-btn" onclick="finishQuiz(${chosen.correct})">继续</button></div>`;
 }
 function finishQuiz(correct) {
     const { form, part, callback } = window.__quizPending;
@@ -1220,31 +1333,25 @@ function finishQuiz(correct) {
     closeModal();
     callback(correct);
 }
-
-// ============================================================
-// 测验：音变 / 变位填空（名词复数音变、动词时态、形容词级别）
-// ============================================================
 function quizMutationOrFallback(form, part, callback) {
     const entry = getEntry(form, part);
-    const morph = (entry && entry.morphology || []).filter(m => m.form && m.form.trim());
-    if (morph.length === 0) { quizTranslation(form, part, callback); return; }
+    const morph = ((entry && entry.morphology) || []).filter(m => m.form && m.form.trim());
+    if (!morph.length) { quizTranslation(form, part, callback); return; }
     quizMutation(form, part, callback);
 }
 function quizMutation(form, part, callback) {
     const entry = getEntry(form, part);
-    const morph = (entry.morphology || []).filter(m => m.form && m.form.trim());
-    const item = morph[Math.floor(Math.random() * morph.length)];
+    const morph = entry.morphology.filter(m => m.form && m.form.trim());
+    const item = pick(morph);
     const label = MUTATION_LABELS[item.type] || item.type;
     const chars = ["á","é","í","ó","ú","ý","â","ê","î","ô","û","ŷ","ñ"];
-    showModal(`
-        <h3>复习测验 · 音变 / 变位</h3>
+    showModal(`<h3>复习测验 · 音变 / 变位</h3>
         <p class="modal-hint">请写出 <b>${form}</b>（${part}）的「${label}」形式：</p>
         <div class="modal-word">${form}</div>
         <input type="text" id="mutationInput" placeholder="在此输入答案">
         <div class="char-row">${chars.map(c => `<button type="button" class="char-btn" onclick="insertChar('${c}')">${c}</button>`).join("")}</div>
         <div class="btn-row"><button class="primary-btn" onclick="answerMutation()">提交答案</button></div>
-        <div id="quiz-result"></div>
-    `);
+        <div id="quiz-result"></div>`);
     window.__mutationPending = { form, part, correctForm: item.form, callback };
     setTimeout(() => { const el = document.getElementById("mutationInput"); if (el) el.focus(); }, 50);
 }
@@ -1256,17 +1363,17 @@ function insertChar(c) {
     el.focus(); el.selectionStart = el.selectionEnd = s + 1;
 }
 function answerMutation() {
+    if (!window.__mutationPending) return;
     const { correctForm } = window.__mutationPending;
     const el = document.getElementById("mutationInput");
-    const userVal = (el.value || "").trim().toLowerCase();
-    const alts = correctForm.split("/").map(s => s.trim().toLowerCase());
-    const correct = alts.includes(userVal);
-    document.getElementById("quiz-result").innerHTML = `
-        <p style="margin-top:10px;font-weight:600;color:${correct ? "#27ae60" : "#c0392b"};">
-            ${correct ? "✔ 回答正确！" : `✘ 回答错误。正确形式：<i>${escapeHtml(correctForm)}</i>`}
-        </p>
-        <div class="btn-row"><button class="primary-btn" onclick="finishMutationQuiz(${correct})">继续</button></div>
-    `;
+    const resultEl = document.getElementById("quiz-result");
+    if (!el || !resultEl) return;
+    const val = (el.value || "").trim().toLowerCase();
+    const correct = correctForm.split("/").map(s => s.trim().toLowerCase()).includes(val);
+    resultEl.innerHTML =
+        `<p style="margin-top:10px;font-weight:600;color:${correct ? "#27ae60" : "#c0392b"};">
+            ${correct ? "✔ 回答正确！" : `✘ 回答错误。正确形式：<i>${escapeHtml(correctForm)}</i>`}</p>
+         <div class="btn-row"><button class="primary-btn" onclick="finishMutationQuiz(${correct})">继续</button></div>`;
     el.disabled = true;
 }
 function finishMutationQuiz(correct) {
@@ -1277,37 +1384,62 @@ function finishMutationQuiz(correct) {
 }
 
 // ============================================================
-// 弹窗 / 结局 / 主题
+// 悬浮提示 / 弹窗 / 结局 / 主题
 // ============================================================
+let tipEl = null;
+function initTooltips() {
+    if (tipEl) return;
+    tipEl = document.createElement("div");
+    tipEl.className = "hover-tip hidden";
+    document.body.appendChild(tipEl);
+    document.addEventListener("pointerover", (e) => {
+        const t = e.target.closest && e.target.closest("[data-tip]");
+        if (!t) return;
+        tipEl.textContent = t.getAttribute("data-tip");
+        tipEl.classList.remove("hidden");
+        moveTip(e);
+    });
+    document.addEventListener("pointermove", moveTip);
+    document.addEventListener("pointerout", (e) => {
+        const t = e.target.closest && e.target.closest("[data-tip]");
+        if (t) hideTip();
+    });
+}
+function moveTip(e) {
+    if (!tipEl || tipEl.classList.contains("hidden")) return;
+    const pad = 14;
+    let x = e.clientX + pad, y = e.clientY + pad;
+    if (x + tipEl.offsetWidth > window.innerWidth - 8) x = e.clientX - tipEl.offsetWidth - pad;
+    if (y + tipEl.offsetHeight > window.innerHeight - 8) y = e.clientY - tipEl.offsetHeight - pad;
+    tipEl.style.left = x + "px"; tipEl.style.top = y + "px";
+}
+function hideTip() { if (tipEl) tipEl.classList.add("hidden"); }
+
 function showModal(html) { overlay.innerHTML = `<div class="modal">${html}</div>`; overlay.classList.remove("hidden"); }
 function closeModal() { overlay.classList.add("hidden"); overlay.innerHTML = ""; hideTip(); }
 
 function renderDefeat() {
+    const depth = run.currentNodeId ? run.map.nodes[run.currentNodeId].row + 1 : 1;
     run.combat = null;
-    app.innerHTML = `
-        <div style="text-align:center;padding:30px 0;">
-            <h2>你倒在了第 ${run.floor} 层……</h2>
+    app.innerHTML = `<div style="text-align:center;padding:30px 0;">
+            <h2>你倒在了第 ${depth} 层……</h2>
             <p style="color:#7f8c8d;">I-varad dartha. 塔仍矗立，词汇的记忆已然留下。</p>
             <div class="btn-row">
                 <button class="primary-btn" onclick="startRun()">再次挑战</button>
                 <button class="secondary-btn" onclick="renderTitle()">返回标题</button>
-            </div>
-        </div>`;
+            </div></div>`;
 }
 function renderVictory() {
     run.combat = null;
-    app.innerHTML = `
-        <div style="text-align:center;padding:30px 0;">
+    app.innerHTML = `<div style="text-align:center;padding:30px 0;">
             <h2>🎉 你登上了塔顶！</h2>
             <p style="color:#7f8c8d;">Aphadon i-amarth. 你战胜了命运本身。</p>
             <p>本次攀登积累了 ${run.gold} 金币，掌握词汇已计入生词手册。</p>
             <div class="btn-row">
                 <button class="primary-btn" onclick="startRun()">再次攀登</button>
                 <button class="secondary-btn" onclick="renderTitle()">返回标题</button>
-            </div>
-        </div>`;
+            </div></div>`;
 }
-
 function toggleTheme() {
     const html = document.documentElement, btn = document.getElementById("theme-toggle");
     const next = html.getAttribute("data-theme") === "dark" ? "light" : "dark";

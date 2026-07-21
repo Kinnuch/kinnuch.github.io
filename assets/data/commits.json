@@ -1,5 +1,19 @@
 [
   {
+    "hash": "32583fc032fd9bb2270af8d57ea4b17b08da670e",
+    "short": "32583fc",
+    "date": "2026-07-21T15:20:07+08:00",
+    "author": "wuyichen",
+    "msg": "update Barad Bith With card rework and map rework"
+  },
+  {
+    "hash": "cb02827e01349ecb1e1708b9c74f632213af1a5a",
+    "short": "cb02827",
+    "date": "2026-07-21T03:51:49Z",
+    "author": "github-actions[bot]",
+    "msg": "chore: refresh commits.json [skip ci]"
+  },
+  {
     "hash": "5a546f510a3d2511a0969b8dba8ac86a6ae5e0f6",
     "short": "5a546f5",
     "date": "2026-07-21T11:51:27+08:00",

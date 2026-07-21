@@ -76,7 +76,17 @@
       "Bash(timeout 300 node maptest.js)",
       "Bash(timeout 500 node --max-old-space-size=3000 boss.js)",
       "Bash(node --check \"c:/Users/Administrator/Documents/GitHub/kinnuch.github.io/laim/sindarin.assets/BaradBith/BaradBithScript.js\")",
-      "Bash(timeout 200 node keywords.js)"
+      "Bash(timeout 200 node keywords.js)",
+      "Bash(timeout 400 node --max-old-space-size=3000 multi.js)",
+      "Bash(sed -i '860,1140s/en\\\\.def\\\\.name/en.def.form/g' BaradBithScript.js)",
+      "Bash(grep -n \"reviewSel.length < 2\\\\|已选 \\\\${run.reviewSel.length}/2\" BaradBithScript.js)",
+      "Bash(sed -i 's/{ form: \"aderthad\", part: \"noun\", icon: \"🔗\", name: \"重聚\", effect: \"reviewThree\", v: 0,/{ form: \"aderthad\", part: \"noun\", icon: \"🔗\", name: \"重聚\", effect: \"reviewThree\", v: 1,/' BaradBithScript.js)",
+      "Bash(timeout 200 node relics.js)",
+      "Bash(timeout 300 node multi.js)",
+      "Bash(timeout 200 node intents.js)",
+      "Bash(timeout 120 node trace.js)",
+      "Bash(sed -i 's/hp: 64, elite: true, growth: 2/hp: 64, elite: true, growth: 1/' BaradBithScript.js)",
+      "Bash(python3 -X utf8 -c ' *)"
     ],
     "additionalDirectories": [
       "\\tmp"

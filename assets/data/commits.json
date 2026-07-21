@@ -1,5 +1,19 @@
 [
   {
+    "hash": "5a546f510a3d2511a0969b8dba8ac86a6ae5e0f6",
+    "short": "5a546f5",
+    "date": "2026-07-21T11:51:27+08:00",
+    "author": "wuyichen",
+    "msg": "update Barad Bith MiniGame with StS style combat component"
+  },
+  {
+    "hash": "53f14ab0871d8d8efdc8ef63482c090d1d258717",
+    "short": "53f14ab",
+    "date": "2026-07-20T12:56:29Z",
+    "author": "github-actions[bot]",
+    "msg": "chore: refresh commits.json [skip ci]"
+  },
+  {
     "hash": "25f1be1ff96b32ba655550fa092b292089aea071",
     "short": "25f1be1",
     "date": "2026-07-20T20:56:14+08:00",

@@ -1,5 +1,19 @@
 [
   {
+    "hash": "9f1e898ccdf9ca0fb82dd849e1c526ff11fe2788",
+    "short": "9f1e898",
+    "date": "2026-07-22T17:22:49+08:00",
+    "author": "wuyichen",
+    "msg": "update BaradBith MiniGame"
+  },
+  {
+    "hash": "7c8e0944413bec2be4ffe5c8089a1d3d8bffb856",
+    "short": "7c8e094",
+    "date": "2026-07-21T12:01:07Z",
+    "author": "github-actions[bot]",
+    "msg": "chore: refresh commits.json [skip ci]"
+  },
+  {
     "hash": "985151788775eb406abcdb3401f6229ff0016844",
     "short": "9851517",
     "date": "2026-07-21T20:00:46+08:00",

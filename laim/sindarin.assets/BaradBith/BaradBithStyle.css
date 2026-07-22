@@ -130,6 +130,17 @@ body {
     gap: 6px;
 }
 
+/* —— 顶栏首领预览 —— */
+.boss-preview {
+    display: inline-flex; align-items: center; gap: 5px; cursor: help;
+    background: #f3e8f8; border: 1px solid #cba7e0; border-radius: 20px; padding: 2px 12px 2px 4px;
+}
+.boss-mini { width: 30px; height: 30px; display: block; }
+.boss-mini svg { width: 30px; height: 30px; animation: none !important; filter: none; }
+.boss-name { font-size: 13px; font-weight: 700; font-style: italic; color: #6d3a86; }
+[data-theme="dark"] .boss-preview { background: #2a1f3d; border-color: #55397a; }
+[data-theme="dark"] .boss-name { color: #c9a6e6; }
+
 .stat.hp { color: #c0392b; }
 .stat.block { color: #2980b9; }
 .stat.energy { color: #d68910; }
@@ -593,15 +604,18 @@ body {
 .end-turn { margin-left: auto; }
 
 /* —— 战斗舞台：左人物 / 右怪物 —— */
+/* 战斗区：玩家侧与敌方侧各占一半并各自居中，敌人数量变化时自动重新分配 */
 .battle-stage {
-    display: flex; align-items: flex-end; justify-content: space-around; gap: 8px;
+    display: flex; align-items: flex-end; justify-content: center; gap: 8px;
     padding: 20px 10px 22px; border-radius: 16px; margin-bottom: 14px; position: relative; overflow: hidden;
     background: linear-gradient(180deg, #eef1f6 0%, #e4e9f1 65%, #d5dbe6 100%);
     box-shadow: inset 0 -14px 24px -18px rgba(0,0,0,.3);
 }
-.stage-vs { align-self: center; font-size: 24px; color: #aeb8c6; padding-bottom: 40px; }
-.fighter { display: flex; flex-direction: column; align-items: center; gap: 5px; width: 44%; }
-.fighter-player { flex: 0 0 auto; width: auto; min-width: 160px; max-width: 240px; }
+.stage-vs { align-self: center; font-size: 24px; color: #aeb8c6; padding-bottom: 40px; flex: 0 0 auto; }
+.fighter { display: flex; flex-direction: column; align-items: center; gap: 5px; }
+/* 两侧等分整个战斗区，各自在自己的半边居中 */
+.fighter-player { flex: 1 1 0; min-width: 0; }
+.enemy-group { flex: 1 1 0; min-width: 0; }
 .fighter-figure { position: relative; display: flex; justify-content: center; align-items: flex-end; }
 .fighter-figure::after {
     content: ""; position: absolute; bottom: -6px; left: 50%; transform: translateX(-50%);
@@ -623,7 +637,7 @@ body {
 .fighter-enemy.drop-active .fighter-figure { transform: scale(1.06); transition: transform .1s; }
 
 /* —— 多敌人队列 —— */
-.enemy-group { display: flex; align-items: flex-end; justify-content: center; gap: 10px; flex: 1 1 auto; }
+.enemy-group { display: flex; align-items: flex-end; justify-content: space-evenly; gap: 10px; }
 .enemy-group.multi { gap: 6px; }
 .enemy-group .fighter-enemy { width: auto; flex: 0 1 auto; }
 .fighter-enemy.compact .fighter-svg { width: 92px; }
@@ -763,11 +777,51 @@ body {
 .card.rar-uncommon { border-color: #3d7fd6; }
 .card.rar-rare { border-color: #d4a017; box-shadow: 0 0 10px -2px rgba(212,160,23,.5); }
 .card-rarity { position: absolute; top: 6px; right: 8px; font-size: 11px; line-height: 1; }
+
+/* —— 快捷键 —— */
+.card-hotkey {
+    position: absolute; bottom: -8px; left: -8px; width: 22px; height: 22px; border-radius: 6px;
+    background: #57606f; color: #fff; font-size: 12px; font-weight: 800;
+    display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 5px rgba(0,0,0,.25);
+}
+.hotkey-hint {
+    font-size: 12px; color: #7f8c8d; cursor: help;
+    border: 1px dashed #b2bec3; border-radius: 14px; padding: 4px 10px;
+}
+.end-turn kbd {
+    background: rgba(255,255,255,.25); border-radius: 4px; padding: 0 5px;
+    font-size: 12px; font-family: inherit; margin-left: 4px;
+}
+/* 键盘选中的目标 */
+.fighter-enemy.kb-target { outline: 2px solid #4a90e2; outline-offset: 5px; border-radius: 14px; }
+[data-theme="dark"] .card-hotkey { background: #3a4763; }
+[data-theme="dark"] .hotkey-hint { color: #999; border-color: #4a5262; }
+[data-theme="dark"] .fighter-enemy.kb-target { outline-color: #6cb4e8; }
 .card.rar-common .card-rarity { color: #a8b0be; }
 .card.rar-uncommon .card-rarity { color: #3d7fd6; }
 .card.rar-rare .card-rarity { color: #d4a017; }
 .deck-chip.rar-uncommon { box-shadow: inset 3px 0 0 #3d7fd6; }
 .deck-chip.rar-rare { box-shadow: inset 3px 0 0 #d4a017; }
+
+/* —— 待机动画：轻微的呼吸起伏，各敌人错开相位避免整齐划一 —— */
+@keyframes idleBreath {
+    0%, 100% { transform: translateY(0) scale(1); }
+    50%      { transform: translateY(-4px) scale(1.015); }
+}
+@keyframes idleBreathFlip {
+    0%, 100% { transform: translateY(0) scaleX(-1) scaleY(1); }
+    50%      { transform: translateY(-4px) scaleX(-1.015) scaleY(1.015); }
+}
+.fighter-svg { animation: idleBreath 3.2s ease-in-out infinite; will-change: transform; }
+.fighter-svg.face-left { animation: idleBreathFlip 3.2s ease-in-out infinite; }
+.fighter-player .fighter-svg { animation-duration: 3.8s; }
+/* 敌人按序错开相位与节奏 */
+.enemy-group .fighter-enemy:nth-child(1) .fighter-svg { animation-delay: -.4s; animation-duration: 3.0s; }
+.enemy-group .fighter-enemy:nth-child(2) .fighter-svg { animation-delay: -1.5s; animation-duration: 3.5s; }
+.enemy-group .fighter-enemy:nth-child(3) .fighter-svg { animation-delay: -2.4s; animation-duration: 2.7s; }
+/* 受击/突进时暂停待机，避免与动作动画打架 */
+.shake .fighter-svg, .lunge-left .fighter-svg, .lunge-right .fighter-svg { animation-play-state: paused; }
+.fighter-enemy.dead .fighter-svg { animation: none; }
 
 /* —— 动画 —— */
 @keyframes shakeX { 0%,100% { transform: translateX(0); } 20% { transform: translateX(-7px); } 40% { transform: translateX(6px); } 60% { transform: translateX(-4px); } 80% { transform: translateX(3px); } }
@@ -810,6 +864,28 @@ body {
 [data-theme="dark"] .kw-retain   { color: #74b9ff; border-color: #2a4d78; background: #12203a; }
 [data-theme="dark"] .kw-ethereal { color: #c9a6e6; border-color: #55397a; background: #241a33; }
 
+/* —— 阵亡：粒子消散 —— */
+.death-burst { position: fixed; z-index: 1100; width: 0; height: 0; pointer-events: none; }
+.death-burst i {
+    position: absolute; left: 0; top: 0; border-radius: 50%; opacity: 0;
+    box-shadow: 0 0 7px currentColor, 0 0 14px currentColor;
+    animation: deathParticle .95s cubic-bezier(.2, .7, .3, 1) forwards;
+}
+@keyframes deathParticle {
+    0%   { opacity: 0; transform: translate(0, 0) scale(1.5); }
+    14%  { opacity: 1; }
+    100% { opacity: 0; transform: translate(var(--dx, 0), var(--dy, -40px)) scale(.25); }
+}
+/* 角色本体升腾、模糊、淡出 */
+.fighter-svg.dying { animation: fighterDissolve .9s ease-out forwards !important; }
+@keyframes fighterDissolve {
+    0%   { opacity: 1; filter: blur(0) brightness(1); transform: translateY(0) scale(1); }
+    30%  { opacity: .9; filter: blur(1.5px) brightness(1.9) saturate(1.4); transform: translateY(-4px) scale(1.04); }
+    100% { opacity: 0; filter: blur(8px) brightness(2.4); transform: translateY(-30px) scale(1.18); }
+}
+/* 消散过程中先不套用「已阵亡」的灰化，否则看不清粒子 */
+.fighter-enemy.dead.just-died { opacity: 1; filter: none; }
+
 /* —— 消耗牌的溶解消散特效 —— */
 .card-dissolve {
     position: fixed; z-index: 1200; pointer-events: none; margin: 0;
@@ -840,8 +916,11 @@ body {
 @media (prefers-reduced-motion: reduce) {
     .shake, .lunge-left, .lunge-right, .float-num, .hand.dealing .card,
     .map-node.avail circle, .map-edge.open,
-    .card-dissolve, .dissolve-spark { animation: none !important; }
-    .card-dissolve { display: none !important; }
+    .card-dissolve, .dissolve-spark, .fighter-svg,
+    .death-burst i, .fighter-svg.dying { animation: none !important; }
+    .card-dissolve, .death-burst { display: none !important; }
+    .fighter-svg.dying { opacity: 0; }
+    .fighter-svg.face-left { transform: scaleX(-1); }
 }
 
 .choice-medallions { display: flex; align-items: stretch; justify-content: center; gap: 18px; flex-wrap: wrap; }
@@ -863,6 +942,30 @@ body {
 .medallion.r-event:hover  { border-color: #8e44ad; }
 .medallion.r-treasure:hover { border-color: #c9a227; }
 .medallion.r-boss:hover   { border-color: #8e44ad; }
+
+/* —— 奇遇事件 —— */
+.event-card {
+    max-width: 620px; margin: 0 auto; padding: 22px 24px; border-radius: 14px;
+    background: #fbfcfd; border: 2px solid #dfe4ea;
+}
+.event-title { margin: 0 0 8px; font-size: 19px; }
+.event-text { margin: 0 0 18px; color: #57606f; line-height: 1.75; font-size: 14.5px; }
+.event-options { display: flex; flex-direction: column; gap: 10px; }
+.event-option {
+    display: flex; flex-direction: column; align-items: flex-start; gap: 3px;
+    width: 100%; text-align: left; padding: 12px 16px; border-radius: 10px;
+    border: 2px solid #dfe4ea; background: #fff; cursor: pointer; font: inherit; color: inherit;
+    transition: border-color .15s, background .15s, transform .15s;
+}
+.event-option:hover:not(.disabled) { border-color: #4a90e2; background: #f4f9ff; transform: translateX(3px); }
+.event-option.disabled { opacity: .45; cursor: not-allowed; }
+.ev-label { font-weight: 700; font-size: 15px; }
+.ev-hint { font-size: 12.5px; color: #7f8c8d; }
+[data-theme="dark"] .event-card { background: #1a1a2e; border-color: #2f3b5c; }
+[data-theme="dark"] .event-text { color: #aab4c4; }
+[data-theme="dark"] .event-option { background: #14192b; border-color: #2f3b5c; }
+[data-theme="dark"] .event-option:hover:not(.disabled) { background: #1f2a48; border-color: #3a6db5; }
+[data-theme="dark"] .ev-hint { color: #8b93a3; }
 
 /* —— 商店 —— */
 .shop-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }

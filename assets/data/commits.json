@@ -1,5 +1,19 @@
 [
   {
+    "hash": "653587323efb6e33d22a8106388dd086b6fc6310",
+    "short": "6535873",
+    "date": "2026-07-22T19:15:16+08:00",
+    "author": "wuyichen",
+    "msg": "fix several bugs in Barad Bith"
+  },
+  {
+    "hash": "f4b6cbac5595de6eef0cef6a5138af13a2020df2",
+    "short": "f4b6cba",
+    "date": "2026-07-22T09:23:09Z",
+    "author": "github-actions[bot]",
+    "msg": "chore: refresh commits.json [skip ci]"
+  },
+  {
     "hash": "9f1e898ccdf9ca0fb82dd849e1c526ff11fe2788",
     "short": "9f1e898",
     "date": "2026-07-22T17:22:49+08:00",

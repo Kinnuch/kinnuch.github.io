@@ -93,7 +93,9 @@
       "Bash(ls \"C:/Users/Administrator/.claude/projects/c--Users-Administrator-Documents-GitHub-kinnuch-github-io/memory/\" 2>/dev/null; echo \"---MEMORY.md---\"; cat \"C:/Users/Administrator/.claude/projects/c--Users-Administrator-Documents-GitHub-kinnuch-github-io/memory/MEMORY.md\" 2>/dev/null || echo \"\\(不存在\\)\")",
       "Read(//c/Users/Administrator/.claude/projects/c--Users-Administrator-Documents-GitHub-kinnuch-github-io/memory/**)",
       "Bash(timeout 200 node batch8.js)",
-      "Bash(timeout 120 node death.js)"
+      "Bash(timeout 120 node death.js)",
+      "Bash(sed -n '/^function normalizeAnswer/,/^function answerMutation/p' BaradBithScript.js)",
+      "Bash(timeout 200 node death.js)"
     ],
     "additionalDirectories": [
       "\\tmp"

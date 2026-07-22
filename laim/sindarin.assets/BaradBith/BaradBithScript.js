@@ -211,50 +211,50 @@ const ENCOUNTERS = {
    ------------------------------------------------------------ */
 const RELIC_DEFS = [
     // —— 资源 / 经济 ——
-    { form: "aran", part: "noun", icon: "👑", name: "王者之息", effect: "energyMax", v: 1, desc: "每场战斗初始能量 +1" },
-    { form: "arnad", part: "noun", icon: "🪙", name: "王土岁贡", effect: "goldBonus", v: 5, desc: "每次离开房间额外获得 5 金币" },
-    { form: "aglareb", part: "adjective", icon: "🏆", name: "荣光之证", effect: "goldOnCombat", v: 12, desc: "每次战斗胜利额外获得 12 金币" },
-    { form: "(n)danwedh", part: "noun", icon: "💰", name: "赎金契约", effect: "shopDiscount", v: 0, desc: "商店内所有价格 -20%" },
-    { form: "advir", part: "noun", icon: "🎁", name: "传家宝", effect: "maxHpUp", v: 8, desc: "获得时最大生命 +8（并立即回复）" },
-    { form: "amon", part: "noun", icon: "⛰", name: "磐石之丘", effect: "maxHpUp", v: 14, desc: "获得时最大生命 +14（并立即回复）" },
-    { form: "ann", part: "noun", icon: "🎀", name: "馈赠", effect: "gainCard", v: 0, desc: "获得时，随机获得一张罕见卡" },
+    { form: "aran", part: "noun", icon: "👑", name: "王者之息", effect: "energyMax", v: 1, rarity: "rare", desc: "每场战斗初始能量 +1" },
+    { form: "arnad", part: "noun", icon: "🪙", name: "王土岁贡", effect: "goldBonus", v: 5, rarity: "common", desc: "每次离开房间额外获得 5 金币" },
+    { form: "aglareb", part: "adjective", icon: "🏆", name: "荣光之证", effect: "goldOnCombat", v: 12, rarity: "common", desc: "每次战斗胜利额外获得 12 金币" },
+    { form: "(n)danwedh", part: "noun", icon: "💰", name: "赎金契约", effect: "shopDiscount", v: 0, rarity: "common", desc: "商店内所有价格 -20%" },
+    { form: "advir", part: "noun", icon: "🎁", name: "传家宝", effect: "maxHpUp", v: 8, rarity: "common", desc: "获得时最大生命 +8（并立即回复）" },
+    { form: "amon", part: "noun", icon: "⛰", name: "磐石之丘", effect: "maxHpUp", v: 14, rarity: "common", desc: "获得时最大生命 +14（并立即回复）" },
+    { form: "ann", part: "noun", icon: "🎀", name: "馈赠", effect: "gainCard", v: 0, rarity: "common", desc: "获得时，随机获得一张罕见卡" },
 
     // —— 战斗开局 ——
-    { form: "amloth", part: "noun", icon: "🪖", name: "盔顶羽饰", effect: "startBlock", v: 6, desc: "每场战斗开始时获得 6 点护甲" },
-    { form: "aglar", part: "noun", icon: "✨", name: "荣耀之辉", effect: "startStrength", v: 1, desc: "每场战斗开始时力量 +1" },
-    { form: "alwed", part: "adjective", icon: "🍃", name: "幸运之风", effect: "startDex", v: 1, desc: "每场战斗开始时敏捷 +1" },
-    { form: "anwar", part: "noun", icon: "😨", name: "威慑", effect: "startWeakEnemies", v: 1, desc: "每场战斗开始时，所有敌人虚弱 1 回合" },
-    { form: "(n)dael", part: "noun", icon: "💀", name: "恐怖之相", effect: "startVulnEnemies", v: 1, desc: "每场战斗开始时，所有敌人易伤 1 回合" },
-    { form: "aduial", part: "noun", icon: "🌆", name: "暮光", effect: "firstTurnDraw", v: 2, desc: "每场战斗第一回合额外抽 2 张牌" },
-    { form: "amrûn", part: "noun", icon: "🌅", name: "日出", effect: "firstTurnEnergy", v: 1, desc: "每场战斗第一回合额外获得 1 点能量" },
+    { form: "amloth", part: "noun", icon: "🪖", name: "盔顶羽饰", effect: "startBlock", v: 6, rarity: "uncommon", desc: "每场战斗开始时获得 6 点护甲" },
+    { form: "aglar", part: "noun", icon: "✨", name: "荣耀之辉", effect: "startStrength", v: 1, rarity: "uncommon", desc: "每场战斗开始时力量 +1" },
+    { form: "alwed", part: "adjective", icon: "🍃", name: "幸运之风", effect: "startDex", v: 1, rarity: "uncommon", desc: "每场战斗开始时敏捷 +1" },
+    { form: "anwar", part: "noun", icon: "😨", name: "威慑", effect: "startWeakEnemies", v: 1, rarity: "uncommon", desc: "每场战斗开始时，所有敌人虚弱 1 回合" },
+    { form: "(n)dael", part: "noun", icon: "💀", name: "恐怖之相", effect: "startVulnEnemies", v: 1, rarity: "uncommon", desc: "每场战斗开始时，所有敌人易伤 1 回合" },
+    { form: "aduial", part: "noun", icon: "🌆", name: "暮光", effect: "firstTurnDraw", v: 2, rarity: "uncommon", desc: "每场战斗第一回合额外抽 2 张牌" },
+    { form: "amrûn", part: "noun", icon: "🌅", name: "日出", effect: "firstTurnEnergy", v: 1, rarity: "uncommon", desc: "每场战斗第一回合额外获得 1 点能量" },
 
     // —— 回合循环 ——
-    { form: "(m)bâr", part: "noun", icon: "🏠", name: "家宅护佑", effect: "turnBlock", v: 3, desc: "每回合开始时获得 3 点护甲" },
-    { form: "adu", part: "adjective", icon: "📚", name: "双份", effect: "drawBonus", v: 1, desc: "每回合额外多抽 1 张牌" },
-    { form: "albeth", part: "noun", icon: "🍀", name: "吉兆之言", effect: "firstCardFree", v: 0, desc: "每回合打出的第一张牌费用为 0" },
-    { form: "arphen", part: "noun", icon: "🛡", name: "骑士誓约", effect: "firstSkillFree", v: 0, desc: "每回合打出的第一张技能牌费用为 0" },
-    { form: "aeglos", part: "noun", icon: "❄", name: "冰锥", effect: "exhaustEnergy", v: 1, desc: "每打出一张消耗牌，回复 1 点能量" },
+    { form: "(m)bâr", part: "noun", icon: "🏠", name: "家宅护佑", effect: "turnBlock", v: 3, rarity: "uncommon", desc: "每回合开始时获得 3 点护甲" },
+    { form: "adu", part: "adjective", icon: "📚", name: "双份", effect: "drawBonus", v: 1, rarity: "rare", desc: "每回合额外多抽 1 张牌" },
+    { form: "albeth", part: "noun", icon: "🍀", name: "吉兆之言", effect: "firstCardFree", v: 0, rarity: "rare", desc: "每回合打出的第一张牌费用为 0" },
+    { form: "arphen", part: "noun", icon: "🛡", name: "骑士誓约", effect: "firstSkillFree", v: 0, rarity: "rare", desc: "每回合打出的第一张技能牌费用为 0" },
+    { form: "aeglos", part: "noun", icon: "❄", name: "冰锥", effect: "exhaustEnergy", v: 1, rarity: "uncommon", desc: "每打出一张消耗牌，回复 1 点能量" },
 
     // —— 攻防加成 ——
-    { form: "acharn", part: "noun", icon: "⚔", name: "复仇", effect: "attackBonus", v: 2, desc: "攻击牌额外造成 2 点伤害" },
-    { form: "aeg", part: "adjective", icon: "🗡", name: "锋锐", effect: "firstAttackBonus", v: 4, desc: "每回合第一张攻击牌额外造成 4 点伤害" },
-    { form: "angren", part: "adjective", icon: "⛓", name: "钢铁之质", effect: "blockBonus", v: 2, desc: "技能牌额外提供 2 点护甲" },
-    { form: "(n)dagnir", part: "noun", icon: "☠", name: "克星", effect: "vulnBonus", v: 3, desc: "对易伤状态的敌人额外造成 3 点伤害" },
+    { form: "acharn", part: "noun", icon: "⚔", name: "复仇", effect: "attackBonus", v: 2, rarity: "uncommon", desc: "攻击牌额外造成 2 点伤害" },
+    { form: "aeg", part: "adjective", icon: "🗡", name: "锋锐", effect: "firstAttackBonus", v: 4, rarity: "uncommon", desc: "每回合第一张攻击牌额外造成 4 点伤害" },
+    { form: "angren", part: "adjective", icon: "⛓", name: "钢铁之质", effect: "blockBonus", v: 2, rarity: "uncommon", desc: "技能牌额外提供 2 点护甲" },
+    { form: "(n)dagnir", part: "noun", icon: "☠", name: "克星", effect: "vulnBonus", v: 3, rarity: "uncommon", desc: "对易伤状态的敌人额外造成 3 点伤害" },
 
     // —— 生存 / 抗性 ——
-    { form: "bereth", part: "noun", icon: "💠", name: "女王庇佑", effect: "healAfterCombat", v: 6, desc: "每次战斗胜利后恢复 6 点生命" },
-    { form: "aer", part: "adjective", icon: "🕊", name: "神圣", effect: "healAfterElite", v: 14, desc: "精英战与首领战胜利后额外恢复 14 点生命" },
-    { form: "alfirin", part: "noun", icon: "🌸", name: "永生花", effect: "healOnKill", v: 3, desc: "每击倒一个敌人回复 3 点生命" },
-    { form: "(m)bardh", part: "noun", icon: "🏕", name: "归乡", effect: "restBonus", v: 15, desc: "篝火处歇息额外回复 15% 最大生命" },
-    { form: "andreth", part: "noun", icon: "⏳", name: "坚忍", effect: "debuffResist", v: 1, desc: "敌人施加给你的减益减少 1 回合" },
-    { form: "achad", part: "noun", icon: "🪨", name: "岩岭", effect: "poisonResist", v: 0, desc: "你受到的中毒伤害减半" },
-    { form: "arod", part: "adjective", icon: "🔰", name: "高贵", effect: "artifact", v: 1, desc: "每场战斗免疫第一次施加给你的减益" },
+    { form: "bereth", part: "noun", icon: "💠", name: "女王庇佑", effect: "healAfterCombat", v: 6, rarity: "common", desc: "每次战斗胜利后恢复 6 点生命" },
+    { form: "aer", part: "adjective", icon: "🕊", name: "神圣", effect: "healAfterElite", v: 14, rarity: "uncommon", desc: "精英战与首领战胜利后额外恢复 14 点生命" },
+    { form: "alfirin", part: "noun", icon: "🌸", name: "永生花", effect: "healOnKill", v: 3, rarity: "uncommon", desc: "每击倒一个敌人回复 3 点生命" },
+    { form: "(m)bardh", part: "noun", icon: "🏕", name: "归乡", effect: "restBonus", v: 15, rarity: "common", desc: "篝火处歇息额外回复 15% 最大生命" },
+    { form: "andreth", part: "noun", icon: "⏳", name: "坚忍", effect: "debuffResist", v: 1, rarity: "uncommon", desc: "敌人施加给你的减益减少 1 回合" },
+    { form: "achad", part: "noun", icon: "🪨", name: "岩岭", effect: "poisonResist", v: 0, rarity: "common", desc: "你受到的中毒伤害减半" },
+    { form: "arod", part: "adjective", icon: "🔰", name: "高贵", effect: "artifact", v: 1, rarity: "rare", desc: "每场战斗免疫第一次施加给你的减益" },
 
     // —— 学习辅助（本作特色）——
-    { form: "andaith", part: "noun", icon: "📖", name: "长音标记", effect: "learnSafety", v: 0, desc: "初次学习答错时，也能获得弱强化" },
-    { form: "aderthad", part: "noun", icon: "🔗", name: "重聚", effect: "reviewThree", v: 1, desc: "篝火复习可自选 3 张卡牌" },
-    { form: "athgen", part: "adjective", icon: "👁", name: "洞察", effect: "quizEasier", v: 0, desc: "词义测验少一个干扰选项" },
-    { form: "athrabeth", part: "noun", icon: "💬", name: "辩谈", effect: "quizGold", v: 10, desc: "每答对一次测验额外获得 10 金币" }
+    { form: "andaith", part: "noun", icon: "📖", name: "长音标记", effect: "learnSafety", v: 0, rarity: "rare", desc: "初次学习答错时，也能获得弱强化" },
+    { form: "aderthad", part: "noun", icon: "🔗", name: "重聚", effect: "reviewThree", v: 1, rarity: "uncommon", desc: "篝火复习可自选 3 张卡牌" },
+    { form: "athgen", part: "adjective", icon: "👁", name: "洞察", effect: "quizEasier", v: 0, rarity: "uncommon", desc: "词义测验少一个干扰选项" },
+    { form: "athrabeth", part: "noun", icon: "💬", name: "辩谈", effect: "quizGold", v: 10, rarity: "common", desc: "每答对一次测验额外获得 10 金币" }
 ];
 
 // ---------- 圣物效果查询 ----------
@@ -328,7 +328,10 @@ function initHotkeys() {
             const idx = Number(e.key) - 1;
             const card = run.combat.player.hand[idx];
             if (!card) return;
-            playCard(card.uid, needsTarget(card) ? currentTargetEid() : undefined);
+            if (needsTarget(card)) {
+                const el = document.querySelector(`#handArea .card[data-uid="${card.uid}"]`);
+                if (el) startAiming(el, card.uid, "click");   // 拉出箭头，点中怪物才释放
+            } else playCard(card.uid);
         }
     });
 }
@@ -528,7 +531,7 @@ const ROOM_META = {
     shop:     { icon: "🛒", name: "商店", desc: "购买圣物、移除卡牌。", cls: "r-shop" },
     event:    { icon: "❓", name: "奇遇", desc: "词义考验，答对有奖励。", cls: "r-event" },
     treasure: { icon: "💎", name: "宝藏", desc: "解谜开箱。", cls: "r-treasure" },
-    boss:     { icon: "🐉", name: "塔顶", desc: "amarth：命运与终局。", cls: "r-boss" }
+    boss:     { icon: "🐉", name: "塔顶", desc: "本局首领在此等候。", cls: "r-boss" }
 };
 
 const SHOP_COUNT = 3;      // 全图商店总数
@@ -766,7 +769,7 @@ function startRun() {
 function relicStripHtml() {
     if (!run.relics.length) return "";
     const chips = run.relics.map(r =>
-        `<span class="relic-chip" data-tip="${escapeHtml(r.name + "：" + r.desc)}"><span class="relic-ic">${r.icon}</span><span class="relic-w">${escapeHtml(r.form)}</span></span>`).join("");
+        `<span class="relic-chip rr-${r.rarity}" data-tip="${escapeHtml(RARITY_META[r.rarity].label + "圣物 · " + r.name + "：" + r.desc)}"><span class="relic-ic">${r.icon}</span><span class="relic-w">${escapeHtml(r.form)}</span></span>`).join("");
     return `<div class="relic-strip"><span class="relic-label">圣物</span>${chips}</div>`;
 }
 // 顶栏的本局首领预览：让玩家提前知道塔顶是谁
@@ -1120,10 +1123,12 @@ function enemyFighterHtml(en, many) {
                 ${en.def.boss ? `<div class="rank-tag boss">首领</div>` : ""}
             </div>
             <div class="fighter-name enemy">${en.def.form}</div>
-            <div class="fighter-gloss">${escapeHtml(shortDef(en.entry))}</div>
-            ${en.def.growth ? `<span class="growth-tag" data-tip="成长：每次行动后力量永久 +${en.def.growth}，拖得越久越强">📈 成长 +${en.def.growth}</span>` : ""}
             ${hpBarHtml(en.hp, en.maxHp)}
             <div class="status-icons">${statusPills(en)}</div>
+            <div class="fighter-sub">
+                <div class="fighter-gloss">${escapeHtml(shortDef(en.entry))}</div>
+                ${en.def.growth ? `<span class="growth-tag" data-tip="成长：每次行动后力量永久 +${en.def.growth}，拖得越久越强">📈 成长 +${en.def.growth}</span>` : ""}
+            </div>
         </div>`;
 }
 
@@ -1143,11 +1148,12 @@ function renderCombat() {
         </div>
         <div class="battle-stage">
             <div class="fighter fighter-player" id="playerSide">
+                <div class="intent-bubble" aria-hidden="true"></div>
                 <div class="fighter-figure" id="playerFig">${blockBadgeHtml(p.block)}${playerArt()}</div>
                 <div class="fighter-name">你 · Randir</div>
                 ${hpBarHtml(run.hp, run.maxHp)}
                 <div class="status-icons">${statusPills(p)}</div>
-                ${powersRowHtml(p)}
+                <div class="fighter-sub">${powersRowHtml(p)}</div>
             </div>
             <div class="stage-vs">⚔</div>
             <div class="enemy-group ${many ? "multi" : ""}">
@@ -1157,6 +1163,7 @@ function renderCombat() {
         <div class="hand ${c.dealAnim ? "dealing" : ""}" id="handArea">${hand}</div>
         <div class="log">${c.log.map(l => `<div class="log-${l.cls}">${l.text}</div>`).join("")}</div>`;
     c.dealAnim = false;
+    if (!aimState) clearAim();
     attachDragHandlers();
     flushFx();
 }
@@ -1234,40 +1241,131 @@ function attachDragHandlers() {
         el.addEventListener("pointerdown", (ev) => startCardDrag(ev, el, targets));
     });
 }
-function startCardDrag(ev, cardEl, targets) {
-    ev.preventDefault();
-    const uid = cardEl.dataset.uid;
-    const rect = cardEl.getBoundingClientRect();
-    const ghost = cardEl.cloneNode(true);
-    ghost.classList.add("card-ghost");
-    ghost.style.width = rect.width + "px";
-    ghost.style.left = rect.left + "px";
-    ghost.style.top = rect.top + "px";
-    document.body.appendChild(ghost);
-    cardEl.classList.add("dragging");
-    hideTip();
-    const offX = ev.clientX - rect.left, offY = ev.clientY - rect.top;
-    const hitTest = (x, y) => targets.find(t => {
+/* ------------------------------------------------------------
+   瞄准箭头：从卡牌沿一条曲线指向鼠标，只有落在敌人身上才算有效目标
+   两种进入方式：拖拽（按住卡牌）与键盘（按数字键后用鼠标点选）
+   ------------------------------------------------------------ */
+let aimState = null;
+
+function aimTargets() {
+    if (!run.combat) return [];
+    return run.combat.enemies.filter(e => e.hp > 0)
+        .map(e => ({ eid: e.eid, el: document.getElementById("side-" + e.eid) }))
+        .filter(t => t.el);
+}
+function ensureAimLayer() {
+    let svg = document.getElementById("aimLayer");
+    if (!svg) {
+        svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+        svg.id = "aimLayer";
+        svg.setAttribute("class", "aim-layer");
+        svg.innerHTML = `<path class="aim-path"/><polygon class="aim-head"/>`;
+        document.body.appendChild(svg);
+    }
+    svg.setAttribute("width", window.innerWidth);
+    svg.setAttribute("height", window.innerHeight);
+    svg.setAttribute("viewBox", `0 0 ${window.innerWidth} ${window.innerHeight}`);
+    return svg;
+}
+function drawAim(from, to, valid) {
+    const svg = ensureAimLayer();
+    svg.classList.add("active");
+    svg.classList.toggle("valid", !!valid);
+    // 二次贝塞尔：控制点抬高，形成一条自然的弧线
+    const cx = (from.x + to.x) / 2;
+    const cy = Math.min(from.y, to.y) - Math.max(60, Math.abs(to.x - from.x) * 0.32);
+    svg.querySelector(".aim-path").setAttribute("d", `M ${from.x} ${from.y} Q ${cx} ${cy} ${to.x} ${to.y}`);
+    // 箭头方向取曲线末端切线
+    const tx = to.x - cx, ty = to.y - cy;
+    const len = Math.hypot(tx, ty) || 1;
+    const ux = tx / len, uy = ty / len, s = 13;
+    const p1 = `${to.x},${to.y}`;
+    const p2 = `${to.x - ux * s - uy * s * 0.6},${to.y - uy * s + ux * s * 0.6}`;
+    const p3 = `${to.x - ux * s + uy * s * 0.6},${to.y - uy * s - ux * s * 0.6}`;
+    svg.querySelector(".aim-head").setAttribute("points", `${p1} ${p2} ${p3}`);
+}
+function clearAim() {
+    const svg = document.getElementById("aimLayer");
+    if (svg) svg.classList.remove("active", "valid");
+    if (aimState) {
+        aimState.targets.forEach(t => t.el.classList.remove("drop-active"));
+        if (aimState.ghost) aimState.ghost.remove();
+        if (aimState.cardEl) aimState.cardEl.classList.remove("dragging", "aiming");
+        document.removeEventListener("pointermove", aimState.onMove);
+        document.removeEventListener("pointerup", aimState.onUp);
+        document.removeEventListener("keydown", aimState.onKey, true);
+    }
+    aimState = null;
+}
+function aimHitTest(x, y) {
+    if (!aimState) return null;
+    return aimState.targets.find(t => {
         const r = t.el.getBoundingClientRect();
         return x >= r.left && x <= r.right && y >= r.top && y <= r.bottom;
     });
-    function onMove(e) {
-        ghost.style.left = (e.clientX - offX) + "px";
-        ghost.style.top = (e.clientY - offY) + "px";
-        const hit = hitTest(e.clientX, e.clientY);
-        targets.forEach(t => t.el.classList.toggle("drop-active", !!hit && t.eid === hit.eid));
+}
+function aimUpdate(x, y) {
+    if (!aimState) return;
+    const hit = aimHitTest(x, y);
+    aimState.targets.forEach(t => t.el.classList.toggle("drop-active", !!hit && t.eid === hit.eid));
+    if (aimState.ghost) {
+        aimState.ghost.style.left = (x - aimState.offX) + "px";
+        aimState.ghost.style.top = (y - aimState.offY) + "px";
     }
-    function onUp(e) {
-        document.removeEventListener("pointermove", onMove);
-        document.removeEventListener("pointerup", onUp);
-        targets.forEach(t => t.el.classList.remove("drop-active"));
-        ghost.remove();
-        const hit = hitTest(e.clientX, e.clientY);
-        if (hit) playCard(uid, hit.eid);
-        else cardEl.classList.remove("dragging");
+    drawAim(aimState.origin, { x, y }, !!hit);
+}
+
+// mode: "drag"（按住不放）或 "click"（键盘触发，移动后点击确认）
+function startAiming(cardEl, uid, mode, ev) {
+    const targets = aimTargets();
+    if (!targets.length) return;
+    clearAim();
+    hideTip();
+    const rect = cardEl.getBoundingClientRect();
+    const origin = { x: rect.left + rect.width / 2, y: rect.top + rect.height / 2 };
+    let ghost = null, offX = 0, offY = 0;
+    if (mode === "drag") {
+        ghost = cardEl.cloneNode(true);
+        ghost.classList.add("card-ghost");
+        ghost.style.width = rect.width + "px";
+        ghost.style.left = rect.left + "px";
+        ghost.style.top = rect.top + "px";
+        document.body.appendChild(ghost);
+        cardEl.classList.add("dragging");
+        offX = ev.clientX - rect.left; offY = ev.clientY - rect.top;
+    } else {
+        cardEl.classList.add("aiming");
     }
+    const onMove = (e) => aimUpdate(e.clientX, e.clientY);
+    const onUp = (e) => {
+        if (mode === "drag") {
+            const hit = aimHitTest(e.clientX, e.clientY);
+            clearAim();
+            if (hit) playCard(uid, hit.eid);
+        }
+    };
+    const onClick = (e) => {
+        if (mode !== "click") return;
+        const hit = aimHitTest(e.clientX, e.clientY);
+        document.removeEventListener("pointerdown", onClick, true);
+        clearAim();
+        if (hit) playCard(uid, hit.eid);   // 不在怪物身上则视为取消
+    };
+    const onKey = (e) => { if (e.key === "Escape") { document.removeEventListener("pointerdown", onClick, true); clearAim(); } };
+
+    aimState = { targets, origin, ghost, offX, offY, cardEl, onMove, onUp, onKey, mode };
     document.addEventListener("pointermove", onMove);
-    document.addEventListener("pointerup", onUp);
+    if (mode === "drag") document.addEventListener("pointerup", onUp, { once: true });
+    else document.addEventListener("pointerdown", onClick, true);
+    document.addEventListener("keydown", onKey, true);
+
+    const start = mode === "drag" ? { x: ev.clientX, y: ev.clientY } : origin;
+    aimUpdate(start.x, start.y);
+}
+
+function startCardDrag(ev, cardEl, targets) {
+    ev.preventDefault();
+    startAiming(cardEl, cardEl.dataset.uid, "drag", ev);
 }
 
 // 消耗牌的溶解特效：在重新渲染前抓取卡牌位置，生成一个原地消散的副本
@@ -1512,10 +1610,37 @@ function winCombat() {
     const tier = isBoss ? "boss" : isElite ? "elite" : "normal";
     offerCardReward((isElite || isBoss) ? pickRelicReward() : null, gold, tier);
 }
+/* 圣物稀有度：基础 70/25/5，并带保底机制——
+   连续没开出蓝/金时其概率累积上升，开出后清零 */
+const RELIC_DROP_BASE = { common: 0.70, uncommon: 0.25, rare: 0.05 };
+const RELIC_PITY_STEP = { uncommon: 0.08, rare: 0.04 };
+function rollRelicRarity() {
+    if (!run.relicPity) run.relicPity = { uncommon: 0, rare: 0 };
+    const p = run.relicPity;
+    let rare = RELIC_DROP_BASE.rare + RELIC_PITY_STEP.rare * p.rare;
+    let uncommon = RELIC_DROP_BASE.uncommon + RELIC_PITY_STEP.uncommon * p.uncommon;
+    rare = Math.min(rare, 0.5);
+    uncommon = Math.min(uncommon, 0.75 - rare);
+    const r = Math.random();
+    if (r < rare) { p.rare = 0; p.uncommon = 0; return "rare"; }
+    if (r < rare + uncommon) { p.uncommon = 0; p.rare++; return "uncommon"; }
+    p.uncommon++; p.rare++;
+    return "common";
+}
 function pickRelicReward() {
     const owned = new Set(run.relics.map(r => r.form));
     const pool = RELIC_DEFS.filter(r => !owned.has(r.form));
-    return pool.length ? pick(pool) : null;
+    if (!pool.length) return null;
+    const want = rollRelicRarity();
+    // 目标稀有度已拿完时，向下再向上回退
+    const order = want === "rare" ? ["rare", "uncommon", "common"]
+                : want === "uncommon" ? ["uncommon", "common", "rare"]
+                : ["common", "uncommon", "rare"];
+    for (const r of order) {
+        const cand = pool.filter(x => x.rarity === r);
+        if (cand.length) return pick(cand);
+    }
+    return pick(pool);
 }
 
 // ============================================================
@@ -1558,7 +1683,9 @@ function offerCardReward(relicReward, goldEarned, tier) {
     const cardsHtml = picks.map((def, i) => {
         const e = eff(previewCard(def, 0));
         const rar = RARITY_META[def.rarity];
-        return `<div class="card k-${def.kind} ${rar.cls} ${def.exhaust ? "card-exhaust" : ""}" style="width:172px;--i:${i}" onclick="chooseReward(${i})">
+        return `<div class="card k-${def.kind} ${rar.cls} ${def.exhaust ? "card-exhaust" : ""}" style="width:172px;--i:${i}"
+             onclick="chooseReward(${i})" oncontextmenu="event.preventDefault();openCardDetail('${def.form}','0');return false;"
+             data-tip="左键选取 · 右键查看强化预览">
             <div class="card-cost">${e.cost}</div>
             <div class="card-rarity" data-tip="${rar.label}卡">${rar.gem}</div>
             <div class="card-word">${def.form}</div>
@@ -1593,7 +1720,14 @@ function skipReward() {
 }
 function runInitialLearning(done) {
     if (!run.deck.length) { done(); return; }
-    const card = pick(run.deck);
+    // 优先抽还没学过的牌，其次是还没弱强化的，避免反复考同一张
+    const unlearned = run.deck.filter(c => !isEverMastered(c.form, c.part));
+    const unUpgraded = run.deck.filter(c => c.tier === 0);
+    const poolA = unlearned.length ? unlearned : (unUpgraded.length ? unUpgraded : run.deck);
+    // 同时避开上一次刚考过的那张
+    const poolB = poolA.filter(c => c.uid !== run.lastLearnUid);
+    const card = pick(poolB.length ? poolB : poolA);
+    run.lastLearnUid = card.uid;
     window.__initLearn = { card, done };
     showModal(`<h3>初次学习</h3>
         <p class="modal-hint">命运从你的牌组中抽出了一张牌，考察它的词义：</p>
@@ -1721,7 +1855,8 @@ function renderShopView() {
     const items = run.shopStock.map((item, i) => `
         <div class="shop-item">
             <div class="shop-ic">${item.relic.icon}</div>
-            <div class="shop-name">${item.relic.form} · ${item.relic.name}</div>
+            <div class="shop-name">${item.relic.form} · ${item.relic.name}
+                <span class="rar-dot rar-${item.relic.rarity}" data-tip="${RARITY_META[item.relic.rarity].label}圣物"></span></div>
             <div class="shop-desc">${item.relic.desc}</div>
             <p class="shop-price">🪙 ${relicPrice(item.price)}${item.discounted || hasRelic("shopDiscount") ? "（已折扣）" : ""}</p>
             <div class="btn-row">
@@ -1988,7 +2123,7 @@ function doTreasure(form, part) {
         let text;
         if (ok) {
             const relic = pickRelicReward(); run.gold += 40;
-            text = relic ? (gainRelic(relic), `解谜成功！获得圣物 <b>${relic.form}</b>（${relic.name}）与 40 金币。`) : `解谜成功！获得 40 金币。`;
+            text = relic ? (gainRelic(relic), `解谜成功！获得${RARITY_META[relic.rarity].label}圣物 <b>${relic.form}</b>（${relic.name}）与 40 金币。`) : `解谜成功！获得 40 金币。`;
         } else { run.gold += 15; text = `解谜失败，宝箱只弹出一半——获得 15 金币。`; }
         leaveRoomBonus();
         showModal(`<h3>宝藏结果</h3><p>${text}</p><div class="btn-row"><button class="primary-btn" onclick="closeModal();completeRoom();">继续</button></div>`);
@@ -2062,14 +2197,30 @@ function insertChar(c) {
     el.value = el.value.slice(0, s) + c + el.value.slice(e);
     el.focus(); el.selectionStart = el.selectionEnd = s + 1;
 }
+// 词典里的形式可能写作 "brasta/brasta(o)-" 这样：斜杠分隔多个变体、括号表示可选部分、
+// 结尾的连字符只是词条标记。这里把所有等价写法都展开为可接受答案。
+function normalizeAnswer(x) { return String(x).trim().toLowerCase().replace(/\s+/g, ""); }
+function expandMutationForms(correctForm) {
+    const out = new Set();
+    const add = (x) => { const v = normalizeAnswer(x); if (v) out.add(v); };
+    [correctForm, ...correctForm.split("/")].forEach(alt => {
+        const t = alt.trim();
+        [t, t.replace(/-+$/, "")].forEach(v => {
+            add(v);                             // 原样
+            add(v.replace(/\(([^)]*)\)/g, "$1"));  // 括号内容保留：brasta(o) → brastao
+            add(v.replace(/\([^)]*\)/g, ""));      // 括号内容省略：brasta(o) → brasta
+        });
+    });
+    return out;
+}
 function answerMutation() {
     if (!window.__mutationPending) return;
     const { correctForm } = window.__mutationPending;
     const el = document.getElementById("mutationInput");
     const resultEl = document.getElementById("quiz-result");
     if (!el || !resultEl) return;
-    const val = (el.value || "").trim().toLowerCase();
-    const correct = correctForm.split("/").map(s => s.trim().toLowerCase()).includes(val);
+    const val = normalizeAnswer(el.value || "");
+    const correct = expandMutationForms(correctForm).has(val);
     resultEl.innerHTML =
         `<p style="margin-top:10px;font-weight:600;color:${correct ? "#27ae60" : "#c0392b"};">
             ${correct ? "✔ 回答正确！" : `✘ 回答错误。正确形式：<i>${escapeHtml(correctForm)}</i>`}</p>
@@ -2087,7 +2238,7 @@ function finishMutationQuiz(correct) {
 // ============================================================
 // 悬浮提示 / 弹窗 / 结局 / 主题
 // ============================================================
-let tipEl = null;
+let tipEl = null, tipHost = null;
 function initTooltips() {
     if (tipEl) return;
     tipEl = document.createElement("div");
@@ -2096,10 +2247,12 @@ function initTooltips() {
     document.addEventListener("pointerover", (e) => {
         const t = e.target.closest && e.target.closest("[data-tip]");
         if (!t) return;
+        tipHost = t;
         tipEl.textContent = t.getAttribute("data-tip");
         tipEl.classList.remove("hidden");
         moveTip(e);
     });
+    document.addEventListener("pointerdown", hideTip, true);
     document.addEventListener("pointermove", moveTip);
     document.addEventListener("pointerout", (e) => {
         const t = e.target.closest && e.target.closest("[data-tip]");
@@ -2108,13 +2261,15 @@ function initTooltips() {
 }
 function moveTip(e) {
     if (!tipEl || tipEl.classList.contains("hidden")) return;
+    // 界面重绘后原宿主已从 DOM 移除，pointerout 不会触发，这里兜底隐藏
+    if (tipHost && !tipHost.isConnected) { hideTip(); return; }
     const pad = 14;
     let x = e.clientX + pad, y = e.clientY + pad;
     if (x + tipEl.offsetWidth > window.innerWidth - 8) x = e.clientX - tipEl.offsetWidth - pad;
     if (y + tipEl.offsetHeight > window.innerHeight - 8) y = e.clientY - tipEl.offsetHeight - pad;
     tipEl.style.left = x + "px"; tipEl.style.top = y + "px";
 }
-function hideTip() { if (tipEl) tipEl.classList.add("hidden"); }
+function hideTip() { tipHost = null; if (tipEl) tipEl.classList.add("hidden"); }
 
 function showModal(html) { overlay.innerHTML = `<div class="modal">${html}</div>`; overlay.classList.remove("hidden"); }
 function closeModal() { overlay.classList.add("hidden"); overlay.innerHTML = ""; hideTip(); }

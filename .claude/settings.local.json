@@ -95,7 +95,14 @@
       "Bash(timeout 200 node batch8.js)",
       "Bash(timeout 120 node death.js)",
       "Bash(sed -n '/^function normalizeAnswer/,/^function answerMutation/p' BaradBithScript.js)",
-      "Bash(timeout 200 node death.js)"
+      "Bash(timeout 200 node death.js)",
+      "Bash(python3 csspatch.py)",
+      "Bash(python -X utf8 sindarindictionary.py --check)",
+      "Bash(timeout 300 node batch10.js)",
+      "Bash(timeout 200 node mut.js)",
+      "Bash(timeout 260 node batch8.js)",
+      "Bash(python sindarindictionary.py)",
+      "Bash(timeout 200 node quiz3.js)"
     ],
     "additionalDirectories": [
       "\\tmp"

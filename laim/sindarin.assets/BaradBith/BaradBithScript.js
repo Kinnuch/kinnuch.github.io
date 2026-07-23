@@ -395,6 +395,15 @@ function markMastery(form, part, correct) {
     saveMastery();
 }
 function isEverMastered(form, part) { const m = mastery[form + "|" + part]; return !!(m && m.correct > 0); }
+/* 星级（跨局学习进度）：1★ 弱强化过 / 2★ 强强化过 / 3★ 通过首领的最终测验
+   只有「初次学习 / 篝火复习 / 最终测验」能加星；商店、奇遇等随机测验只解锁词义，不加星 */
+function wordStars(form, part) { const m = mastery[form + "|" + part]; return (m && m.stars) || 0; }
+function setWordStars(form, part, n) {
+    const key = form + "|" + part;
+    if (!mastery[key]) mastery[key] = { attempts: 0, correct: 0 };
+    if ((mastery[key].stars || 0) < n) { mastery[key].stars = n; saveMastery(); }
+}
+function starBadge(n) { return n >= 3 ? "★★★" : n >= 2 ? "★★" : n >= 1 ? "★" : "☆"; }
 
 // ============================================================
 // 卡牌实例与数值
@@ -406,7 +415,9 @@ function makeCardInstance(def) {
         uid: Math.random().toString(36).slice(2),
         form: def.form, part: def.part, kind: def.kind, name: def.name, rarity: def.rarity,
         exhaust: !!def.exhaust, exileAfterUse: !!def.exileAfterUse,
-        innate: !!def.innate, retain: !!def.retain, ethereal: !!def.ethereal, tier: 0
+        innate: !!def.innate, retain: !!def.retain, ethereal: !!def.ethereal,
+        // 局外成长：生词手册里 1★ 的词进场即弱强化，2★/3★ 即强强化
+        tier: wordStars(def.form, def.part) >= 2 ? 2 : wordStars(def.form, def.part) >= 1 ? 1 : 0
     };
 }
 function eff(card) {
@@ -440,6 +451,11 @@ function keywordBadges(card) {
         .join("");
 }
 function meaningRevealed(card) { return isEverMastered(card.form, card.part); }
+// 触屏设备（手机/平板）：点击出牌；桌面：拖拽出牌
+function isTouchMode() {
+    if (window.FORCE_TOUCH !== undefined) return !!window.FORCE_TOUCH;
+    return (window.matchMedia && window.matchMedia("(pointer: coarse)").matches) || "ontouchstart" in window;
+}
 // 需要指定敌人目标的卡：造成伤害或施加敌方减益
 function needsTarget(card) {
     const e = eff(card);
@@ -503,13 +519,18 @@ function renderTitle() {
         </div>`;
 }
 function openGlossary() {
+    const cardWords = new Set(CARD_DEFS.map(c => c.form + "|" + c.part));
     const rows = ALL_TERMS.slice().sort((a, b) => a.form.localeCompare(b.form)).map(t => {
         const ok = isEverMastered(t.form, t.part);
-        return `<div class="deck-chip"><span class="w">${escapeHtml(t.form)}</span> <span style="color:#7f8c8d;">(${t.part})</span> — ${escapeHtml(ok ? shortDef(t.entry) : "？？？")} <span class="m">${ok ? "★" : "☆"}</span></div>`;
+        const isCard = cardWords.has(t.form + "|" + t.part);
+        // 卡牌词：三级星（弱强化★ / 强强化★★ / 最终测验★★★）；其他词只标记是否学过
+        const mark = isCard ? `<span class="m star-${wordStars(t.form, t.part)}">${starBadge(wordStars(t.form, t.part))}</span>`
+                            : `<span class="m">${ok ? "✓" : "·"}</span>`;
+        return `<div class="deck-chip"><span class="w">${escapeHtml(t.form)}</span> <span style="color:#7f8c8d;">(${t.part})</span> — ${escapeHtml(ok ? shortDef(t.entry) : "？？？")} ${mark}</div>`;
     }).join("");
     showModal(`
         <h3>📖 辛达语生词手册</h3>
-        <p class="modal-hint">记录你在塔中遇到过的所有词汇，掌握（★）后显示释义。</p>
+        <p class="modal-hint">卡牌词的星级：★ 弱强化 · ★★ 强强化 · ★★★ 通过首领的最终测验（下局起该卡带星入场）。其余词汇学会后以 ✓ 标记。</p>
         <div class="deck-list">${rows}</div>
         <div class="btn-row">
             <button class="secondary-btn" onclick="closeModal()">关闭</button>
@@ -524,6 +545,11 @@ const MAP_ROWS = 12;   // 0..10 为普通层，11 为 boss
 const MAP_SLOTS = 6;
 const MAP_PATHS = 6;
 
+// 各房间类型的主色（地图节点描边 / 可走连线 / 高亮统一使用）
+const NODE_COLORS = {
+    combat: "#b0764a", elite: "#c0392b", rest: "#e67e22", shop: "#16a085",
+    event: "#9b59b6", treasure: "#c9a227", boss: "#8e44ad"
+};
 const ROOM_META = {
     combat:   { icon: "⚔", name: "遭遇战", desc: "普通敌人，胜利可选一张卡。", cls: "r-combat" },
     elite:    { icon: "☠", name: "精英战", desc: "强敌，额外掉落圣物。", cls: "r-elite" },
@@ -669,8 +695,9 @@ function mapSvg() {
             if (!t) return;
             const walked = n.visited && t.visited;
             const open = n.id === run.currentNodeId && avail.has(nid);
+            // 可走连线染成目标节点的类型色
             edges += `<line x1="${X(n.slot)}" y1="${Y(n.row)}" x2="${X(t.slot)}" y2="${Y(t.row)}"
-                class="map-edge ${walked ? "walked" : ""} ${open ? "open" : ""}" />`;
+                class="map-edge ${walked ? "walked" : ""} ${open ? "open" : ""}" style="--nc:${NODE_COLORS[t.type] || "#b9a888"}" />`;
         });
     });
     let circles = "";
@@ -681,7 +708,7 @@ function mapSvg() {
         const cls = ["map-node", meta.cls, n.visited ? "visited" : "", isAvail ? "avail" : "", isCur ? "current" : ""].join(" ");
         const click = isAvail ? `onclick="chooseMapNode('${n.id}')"` : "";
         const tip = `${meta.name}（第 ${n.row + 1} 层）：${meta.desc}`;
-        circles += `<g class="${cls}" ${click} data-tip="${escapeHtml(tip)}">
+        circles += `<g class="${cls}" ${click} style="--nc:${NODE_COLORS[n.type] || "#b9a888"}" data-tip="${escapeHtml(tip)}">
             <circle cx="${X(n.slot)}" cy="${Y(n.row)}" r="${n.type === "boss" ? 20 : 15}"/>
             <text x="${X(n.slot)}" y="${Y(n.row)}" text-anchor="middle" dominant-baseline="central">${meta.icon}</text>
         </g>`;
@@ -1087,6 +1114,46 @@ function describeIntent(a, en) {
     if (a.t === "doom") return `<span class="intent doom" data-tip="命运：力量永久 +3">⏳ 命运</span>`;
     return `<span class="intent-unknown">？</span>`;
 }
+/* 卡面数值实时预览：
+   - 伤害计入 力量/虚弱/圣物加成/每回合首攻加成
+   - 护甲计入 敏捷/脆弱/圣物技能加成
+   - 指定 targetEnemy 时再计入其易伤（×1.5）与克星加成——即松手瞬间的真实结算值 */
+function previewDamage(card, targetEnemy) {
+    const e = eff(card);
+    if (!e.dmg) return null;
+    const p = run.combat.player;
+    let bonus = relicSum("attackBonus");
+    if (!p.firstAttackUsed) bonus += relicSum("firstAttackBonus");
+    if (targetEnemy && targetEnemy.statuses.vuln > 0) bonus += relicSum("vulnBonus");
+    let per = outgoingDamage(p, e.dmg + bonus);
+    if (targetEnemy) per = incomingDamage(targetEnemy, per);
+    return per;
+}
+function previewBlock(card) {
+    const e = eff(card);
+    if (!e.block) return null;
+    return computeBlockGain(run.combat.player, e.block + (card.kind === "skill" ? relicSum("blockBonus") : 0));
+}
+// 生成战斗中的效果行：数值高于基础值标绿、低于标红
+function combatEffectLine(card, targetEnemy) {
+    const e = eff(card);
+    const parts = [];
+    if (e.dmg) {
+        const v = previewDamage(card, targetEnemy);
+        const cls = v > e.dmg ? "num-up" : v < e.dmg ? "num-down" : "";
+        parts.push(`造成 <span class="${cls}">${v}</span> 点伤害${e.hits > 1 ? ` ×${e.hits}` : ""}`);
+    }
+    if (e.block) {
+        const v = previewBlock(card);
+        const cls = v > e.block ? "num-up" : v < e.block ? "num-down" : "";
+        parts.push(`获得 <span class="${cls}">${v}</span> 点护甲`);
+    }
+    // 其余条目沿用静态描述
+    const rest = effectPartsFromEff(e).filter(t => !/^造成 |^获得 \d+ 点护甲/.test(t) &&
+        !(e.dmg && t.startsWith("造成")) && !(e.block && t.startsWith("获得 " + e.block + " 点护甲")));
+    return parts.concat(rest).join("；");
+}
+
 function cardHtml(card, idx) {
     const e = eff(card);
     const p = run.combat.player;
@@ -1096,26 +1163,60 @@ function cardHtml(card, idx) {
     const targeted = needsTarget(card);
     const kw = keywordBadges(card);
     const multi = run.combat.enemies.filter(x => x.hp > 0).length > 1;
+    const touch = isTouchMode();
+    // 触屏：一律点击出牌（指向性卡需先点选敌人）；桌面：攻击拖向敌人、其余拖到战斗区
+    const clickAttr = touch ? `onclick="tapPlayCard('${card.uid}')"` : "";
+    const dragCls = !touch && affordable ? (targeted ? "can-drag" : "can-stagedrag") : "";
+    const hint = targeted
+        ? (touch ? `<div class="card-target-hint">🎯 ${multi ? "先点选敌人，再点此牌" : "点击出牌"}</div>`
+                 : `<div class="card-target-hint">🎯 拖到${multi ? "指定" : ""}怪物出牌</div>`)
+        : (touch ? "" : `<div class="card-target-hint stage-hint">↥ 拖到战斗区打出</div>`);
+    const rainbow = wordStars(card.form, card.part) >= 3 ? "final-star" : "";
     return `
-        <div class="card k-${card.kind} ${rar.cls} tier-${card.tier} ${affordable ? "" : "unaffordable"} ${targeted ? "card-attack card-target" : ""} ${targeted && affordable ? "can-drag" : ""} ${card.exhaust ? "card-exhaust" : ""}"
-             style="--i:${idx}" data-uid="${card.uid}" ${targeted ? "" : `onclick="playCard('${card.uid}')"`}>
+        <div class="card k-${card.kind} ${rar.cls} tier-${card.tier} ${rainbow} ${affordable ? "" : "unaffordable"} ${targeted ? "card-attack card-target" : ""} ${dragCls} ${card.exhaust ? "card-exhaust" : ""}"
+             style="--i:${idx}" data-uid="${card.uid}" ${clickAttr}>
             <div class="card-cost">${e.cost}</div>
             ${idx < 9 ? `<div class="card-hotkey" data-tip="按数字键 ${idx + 1} 打出">${idx + 1}</div>` : ""}
             ${tierBadge(card.tier)}
             <div class="card-rarity" data-tip="${rar.label}卡">${rar.gem}</div>
             <div class="card-word">${card.form}</div>
             <div class="card-part">${revealed ? `${card.part} · ${card.name}` : `${card.part} · ${kindLabel(card.kind)}`}</div>
-            <div class="card-effect">${effectPartsFromEff(e).join("；")}</div>
+            <div class="card-effect">${combatEffectLine(card, null)}</div>
             ${kw ? `<div class="card-keywords">${kw}</div>` : ""}
-            ${targeted ? `<div class="card-target-hint">🎯 拖到${multi ? "指定" : ""}怪物出牌</div>` : ""}
+            ${hint}
             ${card.exhaust ? `<div class="card-exhaust-hint" data-tip="消耗：打出后本场战斗不再出现">🔥 消耗</div>` : ""}
             <div class="card-meaning">${revealed ? shortDef(getEntry(card.form, card.part)) : "？？？（词义未掌握）"}</div>
         </div>`;
 }
 
+/* 触屏点击出牌：多敌人时必须先点选目标 */
+function tapPlayCard(uid) {
+    const c = run.combat;
+    if (!c) return;
+    const card = c.player.hand.find(x => x.uid === uid);
+    if (!card) return;
+    const alive = c.enemies.filter(x => x.hp > 0);
+    if (needsTarget(card) && alive.length > 1 && !c.targetChosen) {
+        addLog("多个敌人：请先点击要攻击的敌人，再点卡牌。", "info");
+        renderCombat();
+        return;
+    }
+    playCard(uid, needsTarget(card) ? currentTargetEid() : undefined);
+}
+/* 点击敌人 = 选定目标（触屏必须；桌面同样可用来配合键盘） */
+function selectTarget(eid) {
+    const c = run.combat;
+    if (!c) return;
+    const en = c.enemies.find(x => x.eid === eid);
+    if (!en || en.hp <= 0) return;
+    c.targetId = eid;
+    c.targetChosen = true;
+    renderCombat();
+}
+
 function enemyFighterHtml(en, many) {
     return `
-        <div class="fighter fighter-enemy ${many ? "compact" : ""} ${en.hp <= 0 ? "dead" : ""} ${many && en.hp > 0 && en.eid === run.combat.targetId ? "kb-target" : ""}" id="side-${en.eid}" data-eid="${en.eid}">
+        <div class="fighter fighter-enemy ${many ? "compact" : ""} ${en.hp <= 0 ? "dead" : ""} ${many && en.hp > 0 && en.eid === run.combat.targetId && run.combat.targetChosen ? "kb-target" : ""}" id="side-${en.eid}" data-eid="${en.eid}" onclick="selectTarget('${en.eid}')">
             <div class="intent-bubble">${en.hp > 0 ? describeIntent(en.nextAction, en) : ""}</div>
             <div class="fighter-figure" id="fig-${en.eid}">
                 ${blockBadgeHtml(en.block)}${enemyArt(en.def)}
@@ -1134,6 +1235,10 @@ function enemyFighterHtml(en, many) {
 
 function renderCombat() {
     const c = run.combat, p = c.player;
+    if (c.targetChosen) {
+        const t = c.enemies.find(x => x.eid === c.targetId);
+        if (!t || t.hp <= 0) c.targetChosen = false;
+    }
     const alive = c.enemies.filter(e => e.hp > 0);
     const many = c.enemies.length > 1;
     const hand = p.hand.map((card, i) => cardHtml(card, i)).join("") || "<p style='color:#7f8c8d;'>（手牌已空）</p>";
@@ -1197,6 +1302,38 @@ function flushFx() {
     });
 }
 
+/* 出牌提示：屏幕中央短暂显示打出的卡牌名，随后渐隐 */
+function spawnCardToast(card) {
+    if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const el = document.createElement("div");
+    el.className = "card-toast k-" + card.kind;
+    const revealed = meaningRevealed(card);
+    el.innerHTML = `<span class="ct-word">${escapeHtml(card.form)}</span>` +
+        (revealed ? `<span class="ct-name">${escapeHtml(card.name)}</span>` : "");
+    document.body.appendChild(el);
+    setTimeout(() => el.remove(), 1000);
+}
+
+/* 强化成功：升级动画（金环爆发 + 上升粒子 + 星级标记） */
+function playUpgradeFx(card, tier) {
+    if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const el = document.createElement("div");
+    el.className = "upgrade-fx";
+    const label = tier >= 2 ? "强强化" : "弱强化";
+    let sparks = "";
+    for (let i = 0; i < 14; i++) {
+        const ang = (i / 14) * Math.PI * 2;
+        const d = 60 + Math.random() * 40;
+        sparks += `<i style="--dx:${(Math.cos(ang) * d).toFixed(0)}px;--dy:${(Math.sin(ang) * d - 20).toFixed(0)}px;animation-delay:${Math.round(Math.random() * 150)}ms"></i>`;
+    }
+    el.innerHTML = `
+        <div class="ufx-ring"></div>${sparks}
+        <div class="ufx-word">${escapeHtml(card.form)}</div>
+        <div class="ufx-label ${tier >= 2 ? "t2" : "t1"}">⬆ ${label} ${tier >= 2 ? "＋＋" : "＋"}</div>`;
+    document.body.appendChild(el);
+    setTimeout(() => el.remove(), 1500);
+}
+
 // 阵亡：角色化作粒子消散
 function spawnDeathFx(fig, color) {
     const col = color || "#c0392b";
@@ -1232,14 +1369,54 @@ function spawnDeathFx(fig, color) {
 
 function attachDragHandlers() {
     const handArea = document.getElementById("handArea");
-    if (!handArea) return;
-    const targets = run.combat.enemies.filter(e => e.hp > 0)
-        .map(e => ({ eid: e.eid, el: document.getElementById("side-" + e.eid) }))
-        .filter(t => t.el);
-    if (!targets.length) return;
-    handArea.querySelectorAll(".card-target.can-drag[data-uid]").forEach(el => {
-        el.addEventListener("pointerdown", (ev) => startCardDrag(ev, el, targets));
-    });
+    if (!handArea || isTouchMode()) return;   // 触屏走点击流程
+    const targets = aimTargets();
+    if (targets.length) {
+        handArea.querySelectorAll(".card-target.can-drag[data-uid]").forEach(el => {
+            el.addEventListener("pointerdown", (ev) => startCardDrag(ev, el, targets));
+        });
+    }
+    // 非指向性卡：拖到战斗区任意位置释放（不画箭头）
+    const stage = document.querySelector(".battle-stage");
+    if (stage) {
+        handArea.querySelectorAll(".can-stagedrag[data-uid]").forEach(el => {
+            el.addEventListener("pointerdown", (ev) => startStageDrag(ev, el, stage));
+        });
+    }
+}
+
+/* 非指向性卡的拖拽：卡牌跟随鼠标，松手落在战斗区内即打出 */
+function startStageDrag(ev, cardEl, stage) {
+    ev.preventDefault();
+    const uid = cardEl.dataset.uid;
+    const rect = cardEl.getBoundingClientRect();
+    const ghost = cardEl.cloneNode(true);
+    ghost.classList.add("card-ghost");
+    ghost.style.width = rect.width + "px";
+    ghost.style.left = rect.left + "px";
+    ghost.style.top = rect.top + "px";
+    document.body.appendChild(ghost);
+    cardEl.classList.add("dragging");
+    hideTip();
+    const offX = ev.clientX - rect.left, offY = ev.clientY - rect.top;
+    const overStage = (x, y) => {
+        const r = stage.getBoundingClientRect();
+        return x >= r.left && x <= r.right && y >= r.top && y <= r.bottom;
+    };
+    function onMove(e) {
+        ghost.style.left = (e.clientX - offX) + "px";
+        ghost.style.top = (e.clientY - offY) + "px";
+        stage.classList.toggle("stage-drop-ok", overStage(e.clientX, e.clientY));
+    }
+    function onUp(e) {
+        document.removeEventListener("pointermove", onMove);
+        stage.classList.remove("stage-drop-ok");
+        ghost.remove();
+        if (overStage(e.clientX, e.clientY)) playCard(uid);
+        else cardEl.classList.remove("dragging");
+    }
+    document.addEventListener("pointermove", onMove);
+    document.addEventListener("pointerup", onUp, { once: true });
 }
 /* ------------------------------------------------------------
    瞄准箭头：从卡牌沿一条曲线指向鼠标，只有落在敌人身上才算有效目标
@@ -1313,6 +1490,21 @@ function aimUpdate(x, y) {
         aimState.ghost.style.top = (y - aimState.offY) + "px";
     }
     drawAim(aimState.origin, { x, y }, !!hit);
+    // 悬停目标变化时，实时更新卡面数值（易伤乘算等 → 松手即这一数值）
+    const hitEid = hit ? hit.eid : null;
+    if (hitEid !== aimState.lastHitEid) {
+        aimState.lastHitEid = hitEid;
+        const card = run.combat.player.hand.find(c => c.uid === aimState.uid);
+        if (card) {
+            const enemy = hitEid ? run.combat.enemies.find(e => e.eid === hitEid) : null;
+            const html = combatEffectLine(card, enemy);
+            [aimState.cardEl, aimState.ghost].forEach(el => {
+                if (!el) return;
+                const eff = el.querySelector(".card-effect");
+                if (eff) eff.innerHTML = html;
+            });
+        }
+    }
 }
 
 // mode: "drag"（按住不放）或 "click"（键盘触发，移动后点击确认）
@@ -1353,7 +1545,7 @@ function startAiming(cardEl, uid, mode, ev) {
     };
     const onKey = (e) => { if (e.key === "Escape") { document.removeEventListener("pointerdown", onClick, true); clearAim(); } };
 
-    aimState = { targets, origin, ghost, offX, offY, cardEl, onMove, onUp, onKey, mode };
+    aimState = { targets, origin, ghost, offX, offY, cardEl, onMove, onUp, onKey, mode, uid, lastHitEid: undefined };
     document.addEventListener("pointermove", onMove);
     if (mode === "drag") document.addEventListener("pointerup", onUp, { once: true });
     else document.addEventListener("pointerdown", onClick, true);
@@ -1407,6 +1599,7 @@ function playCard(uid, targetEid) {
     p.energy -= cost;
     if (firstFree) p.firstCardFreeUsed = true;
     if (firstSkillFree) p.firstSkillFreeUsed = true;
+    spawnCardToast(card);
 
     if (e.dmg) {
         queueFx("player", "lunge", "");
@@ -1537,6 +1730,98 @@ function endPlayerTurn() {
     c.dealAnim = true;
     drawHand();
     renderCombat();
+    if (c.pendingFinalQuiz) { c.pendingFinalQuiz = false; startFinalQuiz(); }
+}
+
+/* ------------------------------------------------------------
+   最终测验（首领的「命运」回合触发）：
+   从牌组抽两个词——一道词义题（弱强化级）+ 一道音变/变位题（强强化级）。
+   全对 → 首领虚弱 1 回合；错一道 → 失去 5 生命；错两道 → 自身获得脆弱/虚弱/易伤各 1。
+   答对不会强化卡牌；但答对音变题且该词已 ★★ 时，升为 ★★★（生词手册三星，卡面彩虹）。
+   ------------------------------------------------------------ */
+/* 首领在最终测验时的台词。sd 为辛达语（由用户撰写后填入），为空时只显示中文。
+   intro=开场 / win=玩家全对 / fail=玩家有答错 */
+const BOSS_QUOTES = {
+    amarth: {   // 命运
+        intro: { sd: "Daro, amroth. Pedo i phith gîn n'amarth.", zh: "站住，攀塔者。在命运面前，说出你学到的言语。" },
+        win:   { sd: "...ipi i amarth ú-ava i phith lîn.", zh: "……连命运也无法否认你的言语。" },
+        fail:  { sd: "I lam gîn gweria im. Se i amarth gîn.", zh: "你的舌头背叛了你。这就是你的命运。" }
+    },
+    bauglir: {  // 暴君
+        intro: { sd: "Ogdo, farannen. Lhassa annin Edhellen iaedad uin gobem gîn.", zh: "跪下，虫豸。让我听听你那可笑的精灵语。" },
+        win:   { sd: "Ego! Fíreb bertha peded i phith hain!", zh: "什么？！区区凡人竟能说出这样的话——" },
+        fail:  { sd: "Ai! Sui abgennen, gwí vûl 'lavrol.", zh: "哈！果然只是牙牙学语的奴隶。" }
+    },
+    dagnir: {   // 克星
+        intro: { sd: "Ilpheth athae, egor 'loew. Cilo!", zh: "每一个词都是解药，或是毒药。选吧。" },
+        win:   { sd: "...I phith lîn glennin ah arethgern. Delu dhae.", zh: "……你的言语纯净无毒。可恨。" },
+        fail:  { sd: "Ai! I thloew raethannen i lang gîn. I phith gîn dýgair ah i lû gîn estent.", zh: "毒已入喉。词不达意，命不久矣。" }
+    }
+};
+function bossQuoteHtml(q) {
+    if (!q) return "";
+    return `<blockquote class="boss-quote">${q.sd ? `<span class="bq-sd">${escapeHtml(q.sd)}</span>` : ""}<span class="bq-zh">${escapeHtml(q.zh)}</span></blockquote>`;
+}
+
+function startFinalQuiz() {
+    const c = run.combat;
+    if (!c || !run.deck.length) return;
+    const pool = shuffle(run.deck.slice());
+    const wordA = pool[0];
+    const wordB = pool.find(x => x.form !== wordA.form) || wordA;
+    let wrong = 0;
+    const bossEn = c.enemies.find(e => e.def.boss);
+    const quotes = BOSS_QUOTES[run.bossKey] || null;
+    showModal(`<h3>⚖ 首领的最终测验</h3>
+        ${quotes ? bossQuoteHtml(quotes.intro) : ""}
+        <p class="modal-hint">接下来是两道试炼：词义与变形。<br>
+        全对：首领虚弱 2 回合 · 错一道：-5 生命 · 全错：陷入脆弱+虚弱+易伤各 2 回合</p>
+        <div class="btn-row"><button class="primary-btn" onclick="closeModal();__finalQuizStep()">迎接试炼</button></div>`);
+    window.__finalQuiz = { wordA, wordB, wrong, step: 0, quotes };
+}
+function __finalQuizStep() {
+    const q = window.__finalQuiz;
+    if (!q) return;
+    if (q.step === 0) {
+        q.step = 1;
+        quizTranslation(q.wordA.form, q.wordA.part, (ok) => {
+            if (!ok) q.wrong++;
+            __finalQuizStep();
+        });
+    } else if (q.step === 1) {
+        q.step = 2;
+        quizMutationOrFallback(q.wordB.form, q.wordB.part, (ok) => {
+            if (!ok) q.wrong++;
+            else if (wordStars(q.wordB.form, q.wordB.part) >= 2) setWordStars(q.wordB.form, q.wordB.part, 3);
+            __finalQuizResolve();
+        });
+    }
+}
+function __finalQuizResolve() {
+    const q = window.__finalQuiz;
+    window.__finalQuiz = null;
+    const c = run.combat;
+    if (!c) return;
+    let text, quote = null;
+    if (q.wrong === 0) {
+        c.enemies.forEach(en => { if (en.def.boss && en.hp > 0) en.statuses.weak += 2; });
+        text = "两道试炼全部通过！首领虚弱 2 回合。";
+        quote = q.quotes && q.quotes.win;
+    } else if (q.wrong === 1) {
+        run.hp = Math.max(1, run.hp - 5);
+        queueFx("player", "damage", "-5");
+        text = "你答错了一道，命运之力灼伤了你（-5 生命）。";
+        quote = q.quotes && q.quotes.fail;
+    } else {
+        const p = c.player;
+        p.statuses.frail += 2; p.statuses.weak += 2; p.statuses.vuln += 2;
+        queueFx("player", "debuff", "脆弱+虚弱+易伤");
+        text = "两道全错——脆弱、虚弱、易伤各 2 回合。";
+        quote = q.quotes && q.quotes.fail;
+    }
+    addLog(text, q.wrong === 0 ? "good" : "bad");
+    showModal(`<h3>试炼结果</h3>${bossQuoteHtml(quote)}<p>${text}</p>
+        <div class="btn-row"><button class="primary-btn" onclick="closeModal();renderCombat();">继续战斗</button></div>`);
 }
 
 // 执行一次敌人行动：意图可能是复合的（数组），逐个结算，最后按成长值涨力量
@@ -1591,6 +1876,7 @@ function enemyDoAction(en, a) {
     } else if (a.t === "doom") {
         en.strength += 4; queueFx(en.eid, "buff", "命运 力量+4");
         addLog(`${nm} 的命运之力使力量永久 +4……`, "bad");
+        if (en.def.boss) run.combat.pendingFinalQuiz = true;   // 最终测验：命运回合触发
     }
 }
 
@@ -1689,10 +1975,10 @@ function offerCardReward(relicReward, goldEarned, tier) {
             <div class="card-cost">${e.cost}</div>
             <div class="card-rarity" data-tip="${rar.label}卡">${rar.gem}</div>
             <div class="card-word">${def.form}</div>
-            <div class="card-part">${def.part} · ${kindLabel(def.kind)}</div>
+            <div class="card-part">${isEverMastered(def.form, def.part) ? `${def.part} · ${def.name}` : `${def.part} · ${kindLabel(def.kind)}`}</div>
             <div class="card-effect">${effectPartsFromEff(e).join("；")}</div>
             ${def.exhaust ? `<div class="card-exhaust-hint">🔥 消耗</div>` : ""}
-            <div class="card-meaning">？？？（词义未掌握）</div>
+            <div class="card-meaning">${isEverMastered(def.form, def.part) ? shortDef(getEntry(def.form, def.part)) : "？？？（词义未掌握）"}</div>
         </div>`;
     }).join("");
     app.innerHTML = `
@@ -1724,10 +2010,10 @@ function runInitialLearning(done) {
     const unlearned = run.deck.filter(c => !isEverMastered(c.form, c.part));
     const unUpgraded = run.deck.filter(c => c.tier === 0);
     const poolA = unlearned.length ? unlearned : (unUpgraded.length ? unUpgraded : run.deck);
-    // 同时避开上一次刚考过的那张
-    const poolB = poolA.filter(c => c.uid !== run.lastLearnUid);
+    // 同时避开上一次刚考过的词（按词形而非卡牌实例，牌组里同词多张也不重复）
+    const poolB = poolA.filter(c => c.form !== run.lastLearnForm);
     const card = pick(poolB.length ? poolB : poolA);
-    run.lastLearnUid = card.uid;
+    run.lastLearnForm = card.form;
     window.__initLearn = { card, done };
     showModal(`<h3>初次学习</h3>
         <p class="modal-hint">命运从你的牌组中抽出了一张牌，考察它的词义：</p>
@@ -1738,7 +2024,11 @@ function __startInitialQuiz() {
     quizTranslation(card.form, card.part, (correct) => {
         // 圣物「长音标记」：答错也保底给弱强化
         const rescued = !correct && hasRelic("learnSafety");
-        if ((correct || rescued) && card.tier < 1) card.tier = 1;
+        if (correct || rescued) {
+            if (card.tier < 1) card.tier = 1;
+            setWordStars(card.form, card.part, 1);
+            playUpgradeFx(card, 1);
+        }
         window.__afterInit = done;
         const msg = correct ? `答对了！<b>${card.form}</b> 获得<b>弱强化</b>。`
             : rescued ? `答错了，但圣物「长音标记」挽回了这次学习——<b>${card.form}</b> 仍获得<b>弱强化</b>。`
@@ -1788,7 +2078,7 @@ function startReview() {
 }
 function __reviewFallback() {
     runQuizSequence(window.__reviewPicks || [], "translation",
-        (card, ok) => { if (ok && card.tier < 1) card.tier = 1; },
+        (card, ok) => { if (ok) { if (card.tier < 1) card.tier = 1; setWordStars(card.form, card.part, 1); playUpgradeFx(card, 1); } },
         () => { leaveRoomBonus(); completeRoom(); });
 }
 function renderReviewSelect(eligible) {
@@ -1823,7 +2113,7 @@ function toggleReview(uid) {
 }
 function confirmReview() {
     const cards = run.reviewSel.map(uid => run.deck.find(c => c.uid === uid)).filter(Boolean);
-    runQuizSequence(cards, "mutation", (card, ok) => { if (ok) card.tier = 2; },
+    runQuizSequence(cards, "mutation", (card, ok) => { if (ok) { card.tier = 2; setWordStars(card.form, card.part, 2); playUpgradeFx(card, 2); } },
         () => { leaveRoomBonus(); completeRoom(); });
 }
 function runQuizSequence(cards, mode, onEach, done) {
@@ -2025,6 +2315,16 @@ const EVENT_DEFS = [
             { label: "抄写一段", hint: "答对测验则两张牌获得弱强化", run: () => { evStudyGamble(); return false; } },
             { label: "关门离开", hint: "无事发生", run: () => "你合上门，尘埃落定。" }
         ]
+    },
+    {
+        id: "bloodaltar", icon: "🩸", title: "殷红的祭坛 · Iagad garan",
+        text: "石台上的凹槽泛着暗红。低语在你耳边响起：「献出一张牌，便予你生机。」你无法预知它会给你什么。",
+        lowHpOnly: true,
+        options: [
+            { label: "献祭一张卡牌", hint: "结果未知……", disabled: () => !run.deck.length,
+              run: () => { evSacrificeCard(); return false; } },
+            { label: "退开", hint: "无事发生", run: () => "你压下了心中的低语，退了出去。" }
+        ]
     }
 ];
 
@@ -2062,6 +2362,32 @@ function evDoRemove(i, goldReward) {
     closeModal();
     eventResult(`<b>${form}</b> 已从牌组中移除${goldReward ? `，并获得 ${goldReward} 金币` : ""}。`);
 }
+/* 献祭：玩家事先不知道回报——按稀有度回复 5 / 15 / 一半最大生命 */
+function evSacrificeCard() {
+    const cards = run.deck.map((c, i) => {
+        const e = eff(c), rar = RARITY_META[c.rarity];
+        return `<div class="card k-${c.kind} ${rar.cls} tier-${c.tier}" style="width:140px;--i:${i}" onclick="evDoSacrifice(${i})">
+            <div class="card-cost">${e.cost}</div>${tierBadge(c.tier)}
+            <div class="card-rarity">${rar.gem}</div>
+            <div class="card-word">${c.form}</div>
+            <div class="card-part">${c.part} · ${meaningRevealed(c) ? c.name : kindLabel(c.kind)}</div>
+        </div>`;
+    }).join("");
+    showModal(`<h3>选择要献祭的卡牌</h3>
+        <p class="modal-hint">祭坛沉默着，没有透露任何交换的条件。</p>
+        <div class="hand">${cards}</div>`);
+}
+function evDoSacrifice(i) {
+    const card = run.deck[i];
+    if (!card) return;
+    run.deck.splice(i, 1);
+    const healMap = { common: 5, uncommon: 15, rare: Math.round(run.maxHp / 2) };
+    const heal = healMap[card.rarity] || 5;
+    run.hp = Math.min(run.maxHp, run.hp + heal);
+    closeModal();
+    eventResult(`祭坛吞没了 <b>${card.form}</b>（${RARITY_META[card.rarity].label}），一股暖流涌入——恢复 ${heal} 点生命。`);
+}
+
 function evQuizGamble() {
     const t = randomSideTerm();
     quizTranslation(t.form, t.part, (okAns) => {
@@ -2084,8 +2410,11 @@ function eventResult(text) {
         <div class="btn-row"><button class="primary-btn" onclick="closeModal();completeRoom();">继续</button></div>`);
 }
 
+// 血量低于 35% 时，献祭事件加入候选并有一半概率优先出现
 function renderEvent() {
-    const ev = pick(EVENT_DEFS);
+    const lowHp = run.hp <= Math.round(run.maxHp * 0.35);
+    const normalPool = EVENT_DEFS.filter(e => !e.lowHpOnly);
+    const ev = (lowHp && Math.random() < 0.5) ? EVENT_DEFS.find(e => e.id === "bloodaltar") : pick(normalPool);
     run.currentEvent = ev;
     const opts = ev.options.map((o, i) => {
         const dis = o.disabled && o.disabled();

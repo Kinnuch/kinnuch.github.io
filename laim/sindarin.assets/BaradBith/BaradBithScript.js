@@ -1124,12 +1124,17 @@ function powersRowHtml(p) {
         `<span class="power-chip" data-tip="${escapeHtml(pw.desc)}"><span class="pw-ic">${pw.icon}</span><span class="pw-w">${escapeHtml(pw.form)}</span></span>`).join("")}</div>`;
 }
 // 复合意图：一次行动可包含多个动作，逐个渲染
+// 复合意图的展示顺序与结算顺序一致：攻击在前、减益在后
+function intentOrder(a) { return ["vuln", "weak", "frail", "poison"].includes(a.t) ? 1 : 0; }
 function describeIntent(a, en) {
     if (!a) return `<span class="intent-unknown">？</span>`;
-    if (Array.isArray(a)) return a.map(x => describeIntent(x, en)).join("");
+    if (Array.isArray(a)) return a.slice().sort((x, y) => intentOrder(x) - intentOrder(y)).map(x => describeIntent(x, en)).join("");
     if (a.t === "attack") {
-        const v = outgoingDamage(en, Math.round(a.v * (en.dmgMul || 1)));
-        return `<span class="intent atk" data-tip="敌人将发动攻击">⚔ ${v}</span>`;
+        const p = run.combat.player;
+        const base = outgoingDamage(en, Math.round(a.v * (en.dmgMul || 1)));
+        const v = incomingDamage(p, base);   // 计入玩家易伤 → 显示的就是真实将受的伤害
+        const amped = v > base;
+        return `<span class="intent atk ${amped ? "amped" : ""}" data-tip="${amped ? "你处于易伤状态，此次攻击被增幅 ×1.5" : "敌人将发动攻击"}">⚔ ${v}</span>`;
     }
     if (a.t === "defend") return `<span class="intent def" data-tip="敌人将获得护甲">🛡 ${a.v}</span>`;
     if (a.t === "buff") return `<span class="intent buff" data-tip="敌人将提升力量">💪 蓄力</span>`;
@@ -1792,7 +1797,7 @@ function endPlayerTurn() {
     p.hand = keep;
     p.discard.push(...toDiscard);
     p.exile.push(...toExile);
-    tickStatuses(p);
+    p.freshDebuffs = { vuln: 0, weak: 0, frail: 0 };   // 记录本敌方回合新施加的减益
 
     // 敌方回合：每只存活敌人先结算中毒，再依次行动
     for (const en of c.enemies) {
@@ -1812,6 +1817,11 @@ function endPlayerTurn() {
         tickStatuses(en);
         if (run.hp <= 0) { queueFx("player", "death", "", "#4a90e2"); renderCombat(); setTimeout(renderDefeat, 1000); return; }
     }
+    // 玩家减益在敌方全部行动完毕后才递减——保证意图上显示的增幅数字与实际结算一致；
+    // 本回合新施加的层数不递减（否则刚上的 2 层立刻变 1 层）
+    ["vuln", "weak", "frail"].forEach(k => {
+        if (p.statuses[k] > (p.freshDebuffs[k] || 0)) p.statuses[k]--;
+    });
     if (c.enemies.every(x => x.hp <= 0)) { renderCombat(); setTimeout(winCombat, 450); return; }
 
     // 玩家新回合
@@ -1936,7 +1946,9 @@ function __finalQuizResolve() {
 
 // 执行一次敌人行动：意图可能是复合的（数组），逐个结算，最后按成长值涨力量
 function enemyAct(en) {
-    const acts = Array.isArray(en.nextAction) ? en.nextAction : [en.nextAction];
+    let acts = Array.isArray(en.nextAction) ? en.nextAction : [en.nextAction];
+    // 攻击先结算、减益后施加：否则刚上的易伤会立刻增幅本次攻击，与意图显示的数字不符
+    acts = acts.slice().sort((x, y) => intentOrder(x) - intentOrder(y));
     for (const act of acts) {
         enemyDoAction(en, act);
         if (run.hp <= 0) break; // 玩家已阵亡，停止后续动作
@@ -1982,6 +1994,7 @@ function enemyDoAction(en, a) {
         } else {
             const amount = Math.max(1, a.v - (a.t === "poison" ? 0 : relicSum("debuffResist")));
             p.statuses[a.t] += amount;
+            if (p.freshDebuffs && a.t !== "poison") p.freshDebuffs[a.t] = (p.freshDebuffs[a.t] || 0) + amount;
             queueFx("player", "debuff", m.name + "+" + amount);
             addLog(`${nm} 使你${m.name} ${amount} ${a.t === "poison" ? "层" : "回合"}。`, "bad");
         }
@@ -2267,8 +2280,14 @@ function renderShop() {
     const owned = new Set(run.relics.map(r => r.form));
     run.shopRemoveUsed = false; // 每家商店的移除服务重新开放一次
     run.shopStock = shuffle(RELIC_DEFS.filter(r => !owned.has(r.form)).slice()).slice(0, 3)
-        .map(r => ({ relic: r, price: 60 + Math.floor(Math.random() * 30), discounted: false }));
+        .map(r => ({ relic: r, price: rollRelicPrice(r.rarity), discounted: false }));
     renderShopView();
+}
+// 圣物标价：白均价 ~53，蓝 ~79（×1.5），金 ~106（×2）
+const RELIC_PRICE_RANGE = { common: [45, 60], uncommon: [68, 90], rare: [92, 120] };
+function rollRelicPrice(rarity) {
+    const [lo, hi] = RELIC_PRICE_RANGE[rarity] || RELIC_PRICE_RANGE.common;
+    return lo + Math.floor(Math.random() * (hi - lo + 1));
 }
 const REMOVE_PRICE = 40;
 function relicPrice(base) { return hasRelic("shopDiscount") ? Math.round(base * 0.8) : base; }

@@ -1237,3 +1237,7 @@ body {
 [data-theme="dark"] .mech-chip { background: #1f2a48; color: #aab6c8; border-color: #2f3b5c; }
 [data-theme="dark"] .mech-chip.m-doom { background: #2a1f3d; color: #c9a6e6; border-color: #55397a; }
 [data-theme="dark"] .mech-chip.hot { background: #3a1a1a; color: #ff8a8a; border-color: #6b2f2f; }
+
+/* —— 被易伤增幅的敌方攻击数字 —— */
+.intent.atk.amped { color: #ff2d2d; font-size: 17px; text-shadow: 0 0 8px rgba(255,45,45,.45); }
+[data-theme="dark"] .intent.atk.amped { color: #ff6b6b; }

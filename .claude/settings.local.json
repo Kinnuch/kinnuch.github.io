@@ -104,7 +104,8 @@
       "Bash(python sindarindictionary.py)",
       "Bash(timeout 200 node quiz3.js)",
       "Bash(timeout 200 node mech.js)",
-      "Bash(timeout 550 node --max-old-space-size=3000 boss.js)"
+      "Bash(timeout 550 node --max-old-space-size=3000 boss.js)",
+      "Bash(grep -n \"c.enemies.every\\(x => x.hp <= 0\\)\\) { renderCombat\\(\\); setTimeout\\(winCombat, 450\\)\" BaradBithScript.js)"
     ],
     "additionalDirectories": [
       "\\tmp"

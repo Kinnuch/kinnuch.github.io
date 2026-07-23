@@ -1,5 +1,19 @@
 [
   {
+    "hash": "de1dfdedeec27ecf469f0c0d359a7a94969be2e1",
+    "short": "de1dfde",
+    "date": "2026-07-23T18:53:33+08:00",
+    "author": "wuyichen",
+    "msg": "fix several bugs in Barad Bith MiniGame"
+  },
+  {
+    "hash": "aed8c398188903e8ec86d5402890e7ff7ae71a75",
+    "short": "aed8c39",
+    "date": "2026-07-23T09:35:27Z",
+    "author": "github-actions[bot]",
+    "msg": "chore: refresh commits.json [skip ci]"
+  },
+  {
     "hash": "b881eb26f21005cd937113a517d812a839d6c464",
     "short": "b881eb2",
     "date": "2026-07-23T17:35:06+08:00",

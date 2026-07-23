@@ -1,5 +1,19 @@
 [
   {
+    "hash": "4d0b292a62a26dbb5702b0b40c11f069f1677d62",
+    "short": "4d0b292",
+    "date": "2026-07-23T14:26:42+08:00",
+    "author": "wuyichen",
+    "msg": "update Barad Bith MiniGame and Reconstruct Sindarin Dictionary Tool"
+  },
+  {
+    "hash": "0fb7a21c63689a8c7dc8d668585675b985987db2",
+    "short": "0fb7a21",
+    "date": "2026-07-22T11:15:39Z",
+    "author": "github-actions[bot]",
+    "msg": "chore: refresh commits.json [skip ci]"
+  },
+  {
     "hash": "653587323efb6e33d22a8106388dd086b6fc6310",
     "short": "6535873",
     "date": "2026-07-22T19:15:16+08:00",

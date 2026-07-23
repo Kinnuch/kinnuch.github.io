@@ -119,6 +119,7 @@ const ENEMY_DEFS = {
                           [{ t: "attack", v: 10 }, { t: "vuln", v: 2 }],
                           [{ t: "buff", v: 2 }, { t: "defend", v: 6 }]] },
     fern:     { form: "fern", part: "adjective", art: "undead", color: "#9aa39a", hp: 56, growth: 0,
+                revive: 0.35,   // 「已死的」：首次被击倒后以 35% 生命爬起
                 pattern: [{ t: "attack", v: 15 },
                           [{ t: "poison", v: 4 }, { t: "heal", v: 8 }],
                           { t: "attack", v: 15 }] },
@@ -127,37 +128,45 @@ const ENEMY_DEFS = {
                           { t: "attack", v: 18 },
                           [{ t: "weak", v: 2 }, { t: "defend", v: 8 }]] },
     ndur:     { form: "(n)dûr", part: "adjective", art: "demon", color: "#d15a52", hp: 62, elite: true, growth: 1,
+                enrage: 3,      // 「阴郁的」恶魔：首次半血时暴怒，力量 +3
                 pattern: [{ t: "attack", v: 12 },
                           [{ t: "defend", v: 9 }, { t: "attack", v: 7 }],
                           [{ t: "attack", v: 9 }, { t: "weak", v: 2 }],
                           { t: "attack", v: 14 }] },
     daedelos: { form: "(n)daedelos", part: "noun", art: "eye", color: "#a874d8", hp: 64, elite: true, growth: 1,
+                thorns: 3,      // 巨眼的凝视：每次被攻击命中，攻击者反受 3 点伤害
                 pattern: [[{ t: "vuln", v: 2 }, { t: "attack", v: 10 }],
                           { t: "attack", v: 15 },
                           [{ t: "frail", v: 2 }, { t: "attack", v: 9 }],
                           { t: "attack", v: 15 }] },
     // —— 首领（每局随机一位，塔顶迎战）——
-    bauglir:  { form: "(m)bauglir", part: "noun", art: "demon", color: "#c94a3d", hp: 145, boss: true, growth: 2,
-                // 暴君：靠压制减益与高额攻击碾压
+    bauglir:  { form: "(m)bauglir", part: "noun", art: "demon", color: "#c94a3d", hp: 118, boss: true, growth: 1,
+                // 暴君（包格力尔）：奴役他者为己而战——周期性召唤被奴役的幽魂
+                summon: { k: "auth", hp: 0.4, dmg: 0.5, maxAlive: 3 },
                 pattern: [{ t: "attack", v: 12 },
+                          { t: "summon" },
                           [{ t: "frail", v: 2 }, { t: "attack", v: 8 }],
-                          { t: "attack", v: 10 },
                           { t: "doom" },
                           [{ t: "attack", v: 10 }, { t: "weak", v: 2 }],
+                          { t: "summon" },
                           { t: "attack", v: 16 },
-                          [{ t: "defend", v: 12 }, { t: "attack", v: 9 }],
-                          { t: "attack", v: 18 }] },
-    dagnir:   { form: "(n)dagnir", part: "noun", art: "reaper", color: "#4fae8a", hp: 140, boss: true, growth: 2,
-                // 克星：中毒流，拖得越久毒得越深
-                pattern: [[{ t: "poison", v: 4 }, { t: "attack", v: 8 }],
+                          [{ t: "defend", v: 12 }, { t: "attack", v: 9 }]] },
+    dagnir:   { form: "(n)dagnir", part: "noun", art: "reaper", color: "#4fae8a", hp: 132, boss: true, growth: 1,
+                // 克星：中毒流。半血蜕变：净化自身、力量+2、行动更凶残、成长翻倍
+                phase2: { at: 0.5, strength: 1, growth: 2,
+                    pattern: [[{ t: "poison", v: 4 }, { t: "attack", v: 9 }],
+                              { t: "attack", v: 14 },
+                              [{ t: "poison", v: 3 }, { t: "vuln", v: 2 }],
+                              { t: "attack", v: 16 }] },
+                pattern: [[{ t: "poison", v: 3 }, { t: "attack", v: 8 }],
                           { t: "attack", v: 12 },
                           [{ t: "vuln", v: 2 }, { t: "attack", v: 9 }],
                           { t: "doom" },
-                          [{ t: "poison", v: 5 }, { t: "defend", v: 10 }],
-                          { t: "attack", v: 15 },
-                          [{ t: "attack", v: 11 }, { t: "weak", v: 2 }],
-                          { t: "attack", v: 17 }] },
+                          [{ t: "poison", v: 3 }, { t: "defend", v: 10 }],
+                          { t: "attack", v: 15 }] },
     amarth:   { form: "amarth", part: "noun", art: "darklord", color: "#7d6bb8", hp: 150, boss: true, growth: 2,
+                // 命运：无法逃避的终焉——第 10 回合后每回合降下毁灭一击
+                countdown: 10, executeV: 45,
                 // 首领：每回合稳定成长，再加两次「命运」尖峰，拖得越久越致命
                 pattern: [{ t: "attack", v: 10 },
                           [{ t: "attack", v: 7 }, { t: "vuln", v: 2 }],
@@ -373,6 +382,22 @@ function shortDef(entry) {
     if (!s) s = (entry.english || "").split(",")[0].trim();
     return s || "（未知词义）";
 }
+/* 重置全部学习记录：词义、星级一并清空；当前对局中卡牌的强化等级同步归零 */
+function resetMastery() {
+    if (!confirm("确定清空全部学习记录？词义与星级都会清除，此操作不可恢复。")) return;
+    for (const k in mastery) delete mastery[k];
+    saveMastery();
+    if (run) {
+        run.deck.forEach(c => { c.tier = 0; });
+        if (run.combat) {
+            const piles = run.combat.player;
+            [piles.hand, piles.deck, piles.discard, piles.exile].forEach(pile => pile.forEach(c => { c.tier = 0; }));
+        }
+    }
+    closeModal();
+    openGlossary();   // 重新打开手册，立即看到已清空的状态
+}
+
 function escapeHtml(s) {
     return String(s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 }
@@ -534,7 +559,7 @@ function openGlossary() {
         <div class="deck-list">${rows}</div>
         <div class="btn-row">
             <button class="secondary-btn" onclick="closeModal()">关闭</button>
-            <button class="secondary-btn" onclick="if(confirm('确定清空全部学习记录？此操作不可恢复。')){mastery={};saveMastery();closeModal();}">重置学习记录</button>
+            <button class="secondary-btn" onclick="resetMastery()">重置学习记录</button>
         </div>`);
 }
 
@@ -819,6 +844,7 @@ function topBarHtml() {
     return `
         ${relicStripHtml()}
         <div class="status-bar">
+            <button class="utility-btn danger" onclick="askQuit()" data-tip="放弃本局，回到开始界面（词汇星级会保留）">⏻ 退出</button>
             <span class="stat hp">❤ ${run.hp}/${run.maxHp}</span>
             <span class="stat coin">🪙 ${run.gold}</span>
             <span class="stat floor">🗼 第 ${depth} / ${MAP_ROWS} 层</span>
@@ -976,6 +1002,7 @@ function startCombat(encounter) {
     });
     drawHand(true); // 起手：固有牌必进手（含圣物提供的额外抽牌）
     renderCombat();
+    spawnTurnBanner(1);
 }
 const HAND_LIMIT = 10;
 function drawHand(openingHand) {
@@ -1111,7 +1138,8 @@ function describeIntent(a, en) {
     if (a.t === "weak") return `<span class="intent debuff" data-tip="敌人将使你虚弱：攻击 -25%">🩸 虚弱</span>`;
     if (a.t === "frail") return `<span class="intent debuff" data-tip="敌人将使你脆弱：护甲 -25%">🥀 脆弱</span>`;
     if (a.t === "poison") return `<span class="intent poison" data-tip="敌人将使你中毒：每回合流失生命">☣ 中毒</span>`;
-    if (a.t === "doom") return `<span class="intent doom" data-tip="命运：力量永久 +3">⏳ 命运</span>`;
+    if (a.t === "doom") return `<span class="intent doom" data-tip="命运：力量永久 +4">⏳ 命运</span>`;
+    if (a.t === "summon") return `<span class="intent buff" data-tip="召唤被奴役的仆从助战">🜏 召唤</span>`;
     return `<span class="intent-unknown">？</span>`;
 }
 /* 卡面数值实时预览：
@@ -1214,6 +1242,28 @@ function selectTarget(eid) {
     renderCombat();
 }
 
+/* 特色机制标签（显示在敌人名下方，悬停有说明） */
+function mechChipsHtml(en) {
+    const d = en.def, c = run.combat;
+    const chips = [];
+    if (d.countdown) {
+        const left = Math.max(0, d.countdown - c.turn + 1);
+        chips.push(left > 0
+            ? `<span class="mech-chip m-doom" data-tip="终焉倒数：${d.countdown} 回合后，每回合降下 ${d.executeV} 点毁灭一击">⏳ 终焉 ${left}</span>`
+            : `<span class="mech-chip m-doom hot" data-tip="终焉已至：每回合毁灭一击 ${d.executeV}">⏳ 终焉！</span>`);
+    }
+    if (d.summon) chips.push(`<span class="mech-chip" data-tip="奴役：周期性召唤被奴役的仆从（战场至多 ${d.summon.maxAlive} 个敌人）">🜏 奴役</span>`);
+    if (d.phase2) chips.push(en.phased
+        ? `<span class="mech-chip hot" data-tip="已蜕变：减益尽除、力量提升、成长加快">🐍 已蜕变</span>`
+        : `<span class="mech-chip" data-tip="蜕变：生命降至一半时净化自身并进入第二形态">🐍 蜕变</span>`);
+    if (d.enrage) chips.push(en.enraged
+        ? `<span class="mech-chip hot" data-tip="已激怒：力量 +${d.enrage}">💢 已激怒</span>`
+        : `<span class="mech-chip" data-tip="激怒：生命降至一半时力量 +${d.enrage}">💢 激怒</span>`);
+    if (d.thorns) chips.push(`<span class="mech-chip" data-tip="荆棘：每次被攻击牌命中，攻击者反受 ${d.thorns} 点伤害">🌵 荆棘 ${d.thorns}</span>`);
+    if (d.revive && !en.reviveUsed) chips.push(`<span class="mech-chip" data-tip="不死：首次被击倒后以 ${Math.round(d.revive * 100)}% 生命复活">⚰ 不死</span>`);
+    return chips.join("");
+}
+
 function enemyFighterHtml(en, many) {
     return `
         <div class="fighter fighter-enemy ${many ? "compact" : ""} ${en.hp <= 0 ? "dead" : ""} ${many && en.hp > 0 && en.eid === run.combat.targetId && run.combat.targetChosen ? "kb-target" : ""}" id="side-${en.eid}" data-eid="${en.eid}" onclick="selectTarget('${en.eid}')">
@@ -1228,7 +1278,10 @@ function enemyFighterHtml(en, many) {
             <div class="status-icons">${statusPills(en)}</div>
             <div class="fighter-sub">
                 <div class="fighter-gloss">${escapeHtml(shortDef(en.entry))}</div>
-                ${en.def.growth ? `<span class="growth-tag" data-tip="成长：每次行动后力量永久 +${en.def.growth}，拖得越久越强">📈 成长 +${en.def.growth}</span>` : ""}
+                <div class="mech-row">
+                    ${enemyGrowth(en) ? `<span class="growth-tag" data-tip="成长：每次行动后力量永久 +${enemyGrowth(en)}，拖得越久越强">📈 +${enemyGrowth(en)}</span>` : ""}
+                    ${mechChipsHtml(en)}
+                </div>
             </div>
         </div>`;
 }
@@ -1300,6 +1353,16 @@ function flushFx() {
             if (f.kind === "death") spawnDeathFx(fig, f.color);
         }, i * 120);
     });
+}
+
+/* 回合开始横幅：屏幕中央显示第几回合，随后渐隐 */
+function spawnTurnBanner(turn) {
+    if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const el = document.createElement("div");
+    el.className = "turn-banner";
+    el.textContent = `回合 ${turn}`;
+    document.body.appendChild(el);
+    setTimeout(() => el.remove(), 1300);
 }
 
 /* 出牌提示：屏幕中央短暂显示打出的卡牌名，随后渐隐 */
@@ -1612,6 +1675,13 @@ function playCard(uid, targetEid) {
             const dealt = damageEnemy(en, outgoingDamage(p, e.dmg + bonus + vulnBonus));
             queueFx(en.eid, "damage", "-" + dealt);
             if (en.hp <= 0 && !en.deathFx) { en.deathFx = true; queueFx(en.eid, "death", "", en.def.color); }
+            // 荆棘（daedelos）：攻击者反受伤害
+            if (en.def.thorns && en.hp > 0) {
+                let tdmg = en.def.thorns;
+                if (p.block > 0) { const ab = Math.min(p.block, tdmg); p.block -= ab; tdmg -= ab; }
+                if (tdmg > 0) { run.hp -= tdmg; queueFx("player", "damage", "-" + tdmg); }
+                if (run.hp <= 0) { renderCombat(); setTimeout(renderDefeat, 1000); return; }
+            }
             if (en.hp <= 0 && relicSum("healOnKill")) {
                 run.hp = Math.min(run.maxHp, run.hp + relicSum("healOnKill"));
                 queueFx("player", "heal", "+" + relicSum("healOnKill"));
@@ -1670,9 +1740,41 @@ function powerDesc(card, e) {
 function damageEnemy(en, amount) {
     let dmg = incomingDamage(en, amount);
     if (en.block > 0) { const a = Math.min(en.block, dmg); en.block -= a; dmg -= a; }
-    en.hp = Math.max(0, en.hp - dmg);
+    applyEnemyLoss(en, dmg);
     return dmg;
 }
+/* 敌人失去生命的统一入口（攻击与中毒都走这里）：结算复活/激怒/蜕变 */
+function applyEnemyLoss(en, dmg) {
+    en.hp = Math.max(0, en.hp - dmg);
+    const d = en.def;
+    // 不死（fern）：首次被击倒后爬起
+    if (en.hp <= 0 && d.revive && !en.reviveUsed) {
+        en.reviveUsed = true;
+        en.hp = Math.max(1, Math.round(en.maxHp * d.revive));
+        queueFx(en.eid, "heal", "复活 " + en.hp);
+        addLog(`<b>${d.form}</b> 的尸体再度爬了起来……`, "bad");
+    }
+    // 激怒（ndur）：首次半血，力量激增
+    if (d.enrage && !en.enraged && en.hp > 0 && en.hp <= en.maxHp / 2) {
+        en.enraged = true;
+        en.strength += d.enrage;
+        queueFx(en.eid, "buff", "激怒 力量+" + d.enrage);
+        addLog(`<b>${d.form}</b> 被激怒了！力量 +${d.enrage}。`, "bad");
+    }
+    // 蜕变（dagnir）：半血进入第二形态
+    if (d.phase2 && !en.phased && en.hp > 0 && en.hp <= en.maxHp * d.phase2.at) {
+        en.phased = true;
+        en.statuses = newStatuses();            // 净化自身减益
+        en.strength += d.phase2.strength;
+        en.patternIdx = 0;
+        en.nextAction = d.phase2.pattern[0];
+        queueFx(en.eid, "buff", "蜕变");
+        addLog(`<b>${d.form}</b> 撕裂旧躯蜕变了——减益尽除，力量 +${d.phase2.strength}，成长加快！`, "bad");
+    }
+}
+// 当前生效的行动表 / 成长（蜕变后切换）
+function enemyPattern(en) { return en.phased && en.def.phase2 ? en.def.phase2.pattern : en.def.pattern; }
+function enemyGrowth(en) { return en.phased && en.def.phase2 ? en.def.phase2.growth : (en.def.growth || 0); }
 
 function endPlayerTurn() {
     const c = run.combat, p = c.player;
@@ -1696,9 +1798,10 @@ function endPlayerTurn() {
     for (const en of c.enemies) {
         if (en.hp <= 0) continue;
         if (en.statuses.poison > 0) {
-            en.hp = Math.max(0, en.hp - en.statuses.poison);
-            queueFx(en.eid, "poison", "-" + en.statuses.poison);
+            const pdmg = en.statuses.poison;
+            queueFx(en.eid, "poison", "-" + pdmg);
             en.statuses.poison--;
+            applyEnemyLoss(en, pdmg);
             if (en.hp <= 0) {
                 if (!en.deathFx) { en.deathFx = true; queueFx(en.eid, "death", "", en.def.color); }
                 addLog(`<b>${en.def.form}</b> 中毒身亡。`, "good");
@@ -1727,9 +1830,16 @@ function endPlayerTurn() {
     p.firstCardFreeUsed = false;
     p.firstSkillFreeUsed = false;
     p.firstAttackUsed = false;
+    // 命运（amarth）：倒数耗尽后，行动固定为终焉毁灭一击
+    c.enemies.forEach(en => {
+        if (en.hp > 0 && en.def.countdown && c.turn > en.def.countdown) {
+            en.nextAction = { t: "attack", v: en.def.executeV };
+        }
+    });
     c.dealAnim = true;
     drawHand();
     renderCombat();
+    spawnTurnBanner(c.turn);
     if (c.pendingFinalQuiz) { c.pendingFinalQuiz = false; startFinalQuiz(); }
 }
 
@@ -1831,12 +1941,14 @@ function enemyAct(en) {
         enemyDoAction(en, act);
         if (run.hp <= 0) break; // 玩家已阵亡，停止后续动作
     }
-    if (en.def.growth) {
-        en.strength += en.def.growth;
-        queueFx(en.eid, "buff", "成长 +" + en.def.growth);
+    const g = enemyGrowth(en);
+    if (g) {
+        en.strength += g;
+        queueFx(en.eid, "buff", "成长 +" + g);
     }
-    en.patternIdx = (en.patternIdx + 1) % en.def.pattern.length;
-    en.nextAction = en.def.pattern[en.patternIdx];
+    const pat = enemyPattern(en);
+    en.patternIdx = (en.patternIdx + 1) % pat.length;
+    en.nextAction = pat[en.patternIdx];
 }
 
 function enemyDoAction(en, a) {
@@ -1877,6 +1989,27 @@ function enemyDoAction(en, a) {
         en.strength += 4; queueFx(en.eid, "buff", "命运 力量+4");
         addLog(`${nm} 的命运之力使力量永久 +4……`, "bad");
         if (en.def.boss) run.combat.pendingFinalQuiz = true;   // 最终测验：命运回合触发
+    } else if (a.t === "summon") {
+        // 暴君：召唤被奴役的仆从；战场已满则改为格挡
+        const spec = en.def.summon;
+        const alive = c.enemies.filter(x => x.hp > 0).length;
+        if (spec && alive < spec.maxAlive) {
+            const def = ENEMY_DEFS[spec.k];
+            const hp = Math.max(1, Math.round(def.hp * spec.hp));
+            c.eidSeq = (c.eidSeq || 100) + 1;
+            c.enemies.push({
+                eid: "s" + c.eidSeq, def, entry: getEntry(def.form, def.part),
+                hp, maxHp: hp, dmgMul: spec.dmg,
+                block: 0, strength: 0, dexterity: 0, statuses: newStatuses(),
+                patternIdx: 0, nextAction: def.pattern[0]
+            });
+            queueFx(en.eid, "buff", "召唤");
+            addLog(`${nm} 咆哮着召唤出被奴役的 <b>${def.form}</b>！`, "bad");
+        } else {
+            const g = computeBlockGain(en, 10); en.block += g;
+            queueFx(en.eid, "block", "+" + g);
+            addLog(`${nm} 无处可召，转而竖起壁垒（护甲 +${g}）。`, "info");
+        }
     }
 }
 
@@ -2602,6 +2735,21 @@ function hideTip() { tipHost = null; if (tipEl) tipEl.classList.add("hidden"); }
 
 function showModal(html) { overlay.innerHTML = `<div class="modal">${html}</div>`; overlay.classList.remove("hidden"); }
 function closeModal() { overlay.classList.add("hidden"); overlay.innerHTML = ""; hideTip(); }
+
+function askQuit() {
+    showModal(`<h3>退出本局？</h3>
+        <p class="modal-hint">本局进度不会保存（生词手册的星级与词义记录会保留）。</p>
+        <div class="btn-row">
+            <button class="primary-btn" onclick="confirmQuit()">确认退出</button>
+            <button class="secondary-btn" onclick="closeModal()">继续游戏</button>
+        </div>`);
+}
+function confirmQuit() {
+    clearAim();
+    run = null;
+    closeModal();
+    renderTitle();
+}
 
 function renderDefeat() {
     const depth = run.currentNodeId ? run.map.nodes[run.currentNodeId].row + 1 : 1;

@@ -603,24 +603,46 @@ class DictionaryApp:
         mid = ttk.PanedWindow(self.root, orient=tk.HORIZONTAL)
         mid.pack(fill=tk.BOTH, expand=True, padx=10, pady=4)
 
+        # 全局滚轮: 无论焦点在哪, 都滚动鼠标指针下方的区域。
+        # 覆盖各控件类自带的滚轮绑定, 避免焦点控件被同时滚动/误改。
+        for cls in ("Text", "Treeview", "Listbox", "Entry",
+                    "TEntry", "TCombobox"):
+            self.root.bind_class(cls, "<MouseWheel>", self._on_mousewheel)
+        self.root.bind_all("<MouseWheel>", self._on_mousewheel)
+
+        tree_frame = ttk.Frame(mid)
         cols = ("word", "part", "english", "definition")
-        self.tree = ttk.Treeview(mid, columns=cols, show="headings",
+        self.tree = ttk.Treeview(tree_frame, columns=cols, show="headings",
                                  selectmode="browse")
-        for c, txt, w in [("word", "辛达语", 150), ("part", "词性", 80),
-                          ("english", "English", 220), ("definition", "释义", 220)]:
-            self.tree.heading(c, text=txt)
+        self.col_titles = {"word": "辛达语", "part": "词性",
+                           "english": "English", "definition": "释义"}
+        self.sort_col = "word"
+        self.sort_desc = False
+        for c, w in [("word", 150), ("part", 80),
+                     ("english", 220), ("definition", 220)]:
+            self.tree.heading(c, text=self.col_titles[c],
+                              command=lambda col=c: self.sort_by(col))
             self.tree.column(c, width=w, anchor=tk.W)
         self.tree.bind("<<TreeviewSelect>>", self.show_details)
         self.tree.bind("<Double-1>", lambda e: self.edit_word())
         self.tree.bind("<Delete>", lambda e: self.delete_word())
-        mid.add(self.tree, weight=3)
+        tree_sb = ttk.Scrollbar(tree_frame, orient=tk.VERTICAL,
+                                command=self.tree.yview)
+        self.tree.configure(yscrollcommand=tree_sb.set)
+        tree_sb.pack(side=tk.RIGHT, fill=tk.Y)
+        self.tree.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
+        mid.add(tree_frame, weight=3)
 
         right = ttk.Frame(mid)
         mid.add(right, weight=2)
         self.details = tk.Text(right, wrap=tk.WORD, state=tk.DISABLED,
                                font=("Segoe UI", 10), relief=tk.FLAT,
                                background="#fafafa")
-        self.details.pack(fill=tk.BOTH, expand=True)
+        det_sb = ttk.Scrollbar(right, orient=tk.VERTICAL,
+                               command=self.details.yview)
+        self.details.configure(yscrollcommand=det_sb.set)
+        det_sb.pack(side=tk.RIGHT, fill=tk.Y)
+        self.details.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
 
         self.status = tk.StringVar(
             value=f"共 {len(self.entries)} 个词条")
@@ -651,6 +673,19 @@ class DictionaryApp:
                           "sentence", "other", "part"))
             if ok:
                 self.filtered.append(e)
+        sort_keys = {
+            "word": lambda e: strip_nasal_prefix(e["dict_form"]).lower(),
+            "part": lambda e: (e["part"],
+                               strip_nasal_prefix(e["dict_form"]).lower()),
+            "english": lambda e: e["english"].lower(),
+            "definition": lambda e: e["definition"],
+        }
+        self.filtered.sort(key=sort_keys[self.sort_col],
+                           reverse=self.sort_desc)
+        for c, txt in self.col_titles.items():
+            mark = (" ▼" if self.sort_desc else " ▲") \
+                if c == self.sort_col else ""
+            self.tree.heading(c, text=txt + mark)
         self.tree.delete(*self.tree.get_children())
         for i, e in enumerate(self.filtered):
             self.tree.insert("", tk.END, iid=str(i), values=(
@@ -659,6 +694,26 @@ class DictionaryApp:
         total = len(self.entries)
         self.status.set(f"共 {total} 个词条" +
                         (f" · 筛选出 {n} 个" if q else ""))
+
+    def _on_mousewheel(self, event):
+        """把滚轮事件送给鼠标指针下方最近的可滚动控件。"""
+        w = self.root.winfo_containing(event.x_root, event.y_root)
+        while w is not None:
+            if isinstance(w, (ttk.Treeview, tk.Text, tk.Canvas, tk.Listbox)):
+                try:
+                    w.yview_scroll(-(event.delta // 120) * 3, "units")
+                except tk.TclError:
+                    pass
+                return "break"
+            w = w.master
+        return "break"
+
+    def sort_by(self, col):
+        if self.sort_col == col:
+            self.sort_desc = not self.sort_desc
+        else:
+            self.sort_col, self.sort_desc = col, False
+        self.refresh_list()
 
     def selected_entry(self):
         sel = self.tree.selection()

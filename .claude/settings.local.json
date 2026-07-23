@@ -102,7 +102,9 @@
       "Bash(timeout 200 node mut.js)",
       "Bash(timeout 260 node batch8.js)",
       "Bash(python sindarindictionary.py)",
-      "Bash(timeout 200 node quiz3.js)"
+      "Bash(timeout 200 node quiz3.js)",
+      "Bash(timeout 200 node mech.js)",
+      "Bash(timeout 550 node --max-old-space-size=3000 boss.js)"
     ],
     "additionalDirectories": [
       "\\tmp"

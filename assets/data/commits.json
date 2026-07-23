@@ -1,5 +1,19 @@
 [
   {
+    "hash": "b881eb26f21005cd937113a517d812a839d6c464",
+    "short": "b881eb2",
+    "date": "2026-07-23T17:35:06+08:00",
+    "author": "wuyichen",
+    "msg": "udpate Barad Bith MiniGame and update Sindarin Dictionary Tool"
+  },
+  {
+    "hash": "05ac3dba635bdf5da6faf0c36e6d7916b38ce4e9",
+    "short": "05ac3db",
+    "date": "2026-07-23T06:27:05Z",
+    "author": "github-actions[bot]",
+    "msg": "chore: refresh commits.json [skip ci]"
+  },
+  {
     "hash": "4d0b292a62a26dbb5702b0b40c11f069f1677d62",
     "short": "4d0b292",
     "date": "2026-07-23T14:26:42+08:00",

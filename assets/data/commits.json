@@ -1,5 +1,19 @@
 [
   {
+    "hash": "38a77389773ab137e6a5794d908dcc5e3885c48b",
+    "short": "38a7738",
+    "date": "2026-07-24T19:55:11+08:00",
+    "author": "wuyichen",
+    "msg": "update Sindarin Dictionary"
+  },
+  {
+    "hash": "16e7c5ed0c3091a3c0e7d4124111849586c1604a",
+    "short": "16e7c5e",
+    "date": "2026-07-24T06:23:12Z",
+    "author": "github-actions[bot]",
+    "msg": "chore: refresh commits.json [skip ci]"
+  },
+  {
     "hash": "665a5fb759686b68496185af2369269d56721035",
     "short": "665a5fb",
     "date": "2026-07-24T14:22:42+08:00",

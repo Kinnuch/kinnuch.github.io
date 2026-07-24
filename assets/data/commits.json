@@ -1,5 +1,19 @@
 [
   {
+    "hash": "665a5fb759686b68496185af2369269d56721035",
+    "short": "665a5fb",
+    "date": "2026-07-24T14:22:42+08:00",
+    "author": "wuyichen",
+    "msg": "update Sindarin Dictionary with G- words"
+  },
+  {
+    "hash": "2b1be50cc883c6f4f899ab28fae9e7bbcbd054f6",
+    "short": "2b1be50",
+    "date": "2026-07-23T15:00:44Z",
+    "author": "github-actions[bot]",
+    "msg": "chore: refresh commits.json [skip ci]"
+  },
+  {
     "hash": "78eb299038c816cdfd1d987a207ad11c20da29ca",
     "short": "78eb299",
     "date": "2026-07-23T23:00:23+08:00",

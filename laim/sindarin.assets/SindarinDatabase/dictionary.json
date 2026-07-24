@@ -6281,8 +6281,8 @@
     "part": "noun",
     "english": "light, fire, brightness, shining",
     "definition": "光，照耀，亮度；火焰（作为光源）",
-    "sentence": "[UT/65]\nLacho calad!Drego morn!.\n光明点燃！黑夜退散！\n",
-    "other": "",
+    "sentence": "[UT/65]\nLacho calad!Drego morn!.\n光明点燃！黑夜退散！",
+    "other": "指直接光照以及光源，比如灯笼和火焰的光。另参考galad",
     "morphology": [
       {
         "type": "Soft",
@@ -16718,6 +16718,1110 @@
       {
         "type": "Superlative",
         "form": "ro-aer"
+      }
+    ]
+  },
+  {
+    "dict_form": "(n)gal-",
+    "part": "verb",
+    "english": "to shine clear",
+    "definition": "明亮闪耀，照耀",
+    "sentence": "",
+    "other": "多指日光，金光",
+    "morphology": [
+      {
+        "type": "Present",
+        "form": "(n)gâl/(n)geli-"
+      },
+      {
+        "type": "Past",
+        "form": "angol/angóle-"
+      },
+      {
+        "type": "Future",
+        "form": "(n)galatha/(n)galatha(o)-"
+      },
+      {
+        "type": "Imperative",
+        "form": "(n)galo"
+      },
+      {
+        "type": "Gerund",
+        "form": "(n)galed"
+      },
+      {
+        "type": "PastParticiple",
+        "form": "(n)gallen"
+      },
+      {
+        "type": "PresentParticiple",
+        "form": "(n)galel"
+      },
+      {
+        "type": "PeferctParticle",
+        "form": "(n)góliel"
+      }
+    ]
+  },
+  {
+    "dict_form": "gala-",
+    "part": "verb",
+    "english": "to grow",
+    "definition": "生长",
+    "sentence": "",
+    "other": "昆雅语同源词ala-",
+    "morphology": [
+      {
+        "type": "Present",
+        "form": "gala/gala(o)-"
+      },
+      {
+        "type": "Past",
+        "form": "aul/óle-"
+      },
+      {
+        "type": "Future",
+        "form": "galatha/galatha(o)-"
+      },
+      {
+        "type": "Imperative",
+        "form": "galo"
+      },
+      {
+        "type": "Gerund",
+        "form": "galed"
+      },
+      {
+        "type": "PastParticiple",
+        "form": "gallen"
+      },
+      {
+        "type": "PresentParticiple",
+        "form": "galel"
+      },
+      {
+        "type": "PeferctParticle",
+        "form": "góliel"
+      }
+    ]
+  },
+  {
+    "dict_form": "(n)galad",
+    "part": "noun",
+    "english": "radiance, glittering reflection; light, fire, brightness, shining; bliss",
+    "definition": "光辉，闪光；光，火，明亮，闪耀；幸福",
+    "sentence": "",
+    "other": "指辉光，闪光和反射光。关于直接光可参考calad",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i ngalad"
+      },
+      {
+        "type": "Plural",
+        "form": "gelaid"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i ngelaid"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an galad"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-ngalad"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin galad"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor galad"
+      },
+      {
+        "type": "Stop",
+        "form": "o ngalad"
+      },
+      {
+        "type": "H",
+        "form": "ah galad"
+      },
+      {
+        "type": "DH",
+        "form": "nedh galad"
+      }
+    ]
+  },
+  {
+    "dict_form": "galadh",
+    "part": "noun",
+    "english": "tree",
+    "definition": "树，木植",
+    "sentence": "",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i 'aladh"
+      },
+      {
+        "type": "Plural",
+        "form": "gelaidh"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i ngelaidh"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an galadh"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-galadh"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin galadh"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor 'aladh"
+      },
+      {
+        "type": "Stop",
+        "form": "o galadh"
+      },
+      {
+        "type": "H",
+        "form": "ah galadh"
+      },
+      {
+        "type": "DH",
+        "form": "nedh galadh"
+      }
+    ]
+  },
+  {
+    "dict_form": "galadhremmen",
+    "part": "adjective",
+    "english": "tree-meshed",
+    "definition": "光影交织的，树影斑驳的",
+    "sentence": "[LotR/238]\no galadhremmin ennorath.\n中洲大地，如织密林",
+    "other": "galadh + remmen",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "'aladhremmen"
+      },
+      {
+        "type": "Plural",
+        "form": "galadhremmin"
+      },
+      {
+        "type": "Comparative",
+        "form": "angaladhremmen"
+      },
+      {
+        "type": "Superlative",
+        "form": "ro-'aladhremmen"
+      }
+    ]
+  },
+  {
+    "dict_form": "galenas",
+    "part": "noun",
+    "english": "pipeweed, nicotiana, tobacco",
+    "definition": "烟草，烟叶",
+    "sentence": "",
+    "other": "√GAL + nes- “甜味的” + -as",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i 'alenas"
+      },
+      {
+        "type": "Plural",
+        "form": "gelenais"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i ngelenais"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an galenas"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-galenas"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin galenas"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor 'alenas"
+      },
+      {
+        "type": "Stop",
+        "form": "o galenas"
+      },
+      {
+        "type": "H",
+        "form": "ah galenas"
+      },
+      {
+        "type": "DH",
+        "form": "nedh galenas"
+      }
+    ]
+  },
+  {
+    "dict_form": "galvorn",
+    "part": "noun",
+    "english": "type of dark metal devised by Eöl",
+    "definition": "加尔沃恩（埃欧尔发明的黑色闪光金属）",
+    "sentence": "",
+    "other": "√GAL  + morn",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i 'alvorn"
+      },
+      {
+        "type": "Plural",
+        "form": "gelvyrn"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i ngelvyrn"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an galvorn"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-galvorn"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin galvorn"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor 'alvorn"
+      },
+      {
+        "type": "Stop",
+        "form": "o galvorn"
+      },
+      {
+        "type": "H",
+        "form": "ah galvorn"
+      },
+      {
+        "type": "DH",
+        "form": "nedh galvorn"
+      }
+    ]
+  },
+  {
+    "dict_form": "gamp",
+    "part": "noun",
+    "english": "hook, crook",
+    "definition": "钩子，曲柄，弯曲手杖",
+    "sentence": "",
+    "other": "昆雅语同源词ampa",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i 'amp"
+      },
+      {
+        "type": "Plural",
+        "form": "gemp"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i ngemp"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an gamp"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-gamp"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin gamp"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor 'amp"
+      },
+      {
+        "type": "Stop",
+        "form": "o gamp"
+      },
+      {
+        "type": "H",
+        "form": "ah gamp"
+      },
+      {
+        "type": "DH",
+        "form": "nedh gamp"
+      }
+    ]
+  },
+  {
+    "dict_form": "gardh",
+    "part": "noun",
+    "english": "region",
+    "definition": "地区，区域，领域（常有王国的意思）",
+    "sentence": "",
+    "other": "Ardhon即阿尔达，昆雅语同源词arda",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i 'ardh"
+      },
+      {
+        "type": "Plural",
+        "form": "gerdh"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i ngerdh"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an gardh"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-gardh"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin gardh"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor 'ardh"
+      },
+      {
+        "type": "Stop",
+        "form": "o gardh"
+      },
+      {
+        "type": "H",
+        "form": "ah gardh"
+      },
+      {
+        "type": "DH",
+        "form": "nedh gardh"
+      }
+    ]
+  },
+  {
+    "dict_form": "gardhon",
+    "part": "noun",
+    "english": "province",
+    "definition": "省，行省，一级行政区",
+    "sentence": "",
+    "other": "可能来自Calenardhon",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i 'ardhon"
+      },
+      {
+        "type": "Plural",
+        "form": "gerdhyn"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i ngerdhyn"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an gardhon"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-gardhon"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin gardhon"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor 'ardhon"
+      },
+      {
+        "type": "Stop",
+        "form": "o gardhon"
+      },
+      {
+        "type": "H",
+        "form": "ah gardhon"
+      },
+      {
+        "type": "DH",
+        "form": "nedh gardhon"
+      }
+    ]
+  },
+  {
+    "dict_form": "(n)gaur",
+    "part": "noun",
+    "english": "werewolf",
+    "definition": "座狼",
+    "sentence": "[LotR/299]\nnaur dan i ngaurhoth.\n对着座狼骑手射击！",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i ngaur"
+      },
+      {
+        "type": "Plural",
+        "form": "goer"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i ngoer"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an gaur"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-ngaur"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin gaur"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor gaur"
+      },
+      {
+        "type": "Stop",
+        "form": "o ngaur"
+      },
+      {
+        "type": "H",
+        "form": "ah gaur"
+      },
+      {
+        "type": "DH",
+        "form": "nedh gaur"
+      }
+    ]
+  },
+  {
+    "dict_form": "gelir",
+    "part": "adjective",
+    "english": "merry",
+    "definition": "愉快的，高兴的",
+    "sentence": "",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "'elir"
+      },
+      {
+        "type": "Plural",
+        "form": "gelir"
+      },
+      {
+        "type": "Comparative",
+        "form": "angelir"
+      },
+      {
+        "type": "Superlative",
+        "form": "ro-'elir"
+      }
+    ]
+  },
+  {
+    "dict_form": "genedia-",
+    "part": "verb",
+    "english": "to reckon",
+    "definition": "估算，计算；料想，把...认为",
+    "sentence": "[SD/129]\ngenediad Drannail\n夏尔纪年法",
+    "other": "go- + nedia-",
+    "morphology": [
+      {
+        "type": "Present",
+        "form": "genedia/genedia(o)-"
+      },
+      {
+        "type": "Past",
+        "form": "genediant/genedianne-"
+      },
+      {
+        "type": "Future",
+        "form": "genediatha/genediatha(o)-"
+      },
+      {
+        "type": "Imperative",
+        "form": "genedio"
+      },
+      {
+        "type": "Gerund",
+        "form": "genediad"
+      },
+      {
+        "type": "PastParticiple",
+        "form": "genediannen"
+      },
+      {
+        "type": "PresentParticiple",
+        "form": "genediol"
+      },
+      {
+        "type": "PeferctParticle",
+        "form": "genediel"
+      }
+    ]
+  },
+  {
+    "dict_form": "genediad",
+    "part": "noun",
+    "english": "reckoning",
+    "definition": "纪年法；计算方式",
+    "sentence": "[SD/129]\negor ben genediad Drannail erin Gwirith edwen.\n或者用夏尔纪年法计算，四月的第二天",
+    "other": "genedia- + -ad",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i 'enediad"
+      },
+      {
+        "type": "Plural",
+        "form": "动名词无复数形式"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "*in + genediad不合法"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an genediad"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-genediad"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin genediad"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor 'enediad"
+      },
+      {
+        "type": "Stop",
+        "form": "o genediad"
+      },
+      {
+        "type": "H",
+        "form": "ah genediad"
+      },
+      {
+        "type": "DH",
+        "form": "nedh genediad"
+      }
+    ]
+  },
+  {
+    "dict_form": "geria-",
+    "part": "verb",
+    "english": "to ponder",
+    "definition": "仔细思考，琢磨，沉思",
+    "sentence": "",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Present",
+        "form": "geria/geria(o)-"
+      },
+      {
+        "type": "Past",
+        "form": "gerias/geriasse-"
+      },
+      {
+        "type": "Future",
+        "form": "geriatha/geriatha(o)-"
+      },
+      {
+        "type": "Imperative",
+        "form": "gerio"
+      },
+      {
+        "type": "Gerund",
+        "form": "geriad"
+      },
+      {
+        "type": "PastParticiple",
+        "form": "geriannen"
+      },
+      {
+        "type": "PresentParticiple",
+        "form": "geriol"
+      },
+      {
+        "type": "PeferctParticle",
+        "form": "geriel"
+      }
+    ]
+  },
+  {
+    "dict_form": "(n)gil",
+    "part": "noun",
+    "english": "star;(bright) spark, silver glint, twinkle of light",
+    "definition": "星星；闪光，银闪光，闪烁的光",
+    "sentence": "[S/106]\nDagor-nuin-Giliath.\n星下之战",
+    "other": "在辛达语中基本替代了古老的êl",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i ngil"
+      },
+      {
+        "type": "Plural",
+        "form": "gîl"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i ngîl"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an gil"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-ngil"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin gil"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor gil"
+      },
+      {
+        "type": "Stop",
+        "form": "o ngil"
+      },
+      {
+        "type": "H",
+        "form": "ah gil"
+      },
+      {
+        "type": "DH",
+        "form": "nedh gil"
+      }
+    ]
+  },
+  {
+    "dict_form": "gir-",
+    "part": "verb",
+    "english": "to shudder",
+    "definition": "战栗，发抖，打战，打颤",
+    "sentence": "",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Present",
+        "form": "gîr/giri-"
+      },
+      {
+        "type": "Past",
+        "form": "giras/girasse-"
+      },
+      {
+        "type": "Future",
+        "form": "giratha/giratha(o)-"
+      },
+      {
+        "type": "Imperative",
+        "form": "giro"
+      },
+      {
+        "type": "Gerund",
+        "form": "gired"
+      },
+      {
+        "type": "PastParticiple",
+        "form": "girnen"
+      },
+      {
+        "type": "PresentParticiple",
+        "form": "girel"
+      },
+      {
+        "type": "PeferctParticle",
+        "form": "gíriel"
+      }
+    ]
+  },
+  {
+    "dict_form": "girith",
+    "part": "noun",
+    "english": "shuddering",
+    "definition": "战栗，发抖，打战，打颤，颤抖",
+    "sentence": "[S]\nNen Girith.\n丁洛斯特，能激栗斯，颤抖之水",
+    "other": "gir-的抽象名词",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i 'irith"
+      },
+      {
+        "type": "Plural",
+        "form": "girith"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i ngirith"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an girith"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-girith"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin girith"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor 'irith"
+      },
+      {
+        "type": "Stop",
+        "form": "o girith"
+      },
+      {
+        "type": "H",
+        "form": "ah girith"
+      },
+      {
+        "type": "DH",
+        "form": "nedh girith"
+      }
+    ]
+  },
+  {
+    "dict_form": "Girithron",
+    "part": "noun",
+    "english": "December, shuddering-one",
+    "definition": "十二月，令人颤抖的月份",
+    "sentence": "",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i 'irithron"
+      },
+      {
+        "type": "Plural",
+        "form": "Girithryn"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i Ngirithryn"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an Girithron"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-Girithron"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin Girithron"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor 'irithron"
+      },
+      {
+        "type": "Stop",
+        "form": "o Girithron"
+      },
+      {
+        "type": "H",
+        "form": "ah Girithron"
+      },
+      {
+        "type": "DH",
+        "form": "nedh Girithron"
+      }
+    ]
+  },
+  {
+    "dict_form": "glad",
+    "part": "noun",
+    "english": "wood",
+    "definition": "木头；森林",
+    "sentence": "[UT/153]\nmethed-en-glad.\n美塞德-恩-格拉德，森林的终点",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i 'lad"
+      },
+      {
+        "type": "Plural",
+        "form": "glaid"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "in glaid"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an glad"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-glad"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin glad"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor 'lad"
+      },
+      {
+        "type": "Stop",
+        "form": "o glad"
+      },
+      {
+        "type": "H",
+        "form": "ah glad"
+      },
+      {
+        "type": "DH",
+        "form": "nedh glad"
+      }
+    ]
+  },
+  {
+    "dict_form": "gladh-",
+    "part": "verb",
+    "english": "to laugh",
+    "definition": "笑",
+    "sentence": "",
+    "other": "昆雅语同源词lala-\n该词为正向的，积极的笑",
+    "morphology": [
+      {
+        "type": "Present",
+        "form": "glâdh/gledhi-"
+      },
+      {
+        "type": "Past",
+        "form": "gladhas/gladhasse-"
+      },
+      {
+        "type": "Future",
+        "form": "gladhatha/gladhatha(o)-"
+      },
+      {
+        "type": "Imperative",
+        "form": "gladho"
+      },
+      {
+        "type": "Gerund",
+        "form": "gladhed"
+      },
+      {
+        "type": "PastParticiple",
+        "form": "glannen"
+      },
+      {
+        "type": "PresentParticiple",
+        "form": "gladhel"
+      },
+      {
+        "type": "PeferctParticle",
+        "form": "glódhiel"
+      }
+    ]
+  },
+  {
+    "dict_form": "glae",
+    "part": "noun",
+    "english": "grass",
+    "definition": "草",
+    "sentence": "",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i 'lae"
+      },
+      {
+        "type": "Plural",
+        "form": "glae"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "in glae"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an glae"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-glae"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin glae"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor 'lae"
+      },
+      {
+        "type": "Stop",
+        "form": "o glae"
+      },
+      {
+        "type": "H",
+        "form": "ah glae"
+      },
+      {
+        "type": "DH",
+        "form": "nedh glae"
+      }
+    ]
+  },
+  {
+    "dict_form": "glae(gal)",
+    "part": "noun",
+    "english": "light(as an ethereal substance)",
+    "definition": "流光，光子；作为飘渺物质存在的光",
+    "sentence": "",
+    "other": "对应昆雅语linquë",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i 'lae(gal)"
+      },
+      {
+        "type": "Plural",
+        "form": "glae(gal)"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "in glae(gal)"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an glae(gal)"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-glae(gal)"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin glae(gal)"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor 'lae(gal)"
+      },
+      {
+        "type": "Stop",
+        "form": "o glae(gal)"
+      },
+      {
+        "type": "H",
+        "form": "ah glae(gal)"
+      },
+      {
+        "type": "DH",
+        "form": "nedh glae(gal)"
+      }
+    ]
+  },
+  {
+    "dict_form": "gêl",
+    "part": "noun",
+    "english": "weeping",
+    "definition": "哭泣，流泪",
+    "sentence": "[PE23/141]\ni-êl.\n哭泣，流泪",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i 'êl"
+      },
+      {
+        "type": "Plural",
+        "form": "gîl"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i ngîl"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an gêl"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-gêl"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin gêl"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor 'êl"
+      },
+      {
+        "type": "Stop",
+        "form": "o gêl"
+      },
+      {
+        "type": "H",
+        "form": "ah gêl"
+      },
+      {
+        "type": "DH",
+        "form": "nedh gêl"
       }
     ]
   },

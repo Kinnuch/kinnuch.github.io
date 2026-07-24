@@ -15030,7 +15030,7 @@
     "part": "adjective",
     "english": "gape, thirsty",
     "definition": "张开的，裂开的；口渴的",
-    "sentence": "[SA/faug]\nAnfauglir.\n安法乌格力尔，卡哈洛斯，饥渴的大嘴\n",
+    "sentence": "[SA/faug]\nAnfauglir.\n安法乌格力尔，卡哈洛斯，饥渴的大嘴",
     "other": "",
     "morphology": [
       {
@@ -15043,11 +15043,11 @@
       },
       {
         "type": "Comparative",
-        "form": "anfaug"
+        "form": "anfog"
       },
       {
         "type": "Superlative",
-        "form": "ro-faug"
+        "form": "ro-fog"
       }
     ]
   },
@@ -17663,7 +17663,7 @@
       },
       {
         "type": "PastParticiple",
-        "form": "glannen"
+        "form": "glassen"
       },
       {
         "type": "PresentParticiple",
@@ -17772,6 +17772,838 @@
       {
         "type": "DH",
         "form": "nedh glae(gal)"
+      }
+    ]
+  },
+  {
+    "dict_form": "glaer",
+    "part": "noun",
+    "english": "tale",
+    "definition": "故事，传说",
+    "sentence": "[WJ/160]\nGlaer nia Chîn Húrin.\n胡林的子女",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i 'laer"
+      },
+      {
+        "type": "Plural",
+        "form": "glaer"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "in glaer"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an glaer"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-glaer"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin glaer"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor 'laer"
+      },
+      {
+        "type": "Stop",
+        "form": "o glaer"
+      },
+      {
+        "type": "H",
+        "form": "ah glaer"
+      },
+      {
+        "type": "DH",
+        "form": "nedh glaer"
+      }
+    ]
+  },
+  {
+    "dict_form": "glam",
+    "part": "noun",
+    "english": "din, uproar, the confused yelling and bellowing of beasts",
+    "definition": "喧嚣声，嘈杂声，喧闹，骚动，骚乱，野兽们混乱的喊叫和咆哮",
+    "sentence": "",
+    "other": "参见Glamhoth",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i 'lam"
+      },
+      {
+        "type": "Plural",
+        "form": "glem"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "in glem"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an glam"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-glam"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin glam"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor 'lam"
+      },
+      {
+        "type": "Stop",
+        "form": "o glam"
+      },
+      {
+        "type": "H",
+        "form": "ah glam"
+      },
+      {
+        "type": "DH",
+        "form": "nedh glam"
+      }
+    ]
+  },
+  {
+    "dict_form": "glamog",
+    "part": "noun",
+    "english": "orc",
+    "definition": "奥克",
+    "sentence": "",
+    "other": "glam + -og",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i 'lamog"
+      },
+      {
+        "type": "Plural",
+        "form": "glam"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "in glam"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an glamog"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-glamog"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin glamog"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor 'lamog"
+      },
+      {
+        "type": "Stop",
+        "form": "o glamog"
+      },
+      {
+        "type": "H",
+        "form": "ah glamog"
+      },
+      {
+        "type": "DH",
+        "form": "nedh glamog"
+      }
+    ]
+  },
+  {
+    "dict_form": "glan(n)",
+    "part": "noun",
+    "english": "boundary",
+    "definition": "边界，界限",
+    "sentence": "",
+    "other": "昆雅语同源词landa",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i 'lan(n)"
+      },
+      {
+        "type": "Plural",
+        "form": "glen(n)"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "in glen(n)"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an glan(n)"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-glan(n)"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin glan(n)"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor 'lan(n)"
+      },
+      {
+        "type": "Stop",
+        "form": "o glan(n)"
+      },
+      {
+        "type": "H",
+        "form": "ah glan(n)"
+      },
+      {
+        "type": "DH",
+        "form": "nedh glan(n)"
+      }
+    ]
+  },
+  {
+    "dict_form": "glandagol",
+    "part": "noun",
+    "english": "boundary mark",
+    "definition": "界标，界限标记",
+    "sentence": "",
+    "other": "glan + tagol\n昆雅语同源词lantalca",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i 'landagol"
+      },
+      {
+        "type": "Plural",
+        "form": "glandegyl"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "in glandegyl"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an glandagol"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-glandagol"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin glandagol"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor 'landagol"
+      },
+      {
+        "type": "Stop",
+        "form": "o glandagol"
+      },
+      {
+        "type": "H",
+        "form": "ah glandagol"
+      },
+      {
+        "type": "DH",
+        "form": "nedh glandagol"
+      }
+    ]
+  },
+  {
+    "dict_form": "glathralvas",
+    "part": "noun",
+    "english": "flashing glass/crystal, heliograph",
+    "definition": "灯语；闪光的玻璃/水晶",
+    "sentence": "",
+    "other": "昆雅语中称为Ñaltalma",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i 'lathralvas"
+      },
+      {
+        "type": "Plural",
+        "form": "glethrelvais"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "in glethrelvais"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an glathralvas"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-glathralvas"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin glathralvas"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor 'lathralvas"
+      },
+      {
+        "type": "Stop",
+        "form": "o glathralvas"
+      },
+      {
+        "type": "H",
+        "form": "ah glathralvas"
+      },
+      {
+        "type": "DH",
+        "form": "nedh glathralvas"
+      }
+    ]
+  },
+  {
+    "dict_form": "glaur",
+    "part": "noun",
+    "english": "golden color, golden light",
+    "definition": "金色，金光",
+    "sentence": "",
+    "other": "一说拼作glawar",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i 'laur"
+      },
+      {
+        "type": "Plural",
+        "form": "gloer"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "in gloer"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an glaur"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-glaur"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin glaur"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor 'laur"
+      },
+      {
+        "type": "Stop",
+        "form": "o glaur"
+      },
+      {
+        "type": "H",
+        "form": "ah glaur"
+      },
+      {
+        "type": "DH",
+        "form": "nedh glaur"
+      }
+    ]
+  },
+  {
+    "dict_form": "glaur",
+    "part": "adjective",
+    "english": "golden",
+    "definition": "金色的，金光的",
+    "sentence": "[PE17/17]\nGlorfindel.\n格罗芬戴尔",
+    "other": "一说拼作glawar",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "'laur"
+      },
+      {
+        "type": "Plural",
+        "form": "gloer"
+      },
+      {
+        "type": "Comparative",
+        "form": "anglor"
+      },
+      {
+        "type": "Superlative",
+        "form": "ro-'lor"
+      }
+    ]
+  },
+  {
+    "dict_form": "glaw",
+    "part": "noun",
+    "english": "sunshine",
+    "definition": "太阳光，阳光",
+    "sentence": "",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i 'law"
+      },
+      {
+        "type": "Plural",
+        "form": "gloe"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "in gloe"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an glaw"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-glaw"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin glaw"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor 'law"
+      },
+      {
+        "type": "Stop",
+        "form": "o glaw"
+      },
+      {
+        "type": "H",
+        "form": "ah glaw"
+      },
+      {
+        "type": "DH",
+        "form": "nedh glaw"
+      }
+    ]
+  },
+  {
+    "dict_form": "gleina-",
+    "part": "verb",
+    "english": "to bound, enclose, limit",
+    "definition": "限制，约束，划界，包围",
+    "sentence": "",
+    "other": "昆雅语同源词lanya-",
+    "morphology": [
+      {
+        "type": "Present",
+        "form": "gleina/gleina(o)-"
+      },
+      {
+        "type": "Past",
+        "form": "gleinant/gleinanne-"
+      },
+      {
+        "type": "Future",
+        "form": "gleinatha/gleinatha(o)-"
+      },
+      {
+        "type": "Imperative",
+        "form": "gleino"
+      },
+      {
+        "type": "Gerund",
+        "form": "gleinad"
+      },
+      {
+        "type": "PastParticiple",
+        "form": "gleinannen"
+      },
+      {
+        "type": "PresentParticiple",
+        "form": "gleinol"
+      },
+      {
+        "type": "PeferctParticle",
+        "form": "gleiniel"
+      }
+    ]
+  },
+  {
+    "dict_form": "glenna-",
+    "part": "verb",
+    "english": "to go, travel",
+    "definition": "旅行，旅游",
+    "sentence": "",
+    "other": "昆雅语同源词lenna-\nTA类动词，变形时词根视为glen-",
+    "morphology": [
+      {
+        "type": "Present",
+        "form": "glenna/glenna(o)-"
+      },
+      {
+        "type": "Past",
+        "form": "elin/elíne-"
+      },
+      {
+        "type": "Future",
+        "form": "glennatha/glennatha(o)-"
+      },
+      {
+        "type": "Imperative",
+        "form": "glenno"
+      },
+      {
+        "type": "Gerund",
+        "form": "glened"
+      },
+      {
+        "type": "PastParticiple",
+        "form": "glennen"
+      },
+      {
+        "type": "PresentParticiple",
+        "form": "glenel"
+      },
+      {
+        "type": "PeferctParticle",
+        "form": "glíniel"
+      }
+    ]
+  },
+  {
+    "dict_form": "glim",
+    "part": "noun",
+    "english": "voice",
+    "definition": "声音",
+    "sentence": "",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i 'lim"
+      },
+      {
+        "type": "Plural",
+        "form": "glim"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "in glim"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an glim"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-glim"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin glim"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor 'lim"
+      },
+      {
+        "type": "Stop",
+        "form": "o glim"
+      },
+      {
+        "type": "H",
+        "form": "ah glim"
+      },
+      {
+        "type": "DH",
+        "form": "nedh glim"
+      }
+    ]
+  },
+  {
+    "dict_form": "glintha-",
+    "part": "verb",
+    "english": "to glance (at)",
+    "definition": "看一眼，一瞥，浏览",
+    "sentence": "",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Present",
+        "form": "glintha/glintha(o)-"
+      },
+      {
+        "type": "Past",
+        "form": "glinthant/glinthanne-"
+      },
+      {
+        "type": "Future",
+        "form": "glinthatha/glinthatha(o)-"
+      },
+      {
+        "type": "Imperative",
+        "form": "glintho"
+      },
+      {
+        "type": "Gerund",
+        "form": "glinthad"
+      },
+      {
+        "type": "PastParticiple",
+        "form": "glinthannen"
+      },
+      {
+        "type": "PresentParticiple",
+        "form": "glinthol"
+      },
+      {
+        "type": "PeferctParticle",
+        "form": "glinthiel"
+      }
+    ]
+  },
+  {
+    "dict_form": "gloss",
+    "part": "adjective",
+    "english": "(dazzling) white",
+    "definition": "雪白的，（令人炫目的）白的",
+    "sentence": "",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "'loss"
+      },
+      {
+        "type": "Plural",
+        "form": "glyss"
+      },
+      {
+        "type": "Comparative",
+        "form": "angloss"
+      },
+      {
+        "type": "Superlative",
+        "form": "ro-'loss"
+      }
+    ]
+  },
+  {
+    "dict_form": "glosui",
+    "part": "adjective",
+    "english": "snow white",
+    "definition": "雪白的，雪白色的，雪一般颜色的",
+    "sentence": "",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "'losui"
+      },
+      {
+        "type": "Plural",
+        "form": "glosui"
+      },
+      {
+        "type": "Comparative",
+        "form": "anglosui"
+      },
+      {
+        "type": "Superlative",
+        "form": "ro-'losui"
+      }
+    ]
+  },
+  {
+    "dict_form": "glân",
+    "part": "adjective",
+    "english": "white",
+    "definition": "白色的",
+    "sentence": "[UT/390]\nCurunír 'Lân.\n白袍巫师萨茹曼",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "'lân"
+      },
+      {
+        "type": "Plural",
+        "form": "glain"
+      },
+      {
+        "type": "Comparative",
+        "form": "anglan"
+      },
+      {
+        "type": "Superlative",
+        "form": "ro-'lan"
+      }
+    ]
+  },
+  {
+    "dict_form": "glân",
+    "part": "noun",
+    "english": "hem, border(of textiles and other hand-made things)",
+    "definition": "褶边，镶边，包边，衣物等手工制品的边角",
+    "sentence": "",
+    "other": "昆雅语同源词lanë",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i 'lân"
+      },
+      {
+        "type": "Plural",
+        "form": "glain"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "in glain"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an glân"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-glân"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin glân"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor 'lân"
+      },
+      {
+        "type": "Stop",
+        "form": "o glân"
+      },
+      {
+        "type": "H",
+        "form": "ah glân"
+      },
+      {
+        "type": "DH",
+        "form": "nedh glân"
+      }
+    ]
+  },
+  {
+    "dict_form": "glîn(n)",
+    "part": "noun",
+    "english": "gleam, glint",
+    "definition": "闪光，微光，闪烁",
+    "sentence": "",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i 'lîn(n)"
+      },
+      {
+        "type": "Plural",
+        "form": "glîn(n)"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "in glîn(n)"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an glîn(n)"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-glîn(n)"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin glîn(n)"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor 'lîn(n)"
+      },
+      {
+        "type": "Stop",
+        "form": "o glîn(n)"
+      },
+      {
+        "type": "H",
+        "form": "ah glîn(n)"
+      },
+      {
+        "type": "DH",
+        "form": "nedh glîn(n)"
+      }
+    ]
+  },
+  {
+    "dict_form": "glóriel",
+    "part": "adjective",
+    "english": "golden",
+    "definition": "金黄的，金黄色的",
+    "sentence": "",
+    "other": "glaur + -iel",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "'lóriel"
+      },
+      {
+        "type": "Plural",
+        "form": "glóril"
+      },
+      {
+        "type": "Comparative",
+        "form": "angloriel"
+      },
+      {
+        "type": "Superlative",
+        "form": "ro-'loriel"
+      }
+    ]
+  },
+  {
+    "dict_form": "glórin",
+    "part": "adjective",
+    "english": "golden",
+    "definition": "金黄的，金黄色的",
+    "sentence": "",
+    "other": "glaur + -en",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "'lórin"
+      },
+      {
+        "type": "Plural",
+        "form": "glórin"
+      },
+      {
+        "type": "Comparative",
+        "form": "anglorin"
+      },
+      {
+        "type": "Superlative",
+        "form": "ro-'lorin"
       }
     ]
   },

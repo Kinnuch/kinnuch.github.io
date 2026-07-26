@@ -1,5 +1,14 @@
 [
   {
+    "dict_form": "-gon",
+    "part": "affix",
+    "english": "lord, prince",
+    "definition": "大人，君主，王子，亲王",
+    "sentence": "",
+    "other": "被认为是caun的后缀形式\n昆雅语同源词cáno",
+    "morphology": []
+  },
+  {
     "dict_form": "a(ar)/ah",
     "part": "conjunction",
     "english": "and",
@@ -12812,8 +12821,8 @@
     "part": "adverb",
     "english": "also",
     "definition": "也",
-    "sentence": "[VT50/5]\ni·Veleglind i eithro en estar i·Chîn Húrin.\n这史诗也被称为《胡林的子女》\n",
-    "other": "",
+    "sentence": "[VT50/5]\ni·Veleglind i eithro en estar i·Chîn Húrin.\n这史诗也被称为《胡林的子女》",
+    "other": "独立副词",
     "morphology": []
   },
   {
@@ -18608,6 +18617,1593 @@
     ]
   },
   {
+    "dict_form": "go-",
+    "part": "adverb",
+    "english": "together, co-, com-",
+    "definition": "共同地，一起地",
+    "sentence": "",
+    "other": "副词前缀，引发软音变\n昆雅语同源词o-",
+    "morphology": []
+  },
+  {
+    "dict_form": "gobel",
+    "part": "noun",
+    "english": "village, town",
+    "definition": "村庄，村子，村镇，小镇，乡镇",
+    "sentence": "",
+    "other": "go- + √PEL",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i 'obel"
+      },
+      {
+        "type": "Plural",
+        "form": "gebil"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i ngebil"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an gobel"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-gobel"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin gobel"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor 'obel"
+      },
+      {
+        "type": "Stop",
+        "form": "o gobel"
+      },
+      {
+        "type": "H",
+        "form": "ah gobel"
+      },
+      {
+        "type": "DH",
+        "form": "nedh gobel"
+      }
+    ]
+  },
+  {
+    "dict_form": "goe",
+    "part": "noun",
+    "english": "terror, great fear",
+    "definition": "恐惧，惊恐，极度恐慌",
+    "sentence": "",
+    "other": "Goenor是Aegnor的别名",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i 'oe"
+      },
+      {
+        "type": "Plural",
+        "form": "goe"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i ngoe"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an goe"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-goe"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin goe"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor 'oe"
+      },
+      {
+        "type": "Stop",
+        "form": "o goe"
+      },
+      {
+        "type": "H",
+        "form": "ah goe"
+      },
+      {
+        "type": "DH",
+        "form": "nedh goe"
+      }
+    ]
+  },
+  {
+    "dict_form": "goeol",
+    "part": "adjective",
+    "english": "terrible, dire",
+    "definition": "可怕的，极其严重的",
+    "sentence": "",
+    "other": "goe + -ol",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "'oeol"
+      },
+      {
+        "type": "Plural",
+        "form": "goeol"
+      },
+      {
+        "type": "Comparative",
+        "form": "angoeol"
+      },
+      {
+        "type": "Superlative",
+        "form": "ro-'oeol"
+      }
+    ]
+  },
+  {
+    "dict_form": "gohena-",
+    "part": "verb",
+    "english": "to forgive",
+    "definition": "原谅，宽恕",
+    "sentence": "[VT44/21]\nsui mín i gohenam di ai gerir úgerth ammen.\n如同我们免了人们的债（主祷文的其中一句）",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Present",
+        "form": "gohena/gohena(o)-"
+      },
+      {
+        "type": "Past",
+        "form": "gohenant/gohenanne-"
+      },
+      {
+        "type": "Future",
+        "form": "gohenatha/gohenatha(o)-"
+      },
+      {
+        "type": "Imperative",
+        "form": "goheno"
+      },
+      {
+        "type": "Gerund",
+        "form": "gohenad"
+      },
+      {
+        "type": "PastParticiple",
+        "form": "gohenannen"
+      },
+      {
+        "type": "PresentParticiple",
+        "form": "gohenol"
+      },
+      {
+        "type": "PeferctParticle",
+        "form": "goheniel"
+      }
+    ]
+  },
+  {
+    "dict_form": "golas",
+    "part": "noun",
+    "english": "foliage, collection of leaves",
+    "definition": "植被，枝叶，树叶（集体）",
+    "sentence": "[Let/282][PE17/84]\nLaegolas\n莱戈拉斯",
+    "other": "go- + lass\n昆雅语同源词olass(i)ë",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i 'olas"
+      },
+      {
+        "type": "Plural",
+        "form": "gelais"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i ngelais"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an golas"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-golas"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin golas"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor 'olas"
+      },
+      {
+        "type": "Stop",
+        "form": "o golas"
+      },
+      {
+        "type": "H",
+        "form": "ah golas"
+      },
+      {
+        "type": "DH",
+        "form": "nedh golas"
+      }
+    ]
+  },
+  {
+    "dict_form": "(n)golodh",
+    "part": "noun",
+    "english": "lore-master, sage; one of the wise folk, Noldo",
+    "definition": "博学之士，智者；（大写时）诺多族",
+    "sentence": "[PE17/126]\nGolodhbaeth.\n费艾诺的誓言",
+    "other": "昆雅语同源词Noldo",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i ngolodh"
+      },
+      {
+        "type": "Plural",
+        "form": "gelydh"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i ngelydh"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an golodh"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-ngolodh"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin golodh"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor golodh"
+      },
+      {
+        "type": "Stop",
+        "form": "o ngolodh"
+      },
+      {
+        "type": "H",
+        "form": "ah golodh"
+      },
+      {
+        "type": "DH",
+        "form": "nedh golodh"
+      }
+    ]
+  },
+  {
+    "dict_form": "goloth",
+    "part": "noun",
+    "english": "inflorenscence, collections of flowers",
+    "definition": "花，花簇，繁花，花海",
+    "sentence": "",
+    "other": "go- + loth",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i 'oloth"
+      },
+      {
+        "type": "Plural",
+        "form": "gelyth"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i ngelyth"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an goloth"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-goloth"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin goloth"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor 'oloth"
+      },
+      {
+        "type": "Stop",
+        "form": "o goloth"
+      },
+      {
+        "type": "H",
+        "form": "ah goloth"
+      },
+      {
+        "type": "DH",
+        "form": "nedh goloth"
+      }
+    ]
+  },
+  {
+    "dict_form": "gond",
+    "part": "noun",
+    "english": "stone, rock",
+    "definition": "石头，岩石（抽象整体，作为材料等等）",
+    "sentence": "[PE17/29]\nGondolin.\n刚多林",
+    "other": "一说拼作gonn\n注意和gôn区分",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i 'ond"
+      },
+      {
+        "type": "Plural",
+        "form": "gynd"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i ngynd"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an gond"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-gond"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin gond"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor 'ond"
+      },
+      {
+        "type": "Stop",
+        "form": "o gond"
+      },
+      {
+        "type": "H",
+        "form": "ah gond"
+      },
+      {
+        "type": "DH",
+        "form": "nedh gond"
+      }
+    ]
+  },
+  {
+    "dict_form": "(n)gor",
+    "part": "noun",
+    "english": "horror, dread, fear",
+    "definition": "恐怖，恐惧，害怕",
+    "sentence": "",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i ngor"
+      },
+      {
+        "type": "Plural",
+        "form": "gyr"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i ngyr"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an gor"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-ngor"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin gor"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor gor"
+      },
+      {
+        "type": "Stop",
+        "form": "o ngor"
+      },
+      {
+        "type": "H",
+        "form": "ah gor"
+      },
+      {
+        "type": "DH",
+        "form": "nedh gor"
+      }
+    ]
+  },
+  {
+    "dict_form": "gor-",
+    "part": "adverb",
+    "english": "hard, difficultly",
+    "definition": "困难地，艰难地（通常是处于情绪上的害怕和恐慌）",
+    "sentence": "",
+    "other": "副词前缀，引发流音音变\n参见gorbedui",
+    "morphology": []
+  },
+  {
+    "dict_form": "gor-",
+    "part": "verb",
+    "english": "to warn, urge",
+    "definition": "警告，催促",
+    "sentence": "",
+    "other": "昆雅语同源词ora-",
+    "morphology": [
+      {
+        "type": "Present",
+        "form": "gôr/geri-"
+      },
+      {
+        "type": "Past",
+        "form": "gorant/goranne-"
+      },
+      {
+        "type": "Future",
+        "form": "goratha/goratha(o)-"
+      },
+      {
+        "type": "Imperative",
+        "form": "goro"
+      },
+      {
+        "type": "Gerund",
+        "form": "gored"
+      },
+      {
+        "type": "PastParticiple",
+        "form": "gornen"
+      },
+      {
+        "type": "PresentParticiple",
+        "form": "gorel"
+      },
+      {
+        "type": "PeferctParticle",
+        "form": "gúriel"
+      }
+    ]
+  },
+  {
+    "dict_form": "gorbedui",
+    "part": "adjective",
+    "english": "only to be said with horror or grief, lamentable to tell",
+    "definition": "只能带着恐惧或悲伤说出来的，悲恸地说出来的",
+    "sentence": "",
+    "other": "gor- + pedui",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "'orbedui"
+      },
+      {
+        "type": "Plural",
+        "form": "gorbedui"
+      },
+      {
+        "type": "Comparative",
+        "form": "angorbedui"
+      },
+      {
+        "type": "Superlative",
+        "form": "ro-'orbedui"
+      }
+    ]
+  },
+  {
+    "dict_form": "gordh",
+    "part": "adjective",
+    "english": "difficult, laborious",
+    "definition": "困难的，耗时费力的",
+    "sentence": "",
+    "other": "昆雅语同源词urda",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "'ordh"
+      },
+      {
+        "type": "Plural",
+        "form": "gyrdh"
+      },
+      {
+        "type": "Comparative",
+        "form": "angordh"
+      },
+      {
+        "type": "Superlative",
+        "form": "ro-'ordh"
+      }
+    ]
+  },
+  {
+    "dict_form": "gordh",
+    "part": "noun",
+    "english": "deep thought",
+    "definition": "深思，深思熟虑",
+    "sentence": "",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i 'ordh"
+      },
+      {
+        "type": "Plural",
+        "form": "gyrdh"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i ngyrdh"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an gordh"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-gordh"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin gordh"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor 'ordh"
+      },
+      {
+        "type": "Stop",
+        "form": "o gordh"
+      },
+      {
+        "type": "H",
+        "form": "ah gordh"
+      },
+      {
+        "type": "DH",
+        "form": "nedh gordh"
+      }
+    ]
+  },
+  {
+    "dict_form": "(n)gorgor",
+    "part": "noun",
+    "english": "extrme horror, terror, haunting fear",
+    "definition": "极度恐惧，恐怖，闹鬼般的恐怖，大恐怖",
+    "sentence": "[RC/334]\nCirith Gorgor\n奇立斯戈埚",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i ngorgor"
+      },
+      {
+        "type": "Plural",
+        "form": "gergyr"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i ngergyr"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an gorgor"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-ngorgor"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin gorgor"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor gorgor"
+      },
+      {
+        "type": "Stop",
+        "form": "o ngorgor"
+      },
+      {
+        "type": "H",
+        "form": "ah gorgor"
+      },
+      {
+        "type": "DH",
+        "form": "nedh gorgor"
+      }
+    ]
+  },
+  {
+    "dict_form": "(n)gorn",
+    "part": "noun",
+    "english": "revered",
+    "definition": "受尊敬的，被崇敬的",
+    "sentence": "[PE17/113]\nAragorn.\n阿拉贡，受尊敬的王者",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i ngorn"
+      },
+      {
+        "type": "Plural",
+        "form": "gyrn"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i ngyrn"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an gorn"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-ngorn"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin gorn"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor gorn"
+      },
+      {
+        "type": "Stop",
+        "form": "o ngorn"
+      },
+      {
+        "type": "H",
+        "form": "ah gorn"
+      },
+      {
+        "type": "DH",
+        "form": "nedh gorn"
+      }
+    ]
+  },
+  {
+    "dict_form": "gorn",
+    "part": "adjective",
+    "english": "hard, stiff, thrawn",
+    "definition": "僵硬的，畸形的，扭曲的",
+    "sentence": "",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "'orn"
+      },
+      {
+        "type": "Plural",
+        "form": "gyrn"
+      },
+      {
+        "type": "Comparative",
+        "form": "angorn"
+      },
+      {
+        "type": "Superlative",
+        "form": "ro-'orn"
+      }
+    ]
+  },
+  {
+    "dict_form": "gornod(ui)",
+    "part": "adjective",
+    "english": "hard to count",
+    "definition": "难以计数的，无数的",
+    "sentence": "",
+    "other": "gor- + nod- + -ui",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "'ornod"
+      },
+      {
+        "type": "Plural",
+        "form": "gernyd"
+      },
+      {
+        "type": "Comparative",
+        "form": "angornod"
+      },
+      {
+        "type": "Superlative",
+        "form": "ro-'ornod"
+      }
+    ]
+  },
+  {
+    "dict_form": "gorog",
+    "part": "noun",
+    "english": "horror",
+    "definition": "恐怖，恐惧",
+    "sentence": "",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i 'orog"
+      },
+      {
+        "type": "Plural",
+        "form": "geryg"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i ngeryg"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an gorog"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-gorog"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin gorog"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor 'orog"
+      },
+      {
+        "type": "Stop",
+        "form": "o gorog"
+      },
+      {
+        "type": "H",
+        "form": "ah gorog"
+      },
+      {
+        "type": "DH",
+        "form": "nedh gorog"
+      }
+    ]
+  },
+  {
+    "dict_form": "(n)goroth",
+    "part": "noun",
+    "english": "horror, dread",
+    "definition": "恐怖，恐惧，害怕，畏惧",
+    "sentence": "",
+    "other": "gor + -oth",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i ngoroth"
+      },
+      {
+        "type": "Plural",
+        "form": "geryth"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i ngeryth"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an goroth"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-ngoroth"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin goroth"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor goroth"
+      },
+      {
+        "type": "Stop",
+        "form": "o ngoroth"
+      },
+      {
+        "type": "H",
+        "form": "ah goroth"
+      },
+      {
+        "type": "DH",
+        "form": "nedh goroth"
+      }
+    ]
+  },
+  {
+    "dict_form": "(n)gorth",
+    "part": "noun",
+    "english": "dead person",
+    "definition": "尸体，死者，亡者，逝去之人",
+    "sentence": "[RC/526]\nFui 'Ngorthrim.\n亡者之路",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i ngorth"
+      },
+      {
+        "type": "Plural",
+        "form": "gyrth"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i ngyrth"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an gorth"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-ngorth"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin gorth"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor gorth"
+      },
+      {
+        "type": "Stop",
+        "form": "o ngorth"
+      },
+      {
+        "type": "H",
+        "form": "ah gorth"
+      },
+      {
+        "type": "DH",
+        "form": "nedh gorth"
+      }
+    ]
+  },
+  {
+    "dict_form": "gorth",
+    "part": "adjective",
+    "english": "dead",
+    "definition": "死亡的，逝去的",
+    "sentence": "",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "'orth"
+      },
+      {
+        "type": "Plural",
+        "form": "gyrth"
+      },
+      {
+        "type": "Comparative",
+        "form": "angorth"
+      },
+      {
+        "type": "Superlative",
+        "form": "ro-'orth"
+      }
+    ]
+  },
+  {
+    "dict_form": "(n)gorthad",
+    "part": "noun",
+    "english": "wraith, spirit of Dead",
+    "definition": "幽灵，鬼魂，亡者之灵",
+    "sentence": "[PE17/116]\nTyrn Gorthad.\n提殒戈沙德，古冢岗",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i ngorthad"
+      },
+      {
+        "type": "Plural",
+        "form": "gerthaid"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i ngerthaid"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an gorthad"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-ngorthad"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin gorthad"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor gorthad"
+      },
+      {
+        "type": "Stop",
+        "form": "o ngorthad"
+      },
+      {
+        "type": "H",
+        "form": "ah gorthad"
+      },
+      {
+        "type": "DH",
+        "form": "nedh gorthad"
+      }
+    ]
+  },
+  {
+    "dict_form": "(n)gortheb",
+    "part": "adjective",
+    "english": "horrible",
+    "definition": "糟糕的，严重的",
+    "sentence": "",
+    "other": "goroth + -eb",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "ngortheb"
+      },
+      {
+        "type": "Plural",
+        "form": "(n)gerthib"
+      },
+      {
+        "type": "Comparative",
+        "form": "angortheb"
+      },
+      {
+        "type": "Superlative",
+        "form": "ro-ngortheb"
+      }
+    ]
+  },
+  {
+    "dict_form": "govan-",
+    "part": "verb",
+    "english": "to meet, come to same place",
+    "definition": "会面，见面，遇见",
+    "sentence": "[PE17/16]\nmae govannen.\n你好",
+    "other": "go- + ban",
+    "morphology": [
+      {
+        "type": "Present",
+        "form": "govan/geveni-"
+      },
+      {
+        "type": "Past",
+        "form": "govanant/govananne-"
+      },
+      {
+        "type": "Future",
+        "form": "govanatha/govanatha(o)-"
+      },
+      {
+        "type": "Imperative",
+        "form": "govano"
+      },
+      {
+        "type": "Gerund",
+        "form": "govaned"
+      },
+      {
+        "type": "PastParticiple",
+        "form": "govannen"
+      },
+      {
+        "type": "PresentParticiple",
+        "form": "govanel"
+      },
+      {
+        "type": "PeferctParticle",
+        "form": "govóniel"
+      }
+    ]
+  },
+  {
+    "dict_form": "graw",
+    "part": "noun",
+    "english": "bear",
+    "definition": "熊",
+    "sentence": "",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i 'raw"
+      },
+      {
+        "type": "Plural",
+        "form": "groe"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "in groe"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an graw"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-graw"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin graw"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor 'raw"
+      },
+      {
+        "type": "Stop",
+        "form": "o graw"
+      },
+      {
+        "type": "H",
+        "form": "ah graw"
+      },
+      {
+        "type": "DH",
+        "form": "nedh graw"
+      }
+    ]
+  },
+  {
+    "dict_form": "groga-",
+    "part": "verb",
+    "english": "to feel terror",
+    "definition": "感到恐惧，恐慌，害怕",
+    "sentence": "",
+    "other": "昆雅语同源词ruc-",
+    "morphology": [
+      {
+        "type": "Present",
+        "form": "groga/groga(o)-"
+      },
+      {
+        "type": "Past",
+        "form": "grogas/grogasse-"
+      },
+      {
+        "type": "Future",
+        "form": "grogatha/grogatha(o)-"
+      },
+      {
+        "type": "Imperative",
+        "form": "grogo"
+      },
+      {
+        "type": "Gerund",
+        "form": "grogad"
+      },
+      {
+        "type": "PastParticiple",
+        "form": "grogassen"
+      },
+      {
+        "type": "PresentParticiple",
+        "form": "grogol"
+      },
+      {
+        "type": "PeferctParticle",
+        "form": "grogiel"
+      }
+    ]
+  },
+  {
+    "dict_form": "grond",
+    "part": "adjective",
+    "english": "weighty, ponderous",
+    "definition": "沉重的，笨重的",
+    "sentence": "[PE17/183]\nGrond.\n格龙得",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "'rond"
+      },
+      {
+        "type": "Plural",
+        "form": "grynd"
+      },
+      {
+        "type": "Comparative",
+        "form": "angrond"
+      },
+      {
+        "type": "Superlative",
+        "form": "ro-'rond"
+      }
+    ]
+  },
+  {
+    "dict_form": "groth",
+    "part": "noun",
+    "english": "large excavation. delving, underground dwelling",
+    "definition": "大采掘；洞窟，地下居所，洞穴",
+    "sentence": "[WJ/415]\nMenegroth.\n明霓国斯",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i 'roth"
+      },
+      {
+        "type": "Plural",
+        "form": "gryth"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "in gryth"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an groth"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-groth"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin groth"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor 'roth"
+      },
+      {
+        "type": "Stop",
+        "form": "o groth"
+      },
+      {
+        "type": "H",
+        "form": "ah groth"
+      },
+      {
+        "type": "DH",
+        "form": "nedh groth"
+      }
+    ]
+  },
+  {
+    "dict_form": "gruitha-",
+    "part": "verb",
+    "english": "to terrify",
+    "definition": "恐吓，使恐惧",
+    "sentence": "",
+    "other": "昆雅语同源词ruhta-",
+    "morphology": [
+      {
+        "type": "Present",
+        "form": "gruitha/gruitha(o)-"
+      },
+      {
+        "type": "Past",
+        "form": "gruithant/gruithanne-"
+      },
+      {
+        "type": "Future",
+        "form": "gruithatha/gruithatha(o)-"
+      },
+      {
+        "type": "Imperative",
+        "form": "gruitho"
+      },
+      {
+        "type": "Gerund",
+        "form": "gruithad"
+      },
+      {
+        "type": "PastParticiple",
+        "form": "gruithannen"
+      },
+      {
+        "type": "PresentParticiple",
+        "form": "gruithol"
+      },
+      {
+        "type": "PeferctParticle",
+        "form": "gruithiel"
+      }
+    ]
+  },
+  {
+    "dict_form": "(n)guldur",
+    "part": "noun",
+    "english": "black arts, sorcery",
+    "definition": "黑魔法，黑法术，巫术，邪术，妖术",
+    "sentence": "[PE17/31]\nDol Guldur.\n妖术山丘，多古尔都",
+    "other": "gûl + dûr",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i nguldur"
+      },
+      {
+        "type": "Plural",
+        "form": "gylduir"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i ngylduir"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an guldur"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-nguldur"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin guldur"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor guldur"
+      },
+      {
+        "type": "Stop",
+        "form": "o nguldur"
+      },
+      {
+        "type": "H",
+        "form": "ah guldur"
+      },
+      {
+        "type": "DH",
+        "form": "nedh guldur"
+      }
+    ]
+  },
+  {
+    "dict_form": "gurgof",
+    "part": "noun",
+    "english": "traitor",
+    "definition": "叛徒，背叛者",
+    "sentence": "",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i 'urgof"
+      },
+      {
+        "type": "Plural",
+        "form": "gyrgyf"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i ngyrgyf"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an gurgof"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-gurgof"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin gurgof"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor 'urgof"
+      },
+      {
+        "type": "Stop",
+        "form": "o gurgof"
+      },
+      {
+        "type": "H",
+        "form": "ah gurgof"
+      },
+      {
+        "type": "DH",
+        "form": "nedh gurgof"
+      }
+    ]
+  },
+  {
+    "dict_form": "(n)gurth",
+    "part": "noun",
+    "english": "death",
+    "definition": "死亡（抽象名词或指非自然死亡）",
+    "sentence": "[UT/39]\ngurth an Glamhoth.\n杀掉半兽人！",
+    "other": "若是自然逝去，则请使用gwanath或gwanu",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i ngurth"
+      },
+      {
+        "type": "Plural",
+        "form": "gyrth"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i ngyrth"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an gurth"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-ngurth"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin gurth"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor gurth"
+      },
+      {
+        "type": "Stop",
+        "form": "o ngurth"
+      },
+      {
+        "type": "H",
+        "form": "ah gurth"
+      },
+      {
+        "type": "DH",
+        "form": "nedh gurth"
+      }
+    ]
+  },
+  {
+    "dict_form": "(n)guru",
+    "part": "noun",
+    "english": "death",
+    "definition": "死亡（抽象名词，不用于个体）",
+    "sentence": "",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i nguru"
+      },
+      {
+        "type": "Plural",
+        "form": "gyru"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i ngyru"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an guru"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-nguru"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin guru"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor guru"
+      },
+      {
+        "type": "Stop",
+        "form": "o nguru"
+      },
+      {
+        "type": "H",
+        "form": "ah guru"
+      },
+      {
+        "type": "DH",
+        "form": "nedh guru"
+      }
+    ]
+  },
+  {
+    "dict_form": "(n)guruthos",
+    "part": "noun",
+    "english": "dread of death, death-horror, shadow of death",
+    "definition": "死亡的阴影，死亡笼罩，死亡气息，对死亡的恐惧",
+    "sentence": "[LotR/729][PE17/87]\nle nallon sí di'nguruthos.\n在这里，我因对死亡的恐惧而哭泣",
+    "other": "guru + thoss",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i nguruthos"
+      },
+      {
+        "type": "Plural",
+        "form": "guruthys"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i nguruthys"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an guruthos"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-nguruthos"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin guruthos"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor guruthos"
+      },
+      {
+        "type": "Stop",
+        "form": "o nguruthos"
+      },
+      {
+        "type": "H",
+        "form": "ah guruthos"
+      },
+      {
+        "type": "DH",
+        "form": "nedh guruthos"
+      }
+    ]
+  },
+  {
+    "dict_form": "gwa-",
+    "part": "adverb",
+    "english": "away",
+    "definition": "远离地，遥远地",
+    "sentence": "[PM/186]\ngwahae.\n远远地，遥远地",
+    "other": "",
+    "morphology": []
+  },
+  {
+    "dict_form": "gwae",
+    "part": "noun",
+    "english": "wind",
+    "definition": "风",
+    "sentence": "[PE17/33]\nGwaihir.\n格怀希尔，大鹰",
+    "other": "昆雅语同源词vailë",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i 'wae"
+      },
+      {
+        "type": "Plural",
+        "form": "gwae"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "in gwae"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an gwae"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-gwae"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin gwae"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor 'wae"
+      },
+      {
+        "type": "Stop",
+        "form": "o gwae"
+      },
+      {
+        "type": "H",
+        "form": "ah gwae"
+      },
+      {
+        "type": "DH",
+        "form": "nedh gwae"
+      }
+    ]
+  },
+  {
+    "dict_form": "gwae-",
+    "part": "verb",
+    "english": "to go, depart",
+    "definition": "离开，离去，前往",
+    "sentence": "",
+    "other": "究极不规则动词\n如果是一般的前去，请使用men-",
+    "morphology": [
+      {
+        "type": "Present",
+        "form": "gwae-"
+      },
+      {
+        "type": "Past",
+        "form": "awn/anwe-"
+      },
+      {
+        "type": "Future",
+        "form": "gwatha/gwatha(o)-"
+      },
+      {
+        "type": "Imperative",
+        "form": "gwaw"
+      },
+      {
+        "type": "Gerund",
+        "form": "gwaed"
+      },
+      {
+        "type": "PastParticiple",
+        "form": "gwanwen"
+      },
+      {
+        "type": "PresentParticiple",
+        "form": "gwaul"
+      },
+      {
+        "type": "PeferctParticle",
+        "form": "gwanu/gwawn"
+      }
+    ]
+  },
+  {
     "dict_form": "gêl",
     "part": "noun",
     "english": "weeping",
@@ -18654,6 +20250,156 @@
       {
         "type": "DH",
         "form": "nedh gêl"
+      }
+    ]
+  },
+  {
+    "dict_form": "gôn",
+    "part": "noun",
+    "english": "stone(a stone or a single thing made of stone)",
+    "definition": "一个石头，一个石子，一件石质物品",
+    "sentence": "",
+    "other": "注意和gond区分",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i 'ôn"
+      },
+      {
+        "type": "Plural",
+        "form": "guin"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i nguin"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an gôn"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-gôn"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin gôn"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor 'ôn"
+      },
+      {
+        "type": "Stop",
+        "form": "o gôn"
+      },
+      {
+        "type": "H",
+        "form": "ah gôn"
+      },
+      {
+        "type": "DH",
+        "form": "nedh gôn"
+      }
+    ]
+  },
+  {
+    "dict_form": "(n)gûl",
+    "part": "noun",
+    "english": "black arts, sorcery, (evil) knowledge",
+    "definition": "黑魔法，黑法术，邪术，巫术，妖术",
+    "sentence": "[PE17/31]\nDol Guldur.\n妖术山丘，多古尔都",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i ngûl"
+      },
+      {
+        "type": "Plural",
+        "form": "guil"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i nguil"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an gûl"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-ngûl"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin gûl"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor gûl"
+      },
+      {
+        "type": "Stop",
+        "form": "o ngûl"
+      },
+      {
+        "type": "H",
+        "form": "ah gûl"
+      },
+      {
+        "type": "DH",
+        "form": "nedh gûl"
+      }
+    ]
+  },
+  {
+    "dict_form": "gûr",
+    "part": "noun",
+    "english": "heart(inner mind)",
+    "definition": "内心，心绪，心理",
+    "sentence": "[VT41/11]\nguren bêd enni.\n我的心告诉我...（直觉做某事）",
+    "other": "昆雅语同源词órë",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i 'ûr"
+      },
+      {
+        "type": "Plural",
+        "form": "guir"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i nguir"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an gûr"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-gûr"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin gûr"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor 'ûr"
+      },
+      {
+        "type": "Stop",
+        "form": "o gûr"
+      },
+      {
+        "type": "H",
+        "form": "ah gûr"
+      },
+      {
+        "type": "DH",
+        "form": "nedh gûr"
       }
     ]
   },

@@ -39,8 +39,6 @@
       <span id="phaseInfo">备战阶段</span>
       <span id="timer">45s</span>
       <span class="stat" id="hpStat"></span>
-      <span class="stat" id="goldStat"></span>
-      <span class="stat" id="lvStat"></span>
       <span class="stat" id="streakStat"></span>
       <span id="enemyLabel" style="color:var(--accent)"></span>
       <span style="flex:1"></span>
@@ -58,20 +56,22 @@
           <div id="banner"></div>
         </div>
         <div class="panel-box">
-          <h4>备战席 <span id="itemHint" style="display:none;color:var(--accent)">（已选中散件——点击棋子穿戴）</span></h4>
+          <h4>备战席 <span id="itemHint" style="display:none;color:var(--accent)">（已选中装备——点击棋子穿戴）</span></h4>
           <div id="benchRow"></div>
-          <h4 style="margin-top:8px">物品栏</h4>
+          <h4 style="margin-top:8px">物品栏 <span style="color:var(--sub);font-weight:normal">拖到棋子穿戴 · 散件互拖合成 · 右键看配方</span></h4>
           <div id="itemRow"></div>
-          <div id="sellZone">拖到这里出售</div>
         </div>
-        <div class="panel-box">
+        <div class="panel-box" style="position:relative">
+          <div id="oddsBar"></div>
           <div id="shopBar">
             <div id="shopBtns">
-              <button id="rerollBtn">🎲 刷新 (2🪙)</button>
-              <button id="xpBtn">📖 经验 (4🪙)</button>
+              <div id="goldBig">🪙 <b>0</b></div>
+              <button id="rerollBtn">🎲 刷新 2🪙</button>
+              <button id="xpBtn">📖 经验 4🪙</button>
               <button id="lockBtn">🔓 锁定</button>
             </div>
             <div id="shopCards" style="display:flex;flex:1;gap:8px"></div>
+            <div id="sellOverlay"></div>
           </div>
         </div>
       </div>
@@ -91,6 +91,7 @@
 
   <div id="tooltip"></div>
   <div id="dragGhost"></div>
+  <div id="scoutModal"></div>
 
   <script>
     function toggleTheme(){

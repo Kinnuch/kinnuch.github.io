@@ -72,7 +72,7 @@ export class Combat {
       // 开战护盾类
       if (f.bonus.startShieldPct_) this.addShield(f, f.maxHp * f.bonus.startShieldPct_ / 100, 8, f);
       if (f.bonus.startShieldFlat_) this.addShield(f, f.bonus.startShieldFlat_, 8, f);
-      this.emit({ k: 'spawn', id: f.id, team: f.team, defId: f.def.id, name: f.def.name, star: f.star, c: f.pos.c, r: f.pos.r, hp: f.maxHp, monster: !!f.isMonster });
+      this.emit({ k: 'spawn', id: f.id, team: f.team, defId: f.def.id, name: f.def.name, star: f.star, c: f.pos.c, r: f.pos.r, hp: f.maxHp, monster: !!f.isMonster, mana: Math.round(f.mana), manaMax: f.manaMax, items: [...f.items, ...f.tempItems].map(i => i.name) });
     }
   }
 
@@ -267,7 +267,7 @@ export class Combat {
     }
     // 法力回复（受击）
     if (!tgt.isMonster) tgt.mana = Math.min(tgt.manaMax + tgt.breakMana, tgt.mana + Math.min(10, raw * 0.01 + post * 0.05));
-    this.emit({ k: 'dmg', id: tgt.id, src: src ? src.id : 0, v: Math.round(post), type, crit, hp: Math.round(Math.max(0, tgt.hp)), shield: Math.round(this.shieldTotal(tgt)) });
+    this.emit({ k: 'dmg', id: tgt.id, src: src ? src.id : 0, v: Math.round(post), type, crit, hp: Math.round(Math.max(0, tgt.hp)), shield: Math.round(this.shieldTotal(tgt)), tmana: Math.round(tgt.mana) });
     // 吸血
     if (src && se.vamp > 0) this.heal(src, post * se.vamp / 100, null);
     // 反伤类
@@ -413,6 +413,7 @@ export class Combat {
         castSkill(this, f);
         for (const it of [...f.items, ...f.tempItems]) if (it.eff && it.eff.manaOnCast) f.mana += it.eff.manaOnCast;
         if (f.bonus.manaOnCast) f.mana += f.bonus.manaOnCast;
+        this.emit({ k: 'mana', id: f.id, v: Math.round(f.mana) });
         continue;
       }
       this._actMoveAttack(f);
@@ -455,8 +456,17 @@ export class Combat {
         const opts = neighbors(f.pos.c, f.pos.r).filter(([c, r]) => !occ[key(c, r)]);
         if (opts.length) {
           opts.sort((a, b) => hexDist(a[0], a[1], f.target.pos.c, f.target.pos.r) - hexDist(b[0], b[1], f.target.pos.c, f.target.pos.r));
-          if (hexDist(opts[0][0], opts[0][1], f.target.pos.c, f.target.pos.r) < d) {
-            f.pos = { c: opts[0][0], r: opts[0][1] };
+          const bd = hexDist(opts[0][0], opts[0][1], f.target.pos.c, f.target.pos.r);
+          let step = null;
+          if (bd < d) step = opts[0];
+          else {
+            // 被挡住：允许绕行（走等距格，但不折返上一格）
+            const side = opts.find(([c, r]) => hexDist(c, r, f.target.pos.c, f.target.pos.r) === d && key(c, r) !== f.prevKey);
+            if (side) step = side;
+          }
+          if (step) {
+            f.prevKey = key(f.pos.c, f.pos.r);
+            f.pos = { c: step[0], r: step[1] };
             this.emit({ k: 'move', id: f.id, c: f.pos.c, r: f.pos.r });
           }
         }
@@ -510,7 +520,10 @@ export class Combat {
         f.bonus.asPct += f.rangerGain;
       }
     }
-    if (!f.isMonster) f.mana = Math.min(f.manaMax + f.breakMana, f.mana + 10 + f.bonus.manaOnAttack);
+    if (!f.isMonster) {
+      f.mana = Math.min(f.manaMax + f.breakMana, f.mana + 10 + f.bonus.manaOnAttack);
+      this.emit({ k: 'mana', id: f.id, v: Math.round(f.mana) });
+    }
   }
 
   _checkEnd() {

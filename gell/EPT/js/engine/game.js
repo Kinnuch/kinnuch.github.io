@@ -137,7 +137,7 @@ export class Game {
       const pa = this.players[cb.a];
       if (cb.kind === 'pve') {
         const won = cb.result.winner === 0;
-        this._afterCombat(pa, won, false);
+        this._afterCombat(pa, won, false, true);
         if (won) {
           this._grantDrops(pa, stage, round.wave ?? 6);
         } else {
@@ -216,8 +216,11 @@ export class Game {
     this.phase = 'planning';
   }
 
-  _afterCombat(p, won, draw) {
-    if (draw) { p.streakW = 0; p.streakL++; }
+  _afterCombat(p, won, draw, pve) {
+    if (pve) {
+      // 野怪不计入连胜连败：赢不加连胜，输只断掉连胜
+      if (!won) p.streakW = 0;
+    } else if (draw) { p.streakW = 0; p.streakL++; }
     else if (won) { p.streakW++; p.streakL = 0; }
     else { p.streakL++; p.streakW = 0; }
     income(p, won && !draw);

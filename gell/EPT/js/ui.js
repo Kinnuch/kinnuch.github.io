@@ -1,9 +1,9 @@
-// EPT · UI：布阵/商店/拖拽/战斗回放
+// EPT · UI：布阵/商店/拖拽/战斗回放（M1.5：实时蓝条、观战、装备拖拽、战斗中操作等）
 import { Game } from './engine/game.js';
-import { buyCard, reroll, buyXp, sellUnit, placeUnit, unfieldUnit, allUnits } from './engine/player.js';
-import { RACES, CLASSES, UNITS_BY_ID, unitStatsAtStar, XP_TO_LEVEL } from '../data/units.js';
+import { buyCard, reroll, buyXp, sellUnit, placeUnit, unfieldUnit, allUnits, isFielded } from './engine/player.js';
+import { RACES, CLASSES, UNITS, UNITS_BY_ID, unitStatsAtStar, XP_TO_LEVEL, SHOP_ODDS } from '../data/units.js';
 import { countTraits, TRAITS } from '../data/traits.js';
-import { canCombine, makeCombinedItem } from '../data/items.js';
+import { canCombine, makeCombinedItem, COMPONENTS, COMBO_NAMES, comboKey } from '../data/items.js';
 
 const CELL_W = 70, ROW_H = 58, COLS = 7, ROWS = 8;
 const COST_COLOR = { 1: 'var(--c1)', 2: 'var(--c2)', 3: 'var(--c3)', 4: 'var(--c4)', 5: 'var(--c5)' };
@@ -14,9 +14,10 @@ const RACE_COLOR = {
   sinda: '#78a890', maia: '#b8a0c8', vala: '#d8c890', wood: '#6a8a5a', dog: '#a89078',
 };
 const DMG_COLOR = { phys: 'var(--dmg-phys)', light: 'var(--dmg-light)', dark: 'var(--dmg-dark)', true: 'var(--dmg-true)', pure: 'var(--dmg-true)' };
+const TIER_CLASS = ['', 'tier-bronze', 'tier-silver', 'tier-gold', 'tier-prisma', 'tier-prisma', 'tier-prisma'];
 
 let game = null, selectedItem = null, planTimer = null, planLeft = 0;
-let playback = null;
+let playback = null, drag = null, tooltipPinned = false;
 
 const $ = id => document.getElementById(id);
 
@@ -29,25 +30,33 @@ export function initUI() {
   $('startBtn').onclick = () => { if (game && game.phase === 'planning') beginCombat(); };
   $('speedBtn').onclick = () => { if (playback) { playback.speed = playback.speed >= 4 ? 1 : playback.speed * 2; $('speedBtn').textContent = '▶ ' + playback.speed + 'x'; } };
   $('skipBtn').onclick = () => { if (playback) playback.skip = true; };
-  $('rerollBtn').onclick = () => { if (planOk() && reroll(game, me())) renderAll(); };
-  $('xpBtn').onclick = () => { if (planOk() && buyXp(game, me())) renderAll(); };
-  $('lockBtn').onclick = () => { me().shopLocked = !me().shopLocked; renderShop(); };
+  $('rerollBtn').onclick = () => { if (actOk() && reroll(game, me())) renderAll(); };
+  $('xpBtn').onclick = () => { if (actOk() && buyXp(game, me())) renderAll(); };
+  $('lockBtn').onclick = () => { if (game) { me().shopLocked = !me().shopLocked; renderShop(); } };
   $('againBtn').onclick = () => { $('overScreen').style.display = 'none'; $('game').style.display = 'block'; startGame((Math.random() * 0xFFFFFFFF) >>> 0); };
+  $('scoutModal').onclick = e => { if (e.target === $('scoutModal')) $('scoutModal').style.display = 'none'; };
+  $('goldBig').onpointerenter = e => { if (game && !tooltipPinned) showTooltip(goldTooltip(), e); };
+  $('goldBig').onpointerleave = () => hideTooltip();
   document.addEventListener('pointermove', e => { moveTooltip(e); dragMove(e); });
   document.addEventListener('pointerup', dragEnd);
+  document.addEventListener('pointerdown', e => {
+    if (tooltipPinned && !$('tooltip').contains(e.target)) { tooltipPinned = false; hideTooltip(true); }
+  });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') { tooltipPinned = false; hideTooltip(true); $('scoutModal').style.display = 'none'; } });
   buildBoardCells();
-  // 开发用：?auto=1 自动开局，?seed=N 固定种子
+  // 开发用：?auto=1 自动开局，?seed=N 固定种子，?fight=1 自动开战
   const q = new URLSearchParams(location.search);
   if (q.get('auto')) {
     $('lobby').style.display = 'none';
     $('game').style.display = 'block';
     startGame(q.get('seed') ? +q.get('seed') : (Math.random() * 0xFFFFFFFF) >>> 0);
-    if (q.get('fight')) setTimeout(() => { if (planOk()) beginCombat(); }, 800);
+    if (q.get('fight')) setTimeout(() => { if (game.phase === 'planning') beginCombat(); }, 800);
   }
 }
 
 function me() { return game.players[0]; }
 function planOk() { return game && game.phase === 'planning'; }
+function actOk() { return game && !game.over; } // 买卖/刷新/经验：战斗中也允许
 
 function startGame(seed) {
   game = new Game(seed, '你');
@@ -70,30 +79,55 @@ function startPlanTimer() {
 
 // ---------- 渲染 ----------
 function renderAll() {
-  renderTopbar(); renderPlayers(); renderBoardUnits(); renderBench(); renderItems(); renderShop(); renderTraits(); renderLog();
+  renderTopbar(); renderPlayers(); renderBoardUnits(); renderBench(); renderItems(); renderShop(); renderTraits(); renderLog(); renderGold(); renderOdds();
 }
 
 function renderTopbar() {
   const p = me(), r = game.roundInfo();
   $('roundLabel').textContent = r.label + (r.type === 'pve' ? ' 野怪' : ' 对战');
   $('phaseInfo').textContent = game.phase === 'planning' ? '备战阶段' : '战斗中';
-  $('goldStat').innerHTML = `金币 <b>${p.gold}</b>`;
-  const need = p.level >= 10 ? '-' : XP_TO_LEVEL[p.level + 1];
-  $('lvStat').innerHTML = `等级 <b>${p.level}</b> <span style="color:var(--sub)">(${p.xp}/${need})</span>`;
   $('hpStat').innerHTML = `生命 <b>${Math.max(0, p.hp)}</b>`;
   const st = p.streakW > 0 ? `连胜${p.streakW}` : p.streakL > 0 ? `连败${p.streakL}` : '—';
   $('streakStat').innerHTML = `战绩 <b>${st}</b>`;
   $('startBtn').style.display = game.phase === 'planning' ? '' : 'none';
 }
 
+function renderGold() {
+  const p = me();
+  $('goldBig').innerHTML = `🪙 <b>${p.gold}</b>`;
+  const need = p.level >= 10 ? 'MAX' : `${p.xp}/${XP_TO_LEVEL[p.level + 1]}`;
+  $('xpBtn').innerHTML = `📖 经验 4🪙<br><span style="font-size:11px;color:var(--sub)">Lv${p.level} (${need})</span>`;
+}
+function goldTooltip() {
+  const p = me();
+  const interest = Math.min(Math.floor(p.gold / 10), 5);
+  const streak = Math.max(p.streakW, p.streakL);
+  const sb = streak >= 5 ? 3 : streak >= 4 ? 2 : streak >= 2 ? 1 : 0;
+  return `<h5>下回合收入预估</h5>
+  <div>基础收入：+5</div>
+  <div>利息（每10金币+1，至多5）：+${interest}</div>
+  <div>连胜/连败奖励（当前${streak}）：+${sb}</div>
+  <div>战斗胜利：+1（若获胜）</div>
+  <div style="margin-top:4px;color:var(--accent)"><b>合计：${5 + interest + sb} ~ ${6 + interest + sb}</b></div>
+  <div class="tt-sub" style="margin-top:4px">野怪回合不计连胜连败，输给野怪会断掉连胜。</div>`;
+}
+
+function renderOdds() {
+  const odds = SHOP_ODDS[me().level];
+  $('oddsBar').innerHTML = '等级 ' + me().level + '：' + odds.map((o, i) =>
+    `<span style="color:${COST_COLOR[i + 1]};font-weight:bold">${i + 1}费 ${o}%</span>`).join('　');
+}
+
 function renderPlayers() {
   const box = $('playersBox');
-  box.innerHTML = '<h4>玩家</h4>';
+  box.innerHTML = '<h4>玩家（点击查看棋盘）</h4>';
   const sorted = game.players.slice().sort((a, b) => (b.alive - a.alive) || (b.hp - a.hp));
   for (const p of sorted) {
     const row = document.createElement('div');
     row.className = 'pl-row' + (p.i === 0 ? ' me' : '') + (p.alive ? '' : ' dead');
-    row.innerHTML = `<span class="pl-name">${p.name}</span><span class="pl-hp"><div style="width:${Math.max(0, p.hp)}%"></div></span><span class="pl-hpnum">${Math.max(0, p.hp)}</span>`;
+    const fire = p.alive && p.streakW >= 2 ? `<span class="fire">🔥${p.streakW}</span>` : '';
+    row.innerHTML = `<span class="pl-name">${p.name}${fire}</span><span class="pl-hp"><div style="width:${Math.max(0, p.hp)}%"></div></span><span class="pl-hpnum">${Math.max(0, p.hp)}</span>`;
+    if (p.alive) row.onclick = () => showScout(p);
     box.appendChild(row);
   }
 }
@@ -104,7 +138,7 @@ function buildBoardCells() {
   board.style.height = (ROWS * ROW_H + 16) + 'px';
   for (let r = 0; r < ROWS; r++) for (let c = 0; c < COLS; c++) {
     const cell = document.createElement('div');
-    cell.className = 'cell' + (r >= 4 ? ' mine' : '');
+    cell.className = 'cell' + (r >= 4 ? ' mine' : ' foe');
     cell.id = `cell-${c}-${r}`;
     cell.style.width = (CELL_W - 4) + 'px';
     cell.style.height = (ROW_H + 8) + 'px';
@@ -127,7 +161,7 @@ function makeUnitNode(def, star, opts = {}) {
     <div class="portrait" style="background:linear-gradient(160deg, ${color}, #00000055), ${COST_COLOR[cost]};border:none;">
       <div class="ring" style="box-shadow:inset 0 0 0 3px ${COST_COLOR[cost]}"></div>${icon}</div>
     <div class="uname">${def.name}</div>
-    ${opts.bars ? `<div class="bars${opts.enemy ? ' enemy' : ''}"><div style="width:100%"></div></div>` : ''}
+    ${opts.bars ? `<div class="bars${opts.enemy ? ' enemy' : ''}"><div style="width:100%"></div></div><div class="mbar"><div style="width:${opts.manaPct || 0}%"></div></div>` : ''}
     <div class="items-dots"></div>`;
   return el;
 }
@@ -138,12 +172,12 @@ function renderUnitItems(el, unit) {
 }
 
 function renderBoardUnits() {
+  if (game.phase !== 'planning') return; // 战斗中由回放接管棋盘，绝不清场（修复开战瞬间拖拽 bug）
   document.querySelectorAll('#board .unit').forEach(n => n.remove());
   document.querySelectorAll('#board .float-txt,#board .proj').forEach(n => n.remove());
-  if (game.phase !== 'planning') return;
   const p = me();
   for (const b of p.board) {
-    const el = makeUnitNode(b.unit.def, b.unit.star);
+    const el = makeUnitNode(b.unit.def, b.unit.star, { bars: true, manaPct: b.unit.def.mana[1] ? b.unit.def.mana[0] / b.unit.def.mana[1] * 100 : 0 });
     positionUnit(el, b.c, b.r);
     renderUnitItems(el, b.unit);
     attachUnitInteract(el, b.unit, { from: 'board' });
@@ -181,9 +215,21 @@ function renderItems() {
     const chip = document.createElement('div');
     chip.className = 'item-chip' + (it.kind !== 'component' ? ' combined' : '') + (selectedItem === it ? ' selected' : '');
     chip.textContent = it.name;
-    chip.onclick = () => { selectedItem = selectedItem === it ? null : it; renderItems(); };
-    chip.onpointerenter = e => showTooltip(itemTooltip(it), e);
-    chip.onpointerleave = hideTooltip;
+    chip.dataset.itemIdx = i;
+    chip.onclick = () => { if (drag) return; selectedItem = selectedItem === it ? null : it; renderItems(); };
+    chip.oncontextmenu = e => { e.preventDefault(); pinItemPreview(it, e); };
+    chip.onpointerenter = e => { if (!tooltipPinned) showTooltip(itemTooltip(it), e); };
+    chip.onpointerleave = () => hideTooltip();
+    chip.onpointerdown = e => {
+      if (e.button !== 0) return;
+      e.preventDefault();
+      startDrag({ kind: 'item', item: it, el: chip }, e, () => {
+        const g = document.createElement('div');
+        g.className = 'item-chip' + (it.kind !== 'component' ? ' combined' : '');
+        g.textContent = it.name;
+        return g;
+      });
+    };
     row.appendChild(chip);
   });
   $('itemHint').style.display = selectedItem ? '' : 'none';
@@ -201,9 +247,9 @@ function renderShop() {
     card.style.borderColor = COST_COLOR[def.cost];
     const traits = [...def.races.map(r => RACES[r]), ...def.classes.map(c => CLASSES[c])].join(' · ');
     card.innerHTML = `<div class="sc-name">${CLASS_ICON[def.classes[0]] || ''} ${def.name}</div><div class="sc-traits">${traits}</div><div class="sc-cost">${def.cost}🪙</div>`;
-    card.onclick = () => { if (planOk() && buyCard(game, p, i)) renderAll(); };
-    card.onpointerenter = e => showTooltip(unitDefTooltip(def, 1), e);
-    card.onpointerleave = hideTooltip;
+    card.onclick = () => { if (actOk() && buyCard(game, p, i)) renderAll(); };
+    card.onpointerenter = e => { if (!tooltipPinned) showTooltip(unitDefTooltip(def, 1), e); };
+    card.onpointerleave = () => hideTooltip();
     bar.appendChild(card);
   });
   $('lockBtn').textContent = p.shopLocked ? '🔒 已锁定' : '🔓 锁定';
@@ -218,12 +264,20 @@ function renderTraits() {
   for (const t of list) {
     const def = TRAITS[t.id];
     const row = document.createElement('div');
-    row.className = 'trait-row' + (t.tier > 0 ? ' active' : '');
-    row.innerHTML = `<span>${def.name}</span><span class="tcount">${t.count}/${def.tiers.join('·')}</span>`;
-    row.onpointerenter = e => showTooltip(`<h5>${def.name}</h5><div>${def.desc}</div>`, e);
-    row.onpointerleave = hideTooltip;
+    row.className = 'trait-row' + (t.tier > 0 ? ' active ' + TIER_CLASS[Math.min(t.tier, 4)] : '');
+    row.innerHTML = `<span class="tbadge">${t.count}</span><span>${def.name}</span><span class="tcount">${def.tiers.join(' › ')}</span>`;
+    row.onpointerenter = e => { if (!tooltipPinned) showTooltip(traitTooltip(t.id, def), e); };
+    row.onpointerleave = () => hideTooltip();
     box.appendChild(row);
   }
+}
+function traitTooltip(id, def) {
+  const mine = new Set(me().board.map(b => b.unit.def.id));
+  const pool = UNITS.filter(u => u.races.includes(id) || u.classes.includes(id)).sort((a, b) => a.cost - b.cost);
+  const lines = pool.map(u => `<span style="color:${mine.has(u.id) ? 'var(--accent)' : 'var(--sub)'}">${mine.has(u.id) ? '✓ ' : ''}${u.cost}费 ${u.name}</span>`).join('<br>');
+  return `<h5>${def.name}（${def.tiers.join('/')}）</h5><div>${def.desc}</div>
+  <div style="margin-top:6px;border-top:1px solid var(--border);padding-top:4px">${lines}</div>
+  <div class="tt-sub" style="margin-top:2px">✓ = 当前在你场上（M1 先实装 25 子，其余 M2 加入）</div>`;
 }
 
 function renderLog() {
@@ -232,52 +286,106 @@ function renderLog() {
   box.scrollTop = box.scrollHeight;
 }
 
+// ---------- 观战 ----------
+function showScout(p) {
+  const m = $('scoutModal');
+  const st = p.streakW > 0 ? `连胜${p.streakW}🔥` : p.streakL > 0 ? `连败${p.streakL}` : '—';
+  let html = `<div id="scoutBox"><h3>${p.name} 的棋盘</h3>
+  <div class="scout-stats">生命 <b>${Math.max(0, p.hp)}</b>｜金币 <b>${p.gold}</b>｜等级 <b>${p.level}</b>｜战绩 <b>${st}</b>｜物品 <b>${p.items.length}</b></div>
+  <div class="scout-board" style="width:${(COLS + 0.5) * 46}px;height:${ROWS * 38 + 12}px">`;
+  for (let r = 0; r < ROWS; r++) for (let c = 0; c < COLS; c++) {
+    const x = (c + (r % 2 ? 0.5 : 0)) * 46, y = r * 38;
+    html += `<div class="scout-cell${r >= 4 ? ' mine' : ''}" style="left:${x}px;top:${y}px"></div>`;
+  }
+  for (const b of p.board) {
+    const { x, y } = { x: (b.c + (b.r % 2 ? 0.5 : 0)) * 46, y: b.r * 38 };
+    const color = RACE_COLOR[b.unit.def.races[0]] || '#888';
+    html += `<div class="scout-unit" style="left:${x + 2}px;top:${y - 4}px;background:${color};box-shadow:inset 0 0 0 2px ${COST_COLOR[b.unit.def.cost]}" title="${b.unit.def.name}">
+      <span>${'★'.repeat(b.unit.star)}</span>${b.unit.def.name.slice(0, 3)}</div>`;
+  }
+  html += `</div><div class="scout-bench">备战席：${p.bench.filter(Boolean).map(u => `${u.def.name}${'★'.repeat(u.star)}`).join('、') || '空'}</div>
+  <div class="tt-sub" style="margin-top:6px">点击空白处关闭</div></div>`;
+  m.innerHTML = html;
+  m.style.display = 'flex';
+}
+
 // ---------- 提示框 ----------
-function unitDefTooltip(def, star) {
+function unitDefTooltip(def, star, live) {
   const s = unitStatsAtStar(def, star);
   const traits = [...def.races.map(r => RACES[r]), ...def.classes.map(c => CLASSES[c])].join(' · ');
   const align = { light: '光明系', dark: '黑暗系', phys: '物理系' }[def.align];
   return `<h5>${def.name} ${'★'.repeat(star)}</h5><div class="tt-sub">${def.cost}费 · ${traits} · ${align}</div>
+  ${live ? `<div style="color:var(--accent)">实时：生命 ${live.hp}/${live.maxHp}　法力 ${live.mana}/${live.manaMax}</div>` : ''}
   <div>生命${s.hp}｜攻击${s.ad}｜攻速${def.as}｜射程${def.range}</div>
   <div>护甲${s.armor}｜光抗${s.cn}｜黑抗${s.mn}｜韧性${s.ten}</div>
   <div>光强${s.cc}｜黑强${s.mc}｜法力${def.mana[0]}/${def.mana[1]}</div>
   <div style="margin-top:4px"><b>【${def.skill.name}】</b>${def.skill.desc}</div>
-  ${def.passive ? `<div class="tt-sub">${def.passive}</div>` : ''}`;
+  ${def.passive ? `<div class="tt-sub">${def.passive}</div>` : ''}
+  ${live && live.items.length ? `<div style="margin-top:4px">装备：${live.items.join('、')}</div>` : ''}`;
 }
 function itemTooltip(it) {
   const statNames = { adPct: '%攻击力', asPct: '%攻速', sp: '自适应强度', mres: '自适应抗性', armor: '护甲', hp: '生命', hpPct: '%生命', mana: '法力', critR: '%暴击率', critD: '%暴击伤害', hsPct: '%治疗盾强', spLight: '光明强度', affAll: '六维亲和度' };
   const lines = Object.entries(it.stats || {}).map(([k, v]) => `+${v}${statNames[k] || k}`).join('，');
-  return `<h5>${it.name}</h5><div>${lines}</div>${it.note ? `<div class="tt-sub">${it.note}</div>` : ''}${it.kind === 'component' ? '<div class="tt-sub">散件：点击选中后再点击棋子穿戴，可与其他散件合成</div>' : ''}`;
+  return `<h5>${it.name}</h5><div>${lines}</div>${it.note ? `<div class="tt-sub">${it.note}</div>` : ''}${it.kind === 'component' ? '<div class="tt-sub">散件：拖到棋子上穿戴 / 拖到另一件散件上合成；右键预览全部合成配方</div>' : ''}`;
+}
+function pinItemPreview(it, e) {
+  let html;
+  if (it.kind === 'component') {
+    const lines = [];
+    for (const other of Object.keys(COMPONENTS)) {
+      if (!canCombine(it.comp, other)) continue;
+      const name = COMBO_NAMES[comboKey(it.comp, other)];
+      if (name) lines.push(`<div>＋ ${COMPONENTS[other].name} → <b style="color:var(--accent)">${name}</b></div>`);
+    }
+    html = `<h5>${it.name} · 合成配方</h5>${lines.join('') || '<div>无</div>'}<div class="tt-sub" style="margin-top:4px">Esc 或点击空白处关闭</div>`;
+  } else html = itemTooltip(it);
+  showTooltip(html, e);
+  tooltipPinned = true;
 }
 function showTooltip(html, e) { const t = $('tooltip'); t.innerHTML = html; t.style.display = 'block'; moveTooltip(e); }
 function moveTooltip(e) {
+  if (tooltipPinned) return;
   const t = $('tooltip');
   if (t.style.display !== 'block') return;
   const x = Math.min(e.clientX + 14, window.innerWidth - 310);
   const y = Math.min(e.clientY + 14, window.innerHeight - t.offsetHeight - 10);
   t.style.left = x + 'px'; t.style.top = y + 'px';
 }
-function hideTooltip() { $('tooltip').style.display = 'none'; }
+function hideTooltip(force) { if (tooltipPinned && !force) return; $('tooltip').style.display = 'none'; }
 
-// ---------- 拖拽与装备 ----------
-let drag = null;
+// ---------- 拖拽 ----------
+function startDrag(d, e, ghostMaker) {
+  drag = d;
+  d.el.classList.add('dragging');
+  const g = $('dragGhost');
+  g.innerHTML = '';
+  g.appendChild(ghostMaker());
+  g.style.display = 'block';
+  if (d.kind === 'unit') {
+    $('sellOverlay').classList.add('active');
+    const price = d.unit.star === 1 ? d.unit.def.cost : d.unit.def.cost * Math.pow(3, d.unit.star - 1) - 1;
+    $('sellOverlay').textContent = `⬇ 拖到这里出售（${price} 🪙）`;
+    // 高亮可放置区
+    if (planOk()) {
+      const p = me();
+      const full = !isFielded(p, d.unit.uid) && p.board.length >= p.level;
+      for (let r = 4; r < 8; r++) for (let c = 0; c < COLS; c++) {
+        const occ = p.board.some(b => b.c === c && b.r === r);
+        if (occ || !full) $(`cell-${c}-${r}`).classList.add('can-place');
+      }
+    }
+  }
+  dragMove(e);
+}
 function attachUnitInteract(el, unit, src) {
-  el.onpointerenter = e => showTooltip(unitDefTooltip(unit.def, unit.star) + (unit.items.length ? `<div style="margin-top:4px">装备：${unit.items.map(i => i.name).join('、')}</div>` : ''), e);
-  el.onpointerleave = hideTooltip;
+  el.dataset.uid = unit.uid;
+  el.onpointerenter = e => { if (!tooltipPinned) showTooltip(unitDefTooltip(unit.def, unit.star) + (unit.items.length ? `<div style="margin-top:4px">装备：${unit.items.map(i => i.name).join('、')}</div>` : ''), e); };
+  el.onpointerleave = () => hideTooltip();
   el.onpointerdown = e => {
-    if (!planOk()) return;
+    if (e.button !== 0 || !actOk()) return;
     e.preventDefault();
-    if (selectedItem) { equipSelected(unit); return; }
-    drag = { unit, src, el };
-    el.classList.add('dragging');
-    const g = $('dragGhost');
-    g.innerHTML = '';
-    g.appendChild(makeUnitNode(unit.def, unit.star));
-    g.style.display = 'block';
-    $('sellZone').classList.add('active');
-    const price = unit.star === 1 ? unit.def.cost : unit.def.cost * Math.pow(3, unit.star - 1) - 1;
-    $('sellZone').textContent = `拖到这里出售（${price} 金币）`;
-    dragMove(e);
+    if (selectedItem) { equipItem(unit, selectedItem); return; }
+    startDrag({ kind: 'unit', unit, src, el }, e, () => makeUnitNode(unit.def, unit.star));
   };
 }
 function dragMove(e) {
@@ -292,63 +400,103 @@ function dragMove(e) {
 function dropTarget(e) {
   const els = document.elementsFromPoint(e.clientX, e.clientY);
   for (const el of els) {
+    if (drag && drag.kind === 'item') {
+      if (el.classList && el.classList.contains('unit') && el.dataset.uid) return { el, type: 'unit', uid: +el.dataset.uid };
+      if (el.classList && el.classList.contains('item-chip') && el !== drag.el) return { el, type: 'item', idx: +el.dataset.itemIdx };
+    }
     if (el.id && el.id.startsWith('cell-')) {
       const [, c, r] = el.id.split('-').map(Number);
       if (r >= 4) return { el, type: 'cell', c, r };
     }
     if (el.classList && el.classList.contains('bench-slot')) return { el, type: 'bench', idx: +el.dataset.bench };
-    if (el.id === 'sellZone') return { el, type: 'sell' };
+    if (el.id === 'sellOverlay') return { el, type: 'sell' };
   }
   return null;
+}
+function cancelDrag() {
+  if (!drag) return;
+  drag.el.classList.remove('dragging');
+  $('dragGhost').style.display = 'none';
+  $('sellOverlay').classList.remove('active');
+  document.querySelectorAll('.drop-ok,.can-place').forEach(n => n.classList.remove('drop-ok', 'can-place'));
+  drag = null;
 }
 function dragEnd(e) {
   if (!drag) return;
   const t = dropTarget(e);
-  const { unit } = drag;
-  drag.el.classList.remove('dragging');
-  $('dragGhost').style.display = 'none';
-  $('sellZone').classList.remove('active');
-  document.querySelectorAll('.drop-ok').forEach(n => n.classList.remove('drop-ok'));
+  const d = drag;
+  cancelDrag();
   const p = me();
-  if (t) {
-    if (t.type === 'cell') placeUnit(p, unit.uid, t.c, t.r);
-    else if (t.type === 'bench') {
-      if (drag.src.from === 'board') unfieldUnit(p, unit.uid, t.idx);
-      else if (!p.bench[t.idx]) { const from = p.bench.findIndex(x => x && x.uid === unit.uid); if (from >= 0) { p.bench[t.idx] = unit; p.bench[from] = null; } }
+  if (!t) { renderAll(); return; }
+  if (d.kind === 'item') {
+    if (t.type === 'unit') {
+      const u = allUnits(p).find(x => x.uid === t.uid);
+      if (u) equipItem(u, d.item);
+    } else if (t.type === 'item') {
+      const other = p.items[t.idx];
+      if (other && d.item.kind === 'component' && other.kind === 'component' && canCombine(d.item.comp, other.comp)) {
+        const combined = makeCombinedItem(d.item.comp, other.comp);
+        if (combined) { p.items = p.items.filter(x => x !== d.item && x !== other); p.items.push(combined); banner(`合成：${combined.name}`); }
+      } else banner('这两件无法合成');
     }
-    else if (t.type === 'sell') sellUnit(game, p, unit.uid);
+    renderAll(); return;
   }
-  drag = null;
+  // 棋子
+  const unit = d.unit;
+  if (t.type === 'cell') {
+    if (!planOk()) { banner('战斗中无法调整棋盘'); }
+    else {
+      const fielded = isFielded(p, unit.uid);
+      const occ = p.board.find(b => b.c === t.c && b.r === t.r);
+      if (!fielded && !occ && p.board.length >= p.level) banner(`⚠ 人口已满（等级 ${p.level} = ${p.level} 个上场位）`);
+      else placeUnit(p, unit.uid, t.c, t.r);
+    }
+  } else if (t.type === 'bench') {
+    if (d.src.from === 'board') {
+      if (!planOk()) banner('战斗中无法调整棋盘');
+      else unfieldUnit(p, unit.uid, t.idx);
+    } else if (!p.bench[t.idx]) {
+      const from = p.bench.findIndex(x => x && x.uid === unit.uid);
+      if (from >= 0) { p.bench[t.idx] = unit; p.bench[from] = null; }
+    } else { // 备战席互换
+      const from = p.bench.findIndex(x => x && x.uid === unit.uid);
+      if (from >= 0) { const tmp = p.bench[t.idx]; p.bench[t.idx] = unit; p.bench[from] = tmp; }
+    }
+  } else if (t.type === 'sell') {
+    if (!planOk() && isFielded(p, unit.uid)) banner('战斗中不能出售场上棋子');
+    else sellUnit(game, p, unit.uid);
+  }
   renderAll();
 }
-function equipSelected(unit) {
-  const p = me(), it = selectedItem;
-  if (!it) return;
+function equipItem(unit, it) {
+  const p = me();
   let ok = false;
   if (it.kind === 'component') {
     const partner = unit.items.find(x => x.kind === 'component' && canCombine(x.comp, it.comp));
     if (partner) {
       const combined = makeCombinedItem(partner.comp, it.comp);
-      if (combined) { unit.items[unit.items.indexOf(partner)] = combined; ok = true; }
+      if (combined) { unit.items[unit.items.indexOf(partner)] = combined; ok = true; banner(`合成：${combined.name}`); }
     } else if (unit.items.length < 3) { unit.items.push(it); ok = true; }
+    else banner('装备栏已满（3件）');
   } else if (unit.items.length < 3) { unit.items.push(it); ok = true; }
-  if (ok) { p.items = p.items.filter(x => x !== it); selectedItem = null; renderAll(); }
+  else banner('装备栏已满（3件）');
+  if (ok) { p.items = p.items.filter(x => x !== it); if (selectedItem === it) selectedItem = null; renderAll(); }
 }
 
 // ---------- 战斗 ----------
 function beginCombat() {
   clearInterval(planTimer);
-  hideTooltip();
+  cancelDrag();
+  tooltipPinned = false; hideTooltip(true);
   const pending = game.prepareCombats();
-  renderTopbar();
+  renderTopbar(); renderBench(); renderTraits(); renderGold();
   const my = pending.combats.find(c => c.a === 0 || c.b === 0);
   const enemyName = my ? (my.kind === 'pve' ? '野怪' : game.players[my.a === 0 ? my.b : my.a].name + (my.ghost ? '（镜像）' : '')) : null;
   $('enemyLabel').textContent = enemyName ? `对阵：${enemyName}` : '本回合轮空';
-  renderBench(); renderTraits();
+  $('timer').textContent = '';
   $('speedBtn').style.display = $('skipBtn').style.display = 'inline-block';
   $('speedBtn').textContent = '▶ 1x';
   if (!my) { finishCombat(); return; }
-  // 若人类在 b 侧，事件坐标需要镜像
   const mirror = my.a !== 0;
   startPlayback(my.events, mirror);
 }
@@ -375,6 +523,13 @@ function playLoop(now) {
   setTimeout(() => playLoop(performance.now()), 33);
 }
 
+function updateBars(n) {
+  const hpBar = n.el.querySelector('.bars > div');
+  if (hpBar) hpBar.style.width = Math.max(0, n.hp / n.maxHp * 100) + '%';
+  const mBar = n.el.querySelector('.mbar > div');
+  if (mBar) mBar.style.width = Math.min(100, Math.max(0, n.manaMax ? n.mana / n.manaMax * 100 : 0)) + '%';
+}
+
 function applyEvent(pb, e) {
   const board = $('board');
   const nodes = pb.nodes;
@@ -382,11 +537,15 @@ function applyEvent(pb, e) {
     case 'spawn': {
       const def = e.monster ? { name: e.name, monster: true, races: [], classes: [] } : UNITS_BY_ID[e.defId];
       const enemy = e.team === (pb.mirror ? 0 : 1);
-      const el = makeUnitNode(def, e.star, { bars: true, enemy });
+      const el = makeUnitNode(def, e.star, { bars: true, enemy, manaPct: e.manaMax ? e.mana / e.manaMax * 100 : 0 });
       const { c, r } = mirrorPos(pb, e.c, e.r);
       positionUnit(el, c, r);
       board.appendChild(el);
-      nodes[e.id] = { el, maxHp: e.hp, hp: e.hp, enemy };
+      const n = { el, maxHp: e.hp, hp: e.hp, mana: e.mana, manaMax: e.monster ? 0 : e.manaMax, enemy, def, star: e.star, items: e.items || [] };
+      nodes[e.id] = n;
+      // 战斗中实时悬浮信息
+      el.onpointerenter = ev => { if (!tooltipPinned) showTooltip(liveTooltip(n), ev); };
+      el.onpointerleave = () => hideTooltip();
       break;
     }
     case 'move': {
@@ -405,11 +564,12 @@ function applyEvent(pb, e) {
       }
       break;
     }
+    case 'mana': { const n = nodes[e.id]; if (n) { n.mana = e.v; updateBars(n); } break; }
     case 'dmg': {
       const n = nodes[e.id]; if (!n) break;
       n.hp = e.hp;
-      const bar = n.el.querySelector('.bars > div');
-      if (bar) bar.style.width = Math.max(0, e.hp / n.maxHp * 100) + '%';
+      if (e.tmana !== undefined) n.mana = e.tmana;
+      updateBars(n);
       const bars = n.el.querySelector('.bars');
       if (bars) bars.classList.toggle('shielded', e.shield > 0);
       if (!pb.skip) floatText(n.el, (e.crit ? '暴击 ' : '') + e.v, DMG_COLOR[e.type] || '#fff', e.crit);
@@ -418,14 +578,14 @@ function applyEvent(pb, e) {
     case 'heal': {
       const n = nodes[e.id]; if (!n) break;
       n.hp = e.hp;
-      const bar = n.el.querySelector('.bars > div');
-      if (bar) bar.style.width = Math.max(0, e.hp / n.maxHp * 100) + '%';
+      updateBars(n);
       if (!pb.skip && e.v > 5) floatText(n.el, '+' + e.v, 'var(--heal)');
       break;
     }
     case 'shield': { const n = nodes[e.id]; if (n) { const bars = n.el.querySelector('.bars'); if (bars) bars.classList.add('shielded'); } break; }
     case 'cast': {
       const n = nodes[e.id]; if (!n) break;
+      n.mana = 0; updateBars(n);
       if (!pb.skip) {
         n.el.classList.add('casting'); setTimeout(() => n.el.classList.remove('casting'), 500);
         floatText(n.el, '【' + e.name + '】', 'var(--accent2)');
@@ -447,7 +607,7 @@ function applyEvent(pb, e) {
       break;
     }
     case 'mordor': { if (!pb.skip) banner('邪黑塔锁定了棋盘！'); break; }
-    case 'lightItem': { const n = nodes[e.id]; if (n && !pb.skip) floatText(n.el, '☀ ' + e.item, 'var(--dmg-light)'); break; }
+    case 'lightItem': { const n = nodes[e.id]; if (n) { n.items.push(e.item + '☀'); if (!pb.skip) floatText(n.el, '☀ ' + e.item, 'var(--dmg-light)'); } break; }
     case 'overtime': { if (!pb.skip) banner('加时！全员狂暴'); break; }
     case 'end': {
       const meWon = e.winner === (pb.mirror ? 1 : 0);
@@ -456,6 +616,10 @@ function applyEvent(pb, e) {
     }
   }
   return false;
+}
+function liveTooltip(n) {
+  if (n.def.monster) return `<h5>${n.def.name}</h5><div style="color:var(--accent)">实时：生命 ${Math.max(0, Math.round(n.hp))}/${n.maxHp}</div>`;
+  return unitDefTooltip(n.def, n.star, { hp: Math.max(0, Math.round(n.hp)), maxHp: n.maxHp, mana: Math.round(n.mana), manaMax: n.manaMax, items: n.items });
 }
 
 function floatText(el, txt, color, big) {
@@ -485,7 +649,7 @@ function banner(txt) {
   b.textContent = txt;
   b.style.display = 'block';
   clearTimeout(b._t);
-  b._t = setTimeout(() => b.style.display = 'none', 1500);
+  b._t = setTimeout(() => b.style.display = 'none', 1600);
 }
 
 function finishCombat() {

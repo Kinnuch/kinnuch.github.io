@@ -20,7 +20,7 @@ export function makeFighter(unit, team, playerCtx) {
     pos: { ...unit.pos }, alive: true,
     maxHp: base.hp + (prog.mkHp || 0), hp: 0,
     mana: def.mana[0], manaMax: def.mana[1], breakMana: 0, manaLockUntil: 0,
-    bonus: { ad: (prog.mkAd || 0), adPct: 0, asPct: 0, armor: 0, cn: 0, mn: 0, cc: (prog.mkAd || 0), mc: 0, critR: 15, critD: 150, vamp: 0, amp: 0, dr: 0, hpPct: 0, hsPct: 0, ten: 0, startMana: 0, manaOnAttack: 0, manaOnCast: 0 },
+    bonus: { ad: (prog.mkAd || 0), adPct: 0, asPct: 0, armor: 0, cn: 0, mn: 0, cc: (prog.mkAd || 0), mc: 0, critR: 15, critD: 150, vamp: 0, amp: 0, dr: 0, hpFlat_: 0, hpPct: 0, hsPct: 0, ten: 0, startMana: 0, manaOnAttack: 0, manaOnCast: 0 },
     buffs: [], st: {}, shields: [],
     atkCd: 0, moveCd: 0, atkCount: 0, target: null,
     flags: {}, unitRef: unit,
@@ -35,7 +35,7 @@ export function makeMonsterFighter(m, count, idx, pos) {
     base: { ad: m.ad, armor: m.armor || 0, cc: 0, mc: 0, cn: m.cn || 0, mn: m.mn || 0, ten: 0, hp: m.hp, as: m.as },
     pos, alive: true, maxHp: m.hp, hp: 0,
     mana: 0, manaMax: 9999, breakMana: 0, manaLockUntil: 0,
-    bonus: { ad: 0, adPct: 0, asPct: 0, armor: 0, cn: 0, mn: 0, cc: 0, mc: 0, critR: 0, critD: 150, vamp: 0, amp: 0, dr: 0, hpPct: 0, hsPct: 0, ten: 0, startMana: 0, manaOnAttack: 0, manaOnCast: 0 },
+    bonus: { ad: 0, adPct: 0, asPct: 0, armor: 0, cn: 0, mn: 0, cc: 0, mc: 0, critR: 0, critD: 150, vamp: 0, amp: 0, dr: 0, hpFlat_: 0, hpPct: 0, hsPct: 0, ten: 0, startMana: 0, manaOnAttack: 0, manaOnCast: 0 },
     buffs: [], st: {}, shields: [],
     atkCd: 0, moveCd: 0, atkCount: 0, target: null, flags: {}, unitRef: null, isMonster: true,
   };

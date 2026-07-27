@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Enya Panta-Tyalië · 中土自走棋</title>
+  <link rel="stylesheet" href="css/ept.css">
+  <script>
+    (function(){var t=localStorage.getItem('theme');if(t==='dark'||((!t)&&window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches)){document.documentElement.setAttribute('data-theme','dark');}})();
+  </script>
+</head>
+<body>
+  <div class="header-bar">
+    <div class="utility-bar">
+      <a href="https://kinnuch.github.io/cerf" class="utility-btn">🏠 返回工具页</a>
+      <button id="theme-toggle" class="utility-btn" onclick="toggleTheme()">☀ 模式</button>
+    </div>
+    <h1 class="page-title">Enya Panta-Tyalië · 中土自走棋</h1>
+    <p class="page-sub">以中洲的英雄与魔物布阵对弈。当前版本：M1 单人模式（多人联机将在 M3 开放）。</p>
+  </div>
+
+  <!-- 大厅 -->
+  <div id="lobby">
+    <h2>开始对局</h2>
+    <p>8 人对局：你与 7 位 AI 执棋者同场竞技。回合流程：野怪 → 玩家对战 → 选秀与掉落。
+      购买棋子、凑齐羁绊、三合一升星、给核心穿装备；输掉战斗会扣除玩家生命，活到最后即胜。</p>
+    <p>操作：拖拽棋子上场/换位/回备战席/出售；点击散件选中后再点击棋子穿戴（两件散件可合成成装）；
+      商店可刷新（2金币）、买经验（4金币）、锁定。</p>
+    <div class="lobby-btns">
+      <button id="startSolo" class="big-btn">⚔ 单人模式</button>
+      <button class="big-btn" disabled>🌐 多人联机（M3 开放）</button>
+    </div>
+  </div>
+
+  <!-- 游戏 -->
+  <div id="game">
+    <div id="topbar">
+      <span id="roundLabel">1-2</span>
+      <span id="phaseInfo">备战阶段</span>
+      <span id="timer">45s</span>
+      <span class="stat" id="hpStat"></span>
+      <span class="stat" id="goldStat"></span>
+      <span class="stat" id="lvStat"></span>
+      <span class="stat" id="streakStat"></span>
+      <span id="enemyLabel" style="color:var(--accent)"></span>
+      <span style="flex:1"></span>
+      <button id="speedBtn">▶ 1x</button>
+      <button id="skipBtn">⏭ 跳过</button>
+      <button id="startBtn">开战 ⚔</button>
+    </div>
+    <div id="layout">
+      <div id="leftPanel">
+        <div class="panel-box" id="playersBox"><h4>玩家</h4></div>
+      </div>
+      <div id="centerPanel">
+        <div id="boardWrap">
+          <div id="board"></div>
+          <div id="banner"></div>
+        </div>
+        <div class="panel-box">
+          <h4>备战席 <span id="itemHint" style="display:none;color:var(--accent)">（已选中散件——点击棋子穿戴）</span></h4>
+          <div id="benchRow"></div>
+          <h4 style="margin-top:8px">物品栏</h4>
+          <div id="itemRow"></div>
+          <div id="sellZone">拖到这里出售</div>
+        </div>
+        <div class="panel-box">
+          <div id="shopBar">
+            <div id="shopBtns">
+              <button id="rerollBtn">🎲 刷新 (2🪙)</button>
+              <button id="xpBtn">📖 经验 (4🪙)</button>
+              <button id="lockBtn">🔓 锁定</button>
+            </div>
+            <div id="shopCards" style="display:flex;flex:1;gap:8px"></div>
+          </div>
+        </div>
+      </div>
+      <div id="rightPanel">
+        <div class="panel-box" id="traitsBox"><h4>羁绊（场上）</h4></div>
+        <div class="panel-box"><h4>战报</h4><div id="logBox"></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 结束 -->
+  <div id="overScreen">
+    <h2 id="overTitle"></h2>
+    <p id="overDesc" style="margin-bottom:20px;color:var(--sub)"></p>
+    <button id="againBtn" class="big-btn" style="max-width:220px">再来一局</button>
+  </div>
+
+  <div id="tooltip"></div>
+  <div id="dragGhost"></div>
+
+  <script>
+    function toggleTheme(){
+      var cur=document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark';
+      document.documentElement.setAttribute('data-theme',cur);
+      localStorage.setItem('theme',cur);
+    }
+  </script>
+  <script type="module">
+    import { initUI } from './js/ui.js';
+    initUI();
+  </script>
+</body>
+</html>

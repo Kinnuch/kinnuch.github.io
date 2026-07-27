@@ -1,5 +1,19 @@
 [
   {
+    "hash": "060d6f59da623536509d931e91c76c63481af236",
+    "short": "060d6f5",
+    "date": "2026-07-27T18:13:31+08:00",
+    "author": "wuyichen",
+    "msg": "update MiddleEarth-AutoChess miniGame"
+  },
+  {
+    "hash": "68503b79fe3c7d2bd52f6d6504fe8090d7f91c96",
+    "short": "68503b7",
+    "date": "2026-07-26T07:42:55Z",
+    "author": "github-actions[bot]",
+    "msg": "chore: refresh commits.json [skip ci]"
+  },
+  {
     "hash": "16ff57cdd22b357e0292cc7ec59eea5a0a1a7e2e",
     "short": "16ff57c",
     "date": "2026-07-26T15:42:26+08:00",

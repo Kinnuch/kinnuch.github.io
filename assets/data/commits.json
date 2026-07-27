@@ -1,5 +1,19 @@
 [
   {
+    "hash": "bd82e55ed5c014a45287467107d392af725e037a",
+    "short": "bd82e55",
+    "date": "2026-07-27T19:31:52+08:00",
+    "author": "wuyichen",
+    "msg": "update EPT miniGame"
+  },
+  {
+    "hash": "c2f3019a51aa4a74eea04cc6bd681a6ecd9ebc52",
+    "short": "c2f3019",
+    "date": "2026-07-27T10:31:26Z",
+    "author": "github-actions[bot]",
+    "msg": "chore: refresh commits.json [skip ci]"
+  },
+  {
     "hash": "9d4c91e6400228ff84b30e8e3747f5f44b078d29",
     "short": "9d4c91e",
     "date": "2026-07-27T18:30:59+08:00",

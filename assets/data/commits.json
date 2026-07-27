@@ -1,5 +1,19 @@
 [
   {
+    "hash": "9d4c91e6400228ff84b30e8e3747f5f44b078d29",
+    "short": "9d4c91e",
+    "date": "2026-07-27T18:30:59+08:00",
+    "author": "wuyichen",
+    "msg": "fix a bug where hp of orcs do not drop"
+  },
+  {
+    "hash": "30dab20f8ec3d3a488ce55d150f946c7e25f8067",
+    "short": "30dab20",
+    "date": "2026-07-27T10:21:59Z",
+    "author": "github-actions[bot]",
+    "msg": "chore: refresh commits.json [skip ci]"
+  },
+  {
     "hash": "4d247a2e2f19227143442a8739b686e05916797e",
     "short": "4d247a2",
     "date": "2026-07-27T18:21:32+08:00",

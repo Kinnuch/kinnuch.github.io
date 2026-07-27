@@ -1,5 +1,19 @@
 [
   {
+    "hash": "4d247a2e2f19227143442a8739b686e05916797e",
+    "short": "4d247a2",
+    "date": "2026-07-27T18:21:32+08:00",
+    "author": "wuyichen",
+    "msg": "update Gell information"
+  },
+  {
+    "hash": "1411bc438acb5ac11319957e460ecda46604e55d",
+    "short": "1411bc4",
+    "date": "2026-07-27T10:13:45Z",
+    "author": "github-actions[bot]",
+    "msg": "chore: refresh commits.json [skip ci]"
+  },
+  {
     "hash": "060d6f59da623536509d931e91c76c63481af236",
     "short": "060d6f5",
     "date": "2026-07-27T18:13:31+08:00",

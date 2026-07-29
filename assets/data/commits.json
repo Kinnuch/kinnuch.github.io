@@ -1,5 +1,19 @@
 [
   {
+    "hash": "344559d6ba3dd2fb1a589400ee5ceb695100d5ea",
+    "short": "344559d",
+    "date": "2026-07-29T19:05:14+08:00",
+    "author": "wuyichen",
+    "msg": "fixed Duilin info bug and optimize carousel phase and add new VFX"
+  },
+  {
+    "hash": "0adbfee00a686abc4e92683a54cd3f4813bd7614",
+    "short": "0adbfee",
+    "date": "2026-07-29T09:06:26Z",
+    "author": "github-actions[bot]",
+    "msg": "chore: refresh commits.json [skip ci]"
+  },
+  {
     "hash": "b67640579060bca05b255c4d342d68c5200f3f7f",
     "short": "b676405",
     "date": "2026-07-29T17:05:48+08:00",

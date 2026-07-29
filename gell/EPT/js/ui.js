@@ -145,6 +145,7 @@ function startGame(seed) {
   selectedItem = null;
   tutEnabled = $('tutCheck').checked;
   tutShown = {};
+  lastLevel = 0;
   setPaused(false);
   renderAll();
   maybeTut('welcome');
@@ -153,19 +154,39 @@ function startGame(seed) {
 }
 
 // ---------- 共享选秀 ----------
-let carTimer = null, carWave = 0;
+const CAR_WAVE_SEC = 6;
+let carTimer = null, carWaves = 0, carLeft = 0;
 function showCarousel() {
   maybeTut('carousel');
-  carWave = 1;
+  carWaves = 1;
+  carLeft = CAR_WAVE_SEC;
   game.carouselRelease();
+  if (myReleased()) bell(988);
   renderCarousel();
   clearInterval(carTimer);
   carTimer = setInterval(() => {
     if (paused) return;
-    if (game.carousel && !game.carousel.done && carWave < 5) { carWave++; game.carouselRelease(); renderCarousel(); }
-    else finishCarousel();
-  }, 3000);
+    const c = game.carousel;
+    if (!c || c.done) { finishCarousel(); return; }
+    carLeft--;
+    if (carLeft <= 0) {
+      const maxW = Math.ceil(c.order.length / 2);
+      if (carWaves >= maxW) { finishCarousel(); return; }
+      carWaves++;
+      const before = myReleased();
+      game.carouselRelease();
+      carLeft = CAR_WAVE_SEC;
+      if (!before && myReleased()) bell(988); // 轮到你了
+    }
+    renderCarousel();
+  }, 1000);
   $('carModal').style.display = 'flex';
+}
+function myReleased() {
+  const c = game.carousel;
+  if (!c) return false;
+  const myPos = c.order.indexOf(0);
+  return myPos >= 0 && myPos < c.released && !c.offers.some(o => o.takenBy === 0);
 }
 function finishCarousel() {
   clearInterval(carTimer);
@@ -180,8 +201,27 @@ function renderCarousel() {
   const myPos = c.order.indexOf(0);
   const picked = c.offers.some(o => o.takenBy === 0);
   const myTurn = myPos >= 0 && myPos < c.released && !picked;
-  let html = `<div id="carBox"><h3>🎠 共享选秀</h3>
-    <div class="tt-sub">${picked ? '你已选择，等待其他玩家…' : myTurn ? '<b style="color:var(--accent)">轮到你了！点击卡片选择</b>' : `血量较低的玩家先放行（你的顺位：第 ${myPos + 1}）`}</div>
+  // 顺位条：✓已选 / 高亮=选择中 / 灰=等待
+  const seats = c.order.map((pi, k) => {
+    const p = game.players[pi];
+    const done = c.offers.some(o => o.takenBy === pi);
+    const cls = done ? ' done' : k < c.released ? ' now' : '';
+    return `<span class="car-seat${cls}${pi === 0 ? ' mine' : ''}">${k + 1}.${p.name}${done ? '✓' : ''}</span>`;
+  }).join('');
+  // 状态行与倒计时
+  let status;
+  if (picked) status = '你已选择，等待其他玩家…';
+  else if (myTurn) status = `<b style="color:var(--accent)">轮到你了！点击卡片选择</b>`;
+  else {
+    const myWave = Math.floor(myPos / 2);
+    const secs = (myWave - (carWaves - 1) - 1) * CAR_WAVE_SEC + carLeft;
+    status = secs <= CAR_WAVE_SEC
+      ? `<b style="color:var(--accent2)">⏳ ${secs} 秒后轮到你，想好要拿哪个！</b>`
+      : `你的顺位：第 ${myPos + 1}（约 ${secs} 秒后放行）`;
+  }
+  let html = `<div id="carBox"><h3>🎠 共享选秀 <span class="tt-sub" style="font-weight:normal">每 ${CAR_WAVE_SEC} 秒放行 2 人 · 下一批 ${carLeft}s</span></h3>
+    <div id="carSeats">${seats}</div>
+    <div class="tt-sub" style="margin-top:4px">${status}</div>
     <div id="carGrid">`;
   c.offers.forEach((o, i) => {
     const def = UNITS_BY_ID[o.defId];
@@ -213,9 +253,21 @@ function startPlanTimer() {
 }
 
 // ---------- 渲染 ----------
+let lastLevel = 0;
 function renderAll() {
   renderTopbar(); renderPlayers(); renderBoardUnits(); renderBench(); renderItems(); renderShop(); renderTraits(); renderLog(); renderGold(); renderOdds();
   playMergeFx();
+  // 升级特效
+  const lv = me().level;
+  if (lastLevel && lv > lastLevel) {
+    banner(`⬆ 升级！等级 ${lv} — 可上场 ${lv} 名棋子`);
+    bell(1046); setTimeout(() => bell(1318), 140);
+    const btn = $('xpBtn');
+    btn.classList.remove('level-flash'); void btn.offsetWidth; btn.classList.add('level-flash');
+    const bw = $('boardWrap');
+    bw.classList.remove('level-glow'); void bw.offsetWidth; bw.classList.add('level-glow');
+  }
+  lastLevel = lv;
 }
 function playMergeFx() {
   if (!game.mergeFx || !game.mergeFx.length) return;
@@ -412,6 +464,8 @@ function renderShop() {
     if (!id) { card.className = 'shop-card empty'; bar.appendChild(card); return; }
     const def = UNITS_BY_ID[id];
     card.className = 'shop-card';
+    // 差一张就能升星：白色扩散特效（买入即合成 2 星，若同时有两只 2 星还会连升 3 星）
+    if (allUnits(p).filter(u => u.def.id === id && u.star === 1).length === 2) card.classList.add('upgrade');
     card.style.borderColor = COST_COLOR[def.cost];
     const traits = [...def.races.map(r => `<span class="sc-t" data-t="${r}">${RACES[r]}</span>`),
       ...def.classes.map(c => `<span class="sc-t" data-t="${c}">${CLASSES[c]}</span>`)].join(' · ');

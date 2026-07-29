@@ -133,6 +133,11 @@ button { font-family: inherit; cursor: pointer; }
 #carModal { display: none; position: fixed; inset: 0; z-index: 250; background: #000a; align-items: center; justify-content: center; }
 #carBox { background: var(--panel); border: 2px solid var(--accent); border-radius: 14px; padding: 20px; max-width: 560px; }
 #carBox h3 { color: var(--accent); margin-bottom: 6px; }
+#carSeats { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 8px; }
+.car-seat { font-size: 11.5px; padding: 2px 7px; border-radius: 10px; background: var(--panel2); color: var(--sub); border: 1px solid var(--border); }
+.car-seat.now { background: var(--accent2); color: #fff8e8; border-color: var(--accent); font-weight: bold; }
+.car-seat.done { opacity: .55; }
+.car-seat.mine { outline: 2px solid var(--accent); }
 #carGrid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 12px; }
 .car-offer { border: 2px solid var(--c1); border-radius: 8px; background: var(--panel2); padding: 8px; font-size: 13px; position: relative; min-height: 60px; }
 .car-offer.pickable { cursor: pointer; }
@@ -153,6 +158,16 @@ button { font-family: inherit; cursor: pointer; }
 .shop-card { flex: 1; max-width: 150px; border-radius: 8px; border: 2px solid var(--c1); background: var(--panel2); padding: 6px; cursor: pointer; font-size: 12px; position: relative; min-height: 84px; }
 .shop-card:hover { filter: brightness(1.1); }
 .shop-card.empty { opacity: .25; cursor: default; }
+/* 差一张升星：白色边框向外扩散特效 */
+.shop-card.upgrade { overflow: visible; }
+.shop-card.upgrade::after { content: ''; position: absolute; inset: -3px; border: 2px solid #ffffff; border-radius: 10px; pointer-events: none; animation: upgradeRipple 1.3s ease-out infinite; }
+.shop-card.upgrade::before { content: ''; position: absolute; inset: -1px; border: 1.5px solid #ffffffcc; border-radius: 9px; pointer-events: none; }
+@keyframes upgradeRipple { 0% { opacity: .95; transform: scale(1); } 100% { opacity: 0; transform: scale(1.18); } }
+/* 升级特效 */
+#xpBtn.level-flash { animation: levelFlash 1s ease-out; }
+@keyframes levelFlash { 0% { box-shadow: 0 0 0 0 #ffd700cc; background: var(--gold); } 100% { box-shadow: 0 0 22px 14px #ffd70000; } }
+#boardWrap.level-glow { animation: levelGlow 1.1s ease-out; }
+@keyframes levelGlow { 0% { box-shadow: inset 0 0 60px 10px #ffd70066; } 100% { box-shadow: inset 0 0 0 0 #ffd70000; } }
 .shop-card .sc-name { font-weight: bold; font-size: 13px; }
 .shop-card .sc-traits { color: var(--sub); margin-top: 2px; line-height: 1.4; }
 .shop-card .sc-cost { position: absolute; right: 6px; bottom: 4px; color: var(--gold); font-weight: bold; }

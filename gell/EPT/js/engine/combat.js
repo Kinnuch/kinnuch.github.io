@@ -855,7 +855,7 @@ function castSkill(sim, f) {
       if (!tgt) break;
       for (let i = 0; i < 3; i++) {
         if (!tgt.alive) break;
-        const d = sim.deal(f, tgt, e.ad * [0.7, 1.05, 1.6][L] + [15, 20, 30][L] + e.cc * 0, 'light', { canCrit: true });
+        const d = sim.deal(f, tgt, e.ad * [0.7, 1.05, 1.6][L] + e.cc * [0.15, 0.2, 0.3][L], 'light', { canCrit: true });
         skillHealHook(d);
       }
       break;

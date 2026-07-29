@@ -27,7 +27,7 @@ export const UNITS = [
   { id: 'duilin', name: '杜伊林', cost: 1, align: 'light',
     races: ['noldor', 'gondolin'], classes: ['trickshot'],
     aff: [14, 4, 10, 0, 0, 0], hp: 480, as: 0.8, range: 4, mana: [0, 70], speed: 1.0,
-    skill: { name: '飞燕三连矢', desc: '连珠发射3箭，每箭造成 70/105/160%AD + 15/20/30CC 的光明伤害。' } },
+    skill: { name: '飞燕三连矢', desc: '连珠发射3箭，每箭造成 70/105/160%AD + 15/20/30%CC 的光明伤害。' } },
   { id: 'guthlaf', name: '古斯拉夫', cost: 1, align: 'phys',
     races: ['rohirrim'], classes: ['flagger'],
     aff: [12, 10, 0, 0, 0, 6], hp: 520, as: 0.75, range: 1, mana: [30, 80], speed: 1.4,

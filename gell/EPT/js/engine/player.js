@@ -98,6 +98,7 @@ export function tryMerge(game, p, defId) {
       copies.sort((a, b) => (isFielded(p, b.uid) ? 1 : 0) - (isFielded(p, a.uid) ? 1 : 0));
       const keep = copies[0], remove = copies.slice(1, 3);
       keep.star = star + 1;
+      if (game) (game.mergeFx = game.mergeFx || []).push(keep.uid);
       for (const rm of remove) {
         for (const it of rm.items) p.items.push(it);       // 装备回物品栏
         removeUnit(p, rm.uid);

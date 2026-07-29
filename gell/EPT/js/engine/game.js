@@ -137,6 +137,7 @@ export class Game {
       const pa = this.players[cb.a];
       if (cb.kind === 'pve') {
         const won = cb.result.winner === 0;
+        if (cb.sim.goldLoot && cb.sim.goldLoot[0]) pa.gold += cb.sim.goldLoot[0];
         this._afterCombat(pa, won, false, true);
         if (won) {
           this._grantDrops(pa, stage, round.wave ?? 6);
@@ -150,6 +151,11 @@ export class Game {
         const pb = this.players[cb.b];
         const winner = cb.result.winner;
         const aWon = winner === 0, draw = winner === 'draw';
+        // 贝伦【独手夺钻】搜刮
+        if (cb.sim.goldLoot) {
+          if (cb.sim.goldLoot[0]) pa.gold += cb.sim.goldLoot[0];
+          if (cb.sim.goldLoot[1] && !cb.ghost) pb.gold += cb.sim.goldLoot[1];
+        }
         // 魔苟斯汲取
         if (cb.sim.morgothSteal) {
           const st = cb.sim.morgothSteal;

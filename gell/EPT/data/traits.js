@@ -23,7 +23,33 @@ export const TRAITS = {
     desc: '提供 1/2 件交界装备（M1：随机小成装）；矮人弈子获得 8/15% 伤害减免。' },
   angband: { name: '安格班', type: 'race', tiers: [3, 5, 7, 10],
     desc: '安格班弈子的攻击偷取敌人 1/3/5/15 攻击力与 7/12/21/45 生命（有上限），满层后获得额外生命偷取。' },
+  sinda: { name: '辛达精灵', type: 'race', tiers: [3, 5, 7],
+    desc: '辛达弈子获得 15/30/75% 闪避率（每4秒仅生效一次），闪避成功后下次攻击附带 10/15/25% 护甲穿透与光明穿透。' },
+  fingolfinH: { name: '芬国昐家族', type: 'race', tiers: [2, 4],
+    desc: '芬国昐家族弈子在战斗开始时为邻格友军提供不可叠加的 10/20 护甲与光明抗性。' },
+  feanorH: { name: '费艾诺家族', type: 'race', tiers: [3],
+    desc: '最强大的费艾诺家族弈子获得 10% 最大生命值与 10% 额外暴击伤害。' },
+  finarfinH: { name: '菲纳芬家族', type: 'race', tiers: [2, 4],
+    desc: '菲纳芬家族弈子获得每3秒 3/6 点法力回复。' },
+  beor: { name: '贝奥家族', type: 'race', tiers: [3],
+    desc: '贝奥家族弈子在战斗开始的前15秒免疫控制。' },
+  haleth: { name: '哈烈丝家族', type: 'race', tiers: [2],
+    desc: '哈烈丝家族弈子若开战7秒内未阵亡，获得 20 护甲与光明抗性，以及永久 1 攻击力。' },
+  maia: { name: '迈雅', type: 'race', tiers: [3],
+    desc: '迈雅弈子能够双重施法。' },
+  vala: { name: '维拉', type: 'race', tiers: [1],
+    desc: '队伍恰有1名维拉时其专属加成给予全队；多于1名时反转为减益。曼威：三系穿透；瓦尔妲：光强；奥力：护甲与抗性；涅娜：治疗盾强。' },
+  wood: { name: '林中隐士', type: 'race', tiers: [2],
+    desc: '己方获得 15% 治疗强度、护盾强度与控制时长提升；林中隐士技能伤害的 10% 治疗最低血友军。' },
+  dog: { name: '神犬', type: 'race', tiers: [1],
+    desc: '玩家等级 5/7/9 时胡安三次开口：附带灼烧重伤 → 顺劈+吸血+护甲穿透 → 三维翻倍但施法后逐渐死亡。' },
   // ---- 职业 ----
+  arcanist: { name: '秘术士', type: 'class', tiers: [2, 4, 6, 8],
+    desc: '为所有友军提供 20/20/50/80 点自适应强度；秘术士自身额外获得 0/30/40/60 点自适应强度与 0/5/10/20% 自适应穿透。' },
+  forger: { name: '工匠', type: 'class', tiers: [2, 3, 4, 5],
+    desc: '为己方提供 150/200/250/400 最大生命与 10/20/30/40 护甲和自适应抗性；工匠自身双倍。' },
+  indulger: { name: '控灵者', type: 'class', tiers: [3, 5, 7],
+    desc: '控灵者技能对目标施加 15%破法 / 0.5秒眩晕 / 1秒缴械（对同一目标 12/9/4 秒冷却），成功后获得 50/100/250 护盾。' },
   warrior: { name: '战士', type: 'class', tiers: [2, 4, 6, 8],
     desc: '战士获得 5/10/17/33% 伤害减免与 10/15/22/30% 全能吸血，血量低于30%时吸血翻倍。' },
   trickshot: { name: '神射手', type: 'class', tiers: [2, 4],
@@ -44,12 +70,23 @@ export const TRAITS = {
     desc: '盾骑兵血量跌破50%时，为自身及邻格友军均摊提供 10/25/60% 最大生命的护盾4秒。' },
 };
 
-// 掌旗官专属加成（M1 在场的）
+// 掌旗官专属加成
 export const FLAGGER_BONUS = {
   merry: { desc: '战斗开始时100护盾', shield: 100 },
   guthlaf: { desc: '12%攻击力', adPct: 12 },
   witchking: { desc: '12自适应强度', sp: 12 },
   morgoth: { desc: '8%全能吸血', vamp: 8 },
+  finarfin: { desc: '12%攻速', asPct: 12 },
+  magor: { desc: '10护甲与10自适应抗性', armor: 10, mres: 10 },
+  fingon: { desc: '每秒回复2法力', manaRegen: 2 },
+};
+
+// 维拉独修加成（队伍恰1名维拉时全队获得；多于1名则反转为减益）
+export const VALA_BONUS = {
+  manwe: { desc: '5点三系穿透', penFlat: 5 },
+  varda: { desc: '15光明强度', cc: 15 },
+  aule: { desc: '15护甲与15自适应抗性', armor: 15, mres: 15 },
+  nienna: { desc: '10%治疗和护盾强度', hsPct: 10 },
 };
 
 export function traitTier(traitId, count) {

@@ -60,7 +60,7 @@ button { font-family: inherit; cursor: pointer; }
 #board { position: relative; margin: 0 auto; }
 /* 2.5D 视角：棋盘平面后倾，棋子反向立正；--zoom 由滚轮控制 */
 #board { transform: scale(var(--zoom, 1)); transform-origin: 50% 30%; }
-#board.tilt { transform: perspective(1100px) rotateX(38deg) scale(var(--zoom, 1)); transform-origin: 50% 22%; transform-style: preserve-3d; margin-bottom: -70px; margin-top: -4px; }
+#board.tilt { transform: perspective(1100px) rotateX(38deg) scale(var(--zoom, 1)); transform-origin: 50% 22%; margin-bottom: -70px; margin-top: -4px; }
 #zoomHint { position: absolute; right: 10px; bottom: 6px; font-size: 11px; color: var(--sub); opacity: .7; pointer-events: none; }
 #board.tilt .cell { box-shadow: 0 3px 0 #00000022; }
 #board.tilt .unit { transform: rotateX(-38deg); transform-origin: 50% 88%; }
@@ -199,6 +199,15 @@ button { font-family: inherit; cursor: pointer; }
 .stat-row:hover { background: var(--panel2); }
 .stat-row .up { color: #4caf50; font-weight: bold; }
 .stat-row .down { color: #ef5350; font-weight: bold; }
+/* Shift 详情模式：公式灰斜注 */
+.fx { color: var(--sub); font-style: italic; font-size: 11px; font-weight: normal; }
+.tt-shift { margin-top: 5px; font-size: 10.5px; color: var(--sub); opacity: .75; border-top: 1px dashed var(--border); padding-top: 3px; }
+/* 升星特效 */
+.star-fx { position: absolute; left: 50%; top: 45%; width: 20px; height: 20px; margin: -10px; border: 3px solid var(--gold); border-radius: 50%; pointer-events: none; z-index: 40; animation: starRing .8s ease-out forwards; }
+@keyframes starRing { 0% { transform: scale(.4); opacity: 1; box-shadow: 0 0 20px 6px #ffd700aa; } 100% { transform: scale(3.4); opacity: 0; box-shadow: 0 0 4px 1px #ffd70000; } }
+.star-up .portrait { animation: starFlash .8s ease-out; }
+@keyframes starFlash { 0% { filter: brightness(3) saturate(.2); } 100% { filter: none; } }
+.star-txt { position: absolute; left: 50%; top: -6px; transform: translateX(-50%); color: var(--gold); font-weight: bold; font-size: 15px; text-shadow: 0 1px 4px #000; pointer-events: none; z-index: 41; animation: floatUp 1.1s forwards; }
 
 /* 战斗横幅 */
 #banner { position: absolute; left: 50%; top: 40%; transform: translateX(-50%); z-index: 50; font-size: 30px; font-weight: bold; color: var(--accent); text-shadow: 0 2px 8px #000a; display: none; pointer-events: none; }

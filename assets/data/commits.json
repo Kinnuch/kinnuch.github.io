@@ -1,5 +1,19 @@
 [
   {
+    "hash": "b67640579060bca05b255c4d342d68c5200f3f7f",
+    "short": "b676405",
+    "date": "2026-07-29T17:05:48+08:00",
+    "author": "wuyichen",
+    "msg": "update EPT with equipment and carousel"
+  },
+  {
+    "hash": "82dbace4654bf711a11d6d3604464ed0bdfdf427",
+    "short": "82dbace",
+    "date": "2026-07-29T05:24:45Z",
+    "author": "github-actions[bot]",
+    "msg": "chore: refresh commits.json [skip ci]"
+  },
+  {
     "hash": "2f301deb2e822819c18fe8a9cf27d3ba2c3be7c9",
     "short": "2f301de",
     "date": "2026-07-29T13:24:01+08:00",

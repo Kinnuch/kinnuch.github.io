@@ -1,5 +1,19 @@
 [
   {
+    "hash": "2f301deb2e822819c18fe8a9cf27d3ba2c3be7c9",
+    "short": "2f301de",
+    "date": "2026-07-29T13:24:01+08:00",
+    "author": "wuyichen",
+    "msg": "update EPT with all 63 characters"
+  },
+  {
+    "hash": "5bc30b75a377101c320e4ffd0f7c0e6a43733422",
+    "short": "5bc30b7",
+    "date": "2026-07-29T03:47:15Z",
+    "author": "github-actions[bot]",
+    "msg": "chore: refresh commits.json [skip ci]"
+  },
+  {
     "hash": "6371fa5c054b7726fe9d3ecf1b0fc26243ad99cc",
     "short": "6371fa5",
     "date": "2026-07-29T11:46:37+08:00",

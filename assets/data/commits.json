@@ -1,5 +1,19 @@
 [
   {
+    "hash": "6371fa5c054b7726fe9d3ecf1b0fc26243ad99cc",
+    "short": "6371fa5",
+    "date": "2026-07-29T11:46:37+08:00",
+    "author": "wuyichen",
+    "msg": "udpate EPT detail panel refresh method"
+  },
+  {
+    "hash": "17c021323a7824d8b77c4fe0133a20c011700836",
+    "short": "17c0213",
+    "date": "2026-07-29T03:26:16Z",
+    "author": "github-actions[bot]",
+    "msg": "chore: refresh commits.json [skip ci]"
+  },
+  {
     "hash": "23f6ff23b50c20df9299980ab11fde0872dd189b",
     "short": "23f6ff2",
     "date": "2026-07-29T11:25:27+08:00",

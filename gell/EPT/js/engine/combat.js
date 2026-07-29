@@ -73,6 +73,7 @@ export class Combat {
       if (f.bonus.startShieldPct_) this.addShield(f, f.maxHp * f.bonus.startShieldPct_ / 100, 8, f);
       if (f.bonus.startShieldFlat_) this.addShield(f, f.bonus.startShieldFlat_, 8, f);
       this.emit({ k: 'spawn', id: f.id, team: f.team, defId: f.def.id, name: f.def.name, star: f.star, c: f.pos.c, r: f.pos.r, hp: f.maxHp, monster: !!f.isMonster, mana: Math.round(f.mana), manaMax: f.manaMax, items: [...f.items, ...f.tempItems].map(i => i.name) });
+      if (!f.isMonster) this.emit({ k: 'stats', id: f.id, s: this.statsSnap(f) });
     }
   }
 
@@ -194,6 +195,10 @@ export class Combat {
     return { ad: Math.max(1, ad * (1 + adPct / 100)), as: Math.max(0.1, as), armor: Math.max(0, armor), cn: Math.max(0, cn), mn: Math.max(0, mn), cc, mc, amp, dr: Math.min(dr, 70), vamp, critR: Math.min(critR, 100), critD, ten, hs, range: st.range, speed: st.speed };
   }
   adaptStrength(f) { const e = this.eff(f); return Math.max(e.cc, e.mc); }
+  statsSnap(f) {
+    const e = this.eff(f);
+    return { ad: Math.round(e.ad), as: Math.round(e.as * 100) / 100, armor: Math.round(e.armor), cn: Math.round(e.cn), mn: Math.round(e.mn), cc: Math.round(e.cc), mc: Math.round(e.mc), critR: Math.round(e.critR), critD: Math.round(e.critD), amp: Math.round(e.amp), dr: Math.round(e.dr), vamp: Math.round(e.vamp), ten: Math.round(e.ten) };
+  }
 
   buff(f, stats, dur) { f.buffs.push({ stats, until: this.t + dur }); }
   ccDur(f, dur) { const e = this.eff(f); return (f.st.ccImmuneUntil || 0) > this.t ? 0 : dur * 100 / (100 + e.ten); }
@@ -376,8 +381,10 @@ export class Combat {
         for (const m of this.team(team)) if (m.mordorAS) this.buff(m, { asPct: m.mordorAS }, 999);
       }
     }
+    const doStats = Math.round(this.t * 10) % 5 === 0; // 每0.5秒广播实时属性
     for (const f of this.f) {
       if (!f.alive) continue;
+      if (doStats && !f.isMonster) this.emit({ k: 'stats', id: f.id, s: this.statsSnap(f) });
       // 灼烧
       if ((f.st.burnUntil || 0) > this.t) {
         f.flags.burnAcc = (f.flags.burnAcc || 0) + DT;

@@ -70,6 +70,16 @@ export function initUI() {
     applyView();
   };
   applyView();
+  // 滚轮缩放棋盘
+  let zoom = parseFloat(localStorage.getItem('ept-zoom')) || 1;
+  $('board').style.setProperty('--zoom', zoom);
+  $('boardWrap').addEventListener('wheel', e => {
+    e.preventDefault();
+    zoom = Math.min(1.6, Math.max(0.55, zoom - Math.sign(e.deltaY) * 0.08));
+    zoom = Math.round(zoom * 100) / 100;
+    localStorage.setItem('ept-zoom', zoom);
+    $('board').style.setProperty('--zoom', zoom);
+  }, { passive: false });
   document.addEventListener('pointermove', e => { moveTooltip(e); dragMove(e); });
   document.addEventListener('pointerup', dragEnd);
   document.addEventListener('pointerdown', e => {
@@ -350,16 +360,52 @@ function barsHtml(live) {
   return `<div class="tt-bar hp"><div style="width:${hpPct}%"></div><span>❤ ${live.hp} / ${live.maxHp}</span></div>
   ${live.manaMax ? `<div class="tt-bar mp"><div style="width:${mpPct}%"></div><span>💧 ${live.mana} / ${live.manaMax}</span></div>` : ''}`;
 }
+// 技能描述里的公式 → 按当前星级与实时属性算成具体数字
+function computeSkillDesc(def, star, st) {
+  const L = Math.min(star, 3) - 1;
+  let d = def.skill.desc;
+  d = d.replace(/(\d+(?:\.\d+)?)\/(\d+(?:\.\d+)?)\/(\d+(?:\.\d+)?)×适辉/g, (m, a, b, c) =>
+    `<b>${Math.round([+a, +b, +c][L] * Math.max(st.cc, st.mc))}</b>`);
+  d = d.replace(/(\d+(?:\.\d+)?)\/(\d+(?:\.\d+)?)\/(\d+(?:\.\d+)?)(%?)\s*(AD|CC|MC)/g, (m, a, b, c, pct, stat) => {
+    const v = [+a, +b, +c][L];
+    const sv = stat === 'AD' ? st.ad : stat === 'CC' ? st.cc : st.mc;
+    return `<b>${Math.round(pct ? v / 100 * sv : v * sv)}</b>`;
+  });
+  d = d.replace(/(\d+(?:\.\d+)?)%(AD|CC|MC)/g, (m, a, stat) => {
+    const sv = stat === 'AD' ? st.ad : stat === 'CC' ? st.cc : st.mc;
+    return `<b>${Math.round(+a / 100 * sv)}</b>`;
+  });
+  d = d.replace(/(\d+(?:\.\d+)?)\/(\d+(?:\.\d+)?)\/(\d+(?:\.\d+)?)/g, (m, a, b, c) => `<b>${[+a, +b, +c][L]}</b>`);
+  return d;
+}
+const STAT_LABELS = [['ad', '攻击力'], ['as', '攻速'], ['armor', '护甲'], ['ten', '韧性'], ['cc', '光强'], ['mc', '黑强'], ['cn', '光抗'], ['mn', '黑抗'], ['critR', '暴击率%'], ['critD', '暴伤%'], ['amp', '增伤%'], ['dr', '减伤%'], ['vamp', '吸血%']];
+function statGridHtml(base, cur) {
+  const rows = STAT_LABELS.map(([k, label]) => {
+    const b = base[k], v = cur[k];
+    const cls = v > b ? 'up' : v < b ? 'down' : '';
+    return `<div class="stat-row" data-name="${label}" data-base="${b}" data-live="${v}"><span>${label}</span><span class="${cls}">${v}</span></div>`;
+  });
+  return `<div class="stat-grid">${rows.join('')}</div>`;
+}
+function baseStatsOf(def, star) {
+  const s = unitStatsAtStar(def, star);
+  return { ad: s.ad, as: def.as, armor: s.armor, cn: s.cn, mn: s.mn, cc: s.cc, mc: s.mc, ten: s.ten, critR: 15, critD: 150, amp: 0, dr: 0, vamp: 0 };
+}
 function unitDefTooltip(def, star, live) {
   const s = unitStatsAtStar(def, star);
+  const base = baseStatsOf(def, star);
+  const cur = (live && live.stats) || base;
   const traits = [...def.races.map(r => RACES[r]), ...def.classes.map(c => CLASSES[c])].join(' · ');
   const align = { light: '光明系', dark: '黑暗系', phys: '物理系' }[def.align];
+  const statsBlock = live && live.stats
+    ? statGridHtml(base, cur) + `<div class="tt-sub">绿=高于纸面，红=低于纸面；悬浮属性看对比</div>`
+    : `<div>生命${s.hp}｜攻击${s.ad}｜攻速${def.as}｜射程${def.range}</div>
+       <div>护甲${s.armor}｜光抗${s.cn}｜黑抗${s.mn}｜韧性${s.ten}</div>
+       <div>光强${s.cc}｜黑强${s.mc}｜法力${def.mana[0]}/${def.mana[1]}</div>`;
   return `<h5>${def.name} ${'★'.repeat(star)}</h5><div class="tt-sub">${def.cost}费 · ${traits} · ${align}</div>
   ${live ? barsHtml(live) : ''}
-  <div>生命${s.hp}｜攻击${s.ad}｜攻速${def.as}｜射程${def.range}</div>
-  <div>护甲${s.armor}｜光抗${s.cn}｜黑抗${s.mn}｜韧性${s.ten}</div>
-  <div>光强${s.cc}｜黑强${s.mc}｜法力${def.mana[0]}/${def.mana[1]}</div>
-  <div style="margin-top:4px"><b>【${def.skill.name}】</b>${def.skill.desc}</div>
+  ${statsBlock}
+  <div style="margin-top:4px"><b>【${def.skill.name}】</b>${computeSkillDesc(def, star, cur)}</div>
   ${def.passive ? `<div class="tt-sub">${def.passive}</div>` : ''}
   ${live && live.items.length ? `<div style="margin-top:4px">装备：${live.items.join('、')}</div>` : ''}`;
 }
@@ -402,6 +448,16 @@ function pinLivePanel(n, ev) {
   showTooltip(liveTooltip(n), ev);
   pinTooltip();
   pinnedLive = n;
+  attachStatHovers();
+}
+function attachStatHovers() {
+  $('tooltip').querySelectorAll('.stat-row').forEach(row => {
+    row.onpointerenter = ev => {
+      const b = +row.dataset.base, v = +row.dataset.live, d = Math.round((v - b) * 100) / 100;
+      showTooltip2(`<h5>${row.dataset.name}</h5><div>纸面基础：${b}</div><div>当前实时：<b class="${d > 0 ? 'up' : d < 0 ? 'down' : ''}" style="color:${d > 0 ? '#4caf50' : d < 0 ? '#ef5350' : 'inherit'}">${v}</b>（${d >= 0 ? '+' : ''}${d}）</div><div class="tt-sub">差值 = 装备 + 羁绊 + 战斗中增减益合计（逐项来源 M2 展开）</div>`, ev);
+    };
+    row.onpointerleave = hideTooltip2;
+  });
 }
 function showTooltip(html, e) { const t = $('tooltip'); t.innerHTML = html; t.style.display = 'block'; t.classList.remove('pinned'); moveTooltip(e); }
 function moveTooltip(e) {
@@ -616,7 +672,7 @@ function updateBars(n) {
   if (hpBar) hpBar.style.width = Math.max(0, n.hp / n.maxHp * 100) + '%';
   const mBar = n.el.querySelector('.mbar > div');
   if (mBar) mBar.style.width = Math.min(100, Math.max(0, n.manaMax ? n.mana / n.manaMax * 100 : 0)) + '%';
-  if (pinnedLive === n) $('tooltip').innerHTML = liveTooltip(n); // 固定面板实时刷新
+  if (pinnedLive === n) { $('tooltip').innerHTML = liveTooltip(n); attachStatHovers(); } // 固定面板实时刷新
 }
 
 function applyEvent(pb, e) {
@@ -656,6 +712,7 @@ function applyEvent(pb, e) {
       break;
     }
     case 'mana': { const n = nodes[e.id]; if (n) { n.mana = e.v; updateBars(n); } break; }
+    case 'stats': { const n = nodes[e.id]; if (n) { n.stats = e.s; if (pinnedLive === n) updateBars(n); } break; }
     case 'dmg': {
       const n = nodes[e.id]; if (!n) break;
       n.hp = e.hp;
@@ -710,7 +767,7 @@ function applyEvent(pb, e) {
 }
 function liveTooltip(n) {
   if (n.def.monster) return `<h5>${n.def.name}</h5>` + barsHtml({ hp: Math.max(0, Math.round(n.hp)), maxHp: n.maxHp, mana: 0, manaMax: 0 });
-  return unitDefTooltip(n.def, n.star, { hp: Math.max(0, Math.round(n.hp)), maxHp: n.maxHp, mana: Math.round(n.mana), manaMax: n.manaMax, items: n.items });
+  return unitDefTooltip(n.def, n.star, { hp: Math.max(0, Math.round(n.hp)), maxHp: n.maxHp, mana: Math.round(n.mana), manaMax: n.manaMax, items: n.items, stats: n.stats });
 }
 
 function floatText(el, txt, color, big) {

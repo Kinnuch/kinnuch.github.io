@@ -3,7 +3,7 @@ import { Game } from './engine/game.js';
 import { buyCard, reroll, buyXp, sellUnit, placeUnit, unfieldUnit, allUnits, isFielded } from './engine/player.js';
 import { RACES, CLASSES, UNITS, UNITS_BY_ID, unitStatsAtStar, XP_TO_LEVEL, SHOP_ODDS } from '../data/units.js';
 import { countTraits, TRAITS } from '../data/traits.js';
-import { canCombine, makeCombinedItem, COMPONENTS, COMBO_NAMES, comboKey } from '../data/items.js';
+import { canCombine, makeCombinedItem, COMPONENTS, COMBO_NAMES, comboKey, CONSUMABLES } from '../data/items.js';
 
 const CELL_W = 70, ROW_H = 58, COLS = 7, ROWS = 8;
 const COST_COLOR = { 1: 'var(--c1)', 2: 'var(--c2)', 3: 'var(--c3)', 4: 'var(--c4)', 5: 'var(--c5)' };
@@ -24,11 +24,42 @@ const shiftHint = () => shiftDown ? '' : '<div class="tt-shift">按住 ⇧Shift 
 const $ = id => document.getElementById(id);
 
 const COMP_ICON = { ad1: '⚔', ad2: '⚔', as1: '🗡', as2: '🏹', ap1: '✨', ap2: '✨', m1: '💧', m2: '💧', a1: '🛡', a2: '🛡', mr1: '🔮', mr2: '🔮', hp1: '❤', hp2: '❤', hs1: '🌿', hs2: '🌿', csc1: '💥', csc2: '💥', al: '☀' };
+const CONS_ICON = { smallDup: '🪞', bigDup: '🪞', jobBook: '📜', dice: '🎲', silmaril: '💎', remover: '🧲', reforger: '♻️', upgrader: '⬆️' };
 function itemIcon(it) {
   if (it.kind === 'component') return COMP_ICON[it.comp] || '';
   if (it.kind === 'light') return '☀';
+  if (it.kind === 'artifact') return '💎';
+  if (it.kind === 'consumable') return CONS_ICON[it.type] || '🎁';
   if (it.comps) return (COMP_ICON[it.comps[0]] || '') + (COMP_ICON[it.comps[1]] || '');
   return '🔸';
+}
+// ---------- 暂停 & 新手指引 ----------
+let paused = false, tutEnabled = false, tutShown = {};
+function setPaused(v) {
+  paused = v;
+  $('pauseBtn').textContent = paused ? '▶ 继续' : '⏸ 暂停';
+  $('pauseBtn').style.background = paused ? 'var(--accent)' : '';
+  $('pauseBtn').style.color = paused ? '#fff8e8' : '';
+}
+const TUT_STEPS = {
+  welcome: ['欢迎来到中土自走棋', '目标：活到最后。每回合你会获得金币收入（含利息与连胜奖励）。用金币在下方<b>商店</b>购买棋子、<b>刷新</b>商店（2金币）或<b>购买经验</b>升级（4金币）。等级决定能上场的棋子数量和商店刷出高费卡的概率。'],
+  board: ['布阵', '把备战席的棋子<b>拖拽</b>到棋盘下半区上场（上限=你的等级）。近战放前排、远程放后排。拖起棋子时商店会变成红色出售区，拖进去即可卖出。'],
+  items: ['装备', '野怪回合会掉落<b>散件</b>。把散件拖到棋子身上穿戴；两件散件（拖到一起）可以合成强力<b>成装</b>。右键散件可以查看全部合成配方。金色边框的是稀有的光明装。'],
+  traits: ['羁绊', '右侧面板显示你场上的<b>羁绊</b>：同种族/职业的独特棋子达到一定数量时激活强力加成（铜→银→金→彩代表档位深度）。悬浮任意羁绊可以看到详细数值和棋子清单。'],
+  combat: ['战斗', '战斗自动进行。可以用 <b>▶倍速</b> 和 <b>⏭跳过</b> 控制回放；左键悬浮棋子看实时血蓝，<b>右键</b>棋子固定完整面板（实时属性、装备、技能数值）。战斗中仍可购买棋子、刷新商店、调整备战席。'],
+  pvp: ['玩家对战', '从第二阶段起将与其他玩家对战。<b>输掉</b>会按阶段和对方存活棋子扣除你的生命值，归零即淘汰。连胜或连败都有额外金币；每 10 金币每回合产 1 利息（至多5）——存钱也是战略。点击左侧玩家可以侦查他们的阵容。'],
+  starup: ['三合一升星', '集齐 3 张相同棋子自动合成升星（3张1星→2星，9张→3星）：生命×1.8、主属性大幅提升。升星是中后期战力的核心来源。'],
+  consumable: ['消耗道具', '你获得了<b>消耗道具</b>（虚线边框）：点击选中后再点击目标棋子使用（复制器/纹章/骰子/精灵宝钻），重铸器和升级器则是选中后点击目标<b>装备</b>。'],
+  carousel: ['共享选秀', '选秀时 9 个<b>自带散件的棋子</b>供 8 名玩家轮流挑选：<b>血量低的玩家先放行</b>（首轮随机顺序）。轮到你时卡片会亮起，点击即可拿走；不选的话超时会自动补选。'],
+};
+function maybeTut(tag) {
+  if (!tutEnabled || tutShown[tag] || !TUT_STEPS[tag]) return;
+  tutShown[tag] = true;
+  const [title, body] = TUT_STEPS[tag];
+  $('tutTitle').textContent = '🎓 ' + title;
+  $('tutBody').innerHTML = body;
+  $('tutModal').style.display = 'flex';
+  setPaused(true);
 }
 
 function bell(freq = 880) {
@@ -57,6 +88,8 @@ export function initUI() {
     $('game').style.display = 'block';
     startGame((Math.random() * 0xFFFFFFFF) >>> 0);
   };
+  $('pauseBtn').onclick = () => setPaused(!paused);
+  $('tutOk').onclick = () => { $('tutModal').style.display = 'none'; setPaused(false); };
   $('startBtn').onclick = () => { if (game && game.phase === 'planning') beginCombat(); };
   $('speedBtn').onclick = () => { if (playback) { playback.speed = playback.speed >= 4 ? 1 : playback.speed * 2; $('speedBtn').textContent = '▶ ' + playback.speed + 'x'; } };
   $('skipBtn').onclick = () => { if (playback) playback.skip = true; };
@@ -110,8 +143,59 @@ function actOk() { return game && !game.over; } // 买卖/刷新/经验：战斗
 function startGame(seed) {
   game = new Game(seed, '你');
   selectedItem = null;
+  tutEnabled = $('tutCheck').checked;
+  tutShown = {};
+  setPaused(false);
+  renderAll();
+  maybeTut('welcome');
+  if (game.carousel) showCarousel();
+  else startPlanTimer();
+}
+
+// ---------- 共享选秀 ----------
+let carTimer = null, carWave = 0;
+function showCarousel() {
+  maybeTut('carousel');
+  carWave = 1;
+  game.carouselRelease();
+  renderCarousel();
+  clearInterval(carTimer);
+  carTimer = setInterval(() => {
+    if (paused) return;
+    if (game.carousel && !game.carousel.done && carWave < 5) { carWave++; game.carouselRelease(); renderCarousel(); }
+    else finishCarousel();
+  }, 3000);
+  $('carModal').style.display = 'flex';
+}
+function finishCarousel() {
+  clearInterval(carTimer);
+  if (game.carousel) game.carouselFinish();
+  $('carModal').style.display = 'none';
   renderAll();
   startPlanTimer();
+}
+function renderCarousel() {
+  const c = game.carousel;
+  if (!c) { finishCarousel(); return; }
+  const myPos = c.order.indexOf(0);
+  const picked = c.offers.some(o => o.takenBy === 0);
+  const myTurn = myPos >= 0 && myPos < c.released && !picked;
+  let html = `<div id="carBox"><h3>🎠 共享选秀</h3>
+    <div class="tt-sub">${picked ? '你已选择，等待其他玩家…' : myTurn ? '<b style="color:var(--accent)">轮到你了！点击卡片选择</b>' : `血量较低的玩家先放行（你的顺位：第 ${myPos + 1}）`}</div>
+    <div id="carGrid">`;
+  c.offers.forEach((o, i) => {
+    const def = UNITS_BY_ID[o.defId];
+    const taker = o.takenBy !== null ? game.players[o.takenBy].name : '';
+    html += `<div class="car-offer${o.takenBy !== null ? ' taken' : myTurn ? ' pickable' : ''}" data-i="${i}" style="border-color:${COST_COLOR[def.cost]}">
+      <div class="sc-name">${CLASS_ICON[def.classes[0]] || ''} ${def.name}</div>
+      <div class="sc-traits">${def.cost}费 · ${COMP_ICON[o.comp] || ''} ${COMPONENTS[o.comp].name}</div>
+      ${taker ? `<div class="car-taker">${taker} ✓</div>` : ''}</div>`;
+  });
+  html += `</div></div>`;
+  $('carModal').innerHTML = html;
+  if (myTurn) $('carModal').querySelectorAll('.car-offer.pickable').forEach(el => {
+    el.onclick = () => { if (game.carouselPick(me(), +el.dataset.i)) { renderCarousel(); renderAll(); } };
+  });
 }
 
 // ---------- 计时 ----------
@@ -120,6 +204,7 @@ function startPlanTimer() {
   planLeft = 45;
   $('timer').textContent = planLeft + 's';
   planTimer = setInterval(() => {
+    if (paused) return;
     planLeft--;
     $('timer').textContent = planLeft + 's';
     if (planLeft > 0 && planLeft <= 5) { bell(planLeft === 1 ? 660 : 880); showCount(planLeft); }
@@ -147,11 +232,12 @@ function playMergeFx() {
     el.appendChild(ring); el.appendChild(txt);
     setTimeout(() => { el.classList.remove('star-up'); ring.remove(); txt.remove(); }, 1100);
   }
-  if (played) bell(1318);
+  if (played) { bell(1318); maybeTut('starup'); }
 }
 
 function renderTopbar() {
   const p = me(), r = game.roundInfo();
+  if (r.type === 'pvp' && game.phase === 'planning') maybeTut('pvp');
   $('roundLabel').textContent = r.label + (r.type === 'pve' ? ' 野怪' : ' 对战');
   $('phaseInfo').textContent = game.phase === 'planning' ? '备战阶段' : '战斗中';
   $('hpStat').innerHTML = `生命 <b>${Math.max(0, p.hp)}</b>`;
@@ -262,6 +348,7 @@ function renderBench() {
   const row = $('benchRow');
   row.innerHTML = '';
   const p = me();
+  if (p.bench.some(Boolean)) maybeTut('board');
   p.bench.forEach((u, i) => {
     const slot = document.createElement('div');
     slot.className = 'bench-slot';
@@ -279,12 +366,25 @@ function renderBench() {
 function renderItems() {
   const row = $('itemRow');
   row.innerHTML = '';
-  me().items.forEach((it, i) => {
+  const p = me();
+  if (p.items.length) maybeTut('items');
+  if (p.items.some(x => x.kind === 'consumable')) maybeTut('consumable');
+  p.items.forEach((it, i) => {
     const chip = document.createElement('div');
-    chip.className = 'item-chip' + (it.kind !== 'component' ? ' combined' : '') + (selectedItem === it ? ' selected' : '');
+    chip.className = 'item-chip' + (it.kind !== 'component' ? ' combined' : '') + (selectedItem === it ? ' selected' : '')
+      + (it.kind === 'light' || it.kind === 'artifact' ? ' light' : '') + (it.kind === 'consumable' ? ' consumable' : '');
     chip.textContent = itemIcon(it) + ' ' + it.name;
     chip.dataset.itemIdx = i;
-    chip.onclick = () => { if (drag) return; selectedItem = selectedItem === it ? null : it; renderItems(); };
+    chip.onclick = () => {
+      if (drag) return;
+      if (selectedItem && selectedItem !== it && selectedItem.kind === 'consumable' && CONSUMABLES[selectedItem.type]?.target === 'item') {
+        const res = game.useConsumableOnItem(p, selectedItem, it);
+        if (res !== true) banner(res); else selectedItem = null;
+        renderAll(); return;
+      }
+      selectedItem = selectedItem === it ? null : it;
+      renderItems();
+    };
     chip.oncontextmenu = e => { e.preventDefault(); pinItemPreview(it, e); };
     chip.onpointerenter = e => { if (!tooltipPinned) showTooltip(() => itemTooltip(it), e); };
     chip.onpointerleave = () => hideTooltip();
@@ -313,28 +413,57 @@ function renderShop() {
     const def = UNITS_BY_ID[id];
     card.className = 'shop-card';
     card.style.borderColor = COST_COLOR[def.cost];
-    const traits = [...def.races.map(r => RACES[r]), ...def.classes.map(c => CLASSES[c])].join(' · ');
+    const traits = [...def.races.map(r => `<span class="sc-t" data-t="${r}">${RACES[r]}</span>`),
+      ...def.classes.map(c => `<span class="sc-t" data-t="${c}">${CLASSES[c]}</span>`)].join(' · ');
     card.innerHTML = `<div class="sc-name">${CLASS_ICON[def.classes[0]] || ''} ${def.name}</div><div class="sc-traits">${traits}</div><div class="sc-cost">${def.cost}🪙</div>`;
     card.onclick = () => { if (actOk() && buyCard(game, p, i)) renderAll(); };
     card.onpointerenter = e => { if (!tooltipPinned) showTooltip(() => unitDefTooltip(def, 1), e); };
     card.onpointerleave = () => hideTooltip();
+    card.querySelectorAll('.sc-t').forEach(span => {
+      const tid = span.dataset.t, tdef = TRAITS[tid];
+      if (!tdef) return;
+      span.onpointerenter = e => { e.stopPropagation(); if (!tooltipPinned) showTooltip(() => traitTooltip(tid, tdef), e); };
+      span.onpointerleave = e => { if (!tooltipPinned) showTooltip(() => unitDefTooltip(def, 1), e); };
+    });
     bar.appendChild(card);
   });
   $('lockBtn').textContent = p.shopLocked ? '🔒 已锁定' : '🔓 锁定';
 }
 
+const TRAIT_PARENT = { gondolin: 'noldor', fingolfinH: 'noldor', feanorH: 'noldor', finarfinH: 'noldor', hador: 'mankind', beor: 'mankind', haleth: 'mankind' };
 function renderTraits() {
   const box = $('traitsBox');
   box.innerHTML = '<h4>羁绊（场上）</h4>';
-  const units = me().board.map(b => ({ def: b.unit.def }));
+  const units = me().board.map(b => ({ def: b.unit.def, extraTraits: b.unit.extraTraits }));
   const list = countTraits(units);
   if (!list.length) box.innerHTML += '<div style="font-size:12px;color:var(--sub)">上场棋子后显示羁绊</div>';
-  for (const t of list) {
+  if (list.some(t => t.count >= 2)) maybeTut('traits');
+  // 家族缩进在所属种族之下
+  const ordered = [];
+  const children = list.filter(t => TRAIT_PARENT[t.id]);
+  for (const t of list.filter(t => !TRAIT_PARENT[t.id])) {
+    ordered.push(t);
+    for (const c of children) if (TRAIT_PARENT[c.id] === t.id) ordered.push({ ...c, sub: true });
+  }
+  for (const c of children) if (!list.some(t => t.id === TRAIT_PARENT[c.id])) ordered.push({ ...c, sub: true });
+  for (const t of ordered) {
     const def = TRAITS[t.id];
     const row = document.createElement('div');
-    row.className = 'trait-row' + (t.tier > 0 ? ' active ' + TIER_CLASS[Math.min(t.tier, 4)] : '');
+    row.className = 'trait-row' + (t.tier > 0 ? ' active ' + TIER_CLASS[Math.min(t.tier, 4)] : '') + (t.sub ? ' trait-sub' : '');
     row.innerHTML = `<span class="tbadge">${t.count}</span><span>${def.name}</span><span class="tcount">${def.tiers.join(' › ')}</span>`;
     row.onpointerenter = e => { if (!tooltipPinned) showTooltip(() => traitTooltip(t.id, def), e); };
+    row.onpointerleave = () => hideTooltip();
+    box.appendChild(row);
+  }
+  // 5费专属（流光行）
+  for (const b of me().board) {
+    const def = b.unit.def;
+    if (def.cost !== 5 || !def.passive) continue;
+    const pname = def.passive.split('：')[0];
+    const row = document.createElement('div');
+    row.className = 'trait-row active trait-unique';
+    row.innerHTML = `<span class="tbadge">★</span><span>${pname}</span><span class="tcount">${def.name}</span>`;
+    row.onpointerenter = e => { if (!tooltipPinned) showTooltip(() => `<h5>${pname}【${def.name}专属】</h5><div>${def.passive.slice(pname.length + 1)}</div>${shiftHint()}`, e); };
     row.onpointerleave = () => hideTooltip();
     box.appendChild(row);
   }
@@ -424,18 +553,24 @@ function unitDefTooltip(def, star, live) {
   const align = { light: '光明系', dark: '黑暗系', phys: '物理系' }[def.align];
   const statsBlock = live && live.stats
     ? statGridHtml(base, cur) + (shiftDown ? `<div class="tt-sub">绿=高于纸面，红=低于纸面；悬浮属性看对比</div>` : '')
-    : shiftDown
-      ? `<div>生命${s.hp}｜攻击${s.ad}｜攻速${def.as}｜射程${def.range}</div>
-         <div>护甲${s.armor}｜光抗${s.cn}｜黑抗${s.mn}｜韧性${s.ten}</div>
-         <div>光强${s.cc}｜黑强${s.mc}｜法力${def.mana[0]}/${def.mana[1]}</div>`
-      : `<div>生命${s.hp}｜攻击${s.ad}｜攻速${def.as}｜射程${def.range}</div>`;
+    : `<div>生命${s.hp}｜攻击${s.ad}｜攻速${def.as}｜射程${def.range}</div>
+       <div>护甲${s.armor}｜光抗${s.cn}｜黑抗${s.mn}｜韧性${s.ten}</div>
+       <div>光强${s.cc}｜黑强${s.mc}｜法力${def.mana[0]}/${def.mana[1]}</div>`;
   return `<h5>${def.name} ${'★'.repeat(star)}</h5><div class="tt-sub">${def.cost}费 · ${traits} · ${align}</div>
   ${live ? barsHtml(live) : ''}
   ${statsBlock}
   <div style="margin-top:4px"><b>【${def.skill.name}】</b>${computeSkillDesc(def, star, cur)}</div>
   ${def.passive && shiftDown ? `<div class="tt-sub">${def.passive}</div>` : def.passive ? `<div class="tt-sub">被动：${def.passive.split('：')[0]}</div>` : ''}
-  ${live && live.items.length ? `<div style="margin-top:4px">装备：${live.items.join('、')}</div>` : ''}
+  ${live ? eqRowHtml(live.items || []) : ''}
   ${shiftHint()}`;
+}
+function eqRowHtml(items) {
+  const slots = [0, 1, 2].map(i => {
+    const it = items[i];
+    const gold = it && (it.kind === 'light' || it.kind === 'artifact') ? ' gold' : '';
+    return `<div class="eq-slot${it ? '' : ' empty'}${gold}" data-eq="${i}">${it ? itemIcon(it) : ''}</div>`;
+  }).join('');
+  return `<div class="eq-row">${slots}</div>`;
 }
 function itemTooltip(it) {
   const statNames = { adPct: '%攻击力', asPct: '%攻速', sp: '自适应强度', mres: '自适应抗性', armor: '护甲', hp: '生命', hpPct: '%生命', mana: '法力', critR: '%暴击率', critD: '%暴击伤害', hsPct: '%治疗盾强', spLight: '光明强度', affAll: '六维亲和度' };
@@ -467,17 +602,23 @@ function pinItemPreview(it, e) {
 }
 function pinTooltip() { tooltipPinned = true; $('tooltip').classList.add('pinned'); }
 function showTooltip2(html, ev) {
-  const t2 = $('tooltip2'), rect = $('tooltip').getBoundingClientRect();
-  t2.innerHTML = html; t2.style.display = 'block';
+  const rect = $('tooltip').getBoundingClientRect();
   const x = rect.right + 8 + 280 > window.innerWidth ? rect.left - 288 : rect.right + 8;
-  t2.style.left = Math.max(4, x) + 'px';
-  t2.style.top = Math.min(ev.clientY - 20, window.innerHeight - 160) + 'px';
+  showTooltip2At(html, Math.max(4, x), Math.min(ev.clientY - 20, window.innerHeight - 160));
+}
+function showTooltip2At(html, x, y) {
+  const t2 = $('tooltip2');
+  t2.innerHTML = html; t2.style.display = 'block';
+  t2.style.left = Math.min(x, window.innerWidth - 290) + 'px';
+  t2.style.top = Math.max(4, y) + 'px';
 }
 function hideTooltip2() { $('tooltip2').style.display = 'none'; }
+let pinnedItems = [];
 function pinLivePanel(n, ev) {
   showTooltip(() => liveTooltip(n), ev);
   pinTooltip();
   pinnedLive = n;
+  pinnedItems = n.items;
   lastTipPost = attachStatHovers;
   attachStatHovers();
 }
@@ -485,9 +626,16 @@ function attachStatHovers() {
   $('tooltip').querySelectorAll('.stat-row').forEach(row => {
     row.onpointerenter = ev => {
       const b = +row.dataset.base, v = +row.dataset.live, d = Math.round((v - b) * 100) / 100;
-      showTooltip2(`<h5>${row.dataset.name}</h5><div>纸面基础：${b}</div><div>当前实时：<b class="${d > 0 ? 'up' : d < 0 ? 'down' : ''}" style="color:${d > 0 ? '#4caf50' : d < 0 ? '#ef5350' : 'inherit'}">${v}</b>（${d >= 0 ? '+' : ''}${d}）</div><div class="tt-sub">差值 = 装备 + 羁绊 + 战斗中增减益合计（逐项来源 M2 展开）</div>`, ev);
+      showTooltip2(`<h5>${row.dataset.name}</h5><div>纸面基础：${b}</div><div>当前实时：<b style="color:${d > 0 ? '#4caf50' : d < 0 ? '#ef5350' : 'inherit'}">${v}</b>（${d >= 0 ? '+' : ''}${d}）</div><div class="tt-sub">差值 = 装备 + 羁绊 + 战斗中增减益合计（逐项来源溯源开发中）</div>`, ev);
     };
     row.onpointerleave = hideTooltip2;
+  });
+  $('tooltip').querySelectorAll('.eq-slot').forEach(slot => {
+    slot.onpointerenter = ev => {
+      const it = pinnedItems[+slot.dataset.eq];
+      if (it) showTooltip2(itemTooltip(it), ev);
+    };
+    slot.onpointerleave = hideTooltip2;
   });
 }
 function showTooltip(src, e) {
@@ -551,9 +699,12 @@ function attachUnitInteract(el, unit, src) {
   el.oncontextmenu = e => {
     e.preventDefault();
     const s = unitStatsAtStar(unit.def, unit.star);
-    const live = { hp: s.hp, maxHp: s.hp, mana: unit.def.mana[0], manaMax: unit.def.mana[1], items: unit.items.map(i => itemIcon(i) + ' ' + i.name) };
+    const live = { hp: s.hp, maxHp: s.hp, mana: unit.def.mana[0], manaMax: unit.def.mana[1], items: unit.items };
     showTooltip(() => unitDefTooltip(unit.def, unit.star, live), e);
     pinTooltip();
+    pinnedItems = unit.items;
+    lastTipPost = attachStatHovers;
+    attachStatHovers();
   };
   el.onpointerdown = e => {
     if (e.button !== 0 || !actOk()) return;
@@ -570,6 +721,15 @@ function dragMove(e) {
   document.querySelectorAll('.drop-ok').forEach(n => n.classList.remove('drop-ok'));
   const t = dropTarget(e);
   if (t) t.el.classList.add('drop-ok');
+  // 散件拖到散件上：未松开即预览合成结果
+  if (drag.kind === 'item' && t && t.type === 'item') {
+    const other = me().items[t.idx];
+    if (other && drag.item.kind === 'component' && other.kind === 'component' && canCombine(drag.item.comp, other.comp)) {
+      const combined = makeCombinedItem(drag.item.comp, other.comp);
+      if (combined) { showTooltip2At(itemTooltip(combined), e.clientX + 20, e.clientY - 40); return; }
+    }
+  }
+  if (drag.kind === 'item') hideTooltip2();
 }
 function dropTarget(e) {
   const els = document.elementsFromPoint(e.clientX, e.clientY);
@@ -644,6 +804,17 @@ function dragEnd(e) {
 }
 function equipItem(unit, it) {
   const p = me();
+  // 消耗道具
+  if (it.kind === 'consumable') {
+    if (CONSUMABLES[it.type]?.target !== 'unit') { banner('该道具应作用于装备：先选中它，再点击目标装备'); return; }
+    const res = game.useConsumableOnUnit(p, it, unit.uid);
+    if (res !== true) { banner(typeof res === 'string' ? res : '无法使用'); return; }
+    if (selectedItem === it) selectedItem = null;
+    renderAll(); return;
+  }
+  // 装备类
+  if (unit.items.some(x => x.eff && x.eff.thief)) { banner('装备栏被小偷偷占用'); return; }
+  if (it.eff && it.eff.thief && unit.items.length > 0) { banner('小偷偷需要空的装备栏（它会占满3格）'); return; }
   let ok = false;
   if (it.kind === 'component') {
     const partner = unit.items.find(x => x.kind === 'component' && canCombine(x.comp, it.comp));
@@ -659,8 +830,10 @@ function equipItem(unit, it) {
 
 // ---------- 战斗 ----------
 function beginCombat() {
+  if (game.carousel) return; // 选秀期间不可开战
   clearInterval(planTimer);
   cancelDrag();
+  maybeTut('combat');
   tooltipPinned = false; hideTooltip(true);
   const pending = game.prepareCombats();
   renderTopbar(); renderBench(); renderTraits(); renderGold();
@@ -698,6 +871,7 @@ function mirrorPos(pb, c, r) { return pb.mirror ? { c: COLS - 1 - c, r: 7 - r } 
 function playLoop(now) {
   const pb = playback;
   if (!pb) return;
+  if (paused) { pb.last = now; setTimeout(() => playLoop(performance.now()), 60); return; }
   const dt = Math.min((now - pb.last) / 1000, 0.1) * pb.speed;
   pb.last = now;
   pb.t += pb.skip ? 999 : dt;
@@ -732,8 +906,8 @@ function applyEvent(pb, e) {
       const n = { el, maxHp: e.hp, hp: e.hp, mana: e.mana, manaMax: e.monster ? 0 : e.manaMax, enemy, def, star: e.star, items: e.items || [] };
       nodes[e.id] = n;
       if (!pb.skip) { el.classList.add('spawn-pop'); setTimeout(() => el.classList.remove('spawn-pop'), 500); }
-      // 战斗中实时悬浮信息 & 右键固定面板
-      el.onpointerenter = ev => { if (!tooltipPinned) showTooltip(() => liveTooltip(n), ev); };
+      // 左键悬浮=极简实时；右键=完整固定面板
+      el.onpointerenter = ev => { if (!tooltipPinned) showTooltip(() => liveHover(n), ev); };
       el.onpointerleave = () => hideTooltip();
       el.oncontextmenu = ev => { ev.preventDefault(); pinLivePanel(n, ev); };
       break;
@@ -790,7 +964,7 @@ function applyEvent(pb, e) {
     }
     case 'execute': { const n = nodes[e.id]; if (n && !pb.skip) floatText(n.el, '处决！', 'var(--dmg-true)', true); break; }
     case 'miss': { const n = nodes[e.id]; if (n && !pb.skip) floatText(n.el, '闪避', '#9e9e9e'); break; }
-    case 'die': { const n = nodes[e.id]; if (n) n.el.classList.add('dead'); break; }
+    case 'die': { const n = nodes[e.id]; if (n) { n.el.classList.add('dead'); n.el.style.pointerEvents = 'none'; if (!tooltipPinned) hideTooltip(); } break; }
     case 'star': {
       if (pb.skip) break;
       const { c, r } = mirrorPos(pb, e.c, e.r);
@@ -799,7 +973,7 @@ function applyEvent(pb, e) {
       break;
     }
     case 'mordor': { if (!pb.skip) banner('邪黑塔锁定了棋盘！'); break; }
-    case 'lightItem': { const n = nodes[e.id]; if (n) { n.items.push(e.item + '☀'); if (!pb.skip) floatText(n.el, '☀ ' + e.item, 'var(--dmg-light)'); } break; }
+    case 'lightItem': { const n = nodes[e.id]; if (n) { n.items.push(e.info || { name: e.item, kind: 'light', stats: {}, note: '' }); if (!pb.skip) floatText(n.el, '☀ ' + e.item, 'var(--dmg-light)'); } break; }
     case 'overtime': { if (!pb.skip) banner('加时！全员狂暴'); break; }
     case 'end': {
       const meWon = e.winner === (pb.mirror ? 1 : 0);
@@ -812,6 +986,13 @@ function applyEvent(pb, e) {
 function liveTooltip(n) {
   if (n.def.monster) return `<h5>${n.def.name}</h5>` + barsHtml({ hp: Math.max(0, Math.round(n.hp)), maxHp: n.maxHp, mana: 0, manaMax: 0 });
   return unitDefTooltip(n.def, n.star, { hp: Math.max(0, Math.round(n.hp)), maxHp: n.maxHp, mana: Math.round(n.mana), manaMax: n.manaMax, items: n.items, stats: n.stats });
+}
+// 左键悬浮：极简实时信息
+function liveHover(n) {
+  const stars = n.def.monster ? '' : ' ' + '★'.repeat(n.star);
+  return `<h5>${n.def.name}${stars}</h5>` +
+    barsHtml({ hp: Math.max(0, Math.round(n.hp)), maxHp: n.maxHp, mana: Math.round(n.mana || 0), manaMax: n.manaMax || 0 }) +
+    `<div class="tt-sub">右键查看完整面板</div>`;
 }
 
 function floatText(el, txt, color, big) {
@@ -850,7 +1031,8 @@ function finishCombat() {
   game.resolveRound();
   if (game.over) { showOver(); return; }
   renderAll();
-  startPlanTimer();
+  if (game.carousel) showCarousel();
+  else startPlanTimer();
 }
 
 function showOver() {

@@ -30,6 +30,9 @@
       <button id="startSolo" class="big-btn">⚔ 单人模式</button>
       <button class="big-btn" disabled>🌐 多人联机（M3 开放）</button>
     </div>
+    <label style="display:block;margin-top:14px;font-size:14px;cursor:pointer">
+      <input type="checkbox" id="tutCheck"> 🎓 新手指引（进入对局后在关键节点弹出教学并暂停游戏）
+    </label>
   </div>
 
   <!-- 游戏 -->
@@ -42,6 +45,7 @@
       <span class="stat" id="streakStat"></span>
       <span id="enemyLabel" style="color:var(--accent)"></span>
       <span style="flex:1"></span>
+      <button id="pauseBtn" class="utility-btn">⏸ 暂停</button>
       <button id="viewBtn" class="utility-btn">🎥 视角</button>
       <button id="speedBtn">▶ 1x</button>
       <button id="skipBtn">⏭ 跳过</button>
@@ -57,6 +61,7 @@
           <div id="banner"></div>
           <div id="introBanner"><div class="it-main"></div><div class="it-sub"></div></div>
           <div id="zoomHint">🖱 滚轮缩放</div>
+          <div id="countNum"></div>
         </div>
         <div class="panel-box">
           <h4>备战席 <span id="itemHint" style="display:none;color:var(--accent)">（已选中装备——点击棋子穿戴）</span></h4>
@@ -94,9 +99,10 @@
 
   <div id="tooltip"></div>
   <div id="tooltip2"></div>
-  <div id="countNum"></div>
   <div id="dragGhost"></div>
   <div id="scoutModal"></div>
+  <div id="carModal"></div>
+  <div id="tutModal"><div id="tutBox"><h3 id="tutTitle"></h3><div id="tutBody"></div><button id="tutOk" class="big-btn" style="max-width:160px;margin-top:14px">知道了 ▶</button></div></div>
 
   <script>
     function toggleTheme(){

@@ -38,11 +38,11 @@ export const TRAITS = {
   maia: { name: '迈雅', type: 'race', tiers: [3],
     desc: '迈雅弈子能够双重施法。' },
   vala: { name: '维拉', type: 'race', tiers: [1],
-    desc: '队伍恰有1名维拉时其专属加成给予全队；多于1名时反转为减益。曼威：三系穿透；瓦尔妲：光强；奥力：护甲与抗性；涅娜：治疗盾强。' },
+    desc: '队伍恰有1名维拉时其专属加成给予全队，多于1名时反转为减益。曼威：+5 护甲/光明/黑暗穿透；瓦尔妲：+15 光明强度；奥力：+15 护甲与 15 自适应抗性；涅娜：+10% 治疗和护盾强度。' },
   wood: { name: '林中隐士', type: 'race', tiers: [2],
     desc: '己方获得 15% 治疗强度、护盾强度与控制时长提升；林中隐士技能伤害的 10% 治疗最低血友军。' },
   dog: { name: '神犬', type: 'race', tiers: [1],
-    desc: '玩家等级 5/7/9 时胡安三次开口：附带灼烧重伤 → 顺劈+吸血+护甲穿透 → 三维翻倍但施法后逐渐死亡。' },
+    desc: '玩家等级达到 5/7/9 时胡安三次开口：①攻击附带2秒灼烧与2秒重伤；②攻击同时伤害邻格敌人、每次攻击治疗自身2%最大生命、+15%护甲穿透；③最大生命/攻击力/攻速全部翻倍，但第一次施法后每秒损失10%最大生命值。' },
   // ---- 职业 ----
   arcanist: { name: '秘术士', type: 'class', tiers: [2, 4, 6, 8],
     desc: '为所有友军提供 20/20/50/80 点自适应强度；秘术士自身额外获得 0/30/40/60 点自适应强度与 0/5/10/20% 自适应穿透。' },
@@ -104,7 +104,8 @@ export function countTraits(units) {
   for (const u of units) {
     if (seen.has(u.def.id)) continue;
     seen.add(u.def.id);
-    for (const t of [...u.def.races, ...u.def.classes]) counts[t] = (counts[t] || 0) + 1;
+    const extra = u.extraTraits || (u.unitRef && u.unitRef.extraTraits) || [];
+    for (const t of [...u.def.races, ...u.def.classes, ...extra]) counts[t] = (counts[t] || 0) + 1;
   }
   const res = [];
   for (const id in counts) {

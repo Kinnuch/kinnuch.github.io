@@ -24,7 +24,56 @@ export const COMPONENTS = {
   al: { name: '双圣树的光辉', tier: 2, stats: { affAll: 4 }, isAL: true },
 };
 
-// 组件在成装中的贡献（M1 近似值）
+// 成装精确数值（M2，取自审核文档；缺项时回退到组件贡献近似公式）
+export const COMBO_STATS = {
+  安督利尔: { adPct: 44 }, 古尔桑: { adPct: 55 }, 凛吉尔: { adPct: 66 },
+  埃格洛斯: { adPct: 24, asPct: 8, sp: 16 }, 奥克锐斯特: { adPct: 30, asPct: 10, sp: 20 }, 贝尔斯隆丁: { adPct: 36, asPct: 12, sp: 24 },
+  都林之斧: { asPct: 32 }, 赫鲁格林: { asPct: 40 }, 格拉姆德凛: { asPct: 48 },
+  饼干之火: { adPct: 12, sp: 12 }, 安格锐斯特: { adPct: 15, sp: 15 }, 气之戒: { adPct: 18, sp: 18 },
+  戴赖尔: { asPct: 12, sp: 8 }, 布瑞国尔之弓: { asPct: 15, sp: 10 }, 埃莱萨: { asPct: 18, sp: 12 },
+  火之戒: { sp: 40 }, 银树之叶: { sp: 50 }, 至尊戒: { sp: 60 },
+  波罗米尔的号角: { adPct: 16, sp: 16, mana: 12 }, 欧洛米的号角: { adPct: 20, sp: 20, mana: 15 }, 长谷叶: { adPct: 24, sp: 24, mana: 18 },
+  魔古尔之刃: { asPct: 16, sp: 12, mana: 12 }, 红箭: { asPct: 20, sp: 15, mana: 15 }, 纳兹古尔之戒: { asPct: 24, sp: 18, mana: 18 },
+  阿肯宝石: { sp: 16, mana: 12 }, 领主的金发: { sp: 20, mana: 15 }, 金树之叶: { sp: 24, mana: 18 },
+  王之喷泉: { adPct: 16, sp: 16, mana: 16 }, 巴拉希尔之戒: { adPct: 20, sp: 20, mana: 20 }, 暮星项链: { adPct: 24, sp: 24, mana: 24 },
+  刚铎骑兵胸甲: { adPct: 8, armor: 16 }, 矮人面具: { adPct: 10, armor: 20 }, 洛格的战盾: { adPct: 12, armor: 24 },
+  木桶: { asPct: 8, armor: 16 }, 橡木盾: { asPct: 10, armor: 20 }, 星辰之冠: { asPct: 12, armor: 24 },
+  巫师帽: { armor: 16, sp: 24 }, 龙鳞甲: { armor: 20, sp: 20, hp: 100 }, 露西恩的斗篷: { armor: 24, sp: 24, hp: 120 },
+  霜龙之角: { mana: 24, armor: 16 }, 甘道夫的匡威: { mana: 30, armor: 20 }, 埃克塞里安的水晶盔: { mana: 36, armor: 24 },
+  蓝山矮人铁盾: { armor: 44, hpPct: 5 }, 安卡拉刚的鳞片: { armor: 55, hpPct: 5 }, 秘银甲: { armor: 66, hpPct: 8 },
+  八芒星徽章: { adPct: 16, sp: 12, mres: 16 }, 乌苟立安特之齿: { adPct: 20, sp: 15, mres: 20 }, 提卡尔之剑: { adPct: 24, sp: 18, mres: 24 },
+  安盖诺尔: { adPct: 20, asPct: 8, mres: 16 }, 卡哈洛斯之牙: { adPct: 25, asPct: 10, mres: 20 }, 炎魔之鞭: { adPct: 30, asPct: 12, mres: 24 },
+  瓦尔妲的井水: { sp: 12, mres: 20, hp: 120 }, 瑙格拉都尔的铠甲: { sp: 15, mres: 25, hp: 150 }, 劳瑞林的花瓣: { sp: 18, mres: 30, hp: 180 },
+  篆刻有腾格瓦的石砖: { sp: 12, mana: 12, mres: 16 }, 阿刚那斯的指甲盖: { sp: 15, mana: 15, mres: 20 }, 维拉奇尔卡: { sp: 18, mana: 18, mres: 24 },
+  路姆巴珥的碎片: { armor: 24, mres: 24, hp: 80 }, 奈纳珥的碎片: { armor: 30, mres: 30, hp: 100 }, 埃伦弥瑞的碎片: { armor: 36, mres: 36, hp: 120 },
+  埃克塞里安的笛子: { mres: 52, hpPct: 7 }, 凯勒布林博的锤子: { mres: 65, hpPct: 8 }, 山姆的炖兔子汤: { mres: 78, hpPct: 12 },
+  南塔斯仁的柳叶花环: { adPct: 12, hp: 160 }, 欧尔桑克妖火: { adPct: 15, hp: 200 }, 密火: { adPct: 18, hp: 240 },
+  埃伦玛奇尔之枪: { hp: 250, asPct: 18 }, 魔苟斯之戒: { hp: 250, sp: 15 }, 洛汗王旗: { hp: 250, mana: 15 },
+  遗留之盔: { hp: 250, armor: 30 }, 恩特婆的花楸树: { hp: 250, mres: 25 }, 睡莲盆栽: { hp: 500 },
+  胡安的尾巴毛: { hp: 350, asPct: 20 }, 格洛芬德尔之剑: { hp: 350, asPct: 25 }, 加拉兹民的斗篷: { hp: 350, sp: 12 },
+  帕兰提尔: { hp: 350, sp: 18 }, 玛格洛尔的竖琴: { hp: 350, mana: 15 }, 杜瓦林的六弦琴: { hp: 350, mana: 25 },
+  芬国昐的蓝水晶盾: { hp: 400, armor: 30 }, 瑙格拉弥尔: { hp: 400, armor: 40 }, 拉达加斯特的皮帽: { hp: 400, mres: 25 },
+  薇瑞的纺织品: { hp: 400, mres: 35 }, 玻吉尔的碎片: { hp: 650 }, 巨龙之牙: { hp: 900 },
+  血腥长矛: { adPct: 15, hsPct: 10 }, 瑁珑树种: { asPct: 15, hsPct: 10 }, 绿龙酒馆佳酿: { sp: 15, hsPct: 10 },
+  莱戈拉斯的美声唱片: { mana: 15, hsPct: 10 }, 吉瑞安的项链: { armor: 20, hsPct: 10 }, 夏警帽子: { mres: 20, hsPct: 10 },
+  埃拉诺: { hp: 200, hsPct: 10 }, 金鸢尾花: { hsPct: 25 },
+  阿佐格的义肢: { adPct: 18, hsPct: 15 }, 大鹰之羽: { adPct: 25, hsPct: 15 }, 希斯莱恩: { asPct: 18, hsPct: 15 },
+  汶基洛特的船帆: { asPct: 30, hsPct: 15 }, 沼泽地的鲜美蘑菇: { sp: 18, hsPct: 15 }, 阿尔达的冠冕: { sp: 30, hsPct: 15 },
+  王女的汤: { mana: 18, hsPct: 15 }, 辛贝穆奈: { mana: 30, hsPct: 15 }, 放置一个纪元的兰巴斯: { hp: 150, armor: 30, hsPct: 15 },
+  食人妖的战鼓: { armor: 45, hsPct: 15 }, 西界红皮书: { mres: 25, hsPct: 15 }, 莱贝斯隆手杖: { mres: 40, hsPct: 15 },
+  贝奥恩一族的蜂蜜蛋糕: { hp: 250, hsPct: 15 }, 阿尔达之叶: { hp: 450, hsPct: 15 }, 妮芙瑞迪尔: { hsPct: 30 }, 莱瑞洛雪指环: { hsPct: 40 },
+  龙盔: { adPct: 15, critR: 20 }, 加尔沃恩的碎片: { asPct: 15, critR: 20 }, 萨茹曼的手杖: { sp: 15, critR: 20 },
+  雄鹿地动员号角: { mana: 15, critR: 20 }, 猛犸的象牙: { armor: 25, critR: 20 }, 替身稻草: { mres: 20, critR: 20 },
+  被诅咒的金币: { hp: 200, critR: 20 }, 伊希利恩的野土豆: { hsPct: 12, critR: 20 }, 窃贼手套: {},
+  格龙德: { adPct: 20, critR: 30 }, 黑箭: { adPct: 30, critR: 30 }, 阿兰如斯: { asPct: 20, critR: 30 },
+  芬巩之弓: { asPct: 32, critR: 30 }, 华贵罗瑞恩长弓: { sp: 15, critR: 30 }, 水之戒: { sp: 30, critR: 30 },
+  奎维耶能湖水: { mana: 18, critR: 30 }, 乌欧牟的海螺号角: { mana: 30, critR: 30 }, 德拉姆博烈格: { armor: 30, critR: 30 },
+  安努米那斯的权杖: { armor: 45, critR: 30 }, 邪念斗篷: { mres: 25, critR: 30 }, 金项圈: { mres: 40, critR: 30 },
+  加尔多的投石索: { hp: 250, critR: 30 }, 安格玛巫王的钉头锤: { hp: 450, critR: 30 }, 宁斐洛斯: { hsPct: 12, critR: 30 },
+  魔苟斯的铁王冠: { hsPct: 18, critR: 30 }, 格里马的财宝箱: { critR: 45, critD: 20 }, 飞贼的戒指: {},
+};
+
+// 组件在成装中的贡献（精确表缺项时的回退公式）
 const COMBINE_BONUS = {
   ad1: { adPct: 18 }, ad2: { adPct: 26 },
   as1: { asPct: 18 }, as2: { asPct: 26 },
@@ -110,7 +159,19 @@ export const COMBO_EFFECTS = {
   '凯勒布林博的锤子': { hpPct: 8, regenPct: 1, note: '+8%生命；每2秒回复2%最大生命' },
   '山姆的炖兔子汤': { hpPct: 12, regenPct: 3, note: '+12%生命；每2秒回复6%最大生命' },
   '金鸢尾花': { regenPct: 1, note: '每秒回复1%最大生命' },
-  '窃贼手套': { critR: 25, note: '暴击偷取目标2%当前生命作为治疗' },
+  '窃贼手套': { thief: 'small', note: '小偷偷：占用棋子全部3个装备栏，每场战斗开始时随机偷来2件散件装上（仅当场有效，每场重新随机）' },
+  '飞贼的戒指': { thief: 'big', note: '大偷偷：占用棋子全部3个装备栏，每场战斗开始时随机偷来2件成装装上（仅当场有效，每场重新随机）' },
+  '戴赖尔': { asOnAttack: 2, note: '攻击提供可叠加的2%攻速' },
+  '布瑞国尔之弓': { asOnAttack: 4, note: '攻击提供可叠加的4%攻速' },
+  '埃莱萨': { asOnAttack: 7, note: '攻击提供可叠加的7%攻速' },
+  '阿肯宝石': { spRamp: 10, rampEvery: 5, note: '战斗中每5秒获得10自适应强度' },
+  '领主的金发': { spRamp: 20, rampEvery: 5, note: '战斗中每5秒获得20自适应强度' },
+  '金树之叶': { spRamp: 7, rampEvery: 1, note: '战斗中每秒获得7自适应强度' },
+  '魔古尔之刃': { every3rdMagic: 50, magicTargets: 1, note: '每第3次攻击对目标造成50魔法伤害（自适应）' },
+  '红箭': { every3rdMagic: 30, magicTargets: 4, note: '每第3次攻击对4名敌人造成30魔法伤害（自适应）' },
+  '纳兹古尔之戒': { every3rdMagic: 20, magicTargets: 99, note: '每第3次攻击对全体敌人造成20魔法伤害（自适应）' },
+  '奎维耶能湖水': { startMana: 30, note: '战斗开始时获得30点法力' },
+  '暮星项链': { dmgAmp: 8, note: '造成伤害增加8%' },
   // 光明装（固定光系）
   '泰尔佩瑞安的枝条': { light: true, onHitLightPctAD: 25, note: '攻击额外造成25%AD光明伤害' },
   '劳瑞林的流光': { light: true, every3rdLightPctAD: 50, note: '每第3次攻击追加50%AD光明伤害' },
@@ -157,9 +218,9 @@ export function makeCombinedItem(c1, c2) {
   const name = COMBO_NAMES[key];
   if (!name) return null;
   let stats;
-  if (LIGHT_ITEM_STATS[name]) {
-    stats = { ...LIGHT_ITEM_STATS[name] };
-  } else {
+  if (LIGHT_ITEM_STATS[name]) stats = { ...LIGHT_ITEM_STATS[name] };
+  else if (COMBO_STATS[name]) stats = { ...COMBO_STATS[name] };
+  else {
     stats = {};
     for (const c of [c1, c2]) {
       const b = COMBINE_BONUS[c] || {};
@@ -167,7 +228,7 @@ export function makeCombinedItem(c1, c2) {
     }
   }
   const eff = COMBO_EFFECTS[name] || null;
-  if (eff) {
+  if (eff && !COMBO_STATS[name]) {
     for (const k of ['hpPct', 'critR', 'critD']) if (eff[k]) stats[k] = (stats[k] || 0) + eff[k];
   }
   return { kind: 'combined', name, key, comps: [c1, c2], stats, eff, note: eff ? eff.note : '（特殊效果M2实装）' };
@@ -186,4 +247,52 @@ export function makeLightItem(name) {
   const stats = { ...LIGHT_ITEM_STATS[name] };
   const eff = COMBO_EFFECTS[name] || null;
   return { kind: 'light', name, stats, eff, note: eff ? eff.note : '' };
+}
+
+// ---------- 消耗道具（M2） ----------
+export const CONSUMABLES = {
+  smallDup: { name: '小复制器', note: '选择一名己方 1~3 费棋子，获得一张该棋子的 1 星卡。', target: 'unit' },
+  bigDup: { name: '大复制器', note: '选择一名己方任意棋子，获得一张该棋子的 1 星卡。', target: 'unit' },
+  jobBook: { name: '转职书', note: '使一名己方棋子获得一个随机羁绊（每名棋子仅能转职一次）。', target: 'unit' },
+  dice: { name: '骰子', note: '放到一名己方棋子上：商店免费特殊刷新，5张卡全部与该棋子共享至少一个羁绊。', target: 'unit' },
+  silmaril: { name: '精灵宝钻', note: '神器装备：六维亲和度各+12，且永远视为"最强大"。代价：敌方安格班弈子对你的队伍伤害+5%。', target: 'unit', equip: true },
+  remover: { name: '拆卸器', note: '卸下一名棋子身上的全部装备，放回物品栏。', target: 'unit' },
+  reforger: { name: '重铸器', note: '将一件装备重铸为同级别的随机另一件装备。', target: 'item' },
+  upgrader: { name: '散件升级器', note: '将一件小散件升级为同类的大散件。', target: 'item' },
+};
+export function makeConsumable(type) {
+  const c = CONSUMABLES[type];
+  return { kind: 'consumable', type, name: c.name, note: c.note, stats: {} };
+}
+export function makeSilmaril() {
+  return { kind: 'artifact', name: '精灵宝钻', stats: { affAll: 12 }, eff: { silmaril: true, note: '六维亲和度各+12；永远视为"最强大"；敌方安格班对你的队伍伤害+5%' }, note: '' };
+}
+export function randomCombinedItem(rng) {
+  const keys = Object.keys(COMBO_NAMES).filter(k => !k.endsWith('+al'));
+  const [a, b] = rng.pick(keys).split('+');
+  return makeCombinedItem(a, b);
+}
+const T1_TO_T2 = { ad1: 'ad2', as1: 'as2', ap1: 'ap2', m1: 'm2', a1: 'a2', mr1: 'mr2', hp1: 'hp2', hs1: 'hs2', csc1: 'csc2' };
+export function upgradeComponent(it) {
+  const t2 = T1_TO_T2[it.comp];
+  return t2 ? makeComponentItem(t2) : null;
+}
+export function reforgeItem(it, rng) {
+  if (it.kind === 'component') {
+    const pool = (it.tier === 1 ? T1_COMPS : T2_COMPS).filter(c => c !== it.comp);
+    return makeComponentItem(rng.pick(pool));
+  }
+  if (it.kind === 'combined' && it.comps) {
+    const lvl = k => COMPONENTS[k].tier;
+    const myLvl = lvl(it.comps[0]) + lvl(it.comps[1]);
+    const cands = Object.keys(COMBO_NAMES).filter(key => {
+      const [a, b] = key.split('+');
+      if (a === 'al' || b === 'al') return false;
+      return lvl(a) + lvl(b) === myLvl && COMBO_NAMES[key] !== it.name;
+    });
+    if (!cands.length) return null;
+    const [a, b] = rng.pick(cands).split('+');
+    return makeCombinedItem(a, b);
+  }
+  return null;
 }

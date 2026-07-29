@@ -2,7 +2,7 @@
 import { hexDist, neighbors, key, COLS, ROWS } from './hex.js';
 import { unitStatsAtStar, affSum, UNITS_BY_ID } from '../../data/units.js';
 import { countTraits, FLAGGER_BONUS, VALA_BONUS } from '../../data/traits.js';
-import { makeLightItem, LIGHT_ITEM_NAMES, makeComponentItem, T1_COMPS } from '../../data/items.js';
+import { makeLightItem, LIGHT_ITEM_NAMES, makeComponentItem, T1_COMPS, randomCombinedItem } from '../../data/items.js';
 
 const DT = 0.1, MAX_T = 45, OVERTIME = 10;
 
@@ -15,7 +15,7 @@ export function makeFighter(unit, team, playerCtx) {
   const prog = unit.progress || {};
   const f = {
     id: FID++, def, star: unit.star, lvl: Math.min(unit.star, 3) - 1,
-    align: def.align, team, items: unit.items || [], tempItems: [],
+    align: def.align, team, items: unit.items || [], tempItems: [], extraTraits: unit.extraTraits || [],
     base, playerCtx: playerCtx || {},
     pos: { ...unit.pos }, alive: true,
     maxHp: base.hp + (prog.mkHp || 0), hp: 0,
@@ -64,8 +64,14 @@ export class Combat {
   // ---------- 静态加成 ----------
   _setup() {
     for (const f of this.f) {
+      // 偷偷：每场战斗随机偷来2件装备（小=散件 / 大=成装）
+      const thief = f.items.find(i => i.eff && i.eff.thief);
+      if (thief) {
+        for (let i = 0; i < 2; i++)
+          f.tempItems.push(thief.eff.thief === 'big' ? randomCombinedItem(this.rng) : makeComponentItem(this.rng.pick(T1_COMPS)));
+      }
       // 装备静态属性
-      for (const it of f.items) this._applyItemStats(f, it);
+      for (const it of [...f.items, ...f.tempItems]) this._applyItemStats(f, it);
     }
     for (const team of [0, 1]) this._applyTraits(team);
     for (const f of this.f) {
@@ -75,7 +81,7 @@ export class Combat {
       // 开战护盾类
       if (f.bonus.startShieldPct_) this.addShield(f, f.maxHp * f.bonus.startShieldPct_ / 100, 8, f);
       if (f.bonus.startShieldFlat_) this.addShield(f, f.bonus.startShieldFlat_, 8, f);
-      this.emit({ k: 'spawn', id: f.id, team: f.team, defId: f.def.id, name: f.def.name, star: f.star, c: f.pos.c, r: f.pos.r, hp: f.maxHp, monster: !!f.isMonster, mana: Math.round(f.mana), manaMax: f.manaMax, items: [...f.items, ...f.tempItems].map(i => i.name) });
+      this.emit({ k: 'spawn', id: f.id, team: f.team, defId: f.def.id, name: f.def.name, star: f.star, c: f.pos.c, r: f.pos.r, hp: f.maxHp, monster: !!f.isMonster, mana: Math.round(f.mana), manaMax: f.manaMax, items: [...f.items, ...f.tempItems].map(i => ({ name: i.name, kind: i.kind, comp: i.comp, comps: i.comps, stats: i.stats, note: i.note || (i.eff && i.eff.note) || '' })) });
       if (!f.isMonster) this.emit({ k: 'stats', id: f.id, s: this.statsSnap(f) });
     }
   }
@@ -95,8 +101,9 @@ export class Combat {
     if (s.sp) { if (this._adaptSide(f) === 'cc') b.cc += s.sp; else b.mc += s.sp; }
     if (s.spLight) b.cc += s.spLight;
     if (s.mres) { if (this._adaptResSide(f) === 'cn') b.cn += s.mres; else b.mn += s.mres; }
-    if (s.affAll) { // 双圣树的光辉散件：六维各+4 → 近似换算派生
-      b.ad += 20; b.armor += 12; b.cc += 16; b.mc += 16; b.cn += 12; b.mn += 12; b.ten += 8;
+    if (s.affAll) { // 六维亲和度各+n → 按派生公式换算（双圣树的光辉 n=4 / 精灵宝钻 n=12）
+      const n = s.affAll;
+      b.ad += 5 * n; b.armor += 3 * n; b.cc += 4 * n; b.mc += 4 * n; b.cn += 3 * n; b.mn += 3 * n; b.ten += 2 * n;
     }
     const e = it.eff;
     if (e) {
@@ -121,9 +128,11 @@ export class Combat {
     const T = tiers;
     const elfCount = new Set(members.filter(m => m.def.races.some(r => ['noldor', 'sinda', 'gondolin', 'fingolfinH'].includes(r))).map(m => m.def.id)).size;
 
+    const foeSilm = this.f.filter(x => x.team !== team && [...x.items].some(i => i.eff && i.eff.silmaril)).length;
     for (const f of members) {
       const b = f.bonus; b.hpFlat_ = b.hpFlat_ || 0;
-      const has = id => f.def.races.includes(id) || f.def.classes.includes(id);
+      const has = id => f.def.races.includes(id) || f.def.classes.includes(id) || f.extraTraits.includes(id);
+      if (has('angband') && foeSilm) b.amp += 5 * foeSilm; // 誓言的仇恨
       if (T.warrior && has('warrior')) { b.dr += [5, 10, 17, 33][T.warrior - 1]; f.warriorVamp = [10, 15, 22, 30][T.warrior - 1]; b.vamp += f.warriorVamp; }
       if (T.dwarf && has('dwarf')) b.dr += [8, 15][T.dwarf - 1];
       if (T.mankind && has('mankind')) b.hpFlat_ += [100, 200, 300, 500][T.mankind - 1];
@@ -145,7 +154,7 @@ export class Combat {
     // ---- M2 新增羁绊 ----
     for (const f of members) {
       const b = f.bonus;
-      const has = id => f.def.races.includes(id) || f.def.classes.includes(id);
+      const has = id => f.def.races.includes(id) || f.def.classes.includes(id) || f.extraTraits.includes(id);
       if (T.sinda && has('sinda')) f.sindaDodge = { pct: [15, 30, 75][T.sinda - 1], pen: [10, 15, 25][T.sinda - 1], last: -99 };
       if (T.beor && has('beor')) f.st.ccImmuneUntil = 15;
       if (T.haleth && has('haleth')) f.halethPending = true;
@@ -189,7 +198,7 @@ export class Combat {
     }
     // 费艾诺家族：最强大者+10%生命+10%暴伤
     if (T.feanorH) {
-      const fam = members.filter(m => m.def.races.includes('feanorH')).sort((a, b) => affSum(b.def, b.star) - affSum(a.def, a.star))[0];
+      const fam = members.filter(m => m.def.races.includes('feanorH')).sort((a, b) => this.strongSum(b) - this.strongSum(a))[0];
       if (fam) { fam.bonus.hpPct += 10; fam.bonus.critD += 10; }
     }
     // 维拉：恰1名→全队增益；多于1名→反转为减益
@@ -245,24 +254,24 @@ export class Combat {
     if (T.noldor) {
       const n = [1, 2, 3, 5][T.noldor - 1];
       const noldorF = members.filter(m => m.def.races.includes('noldor'))
-        .sort((a, b) => affSum(b.def, b.star) - affSum(a.def, a.star));
+        .sort((a, b) => this.strongSum(b) - this.strongSum(a));
       for (let i = 0; i < Math.min(n, noldorF.length); i++) {
         const it = makeLightItem(this.rng.pick(LIGHT_ITEM_NAMES));
         noldorF[i].tempItems.push(it);
         this._applyItemStats(noldorF[i], it);
-        this.emit({ k: 'lightItem', id: noldorF[i].id, item: it.name });
+        this.emit({ k: 'lightItem', id: noldorF[i].id, item: it.name, info: { name: it.name, kind: 'light', stats: it.stats, note: (it.eff && it.eff.note) || '' } });
       }
     }
     // 掌旗官
     if (T.flagger) {
-      const flaggers = members.filter(m => m.def.classes.includes('flagger'));
+      const flaggers = members.filter(m => m.def.classes.includes('flagger') || m.extraTraits.includes('flagger'));
       const mult = [1, 1.5, 2.5][T.flagger - 1], extra = [0.5, 0.75, 1][T.flagger - 1];
-      const sum = { adPct: 0, sp: 0, vamp: 0, shield: 0, asPct: 0, armor: 0, mres: 0, manaRegen: 0 };
+      const sum = { adPct: 0, sp: 0, vamp: 0, shield: 0, asPct: 0, armor: 0, mres: 0, manaRegen: 0, hpRegen3s: 0 };
       for (const fl of flaggers) {
-        const bo = FLAGGER_BONUS[fl.def.id];
+        const bo = FLAGGER_BONUS[fl.def.id] || (fl.extraTraits.includes('flagger') ? { hpRegen3s: 2 } : null);
         if (bo) for (const k in sum) sum[k] += bo[k] || 0;
       }
-      const strongest = flaggers.slice().sort((a, b) => affSum(b.def, b.star) - affSum(a.def, a.star))[0];
+      const strongest = flaggers.slice().sort((a, b) => this.strongSum(b) - this.strongSum(a))[0];
       for (const fl of flaggers) {
         const m2 = mult + (fl === strongest ? extra : 0);
         fl.bonus.adPct += sum.adPct * m2;
@@ -273,6 +282,7 @@ export class Combat {
         if (sum.sp) { const side = this._adaptSide(fl); fl.bonus[side === 'cc' ? 'cc' : 'mc'] += sum.sp * m2; }
         if (sum.shield) fl.bonus.startShieldFlat_ = (fl.bonus.startShieldFlat_ || 0) + sum.shield * m2;
         if (sum.manaRegen) fl.flaggerManaRegen = sum.manaRegen * m2;
+        if (sum.hpRegen3s) fl.flaggerHpRegen = sum.hpRegen3s * m2;
       }
     }
   }
@@ -302,6 +312,7 @@ export class Combat {
     return { ad: Math.max(1, ad * (1 + adPct / 100)), as: Math.max(0.1, as), armor: Math.max(0, armor), cn: Math.max(0, cn), mn: Math.max(0, mn), cc, mc, amp, dr: Math.min(dr, 70), vamp, critR: Math.min(critR, 100), critD, ten, hs, range: st.range, speed: st.speed, penFlat, penPct: Math.min(penPct, 90), penPctM: Math.min(penPctM, 90) };
   }
   adaptStrength(f) { const e = this.eff(f); return Math.max(e.cc, e.mc); }
+  strongSum(f) { return affSum(f.def, f.star) + ([...f.items, ...f.tempItems].some(i => i.eff && i.eff.silmaril) ? 1e6 : 0); }
   statsSnap(f) {
     const e = this.eff(f);
     return { ad: Math.round(e.ad), as: Math.round(e.as * 100) / 100, armor: Math.round(e.armor), cn: Math.round(e.cn), mn: Math.round(e.mn), cc: Math.round(e.cc), mc: Math.round(e.mc), critR: Math.round(e.critR), critD: Math.round(e.critD), amp: Math.round(e.amp), dr: Math.round(e.dr), vamp: Math.round(e.vamp), ten: Math.round(e.ten) };
@@ -573,8 +584,20 @@ export class Combat {
           const ef = it.eff || {};
           if (ef.regenPct) this.heal(f, f.maxHp * ef.regenPct / 100, null);
           if (ef.regenPctPerSec) this.heal(f, f.maxHp * ef.regenPctPerSec / 100, null);
+          if (ef.spRamp) {
+            const key = 'spAcc_' + it.name;
+            f.flags[key] = (f.flags[key] || 0) + 1;
+            if (f.flags[key] >= (ef.rampEvery || 5)) {
+              f.flags[key] = 0;
+              f.bonus[this._adaptSide(f) === 'cc' ? 'cc' : 'mc'] += ef.spRamp;
+            }
+          }
         }
         if (f.flaggerManaRegen) f.mana = Math.min(f.manaMax + f.breakMana, f.mana + f.flaggerManaRegen);
+        if (f.flaggerHpRegen) {
+          f.flags.fhAcc = (f.flags.fhAcc || 0) + 1;
+          if (f.flags.fhAcc >= 3) { f.flags.fhAcc = 0; this.heal(f, f.maxHp * f.flaggerHpRegen / 100, null); }
+        }
         if (f.finarfinRegen) {
           f.flags.finAcc = (f.flags.finAcc || 0) + 1;
           if (f.flags.finAcc >= 3) { f.flags.finAcc = 0; f.mana = Math.min(f.manaMax + f.breakMana, f.mana + f.finarfinRegen); }
@@ -719,6 +742,13 @@ export class Combat {
         }
         if (ef.onHitLightPctAD && tgt.alive) this.deal(f, tgt, e.ad * ef.onHitLightPctAD / 100, 'light', {});
         if (ef.every3rdLightPctAD && f.atkCount % 3 === 0 && tgt.alive) this.deal(f, tgt, e.ad * ef.every3rdLightPctAD / 100, 'light', {});
+        if (ef.asOnAttack) f.bonus.asPct += ef.asOnAttack;
+        if (ef.every3rdMagic && f.atkCount % 3 === 0) {
+          const type = this._adaptSide(f) === 'cc' ? 'light' : 'dark';
+          const targets = ef.magicTargets >= 99 ? this.enemies(f)
+            : [tgt, ...this.enemies(f).filter(x => x !== tgt)].slice(0, ef.magicTargets);
+          for (const t2 of targets) this.deal(f, t2, ef.every3rdMagic, type, {});
+        }
       }
       // 安格班偷取
       if (f.angband && tgt.alive && f.angband.stacks * f.angband.adSteal < f.angband.adCap) {
@@ -949,7 +979,7 @@ function castSkill(sim, f) {
     case 'glorfindel': {
       const cands = sim.enemies(f).filter(en => hexDist(f.pos.c, f.pos.r, en.pos.c, en.pos.r) <= 2 && !en.isMonster);
       let target = tgt;
-      if (cands.length) target = cands.sort((a, b) => affSum(b.def, b.star) - affSum(a.def, a.star))[0];
+      if (cands.length) target = cands.sort((a, b) => sim.strongSum(b) - sim.strongSum(a))[0];
       if (!target) break;
       sim.dashAdjacent(f, target);
       f.flags.onKillHeal = 30;
@@ -1241,7 +1271,7 @@ function castSkill(sim, f) {
           const it = makeComponentItem(sim.rng.pick(T1_COMPS));
           ally.tempItems.push(it);
           sim._applyItemStats(ally, it);
-          sim.emit({ k: 'lightItem', id: ally.id, item: it.name });
+          sim.emit({ k: 'lightItem', id: ally.id, item: it.name, info: { name: it.name, kind: 'component', comp: it.comp, stats: it.stats, note: '' } });
         }
       }
       break;

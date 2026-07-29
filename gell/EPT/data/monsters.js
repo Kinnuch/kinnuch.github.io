@@ -4,11 +4,12 @@ export const MONSTERS = {
   orcWarrior: { id: 'orcWarrior', name: '奥克战士', hp: 250, ad: 20, as: 0.8, range: 1, armor: 0, cn: 0, mn: 0, speed: 1.0 },
   orcArcher: { id: 'orcArcher', name: '奥克弓箭手', hp: 150, ad: 40, as: 0.8, range: 3, armor: 0, cn: 0, mn: 0, speed: 1.0 },
   troll: { id: 'troll', name: '山区食人妖', hp: 1200, ad: 110, as: 0.8, range: 1, armor: 50, cn: 25, mn: 25, speed: 0.9, onAllyDeathHealFull: true },
-  boarBig: { id: 'boarBig', name: '埃韦霍尔特的野猪王', hp: 1960, ad: 150, as: 1.0, range: 1, armor: 25, cn: 0, mn: 0, speed: 1.1 },
-  boarSmall: { id: 'boarSmall', name: '埃韦霍尔特的野猪', hp: 1360, ad: 120, as: 1.0, range: 1, armor: 25, cn: 0, mn: 0, speed: 1.1 },
-  warg: { id: 'warg', name: '座狼', hp: 2400, ad: 200, as: 0.8, range: 1, armor: 0, cn: 0, mn: 0, speed: 1.2, onAllyDeathAS: 30 },
-  coldDrake: { id: 'coldDrake', name: '冷龙', hp: 8000, ad: 800, as: 1.0, range: 2, armor: 0, cn: 0, mn: 0, speed: 1.0, aoe: true },
-  balrog: { id: 'balrog', name: '炎魔', hp: 10000, ad: 600, as: 1.0, range: 1, armor: 50, cn: 0, mn: 0, speed: 1.0, aoe: true, onHit: { burn: 2, gw: 2, stunChance: 0.1 } },
+  // M2 平衡：3-7 之后的野怪较设计文档削弱（用户裁决 2026-07-29）
+  boarBig: { id: 'boarBig', name: '埃韦霍尔特的野猪王', hp: 1700, ad: 125, as: 1.0, range: 1, armor: 25, cn: 0, mn: 0, speed: 1.1 },
+  boarSmall: { id: 'boarSmall', name: '埃韦霍尔特的野猪', hp: 1150, ad: 100, as: 1.0, range: 1, armor: 25, cn: 0, mn: 0, speed: 1.1 },
+  warg: { id: 'warg', name: '座狼', hp: 1800, ad: 140, as: 0.8, range: 1, armor: 0, cn: 0, mn: 0, speed: 1.2, onAllyDeathAS: 30 },
+  coldDrake: { id: 'coldDrake', name: '冷龙', hp: 5600, ad: 470, as: 0.9, range: 2, armor: 0, cn: 0, mn: 0, speed: 1.0, aoe: true },
+  balrog: { id: 'balrog', name: '炎魔', hp: 8200, ad: 430, as: 0.9, range: 1, armor: 50, cn: 0, mn: 0, speed: 1.0, aoe: true, onHit: { burn: 2, gw: 2, stunChance: 0.1 } },
 };
 
 // key: `${stage}-${step}`（step 为该阶段内 PvE 回合位置），waves 为怪物 id 列表
@@ -44,33 +45,33 @@ export function pveDrops(stage, step, rng) {
   return out;
 }
 
-// 袋子开箱（M1：金币 / 卡 / 散件）
+// 袋子开箱（M2：接入拆卸器/重铸器/复制器/双圣树的光辉，近似原表）
 export function openBag(kind, stage, rng) {
   const r = rng.next();
   if (kind === 'bagS') {
-    if (stage <= 2) return r < 0.46 ? { cards1: 2 } : r < 0.93 ? { cards2: 1 } : { gold: 2 };
-    return r < 0.47 ? { cards3: 1 } : r < 0.93 ? { cards2: 1, gold: 1 } : { gold: 3 };
+    if (stage <= 2) return r < 0.46 ? { cards1: 2 } : r < 0.9 ? { cards2: 1 } : r < 0.94 ? { gold: 2, remover: 1 } : r < 0.98 ? { gold: 2, reforger: 1 } : { smallDup: 1 };
+    return r < 0.47 ? { cards3: 1 } : r < 0.9 ? { cards2: 1, gold: 1 } : r < 0.94 ? { gold: 3, remover: 1 } : r < 0.98 ? { gold: 3, reforger: 1 } : { smallDup: 1 };
   }
   if (kind === 'bagM') {
-    if (stage <= 3) return r < 0.31 ? { cards3: 1, gold: 3 } : r < 0.62 ? { cards3: 2 } : r < 0.93 ? { cards2: 3 } : { gold: 6 };
-    return r < 0.46 ? { cards4: 1, gold: 4 } : r < 0.93 ? { cards3: 1, gold: 2 } : { gold: 8 };
+    if (stage <= 3) return r < 0.31 ? { cards3: 1, gold: 3 } : r < 0.62 ? { cards3: 2 } : r < 0.9 ? { cards2: 3 } : r < 0.95 ? { smallDup: 1, cards2: 2 } : { bigDup: 1, cards3: 1 };
+    return r < 0.46 ? { cards4: 1, gold: 4 } : r < 0.9 ? { cards3: 1, gold: 2 } : r < 0.94 ? { bigDup: 1, gold: 3 } : { gold: 8, reforger: 1 };
   }
   // bagL
-  if (stage <= 3) return r < 0.3 ? { gold: 12 } : r < 0.6 ? { cards4: 2, gold: 2 } : { cards3: 3, gold: 2 };
-  return r < 0.35 ? { cards4: 2, gold: 10 } : r < 0.7 ? { cards5: 1, gold: 13 } : { comp1: 1, comp2: 1, gold: 2 };
+  if (stage <= 3) return r < 0.2 ? { gold: 12 } : r < 0.35 ? { compAL: 1, gold: 4, reforger: 1 } : r < 0.55 ? { cards4: 2, gold: 2 } : r < 0.75 ? { cards3: 3, gold: 2 } : { comp1: 1, comp2: 1, gold: 4 };
+  return r < 0.3 ? { cards4: 2, gold: 10 } : r < 0.55 ? { cards5: 1, gold: 13 } : r < 0.75 ? { comp1: 1, comp2: 1, gold: 2 } : r < 0.85 ? { compAL: 1, comp1: 1, gold: 4 } : { upgrader: 2, gold: 5 };
 }
 
-// 霍比特奖励表（M1 简化：道具类奖励折算为金币/卡/散件）
+// 霍比特奖励表（M2：接入消耗道具，按连败数近似原奖励表）
 export function hobbitReward(lossStreak, rng) {
   const r = rng.next();
   const L = Math.min(lossStreak, 12);
   if (L <= 0) return r < 0.78 ? { gold: 1 } : r < 0.88 ? { gold: 2 } : r < 0.98 ? { gold: 3 } : { gold: 4 };
-  if (L === 1) return r < 0.3 ? { gold: 2 } : r < 0.45 ? { gold: 3 } : r < 0.55 ? { cards3: 1 } : r < 0.65 ? { cards2: 2 } : r < 0.85 ? { gold: 5 } : { comp1: 1 };
-  if (L === 2) return r < 0.2 ? { cards3: 1 } : r < 0.5 ? { gold: 5 } : r < 0.7 ? { cards2: 2 } : { comp1: 1 };
-  if (L === 3) return r < 0.35 ? { gold: 6 } : r < 0.55 ? { cards3: 2 } : { gold: 4 };
-  if (L === 4) return r < 0.25 ? { cards4: 1, gold: 3 } : r < 0.45 ? { gold: 7 } : r < 0.6 ? { comp1: 1 } : { gold: 4 };
-  if (L === 5) return r < 0.25 ? { gold: 6 } : r < 0.35 ? { cards3: 3 } : r < 0.55 ? { gold: 8 } : { gold: 5 };
-  if (L === 6) return r < 0.3 ? { gold: 5 } : r < 0.5 ? { comp1: 1 } : r < 0.6 ? { gold: 8 } : { cards4: 2 };
-  if (L === 7) return r < 0.3 ? { cards3: 3 } : r < 0.5 ? { cards4: 2 } : r < 0.6 ? { gold: 10 } : { cards3: 2 };
-  return r < 0.4 ? { gold: 10 } : r < 0.7 ? { comp1: 1, comp2: 1 } : { cards4: 2 };
+  if (L === 1) return r < 0.3 ? { gold: 2 } : r < 0.45 ? { gold: 3 } : r < 0.55 ? { cards3: 1 } : r < 0.65 ? { cards2: 2 } : r < 0.8 ? { gold: 5 } : r < 0.95 ? { comp1: 1 } : { smallDup: 1 };
+  if (L === 2) return r < 0.2 ? { cards3: 1 } : r < 0.5 ? { gold: 5 } : r < 0.7 ? { cards2: 2 } : r < 0.9 ? { comp1: 1 } : { smallDup: 1 };
+  if (L === 3) return r < 0.3 ? { gold: 6 } : r < 0.5 ? { cards3: 2 } : r < 0.6 ? { bigDup: 1 } : r < 0.9 ? { gold: 4 } : { dice: 1 };
+  if (L === 4) return r < 0.25 ? { cards4: 1, gold: 3 } : r < 0.45 ? { gold: 7 } : r < 0.6 ? { comp1: 1 } : r < 0.9 ? { gold: 4 } : { reforger: 1 };
+  if (L === 5) return r < 0.25 ? { gold: 6 } : r < 0.35 ? { cards3: 3 } : r < 0.5 ? { gold: 8 } : r < 0.6 ? { dice: 1 } : r < 0.75 ? { jobBook: 1 } : { gold: 5 };
+  if (L === 6) return r < 0.3 ? { gold: 5 } : r < 0.45 ? { comp1: 1 } : r < 0.55 ? { compAL: 1 } : r < 0.7 ? { jobBook: 1 } : r < 0.85 ? { gold: 8 } : { cards4: 2 };
+  if (L === 7) return r < 0.3 ? { cards3: 3 } : r < 0.5 ? { cards4: 2 } : r < 0.6 ? { gold: 10 } : r < 0.8 ? { bigDup: 1 } : { cards3: 2 };
+  return r < 0.3 ? { gold: 10 } : r < 0.55 ? { comp1: 1, comp2: 1 } : r < 0.7 ? { cards4: 2 } : r < 0.85 ? { jobBook: 1 } : r < 0.95 ? { upgrader: 2 } : { silmaril: 1 };
 }

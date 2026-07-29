@@ -8,24 +8,34 @@ export function runAI(game, p) {
   // 升级曲线
   const targetLevel = stage <= 1 ? 3 : stage === 2 ? 5 : stage === 3 ? 6 : stage === 4 ? 7 : stage === 5 ? 8 : 9;
   let reserve = p.aiStyle === 'eco' ? 20 : p.aiStyle === 'aggro' ? 0 : 10;
-  if (p.gold > 45) reserve = 0; // 金币溢出时强制消费
+  if (stage <= 2 || p.gold > 45) reserve = 0; // 前期保命/金币溢出时强制消费
   let guard = 0;
   while (p.level < targetLevel && p.gold - 4 >= (stage >= 4 ? 0 : reserve) && guard++ < 20) {
     if (!buyXp(game, p)) break;
   }
-  // 买牌（最多两轮刷新）
-  for (let round = 0; round < 3 && guard < 60; round++) {
+  // 买牌：按"凑对>羁绊>补人口"打分，最多三轮刷新
+  for (let round = 0; round < 4 && guard < 80; round++) {
+    const scored = [];
     for (let i = 0; i < 5; i++) {
-      guard++;
       const id = p.shop[i];
       if (!id) continue;
       const def = UNITS_BY_ID[id];
-      if (p.gold - def.cost < (stage >= 5 ? 0 : Math.min(reserve, 30))) continue;
       const owned = allUnits(p).filter(u => u.def.id === id && u.star < 3).length;
-      const traitMatch = allUnits(p).some(u => u.def.races.some(r => def.races.includes(r)) || u.def.classes.some(c => def.classes.includes(c)));
-      if (owned >= 1 || traitMatch || allUnits(p).length < p.level + 2) buyCard(game, p, i);
+      const traitN = allUnits(p).reduce((s, u) =>
+        s + u.def.races.filter(r => def.races.includes(r)).length + u.def.classes.filter(c => def.classes.includes(c)).length, 0);
+      let score = owned >= 2 ? 100 : owned === 1 ? 40 : 0;
+      score += Math.min(traitN, 6) * 4 + def.cost * 2;
+      if (allUnits(p).length < p.level + 2) score += 15;
+      scored.push({ i, def, score });
     }
-    if (round < 2 && p.gold > reserve + 15 && benchSpace(p) >= 0) { if (!reroll(game, p)) break; } else break;
+    scored.sort((a, b) => b.score - a.score);
+    for (const s of scored) {
+      guard++;
+      if (s.score <= 4) continue;
+      if (p.gold - s.def.cost < (stage >= 4 ? 0 : Math.min(reserve, 20))) continue;
+      buyCard(game, p, s.i);
+    }
+    if (round < 3 && p.gold > reserve + 12 && benchSpace(p) >= 0) { if (!reroll(game, p)) break; } else break;
   }
   // 卖掉多余的低费独苗（备战席满时）
   if (benchSpace(p) < 0 || p.bench.filter(Boolean).length >= 8) {
@@ -79,7 +89,7 @@ function aiEquip(game, p) {
         }
     if (combined) p.items.push(combined);
     // 穿戴
-    const target = p.board.map(b => b.unit).filter(u => u.items.length < 3).sort((a, b) => (b.def.cost * b.star) - (a.def.cost * a.star))[0];
+    const target = p.board.map(b => b.unit).filter(u => u.items.length < 3 && !u.items.some(i => i.eff && i.eff.thief)).sort((a, b) => (b.def.cost * b.star) - (a.def.cost * a.star))[0];
     if (!target) break;
     const wearable = p.items.find(it => it.kind === 'combined' || it.kind === 'light') || (combined ? null : p.items.find(it => it.kind === 'component'));
     if (!wearable) break;

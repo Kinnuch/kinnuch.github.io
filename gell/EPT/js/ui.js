@@ -17,9 +17,37 @@ const DMG_COLOR = { phys: 'var(--dmg-phys)', light: 'var(--dmg-light)', dark: 'v
 const TIER_CLASS = ['', 'tier-bronze', 'tier-silver', 'tier-gold', 'tier-prisma', 'tier-prisma', 'tier-prisma'];
 
 let game = null, selectedItem = null, planTimer = null, planLeft = 0;
-let playback = null, drag = null, tooltipPinned = false;
+let playback = null, drag = null, tooltipPinned = false, pinnedLive = null, audioCtx = null;
 
 const $ = id => document.getElementById(id);
+
+const COMP_ICON = { ad1: '⚔', ad2: '⚔', as1: '🗡', as2: '🏹', ap1: '✨', ap2: '✨', m1: '💧', m2: '💧', a1: '🛡', a2: '🛡', mr1: '🔮', mr2: '🔮', hp1: '❤', hp2: '❤', hs1: '🌿', hs2: '🌿', csc1: '💥', csc2: '💥', al: '☀' };
+function itemIcon(it) {
+  if (it.kind === 'component') return COMP_ICON[it.comp] || '';
+  if (it.kind === 'light') return '☀';
+  if (it.comps) return (COMP_ICON[it.comps[0]] || '') + (COMP_ICON[it.comps[1]] || '');
+  return '🔸';
+}
+
+function bell(freq = 880) {
+  try {
+    audioCtx = audioCtx || new (window.AudioContext || window.webkitAudioContext)();
+    const o = audioCtx.createOscillator(), g = audioCtx.createGain();
+    o.type = 'sine'; o.frequency.value = freq;
+    g.gain.setValueAtTime(0.18, audioCtx.currentTime);
+    g.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.5);
+    o.connect(g); g.connect(audioCtx.destination);
+    o.start(); o.stop(audioCtx.currentTime + 0.5);
+  } catch (e) { /* 无声环境忽略 */ }
+}
+function showCount(n) {
+  const el = $('countNum');
+  el.textContent = n;
+  el.classList.remove('tick'); void el.offsetWidth; el.classList.add('tick');
+}
+function applyView() {
+  $('board').classList.toggle('tilt', localStorage.getItem('ept-view') !== '2d');
+}
 
 export function initUI() {
   $('startSolo').onclick = () => {
@@ -37,6 +65,11 @@ export function initUI() {
   $('scoutModal').onclick = e => { if (e.target === $('scoutModal')) $('scoutModal').style.display = 'none'; };
   $('goldBig').onpointerenter = e => { if (game && !tooltipPinned) showTooltip(goldTooltip(), e); };
   $('goldBig').onpointerleave = () => hideTooltip();
+  $('viewBtn').onclick = () => {
+    localStorage.setItem('ept-view', localStorage.getItem('ept-view') === '2d' ? '25d' : '2d');
+    applyView();
+  };
+  applyView();
   document.addEventListener('pointermove', e => { moveTooltip(e); dragMove(e); });
   document.addEventListener('pointerup', dragEnd);
   document.addEventListener('pointerdown', e => {
@@ -73,6 +106,7 @@ function startPlanTimer() {
   planTimer = setInterval(() => {
     planLeft--;
     $('timer').textContent = planLeft + 's';
+    if (planLeft > 0 && planLeft <= 5) { bell(planLeft === 1 ? 660 : 880); showCount(planLeft); }
     if (planLeft <= 0) { clearInterval(planTimer); if (planOk()) beginCombat(); }
   }, 1000);
 }
@@ -214,7 +248,7 @@ function renderItems() {
   me().items.forEach((it, i) => {
     const chip = document.createElement('div');
     chip.className = 'item-chip' + (it.kind !== 'component' ? ' combined' : '') + (selectedItem === it ? ' selected' : '');
-    chip.textContent = it.name;
+    chip.textContent = itemIcon(it) + ' ' + it.name;
     chip.dataset.itemIdx = i;
     chip.onclick = () => { if (drag) return; selectedItem = selectedItem === it ? null : it; renderItems(); };
     chip.oncontextmenu = e => { e.preventDefault(); pinItemPreview(it, e); };
@@ -226,7 +260,7 @@ function renderItems() {
       startDrag({ kind: 'item', item: it, el: chip }, e, () => {
         const g = document.createElement('div');
         g.className = 'item-chip' + (it.kind !== 'component' ? ' combined' : '');
-        g.textContent = it.name;
+        g.textContent = itemIcon(it) + ' ' + it.name;
         return g;
       });
     };
@@ -310,12 +344,18 @@ function showScout(p) {
 }
 
 // ---------- 提示框 ----------
+function barsHtml(live) {
+  const hpPct = Math.max(0, Math.min(100, live.hp / live.maxHp * 100));
+  const mpPct = live.manaMax ? Math.max(0, Math.min(100, live.mana / live.manaMax * 100)) : 0;
+  return `<div class="tt-bar hp"><div style="width:${hpPct}%"></div><span>❤ ${live.hp} / ${live.maxHp}</span></div>
+  ${live.manaMax ? `<div class="tt-bar mp"><div style="width:${mpPct}%"></div><span>💧 ${live.mana} / ${live.manaMax}</span></div>` : ''}`;
+}
 function unitDefTooltip(def, star, live) {
   const s = unitStatsAtStar(def, star);
   const traits = [...def.races.map(r => RACES[r]), ...def.classes.map(c => CLASSES[c])].join(' · ');
   const align = { light: '光明系', dark: '黑暗系', phys: '物理系' }[def.align];
   return `<h5>${def.name} ${'★'.repeat(star)}</h5><div class="tt-sub">${def.cost}费 · ${traits} · ${align}</div>
-  ${live ? `<div style="color:var(--accent)">实时：生命 ${live.hp}/${live.maxHp}　法力 ${live.mana}/${live.manaMax}</div>` : ''}
+  ${live ? barsHtml(live) : ''}
   <div>生命${s.hp}｜攻击${s.ad}｜攻速${def.as}｜射程${def.range}</div>
   <div>护甲${s.armor}｜光抗${s.cn}｜黑抗${s.mn}｜韧性${s.ten}</div>
   <div>光强${s.cc}｜黑强${s.mc}｜法力${def.mana[0]}/${def.mana[1]}</div>
@@ -335,14 +375,35 @@ function pinItemPreview(it, e) {
     for (const other of Object.keys(COMPONENTS)) {
       if (!canCombine(it.comp, other)) continue;
       const name = COMBO_NAMES[comboKey(it.comp, other)];
-      if (name) lines.push(`<div>＋ ${COMPONENTS[other].name} → <b style="color:var(--accent)">${name}</b></div>`);
+      if (name) lines.push(`<div class="recipe-line" data-a="${it.comp}" data-b="${other}">＋ ${COMPONENTS[other].name} → <b style="color:var(--accent)">${name}</b></div>`);
     }
-    html = `<h5>${it.name} · 合成配方</h5>${lines.join('') || '<div>无</div>'}<div class="tt-sub" style="margin-top:4px">Esc 或点击空白处关闭</div>`;
+    html = `<h5>${itemIcon(it)} ${it.name} · 合成配方<span class="tt-sub" style="font-weight:normal">（悬浮配方看详情）</span></h5>${lines.join('') || '<div>无</div>'}<div class="tt-sub" style="margin-top:4px">Esc 或点击空白处关闭</div>`;
   } else html = itemTooltip(it);
   showTooltip(html, e);
-  tooltipPinned = true;
+  pinTooltip();
+  $('tooltip').querySelectorAll('.recipe-line').forEach(line => {
+    line.onpointerenter = ev => {
+      const combined = makeCombinedItem(line.dataset.a, line.dataset.b);
+      if (combined) showTooltip2(itemTooltip(combined), ev);
+    };
+    line.onpointerleave = hideTooltip2;
+  });
 }
-function showTooltip(html, e) { const t = $('tooltip'); t.innerHTML = html; t.style.display = 'block'; moveTooltip(e); }
+function pinTooltip() { tooltipPinned = true; $('tooltip').classList.add('pinned'); }
+function showTooltip2(html, ev) {
+  const t2 = $('tooltip2'), rect = $('tooltip').getBoundingClientRect();
+  t2.innerHTML = html; t2.style.display = 'block';
+  const x = rect.right + 8 + 280 > window.innerWidth ? rect.left - 288 : rect.right + 8;
+  t2.style.left = Math.max(4, x) + 'px';
+  t2.style.top = Math.min(ev.clientY - 20, window.innerHeight - 160) + 'px';
+}
+function hideTooltip2() { $('tooltip2').style.display = 'none'; }
+function pinLivePanel(n, ev) {
+  showTooltip(liveTooltip(n), ev);
+  pinTooltip();
+  pinnedLive = n;
+}
+function showTooltip(html, e) { const t = $('tooltip'); t.innerHTML = html; t.style.display = 'block'; t.classList.remove('pinned'); moveTooltip(e); }
 function moveTooltip(e) {
   if (tooltipPinned) return;
   const t = $('tooltip');
@@ -351,7 +412,13 @@ function moveTooltip(e) {
   const y = Math.min(e.clientY + 14, window.innerHeight - t.offsetHeight - 10);
   t.style.left = x + 'px'; t.style.top = y + 'px';
 }
-function hideTooltip(force) { if (tooltipPinned && !force) return; $('tooltip').style.display = 'none'; }
+function hideTooltip(force) {
+  if (tooltipPinned && !force) return;
+  $('tooltip').style.display = 'none';
+  $('tooltip').classList.remove('pinned');
+  hideTooltip2();
+  pinnedLive = null;
+}
 
 // ---------- 拖拽 ----------
 function startDrag(d, e, ghostMaker) {
@@ -379,8 +446,16 @@ function startDrag(d, e, ghostMaker) {
 }
 function attachUnitInteract(el, unit, src) {
   el.dataset.uid = unit.uid;
-  el.onpointerenter = e => { if (!tooltipPinned) showTooltip(unitDefTooltip(unit.def, unit.star) + (unit.items.length ? `<div style="margin-top:4px">装备：${unit.items.map(i => i.name).join('、')}</div>` : ''), e); };
+  const info = () => unitDefTooltip(unit.def, unit.star) + (unit.items.length ? `<div style="margin-top:4px">装备：${unit.items.map(i => itemIcon(i) + ' ' + i.name).join('、')}</div>` : '');
+  el.onpointerenter = e => { if (!tooltipPinned) showTooltip(info(), e); };
   el.onpointerleave = () => hideTooltip();
+  el.oncontextmenu = e => {
+    e.preventDefault();
+    const s = unitStatsAtStar(unit.def, unit.star);
+    const live = { hp: s.hp, maxHp: s.hp, mana: unit.def.mana[0], manaMax: unit.def.mana[1], items: unit.items.map(i => itemIcon(i) + ' ' + i.name) };
+    showTooltip(unitDefTooltip(unit.def, unit.star, live), e);
+    pinTooltip();
+  };
   el.onpointerdown = e => {
     if (e.button !== 0 || !actOk()) return;
     e.preventDefault();
@@ -498,7 +573,20 @@ function beginCombat() {
   $('speedBtn').textContent = '▶ 1x';
   if (!my) { finishCombat(); return; }
   const mirror = my.a !== 0;
-  startPlayback(my.events, mirror);
+  // 入场演出：飞往敌方棋盘 / 野怪来袭
+  const isPvE = my.kind === 'pve';
+  bell(isPvE ? 440 : 520);
+  document.querySelectorAll('#board .unit,#board .float-txt,#board .proj').forEach(n => n.remove());
+  const ib = $('introBanner');
+  ib.querySelector('.it-main').textContent = isPvE ? '👹 野怪来袭！' : `⚔ 对阵 ${enemyName}`;
+  ib.querySelector('.it-sub').textContent = isPvE ? '守住你的棋盘' : '正在飞往对手的棋盘…';
+  ib.classList.remove('show'); void ib.offsetWidth; ib.classList.add('show');
+  const bw = $('boardWrap');
+  bw.classList.remove('fly-in'); void bw.offsetWidth; bw.classList.add('fly-in');
+  setTimeout(() => {
+    ib.classList.remove('show'); bw.classList.remove('fly-in');
+    startPlayback(my.events, mirror);
+  }, 1800);
 }
 
 function startPlayback(events, mirror) {
@@ -528,6 +616,7 @@ function updateBars(n) {
   if (hpBar) hpBar.style.width = Math.max(0, n.hp / n.maxHp * 100) + '%';
   const mBar = n.el.querySelector('.mbar > div');
   if (mBar) mBar.style.width = Math.min(100, Math.max(0, n.manaMax ? n.mana / n.manaMax * 100 : 0)) + '%';
+  if (pinnedLive === n) $('tooltip').innerHTML = liveTooltip(n); // 固定面板实时刷新
 }
 
 function applyEvent(pb, e) {
@@ -543,9 +632,11 @@ function applyEvent(pb, e) {
       board.appendChild(el);
       const n = { el, maxHp: e.hp, hp: e.hp, mana: e.mana, manaMax: e.monster ? 0 : e.manaMax, enemy, def, star: e.star, items: e.items || [] };
       nodes[e.id] = n;
-      // 战斗中实时悬浮信息
+      if (!pb.skip) { el.classList.add('spawn-pop'); setTimeout(() => el.classList.remove('spawn-pop'), 500); }
+      // 战斗中实时悬浮信息 & 右键固定面板
       el.onpointerenter = ev => { if (!tooltipPinned) showTooltip(liveTooltip(n), ev); };
       el.onpointerleave = () => hideTooltip();
+      el.oncontextmenu = ev => { ev.preventDefault(); pinLivePanel(n, ev); };
       break;
     }
     case 'move': {
@@ -618,7 +709,7 @@ function applyEvent(pb, e) {
   return false;
 }
 function liveTooltip(n) {
-  if (n.def.monster) return `<h5>${n.def.name}</h5><div style="color:var(--accent)">实时：生命 ${Math.max(0, Math.round(n.hp))}/${n.maxHp}</div>`;
+  if (n.def.monster) return `<h5>${n.def.name}</h5>` + barsHtml({ hp: Math.max(0, Math.round(n.hp)), maxHp: n.maxHp, mana: 0, manaMax: 0 });
   return unitDefTooltip(n.def, n.star, { hp: Math.max(0, Math.round(n.hp)), maxHp: n.maxHp, mana: Math.round(n.mana), manaMax: n.manaMax, items: n.items });
 }
 

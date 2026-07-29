@@ -56,8 +56,31 @@ button { font-family: inherit; cursor: pointer; }
 .pl-hpnum { width: 26px; text-align: right; font-weight: bold; }
 
 /* 棋盘 */
-#boardWrap { position: relative; background: var(--panel); border: 1px solid var(--border); border-radius: 10px; padding: 10px; }
+#boardWrap { position: relative; background: var(--panel); border: 1px solid var(--border); border-radius: 10px; padding: 10px; overflow: hidden; }
 #board { position: relative; margin: 0 auto; }
+/* 2.5D 视角：棋盘平面后倾，棋子反向立正 */
+#board.tilt { transform: perspective(1100px) rotateX(38deg) scale(1.08); transform-origin: 50% 22%; transform-style: preserve-3d; margin-bottom: -84px; margin-top: -6px; }
+#board.tilt .cell { box-shadow: 0 3px 0 #00000022; }
+#board.tilt .unit { transform: rotateX(-38deg); transform-origin: 50% 88%; }
+#board.tilt .unit .portrait { box-shadow: 0 10px 10px -6px #00000066; }
+#board.tilt .float-txt { animation-name: floatUpTilt; }
+@keyframes floatUpTilt { 0% { transform: rotateX(-38deg) translateY(0); opacity: 1; } 100% { transform: rotateX(-38deg) translateY(-36px); opacity: 0; } }
+/* 战斗入场 */
+#boardWrap.fly-in { animation: flyIn 1.6s ease-out; }
+@keyframes flyIn { 0% { transform: translateY(130px) scale(1.22); opacity: .35; } 55% { transform: translateY(-14px) scale(.99); opacity: 1; } 100% { transform: none; } }
+.unit.spawn-pop { animation: spawnPop .45s ease-out; }
+#board.tilt .unit.spawn-pop { animation: spawnPopTilt .45s ease-out; }
+@keyframes spawnPop { 0% { opacity: 0; transform: scale(.2) translateY(-26px); } 70% { transform: scale(1.12); } 100% { opacity: 1; transform: none; } }
+@keyframes spawnPopTilt { 0% { opacity: 0; transform: rotateX(-38deg) scale(.2) translateY(-26px); } 70% { transform: rotateX(-38deg) scale(1.12); } 100% { opacity: 1; transform: rotateX(-38deg); } }
+/* 倒计时大数字 & 入场横幅 */
+#countNum { position: fixed; left: 50%; top: 38%; transform: translateX(-50%); z-index: 300; font-size: 84px; font-weight: bold; color: var(--accent); text-shadow: 0 3px 14px #000a; pointer-events: none; display: none; }
+#countNum.tick { display: block; animation: countFade .9s ease-out forwards; }
+@keyframes countFade { 0% { opacity: 1; transform: translateX(-50%) scale(1.5); } 30% { transform: translateX(-50%) scale(1); } 100% { opacity: 0; transform: translateX(-50%) scale(.9); } }
+#introBanner { position: absolute; inset: 0; z-index: 60; display: none; align-items: center; justify-content: center; flex-direction: column; gap: 8px; background: #00000042; border-radius: 10px; pointer-events: none; }
+#introBanner.show { display: flex; animation: introFade 1.8s forwards; }
+#introBanner .it-main { font-size: 34px; font-weight: bold; color: #fff8e8; text-shadow: 0 2px 10px #000; }
+#introBanner .it-sub { font-size: 16px; color: #ffd54f; text-shadow: 0 1px 6px #000; }
+@keyframes introFade { 0% { opacity: 0; } 12% { opacity: 1; } 80% { opacity: 1; } 100% { opacity: 0; } }
 .cell { position: absolute; clip-path: polygon(25% 3%, 75% 3%, 98% 50%, 75% 97%, 25% 97%, 2% 50%); background: var(--panel2); opacity: .55; transition: background .15s; }
 .cell.mine { opacity: .9; background-color: var(--panel2); background-image: linear-gradient(#b08d3f24, #b08d3f24); }
 .cell.foe { opacity: .55; background-color: var(--panel2); background-image: linear-gradient(#a5453018, #a5453018); }
@@ -81,7 +104,7 @@ button { font-family: inherit; cursor: pointer; }
 .unit .items-dots { display: flex; gap: 1px; height: 6px; margin-top: 1px; }
 .unit .items-dots i { width: 6px; height: 6px; border-radius: 50%; background: var(--gold); border: 1px solid #0005; }
 .unit.dead { opacity: 0; transition: opacity .5s; }
-.unit.lunge { animation: lunge .18s; }
+.unit.lunge .portrait { animation: lunge .18s; }
 @keyframes lunge { 50% { transform: scale(1.15); } }
 .unit.casting .portrait { box-shadow: 0 0 14px 4px var(--accent2); }
 .unit.untargetable { opacity: .35; }
@@ -156,6 +179,18 @@ button { font-family: inherit; cursor: pointer; }
 #tooltip { position: fixed; z-index: 100; max-width: 300px; background: var(--panel); border: 1px solid var(--accent); border-radius: 8px; padding: 10px; font-size: 12.5px; line-height: 1.6; display: none; pointer-events: none; box-shadow: 0 4px 16px #0007; }
 #tooltip h5 { font-size: 14px; color: var(--accent); }
 #tooltip .tt-sub { color: var(--sub); }
+#tooltip.pinned { pointer-events: auto; border-width: 2px; }
+#tooltip2 { position: fixed; z-index: 110; max-width: 280px; background: var(--panel); border: 1px solid var(--accent2); border-radius: 8px; padding: 9px; font-size: 12.5px; line-height: 1.6; display: none; pointer-events: none; box-shadow: 0 4px 16px #0007; }
+#tooltip2 h5 { font-size: 13px; color: var(--accent); }
+#tooltip2 .tt-sub { color: var(--sub); }
+.recipe-line { padding: 1px 3px; border-radius: 4px; cursor: default; }
+.recipe-line:hover { background: var(--panel2); }
+/* 面板内血/蓝条 */
+.tt-bar { position: relative; height: 14px; background: #0005; border-radius: 4px; overflow: hidden; margin: 3px 0; }
+.tt-bar > div { height: 100%; }
+.tt-bar.hp > div { background: var(--hpbar); }
+.tt-bar.mp > div { background: var(--manabar); }
+.tt-bar span { position: absolute; inset: 0; text-align: center; font-size: 11px; color: #fff; text-shadow: 0 1px 2px #000; line-height: 14px; }
 
 /* 战斗横幅 */
 #banner { position: absolute; left: 50%; top: 40%; transform: translateX(-50%); z-index: 50; font-size: 30px; font-weight: bold; color: var(--accent); text-shadow: 0 2px 8px #000a; display: none; pointer-events: none; }

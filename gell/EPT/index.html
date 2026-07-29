@@ -42,6 +42,7 @@
       <span class="stat" id="streakStat"></span>
       <span id="enemyLabel" style="color:var(--accent)"></span>
       <span style="flex:1"></span>
+      <button id="viewBtn" class="utility-btn">🎥 视角</button>
       <button id="speedBtn">▶ 1x</button>
       <button id="skipBtn">⏭ 跳过</button>
       <button id="startBtn">开战 ⚔</button>
@@ -54,6 +55,7 @@
         <div id="boardWrap">
           <div id="board"></div>
           <div id="banner"></div>
+          <div id="introBanner"><div class="it-main"></div><div class="it-sub"></div></div>
         </div>
         <div class="panel-box">
           <h4>备战席 <span id="itemHint" style="display:none;color:var(--accent)">（已选中装备——点击棋子穿戴）</span></h4>
@@ -90,6 +92,8 @@
   </div>
 
   <div id="tooltip"></div>
+  <div id="tooltip2"></div>
+  <div id="countNum"></div>
   <div id="dragGhost"></div>
   <div id="scoutModal"></div>
 

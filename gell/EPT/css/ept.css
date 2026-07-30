@@ -40,20 +40,23 @@ button { font-family: inherit; cursor: pointer; }
 #speedBtn, #skipBtn { padding: 5px 10px; background: var(--panel2); color: var(--text); border: 1px solid var(--border); border-radius: 6px; display: none; }
 
 #layout { display: flex; gap: 8px; }
-#leftPanel { width: 170px; flex-shrink: 0; }
+#leftPanel { width: 195px; flex-shrink: 0; }
 #rightPanel { width: 210px; flex-shrink: 0; }
 #centerPanel { flex: 1; min-width: 640px; }
 .panel-box { background: var(--panel); border: 1px solid var(--border); border-radius: 8px; padding: 8px; margin-bottom: 8px; }
 .panel-box h4 { font-size: 13px; color: var(--sub); margin-bottom: 6px; }
 
-/* 玩家列表 */
-.pl-row { display: flex; align-items: center; gap: 6px; padding: 4px 2px; border-radius: 6px; font-size: 13px; }
+/* 玩家列表（两行：名字+段位+连胜 / 血条） */
+.pl-row { display: block; padding: 4px 4px 5px; border-radius: 6px; font-size: 13px; cursor: pointer; }
 .pl-row.me { background: var(--panel2); }
 .pl-row.dead { opacity: .4; text-decoration: line-through; }
-.pl-name { flex: 1; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
-.pl-hp { width: 56px; height: 10px; border-radius: 5px; background: #0003; overflow: hidden; }
+.pl-top { display: flex; align-items: center; gap: 4px; white-space: nowrap; }
+.pl-name { font-weight: 600; }
+.pl-bot { display: flex; align-items: center; gap: 6px; margin-top: 2px; }
+.pl-hp { flex: 1; height: 9px; border-radius: 5px; background: #0003; overflow: hidden; }
 .pl-hp > div { height: 100%; background: var(--hpbar); }
-.pl-hpnum { width: 26px; text-align: right; font-weight: bold; }
+.pl-hpnum { width: 28px; text-align: right; font-weight: bold; font-size: 12px; }
+.pl-rank { font-size: 10.5px; color: var(--accent2); white-space: nowrap; }
 
 /* 棋盘 */
 #boardWrap { position: relative; background: var(--panel); border: 1px solid var(--border); border-radius: 10px; padding: 10px; overflow: hidden; }

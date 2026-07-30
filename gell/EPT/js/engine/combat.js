@@ -250,8 +250,8 @@ export class Combat {
     if (T.adventurer) this['adv' + team] = [5, 15][T.adventurer - 1];
     if (T.executor) this['exec' + team] = [8, 20][T.executor - 1];
     if (T.hunter) this['hunterT' + team] = { next: 3 };
-    // 诺多：最强大的 1/2/3/5 名获得随机光明装（当场）
-    if (T.noldor) {
+    // 诺多：最强大的 1/2/3/5 名获得随机光明装（当场；预演模式跳过随机分发）
+    if (T.noldor && !this.opts.preview) {
       const n = [1, 2, 3, 5][T.noldor - 1];
       const noldorF = members.filter(m => m.def.races.includes('noldor'))
         .sort((a, b) => this.strongSum(b) - this.strongSum(a));

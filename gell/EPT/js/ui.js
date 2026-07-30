@@ -1,5 +1,7 @@
 // EPT · UI：布阵/商店/拖拽/战斗回放（M1.5：实时蓝条、观战、装备拖拽、战斗中操作等）
 import { Game } from './engine/game.js';
+import { Combat, makeFighter } from './engine/combat.js';
+import { makeRng } from './engine/rng.js';
 import { buyCard, reroll, buyXp, sellUnit, placeUnit, unfieldUnit, allUnits, isFielded } from './engine/player.js';
 import { RACES, CLASSES, UNITS, UNITS_BY_ID, unitStatsAtStar, XP_TO_LEVEL, SHOP_ODDS, affAtStar } from '../data/units.js';
 import { countTraits, TRAITS } from '../data/traits.js';
@@ -447,7 +449,8 @@ function renderPlayers() {
     row.className = 'pl-row' + (p.i === 0 ? ' me' : '') + (p.alive ? '' : ' dead');
     const fire = p.alive && p.streakW >= 2 ? `<span class="fire">🔥${p.streakW}</span>` : '';
     const rk = `<span class="pl-rank">${rankShort(ladder()[p.name] || 0)}</span>`;
-    row.innerHTML = `<span class="pl-name">${p.name}${rk}${fire}</span><span class="pl-hp"><div style="width:${Math.max(0, p.hp)}%"></div></span><span class="pl-hpnum">${Math.max(0, p.hp)}</span>`;
+    row.innerHTML = `<div class="pl-top"><span class="pl-name">${p.name}</span>${rk}${fire}</div>
+      <div class="pl-bot"><span class="pl-hp"><div style="width:${Math.max(0, p.hp)}%"></div></span><span class="pl-hpnum">${Math.max(0, p.hp)}</span></div>`;
     if (p.alive) row.onclick = () => showScout(p);
     box.appendChild(row);
   }
@@ -695,12 +698,7 @@ function showScout(p) {
     if (!b) return;
     el.onpointerenter = e => {
       if (tooltipPinned) return;
-      const s = unitStatsAtStar(b.unit.def, b.unit.star);
-      const prog = b.unit.progress || {};
-      showTooltip(() => unitDefTooltip(b.unit.def, b.unit.star, {
-        hp: s.hp + (prog.mkHp || 0), maxHp: s.hp + (prog.mkHp || 0),
-        mana: b.unit.def.mana[0], manaMax: b.unit.def.mana[1], items: b.unit.items, shield: 0,
-      }), e);
+      showTooltip(() => unitDefTooltip(b.unit.def, b.unit.star, previewLiveOf(b.unit, p)), e);
     };
     el.onpointerleave = () => hideTooltip();
   });
@@ -955,14 +953,31 @@ function activateDrag() {
     }
   }
 }
-// 点击棋子：固定完整面板（与战斗中格式统一，含永久成长）
+// 备战预演：用战斗引擎装配羁绊+装备（不开打、不掷随机光明装），得到真实面板
+function previewLiveOf(unit, player) {
+  const board = player.board;
+  const idx = board.findIndex(b => b.unit === unit);
+  const wrap = u => ({ def: u.unit.def, star: u.unit.star, items: u.unit.items, progress: u.unit.progress, extraTraits: u.unit.extraTraits, pos: { c: u.c, r: u.r } });
+  let fighters, fi;
+  if (idx >= 0) { // 在场：全队装配（羁绊按整个棋盘计算）
+    fighters = board.map(b => makeFighter(wrap(b), 0, { player }));
+    fi = idx;
+  } else { // 备战席：单体装配（只吃装备与自身成长）
+    fighters = [makeFighter({ def: unit.def, star: unit.star, items: unit.items, progress: unit.progress, extraTraits: unit.extraTraits, pos: { c: 3, r: 5 } }, 0, { player })];
+    fi = 0;
+  }
+  const sim = new Combat(fighters, makeRng(1), { preview: true, pvpWins: [player.pvpWins || 0, 0] });
+  const f = fighters[fi];
+  return {
+    hp: Math.round(f.maxHp), maxHp: Math.round(f.maxHp),
+    mana: Math.round(f.mana), manaMax: f.manaMax,
+    items: unit.items, stats: sim.statsSnap(f),
+    shield: Math.round(sim.shieldTotal(f)), breakExtra: 0,
+  };
+}
+// 点击棋子：固定完整面板（与战斗中格式统一，含羁绊/装备/永久成长的真实数值）
 function pinUnitPanel(unit, e) {
-  const s = unitStatsAtStar(unit.def, unit.star);
-  const prog = unit.progress || {};
-  const base = baseStatsOf(unit.def, unit.star);
-  const adj = { ...base, ad: base.ad + (prog.mkAd || 0) + (prog.permAd || 0), cc: base.cc + (prog.mkAd || 0) };
-  const hp = s.hp + (prog.mkHp || 0);
-  const live = { hp, maxHp: hp, mana: unit.def.mana[0], manaMax: unit.def.mana[1], items: unit.items, stats: adj, shield: 0, breakExtra: 0 };
+  const live = previewLiveOf(unit, me());
   showTooltip(() => unitDefTooltip(unit.def, unit.star, live), e);
   pinTooltip();
   pinnedItems = unit.items;

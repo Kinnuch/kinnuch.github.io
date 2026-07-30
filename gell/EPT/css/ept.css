@@ -77,6 +77,13 @@ button { font-family: inherit; cursor: pointer; }
 .dmg-row span { position: relative; }
 /* 段位 */
 .pl-rank { font-size: 10px; color: var(--accent2); margin-left: 3px; white-space: nowrap; }
+/* 排行榜（局外） */
+.lad-row { display: flex; align-items: center; gap: 8px; font-size: 14px; padding: 6px 8px; border-radius: 6px; }
+.lad-row.me { background: var(--panel2); font-weight: bold; }
+.lad-no { width: 24px; color: var(--sub); }
+.lad-name { flex: 1; }
+.lad-rank { color: var(--accent); }
+.lad-score { width: 72px; text-align: right; }
 /* 晋升动画 */
 #promoFx { display: none; position: fixed; inset: 0; z-index: 600; background: radial-gradient(circle, #ffd70033, #000c); align-items: center; justify-content: center; }
 #promoFx.show { display: flex; }

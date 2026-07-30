@@ -156,7 +156,7 @@ export function initUI() {
   $('ladderBtn').onclick = () => {
     const l = ladder();
     const rows = ALL_NAMES.map(n => ({ n, s: l[n] || 0 })).sort((a, b) => b.s - a.s)
-      .map((x, i) => `<div class="pl-row${x.n === '你' ? ' me' : ''}" style="font-size:14px;padding:5px"><span style="width:24px">${i + 1}.</span><span class="pl-name">${x.n}</span><span style="color:var(--accent)">${rankOf(x.s)}</span><span style="width:64px;text-align:right"><b>${x.s}</b> 分</span></div>`).join('');
+      .map((x, i) => `<div class="lad-row${x.n === '你' ? ' me' : ''}"><span class="lad-no">${i + 1}.</span><span class="lad-name">${x.n}</span><span class="lad-rank">${rankOf(x.s)}</span><span class="lad-score"><b>${x.s}</b> 分</span></div>`).join('');
     $('scoutModal').innerHTML = `<div id="scoutBox" style="min-width:380px"><h3>🏆 排行榜</h3>
       <div class="tt-sub" style="margin-bottom:8px">名次积分：+30/+20/+10/+5/−5/−10/−20/−30（含段位修正）；每100分一个小段位，段位序列：黑铁→黄铜→白银→黄金→秘银→加尔沃恩→提卡尔→熙利玛</div>
       ${rows}<div class="tt-sub" style="margin-top:8px">点击空白处关闭</div></div>`;

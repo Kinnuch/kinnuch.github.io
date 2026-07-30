@@ -16,7 +16,7 @@
       <button id="theme-toggle" class="utility-btn" onclick="toggleTheme()">☀ 模式</button>
     </div>
     <h1 class="page-title">Enya Panta-Tyalië · 中土自走棋</h1>
-    <p class="page-sub">以中洲的英雄与魔物布阵对弈。当前版本：M1 单人模式（多人联机将在 M3 开放）。</p>
+    <p class="page-sub">以中洲的英雄与魔物布阵对弈。支持单人模式与 2~8 人在线联机（PeerJS 点对点）。</p>
   </div>
 
   <!-- 大厅 -->
@@ -28,8 +28,21 @@
       商店可刷新（2金币）、买经验（4金币）、锁定。</p>
     <div class="lobby-btns">
       <button id="startSolo" class="big-btn">⚔ 单人模式</button>
-      <button class="big-btn" disabled>🌐 多人联机（M3 开放）</button>
+      <button id="mpToggle" class="big-btn">🌐 多人联机</button>
       <button id="ladderBtn" class="big-btn" style="flex:0 0 130px;background:var(--panel2);color:var(--text);border-color:var(--border)">🏆 排行榜</button>
+    </div>
+    <div id="mpBox" style="display:none;margin-top:14px;padding:14px;border:1px solid var(--border);border-radius:10px;background:var(--panel2)">
+      <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+        <label>昵称 <input id="mpName" maxlength="8" style="width:110px;padding:5px;border:1px solid var(--border);border-radius:6px;background:var(--panel);color:var(--text)"></label>
+        <button id="mpHost" class="utility-btn">🏠 创建房间</button>
+        <span style="color:var(--sub)">或</span>
+        <input id="mpCode" placeholder="输入房号 ept-xxxxxx" style="width:150px;padding:5px;border:1px solid var(--border);border-radius:6px;background:var(--panel);color:var(--text)">
+        <button id="mpJoin" class="utility-btn">🔗 加入房间</button>
+      </div>
+      <div id="mpStatus" style="margin-top:10px;font-size:14px;color:var(--sub)"></div>
+      <div id="mpPlayers" style="margin-top:6px;font-size:14px"></div>
+      <button id="mpStart" class="big-btn" style="display:none;max-width:200px;margin-top:10px">🎮 开始对局（补足AI）</button>
+      <div class="tt-sub" style="margin-top:8px">联机使用 PeerJS 点对点直连（公共信令服务器牵线）。2~8 名玩家，空位由 AI 补足；部分严格网络环境可能无法直连。</div>
     </div>
     <label style="display:block;margin-top:14px;font-size:14px;cursor:pointer">
       <input type="checkbox" id="tutCheck"> 🎓 新手指引（进入对局后在关键节点弹出教学并暂停游戏）
@@ -98,7 +111,10 @@
     <h2 id="overTitle"></h2>
     <p id="overDesc" style="margin-bottom:10px;color:var(--sub)"></p>
     <p id="overLadder" style="margin-bottom:20px;font-size:16px"></p>
-    <button id="againBtn" class="big-btn" style="max-width:220px">再来一局</button>
+    <div style="display:flex;gap:10px;justify-content:center">
+      <button id="againBtn" class="big-btn" style="max-width:180px">🔄 再来一局</button>
+      <button id="menuBtn" class="big-btn" style="max-width:180px;background:var(--panel2);color:var(--text);border-color:var(--border)">🏠 返回菜单</button>
+    </div>
   </div>
   <div id="promoFx"><div id="promoInner"><div class="promo-title">🏆 晋升</div><div class="promo-rank"></div></div></div>
 
@@ -116,6 +132,7 @@
       localStorage.setItem('theme',cur);
     }
   </script>
+  <script src="js/vendor-peerjs.min.js"></script>
   <script type="module">
     import { initUI } from './js/ui.js';
     initUI();

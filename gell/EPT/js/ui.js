@@ -2,6 +2,8 @@
 import { Game } from './engine/game.js';
 import { Combat, makeFighter } from './engine/combat.js';
 import { makeRng } from './engine/rng.js';
+import { applyAction } from './engine/actions.js';
+import { Net } from './net.js';
 import { buyCard, reroll, buyXp, sellUnit, placeUnit, unfieldUnit, allUnits, isFielded } from './engine/player.js';
 import { RACES, CLASSES, UNITS, UNITS_BY_ID, unitStatsAtStar, XP_TO_LEVEL, SHOP_ODDS, affAtStar } from '../data/units.js';
 import { countTraits, TRAITS } from '../data/traits.js';
@@ -146,17 +148,54 @@ function applyView() {
 
 export function initUI() {
   $('startSolo').onclick = () => {
+    online = false; myIndex = 0;
     $('lobby').style.display = 'none';
     $('game').style.display = 'block';
     startGame((Math.random() * 0xFFFFFFFF) >>> 0);
+  };
+  // ---- 多人联机大厅 ----
+  $('mpName').value = localStorage.getItem('ept-name') || '';
+  $('mpToggle').onclick = () => { $('mpBox').style.display = $('mpBox').style.display === 'none' ? 'block' : 'none'; };
+  $('mpHost').onclick = () => {
+    const name = mpName();
+    if (!name) return;
+    initNet();
+    $('mpStatus').textContent = '正在创建房间…';
+    net.host(name, code => {
+      $('mpStatus').innerHTML = `房号：<b style="color:var(--accent);font-size:16px;user-select:all">${code}</b>（发给好友加入）`;
+      $('mpStart').style.display = '';
+      refreshLobbyUI();
+    }, err => { $('mpStatus').textContent = '创建失败：' + err + '（信令服务器不可达？）'; });
+  };
+  $('mpJoin').onclick = () => {
+    const name = mpName();
+    const code = $('mpCode').value.trim().toLowerCase();
+    if (!name || !code) return;
+    initNet();
+    $('mpStatus').textContent = '正在连接 ' + code + ' …';
+    net.join(code, name, () => { $('mpStatus').textContent = '已加入房间，等待房主开始…'; },
+      err => { $('mpStatus').textContent = '加入失败：' + err; });
+  };
+  $('mpStart').onclick = () => {
+    if (!net || !net.isHost) return;
+    const roster = [{ name: net.myName, isAI: false }];
+    net.conns.forEach((c, i) => { c._pi = i + 1; roster.push({ name: c._name || ('玩家' + (i + 2)), isAI: false }); });
+    const AI_POOL = ['埃尔隆德', '瑟兰督伊', '凯勒博恩', '巴德', '丹恩', '埃奥梅尔', '铁蹄'];
+    let ai = 0;
+    while (roster.length < 8) roster.push({ name: AI_POOL[ai++ % 7], isAI: true });
+    const seed = (Math.random() * 0xFFFFFFFF) >>> 0;
+    net.conns.forEach(c => c.send({ t: 'start', seed, roster, youIdx: c._pi }));
+    startOnline(seed, roster, 0);
   };
   $('pauseBtn').onclick = () => setPaused(!paused);
   $('tutOk').onclick = () => { $('tutModal').style.display = 'none'; setPaused(false); };
   $('dmgToggle').onclick = () => { dmgOpen = !dmgOpen; localStorage.setItem('ept-dmg', dmgOpen ? '1' : '0'); renderDmgPanel(); };
   $('ladderBtn').onclick = () => {
     const l = ladder();
-    const rows = ALL_NAMES.map(n => ({ n, s: l[n] || 0 })).sort((a, b) => b.s - a.s)
-      .map((x, i) => `<div class="lad-row${x.n === '你' ? ' me' : ''}"><span class="lad-no">${i + 1}.</span><span class="lad-name">${x.n}</span><span class="lad-rank">${rankOf(x.s)}</span><span class="lad-score"><b>${x.s}</b> 分</span></div>`).join('');
+    const myNick = localStorage.getItem('ept-name') || '';
+    const names = [...new Set([...ALL_NAMES, ...Object.keys(l)])];
+    const rows = names.map(n => ({ n, s: l[n] || 0 })).sort((a, b) => b.s - a.s)
+      .map((x, i) => `<div class="lad-row${x.n === '你' || (myNick && x.n === myNick) ? ' me' : ''}"><span class="lad-no">${i + 1}.</span><span class="lad-name">${x.n}</span><span class="lad-rank">${rankOf(x.s)}</span><span class="lad-score"><b>${x.s}</b> 分</span></div>`).join('');
     $('scoutModal').innerHTML = `<div id="scoutBox" style="min-width:380px"><h3>🏆 排行榜</h3>
       <div class="tt-sub" style="margin-bottom:8px">名次积分：+30/+20/+10/+5/−5/−10/−20/−30（含段位修正）；每100分一个小段位，段位序列：黑铁→黄铜→白银→黄金→秘银→加尔沃恩→提卡尔→熙利玛</div>
       ${rows}<div class="tt-sub" style="margin-top:8px">点击空白处关闭</div></div>`;
@@ -166,16 +205,30 @@ export function initUI() {
   document.addEventListener('keydown', e => {
     if (!game || game.over || e.ctrlKey || e.metaKey || e.repeat && e.key.toLowerCase() === 'f') return;
     const k = e.key.toLowerCase();
-    if (k === 'd' && actOk()) { if (reroll(game, me())) renderAll(); }
-    if (k === 'f' && actOk()) { if (buyXp(game, me())) renderAll(); }
+    if (k === 'd') dispatch({ k: 'reroll' });
+    if (k === 'f') dispatch({ k: 'xp' });
   });
-  $('startBtn').onclick = () => { if (game && game.phase === 'planning') beginCombat(); };
-  $('speedBtn').onclick = () => { if (playback) { playback.speed = playback.speed >= 4 ? 1 : playback.speed * 2; $('speedBtn').textContent = '▶ ' + playback.speed + 'x'; } };
+  $('startBtn').onclick = () => { if (game && game.phase === 'planning' && (!online || net.isHost)) requestCombat(); };
+  $('speedBtn').onclick = () => {
+    if (!playback) return;
+    playback.speed = playback.speed >= 4 ? 1 : playback.speed * 2;
+    localStorage.setItem('ept-speed', playback.speed);
+    $('speedBtn').textContent = '▶ ' + playback.speed + 'x';
+  };
   $('skipBtn').onclick = () => { if (playback) playback.skip = true; };
-  $('rerollBtn').onclick = () => { if (actOk() && reroll(game, me())) renderAll(); };
-  $('xpBtn').onclick = () => { if (actOk() && buyXp(game, me())) renderAll(); };
-  $('lockBtn').onclick = () => { if (game) { me().shopLocked = !me().shopLocked; renderShop(); } };
-  $('againBtn').onclick = () => { $('overScreen').style.display = 'none'; $('game').style.display = 'block'; startGame((Math.random() * 0xFFFFFFFF) >>> 0); };
+  $('rerollBtn').onclick = () => dispatch({ k: 'reroll' });
+  $('xpBtn').onclick = () => dispatch({ k: 'xp' });
+  $('lockBtn').onclick = () => dispatch({ k: 'lock' });
+  $('againBtn').onclick = () => { online = false; myIndex = 0; $('overScreen').style.display = 'none'; $('game').style.display = 'block'; startGame((Math.random() * 0xFFFFFFFF) >>> 0); };
+  $('menuBtn').onclick = () => {
+    clearInterval(planTimer); clearInterval(carTimer);
+    if (net) { net.close(); net = null; }
+    online = false; myIndex = 0; game = null;
+    $('overScreen').style.display = 'none';
+    $('game').style.display = 'none';
+    $('mpStatus').textContent = ''; $('mpPlayers').textContent = ''; $('mpStart').style.display = 'none';
+    $('lobby').style.display = 'block';
+  };
   $('scoutModal').onclick = e => { if (e.target === $('scoutModal')) $('scoutModal').style.display = 'none'; };
   $('goldBig').onpointerenter = e => { if (game && !tooltipPinned) showTooltip(goldTooltip, e); };
   // 悬浮面板：鼠标进入面板不消失，离开后延迟关闭
@@ -214,20 +267,97 @@ export function initUI() {
     $('lobby').style.display = 'none';
     $('game').style.display = 'block';
     startGame(q.get('seed') ? +q.get('seed') : (Math.random() * 0xFFFFFFFF) >>> 0);
-    if (q.get('fight')) setTimeout(() => { if (game.phase === 'planning') beginCombat(); }, 800);
+    if (q.get('fight')) setTimeout(() => { if (game.phase === 'planning') requestCombat(); }, 800);
   }
 }
 
-function me() { return game.players[0]; }
+let myIndex = 0, online = false, net = null;
+let pendingResolve = false, playbackDone = false, resolveSent = false;
+function me() { return game.players[myIndex]; }
 function planOk() { return game && game.phase === 'planning'; }
-function actOk() { return game && !game.over; } // 买卖/刷新/经验：战斗中也允许
+function actOk() { return game && !game.over && me().alive; } // 买卖/刷新/经验：战斗中也允许
 
+// 所有玩家操作的统一出口：单机立即应用；联机发给房主定序
+function dispatch(a) {
+  if (!actOk()) return false;
+  if (!online) {
+    const r = applyAction(game, myIndex, a);
+    if (typeof r === 'string') banner(r);
+    renderAll();
+    return r;
+  }
+  if (net.isHost) net.orderAction(myIndex, a);
+  else net.sendAction(a);
+  return true;
+}
+
+// 联机：按房主定序应用操作流
+function onStreamItem(pi, a) {
+  if (!game) return;
+  if (a.k === 'combat') { beginCombatLocal(); return; }
+  if (a.k === 'resolve') { onResolveStream(); return; }
+  if (a.k === 'carWave') { game.carouselRelease(); carLeft = CAR_WAVE_SEC; carPhase = 'waves'; carWaves++; if (myReleased()) bell(988); renderCarousel(); return; }
+  if (a.k === 'carEnd') { finishCarousel(); return; }
+  const r = applyAction(game, pi, a);
+  if (pi === myIndex && typeof r === 'string') banner(r);
+  if (game.carousel) renderCarousel();
+  renderAll();
+}
+
+function mpName() {
+  const n = $('mpName').value.trim().slice(0, 8);
+  if (!n) { $('mpStatus').textContent = '请先填写昵称'; return ''; }
+  localStorage.setItem('ept-name', n);
+  return n;
+}
+function initNet() {
+  if (net) net.close();
+  net = new Net();
+  net.on('hello', (msg, conn) => { // 房主：新玩家加入
+    let nm = (msg.name || '玩家').slice(0, 8);
+    const used = [net.myName, ...net.conns.map(c => c._name)].filter(Boolean);
+    while (used.includes(nm)) nm += '·';
+    conn._name = nm;
+    refreshLobbyUI();
+    net.broadcast({ t: 'lobby', names: [net.myName, ...net.conns.map(c => c._name)] });
+  });
+  net.on('lobby', msg => { $('mpPlayers').textContent = '房间成员：' + msg.names.join('、'); });
+  net.on('start', msg => startOnline(msg.seed, msg.roster, msg.youIdx));
+  net.on('streamItem', m => onStreamItem(m.pi, m.a));
+  net.on('peerLost', ({ conn }) => {
+    if (!game) { refreshLobbyUI(); return; }
+    if (net.isHost && conn && conn._pi !== undefined) net.orderAction(conn._pi, { k: 'aiify' });
+  });
+  net.on('hostLost', () => { banner('⚠ 房主已断线，对局中止'); clearInterval(planTimer); clearInterval(carTimer); });
+}
+function refreshLobbyUI() {
+  if (!net || !net.isHost) return;
+  const names = [net.myName, ...net.conns.map(c => c._name).filter(Boolean)];
+  $('mpPlayers').textContent = `房间成员（${names.length}/8）：` + names.join('、');
+}
+function startOnline(seed, roster, youIdx) {
+  online = true;
+  myIndex = youIdx;
+  $('lobby').style.display = 'none';
+  $('game').style.display = 'block';
+  $('pauseBtn').style.display = 'none'; // 联机无暂停
+  game = new Game(seed, '', { roster });
+  selectedItem = null;
+  tutEnabled = false;
+  tutShown = {};
+  lastLevel = 0;
+  paused = false;
+  renderAll();
+  if (game.carousel) showCarousel();
+  else startPlanTimer();
+}
 function startGame(seed) {
   game = new Game(seed, '你');
   selectedItem = null;
   tutEnabled = $('tutCheck').checked;
   tutShown = {};
   lastLevel = 0;
+  $('pauseBtn').style.display = '';
   setPaused(false);
   renderAll();
   maybeTut('welcome');
@@ -237,7 +367,7 @@ function startGame(seed) {
 
 // ---------- 共享选秀 ----------
 const CAR_WAVE_SEC = 6, CAR_OBSERVE_SEC = 5;
-let carTimer = null, carWaves = 0, carLeft = 0, carPhase = 'observe';
+let carTimer = null, carWaves = 0, carLeft = 0, carPhase = 'observe', carEndSent = false;
 function showCarousel() {
   maybeTut('carousel');
   // 入场演出 2 秒：前往选秀会场
@@ -250,7 +380,7 @@ function showCarousel() {
   bell(698);
   setTimeout(() => {
     ib.classList.remove('show'); bw.classList.remove('fly-in');
-    carPhase = 'observe'; carLeft = CAR_OBSERVE_SEC; carWaves = 0;
+    carPhase = 'observe'; carLeft = CAR_OBSERVE_SEC; carWaves = 0; carEndSent = false;
     renderCarousel();
     $('carModal').style.display = 'flex';
     clearInterval(carTimer);
@@ -258,12 +388,24 @@ function showCarousel() {
   }, 2000);
 }
 function carTick() {
-  if (paused) return;
+  if (paused && !online) return;
   const c = game.carousel;
-  if (!c || c.done) { finishCarousel(); return; }
+  if (!c || c.done) {
+    if (!online) { finishCarousel(); return; }
+    if (net.isHost && !carEndSent) { carEndSent = true; net.orderAction(myIndex, { k: 'carEnd' }); }
+    return;
+  }
   carLeft--;
   if (carLeft <= 0) {
-    if (carPhase === 'observe') {
+    if (online) {
+      if (net.isHost) {
+        const maxW = Math.ceil(c.order.length / 2);
+        if (carPhase === 'waves' && carWaves >= maxW) {
+          if (!carEndSent) { carEndSent = true; net.orderAction(myIndex, { k: 'carEnd' }); }
+        } else net.orderAction(myIndex, { k: 'carWave' }); // 流回来时统一推进
+      }
+      carLeft = 1; // 客户端/等待流期间防负数
+    } else if (carPhase === 'observe') {
       carPhase = 'waves'; carWaves = 1;
       game.carouselRelease();
       carLeft = CAR_WAVE_SEC;
@@ -283,8 +425,8 @@ function carTick() {
 function myReleased() {
   const c = game.carousel;
   if (!c) return false;
-  const myPos = c.order.indexOf(0);
-  return myPos >= 0 && myPos < c.released && !c.offers.some(o => o.takenBy === 0);
+  const myPos = c.order.indexOf(myIndex);
+  return myPos >= 0 && myPos < c.released && !c.offers.some(o => o.takenBy === myIndex);
 }
 function finishCarousel() {
   clearInterval(carTimer);
@@ -296,15 +438,15 @@ function finishCarousel() {
 function renderCarousel() {
   const c = game.carousel;
   if (!c) { finishCarousel(); return; }
-  const myPos = c.order.indexOf(0);
-  const picked = c.offers.some(o => o.takenBy === 0);
+  const myPos = c.order.indexOf(myIndex);
+  const picked = c.offers.some(o => o.takenBy === myIndex);
   const myTurn = myPos >= 0 && myPos < c.released && !picked;
   // 顺位条：✓已选 / 高亮=选择中 / 灰=等待
   const seats = c.order.map((pi, k) => {
     const p = game.players[pi];
     const done = c.offers.some(o => o.takenBy === pi);
     const cls = done ? ' done' : k < c.released ? ' now' : '';
-    return `<span class="car-seat${cls}${pi === 0 ? ' mine' : ''}">${k + 1}.${p.name}${done ? '✓' : ''}</span>`;
+    return `<span class="car-seat${cls}${pi === myIndex ? ' mine' : ''}">${k + 1}.${p.name}${done ? '✓' : ''}</span>`;
   }).join('');
   // 状态行与倒计时
   let status;
@@ -334,7 +476,7 @@ function renderCarousel() {
   html += `</div></div>`;
   $('carModal').innerHTML = html;
   if (myTurn) $('carModal').querySelectorAll('.car-offer.pickable').forEach(el => {
-    el.onclick = () => { if (game.carouselPick(me(), +el.dataset.i)) { renderCarousel(); renderAll(); } };
+    el.onclick = () => { dispatch({ k: 'carPick', idx: +el.dataset.i }); renderCarousel(); renderAll(); };
   });
   // 悬浮预览棋子技能/羁绊；散件行单独悬浮看装备详情
   $('carModal').querySelectorAll('.car-offer').forEach(el => {
@@ -364,8 +506,17 @@ function startPlanTimer() {
     planLeft--;
     $('timer').textContent = planLeft + 's';
     if (planLeft > 0 && planLeft <= 5) { bell(planLeft === 1 ? 660 : 880); showCount(planLeft); }
-    if (planLeft <= 0) { clearInterval(planTimer); if (planOk()) beginCombat(); }
+    if (planLeft <= 0) {
+      clearInterval(planTimer);
+      if (online && !net.isHost) { $('timer').textContent = '…'; return; } // 等待房主指令
+      if (planOk()) requestCombat();
+    }
   }, 1000);
+}
+function requestCombat() {
+  if (!planOk() || game.carousel) return;
+  if (!online) { beginCombatLocal(); return; }
+  if (net.isHost) net.orderAction(myIndex, { k: 'combat' });
 }
 
 // ---------- 渲染 ----------
@@ -411,7 +562,7 @@ function renderTopbar() {
   $('hpStat').innerHTML = `生命 <b>${Math.max(0, p.hp)}</b>`;
   const st = p.streakW > 0 ? `连胜${p.streakW}` : p.streakL > 0 ? `连败${p.streakL}` : '—';
   $('streakStat').innerHTML = `战绩 <b>${st}</b>`;
-  $('startBtn').style.display = game.phase === 'planning' ? '' : 'none';
+  $('startBtn').style.display = game.phase === 'planning' && (!online || (net && net.isHost)) ? '' : 'none';
 }
 
 function renderGold() {
@@ -446,7 +597,7 @@ function renderPlayers() {
   const sorted = game.players.slice().sort((a, b) => (b.alive - a.alive) || (b.hp - a.hp));
   for (const p of sorted) {
     const row = document.createElement('div');
-    row.className = 'pl-row' + (p.i === 0 ? ' me' : '') + (p.alive ? '' : ' dead');
+    row.className = 'pl-row' + (p.i === myIndex ? ' me' : '') + (p.alive ? '' : ' dead');
     const fire = p.alive && p.streakW >= 2 ? `<span class="fire">🔥${p.streakW}</span>` : '';
     const rk = `<span class="pl-rank">${rankShort(ladder()[p.name] || 0)}</span>`;
     row.innerHTML = `<div class="pl-top"><span class="pl-name">${p.name}</span>${rk}${fire}</div>
@@ -548,8 +699,8 @@ function renderItems() {
     chip.onclick = () => {
       if (drag) return;
       if (selectedItem && selectedItem !== it && selectedItem.kind === 'consumable' && CONSUMABLES[selectedItem.type]?.target === 'item') {
-        const res = game.useConsumableOnItem(p, selectedItem, it);
-        if (res !== true) banner(res); else selectedItem = null;
+        dispatch({ k: 'useOnItem', itemIdx: p.items.indexOf(selectedItem), targetIdx: i });
+        selectedItem = null;
         renderAll(); return;
       }
       selectedItem = selectedItem === it ? null : it;
@@ -588,7 +739,7 @@ function renderShop() {
     const traits = [...def.races.map(r => `<span class="sc-t" data-t="${r}">${RACES[r]}</span>`),
       ...def.classes.map(c => `<span class="sc-t" data-t="${c}">${CLASSES[c]}</span>`)].join(' · ');
     card.innerHTML = `<div class="sc-name">${CLASS_ICON[def.classes[0]] || ''} ${def.name}</div><div class="sc-traits">${traits}</div><div class="sc-cost">${def.cost}🪙</div>`;
-    card.onclick = () => { if (drag) return; if (actOk() && buyCard(game, p, i)) renderAll(); };
+    card.onclick = () => { if (drag) return; dispatch({ k: 'buy', slot: i }); };
     card.onpointerdown = e => {
       if (e.button !== 0 || !actOk()) return;
       e.preventDefault();
@@ -627,8 +778,9 @@ function renderTraits() {
     const def = TRAITS[t.id];
     const row = document.createElement('div');
     row.className = 'trait-row' + (t.tier > 0 ? ' active ' + TIER_CLASS[Math.min(t.tier, 4)] : '') + (t.sub ? ' trait-sub' : '');
-    row.innerHTML = `<span class="tbadge">${t.count}</span><span>${def.name}</span><span class="tcount">${def.tiers.join(' › ')}</span>`;
-    row.onpointerenter = e => { if (!tooltipPinned) showTooltip(() => traitTooltip(t.id, def), e); };
+    const activeLine = t.tier > 0 ? `<div class="trait-desc">${resolveTraitDesc(def, t.tier)}</div>` : '';
+    row.innerHTML = `<div class="trait-head"><span class="tbadge">${t.count}</span><span>${def.name}</span><span class="tcount">${def.tiers.join(' › ')}</span></div>${activeLine}`;
+    row.onpointerenter = e => { if (!tooltipPinned) showTooltip(() => traitTooltip(t.id, def, t.tier), e); };
     row.onpointerleave = () => hideTooltip();
     box.appendChild(row);
   }
@@ -645,11 +797,21 @@ function renderTraits() {
     box.appendChild(row);
   }
 }
-function traitTooltip(id, def) {
+// 羁绊描述保留完整 a/b/c 档位列表，仅把当前激活档的数值加粗高亮
+function resolveTraitDesc(def, tier) {
+  if (!tier) return def.desc;
+  return def.desc.replace(/(\d+(?:\.\d+)?(?:\/\d+(?:\.\d+)?)+)(%?)/g, (m, nums, pct) => {
+    const arr = nums.split('/');
+    const idx = Math.min(tier - 1, arr.length - 1);
+    return arr.map((v, i) => i === idx ? `<b class="tt-hl">${v}</b>` : v).join('/') + pct;
+  });
+}
+function traitTooltip(id, def, tier) {
   const mine = new Set(me().board.map(b => b.unit.def.id));
   const pool = UNITS.filter(u => u.races.includes(id) || u.classes.includes(id)).sort((a, b) => a.cost - b.cost);
   const lines = pool.map(u => `<span style="color:${mine.has(u.id) ? 'var(--accent)' : 'var(--sub)'}">${mine.has(u.id) ? '✓ ' : ''}${u.cost}费 ${u.name}</span>`).join('<br>');
-  return `<h5>${def.name}（${def.tiers.join('/')}）</h5><div>${def.desc}</div>
+  return `<h5>${def.name}（${def.tiers.join('/')}）${tier > 0 ? `<span style="color:var(--accent);font-size:12px">已激活第${tier}档</span>` : ''}</h5>
+  <div>${resolveTraitDesc(def, tier)}</div>
   <div style="margin-top:6px;border-top:1px solid var(--border);padding-top:4px">${lines}</div>
   ${shiftDown ? '<div class="tt-sub" style="margin-top:2px">✓ = 当前在你场上</div>' : ''}${shiftHint()}`;
 }
@@ -740,7 +902,7 @@ function computeSkillDesc(def, star, st) {
   d = d.replace(/(\d+(?:\.\d+)?)\/(\d+(?:\.\d+)?)\/(\d+(?:\.\d+)?)(?![^<]*<\/span>)/g, (m, a, b, c) => `<b>${[+a, +b, +c][L]}</b>${fx(m)}`);
   return d;
 }
-const STAT_LABELS = [['ad', '攻击力'], ['as', '攻速'], ['armor', '护甲'], ['ten', '韧性'], ['cc', '光强'], ['mc', '黑强'], ['cn', '光抗'], ['mn', '黑抗'], ['critR', '暴击率%'], ['critD', '暴伤%'], ['amp', '增伤%'], ['dr', '减伤%'], ['vamp', '吸血%']];
+const STAT_LABELS = [['ad', '攻击力'], ['as', '攻速'], ['range', '射程'], ['armor', '护甲'], ['ten', '韧性'], ['cc', '光强'], ['mc', '黑强'], ['cn', '光抗'], ['mn', '黑抗'], ['critR', '暴击率%'], ['critD', '暴伤%'], ['amp', '增伤%'], ['dr', '减伤%'], ['vamp', '吸血%']];
 function statGridHtml(base, cur) {
   const rows = STAT_LABELS.map(([k, label]) => {
     const b = base[k], v = cur[k];
@@ -751,7 +913,7 @@ function statGridHtml(base, cur) {
 }
 function baseStatsOf(def, star) {
   const s = unitStatsAtStar(def, star);
-  return { ad: s.ad, as: def.as, armor: s.armor, cn: s.cn, mn: s.mn, cc: s.cc, mc: s.mc, ten: s.ten, critR: 15, critD: 150, amp: 0, dr: 0, vamp: 0 };
+  return { ad: s.ad, as: def.as, range: def.range, armor: s.armor, cn: s.cn, mn: s.mn, cc: s.cc, mc: s.mc, ten: s.ten, critR: 15, critD: 150, amp: 0, dr: 0, vamp: 0 };
 }
 function unitDefTooltip(def, star, live) {
   const s = unitStatsAtStar(def, star);
@@ -1056,93 +1218,63 @@ function dragEnd(e) {
   if (d.kind === 'shop') {
     const els = document.elementsFromPoint(e.clientX, e.clientY);
     const inShop = els.some(el => el.id === 'shopCards' || el.id === 'shopBar' || (el.classList && el.classList.contains('shop-card')));
-    if (!inShop && actOk()) buyCard(game, p, d.slot);
+    if (!inShop) dispatch({ k: 'buy', slot: d.slot });
     renderAll(); return;
   }
   if (!t) { renderAll(); return; }
   if (d.kind === 'item') {
-    if (t.type === 'unit') {
-      const u = allUnits(p).find(x => x.uid === t.uid);
-      if (u) equipItem(u, d.item);
-    } else if (t.type === 'item') {
-      const other = p.items[t.idx];
-      if (other && d.item.kind === 'component' && other.kind === 'component' && canCombine(d.item.comp, other.comp)) {
-        const combined = makeCombinedItem(d.item.comp, other.comp);
-        if (combined) { p.items = p.items.filter(x => x !== d.item && x !== other); p.items.push(combined); banner(`合成：${combined.name}`); }
-      } else banner('这两件无法合成');
-    }
+    const itemIdx = p.items.indexOf(d.item);
+    if (t.type === 'unit') dispatch({ k: 'equip', itemIdx, uid: t.uid });
+    else if (t.type === 'item') dispatch({ k: 'combineInv', i: itemIdx, j: t.idx });
     renderAll(); return;
   }
   // 棋子
   const unit = d.unit;
   if (t.type === 'cell') {
-    if (!planOk()) { banner('战斗中无法调整棋盘'); }
+    if (!planOk()) banner('战斗中无法调整棋盘');
     else {
       const fielded = isFielded(p, unit.uid);
       const occ = p.board.find(b => b.c === t.c && b.r === t.r);
       if (!fielded && !occ && p.board.length >= p.level) banner(`⚠ 人口已满（等级 ${p.level} = ${p.level} 个上场位）`);
-      else placeUnit(p, unit.uid, t.c, t.r);
+      else dispatch({ k: 'place', uid: unit.uid, c: t.c, r: t.r });
     }
   } else if (t.type === 'bench') {
     if (d.src.from === 'board') {
       if (!planOk()) banner('战斗中无法调整棋盘');
-      else unfieldUnit(p, unit.uid, t.idx);
-    } else if (!p.bench[t.idx]) {
-      const from = p.bench.findIndex(x => x && x.uid === unit.uid);
-      if (from >= 0) { p.bench[t.idx] = unit; p.bench[from] = null; }
-    } else { // 备战席互换
-      const from = p.bench.findIndex(x => x && x.uid === unit.uid);
-      if (from >= 0) { const tmp = p.bench[t.idx]; p.bench[t.idx] = unit; p.bench[from] = tmp; }
-    }
+      else dispatch({ k: 'unfield', uid: unit.uid, bench: t.idx });
+    } else dispatch({ k: 'benchSwap', uid: unit.uid, idx: t.idx });
   } else if (t.type === 'sell') {
     if (!planOk() && isFielded(p, unit.uid)) banner('战斗中不能出售场上棋子');
-    else sellUnit(game, p, unit.uid);
+    else dispatch({ k: 'sell', uid: unit.uid });
   }
   renderAll();
 }
 function equipItem(unit, it) {
-  const p = me();
-  // 消耗道具
-  if (it.kind === 'consumable') {
-    if (CONSUMABLES[it.type]?.target !== 'unit') { banner('该道具应作用于装备：先选中它，再点击目标装备'); return; }
-    const res = game.useConsumableOnUnit(p, it, unit.uid);
-    if (res !== true) { banner(typeof res === 'string' ? res : '无法使用'); return; }
-    if (selectedItem === it) selectedItem = null;
-    renderAll(); return;
-  }
-  // 装备类
-  if (unit.items.some(x => x.eff && x.eff.thief)) { banner('装备栏被小偷偷占用'); return; }
-  if (it.eff && it.eff.thief && unit.items.length > 0) { banner('小偷偷需要空的装备栏（它会占满3格）'); return; }
-  let ok = false;
-  if (it.kind === 'component') {
-    const partner = unit.items.find(x => x.kind === 'component' && canCombine(x.comp, it.comp));
-    if (partner) {
-      const combined = makeCombinedItem(partner.comp, it.comp);
-      if (combined) { unit.items[unit.items.indexOf(partner)] = combined; ok = true; banner(`合成：${combined.name}`); }
-    } else if (unit.items.length < 3) { unit.items.push(it); ok = true; }
-    else banner('装备栏已满（3件）');
-  } else if (unit.items.length < 3) { unit.items.push(it); ok = true; }
-  else banner('装备栏已满（3件）');
-  if (ok) { p.items = p.items.filter(x => x !== it); if (selectedItem === it) selectedItem = null; renderAll(); }
+  const itemIdx = me().items.indexOf(it);
+  if (itemIdx < 0) return;
+  dispatch({ k: 'equip', itemIdx, uid: unit.uid });
+  if (selectedItem === it) selectedItem = null;
+  renderAll();
 }
 
 // ---------- 战斗 ----------
-function beginCombat() {
+function beginCombatLocal() {
   if (game.carousel) return; // 选秀期间不可开战
   clearInterval(planTimer);
   cancelDrag();
+  playbackDone = false; pendingResolve = false; resolveSent = false;
   maybeTut('combat');
   tooltipPinned = false; hideTooltip(true);
   const pending = game.prepareCombats();
   renderTopbar(); renderBench(); renderTraits(); renderGold();
-  const my = pending.combats.find(c => c.a === 0 || c.b === 0);
-  const enemyName = my ? (my.kind === 'pve' ? '野怪' : game.players[my.a === 0 ? my.b : my.a].name + (my.ghost ? '（镜像）' : '')) : null;
+  const my = pending.combats.find(c => c.a === myIndex || c.b === myIndex);
+  const enemyName = my ? (my.kind === 'pve' ? '野怪' : game.players[my.a === myIndex ? my.b : my.a].name + (my.ghost ? '（镜像）' : '')) : null;
   $('enemyLabel').textContent = enemyName ? `对阵：${enemyName}` : '本回合轮空';
   $('timer').textContent = '';
   $('speedBtn').style.display = $('skipBtn').style.display = 'inline-block';
   $('speedBtn').textContent = '▶ 1x';
   if (!my) { finishCombat(); return; }
-  const mirror = my.a !== 0;
+  const mirror = my.a !== myIndex;
   // 入场演出：飞往敌方棋盘 / 野怪来袭
   const isPvE = my.kind === 'pve';
   bell(isPvE ? 440 : 520);
@@ -1161,7 +1293,9 @@ function beginCombat() {
 
 function startPlayback(events, mirror) {
   document.querySelectorAll('#board .unit,#board .float-txt,#board .proj').forEach(n => n.remove());
-  playback = { events, i: 0, t: 0, speed: 1, skip: false, nodes: {}, last: performance.now(), mirror, acc: { dealt: {}, taken: {}, heal: {} }, lastPanelT: 0 };
+  const savedSpeed = Math.min(4, Math.max(1, parseFloat(localStorage.getItem('ept-speed')) || 1));
+  playback = { events, i: 0, t: 0, speed: savedSpeed, skip: false, nodes: {}, last: performance.now(), mirror, acc: { dealt: {}, taken: {}, heal: {} }, lastPanelT: 0 };
+  $('speedBtn').textContent = '▶ ' + savedSpeed + 'x';
   lastAcc = playback.acc;
   lastNodes = playback.nodes;
   renderDmgPanel();
@@ -1335,11 +1469,25 @@ function banner(txt) {
   b._t = setTimeout(() => b.style.display = 'none', 1600);
 }
 
-function finishCombat() {
+function finishCombat() { // 本地回放结束
   $('speedBtn').style.display = $('skipBtn').style.display = 'none';
+  if (!online) { resolveNow(); return; }
+  playbackDone = true;
+  if (net.isHost && !resolveSent) { resolveSent = true; net.orderAction(myIndex, { k: 'resolve' }); }
+  else if (pendingResolve) resolveNow();
+  else $('enemyLabel').textContent = '等待其他玩家的战斗结束…';
+}
+function onResolveStream() {
+  pendingResolve = true;
+  if (playback) { playback.skip = true; return; } // 回放中：快进后 finishCombat 会接手
+  if (playbackDone) resolveNow();
+}
+function resolveNow() {
+  pendingResolve = false; playbackDone = false; resolveSent = false;
   $('enemyLabel').textContent = '';
   game.resolveRound();
   if (game.over) { showOver(); return; }
+  if (online && !me().alive && !game.over) banner('☠ 你已被淘汰，观战中…');
   renderAll();
   if (game.carousel) showCarousel();
   else startPlanTimer();
@@ -1349,10 +1497,12 @@ function showOver() {
   clearInterval(planTimer);
   clearInterval(carTimer);
   $('game').style.display = 'none';
-  const won = game.players[0].alive && (game.players[0].placement || 1) === 1;
-  if (!game.ladderApplied) { game.ladderApplied = true; game.ladderRes = applyLadder(); }
-  const r = game.ladderRes['你'];
-  const place = game.players[0].placement || game.placement || 8;
+  const meP = game.players[myIndex];
+  const place = meP.placement || 8;
+  $('againBtn').style.display = online ? 'none' : ''; // 联机结束回菜单重新组局
+  const won = meP.alive && place === 1;
+  if (!game.ladderApplied) { game.ladderApplied = true; game.ladderRes = applyLadder(); } // 联机同样计分（本机按昵称记账）
+  const r = game.ladderRes[meP.name];
   $('overTitle').textContent = won ? '🏆 胜利！' : '☠ 对局结束';
   $('overDesc').textContent = won ? '你是中洲最后的执棋者。' : `最终排名：第 ${place} 名`;
   $('overLadder').innerHTML = `本局积分：<b style="color:${r.delta >= 0 ? '#4caf50' : '#ef5350'}">${r.delta >= 0 ? '+' : ''}${r.delta}</b>　段位：${rankOf(r.oldS)} → <b style="color:var(--accent)">${rankOf(r.newS)}</b>（${r.newS} 分）`;

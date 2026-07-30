@@ -15,7 +15,7 @@ title: Cerf
 ## Gell | 小游戏
 
 - [Barad Bith · 巴别塔](https://kinnuch.github.io/laim/sindarin.assets/BaradBith/BaradBith.html) **辛达语 roguelike 卡牌爬塔游戏**，卡牌、敌人、圣物均取自辛达语词典的真实词条；获取新卡、开宝箱、参加事件时都会触发词义或音变小测验，答对即可掌握该词、解锁完整效果与释义，学习进度会跨局永久保存。
-- [Enya Panta-Tyalië · 中土自走棋](https://kinnuch.github.io/gell/EPT/) **中洲主题自走棋对战游戏**，与 7 位 AI 执棋者同场竞技：购买中洲的英雄与魔物、凑齐种族与职业羁绊、三合一升星、锻造装备，在六边形棋盘上布阵对弈，活到最后即胜。当前为 M1 单人版，多人联机开发中。
+- [Enya Panta-Tyalië · 中土自走棋](https://kinnuch.github.io/gell/EPT/) **中洲主题自走棋对战游戏**，购买中洲的英雄与魔物、凑齐种族与职业羁绊、三合一升星、锻造装备，在六边形棋盘上布阵对弈，活到最后即胜。支持单人模式（7 名性格各异的 AI + 本地段位排行榜）与 2~8 人在线联机（房号邀请，点对点直连）。
 
 ## Thúnas | 造词灵感
 

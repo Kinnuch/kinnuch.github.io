@@ -1,7 +1,7 @@
 // EPT · 对局流程（回合、配对、结算、掉落、淘汰）
 import { makeRng } from './rng.js';
-import { Combat, makeFighter, makeMonsterFighter } from './combat.js';
-import { makePool, makePlayer, makeUnit, rollShop, income, addXp, allUnits, benchSpace, tryMerge } from './player.js';
+import { Combat, makeFighter, makeMonsterFighter, resetFid } from './combat.js';
+import { makePool, makePlayer, makeUnit, rollShop, income, addXp, allUnits, benchSpace, tryMerge, resetUid } from './player.js';
 import { UNITS, UNITS_BY_ID, STAGE_DAMAGE } from '../../data/units.js';
 import { MONSTERS, STAGE1_WAVES, pveWave, pveDrops, openBag, hobbitReward } from '../../data/monsters.js';
 import { T1_COMPS, T2_COMPS, makeComponentItem, makeCombinedItem, makeConsumable, makeSilmaril, upgradeComponent, reforgeItem } from '../../data/items.js';
@@ -14,11 +14,17 @@ const AI_NAMES = ['埃尔隆德', '瑟兰督伊', '凯勒博恩', '巴德', '丹
 const AI_STYLES = ['gambling', 'balancing', 'strategic'];
 
 export class Game {
-  constructor(seed, humanName = '你') {
+  constructor(seed, humanName = '你', opts = {}) {
+    resetUid(); resetFid(); // 联机各端计数一致
+    this.online = !!opts.roster;
     this.rng = makeRng(seed);
     this.pool = makePool();
-    this.players = [makePlayer(0, humanName, false)];
-    for (let i = 0; i < 7; i++) this.players.push(makePlayer(i + 1, AI_NAMES[i], true, AI_STYLES[i % 3]));
+    if (opts.roster) {
+      this.players = opts.roster.map((r, i) => makePlayer(i, r.name, r.isAI, AI_STYLES[i % 3]));
+    } else {
+      this.players = [makePlayer(0, humanName, false)];
+      for (let i = 0; i < 7; i++) this.players.push(makePlayer(i + 1, AI_NAMES[i], true, AI_STYLES[i % 3]));
+    }
     this.roundIdx = 0;
     this.phase = 'planning';
     this.log = [];
@@ -130,9 +136,9 @@ export class Game {
   prepareCombats() {
     if (this.carousel) this.carouselFinish(); // 安全网：选秀未结束则强制结算
     const round = this.roundInfo();
-    // AI 规划
+    // AI 规划；所有人类玩家人口未满时自动补位
     for (const p of this.players) if (p.isAI && p.alive) runAI(this, p);
-    this.autoFillBoard(this.players[0]);
+    for (const p of this.players) if (!p.isAI && p.alive) this.autoFillBoard(p);
     const combats = [];
     if (round.type === 'pve') {
       for (const p of this.alivePlayers()) combats.push(this.buildPvE(p, round));
@@ -359,7 +365,7 @@ export class Game {
       }
     }
     const alive = this.alivePlayers();
-    if (alive.length <= 1 || !this.players[0].alive) {
+    if (alive.length <= 1 || (!this.online && !this.players[0].alive)) {
       // 存活者按当前血量排定最终名次
       alive.slice().sort((a, b) => b.hp - a.hp).forEach((p, i) => p.placement = i + 1);
       this.over = true; this.phase = 'over';

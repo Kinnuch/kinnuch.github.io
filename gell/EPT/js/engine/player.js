@@ -2,6 +2,7 @@
 import { UNITS, UNITS_BY_ID, POOL_SIZE, SHOP_ODDS, XP_TO_LEVEL } from '../../data/units.js';
 
 let UID = 1;
+export function resetUid() { UID = 1; } // 联机：各端从相同计数开始，保证 uid 一致
 
 export function makePool() {
   const pool = {};

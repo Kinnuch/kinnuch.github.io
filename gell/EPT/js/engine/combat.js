@@ -7,6 +7,7 @@ import { makeLightItem, LIGHT_ITEM_NAMES, makeComponentItem, T1_COMPS, randomCom
 const DT = 0.1, MAX_T = 45, OVERTIME = 10;
 
 let FID = 1;
+export function resetFid() { FID = 1; }
 
 // unit: {def, star, items[], progress, pos:{c,r}}   playerCtx: {pvpWins, elfCount?}
 export function makeFighter(unit, team, playerCtx) {
@@ -315,7 +316,7 @@ export class Combat {
   strongSum(f) { return affSum(f.def, f.star) + ([...f.items, ...f.tempItems].some(i => i.eff && i.eff.silmaril) ? 1e6 : 0); }
   statsSnap(f) {
     const e = this.eff(f);
-    return { ad: Math.round(e.ad), as: Math.round(e.as * 100) / 100, armor: Math.round(e.armor), cn: Math.round(e.cn), mn: Math.round(e.mn), cc: Math.round(e.cc), mc: Math.round(e.mc), critR: Math.round(e.critR), critD: Math.round(e.critD), amp: Math.round(e.amp), dr: Math.round(e.dr), vamp: Math.round(e.vamp), ten: Math.round(e.ten) };
+    return { ad: Math.round(e.ad), as: Math.round(e.as * 100) / 100, range: e.range, armor: Math.round(e.armor), cn: Math.round(e.cn), mn: Math.round(e.mn), cc: Math.round(e.cc), mc: Math.round(e.mc), critR: Math.round(e.critR), critD: Math.round(e.critD), amp: Math.round(e.amp), dr: Math.round(e.dr), vamp: Math.round(e.vamp), ten: Math.round(e.ten) };
   }
 
   buff(f, stats, dur) { f.buffs.push({ stats, until: this.t + dur }); }

@@ -229,6 +229,12 @@ button { font-family: inherit; cursor: pointer; }
 .trait-row.tier-silver { box-shadow: inset 2px 0 0 #c0c0c0; }
 .trait-row.tier-gold { box-shadow: inset 2px 0 0 #ffd700; }
 .trait-row.tier-prisma { box-shadow: inset 2px 0 0 #b06ab3; }
+.trait-row { display: block; }
+.trait-head { display: flex; align-items: center; gap: 6px; }
+.trait-head .tcount { margin-left: auto; }
+.trait-desc { font-size: 11px; color: var(--sub); font-weight: normal; line-height: 1.5; margin-top: 2px; padding-left: 26px; }
+.trait-desc b { color: var(--accent); }
+.tt-hl { color: var(--accent); font-size: 1.1em; text-shadow: 0 0 6px #ffd70066; }
 .trait-row.trait-sub { margin-left: 14px; font-size: 12px; }
 .trait-row.trait-sub .tbadge { width: 17px; height: 17px; font-size: 11px; }
 /* 5费专属：边缘流光 */

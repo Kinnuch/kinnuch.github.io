@@ -1,5 +1,19 @@
 [
   {
+    "hash": "31652c756b363d196d9ba2c539a9758f4855d01a",
+    "short": "31652c7",
+    "date": "2026-07-30T20:18:53+08:00",
+    "author": "wuyichen",
+    "msg": "udpate AI with more aggressive method"
+  },
+  {
+    "hash": "457c04b837f77642243c9c78175ff3f5161931be",
+    "short": "457c04b",
+    "date": "2026-07-30T10:27:49Z",
+    "author": "github-actions[bot]",
+    "msg": "chore: refresh commits.json [skip ci]"
+  },
+  {
     "hash": "4d7976b54c0410916449610da8c50df1bd05751f",
     "short": "4d7976b",
     "date": "2026-07-30T18:27:24+08:00",

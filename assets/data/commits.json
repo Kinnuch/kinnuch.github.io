@@ -1,5 +1,19 @@
 [
   {
+    "hash": "7b0562f3b773de47350e9d7d2b011224ba106cef",
+    "short": "7b0562f",
+    "date": "2026-07-30T12:26:38+08:00",
+    "author": "wuyichen",
+    "msg": "update ai with more aggressive method and ranking system, optimize drag function and info"
+  },
+  {
+    "hash": "f03eca7f62e30edd7778a26defdaa1bb972372e6",
+    "short": "f03eca7",
+    "date": "2026-07-29T11:05:40Z",
+    "author": "github-actions[bot]",
+    "msg": "chore: refresh commits.json [skip ci]"
+  },
+  {
     "hash": "344559d6ba3dd2fb1a589400ee5ceb695100d5ea",
     "short": "344559d",
     "date": "2026-07-29T19:05:14+08:00",

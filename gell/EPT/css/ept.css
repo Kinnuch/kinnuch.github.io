@@ -154,6 +154,15 @@ button { font-family: inherit; cursor: pointer; }
 @keyframes floatUp { 0% { transform: translateY(0); opacity: 1; } 100% { transform: translateY(-36px); opacity: 0; } }
 .proj { position: absolute; z-index: 15; width: 8px; height: 8px; border-radius: 50%; pointer-events: none; }
 
+/* M4：状态头顶标记 / 施法爆发环 / 震屏 */
+.st-marks { position: absolute; top: -15px; left: -10px; right: -10px; display: flex; justify-content: center; gap: 1px; font-size: 11px; line-height: 1; z-index: 6; pointer-events: none; }
+.st-mark { animation: markPop .25s ease; filter: drop-shadow(0 1px 2px #0009); }
+@keyframes markPop { from { transform: scale(2.2); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+.cast-burst { position: absolute; z-index: 14; width: 22px; height: 22px; margin: -11px 0 0 -11px; border: 3px solid; border-radius: 50%; pointer-events: none; animation: burstOut .6s ease-out forwards; }
+@keyframes burstOut { 0% { transform: scale(.35); opacity: .95; } 100% { transform: scale(3.4); opacity: 0; } }
+#boardWrap.shake { animation: shakeK .25s; }
+@keyframes shakeK { 0%, 100% { translate: 0 0; } 25% { translate: 3px -2px; } 50% { translate: -3px 2px; } 75% { translate: 2px 1px; } }
+
 /* 备战席 & 物品 */
 #benchRow { display: flex; gap: 6px; margin-top: 8px; }
 .bench-slot { width: 62px; height: 76px; background: var(--panel2); border: 1px dashed var(--border); border-radius: 8px; position: relative; }
@@ -243,7 +252,40 @@ button { font-family: inherit; cursor: pointer; }
 .trait-row.trait-unique .tbadge { background: linear-gradient(135deg, #ffd700, #b06ab3); color: #fff; }
 /* 面板装备槽 */
 .eq-row { display: flex; gap: 5px; margin-top: 5px; }
-.eq-slot { width: 30px; height: 30px; border: 1px solid var(--gold); border-radius: 6px; background: var(--panel2); display: flex; align-items: center; justify-content: center; font-size: 13px; letter-spacing: -3px; cursor: default; }
+.eq-slot { width: 30px; height: 30px; border: 1px solid var(--gold); border-radius: 6px; background: var(--panel2); display: flex; align-items: center; justify-content: center; font-size: 13px; gap: 1px; cursor: default; }
+
+/* game-icons.net 图标：mask 上色，跟随文字颜色/主题（mask-image 按 key 在下方定义，相对本 css 文件解析） */
+.gi { display: inline-block; width: 1.1em; height: 1.1em; vertical-align: -0.16em; background: currentColor; -webkit-mask: center/contain no-repeat; mask: center/contain no-repeat; }
+.eq-slot .gi { width: 14px; height: 14px; }
+.item-chip.light .gi, .eq-slot.gold .gi { background: var(--gold); }
+.gi-ad1 { -webkit-mask-image: url(../assets/icons/ad1.svg); mask-image: url(../assets/icons/ad1.svg); }
+.gi-ad2 { -webkit-mask-image: url(../assets/icons/ad2.svg); mask-image: url(../assets/icons/ad2.svg); }
+.gi-as1 { -webkit-mask-image: url(../assets/icons/as1.svg); mask-image: url(../assets/icons/as1.svg); }
+.gi-as2 { -webkit-mask-image: url(../assets/icons/as2.svg); mask-image: url(../assets/icons/as2.svg); }
+.gi-ap1 { -webkit-mask-image: url(../assets/icons/ap1.svg); mask-image: url(../assets/icons/ap1.svg); }
+.gi-ap2 { -webkit-mask-image: url(../assets/icons/ap2.svg); mask-image: url(../assets/icons/ap2.svg); }
+.gi-m1 { -webkit-mask-image: url(../assets/icons/m1.svg); mask-image: url(../assets/icons/m1.svg); }
+.gi-m2 { -webkit-mask-image: url(../assets/icons/m2.svg); mask-image: url(../assets/icons/m2.svg); }
+.gi-a1 { -webkit-mask-image: url(../assets/icons/a1.svg); mask-image: url(../assets/icons/a1.svg); }
+.gi-a2 { -webkit-mask-image: url(../assets/icons/a2.svg); mask-image: url(../assets/icons/a2.svg); }
+.gi-mr1 { -webkit-mask-image: url(../assets/icons/mr1.svg); mask-image: url(../assets/icons/mr1.svg); }
+.gi-mr2 { -webkit-mask-image: url(../assets/icons/mr2.svg); mask-image: url(../assets/icons/mr2.svg); }
+.gi-hp1 { -webkit-mask-image: url(../assets/icons/hp1.svg); mask-image: url(../assets/icons/hp1.svg); }
+.gi-hp2 { -webkit-mask-image: url(../assets/icons/hp2.svg); mask-image: url(../assets/icons/hp2.svg); }
+.gi-hs1 { -webkit-mask-image: url(../assets/icons/hs1.svg); mask-image: url(../assets/icons/hs1.svg); }
+.gi-hs2 { -webkit-mask-image: url(../assets/icons/hs2.svg); mask-image: url(../assets/icons/hs2.svg); }
+.gi-csc1 { -webkit-mask-image: url(../assets/icons/csc1.svg); mask-image: url(../assets/icons/csc1.svg); }
+.gi-csc2 { -webkit-mask-image: url(../assets/icons/csc2.svg); mask-image: url(../assets/icons/csc2.svg); }
+.gi-al { -webkit-mask-image: url(../assets/icons/al.svg); mask-image: url(../assets/icons/al.svg); }
+.gi-smallDup { -webkit-mask-image: url(../assets/icons/smallDup.svg); mask-image: url(../assets/icons/smallDup.svg); }
+.gi-bigDup { -webkit-mask-image: url(../assets/icons/bigDup.svg); mask-image: url(../assets/icons/bigDup.svg); }
+.gi-jobBook { -webkit-mask-image: url(../assets/icons/jobBook.svg); mask-image: url(../assets/icons/jobBook.svg); }
+.gi-dice { -webkit-mask-image: url(../assets/icons/dice.svg); mask-image: url(../assets/icons/dice.svg); }
+.gi-silmaril { -webkit-mask-image: url(../assets/icons/silmaril.svg); mask-image: url(../assets/icons/silmaril.svg); }
+.gi-remover { -webkit-mask-image: url(../assets/icons/remover.svg); mask-image: url(../assets/icons/remover.svg); }
+.gi-reforger { -webkit-mask-image: url(../assets/icons/reforger.svg); mask-image: url(../assets/icons/reforger.svg); }
+.gi-upgrader { -webkit-mask-image: url(../assets/icons/upgrader.svg); mask-image: url(../assets/icons/upgrader.svg); }
+.gi-light { -webkit-mask-image: url(../assets/icons/light.svg); mask-image: url(../assets/icons/light.svg); }
 .eq-slot.empty { border-color: var(--border); opacity: .45; }
 .eq-slot:hover:not(.empty) { border-width: 2px; }
 /* 连胜火焰 */

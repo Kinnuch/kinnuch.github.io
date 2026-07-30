@@ -27,12 +27,14 @@ const shiftHint = () => shiftDown ? '' : '<div class="tt-shift">按住 ⇧Shift 
 
 const $ = id => document.getElementById(id);
 
-const COMP_ICON = { ad1: '⚔', ad2: '⚔', as1: '🗡', as2: '🏹', ap1: '✨', ap2: '✨', m1: '💧', m2: '💧', a1: '🛡', a2: '🛡', mr1: '🔮', mr2: '🔮', hp1: '❤', hp2: '❤', hs1: '🌿', hs2: '🌿', csc1: '💥', csc2: '💥', al: '☀' };
-const CONS_ICON = { smallDup: '🪞', bigDup: '🪞', jobBook: '📜', dice: '🎲', silmaril: '💎', remover: '🧲', reforger: '♻️', upgrader: '⬆️' };
+// 装备图标（M4）：game-icons.net SVG（CC BY 3.0），CSS mask 上色随主题
+const GI = k => `<span class="gi gi-${k}"></span>`;
+const COMP_ICON = Object.fromEntries(['ad1', 'ad2', 'as1', 'as2', 'ap1', 'ap2', 'm1', 'm2', 'a1', 'a2', 'mr1', 'mr2', 'hp1', 'hp2', 'hs1', 'hs2', 'csc1', 'csc2', 'al'].map(k => [k, GI(k)]));
+const CONS_ICON = Object.fromEntries(['smallDup', 'bigDup', 'jobBook', 'dice', 'silmaril', 'remover', 'reforger', 'upgrader'].map(k => [k, GI(k)]));
 function itemIcon(it) {
   if (it.kind === 'component') return COMP_ICON[it.comp] || '';
-  if (it.kind === 'light') return '☀';
-  if (it.kind === 'artifact') return '💎';
+  if (it.kind === 'light') return GI('light');
+  if (it.kind === 'artifact') return GI('silmaril');
   if (it.kind === 'consumable') return CONS_ICON[it.type] || '🎁';
   if (it.comps) return (COMP_ICON[it.comps[0]] || '') + (COMP_ICON[it.comps[1]] || '');
   return '🔸';
@@ -632,6 +634,7 @@ function makeUnitNode(def, star, opts = {}) {
   const icon = def.monster ? '👹' : (CLASS_ICON[def.classes[0]] || '❔');
   const cost = def.monster ? 1 : def.cost;
   el.innerHTML = `
+    <div class="st-marks"></div>
     <div class="stars">${'★'.repeat(star)}</div>
     <div class="portrait" style="background:linear-gradient(160deg, ${color}, #00000055), ${COST_COLOR[cost]};border:none;">
       <div class="ring" style="box-shadow:inset 0 0 0 3px ${COST_COLOR[cost]}"></div>${icon}</div>
@@ -694,7 +697,7 @@ function renderItems() {
     const chip = document.createElement('div');
     chip.className = 'item-chip' + (it.kind !== 'component' ? ' combined' : '') + (selectedItem === it ? ' selected' : '')
       + (it.kind === 'light' || it.kind === 'artifact' ? ' light' : '') + (it.kind === 'consumable' ? ' consumable' : '');
-    chip.textContent = itemIcon(it) + ' ' + it.name;
+    chip.innerHTML = itemIcon(it) + ' ' + it.name;
     chip.dataset.itemIdx = i;
     chip.onclick = () => {
       if (drag) return;
@@ -715,7 +718,7 @@ function renderItems() {
       startDrag({ kind: 'item', item: it, el: chip }, e, () => {
         const g = document.createElement('div');
         g.className = 'item-chip' + (it.kind !== 'component' ? ' combined' : '');
-        g.textContent = itemIcon(it) + ' ' + it.name;
+        g.innerHTML = itemIcon(it) + ' ' + it.name;
         return g;
       });
     };
@@ -1394,7 +1397,10 @@ function applyEvent(pb, e) {
       n.shield = e.shield || 0;
       if (e.tmana !== undefined) n.mana = e.tmana;
       updateBars(n);
-      if (!pb.skip) floatText(n.el, (e.crit ? '暴击 ' : '') + e.v, DMG_COLOR[e.type] || '#fff', e.crit);
+      if (!pb.skip) {
+        floatText(n.el, (e.crit ? '暴击 ' : '') + e.v, DMG_COLOR[e.type] || '#fff', e.crit);
+        if (e.v >= 600) { const bw = $('boardWrap'); bw.classList.remove('shake'); void bw.offsetWidth; bw.classList.add('shake'); }
+      }
       break;
     }
     case 'heal': {
@@ -1414,14 +1420,17 @@ function applyEvent(pb, e) {
       if (!pb.skip) {
         n.el.classList.add('casting'); setTimeout(() => n.el.classList.remove('casting'), 500);
         floatText(n.el, '【' + e.name + '】', 'var(--accent2)');
+        castBurst(n.el, n.def.align);
       }
       break;
     }
     case 'status': {
       const n = nodes[e.id]; if (!n) break;
-      if (e.type === 'untargetable') { n.el.classList.add('untargetable'); setTimeout(() => n.el.classList.remove('untargetable'), e.dur * 1000 / pb.speed); }
+      if (e.type === 'untargetable') { n.el.classList.add('untargetable'); setTimeout(() => n.el.classList.remove('untargetable'), e.dur * 1000 / pb.speed); break; }
+      if (!pb.skip) addMark(pb, n, e.type, e.dur);
       break;
     }
+    case 'cleanse': { const n = nodes[e.id]; if (n) { clearMarks(n); if (!pb.skip) floatText(n.el, '净化', '#8ee08e'); } break; }
     case 'execute': { const n = nodes[e.id]; if (n && !pb.skip) floatText(n.el, '处决！', 'var(--dmg-true)', true); break; }
     case 'miss': { const n = nodes[e.id]; if (n && !pb.skip) floatText(n.el, '闪避', '#9e9e9e'); break; }
     case 'die': { const n = nodes[e.id]; if (n) { n.el.classList.add('dead'); n.el.style.pointerEvents = 'none'; if (!tooltipPinned) hideTooltip(); } break; }
@@ -1465,6 +1474,36 @@ function floatText(el, txt, color, big) {
   f.style.top = (el.offsetTop - 4) + 'px';
   $('board').appendChild(f);
   setTimeout(() => f.remove(), 1000);
+}
+// 状态头顶标记（M4）
+const ST_MARK = { stun: ['💫', '眩晕'], chill: ['❄️', '冰缓'], disarm: ['🚫', '缴械'], burn: ['🔥', '灼烧'], gw: ['💔', '重伤'], taunt: ['😡', '嘲讽'] };
+function addMark(pb, n, type, dur) {
+  const info = ST_MARK[type]; if (!info) return;
+  const box = n.el.querySelector('.st-marks'); if (!box) return;
+  n.marks = n.marks || {};
+  if (n.marks[type]) clearTimeout(n.marks[type].t);
+  else {
+    const s = document.createElement('span');
+    s.className = 'st-mark'; s.textContent = info[0]; s.title = info[1];
+    box.appendChild(s);
+    n.marks[type] = { el: s };
+  }
+  n.marks[type].t = setTimeout(() => { if (n.marks[type]) { n.marks[type].el.remove(); delete n.marks[type]; } }, dur * 1000 / pb.speed);
+}
+function clearMarks(n) {
+  if (!n.marks) return;
+  for (const k in n.marks) { clearTimeout(n.marks[k].t); n.marks[k].el.remove(); }
+  n.marks = {};
+}
+// 施法爆发环（按阵营配色）
+function castBurst(el, align) {
+  const b = document.createElement('div');
+  b.className = 'cast-burst';
+  b.style.borderColor = align === 'light' ? '#ffd700' : align === 'dark' ? '#b26cff' : '#7ec8ff';
+  b.style.left = (el.offsetLeft + 26) + 'px';
+  b.style.top = (el.offsetTop + 26) + 'px';
+  $('board').appendChild(b);
+  setTimeout(() => b.remove(), 650);
 }
 function shootProj(from, to, color) {
   const p = document.createElement('div');

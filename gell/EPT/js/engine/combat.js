@@ -1183,7 +1183,7 @@ function castSkill(sim, f) {
     case 'tombombadil': {
       for (const a of sim.allies(f)) sim.heal(a, [100, 150, 240][L] + e.cc * [0.4, 0.6, 0.9][L], f);
       const low = lowestAlly();
-      if (low) for (const k of ['burnUntil', 'gwUntil', 'chillUntil', 'stunUntil', 'disarmUntil']) low.st[k] = 0;
+      if (low) { for (const k of ['burnUntil', 'gwUntil', 'chillUntil', 'stunUntil', 'disarmUntil']) low.st[k] = 0; sim.emit({ k: 'cleanse', id: low.id }); }
       break;
     }
     case 'maglor': {
@@ -1326,6 +1326,7 @@ function castSkill(sim, f) {
       const dur = [3, 5, 20][L] * (1 + (f.highKing || 0));
       f.st.ccImmuneUntil = Math.max(f.st.ccImmuneUntil || 0, sim.t + dur);
       for (const k of ['stunUntil', 'chillUntil', 'disarmUntil']) f.st[k] = 0;
+      sim.emit({ k: 'cleanse', id: f.id });
       sim.buff(f, { ad: [30, 50, 150][L], vamp: [10, 15, 45][L] * (1 + (f.highKing || 0)) }, dur);
       break;
     }
@@ -1401,6 +1402,7 @@ function castSkill(sim, f) {
         sim.emit({ k: 'cast', id: f.id, name: '加冕为王' });
         for (const a of sim.allies(f)) {
           for (const k of ['burnUntil', 'gwUntil', 'chillUntil', 'stunUntil', 'disarmUntil']) a.st[k] = 0;
+          sim.emit({ k: 'cleanse', id: a.id });
           sim.heal(a, [200, 300, 1000][L] + e.cc * [0.8, 1.2, 3][L], f);
           sim.buff(a, { adPct: [15, 22, 50][L], cc: sim.eff(a).cc * [15, 22, 50][L] / 100, ten: 20 }, 8);
         }

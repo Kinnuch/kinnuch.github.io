@@ -11,7 +11,7 @@ import { COLS } from './hex.js';
 import { runAI } from './ai.js';
 
 const AI_NAMES = ['埃尔隆德', '瑟兰督伊', '凯勒博恩', '巴德', '丹恩', '埃奥梅尔', '铁蹄'];
-const AI_STYLES = ['eco', 'aggro', 'balanced'];
+const AI_STYLES = ['gambling', 'balancing', 'strategic'];
 
 export class Game {
   constructor(seed, humanName = '你') {
@@ -85,10 +85,10 @@ export class Game {
     o.takenBy = p.i;
     if (this.pool[o.defId] > 0) this.pool[o.defId]--;
     const u = makeUnit(o.defId);
-    u.items.push(makeComponentItem(o.comp));
+    p.items.push(makeComponentItem(o.comp)); // 棋子与装备自动分离
     const bs = benchSpace(p);
     if (bs >= 0) { p.bench[bs] = u; tryMerge(this, p, o.defId); }
-    else { p.gold += u.def.cost; p.items.push(...u.items); }
+    else p.gold += u.def.cost;
     this.addLog(`${p.name} 选秀拿到了 ${u.def.name}`);
     this._carouselCheckDone();
     return true;
@@ -352,15 +352,18 @@ export class Game {
     for (const p of this.players) {
       if (p.alive && p.hp <= 0) {
         p.alive = false;
+        p.placement = this.alivePlayers().length + 1;
         for (const u of allUnits(p)) this.pool[u.def.id] += Math.pow(3, u.star - 1);
         p.bench = Array(9).fill(null); p.board = [];
-        this.addLog(`☠ ${p.name} 被淘汰（第 ${this.alivePlayers().length + 1} 名）`);
+        this.addLog(`☠ ${p.name} 被淘汰（第 ${p.placement} 名）`);
       }
     }
     const alive = this.alivePlayers();
     if (alive.length <= 1 || !this.players[0].alive) {
+      // 存活者按当前血量排定最终名次
+      alive.slice().sort((a, b) => b.hp - a.hp).forEach((p, i) => p.placement = i + 1);
       this.over = true; this.phase = 'over';
-      this.placement = this.players[0].alive ? 1 : this.alivePlayers().length + 1;
+      this.placement = this.players[0].placement || 1;
       return;
     }
     // 下一回合

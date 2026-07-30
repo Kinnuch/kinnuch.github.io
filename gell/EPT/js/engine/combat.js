@@ -349,7 +349,7 @@ export class Combat {
     const over = v - (f.hp - before);
     // 溢出转护盾（雅凡娜的颂歌）
     for (const it of [...f.items, ...f.tempItems]) if (it.eff && it.eff.overhealShield && over > 0) this.addShield(f, Math.min(over, it.eff.overhealShield), 4, f);
-    if (f.hp - before > 0.5) this.emit({ k: 'heal', id: f.id, v: Math.round(f.hp - before), hp: Math.round(f.hp) });
+    if (f.hp - before > 0.5) this.emit({ k: 'heal', id: f.id, v: Math.round(f.hp - before), hp: Math.round(f.hp), src: src ? src.id : f.id });
   }
 
   // ---------- 伤害 ----------
@@ -490,11 +490,11 @@ export class Combat {
         if (p.mkKills % 10 === 0) p.mkAd = (p.mkAd || 0) + v;
       }
     }
-    // 刚多林：击杀冲刺 + 易伤标记
+    // 刚多林：击杀冲刺（冲到自己射程可及处，远程不贴脸）+ 易伤标记
     if (src.gondolinMark && src.alive) {
       const nt = this.nearestEnemy(src);
       if (nt) {
-        this.dashAdjacent(src, nt);
+        this.dashToRange(src, nt);
         this.buff(nt, { takenAmp: src.gondolinMark }, 3);
         src.target = nt;
       }
@@ -513,6 +513,19 @@ export class Combat {
       f.pos = { c, r };
       this.emit({ k: 'move', id: f.id, c, r, dash: true });
     }
+  }
+  dashToRange(f, tgt) { // 冲刺到能攻击到目标的最近位置（远程停在射程边缘）
+    const range = this.eff(f).range;
+    if (hexDist(f.pos.c, f.pos.r, tgt.pos.c, tgt.pos.r) <= range) return;
+    const occ = this.occupied();
+    let best = null, bd = 1e9;
+    for (let r = 0; r < ROWS; r++) for (let c = 0; c < COLS; c++) {
+      if (occ[key(c, r)]) continue;
+      if (hexDist(c, r, tgt.pos.c, tgt.pos.r) > range) continue;
+      const d = hexDist(c, r, f.pos.c, f.pos.r);
+      if (d < bd) { bd = d; best = [c, r]; }
+    }
+    if (best) { f.pos = { c: best[0], r: best[1] }; this.emit({ k: 'move', id: f.id, c: best[0], r: best[1], dash: true }); }
   }
   knockback(f, tgt) { // 从 f 方向推离 tgt 1格
     const occ = this.occupied();
@@ -846,22 +859,24 @@ function castSkill(sim, f) {
   switch (f.def.id) {
     case 'grishnakh': {
       if (!tgt) break;
-      let mult = [1.5, 2.25, 3.4][L];
-      if (tgt.items.length) { mult *= 1.2; f.mana += 10; }
-      sim.deal(f, tgt, e.ad * mult, 'phys', { canCrit: true });
+      let dmg = [300, 450, 680][L] + e.ad;
+      if (tgt.items.length) { dmg *= 1.2; f.mana += 10; }
+      sim.deal(f, tgt, dmg, 'phys', { canCrit: true });
       break;
     }
     case 'duilin': {
       if (!tgt) break;
+      let lastD = 0;
       for (let i = 0; i < 3; i++) {
         if (!tgt.alive) break;
-        const d = sim.deal(f, tgt, e.ad * [0.7, 1.05, 1.6][L] + e.cc * [0.15, 0.2, 0.3][L], 'light', { canCrit: true });
-        skillHealHook(d);
+        lastD = sim.deal(f, tgt, [90, 135, 200][L] + e.ad * 0.4 + e.cc * [0.15, 0.2, 0.3][L], 'light', { canCrit: true });
+        skillHealHook(lastD);
       }
+      trickBounce(tgt, lastD, 'light');
       break;
     }
     case 'guthlaf': {
-      if (tgt) { pushRohirrim(); sim.deal(f, tgt, e.ad * [1.6, 2.4, 3.6][L], 'phys', { canCrit: true }); }
+      if (tgt) { pushRohirrim(); sim.deal(f, tgt, [250, 375, 560][L] + e.ad, 'phys', { canCrit: true }); }
       for (const a of alliesIn(2)) sim.buff(a, { asPct: [10, 15, 25][L] }, 4);
       break;
     }
@@ -872,15 +887,15 @@ function castSkill(sim, f) {
     }
     case 'faramir': {
       if (!tgt) break;
-      let mult = [1.8, 2.7, 4.0][L];
-      if (tgt.target && tgt.target !== f) mult *= 1.3;
-      const d = sim.deal(f, tgt, e.ad * mult, 'phys', { canCrit: true });
+      let dmg = [280, 420, 630][L] + e.ad * 0.8;
+      if (tgt.target && tgt.target !== f) dmg *= 1.3;
+      const d = sim.deal(f, tgt, dmg, 'phys', { canCrit: true });
       skillHealHook(d);
       break;
     }
     case 'carcharoth': {
       if (!tgt) break;
-      const d = sim.deal(f, tgt, e.ad * [1.6, 2.4, 3.6][L] + e.mc * [0.5, 0.75, 1.2][L], 'dark', { canCrit: true });
+      const d = sim.deal(f, tgt, [260, 390, 580][L] + e.ad * 0.6 + e.mc * [0.5, 0.75, 1.2][L], 'dark', { canCrit: true });
       sim.heal(f, d * 0.5, null); skillHealHook(d);
       break;
     }
@@ -896,24 +911,24 @@ function castSkill(sim, f) {
     }
     case 'gimli': {
       for (const en of adjEnemies(f)) {
-        sim.deal(f, en, e.ad * [1.4, 2.1, 3.2][L], 'phys', { canCrit: true });
+        sim.deal(f, en, [180, 270, 400][L] + e.ad * 0.8, 'phys', { canCrit: true });
         f.bonus.armor += [5, 8, 12][L];
       }
       break;
     }
     case 'galdor': {
       if (tgt) sim.dashAdjacent(f, tgt);
-      f.flags.empowered = 2; f.flags.empowerDmg = e.ad * [0.6, 0.9, 1.4][L];
+      f.flags.empowered = 2; f.flags.empowerDmg = [120, 180, 270][L] + e.ad * 0.6;
       break;
     }
     case 'pippin': {
-      if (tgt) { sim.deal(f, tgt, e.ad * [1.8, 2.7, 4.0][L], 'phys', { canCrit: true }); if (tgt.alive) sim.applyStatus(tgt, 'chill', 2, f); }
+      if (tgt) { sim.deal(f, tgt, [280, 420, 630][L] + e.ad * 0.8, 'phys', { canCrit: true }); if (tgt.alive) sim.applyStatus(tgt, 'chill', 2, f); }
       sim.buff(f, { asPct: [20, 30, 45][L] }, 3);
       break;
     }
     case 'mouthofsauron': {
       if (!tgt) break;
-      const d = sim.deal(f, tgt, e.ad * [1.7, 2.6, 3.9][L] + e.mc * 0.6, 'dark', { canCrit: true });
+      const d = sim.deal(f, tgt, [300, 450, 680][L] + e.ad * 0.6 + e.mc * 0.6, 'dark', { canCrit: true });
       skillHealHook(d);
       const steal = sim.eff(tgt).ad * [10, 15, 25][L] / 100;
       sim.buff(tgt, { ad: -steal }, 4); sim.buff(f, { ad: steal }, 4);
@@ -928,14 +943,14 @@ function castSkill(sim, f) {
     case 'boromir': {
       if (!tgt) break;
       sim.dashAdjacent(f, tgt);
-      let mult = [2.2, 3.3, 5.0][L];
-      if (tgt.hp < tgt.maxHp * 0.35) mult *= 2;
-      sim.deal(f, tgt, e.ad * mult, 'phys', { canCrit: true });
+      let dmg = [320, 480, 720][L] + e.ad;
+      if (tgt.hp < tgt.maxHp * 0.35) dmg *= 2;
+      sim.deal(f, tgt, dmg, 'phys', { canCrit: true });
       break;
     }
     case 'tuor': {
       if (!tgt) break;
-      const d = sim.deal(f, tgt, e.ad * [2.4, 3.6, 5.4][L] + e.cc * 0.4, 'light', { canCrit: true });
+      const d = sim.deal(f, tgt, [400, 600, 900][L] + e.ad + e.cc * 0.4, 'light', { canCrit: true });
       if (tgt.alive) sim.applyStatus(tgt, 'gw', 3);
       skillHealHook(d);
       break;
@@ -943,19 +958,19 @@ function castSkill(sim, f) {
     case 'sam': {
       let target = tgt;
       const lowHobbit = sim.allies(f).find(a => a.def.races.includes('hobbit') && a.hp < a.maxHp * 0.5);
-      let mult = [2.3, 3.4, 5.2][L];
+      let dmg = [400, 600, 900][L] + e.ad;
       if (lowHobbit) {
         const threat = sim.enemies(f).find(en => en.target === lowHobbit);
-        if (threat) { target = threat; mult *= 1.3; }
+        if (threat) { target = threat; dmg *= 1.3; }
       }
-      if (target) sim.deal(f, target, e.ad * mult, 'phys', { canCrit: true });
+      if (target) sim.deal(f, target, dmg, 'phys', { canCrit: true });
       break;
     }
     case 'gothmog': {
       if (!tgt) break;
       const targets = [tgt, ...adjEnemies(tgt)];
       for (const t2 of targets) {
-        const d = sim.deal(f, t2, e.ad * [2.0, 3.0, 4.5][L] + e.mc * 0.6, 'dark', { canCrit: true });
+        const d = sim.deal(f, t2, [280, 420, 630][L] + e.ad * 0.6 + e.mc * 0.6, 'dark', { canCrit: true });
         if (t2.alive) sim.applyStatus(t2, 'burn', 2, f);
         skillHealHook(d);
       }
@@ -963,7 +978,7 @@ function castSkill(sim, f) {
     }
     case 'rog': {
       if (!tgt) break;
-      sim.deal(f, tgt, e.ad * [2.4, 3.6, 5.4][L], 'phys', { canCrit: true });
+      sim.deal(f, tgt, [400, 600, 900][L] + e.ad, 'phys', { canCrit: true });
       if (tgt.alive) tgt.bonus.armor -= [10, 15, 25][L];
       break;
     }
@@ -983,7 +998,7 @@ function castSkill(sim, f) {
       if (!target) break;
       sim.dashAdjacent(f, target);
       f.flags.onKillHeal = 30;
-      const d = sim.deal(f, target, e.ad * [2.6, 3.9, 5.8][L] + e.cc * 0.6, 'light', { canCrit: true });
+      const d = sim.deal(f, target, [550, 830, 1250][L] + e.ad + e.cc * 0.6, 'light', { canCrit: true });
       f.flags.onKillHeal = 0;
       skillHealHook(d);
       break;
@@ -1007,7 +1022,7 @@ function castSkill(sim, f) {
       if (!tgt) break;
       f.flags.onKillTurin = true;
       const before = tgt.alive;
-      const d = sim.deal(f, tgt, e.ad * [3.0, 4.5, 6.8][L], 'phys', { canCrit: true });
+      const d = sim.deal(f, tgt, [550, 830, 1250][L] + e.ad * 1.2, 'phys', { canCrit: true });
       if (before && !tgt.alive) {
         sim.buff(f, { asPct: 20 }, 999);
         sim.deal(null, f, d * 0.1, 'true', {});
@@ -1016,7 +1031,7 @@ function castSkill(sim, f) {
     }
     case 'frodo': {
       sim.applyStatus(f, 'untargetable', [2, 2.5, 3][L]);
-      f.flags.ringStrike = e.ad * ([3.0, 4.5, 6.8][L] - 1);
+      f.flags.ringStrike = [450, 680, 1020][L] + e.ad * 1.2;
       sim.deal(null, f, f.maxHp * 0.03, 'pure', {});
       for (const en of sim.enemies(f)) if (en.target === f) en.target = null;
       break;
@@ -1049,7 +1064,7 @@ function castSkill(sim, f) {
     // ================= M2 新增技能 =================
     case 'idril': {
       if (!tgt) break;
-      const d = sim.deal(f, tgt, [180, 270, 400][L] + e.cc * [0.7, 1, 1.6][L], 'light', { canCrit: true });
+      const d = sim.deal(f, tgt, [280, 420, 630][L] + e.cc * [0.7, 1, 1.6][L], 'light', { canCrit: true });
       const low = lowestAlly();
       if (low) sim.addShield(low, d * 0.4, 4, f);
       break;
@@ -1075,21 +1090,21 @@ function castSkill(sim, f) {
       const target = cands.sort((a, b) => a.hp / a.maxHp - b.hp / b.maxHp)[0] || tgt;
       if (!target) break;
       sim.dashAdjacent(f, target);
-      let mult = [1.8, 2.7, 4.0][L];
-      if (target.hp < target.maxHp * 0.3) mult *= 2;
-      sim.deal(f, target, e.ad * mult, 'dark', { canCrit: true });
+      let dmg = [270, 400, 600][L] + e.ad * 0.8;
+      if (target.hp < target.maxHp * 0.3) dmg *= 2;
+      sim.deal(f, target, dmg, 'dark', { canCrit: true });
       break;
     }
     case 'goldberry': {
       if (!tgt) break;
-      sim.deal(f, tgt, [150, 230, 350][L] + e.cc * [0.7, 1, 1.6][L], 'light', { canCrit: true });
+      sim.deal(f, tgt, [260, 390, 580][L] + e.cc * [0.7, 1, 1.6][L], 'light', { canCrit: true });
       if (tgt.alive) sim.buff(tgt, { asPct: -20 }, 3);
       indulgerProc(tgt);
       break;
     }
     case 'aredhel': {
       if (!tgt) break;
-      const d = sim.deal(f, tgt, e.ad * [2.4, 3.6, 5.4][L] + e.cc * 0.4, 'light', { canCrit: true });
+      const d = sim.deal(f, tgt, [350, 525, 790][L] + e.ad * 0.6 + e.cc * 0.4, 'light', { canCrit: true });
       trickBounce(tgt, d, 'light');
       break;
     }
@@ -1100,33 +1115,33 @@ function castSkill(sim, f) {
       break;
     }
     case 'magor': {
-      if (tgt) sim.deal(f, tgt, e.ad * [2.0, 3.0, 4.5][L], 'phys', { canCrit: true });
+      if (tgt) sim.deal(f, tgt, [300, 450, 680][L] + e.ad, 'phys', { canCrit: true });
       f.flags.empowered = 3;
-      f.flags.empowerDmg = e.ad * [0.2, 0.3, 0.45][L];
+      f.flags.empowerDmg = e.ad * [0.3, 0.45, 0.7][L];
       break;
     }
     case 'nimrodel': {
       if (!tgt) break;
-      const d = sim.deal(f, tgt, [200, 300, 450][L] + e.cc * [0.8, 1.2, 1.9][L], 'light', { canCrit: true });
+      const d = sim.deal(f, tgt, [330, 500, 750][L] + e.cc * [0.8, 1.2, 1.9][L], 'light', { canCrit: true });
       sim.heal(f, d * 0.3, null);
       break;
     }
     case 'glaurung': {
       if (!tgt) break;
-      sim.deal(f, tgt, [180, 270, 400][L] + e.mc * [0.8, 1.2, 1.9][L], 'dark', { canCrit: true });
+      sim.deal(f, tgt, [320, 480, 720][L] + e.mc * [0.8, 1.2, 1.9][L], 'dark', { canCrit: true });
       if (tgt.alive) sim.applyStatus(tgt, 'gw', 3);
       break;
     }
-    case 'haleth2': case 'haleth': {
+    case 'haleth': {
       if (!tgt) break;
-      let mult = [1.9, 2.8, 4.3][L];
-      if (f.hp < f.maxHp * 0.5) mult *= 1.4;
-      sim.deal(f, tgt, e.ad * mult / 2, 'phys', { canCrit: true });
-      sim.deal(f, tgt, e.ad * mult / 2, 'phys', { canCrit: true });
+      let dmg = [300, 450, 680][L] + e.ad;
+      if (f.hp < f.maxHp * 0.5) dmg *= 1.4;
+      sim.deal(f, tgt, dmg / 2, 'phys', { canCrit: true });
+      sim.deal(f, tgt, dmg / 2, 'phys', { canCrit: true });
       break;
     }
     case 'barahir': {
-      if (tgt) sim.deal(f, tgt, e.ad * [2.1, 3.1, 4.7][L], 'phys', { canCrit: true });
+      if (tgt) sim.deal(f, tgt, [320, 480, 720][L] + e.ad * 0.8, 'phys', { canCrit: true });
       sim.buff(f, { dr: [15, 20, 30][L] }, 3);
       break;
     }
@@ -1144,7 +1159,7 @@ function castSkill(sim, f) {
       if (!tgt) break;
       f.flags.saruCast = (f.flags.saruCast || 0) + 1;
       const isLight = f.flags.saruCast % 2 === 1;
-      const dmg = [230, 340, 520][L] + (isLight ? e.cc : e.mc) * [0.8, 1.2, 1.9][L];
+      const dmg = [380, 570, 860][L] + (isLight ? e.cc : e.mc) * [0.8, 1.2, 1.9][L];
       sim.deal(f, tgt, dmg, isLight ? 'light' : 'dark', { canCrit: true });
       if (!isLight && tgt.alive) sim.applyStatus(tgt, 'burn', 2, f);
       break;
@@ -1165,15 +1180,16 @@ function castSkill(sim, f) {
     }
     case 'finrod': {
       if (!tgt) break;
-      sim.deal(f, tgt, [220, 330, 500][L] + e.cc * [0.8, 1.2, 1.9][L], 'light', { canCrit: true });
+      sim.deal(f, tgt, [380, 570, 860][L] + e.cc * [0.8, 1.2, 1.9][L], 'light', { canCrit: true });
       if (tgt.alive) sim.applyStatus(tgt, 'disarm', [1, 1.5, 2][L], f);
       break;
     }
     case 'gilgalad': {
       if (!tgt) break;
-      sim.deal(f, tgt, e.ad * [2.1, 3.1, 4.7][L] + e.cc * 0.5, 'light', { canCrit: true });
+      const dmg = [280, 420, 630][L] + e.ad * 0.6 + e.cc * 0.5;
+      sim.deal(f, tgt, dmg, 'light', { canCrit: true });
       const behind = adjEnemies(tgt).sort((a, b) => hexDist(b.pos.c, b.pos.r, f.pos.c, f.pos.r) - hexDist(a.pos.c, a.pos.r, f.pos.c, f.pos.r))[0];
-      if (behind) sim.deal(f, behind, e.ad * [2.1, 3.1, 4.7][L] + e.cc * 0.5, 'light', { canCrit: true });
+      if (behind) sim.deal(f, behind, dmg, 'light', { canCrit: true });
       break;
     }
     case 'maeglin': {
@@ -1181,7 +1197,7 @@ function castSkill(sim, f) {
       const target = cands.sort((a, b) => a.hp / a.maxHp - b.hp / b.maxHp)[0] || tgt;
       if (!target) break;
       sim.dashAdjacent(f, target);
-      let dmg = e.ad * [2.2, 3.3, 5.0][L] + e.mc * 0.4;
+      let dmg = [380, 570, 860][L] + e.ad * 0.8 + e.mc * 0.4;
       const execLine = sim['exec' + f.team];
       if (execLine && target.hp / target.maxHp * 100 < execLine) dmg *= 1.5;
       sim.deal(f, target, dmg, 'dark', { canCrit: true });
@@ -1214,7 +1230,7 @@ function castSkill(sim, f) {
         if (!target || !target.alive) target = sim.nearestEnemy(f);
         if (!target) break;
         const before = target.alive;
-        lastDmg = sim.deal(f, target, e.ad * [0.65, 0.95, 1.45][L] + e.cc * 0.15, 'light', { canCrit: true });
+        lastDmg = sim.deal(f, target, [60, 90, 135][L] + e.ad * 0.6 + e.cc * 0.15, 'light', { canCrit: true });
         if (before && !target.alive) arrows++;
       }
       trickBounce(target, lastDmg, 'light');
@@ -1222,7 +1238,7 @@ function castSkill(sim, f) {
     }
     case 'fingon': {
       for (const a of sim.allies(f)) sim.buff(a, { asPct: [12, 18, 28][L] }, 4);
-      if (tgt) { sim.dashAdjacent(f, tgt); sim.deal(f, tgt, e.ad * [2.2, 3.3, 5.0][L], 'phys', { canCrit: true }); }
+      if (tgt) { sim.dashAdjacent(f, tgt); sim.deal(f, tgt, [380, 570, 860][L] + e.ad, 'phys', { canCrit: true }); }
       break;
     }
     case 'galadriel': {
@@ -1236,7 +1252,7 @@ function castSkill(sim, f) {
     }
     case 'beren': {
       if (!tgt) break;
-      sim.deal(f, tgt, e.ad * [2.8, 4.2, 6.3][L], 'phys', { canCrit: true });
+      sim.deal(f, tgt, [500, 750, 1130][L] + e.ad, 'phys', { canCrit: true });
       if (tgt.alive && tgt.hp < tgt.maxHp * 0.2) {
         tgt.hp = 0; sim.emit({ k: 'execute', id: tgt.id, src: f.id }); sim.kill(tgt, f);
         if ((f.flags.berenLoots || 0) < 2) {
@@ -1249,7 +1265,7 @@ function castSkill(sim, f) {
     }
     case 'maedhros': {
       if (!tgt) break;
-      const per = e.ad * [2.6, 3.9, 5.8][L] / 3;
+      const per = ([500, 750, 1130][L] + e.ad * 1.2) / 3;
       sim.deal(f, tgt, per, 'phys', { canCrit: true });
       sim.deal(f, tgt, per, 'phys', { canCrit: true });
       if (tgt.alive) {
@@ -1284,7 +1300,7 @@ function castSkill(sim, f) {
     case 'sauron': {
       if (!tgt) break;
       sim.applyStatus(tgt, 'stun', [1, 1.5, 2][L], f);
-      sim.deal(f, tgt, [240, 360, 540][L] + e.mc * [1.0, 1.5, 2.3][L], 'dark', { canCrit: true });
+      sim.deal(f, tgt, [450, 680, 1020][L] + e.mc * [1.0, 1.5, 2.3][L], 'dark', { canCrit: true });
       const target = tgt;
       sim.after(3, () => { if (!target.alive && f.alive) f.mana = Math.min(f.manaMax + f.breakMana, f.mana + 30); });
       indulgerProc(tgt);
@@ -1320,7 +1336,7 @@ function castSkill(sim, f) {
       sim.dashAdjacent(f, far);
       for (const t2 of [far, ...adjEnemies(f)]) {
         t2.breakMana += t2.manaMax * 0.15;
-        sim.deal(f, t2, e.ad * [1.5, 2.0, 9.0][L] + e.cc * [0.3, 0.6, 3.0][L], 'phys', { canCrit: true });
+        sim.deal(f, t2, [450, 700, 2000][L] + e.ad * 1.2 + e.cc * [0.4, 0.8, 4.0][L], 'phys', { canCrit: true });
       }
       sim.buff(f, { critR: [25, 25, 100][L], critD: [15, 25, 100][L] }, 2);
       break;
@@ -1339,11 +1355,11 @@ function castSkill(sim, f) {
         if (!f.alive || !target.alive) return;
         const e2 = sim.eff(f);
         if (third) {
-          const d = sim.deal(f, target, [300, 600, 2000][L] + e2.cc * [4, 8, 50][L], 'light', {});
+          const d = sim.deal(f, target, [700, 1400, 3500][L] + e2.cc * [4, 8, 50][L], 'light', {});
           for (const t2 of adjEnemies(target)) sim.deal(f, t2, d / 2, 'light', {});
         } else {
           const before = target.alive;
-          sim.deal(f, target, [200, 400, 1000][L] + e2.cc * [2.5, 5, 20][L], 'light', {});
+          sim.deal(f, target, [450, 900, 2200][L] + e2.cc * [2.5, 5, 20][L], 'light', {});
           if (before && !target.alive) f.mana = Math.min(f.manaMax, f.mana + [20, 30, 100][L]);
         }
       });
@@ -1355,9 +1371,9 @@ function castSkill(sim, f) {
         hexDist(b.pos.c, b.pos.r, f.pos.c, f.pos.r) - hexDist(a.pos.c, a.pos.r, f.pos.c, f.pos.r)).slice(0, 3);
       let lastD = 0, lastT = null;
       for (const t2 of fars) {
-        lastD = sim.deal(f, t2, e.ad * [0.5, 1.0, 4.0][L] + e.cc * [0.1, 0.15, 0.75][L], 'phys', { canCrit: true });
+        lastD = sim.deal(f, t2, [250, 400, 1300][L] + e.ad + e.cc * [0.2, 0.3, 1.0][L], 'phys', { canCrit: true });
         lastT = t2;
-        for (const t3 of adjEnemies(t2)) sim.deal(f, t3, e.ad * [0.25, 0.35, 2.0][L], 'phys', {});
+        for (const t3 of adjEnemies(t2)) sim.deal(f, t3, [120, 200, 650][L] + e.ad * 0.5, 'phys', {});
       }
       trickBounce(lastT, lastD, 'phys');
       break;

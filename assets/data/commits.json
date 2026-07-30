@@ -1,5 +1,19 @@
 [
   {
+    "hash": "784e50a2acfb1feec319608c905da7400a2e4012",
+    "short": "784e50a",
+    "date": "2026-07-30T15:52:49+08:00",
+    "author": "wuyichen",
+    "msg": "fix a bug where Edain trait is not properly showed when in prepare phase"
+  },
+  {
+    "hash": "cd24b5b45a047974928d5c8413da64b9fd71ec8a",
+    "short": "cd24b5b",
+    "date": "2026-07-30T07:35:00Z",
+    "author": "github-actions[bot]",
+    "msg": "chore: refresh commits.json [skip ci]"
+  },
+  {
     "hash": "8a494bbb5b49c0e8c9b93eac11a21d55ec1b34e5",
     "short": "8a494bb",
     "date": "2026-07-30T15:34:27+08:00",

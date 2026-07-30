@@ -1,5 +1,19 @@
 [
   {
+    "hash": "9af6ecc1be7417abdb8bdf1f3cb8720ff620c89f",
+    "short": "9af6ecc",
+    "date": "2026-07-30T16:00:23+08:00",
+    "author": "wuyichen",
+    "msg": "fix a bug in ranking system"
+  },
+  {
+    "hash": "edaae069891b6104fa024dddae3fd3f10a4100e6",
+    "short": "edaae06",
+    "date": "2026-07-30T07:53:24Z",
+    "author": "github-actions[bot]",
+    "msg": "chore: refresh commits.json [skip ci]"
+  },
+  {
     "hash": "784e50a2acfb1feec319608c905da7400a2e4012",
     "short": "784e50a",
     "date": "2026-07-30T15:52:49+08:00",

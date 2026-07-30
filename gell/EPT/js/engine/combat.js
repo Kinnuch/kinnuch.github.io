@@ -488,6 +488,7 @@ export class Combat {
         const p = m.unitRef.progress = m.unitRef.progress || {};
         p.mkKills = (p.mkKills || 0) + 1; p.mkHp = (p.mkHp || 0) + v;
         m.maxHp += v; m.hp += v;
+        this.emit({ k: 'maxhp', id: m.id, max: Math.round(m.maxHp), hp: Math.round(m.hp) });
         if (p.mkKills % 10 === 0) p.mkAd = (p.mkAd || 0) + v;
       }
     }
@@ -675,7 +676,9 @@ export class Combat {
     const s = f.flags.storm;
     while (s.next <= this.t) {
       s.next = Math.round((s.next + 0.1) * 10) / 10;
-      const c = this.rng.int(COLS), r = this.rng.int(ROWS);
+      // 黑星只落在敌方半场，命中率更高
+      const foeRows = f.team === 0 ? [0, 1, 2, 3] : [4, 5, 6, 7];
+      const c = this.rng.int(COLS), r = foeRows[this.rng.int(4)];
       const hit = this.f.find(x => x.alive && x.pos.c === c && x.pos.r === r);
       this.emit({ k: 'star', c, r });
       if (!hit) { f.mana = Math.min(f.manaMax, f.mana + s.missMana); continue; }
@@ -772,12 +775,16 @@ export class Combat {
           for (const t2 of targets) this.deal(f, t2, ef.every3rdMagic, type, {});
         }
       }
-      // 安格班偷取
+      // 安格班偷取：剥离目标最大生命值转给自己（仅本场战斗，结束还原）
       if (f.angband && tgt.alive && f.angband.stacks * f.angband.adSteal < f.angband.adCap) {
         f.angband.stacks++;
         f.bonus.ad += f.angband.adSteal;
         this.buff(tgt, { ad: -f.angband.adSteal }, 999);
-        this.heal(f, f.angband.hpSteal, null);
+        f.maxHp += f.angband.hpSteal; f.hp += f.angband.hpSteal;
+        tgt.maxHp = Math.max(100, tgt.maxHp - f.angband.hpSteal);
+        if (tgt.hp > tgt.maxHp) tgt.hp = tgt.maxHp;
+        this.emit({ k: 'maxhp', id: f.id, max: Math.round(f.maxHp), hp: Math.round(f.hp) });
+        this.emit({ k: 'maxhp', id: tgt.id, max: Math.round(tgt.maxHp), hp: Math.round(Math.max(0, tgt.hp)) });
         if (f.angband.stacks * f.angband.adSteal >= f.angband.adCap) f.bonus.vamp += f.angband.vampAtCap;
       }
       // 游侠叠攻速

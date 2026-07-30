@@ -32,24 +32,30 @@ export function runAI(game, p) {
   const style = p.aiStyle;
   let core = null, coreCopies = 0;
   if (style === 'gambling' && bestLow) { core = bestLow[0]; coreCopies = bestLow[1]; }
-  const has4star2 = units().some(u => u.def.cost === 4 && u.star >= 2);
-  // 梭哈时机：濒死 / 赌狗差1~2张三星 / 84流上8级找4费
-  const allIn = desperate
-    || (style === 'gambling' && coreCopies >= 7 && coreCopies < 9)
-    || (style === 'balancing' && p.level >= 8 && !has4star2);
-  // 目标等级
+  // 云顶式运营指标：站稳 = 至少2张高费两星，或整体两星数量足够
+  const twoStars = units().filter(u => u.star >= 2).length;
+  const highPairs = units().filter(u => u.def.cost >= 4 && u.star >= 2).length;
+  const stabilized = highPairs >= 2 || twoStars >= 6;
+  // 梭哈时机：濒死 / 赌狗差1~2张三星
+  const allIn = desperate || (style === 'gambling' && coreCopies >= 7 && coreCopies < 9);
+  // 目标等级（Fast-8节奏；8级站稳且富裕→冲9）
   let targetLevel =
     style === 'gambling' ? (coreCopies >= 9 ? 8 : stage <= 2 ? 5 : 6)
       : style === 'strategic' ? (stage <= 2 ? 4 : stage === 3 ? 7 : stage === 4 ? 8 : 9)
         : (stage <= 1 ? 3 : stage === 2 ? 5 : stage === 3 ? 7 : 8);
   if (desperate) targetLevel = Math.min(9, targetLevel + 1);
+  if (p.level >= 8 && stabilized && p.gold >= 60) targetLevel = 9;
   // 利息意识：存钱线（卡50吃满5利息）
   let reserve =
     style === 'gambling' ? (p.level >= 5 ? 50 : 10)
       : style === 'strategic' ? (stage <= 4 ? 50 : 30)
         : (stage <= 2 ? 0 : stage === 3 ? 20 : stage === 4 ? 50 : 20);
-  if (allIn) reserve = 0;
-  if (p.gold > 75) { reserve = 0; targetLevel = Math.min(9, targetLevel + 1); } // 别盲目存钱，该提质量提质量
+  // 滚动窗口（rolldown）：到8/9级还没高费两星、或血线告急且质量差 → 深D找卡
+  const needStab = (p.level >= 8 && !stabilized) || (stage >= 3 && p.hp < 60 && twoStars < 4 && p.level >= 6);
+  let rollFloor = reserve;
+  if (needStab) rollFloor = (desperate || p.hp <= 40) ? 0 : 30; // 血厚D到30保利息，血薄D穿
+  if (allIn) { reserve = 0; rollFloor = 0; }
+  if (p.gold > 75) { reserve = Math.min(reserve, 50); rollFloor = Math.min(rollFloor, 50); targetLevel = Math.min(9, targetLevel + 1); }
   let guard = 0;
   // 经验（gambling 5级前不买经验）
   const xpOK = style !== 'gambling' || p.level >= 5 || desperate;
@@ -81,23 +87,37 @@ export function runAI(game, p) {
       if (style === 'balancing' && def.cost === 4 && p.level >= 8) score += 60;
       if (style === 'strategic' && def.cost === 5) score += 80;
       if (units().length < p.level + 2) score += 15;
-      scored.push({ i, def, score });
+      scored.push({ i, def, score, owned });
     }
     scored.sort((a, b) => b.score - a.score);
     for (const s of scored) {
       guard++;
       if (s.score <= 4) continue;
-      const mustBuy = core && s.def.id === core;
-      if (!mustBuy && p.gold - s.def.cost < reserve) continue;
+      // 赌狗核心与高费凑对：无视存钱线也要买
+      const mustBuy = (core && s.def.id === core) || (s.def.cost >= 4 && s.owned >= 1);
+      if (!mustBuy && p.gold - s.def.cost < rollFloor) continue;
       if (p.gold < s.def.cost) continue;
       buyCard(game, p, s.i);
     }
   };
   buyRound();
-  // 刷新（D牌）策略
-  const rerollBudget = allIn ? 40 : style === 'gambling' && p.level >= 5 ? 6 : 3;
-  for (let r = 0; r < rerollBudget && guard < 200; r++) {
-    if (!allIn && p.gold - 2 < reserve) break;
+  // 备战席腾位：卖掉1星、场上下都仅此一张的非核心独苗，给 rolldown 腾空间
+  const sellSpares = keep => {
+    let g2 = 0;
+    while (p.bench.filter(Boolean).length > keep && g2++ < 9) {
+      const spare = p.bench.filter(Boolean)
+        .filter(u => u.star === 1 && (!core || u.def.id !== core) && allUnits(p).filter(x => x.def.id === u.def.id).length === 1)
+        .sort((a, b) => a.def.cost - b.def.cost)[0];
+      if (!spare) break;
+      sellUnit(game, p, spare.uid);
+    }
+  };
+  // 刷新（D牌）：站稳前的 rolldown 大预算；8级后钱花不完就继续D质量，别抱着金币等死
+  let rerollBudget = allIn ? 40 : needStab ? 30 : style === 'gambling' && p.level >= 5 ? 6 : 3;
+  if (p.level >= 8 && p.gold > 100) { rerollBudget = Math.max(rerollBudget, 20); rollFloor = Math.min(rollFloor, 50); }
+  for (let r = 0; r < rerollBudget && guard < 300; r++) {
+    if (p.gold - 2 < rollFloor) break;
+    if (benchSpace(p) < 0 || p.bench.filter(Boolean).length >= 8) sellSpares(6);
     if (p.gold < 2 || benchSpace(p) < 0) break;
     if (!reroll(game, p)) break;
     buyRound();
@@ -105,6 +125,7 @@ export function runAI(game, p) {
       const cc = units().reduce((s, u) => s + (u.def.id === core ? Math.pow(3, u.star - 1) : 0), 0);
       if (cc >= 9) break; // 三星到手收手
     }
+    if (needStab && units().filter(u => u.def.cost >= 4 && u.star >= 2).length >= 2) break; // 站稳即收手
   }
   // 卖掉多余的低费独苗（备战席满时）
   if (benchSpace(p) < 0 || p.bench.filter(Boolean).length >= 8) {

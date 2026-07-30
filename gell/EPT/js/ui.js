@@ -6,7 +6,7 @@ import { applyAction } from './engine/actions.js';
 import { Net } from './net.js';
 import { buyCard, reroll, buyXp, sellUnit, placeUnit, unfieldUnit, allUnits, isFielded } from './engine/player.js';
 import { RACES, CLASSES, UNITS, UNITS_BY_ID, unitStatsAtStar, XP_TO_LEVEL, SHOP_ODDS, affAtStar } from '../data/units.js';
-import { countTraits, TRAITS } from '../data/traits.js';
+import { countTraits, TRAITS, FLAGGER_BONUS } from '../data/traits.js';
 import { canCombine, makeCombinedItem, makeComponentItem, COMPONENTS, COMBO_NAMES, comboKey, CONSUMABLES } from '../data/items.js';
 
 const CELL_W = 70, ROW_H = 58, COLS = 7, ROWS = 8;
@@ -778,7 +778,8 @@ function renderTraits() {
     const def = TRAITS[t.id];
     const row = document.createElement('div');
     row.className = 'trait-row' + (t.tier > 0 ? ' active ' + TIER_CLASS[Math.min(t.tier, 4)] : '') + (t.sub ? ' trait-sub' : '');
-    const activeLine = t.tier > 0 ? `<div class="trait-desc">${resolveTraitDesc(def, t.tier)}</div>` : '';
+    const srcLine = t.id === 'flagger' && t.tier > 0 ? flaggerSourcesHtml(t.tier) : '';
+    const activeLine = t.tier > 0 ? `<div class="trait-desc">${resolveTraitDesc(def, t.tier)}${srcLine}</div>` : '';
     row.innerHTML = `<div class="trait-head"><span class="tbadge">${t.count}</span><span>${def.name}</span><span class="tcount">${def.tiers.join(' › ')}</span></div>${activeLine}`;
     row.onpointerenter = e => { if (!tooltipPinned) showTooltip(() => traitTooltip(t.id, def, t.tier), e); };
     row.onpointerleave = () => hideTooltip();
@@ -810,10 +811,24 @@ function traitTooltip(id, def, tier) {
   const mine = new Set(me().board.map(b => b.unit.def.id));
   const pool = UNITS.filter(u => u.races.includes(id) || u.classes.includes(id)).sort((a, b) => a.cost - b.cost);
   const lines = pool.map(u => `<span style="color:${mine.has(u.id) ? 'var(--accent)' : 'var(--sub)'}">${mine.has(u.id) ? '✓ ' : ''}${u.cost}费 ${u.name}</span>`).join('<br>');
+  const srcBlock = id === 'flagger' && tier > 0 ? flaggerSourcesHtml(tier) : '';
   return `<h5>${def.name}（${def.tiers.join('/')}）${tier > 0 ? `<span style="color:var(--accent);font-size:12px">已激活第${tier}档</span>` : ''}</h5>
-  <div>${resolveTraitDesc(def, tier)}</div>
+  <div>${resolveTraitDesc(def, tier)}</div>${srcBlock}
   <div style="margin-top:6px;border-top:1px solid var(--border);padding-top:4px">${lines}</div>
   ${shiftDown ? '<div class="tt-sub" style="margin-top:2px">✓ = 当前在你场上</div>' : ''}${shiftHint()}`;
+}
+// 掌旗官：列出当前军旗加成池的来源棋子与各自贡献
+function flaggerSourcesHtml(tier) {
+  const mult = [100, 150, 250][tier - 1], extra = [50, 75, 100][tier - 1];
+  const rows = me().board.map(b => b.unit)
+    .filter(u => u.def.classes.includes('flagger') || (u.extraTraits || []).includes('flagger'))
+    .map(u => {
+      const bo = FLAGGER_BONUS[u.def.id];
+      const d = bo ? bo.desc : '每3秒回复2%最大生命值（纹章）';
+      return `<span style="color:var(--sub)">· ${u.def.name}：</span>${d}`;
+    });
+  if (!rows.length) return '';
+  return `<div style="margin-top:3px">${rows.join('<br>')}<br><span style="color:var(--sub)">全体掌旗官获得以上总和的 <b class="tt-hl">${mult}%</b>，最强者按 ${mult + extra}% 计算</span></div>`;
 }
 
 function renderLog() {
@@ -1391,6 +1406,7 @@ function applyEvent(pb, e) {
       break;
     }
     case 'shield': { const n = nodes[e.id]; if (n) { n.shield = e.total || 0; updateBars(n); } break; }
+    case 'maxhp': { const n = nodes[e.id]; if (n) { n.maxHp = e.max; n.hp = e.hp; updateBars(n); } break; }
     case 'break': { const n = nodes[e.id]; if (n) { n.breakExtra = e.extra || 0; updateBars(n); if (!pb.skip && e.extra > 0) floatText(n.el, '破法', '#ffffff'); } break; }
     case 'cast': {
       const n = nodes[e.id]; if (!n) break;

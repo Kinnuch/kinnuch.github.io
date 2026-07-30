@@ -575,6 +575,7 @@ export class Combat {
           const stun = [0, 0, 0.5, 1][tier - 1];
           if (stun) this.applyStatus(e, 'stun', stun);
           e.breakMana += e.manaMax * [5, 10, 15, 25][tier - 1] / 100;
+          this.emit({ k: 'break', id: e.id, extra: Math.round(e.breakMana) });
         }
         for (const m of this.team(team)) if (m.mordorAS) this.buff(m, { asPct: m.mordorAS }, 999);
       }
@@ -616,6 +617,12 @@ export class Combat {
           if (f.flags.finAcc >= 3) { f.flags.finAcc = 0; f.mana = Math.min(f.manaMax + f.breakMana, f.mana + f.finarfinRegen); }
         }
         if (f.flags.huanDecay) this.deal(null, f, f.maxHp * 0.1, 'pure', {});
+        // 护盾过期同步（供 UI 白条消退）
+        const stot = this.shieldTotal(f);
+        if (Math.abs((f.flags.shEmit || 0) - stot) > 1) {
+          f.flags.shEmit = stot;
+          this.emit({ k: 'shield', id: f.id, v: 0, total: Math.round(stot) });
+        }
       }
       // 哈烈丝家族：开战7秒未阵亡
       if (f.halethPending && this.t >= 7) {
@@ -645,6 +652,7 @@ export class Combat {
       if ((f.st.stunUntil || 0) > this.t) continue;
       // 施法（迈雅双重施法）
       if (!f.isMonster && f.def.skill && f.mana >= f.manaMax + f.breakMana && this.t >= f.manaLockUntil) {
+        if (f.breakMana > 0) this.emit({ k: 'break', id: f.id, extra: 0 }); // 施法后破法解除
         f.mana = 0; f.breakMana = 0; f.manaLockUntil = this.t + 1;
         this.emit({ k: 'cast', id: f.id, name: f.def.skill.name });
         this.castingUnit = f;
@@ -830,7 +838,7 @@ function castSkill(sim, f) {
     const cdKey = 'indCd_' + f.id;
     if ((target.flags[cdKey] || 0) > sim.t) return;
     target.flags[cdKey] = sim.t + [12, 9, 4][f.indulger.tier - 1];
-    if (f.indulger.tier === 1) target.breakMana += target.manaMax * 0.15;
+    if (f.indulger.tier === 1) { target.breakMana += target.manaMax * 0.15; sim.emit({ k: 'break', id: target.id, extra: Math.round(target.breakMana) }); }
     else if (f.indulger.tier === 2) sim.applyStatus(target, 'stun', 0.5, f);
     else sim.applyStatus(target, 'disarm', 1, f);
     sim.addShield(f, f.indulger.shield, 4, f);
@@ -1336,6 +1344,7 @@ function castSkill(sim, f) {
       sim.dashAdjacent(f, far);
       for (const t2 of [far, ...adjEnemies(f)]) {
         t2.breakMana += t2.manaMax * 0.15;
+        sim.emit({ k: 'break', id: t2.id, extra: Math.round(t2.breakMana) });
         sim.deal(f, t2, [450, 700, 2000][L] + e.ad * 1.2 + e.cc * [0.4, 0.8, 4.0][L], 'phys', { canCrit: true });
       }
       sim.buff(f, { critR: [25, 25, 100][L], critD: [15, 25, 100][L] }, 2);

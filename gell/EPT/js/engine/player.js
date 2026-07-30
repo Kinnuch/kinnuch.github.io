@@ -100,6 +100,9 @@ export function tryMerge(game, p, defId) {
       keep.star = star + 1;
       if (game) (game.mergeFx = game.mergeFx || []).push(keep.uid);
       for (const rm of remove) {
+        // 永久成长（人类叠层/哈烈丝/声望等）取最大值继承，不因合成丢失
+        const kp = keep.progress = keep.progress || {}, rp = rm.progress || {};
+        for (const k of ['mkHp', 'mkKills', 'mkAd', 'permAd', 'renown']) if (rp[k]) kp[k] = Math.max(kp[k] || 0, rp[k]);
         for (const it of rm.items) p.items.push(it);       // 装备回物品栏
         removeUnit(p, rm.uid);
       }

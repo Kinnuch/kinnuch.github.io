@@ -5,18 +5,33 @@ import { makeCombinedItem, canCombine } from '../../data/items.js';
 
 export function runAI(game, p) {
   const stage = game.stageOf();
-  const style = p.aiStyle;
   const units = () => allUnits(p);
   // 濒死感知：不再卡利息，倾家荡产求名次
   const desperate = p.hp <= 20 || (p.hp <= 35 && stage >= 4);
-  // gambling：锁定张数最多的 1/2 费为"赌狗核心"
-  let core = null, coreCopies = 0;
-  if (style === 'gambling') {
-    const cnt = {};
-    for (const u of units()) if (u.def.cost <= 2) cnt[u.def.id] = (cnt[u.def.id] || 0) + Math.pow(3, u.star - 1);
-    core = Object.entries(cnt).sort((a, b) => b[1] - a[1])[0]?.[0] || null;
-    coreCopies = core ? cnt[core] : 0;
+  // 低费张数统计
+  const cnt = {};
+  for (const u of units()) if (u.def.cost <= 2) cnt[u.def.id] = (cnt[u.def.id] || 0) + Math.pow(3, u.star - 1);
+  const bestLow = Object.entries(cnt).sort((a, b) => b[1] - a[1])[0];
+  // 装备倾向：攻系(攻/攻速/暴击) vs 法系(法强/法力)
+  const comps = [...p.items, ...units().flatMap(u => u.items)]
+    .flatMap(it => it.comps ? it.comps : it.comp ? [it.comp] : []);
+  const offN = comps.filter(c => /^(ad|as|csc)/.test(c)).length;
+  const castN = comps.filter(c => /^(ap|m)\d/.test(c)).length;
+  // 动态定型（阶段2起一次性）：起手某1/2费≥3张才赌狗，否则按装备倾向+血量选 84/95
+  if (!p.styleLocked && stage >= 2) {
+    if (bestLow && bestLow[1] >= 3) p.aiStyle = 'gambling';
+    else if (castN > offN) p.aiStyle = 'strategic';
+    else if (offN > castN) p.aiStyle = 'balancing';
+    else p.aiStyle = p.hp >= 55 ? 'strategic' : 'balancing';
+    p.styleLocked = true;
   }
+  // 赌狗转型：到6级核心还凑不出苗头（<5张）→ 按血量转 84/95，不再死存钱
+  if (p.aiStyle === 'gambling' && p.level >= 6 && bestLow && bestLow[1] < 5) {
+    p.aiStyle = p.hp >= 55 ? 'strategic' : 'balancing';
+  }
+  const style = p.aiStyle;
+  let core = null, coreCopies = 0;
+  if (style === 'gambling' && bestLow) { core = bestLow[0]; coreCopies = bestLow[1]; }
   const has4star2 = units().some(u => u.def.cost === 4 && u.star >= 2);
   // 梭哈时机：濒死 / 赌狗差1~2张三星 / 84流上8级找4费
   const allIn = desperate
@@ -34,6 +49,7 @@ export function runAI(game, p) {
       : style === 'strategic' ? (stage <= 4 ? 50 : 30)
         : (stage <= 2 ? 0 : stage === 3 ? 20 : stage === 4 ? 50 : 20);
   if (allIn) reserve = 0;
+  if (p.gold > 75) { reserve = 0; targetLevel = Math.min(9, targetLevel + 1); } // 别盲目存钱，该提质量提质量
   let guard = 0;
   // 经验（gambling 5级前不买经验）
   const xpOK = style !== 'gambling' || p.level >= 5 || desperate;
@@ -58,6 +74,9 @@ export function runAI(game, p) {
         s + u.def.races.filter(r => def.races.includes(r)).length + u.def.classes.filter(c => def.classes.includes(c)).length, 0);
       let score = owned >= 2 ? 100 : owned === 1 ? 40 : 0;
       score += Math.min(traitN, 6) * 4 + def.cost * 2;
+      // 顺着装备走：攻系装多买物理输出，法系装多买法系
+      if (offN - castN > 1 && def.classes.some(c => ['warrior', 'killer', 'ranger', 'hunter', 'trickshot', 'executor'].includes(c))) score += 6;
+      if (castN - offN > 1 && def.classes.some(c => ['arcanist', 'indulger', 'flagger', 'forger'].includes(c))) score += 6;
       if (core && id === core) score += 200;
       if (style === 'balancing' && def.cost === 4 && p.level >= 8) score += 60;
       if (style === 'strategic' && def.cost === 5) score += 80;

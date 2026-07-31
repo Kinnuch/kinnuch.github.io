@@ -1,5 +1,19 @@
 [
   {
+    "hash": "602ee7ce6d868329e57ae0a5074a07cd1fe65df9",
+    "short": "602ee7c",
+    "date": "2026-07-31T13:42:33+08:00",
+    "author": "wuyichen",
+    "msg": "update Carousel with 3D scene"
+  },
+  {
+    "hash": "5c13b783e0996875e9696ca48f32eaeaa881037b",
+    "short": "5c13b78",
+    "date": "2026-07-30T16:25:57Z",
+    "author": "github-actions[bot]",
+    "msg": "chore: refresh commits.json [skip ci]"
+  },
+  {
     "hash": "ac26b1aba50fb0f96b29573b121add1a18aad9cf",
     "short": "ac26b1a",
     "date": "2026-07-31T00:25:30+08:00",

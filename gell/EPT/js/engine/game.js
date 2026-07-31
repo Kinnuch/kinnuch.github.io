@@ -55,15 +55,10 @@ export class Game {
     this.carousel = { offers, order, released: 0, done: false };
   }
 
-  carouselRelease() { // 放行下一批（2名）；AI 被放行后立即选
+  carouselRelease() { // 放行下一批（2名，位于圆环相对两点）；AI 由 UI 驱动小精灵走过去碰卡才算选中
     const c = this.carousel;
     if (!c) return;
     c.released = Math.min(c.released + 2, c.order.length);
-    for (let k = 0; k < c.released; k++) {
-      const p = this.players[c.order[k]];
-      if (!p.alive || c.offers.some(o => o.takenBy === p.i)) continue;
-      if (p.isAI) this.carouselPick(p, this.aiCarouselChoice(p));
-    }
     this._carouselCheckDone();
   }
 
@@ -81,7 +76,7 @@ export class Game {
       if (o.takenBy !== null) return;
       const def = UNITS_BY_ID[o.defId];
       const cat = catOf(o.comp);
-      let s = this.rng.next() + def.cost * (p.hp < 50 ? 6 : 2);
+      let s = ((i * 13 + p.i * 7) % 10) / 10 + def.cost * (p.hp < 50 ? 6 : 2); // 免RNG的稳定微扰（UI侧重规划时不消耗随机流）
       const copies = mine.filter(u => u.def.id === def.id).length;
       s += copies >= 2 ? 40 : copies === 1 ? 15 : 0;
       s += mine.reduce((a, u) => a + u.def.races.filter(r => def.races.includes(r)).length + u.def.classes.filter(x => def.classes.includes(x)).length, 0);
@@ -158,22 +153,29 @@ export class Game {
     if (round.type === 'pve') {
       for (const p of this.alivePlayers()) combats.push(this.buildPvE(p, round));
     } else {
-      // 配对：优先匹配上一场没打过的对手
-      const pool = this.rng.shuffle(this.alivePlayers());
+      // 配对（轮次制）：优先匹配本"轮"中还没打过的对手；打满一轮（存活者全遇过）则开新轮
+      const alive = this.alivePlayers();
+      for (const p of alive) { // 本轮已遇齐所有存活对手 → 清空进入新一轮
+        if (alive.every(q => q === p || p.met[q.i])) p.met = {};
+      }
+      const pool = this.rng.shuffle(alive.slice());
       while (pool.length > 1) {
         const p1 = pool.shift();
-        let idx = pool.findIndex(q => q.i !== p1.lastOpp && q.lastOpp !== p1.i);
+        let idx = pool.findIndex(q => !p1.met[q.i] && !q.met[p1.i]); // 双方本轮都没打过
+        if (idx < 0) idx = pool.findIndex(q => !p1.met[q.i]);        // 退而求其次：至少p1没打过
         if (idx < 0) idx = 0;
         const p2 = pool.splice(idx, 1)[0];
         p1.lastOpp = p2.i; p2.lastOpp = p1.i;
+        p1.met[p2.i] = 1; p2.met[p1.i] = 1;
         combats.push(this.buildPvP(p1, p2, false));
       }
       if (pool.length === 1) {
         const solo = pool[0];
         const others = this.alivePlayers().filter(p => p !== solo);
-        const fresh = others.filter(p => p.i !== solo.lastOpp);
+        const fresh = others.filter(p => !solo.met[p.i]);
         const ghostSrc = fresh.length ? this.rng.pick(fresh) : this.rng.pick(others);
         solo.lastOpp = ghostSrc.i;
+        solo.met[ghostSrc.i] = 1;
         combats.push(this.buildPvP(solo, ghostSrc, true));
       }
     }
@@ -293,7 +295,7 @@ export class Game {
     const fighters = this.buildFighters(p, 0);
     const spots = [[3, 1], [2, 1], [4, 1], [1, 1], [5, 1], [3, 0], [2, 0]];
     waveIds.forEach((mid, i) => fighters.push(makeMonsterFighter(MONSTERS[mid], waveIds.length, i, { c: spots[i][0], r: spots[i][1] })));
-    const sim = new Combat(fighters, this.rng.fork(), {});
+    const sim = new Combat(fighters, this.rng.fork(), { pve: true }); // 野怪局：不积攒任何永久成长
     this._monsterHooks(sim);
     const result = sim.run();
     return { kind: 'pve', a: p.i, b: 'pve', sim, result, events: sim.ev };

@@ -17,7 +17,7 @@ export function makePlayer(i, name, isAI, aiStyle) {
     bench: Array(9).fill(null), board: [],      // board: [{unit, c, r}]
     items: [],                                   // 物品栏（散件/成装）
     shop: [null, null, null, null, null], shopLocked: false,
-    streakW: 0, streakL: 0, pvpWins: 0, lastOpp: -1,
+    streakW: 0, streakL: 0, pvpWins: 0, lastOpp: -1, met: {},
     alive: true, lastResult: null, dwarfGranted: 0,
   };
 }

@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!-- 灰袍与手杖 -->
+  <path d="M10 64 Q12 46 22 43 L42 43 Q52 46 54 64 Z" fill="#7d8794"/>
+  <path d="M10 64 Q12 46 22 43 L27 43 Q18 48 16 64 Z" fill="#69737f"/>
+  <rect x="49" y="18" width="3" height="46" rx="1.4" fill="#6b4e2e" transform="rotate(6 50 40)"/>
+  <circle cx="51.5" cy="19" r="2.6" fill="#8a6a3e"/>
+  <!-- 长须 -->
+  <path d="M20 30 Q20 52 32 56 Q44 52 44 30 L38 26 26 26 Z" fill="#e9e8e2"/>
+  <path d="M24 31 Q25 47 32 52 Q29 42 29 32 Z" fill="#cfcfc8"/>
+  <!-- 面部 -->
+  <path d="M24 22 Q24 32 32 33 Q40 32 40 22 L32 18 Z" fill="#e2bd94"/>
+  <path d="M31 25 Q30 30 33 30 Q35 29 34 25 Z" fill="#caa27a"/>
+  <circle cx="27.6" cy="24.5" r="1.5" fill="#3a3026"/>
+  <circle cx="36.4" cy="24.5" r="1.5" fill="#3a3026"/>
+  <path d="M24.5 22.5 L30 21.5 M34 21.5 L39.5 22.5" stroke="#dfdeda" stroke-width="2" stroke-linecap="round"/>
+  <!-- 尖顶宽檐帽 -->
+  <path d="M14 24 Q32 18 50 24 Q52 26 49 27 Q32 22 15 27 Q12 26 14 24 Z" fill="#59636f"/>
+  <path d="M27 5 Q40 -2 44 2 Q41 3 38 8 L44 21 Q34 17 22 22 Z" fill="#66707d"/>
+  <path d="M27 5 Q40 -2 44 2 Q41 3 38 8 L39 12 Q33 6 27 5 Z" fill="#525c68"/>
+</svg>

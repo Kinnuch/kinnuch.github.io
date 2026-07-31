@@ -11,6 +11,11 @@ import { canCombine, makeCombinedItem, makeComponentItem, COMPONENTS, COMBO_NAME
 
 const CELL_W = 70, ROW_H = 58, COLS = 7, ROWS = 8;
 const COST_COLOR = { 1: 'var(--c1)', 2: 'var(--c2)', 3: 'var(--c3)', 4: 'var(--c4)', 5: 'var(--c5)' };
+// 全部63棋子的原创SVG肖像（assets/portraits/<id>.svg）；其中18个有维基百科真实插图/剧照（assets/photos/<id>.jpg，128px）
+const PORTRAITS = new Set(UNITS.map(u => u.id));
+const PHOTOS = new Set(['aragorn', 'feanor', 'fingolfin', 'frodo', 'galadriel', 'gandalf', 'glaurung', 'idril', 'legolas', 'merry', 'pippin', 'saruman', 'sauron', 'tuor', 'turin', 'witchking']);
+const unitArtSrc = id => PHOTOS.has(id) ? `assets/photos/${id}.jpg` : `assets/portraits/${id}.svg`;
+const unitArtCls = id => PHOTOS.has(id) ? 'pt-img photo' : 'pt-img';
 const CLASS_ICON = { warrior: '⚔️', trickshot: '🏹', flagger: '🚩', arcanist: '✨', hunter: '🐾', killer: '🗡️', forger: '🔨', adventurer: '🧭', ranger: '🌿', executor: '💥', chivalry: '🛡️', indulger: '🌀' };
 const RACE_COLOR = {
   noldor: '#c8b273', gondolin: '#9fb8c8', mordor: '#6b3434', angband: '#4a3455', hobbit: '#7a9a5a',
@@ -56,6 +61,8 @@ function rankOf(s) {
   if (st >= 35) return `熙利玛（${s - 3500}分）`;
   return TIERS[Math.floor(st / 5)] + SUBS[st % 5];
 }
+// 段内进度分：每小段100分从0计，最高段位显示进段后的累计分
+function rankProgress(s) { return Math.floor(s / 100) >= 35 ? s - 3500 : s % 100; }
 function rankShort(s) {
   const st = Math.floor(s / 100);
   return st >= 35 ? '熙利玛' : TIERS[Math.floor(st / 5)] + SUBS[st % 5];
@@ -197,6 +204,17 @@ export function initUI() {
   };
   $('pauseBtn').onclick = () => setPaused(!paused);
   $('tutOk').onclick = () => { $('tutModal').style.display = 'none'; setPaused(false); };
+  // 图鉴（收集式）
+  const openDex = () => { renderDex(); $('dexModal').classList.add('show'); };
+  $('dexBtn').onclick = openDex;
+  $('dexBtn2').onclick = openDex;
+  $('dexClose').onclick = () => $('dexModal').classList.remove('show');
+  $('dexModal').onclick = e => { if (e.target === $('dexModal')) $('dexModal').classList.remove('show'); };
+  $('dexCost').onchange = renderDex;
+  $('dexTrait').onchange = renderDex;
+  const traitOpts = [...Object.entries(RACES), ...Object.entries(CLASSES)]
+    .map(([id, name]) => `<option value="${id}">${name}</option>`).join('');
+  $('dexTrait').innerHTML = '<option value="">全部羁绊</option>' + traitOpts;
   // 术语表（大厅与局内随时可查）
   const openGloss = () => $('glossModal').classList.add('show');
   $('glossBtn').onclick = openGloss;
@@ -213,7 +231,7 @@ export function initUI() {
     const myNick = localStorage.getItem('ept-name') || '';
     const names = [...new Set([...ALL_NAMES, ...Object.keys(l)])];
     const rows = names.map(n => ({ n, s: l[n] || 0 })).sort((a, b) => b.s - a.s)
-      .map((x, i) => `<div class="lad-row${x.n === '你' || (myNick && x.n === myNick) ? ' me' : ''}"><span class="lad-no">${i + 1}.</span><span class="lad-name">${x.n}</span><span class="lad-rank">${rankOf(x.s)}</span><span class="lad-score"><b>${x.s}</b> 分</span></div>`).join('');
+      .map((x, i) => `<div class="lad-row${x.n === '你' || (myNick && x.n === myNick) ? ' me' : ''}"><span class="lad-no">${i + 1}.</span><span class="lad-name">${x.n}</span><span class="lad-rank">${rankOf(x.s)}</span><span class="lad-score"><b>${rankProgress(x.s)}</b> 分</span></div>`).join('');
     $('scoutModal').innerHTML = `<div id="scoutBox" style="min-width:380px"><h3>🏆 排行榜</h3>
       <div class="tt-sub" style="margin-bottom:8px">名次积分：+30/+20/+10/+5/−5/−10/−20/−30（含段位修正）；每100分一个小段位，段位序列：黑铁→黄铜→白银→黄金→秘银→加尔沃恩→提卡尔→熙利玛</div>
       ${rows}<div class="tt-sub" style="margin-top:8px">点击空白处关闭</div></div>`;
@@ -455,10 +473,22 @@ function finishCarousel() {
   renderAll();
   startPlanTimer();
 }
-// ---------- 环形选秀现场：9 张卡转圈圈，玩家小精灵被隔离在圈外，放行后点击移动去拿 ----------
-let carBuilt = false, carSpinTimer = null, carTheta = 0, carSpritePos = {};
+// ---------- 环形选秀现场：8个小精灵在圈外对称围栏中，按对点放行，恒速行走，碰到哪张卡就拿哪张 ----------
+let carBuilt = false, carSpinTimer = null, carTheta = 0, carS = {}, carCardXY = [];
 const PLAYER_COLOR = ['#c0973f', '#5b8dbf', '#7aa85a', '#b06ab0', '#c46a5a', '#5aa8a0', '#8a7cc4', '#a08a50'];
-function carArenaGeom() { return { W: 680, H: 480, cx: 340, cy: 220, R: 158 }; }
+function carArenaGeom() { return { W: 700, H: 560, cx: 350, cy: 262, R: 146, RP: 228, PEN: 27, HIT: 40, SPD: 2.8 }; }
+function carSeatPos(orderIdx) { // 第k波的两人在圆环相对的两个点（0°/180°，45°/225°…）
+  const { cx, cy, RP } = carArenaGeom();
+  const ang = (Math.floor(orderIdx / 2) * 45 + (orderIdx % 2) * 180) * Math.PI / 180;
+  return { x: cx + RP * Math.sin(ang), y: cy - RP * Math.cos(ang) };
+}
+function carReleasedOf(pi) {
+  const c = game.carousel;
+  if (!c) return false;
+  const k = c.order.indexOf(pi);
+  return k >= 0 && k < c.released;
+}
+function carPickedOf(pi) { return game.carousel && game.carousel.offers.some(o => o.takenBy === pi); }
 function renderCarousel() {
   const c = game.carousel;
   if (!c) { finishCarousel(); return; }
@@ -466,7 +496,7 @@ function renderCarousel() {
   updateCarArena(c);
 }
 function buildCarArena(c) {
-  carBuilt = true; carTheta = 0; carSpritePos = {};
+  carBuilt = true; carTheta = 0; carS = {}; carCardXY = [];
   const { W, H, cx, cy, R } = carArenaGeom();
   let cards = '';
   c.offers.forEach((o, i) => {
@@ -476,29 +506,29 @@ function buildCarArena(c) {
       <div class="sc-traits">${def.cost}费 · ${COMP_ICON[o.comp] || ''} ${COMPONENTS[o.comp].name}</div>
       <div class="car-taker"></div></div>`;
   });
-  let sprites = '';
+  let pens = '', sprites = '';
   c.order.forEach((pi, k) => {
     const p = game.players[pi];
-    const x = cx - (c.order.length - 1) * 38 / 2 + k * 38, y = H - 24;
-    carSpritePos[pi] = { x, y };
-    sprites += `<div class="car-sprite${pi === myIndex ? ' mine' : ''}" data-pi="${pi}" style="left:${x}px;top:${y}px;--pc:${PLAYER_COLOR[pi % 8]}"><i></i><span>${p.name.slice(0, 3)}</span></div>`;
+    const s = carSeatPos(k);
+    carS[pi] = { x: s.x, y: s.y, tx: s.x, ty: s.y, seat: k };
+    pens += `<div class="car-pen" data-pi="${pi}" style="left:${s.x}px;top:${s.y}px"></div>`;
+    sprites += `<div class="car-sprite${pi === myIndex ? ' mine' : ''}" data-pi="${pi}" style="left:${s.x}px;top:${s.y}px;--pc:${PLAYER_COLOR[pi % 8]}"><i></i><span>${p.name.slice(0, 3)}</span></div>`;
   });
   $('carModal').innerHTML = `<div id="carBox">
     <h3>🎠 共享选秀 <span id="carHead" class="tt-sub" style="font-weight:normal"></span></h3>
     <div id="carSeats"></div>
     <div id="carStatus" class="tt-sub" style="margin:4px 0"></div>
     <div id="carArena" style="width:${W}px;height:${H}px">
-      <div id="carFence" style="left:${cx}px;top:${cy}px;width:${(R + 66) * 2}px;height:${(R + 66) * 2}px"></div>
+      <div id="carFence" style="left:${cx}px;top:${cy}px;width:${(R + 58) * 2}px;height:${(R + 58) * 2}px"></div>
       <div id="carCenter" style="left:${cx}px;top:${cy}px"></div>
-      ${cards}${sprites}
+      ${pens}${cards}${sprites}
     </div></div>`;
-  // 点击场地移动小精灵；点击卡片=走过去拿
+  // 点击场地：小精灵持续朝点击处行进（未放行时只能在自己的围栏里挪动）
   const arena = $('carArena');
   arena.onclick = ev => {
-    const card = ev.target.closest('.car-offer');
-    if (card) { tryPickCard(+card.dataset.i); return; }
     const rect = arena.getBoundingClientRect();
-    moveMySprite(ev.clientX - rect.left, ev.clientY - rect.top);
+    const sx = rect.width / carArenaGeom().W;
+    carSetTarget(myIndex, (ev.clientX - rect.left) / sx, (ev.clientY - rect.top) / sx);
   };
   // 悬浮：棋子信息在上、携带装备详情在下（单一浮层）
   arena.querySelectorAll('.car-offer').forEach(el => {
@@ -516,58 +546,74 @@ function buildCarArena(c) {
   carSpinTimer = setInterval(carSpinStep, 66);
   carSpinStep();
 }
-function carSpinStep() { // 卡片沿圆环缓慢巡游（已被拿走的停在原地）
+function carSetTarget(pi, x, y) {
+  const s = carS[pi];
+  if (!s || carPickedOf(pi)) return;
+  const { W, H, PEN } = carArenaGeom();
+  x = Math.max(14, Math.min(W - 14, x)); y = Math.max(14, Math.min(H - 14, y));
+  if (!carReleasedOf(pi)) { // 未放行：目标点被限制在自己的圆形围栏内
+    const seat = carSeatPos(s.seat);
+    const d = Math.hypot(x - seat.x, y - seat.y);
+    if (d > PEN - 8) { const k = (PEN - 8) / d; x = seat.x + (x - seat.x) * k; y = seat.y + (y - seat.y) * k; }
+  }
+  s.tx = x; s.ty = y;
+}
+function carDoPick(pi, idx) {
+  if (online) { if (pi === myIndex || (net && net.isHost)) net.orderAction(pi, { k: 'carPick', idx }); }
+  else {
+    applyAction(game, pi, { k: 'carPick', idx });
+    renderCarousel();
+    if (pi === myIndex) renderAll();
+  }
+}
+function carSpinStep() { // 66ms一拍：卡片巡游 + 所有小精灵恒速行走 + 碰撞选取 + AI规划/重规划
   const c = game.carousel;
   if (!c) return;
-  if (!paused) carTheta += 0.55; // 度/帧 ≈ 8.3°/秒
-  const { cx, cy, R } = carArenaGeom();
+  const { cx, cy, R, HIT, SPD } = carArenaGeom();
+  if (!paused) carTheta += 0.55; // ≈8.3°/秒
   c.offers.forEach((o, i) => {
     const el = document.querySelector(`.car-offer[data-i="${i}"]`);
     if (!el || el.dataset.done) return;
     const a = (carTheta + i * 360 / c.offers.length) * Math.PI / 180;
-    el.style.left = (cx + R * Math.sin(a)) + 'px';
-    el.style.top = (cy - R * Math.cos(a)) + 'px';
+    const x = cx + R * Math.sin(a), y = cy - R * Math.cos(a);
+    carCardXY[i] = { x, y };
+    el.style.left = x + 'px';
+    el.style.top = y + 'px';
   });
+  if (paused) return;
+  const controlAI = !online || (net && net.isHost); // AI小精灵：单机本地驱动；联机由房主驱动并走操作流
+  for (const pi of Object.keys(carS).map(Number)) {
+    const s = carS[pi];
+    const p = game.players[pi];
+    if (carPickedOf(pi)) continue;
+    // AI：规划目标卡；被抢了就重新规划
+    if (p.isAI && controlAI && carReleasedOf(pi)) {
+      if (s.plan == null || !c.offers[s.plan] || c.offers[s.plan].takenBy !== null) s.plan = game.aiCarouselChoice(p);
+      if (s.plan != null && s.plan >= 0 && carCardXY[s.plan]) { s.tx = carCardXY[s.plan].x; s.ty = carCardXY[s.plan].y; }
+    }
+    if (online && pi !== myIndex && !p.isAI) continue; // 远端玩家的移动不同步，选中后再瞬移
+    // 恒速行走
+    const dx = s.tx - s.x, dy = s.ty - s.y, d = Math.hypot(dx, dy);
+    if (d > 1) {
+      const step = Math.min(SPD, d);
+      s.x += dx / d * step; s.y += dy / d * step;
+      const el = document.querySelector(`.car-sprite[data-pi="${pi}"]`);
+      if (el) { el.style.transitionDuration = '70ms'; el.style.left = s.x + 'px'; el.style.top = s.y + 'px'; }
+    }
+    // 碰撞选取：撞到哪张没被拿的卡就拿哪张（可能错拿路过的卡！）
+    if (carReleasedOf(pi) && (pi === myIndex || (p.isAI && controlAI))) {
+      for (let i = 0; i < c.offers.length; i++) {
+        if (c.offers[i].takenBy !== null || !carCardXY[i]) continue;
+        if (Math.hypot(s.x - carCardXY[i].x, s.y - carCardXY[i].y) < HIT) { carDoPick(pi, i); break; }
+      }
+    }
+  }
 }
-function moveMySprite(x, y) {
-  const c = game.carousel;
-  if (!c) return;
-  const { W, H, cx, cy, R } = carArenaGeom();
-  x = Math.max(14, Math.min(W - 14, x)); y = Math.max(14, Math.min(H - 14, y));
-  const released = myReleased();
-  const d = Math.hypot(x - cx, y - cy), minD = R + 64;
-  if (!released && d < minD) { const s = minD / (d || 1); x = cx + (x - cx) * s; y = cy + (y - cy) * s; } // 未放行：隔离在圈外
-  setSpritePos(myIndex, x, y);
-}
-function setSpritePos(pi, x, y, then) {
+function setSpritePos(pi, x, y) { // 瞬移（远端玩家选中时用）
   const el = document.querySelector(`.car-sprite[data-pi="${pi}"]`);
-  if (!el) { if (then) then(); return; }
-  const prev = carSpritePos[pi] || { x, y };
-  const dur = Math.min(900, Math.max(160, Math.hypot(x - prev.x, y - prev.y) * 2.4));
-  el.style.transitionDuration = dur + 'ms';
-  el.style.left = x + 'px'; el.style.top = y + 'px';
-  carSpritePos[pi] = { x, y };
-  if (then) setTimeout(then, dur);
-}
-function cardPos(i) {
-  const arena = $('carArena'), el = document.querySelector(`.car-offer[data-i="${i}"]`);
-  if (!arena || !el) return null;
-  const ar = arena.getBoundingClientRect(), er = el.getBoundingClientRect();
-  return { x: (er.left - ar.left + er.width / 2) / (ar.width / carArenaGeom().W), y: (er.top - ar.top + er.height / 2) / (ar.height / carArenaGeom().H) };
-}
-function tryPickCard(i) {
-  const c = game.carousel;
-  if (!c) return;
-  const o = c.offers[i];
-  const picked = c.offers.some(x => x.takenBy === myIndex);
-  const myPos = c.order.indexOf(myIndex);
-  if (!o || o.takenBy !== null || picked || myPos < 0 || myPos >= c.released) return;
-  const pos = cardPos(i);
-  if (!pos) return;
-  setSpritePos(myIndex, pos.x, pos.y + 46, () => { // 走过去再拿（走的路上可能被抢）
-    dispatch({ k: 'carPick', idx: i });
-    renderCarousel(); renderAll();
-  });
+  const s = carS[pi];
+  if (s) { s.x = x; s.y = y; s.tx = x; s.ty = y; }
+  if (el) { el.style.transitionDuration = '500ms'; el.style.left = x + 'px'; el.style.top = y + 'px'; }
 }
 function updateCarArena(c) {
   const myPos = c.order.indexOf(myIndex);
@@ -581,20 +627,24 @@ function updateCarArena(c) {
     return `<span class="car-seat${cls}${pi === myIndex ? ' mine' : ''}">${k + 1}.${p.name}${done ? '✓' : ''}</span>`;
   }).join('');
   let status;
-  if (carPhase === 'observe') status = `<b style="color:var(--accent2)">👀 观察阶段：${carLeft} 秒后开始放行；点击场地可以移动你的小精灵</b>`;
+  if (carPhase === 'observe') status = `<b style="color:var(--accent2)">👀 观察阶段：${carLeft} 秒后开始放行；点击围栏内可以先挪动你的小精灵</b>`;
   else if (picked) status = '你已选择，等待其他玩家…';
-  else if (myTurn) status = `<b style="color:var(--accent)">已放行！点击卡片让小精灵跑过去拿</b>`;
+  else if (myTurn) status = `<b style="color:var(--accent)">已放行！点击场地行走——小精灵撞到哪张卡就拿哪张，小心别错撞！</b>`;
   else {
     const myWave = Math.floor(myPos / 2);
     const secs = (myWave - (carWaves - 1) - 1) * CAR_WAVE_SEC + carLeft;
     status = secs <= CAR_WAVE_SEC
-      ? `<b style="color:var(--accent2)">⏳ ${secs} 秒后轮到你，想好要拿哪个！</b>`
+      ? `<b style="color:var(--accent2)">⏳ ${secs} 秒后轮到你，想好路线！</b>`
       : `你的顺位：第 ${myPos + 1}（约 ${secs} 秒后放行）`;
   }
   $('carStatus').innerHTML = status;
   $('carCenter').innerHTML = carPhase === 'observe' ? `👀<div>${carLeft}</div>` : `<div>${carLeft}</div>`;
   const arena = $('carArena');
   if (arena) arena.classList.toggle('my-turn', myTurn);
+  c.order.forEach(pi => { // 围栏高亮：已放行未选的玩家
+    const pen = document.querySelector(`.car-pen[data-pi="${pi}"]`);
+    if (pen) pen.classList.toggle('now', carReleasedOf(pi) && !carPickedOf(pi));
+  });
   c.offers.forEach((o, i) => {
     const el = document.querySelector(`.car-offer[data-i="${i}"]`);
     if (!el) return;
@@ -603,7 +653,9 @@ function updateCarArena(c) {
       el.dataset.done = '1';
       el.classList.add('taken');
       el.querySelector('.car-taker').textContent = game.players[o.takenBy].name + ' ✓';
-      if (o.takenBy !== myIndex) { const pos = cardPos(i); if (pos) setSpritePos(o.takenBy, pos.x, pos.y + 46); } // 别人的小精灵跑过去站在卡下缘
+      const pos = carCardXY[i];
+      const p = game.players[o.takenBy];
+      if (pos && online && o.takenBy !== myIndex && !p.isAI) setSpritePos(o.takenBy, pos.x, pos.y + 48); // 远端玩家瞬移到卡旁
     }
   });
 }
@@ -635,6 +687,7 @@ function requestCombat() {
 let lastLevel = 0;
 function renderAll() {
   renderTopbar(); renderPlayers(); renderBoardUnits(); renderBench(); renderItems(); renderShop(); renderTraits(); renderLog(); renderGold(); renderOdds();
+  dexCollect();
   playMergeFx();
   // 升级特效
   const lv = me().level;
@@ -674,7 +727,8 @@ function renderTopbar() {
   $('hpStat').innerHTML = `生命 <b>${Math.max(0, p.hp)}</b>`;
   const st = p.streakW > 0 ? `连胜${p.streakW}` : p.streakL > 0 ? `连败${p.streakL}` : '—';
   $('streakStat').innerHTML = `战绩 <b>${st}</b>`;
-  $('startBtn').style.display = game.phase === 'planning' && (!online || (net && net.isHost)) ? '' : 'none';
+  $('startBtn').style.display = game.phase === 'planning' && !online ? '' : 'none'; // 联机纯时间轴驱动，无开战按钮
+  $('speedBtn').style.display = online ? 'none' : 'inline-block'; // 单机备战期也可预调倍速（仅对战斗回放生效）
 }
 
 function renderGold() {
@@ -741,7 +795,9 @@ function makeUnitNode(def, star, opts = {}) {
   const el = document.createElement('div');
   el.className = 'unit';
   const color = def.monster ? '#5a4a3a' : (RACE_COLOR[def.races[0]] || '#888');
-  const icon = def.monster ? '👹' : (CLASS_ICON[def.classes[0]] || '❔');
+  const icon = !def.monster && PORTRAITS.has(def.id)
+    ? `<img class="${unitArtCls(def.id)}" src="${unitArtSrc(def.id)}" draggable="false">`
+    : def.monster ? '👹' : (CLASS_ICON[def.classes[0]] || '❔');
   const cost = def.monster ? 1 : def.cost;
   el.innerHTML = `
     <div class="st-marks"></div>
@@ -851,7 +907,8 @@ function renderShop() {
     card.style.borderColor = COST_COLOR[def.cost];
     const traits = [...def.races.map(r => `<span class="sc-t" data-t="${r}">${RACES[r]}</span>`),
       ...def.classes.map(c => `<span class="sc-t" data-t="${c}">${CLASSES[c]}</span>`)].join(' · ');
-    card.innerHTML = `<div class="sc-name">${CLASS_ICON[def.classes[0]] || ''} ${def.name}</div><div class="sc-traits">${traits}</div><div class="sc-cost">${def.cost}🪙</div>`;
+    const art = PORTRAITS.has(def.id) ? `<img class="sc-art${PHOTOS.has(def.id) ? ' photo' : ''}" src="${unitArtSrc(def.id)}" draggable="false">` : '';
+    card.innerHTML = `${art}<div class="sc-name">${CLASS_ICON[def.classes[0]] || ''} ${def.name}</div><div class="sc-traits">${traits}</div><div class="sc-cost">${def.cost}🪙</div>`;
     card.onclick = () => { if (drag) return; dispatch({ k: 'buy', slot: i }); };
     card.onpointerdown = e => {
       if (e.button !== 0 || !actOk()) return;
@@ -905,7 +962,8 @@ function renderTraits() {
     const pname = def.passive.split('：')[0];
     const row = document.createElement('div');
     row.className = 'trait-row active trait-unique';
-    row.innerHTML = `<span class="tbadge">★</span><span>${pname}</span><span class="tcount">${def.name}</span>`;
+    const extra = def.id === 'aragorn' ? `声望 ${(b.unit.progress && b.unit.progress.renown) || 0}` : def.name;
+    row.innerHTML = `<span class="tbadge">★</span><span>${pname}</span><span class="tcount">${extra}</span>`;
     row.onpointerenter = e => { if (!tooltipPinned) showTooltip(() => `<h5>${pname}【${def.name}专属】</h5><div>${def.passive.slice(pname.length + 1)}</div>${shiftHint()}`, e); };
     row.onpointerleave = () => hideTooltip();
     box.appendChild(row);
@@ -1014,21 +1072,34 @@ function barsHtml(live) {
 // 技能描述里的公式 → 按当前星级与实时属性算成具体数字
 function computeSkillDesc(def, star, st) {
   const L = Math.min(star, 3) - 1;
-  let d = def.skill.desc;
   const fx = m => shiftDown ? `<span class="fx">(${m})</span>` : '';
-  d = d.replace(/(\d+(?:\.\d+)?)\/(\d+(?:\.\d+)?)\/(\d+(?:\.\d+)?)×适辉/g, (m, a, b, c) =>
-    `<b>${Math.round([+a, +b, +c][L] * Math.max(st.cc, st.mc))}</b>${fx(m)}`);
-  d = d.replace(/(\d+(?:\.\d+)?)\/(\d+(?:\.\d+)?)\/(\d+(?:\.\d+)?)(%?)\s*(AD|CC|MC)/g, (m, a, b, c, pct, stat) => {
-    const v = [+a, +b, +c][L];
-    const sv = stat === 'AD' ? st.ad : stat === 'CC' ? st.cc : st.mc;
-    return `<b>${Math.round(pct ? v / 100 * sv : v * sv)}</b>${fx(m)}`;
+  const sv = stat => stat === 'AD' ? st.ad : stat === 'CC' ? st.cc : st.mc;
+  const val = p => { // 单项求值（求不出返回 null）
+    let m;
+    if ((m = p.match(/^(\d+(?:\.\d+)?)\/(\d+(?:\.\d+)?)\/(\d+(?:\.\d+)?)×适辉$/))) return [+m[1], +m[2], +m[3]][L] * Math.max(st.cc, st.mc);
+    if ((m = p.match(/^(\d+(?:\.\d+)?)\/(\d+(?:\.\d+)?)\/(\d+(?:\.\d+)?)(%?)(AD|CC|MC)$/))) { const v = [+m[1], +m[2], +m[3]][L]; return m[4] ? v / 100 * sv(m[5]) : v * sv(m[5]); }
+    if ((m = p.match(/^(\d+(?:\.\d+)?)%(AD|CC|MC)$/))) return +m[1] / 100 * sv(m[2]);
+    if ((m = p.match(/^(\d+(?:\.\d+)?)\/(\d+(?:\.\d+)?)\/(\d+(?:\.\d+)?)$/))) return [+m[1], +m[2], +m[3]][L];
+    return null;
+  };
+  // 把 "+" 连接的公式链求和成一个最终数字（Shift 显示原公式），纯档位数字只取当前档
+  const TERM = '\\d+(?:\\.\\d+)?(?:\\/\\d+(?:\\.\\d+)?\\/\\d+(?:\\.\\d+)?)?%?(?:AD|CC|MC)?(?:×适辉)?';
+  const CHAIN = new RegExp(`${TERM}(?:\\s*\\+\\s*(?:${TERM}))*`, 'g');
+  return def.skill.desc.replace(CHAIN, chain => {
+    const parts = chain.split(/\s*\+\s*/);
+    const hasStat = parts.some(p => /AD|CC|MC|适辉/.test(p));
+    if (parts.length === 1 && !hasStat) {
+      const m = parts[0].match(/^(\d+(?:\.\d+)?)\/(\d+(?:\.\d+)?)\/(\d+(?:\.\d+)?)(%?)$/);
+      return m ? `<b>${[+m[1], +m[2], +m[3]][L]}${m[4]}</b>${fx(parts[0])}` : chain;
+    }
+    let total = 0;
+    for (const p of parts) {
+      const v = val(p);
+      if (v === null) return chain; // 链中有解析不了的项：原样保留
+      total += v;
+    }
+    return `<b>${Math.round(total)}</b>${fx(chain)}`;
   });
-  d = d.replace(/(\d+(?:\.\d+)?)%(AD|CC|MC)(?![^<]*<\/span>)/g, (m, a, stat) => {
-    const sv = stat === 'AD' ? st.ad : stat === 'CC' ? st.cc : st.mc;
-    return `<b>${Math.round(+a / 100 * sv)}</b>${fx(m)}`;
-  });
-  d = d.replace(/(\d+(?:\.\d+)?)\/(\d+(?:\.\d+)?)\/(\d+(?:\.\d+)?)(?![^<]*<\/span>)/g, (m, a, b, c) => `<b>${[+a, +b, +c][L]}</b>${fx(m)}`);
-  return d;
 }
 const STAT_LABELS = [['ad', '攻击力'], ['as', '攻速'], ['range', '射程'], ['armor', '护甲'], ['ten', '韧性'], ['cc', '光强'], ['mc', '黑强'], ['cn', '光抗'], ['mn', '黑抗'], ['critR', '暴击率%'], ['critD', '暴伤%'], ['amp', '增伤%'], ['dr', '减伤%'], ['vamp', '吸血%']];
 function statGridHtml(base, cur) {
@@ -1067,10 +1138,51 @@ function unitDefTooltip(def, star, live) {
   ${live ? barsHtml(live) : ''}
   ${affRow}
   ${statsBlock}
+  ${permGrowthRow(live && live.progress)}
   <div style="margin-top:4px"><b>【${def.skill.name}】</b>${computeSkillDesc(def, star, cur)}</div>
   ${def.passive && shiftDown ? `<div class="tt-sub">${def.passive}</div>` : def.passive ? `<div class="tt-sub">被动：${def.passive.split('：')[0]}</div>` : ''}
   ${live ? eqRowHtml(live.items || []) : ''}
   ${shiftHint()}`;
+}
+// ---------- 收集式图鉴 ----------
+function dexSet() { try { return new Set(JSON.parse(localStorage.getItem('ept-dex') || '[]')); } catch { return new Set(); } }
+function dexCollect() { // 每次刷新把当前拥有的棋子收录进图鉴
+  if (!game) return;
+  const s = dexSet();
+  let dirty = false;
+  for (const u of allUnits(me())) if (!s.has(u.def.id)) { s.add(u.def.id); dirty = true; }
+  if (dirty) localStorage.setItem('ept-dex', JSON.stringify([...s]));
+}
+const dexStars = {}; // 图鉴内每张卡当前查看的星级
+function renderDex() {
+  const s = dexSet();
+  const cost = $('dexCost').value, trait = $('dexTrait').value;
+  const list = UNITS.filter(u => (!cost || u.cost === +cost) && (!trait || u.races.includes(trait) || u.classes.includes(trait)));
+  $('dexCount').textContent = `已收集 ${UNITS.filter(u => s.has(u.id)).length} / ${UNITS.length}`;
+  $('dexGrid').innerHTML = list.map(u => {
+    if (!s.has(u.id)) return `<div class="dex-card locked" style="border-color:${COST_COLOR[u.cost]}"><div class="dex-q">？</div><div class="dex-name">？？？</div><div class="tt-sub">${u.cost}费</div></div>`;
+    const star = dexStars[u.id] || 1;
+    const st = unitStatsAtStar(u, star);
+    const traits = [...u.races.map(r => RACES[r]), ...u.classes.map(c => CLASSES[c])].join('·');
+    return `<div class="dex-card" style="border-color:${COST_COLOR[u.cost]}">
+      <img class="dex-img${PHOTOS.has(u.id) ? ' photo' : ''}" src="${unitArtSrc(u.id)}" draggable="false">
+      <div class="dex-name">${u.name}</div>
+      <div class="tt-sub">${u.cost}费 · ${traits}</div>
+      <div class="dex-stars">${[1, 2, 3].map(n => `<span class="dex-star${n <= star ? ' on' : ''}" data-id="${u.id}" data-n="${n}">★</span>`).join('')}</div>
+      <div class="dex-stats">生命${st.hp}｜攻击${st.ad}｜攻速${u.as}<br>甲${st.armor}｜光抗${st.cn}｜黑抗${st.mn}｜韧${st.ten}<br>光强${st.cc}｜黑强${st.mc}｜射程${u.range}</div>
+    </div>`;
+  }).join('');
+  $('dexGrid').querySelectorAll('.dex-star').forEach(el => el.onclick = () => { dexStars[el.dataset.id] = +el.dataset.n; renderDex(); });
+}
+
+// 永久成长灰字（人类羁绊/哈烈丝家族/声望等跨局叠加）
+function permGrowthRow(prog) {
+  if (!prog) return '';
+  const bits = [];
+  if (prog.mkHp) bits.push(`人类羁绊已永久+${prog.mkHp}生命${prog.mkAd ? `、+${prog.mkAd}攻击与光强` : ''}（累计击杀${prog.mkKills || 0}）`);
+  if (prog.permAd) bits.push(`哈烈丝家族已永久+${prog.permAd}攻击`);
+  if (prog.renown) bits.push(`声望已积攒 ${prog.renown}`);
+  return bits.length ? `<div class="tt-sub" style="margin-top:2px">${bits.join('｜')}</div>` : '';
 }
 function eqRowHtml(items) {
   const slots = [0, 1, 2].map(i => {
@@ -1399,8 +1511,8 @@ function beginCombatLocal() {
   const enemyName = my ? (my.kind === 'pve' ? '野怪' : game.players[my.a === myIndex ? my.b : my.a].name + (my.ghost ? '（镜像）' : '')) : null;
   $('enemyLabel').textContent = enemyName ? `对阵：${enemyName}` : '本回合轮空';
   $('timer').textContent = '';
-  $('speedBtn').style.display = $('skipBtn').style.display = 'inline-block';
-  $('speedBtn').textContent = '▶ 1x';
+  $('skipBtn').style.display = 'inline-block';
+  if (!online) $('speedBtn').style.display = 'inline-block';
   if (!my) { finishCombat(); return; }
   const mirror = my.a !== myIndex;
   // 入场演出：飞往敌方棋盘 / 野怪来袭
@@ -1701,7 +1813,8 @@ function banner(txt) {
 }
 
 function finishCombat() { // 本地回放结束
-  $('speedBtn').style.display = $('skipBtn').style.display = 'none';
+  $('skipBtn').style.display = 'none';
+  if (online) $('speedBtn').style.display = 'none';
   if (!online) { resolveNow(); return; }
   playbackDone = true;
   if (net.isHost && !resolveSent) { resolveSent = true; net.orderAction(myIndex, { k: 'resolve' }); }
@@ -1736,7 +1849,7 @@ function showOver() {
   const r = game.ladderRes[meP.name];
   $('overTitle').textContent = won ? '🏆 胜利！' : '☠ 对局结束';
   $('overDesc').textContent = won ? '你是中洲最后的执棋者。' : `最终排名：第 ${place} 名`;
-  $('overLadder').innerHTML = `本局积分：<b style="color:${r.delta >= 0 ? '#4caf50' : '#ef5350'}">${r.delta >= 0 ? '+' : ''}${r.delta}</b>　段位：${rankOf(r.oldS)} → <b style="color:var(--accent)">${rankOf(r.newS)}</b>（${r.newS} 分）`;
+  $('overLadder').innerHTML = `本局积分：<b style="color:${r.delta >= 0 ? '#4caf50' : '#ef5350'}">${r.delta >= 0 ? '+' : ''}${r.delta}</b>　段位：${rankOf(r.oldS)} → <b style="color:var(--accent)">${rankOf(r.newS)}</b>（${rankProgress(r.newS)} 分）`;
   $('overScreen').style.display = 'block';
   // 大段位晋升动画
   const bigOld = Math.floor(Math.min(Math.floor(r.oldS / 100), 35) / 5), bigNew = Math.floor(Math.min(Math.floor(r.newS / 100), 35) / 5);

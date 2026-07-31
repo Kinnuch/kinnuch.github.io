@@ -362,7 +362,7 @@ export class Combat {
         this.emit({ k: 'miss', id: tgt.id });
         const ao = tgt.evadeOwner;
         if (ao && ao.alive) {
-          if (ao.unitRef) { const p = ao.unitRef.progress = ao.unitRef.progress || {}; p.renown = (p.renown || 0) + 1; }
+          if (ao.unitRef && !this.noPerma) { const p = ao.unitRef.progress = ao.unitRef.progress || {}; p.renown = (p.renown || 0) + 1; }
           if (ao.flags.cloakAdPer) this.buff(ao, { ad: ao.flags.cloakAdPer }, 999);
         }
         return 0;
@@ -485,10 +485,11 @@ export class Combat {
       const v = [1, 2, 3, 5][T.mankind - 1];
       for (const m of this.team(src.team)) {
         if (!m.def.races.includes('mankind') || !m.unitRef) continue;
-        const p = m.unitRef.progress = m.unitRef.progress || {};
-        p.mkKills = (p.mkKills || 0) + 1; p.mkHp = (p.mkHp || 0) + v;
         m.maxHp += v; m.hp += v;
         this.emit({ k: 'maxhp', id: m.id, max: Math.round(m.maxHp), hp: Math.round(m.hp) });
+        if (this.noPerma) continue; // 野怪局只有当场效果，不永久叠加
+        const p = m.unitRef.progress = m.unitRef.progress || {};
+        p.mkKills = (p.mkKills || 0) + 1; p.mkHp = (p.mkHp || 0) + v;
         if (p.mkKills % 10 === 0) p.mkAd = (p.mkAd || 0) + v;
       }
     }
@@ -631,7 +632,7 @@ export class Combat {
         f.halethPending = false;
         this.buff(f, { armor: 20, cn: 20 }, 999);
         f.bonus.ad += 1;
-        if (f.unitRef) { const p = f.unitRef.progress = f.unitRef.progress || {}; p.permAd = (p.permAd || 0) + 1; }
+        if (f.unitRef && !this.noPerma) { const p = f.unitRef.progress = f.unitRef.progress || {}; p.permAd = (p.permAd || 0) + 1; }
       }
       // 猎人：首次跌破50%血量
       if (f.hunterOn && !f.flags.huntEvaded && f.hp < f.maxHp * 0.5) {
@@ -720,8 +721,23 @@ export class Combat {
           if (step) {
             f.prevKey = key(f.pos.c, f.pos.r);
             f.pos = { c: step[0], r: step[1] };
+            f.flags.stuckN = 0;
             this.emit({ k: 'move', id: f.id, c: f.pos.c, r: f.pos.r });
+          } else {
+            // 卡死自恢复：连续几次尝试都走不动且够不到目标 → 重新索敌并强行侧移一格
+            f.flags.stuckN = (f.flags.stuckN || 0) + 1;
+            if (f.flags.stuckN >= 3) {
+              f.flags.stuckN = 0;
+              f.prevKey = null;
+              f.target = null;
+              const any = opts[0];
+              if (any) { f.pos = { c: any[0], r: any[1] }; this.emit({ k: 'move', id: f.id, c: any[0], r: any[1] }); }
+            }
           }
+        } else {
+          // 四面被围：多次后也重新索敌（可能有更近的可达目标）
+          f.flags.stuckN = (f.flags.stuckN || 0) + 1;
+          if (f.flags.stuckN >= 6) { f.flags.stuckN = 0; f.prevKey = null; f.target = null; }
         }
       }
     }
@@ -817,8 +833,10 @@ export class Combat {
     }
   }
 
+  get noPerma() { return !!(this.opts.pve || this.opts.preview || this.opts.noProgress); } // 野怪/预览局不积攒永久成长
+
   _accrueRenown() { // 阿拉贡【人皇】：战斗结束时存活则积攒声望
-    if (this.opts.noProgress) return;
+    if (this.noPerma) return;
     for (const f of this.f) {
       if (!f.alive || f.def.id !== 'aragorn' || !f.unitRef) continue;
       const p = f.unitRef.progress = f.unitRef.progress || {};
@@ -1295,15 +1313,20 @@ function castSkill(sim, f) {
         const rs = e.cn >= e.mn ? 'cn' : 'mn';
         sim.buff(a, { armor: [15, 22, 32][L], [rs]: [15, 22, 32][L] }, 4);
       }
-      if (!f.flags.forged) {
+      if (!f.flags.forged) { // 1星散件；2星成装；3星给所有队友各打造一件成装（当场有效，每场一次）
         f.flags.forged = true;
-        const cand = sim.allies(f).filter(a => a.items.length + a.tempItems.length < 3);
-        if (cand.length) {
-          const ally = sim.rng.pick(cand);
-          const it = makeComponentItem(sim.rng.pick(T1_COMPS));
+        const give = (ally, it) => {
           ally.tempItems.push(it);
           sim._applyItemStats(ally, it);
-          sim.emit({ k: 'lightItem', id: ally.id, item: it.name, info: { name: it.name, kind: 'component', comp: it.comp, stats: it.stats, note: '' } });
+          sim.emit({ k: 'lightItem', id: ally.id, item: it.name, info: { name: it.name, kind: it.kind, comp: it.comp, comps: it.comps, stats: it.stats, note: it.note || '' } });
+        };
+        const cand = sim.allies(f).filter(a => a.items.length + a.tempItems.length < 3);
+        if (L === 0) {
+          if (cand.length) give(sim.rng.pick(cand), makeComponentItem(sim.rng.pick(T1_COMPS)));
+        } else if (L === 1) {
+          if (cand.length) give(sim.rng.pick(cand), randomCombinedItem(sim.rng));
+        } else {
+          for (const a of cand) give(a, randomCombinedItem(sim.rng));
         }
       }
       break;

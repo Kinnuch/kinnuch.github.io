@@ -31,6 +31,7 @@
       <button id="mpToggle" class="big-btn">🌐 多人联机</button>
       <button id="ladderBtn" class="big-btn" style="flex:0 0 130px;background:var(--panel2);color:var(--text);border-color:var(--border)">🏆 排行榜</button>
       <button id="glossBtn2" class="big-btn" style="flex:0 0 120px;background:var(--panel2);color:var(--text);border-color:var(--border)">📖 术语表</button>
+      <button id="dexBtn2" class="big-btn" style="flex:0 0 110px;background:var(--panel2);color:var(--text);border-color:var(--border)">📔 图鉴</button>
     </div>
     <div id="mpBox" style="display:none;margin-top:14px;padding:14px;border:1px solid var(--border);border-radius:10px;background:var(--panel2)">
       <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
@@ -48,7 +49,7 @@
     <label style="display:block;margin-top:14px;font-size:14px;cursor:pointer">
       <input type="checkbox" id="tutCheck"> 🎓 新手指引（进入对局后在关键节点弹出教学并暂停游戏）
     </label>
-    <p style="margin-top:16px;font-size:12px;color:var(--sub)">物品图标来自 <a href="https://game-icons.net" target="_blank" rel="noopener" style="color:var(--sub)">game-icons.net</a>（<a href="https://creativecommons.org/licenses/by/3.0/" target="_blank" rel="noopener" style="color:var(--sub)">CC BY 3.0</a>，作者 Lorc、Delapouite、Willdabeast、sbed）。</p>
+    <p style="margin-top:16px;font-size:12px;color:var(--sub)">物品图标来自 <a href="https://game-icons.net" target="_blank" rel="noopener" style="color:var(--sub)">game-icons.net</a>（<a href="https://creativecommons.org/licenses/by/3.0/" target="_blank" rel="noopener" style="color:var(--sub)">CC BY 3.0</a>，作者 Lorc、Delapouite、Willdabeast、sbed）。部分棋子头像取自维基百科各角色词条插图（含公有领域、CC 及合理使用图像），其余为参考公开插图重绘的原创矢量肖像。</p>
   </div>
 
   <!-- 游戏 -->
@@ -62,6 +63,7 @@
       <span id="enemyLabel" style="color:var(--accent)"></span>
       <span style="flex:1"></span>
       <button id="glossBtn" class="utility-btn" title="术语表">📖 术语</button>
+      <button id="dexBtn" class="utility-btn" title="棋子图鉴">📔 图鉴</button>
       <button id="pauseBtn" class="utility-btn">⏸ 暂停</button>
       <button id="viewBtn" class="utility-btn">🎥 视角</button>
       <button id="speedBtn">▶ 1x</button>
@@ -127,6 +129,22 @@
   <div id="scoutModal"></div>
   <div id="carModal"></div>
   <div id="tutModal"><div id="tutBox"><h3 id="tutTitle"></h3><div id="tutBody"></div><button id="tutOk" class="big-btn" style="max-width:160px;margin-top:14px">知道了 ▶</button></div></div>
+
+  <!-- 棋子图鉴（收集式） -->
+  <div id="dexModal">
+    <div id="dexBox">
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap">
+        <h3 style="color:var(--accent)">📔 棋子图鉴 <span id="dexCount" class="tt-sub" style="font-weight:normal"></span></h3>
+        <div style="display:flex;gap:8px;align-items:center">
+          <select id="dexCost"><option value="">全部费用</option><option value="1">1费</option><option value="2">2费</option><option value="3">3费</option><option value="4">4费</option><option value="5">5费</option></select>
+          <select id="dexTrait"><option value="">全部羁绊</option></select>
+          <button id="dexClose" class="utility-btn">✕ 关闭</button>
+        </div>
+      </div>
+      <div class="tt-sub" style="margin:4px 0 8px">对局中购买/获取过的棋子会永久收录；点击卡片下方 ★ 切换星级查看白板数据。</div>
+      <div id="dexGrid"></div>
+    </div>
+  </div>
 
   <!-- 术语表 -->
   <div id="glossModal">

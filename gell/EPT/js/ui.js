@@ -36,7 +36,13 @@ function itemIcon(it) {
   if (it.kind === 'light') return GI('light');
   if (it.kind === 'artifact') return GI('silmaril');
   if (it.kind === 'consumable') return CONS_ICON[it.type] || '🎁';
-  if (it.comps) return (COMP_ICON[it.comps[0]] || '') + (COMP_ICON[it.comps[1]] || '');
+  if (it.comps) { // 成装：按散件类别对使用独立图标（大偷偷单独区分）
+    const cat = c => c.replace(/\d+$/, '');
+    const ORDER = ['ad', 'as', 'ap', 'm', 'a', 'mr', 'hp', 'hs', 'csc', 'al'];
+    const [a, b] = it.comps.map(cat).sort((x, y) => ORDER.indexOf(x) - ORDER.indexOf(y));
+    const tsum = it.comps.reduce((s, c) => s + (+(c.match(/\d+$/) || [2])[0]), 0);
+    return GI(a === 'csc' && b === 'csc' && tsum === 4 ? 'cb-csc-csc-4' : `cb-${a}-${b}`);
+  }
   return '🔸';
 }
 // ---------- 段位系统 ----------
@@ -191,6 +197,16 @@ export function initUI() {
   };
   $('pauseBtn').onclick = () => setPaused(!paused);
   $('tutOk').onclick = () => { $('tutModal').style.display = 'none'; setPaused(false); };
+  // 术语表（大厅与局内随时可查）
+  const openGloss = () => $('glossModal').classList.add('show');
+  $('glossBtn').onclick = openGloss;
+  $('glossBtn2').onclick = openGloss;
+  $('glossClose').onclick = () => $('glossModal').classList.remove('show');
+  $('glossModal').onclick = e => { if (e.target === $('glossModal')) $('glossModal').classList.remove('show'); };
+  document.querySelectorAll('.gloss-tab').forEach(t => t.onclick = () => {
+    document.querySelectorAll('.gloss-tab').forEach(x => x.classList.toggle('active', x === t));
+    document.querySelectorAll('.gloss-page').forEach(p => p.style.display = p.dataset.page === t.dataset.tab ? '' : 'none');
+  });
   $('dmgToggle').onclick = () => { dmgOpen = !dmgOpen; localStorage.setItem('ept-dmg', dmgOpen ? '1' : '0'); renderDmgPanel(); };
   $('ladderBtn').onclick = () => {
     const l = ladder();
@@ -432,29 +448,142 @@ function myReleased() {
 }
 function finishCarousel() {
   clearInterval(carTimer);
+  clearInterval(carSpinTimer);
+  carBuilt = false;
   if (game.carousel) game.carouselFinish();
   $('carModal').style.display = 'none';
   renderAll();
   startPlanTimer();
 }
+// ---------- 环形选秀现场：9 张卡转圈圈，玩家小精灵被隔离在圈外，放行后点击移动去拿 ----------
+let carBuilt = false, carSpinTimer = null, carTheta = 0, carSpritePos = {};
+const PLAYER_COLOR = ['#c0973f', '#5b8dbf', '#7aa85a', '#b06ab0', '#c46a5a', '#5aa8a0', '#8a7cc4', '#a08a50'];
+function carArenaGeom() { return { W: 680, H: 480, cx: 340, cy: 220, R: 158 }; }
 function renderCarousel() {
   const c = game.carousel;
   if (!c) { finishCarousel(); return; }
+  if (!carBuilt) buildCarArena(c);
+  updateCarArena(c);
+}
+function buildCarArena(c) {
+  carBuilt = true; carTheta = 0; carSpritePos = {};
+  const { W, H, cx, cy, R } = carArenaGeom();
+  let cards = '';
+  c.offers.forEach((o, i) => {
+    const def = UNITS_BY_ID[o.defId];
+    cards += `<div class="car-offer" data-i="${i}" style="border-color:${COST_COLOR[def.cost]}">
+      <div class="sc-name">${CLASS_ICON[def.classes[0]] || ''} ${def.name}</div>
+      <div class="sc-traits">${def.cost}费 · ${COMP_ICON[o.comp] || ''} ${COMPONENTS[o.comp].name}</div>
+      <div class="car-taker"></div></div>`;
+  });
+  let sprites = '';
+  c.order.forEach((pi, k) => {
+    const p = game.players[pi];
+    const x = cx - (c.order.length - 1) * 38 / 2 + k * 38, y = H - 24;
+    carSpritePos[pi] = { x, y };
+    sprites += `<div class="car-sprite${pi === myIndex ? ' mine' : ''}" data-pi="${pi}" style="left:${x}px;top:${y}px;--pc:${PLAYER_COLOR[pi % 8]}"><i></i><span>${p.name.slice(0, 3)}</span></div>`;
+  });
+  $('carModal').innerHTML = `<div id="carBox">
+    <h3>🎠 共享选秀 <span id="carHead" class="tt-sub" style="font-weight:normal"></span></h3>
+    <div id="carSeats"></div>
+    <div id="carStatus" class="tt-sub" style="margin:4px 0"></div>
+    <div id="carArena" style="width:${W}px;height:${H}px">
+      <div id="carFence" style="left:${cx}px;top:${cy}px;width:${(R + 66) * 2}px;height:${(R + 66) * 2}px"></div>
+      <div id="carCenter" style="left:${cx}px;top:${cy}px"></div>
+      ${cards}${sprites}
+    </div></div>`;
+  // 点击场地移动小精灵；点击卡片=走过去拿
+  const arena = $('carArena');
+  arena.onclick = ev => {
+    const card = ev.target.closest('.car-offer');
+    if (card) { tryPickCard(+card.dataset.i); return; }
+    const rect = arena.getBoundingClientRect();
+    moveMySprite(ev.clientX - rect.left, ev.clientY - rect.top);
+  };
+  // 悬浮：棋子信息在上、携带装备详情在下（单一浮层）
+  arena.querySelectorAll('.car-offer').forEach(el => {
+    const o = c.offers[+el.dataset.i];
+    const def = UNITS_BY_ID[o.defId];
+    el.onpointerenter = ev => {
+      if (!tooltipPinned) showTooltip(() => unitDefTooltip(def, 1) +
+        `<div style="margin-top:6px;border-top:1px solid var(--accent2);padding-top:6px">
+           <div class="tt-sub" style="margin-bottom:2px">— 携带散件（选中后自动放入物品栏）—</div>
+           ${itemTooltip(makeComponentItem(o.comp))}</div>`, ev);
+    };
+    el.onpointerleave = () => hideTooltip();
+  });
+  clearInterval(carSpinTimer);
+  carSpinTimer = setInterval(carSpinStep, 66);
+  carSpinStep();
+}
+function carSpinStep() { // 卡片沿圆环缓慢巡游（已被拿走的停在原地）
+  const c = game.carousel;
+  if (!c) return;
+  if (!paused) carTheta += 0.55; // 度/帧 ≈ 8.3°/秒
+  const { cx, cy, R } = carArenaGeom();
+  c.offers.forEach((o, i) => {
+    const el = document.querySelector(`.car-offer[data-i="${i}"]`);
+    if (!el || el.dataset.done) return;
+    const a = (carTheta + i * 360 / c.offers.length) * Math.PI / 180;
+    el.style.left = (cx + R * Math.sin(a)) + 'px';
+    el.style.top = (cy - R * Math.cos(a)) + 'px';
+  });
+}
+function moveMySprite(x, y) {
+  const c = game.carousel;
+  if (!c) return;
+  const { W, H, cx, cy, R } = carArenaGeom();
+  x = Math.max(14, Math.min(W - 14, x)); y = Math.max(14, Math.min(H - 14, y));
+  const released = myReleased();
+  const d = Math.hypot(x - cx, y - cy), minD = R + 64;
+  if (!released && d < minD) { const s = minD / (d || 1); x = cx + (x - cx) * s; y = cy + (y - cy) * s; } // 未放行：隔离在圈外
+  setSpritePos(myIndex, x, y);
+}
+function setSpritePos(pi, x, y, then) {
+  const el = document.querySelector(`.car-sprite[data-pi="${pi}"]`);
+  if (!el) { if (then) then(); return; }
+  const prev = carSpritePos[pi] || { x, y };
+  const dur = Math.min(900, Math.max(160, Math.hypot(x - prev.x, y - prev.y) * 2.4));
+  el.style.transitionDuration = dur + 'ms';
+  el.style.left = x + 'px'; el.style.top = y + 'px';
+  carSpritePos[pi] = { x, y };
+  if (then) setTimeout(then, dur);
+}
+function cardPos(i) {
+  const arena = $('carArena'), el = document.querySelector(`.car-offer[data-i="${i}"]`);
+  if (!arena || !el) return null;
+  const ar = arena.getBoundingClientRect(), er = el.getBoundingClientRect();
+  return { x: (er.left - ar.left + er.width / 2) / (ar.width / carArenaGeom().W), y: (er.top - ar.top + er.height / 2) / (ar.height / carArenaGeom().H) };
+}
+function tryPickCard(i) {
+  const c = game.carousel;
+  if (!c) return;
+  const o = c.offers[i];
+  const picked = c.offers.some(x => x.takenBy === myIndex);
+  const myPos = c.order.indexOf(myIndex);
+  if (!o || o.takenBy !== null || picked || myPos < 0 || myPos >= c.released) return;
+  const pos = cardPos(i);
+  if (!pos) return;
+  setSpritePos(myIndex, pos.x, pos.y + 46, () => { // 走过去再拿（走的路上可能被抢）
+    dispatch({ k: 'carPick', idx: i });
+    renderCarousel(); renderAll();
+  });
+}
+function updateCarArena(c) {
   const myPos = c.order.indexOf(myIndex);
   const picked = c.offers.some(o => o.takenBy === myIndex);
   const myTurn = myPos >= 0 && myPos < c.released && !picked;
-  // 顺位条：✓已选 / 高亮=选择中 / 灰=等待
-  const seats = c.order.map((pi, k) => {
+  $('carHead').textContent = carPhase === 'observe' ? `观察中 ${carLeft}s` : `每 ${CAR_WAVE_SEC} 秒放行 2 人 · 下一批 ${carLeft}s`;
+  $('carSeats').innerHTML = c.order.map((pi, k) => {
     const p = game.players[pi];
     const done = c.offers.some(o => o.takenBy === pi);
     const cls = done ? ' done' : k < c.released ? ' now' : '';
     return `<span class="car-seat${cls}${pi === myIndex ? ' mine' : ''}">${k + 1}.${p.name}${done ? '✓' : ''}</span>`;
   }).join('');
-  // 状态行与倒计时
   let status;
-  if (carPhase === 'observe') status = `<b style="color:var(--accent2)">👀 观察阶段：${carLeft} 秒后开始放行，看看都有些什么弈子</b>`;
+  if (carPhase === 'observe') status = `<b style="color:var(--accent2)">👀 观察阶段：${carLeft} 秒后开始放行；点击场地可以移动你的小精灵</b>`;
   else if (picked) status = '你已选择，等待其他玩家…';
-  else if (myTurn) status = `<b style="color:var(--accent)">轮到你了！点击卡片选择</b>`;
+  else if (myTurn) status = `<b style="color:var(--accent)">已放行！点击卡片让小精灵跑过去拿</b>`;
   else {
     const myWave = Math.floor(myPos / 2);
     const secs = (myWave - (carWaves - 1) - 1) * CAR_WAVE_SEC + carLeft;
@@ -462,38 +591,19 @@ function renderCarousel() {
       ? `<b style="color:var(--accent2)">⏳ ${secs} 秒后轮到你，想好要拿哪个！</b>`
       : `你的顺位：第 ${myPos + 1}（约 ${secs} 秒后放行）`;
   }
-  const headNote = carPhase === 'observe' ? `观察中 ${carLeft}s` : `每 ${CAR_WAVE_SEC} 秒放行 2 人 · 下一批 ${carLeft}s`;
-  let html = `<div id="carBox"><h3>🎠 共享选秀 <span class="tt-sub" style="font-weight:normal">${headNote}</span></h3>
-    <div id="carSeats">${seats}</div>
-    <div class="tt-sub" style="margin-top:4px">${status}</div>
-    <div id="carGrid">`;
+  $('carStatus').innerHTML = status;
+  $('carCenter').innerHTML = carPhase === 'observe' ? `👀<div>${carLeft}</div>` : `<div>${carLeft}</div>`;
+  const arena = $('carArena');
+  if (arena) arena.classList.toggle('my-turn', myTurn);
   c.offers.forEach((o, i) => {
-    const def = UNITS_BY_ID[o.defId];
-    const taker = o.takenBy !== null ? game.players[o.takenBy].name : '';
-    html += `<div class="car-offer${o.takenBy !== null ? ' taken' : myTurn ? ' pickable' : ''}" data-i="${i}" style="border-color:${COST_COLOR[def.cost]}">
-      <div class="sc-name">${CLASS_ICON[def.classes[0]] || ''} ${def.name}</div>
-      <div class="sc-traits">${def.cost}费 · ${COMP_ICON[o.comp] || ''} ${COMPONENTS[o.comp].name}</div>
-      ${taker ? `<div class="car-taker">${taker} ✓</div>` : ''}</div>`;
-  });
-  html += `</div></div>`;
-  $('carModal').innerHTML = html;
-  if (myTurn) $('carModal').querySelectorAll('.car-offer.pickable').forEach(el => {
-    el.onclick = () => { dispatch({ k: 'carPick', idx: +el.dataset.i }); renderCarousel(); renderAll(); };
-  });
-  // 悬浮预览棋子技能/羁绊；散件行单独悬浮看装备详情
-  $('carModal').querySelectorAll('.car-offer').forEach(el => {
-    const o = c.offers[+el.dataset.i];
-    if (!o) return;
-    const def = UNITS_BY_ID[o.defId];
-    el.onpointerenter = ev => {
-      if (!tooltipPinned) showTooltip(() => unitDefTooltip(def, 1) +
-        `<div style="margin-top:4px">携带：${COMP_ICON[o.comp] || ''} ${COMPONENTS[o.comp].name}（选中后自动放入物品栏）</div>`, ev);
-    };
-    el.onpointerleave = () => { hideTooltip(); hideTooltip2(); };
-    const compEl = el.querySelector('.sc-traits');
-    if (compEl) {
-      compEl.onpointerenter = ev => { ev.stopPropagation(); showTooltip2At(itemTooltip(makeComponentItem(o.comp)), ev.clientX + 14, ev.clientY + 10); };
-      compEl.onpointerleave = () => hideTooltip2();
+    const el = document.querySelector(`.car-offer[data-i="${i}"]`);
+    if (!el) return;
+    el.classList.toggle('pickable', o.takenBy === null && myTurn);
+    if (o.takenBy !== null && !el.dataset.done) {
+      el.dataset.done = '1';
+      el.classList.add('taken');
+      el.querySelector('.car-taker').textContent = game.players[o.takenBy].name + ' ✓';
+      if (o.takenBy !== myIndex) { const pos = cardPos(i); if (pos) setSpritePos(o.takenBy, pos.x, pos.y + 46); } // 别人的小精灵跑过去站在卡下缘
     }
   });
 }
@@ -1420,7 +1530,7 @@ function applyEvent(pb, e) {
       if (!pb.skip) {
         n.el.classList.add('casting'); setTimeout(() => n.el.classList.remove('casting'), 500);
         floatText(n.el, '【' + e.name + '】', 'var(--accent2)');
-        castBurst(n.el, n.def.align);
+        playSkillFx(pb, n, e);
       }
       break;
     }
@@ -1495,15 +1605,81 @@ function clearMarks(n) {
   for (const k in n.marks) { clearTimeout(n.marks[k].t); n.marks[k].el.remove(); }
   n.marks = {};
 }
-// 施法爆发环（按阵营配色）
-function castBurst(el, align) {
+// ---------- 技能特效（按形态/元素分型） ----------
+// shape: bolt=弹道爆开 hit=近战撞击 aoe=目标处爆发环 aoeSelf=自身为心爆发环 line=直线光束 dash=冲锋撞击 shield=护盾辉光 heal=治疗辉光
+const FX_COLOR = { phys: '#ffb74d', light: '#ffd700', dark: '#9c6cff', fire: '#ff7043', ice: '#4fc3f7', heal: '#81c784', shield: '#eceff1', stealth: '#9e9e9e' };
+const SKILL_FX = {
+  grishnakh: ['hit', 'phys'], duilin: ['bolt', 'light', 3], guthlaf: ['dash', 'phys'], merry: ['shield'],
+  faramir: ['bolt', 'phys'], carcharoth: ['hit', 'dark'], elemmakil: ['shield'], khamul: ['aoeSelf', 'dark'],
+  gimli: ['aoeSelf', 'phys'], galdor: ['dash', 'phys'], pippin: ['bolt', 'ice'], mouthofsauron: ['bolt', 'dark'],
+  theoden: ['shield'], boromir: ['dash', 'phys'], tuor: ['hit', 'light'], sam: ['hit', 'phys'],
+  gothmog: ['aoe', 'fire'], rog: ['hit', 'phys'], witchking: ['aoeSelf', 'ice'], glorfindel: ['dash', 'light'],
+  ancalagon: ['line', 'fire'], turin: ['hit', 'phys'], frodo: ['aoeSelf', 'stealth'], durin: ['shield'],
+  morgoth: ['aoeSelf', 'dark'], idril: ['bolt', 'light'], huan: ['dash', 'fire'], bregor: ['shield'],
+  brandir: ['heal'], tevildo: ['dash', 'dark'], goldberry: ['bolt', 'light'], aredhel: ['bolt', 'light'],
+  finarfin: ['heal'], magor: ['hit', 'phys'], nimrodel: ['bolt', 'light'], glaurung: ['bolt', 'dark'],
+  haleth: ['hit', 'phys'], barahir: ['hit', 'phys'], gandalf: ['aoe', 'light'], saruman: ['bolt', 'light'],
+  tombombadil: ['aoeSelf', 'heal'], maglor: ['heal'], finrod: ['bolt', 'light'], gilgalad: ['line', 'light'],
+  maeglin: ['dash', 'dark'], hurin: ['shield'], luthien: ['aoe', 'light'], nienna: ['heal'],
+  legolas: ['bolt', 'light', 5], fingon: ['dash', 'phys'], galadriel: ['aoe', 'light'], beren: ['hit', 'phys'],
+  maedhros: ['hit', 'phys', 3], aule: ['aoeSelf', 'shield'], eonwe: ['shield'], sauron: ['bolt', 'dark'],
+  fingolfin: ['aoeSelf', 'light'], manwe: ['aoe', 'light'], feanor: ['line', 'light'], ecthelion: ['aoeSelf', 'ice'],
+  varda: ['aoe', 'light'], beleg: ['bolt', 'phys', 3], aragorn: ['aoeSelf', 'light'],
+};
+function fxCenter(el) { return { x: el.offsetLeft + 26, y: el.offsetTop + 26 }; }
+function fxRing(x, y, color, scale) {
   const b = document.createElement('div');
   b.className = 'cast-burst';
-  b.style.borderColor = align === 'light' ? '#ffd700' : align === 'dark' ? '#b26cff' : '#7ec8ff';
-  b.style.left = (el.offsetLeft + 26) + 'px';
-  b.style.top = (el.offsetTop + 26) + 'px';
+  b.style.borderColor = color;
+  b.style.boxShadow = `0 0 12px ${color}`;
+  b.style.left = x + 'px'; b.style.top = y + 'px';
+  if (scale) b.style.setProperty('--fxs', scale);
   $('board').appendChild(b);
   setTimeout(() => b.remove(), 650);
+}
+function fxBeam(x1, y1, x2, y2, color) {
+  const len = Math.hypot(x2 - x1, y2 - y1) + 40;
+  const ang = Math.atan2(y2 - y1, x2 - x1) * 180 / Math.PI;
+  const b = document.createElement('div');
+  b.className = 'fx-beam';
+  b.style.background = `linear-gradient(90deg, ${color}, transparent)`;
+  b.style.left = x1 + 'px'; b.style.top = y1 + 'px';
+  b.style.width = len + 'px';
+  b.style.transform = `rotate(${ang}deg)`;
+  $('board').appendChild(b);
+  setTimeout(() => b.remove(), 500);
+}
+function playSkillFx(pb, n, e) {
+  const [shape, elem, cnt] = SKILL_FX[n.def.id] || ['aoeSelf', n.def.align === 'light' ? 'light' : n.def.align === 'dark' ? 'dark' : 'phys'];
+  const color = FX_COLOR[elem] || FX_COLOR.phys;
+  const src = fxCenter(n.el);
+  let tgt = src;
+  if (e.tc !== undefined && e.tr !== undefined) {
+    const { c, r } = mirrorPos(pb, e.tc, e.tr);
+    const p = cellPos(c, r);
+    tgt = { x: p.x + 32, y: p.y + 18 };
+  }
+  switch (shape) {
+    case 'bolt': {
+      const shots = cnt || 1;
+      for (let i = 0; i < shots; i++) setTimeout(() => {
+        shootProj({ offsetLeft: src.x - 26, offsetTop: src.y - 26 }, { offsetLeft: tgt.x - 26, offsetTop: tgt.y - 26 }, color);
+        setTimeout(() => fxRing(tgt.x, tgt.y, color, .7), 210);
+      }, i * 120);
+      break;
+    }
+    case 'hit': {
+      const hits = cnt || 1;
+      for (let i = 0; i < hits; i++) setTimeout(() => fxRing(tgt.x, tgt.y, color, .8), i * 140);
+      break;
+    }
+    case 'aoe': fxRing(tgt.x, tgt.y, color, 1.6); break;
+    case 'aoeSelf': fxRing(src.x, src.y, color, 1.6); break;
+    case 'line': fxBeam(src.x, src.y, tgt.x, tgt.y, color); setTimeout(() => fxRing(tgt.x, tgt.y, color, .9), 180); break;
+    case 'dash': fxRing(tgt.x, tgt.y, color, .9); break;
+    case 'shield': n.el.classList.add('fx-shield'); setTimeout(() => n.el.classList.remove('fx-shield'), 900); break;
+    case 'heal': n.el.classList.add('fx-heal'); setTimeout(() => n.el.classList.remove('fx-heal'), 900); break;
+  }
 }
 function shootProj(from, to, color) {
   const p = document.createElement('div');

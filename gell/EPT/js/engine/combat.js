@@ -656,7 +656,7 @@ export class Combat {
       if (!f.isMonster && f.def.skill && f.mana >= f.manaMax + f.breakMana && this.t >= f.manaLockUntil) {
         if (f.breakMana > 0) this.emit({ k: 'break', id: f.id, extra: 0 }); // 施法后破法解除
         f.mana = 0; f.breakMana = 0; f.manaLockUntil = this.t + 1;
-        this.emit({ k: 'cast', id: f.id, name: f.def.skill.name });
+        this.emit({ k: 'cast', id: f.id, name: f.def.skill.name, tc: f.target ? f.target.pos.c : undefined, tr: f.target ? f.target.pos.r : undefined });
         this.castingUnit = f;
         castSkill(this, f);
         if (f.doubleCast && f.alive) castSkill(this, f);

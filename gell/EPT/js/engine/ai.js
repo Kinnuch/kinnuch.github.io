@@ -141,6 +141,16 @@ export function runAI(game, p) {
     p.bench[bs] = b.unit;
     p.board = p.board.filter(x => x !== b);
   }
+  // 侦查对策：按上个对手的阵容调整站位（AOE法师多→散开；突进/刺客多→贴角保C位）
+  let colOrder = [3, 2, 4, 1, 5, 0, 6];
+  const opp = game.players[p.lastOpp];
+  if (opp && opp.alive && opp.board.length) {
+    const ou = opp.board.map(b => b.unit);
+    const casters = ou.filter(u => u.def.classes.some(c => ['arcanist', 'indulger'].includes(c))).length;
+    const divers = ou.filter(u => u.def.classes.includes('killer') || u.def.races.includes('gondolin')).length;
+    if (divers >= 2) colOrder = [0, 1, 2, 3, 4, 5, 6];      // 贴角抱团
+    else if (casters >= 3) colOrder = [0, 6, 2, 4, 1, 5, 3]; // 拉开间距
+  }
   const cap = Math.max(0, p.level - p.board.length);
   const benchSorted = p.bench.filter(Boolean).sort((a, b) => (b.def.cost * b.star * b.star) - (a.def.cost * a.star * a.star));
   const occ = new Set(p.board.map(b => b.c + ',' + b.r));
@@ -148,7 +158,7 @@ export function runAI(game, p) {
     const rows = u.def.range > 1 ? [7, 6, 5, 4] : [4, 5, 6, 7];
     let placed = false;
     for (const r of rows) {
-      for (const c of [3, 2, 4, 1, 5, 0, 6]) {
+      for (const c of colOrder) {
         if (occ.has(c + ',' + r)) continue;
         occ.add(c + ',' + r);
         const idx = p.bench.findIndex(x => x && x.uid === u.uid);

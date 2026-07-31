@@ -30,6 +30,7 @@
       <button id="startSolo" class="big-btn">⚔ 单人模式</button>
       <button id="mpToggle" class="big-btn">🌐 多人联机</button>
       <button id="ladderBtn" class="big-btn" style="flex:0 0 130px;background:var(--panel2);color:var(--text);border-color:var(--border)">🏆 排行榜</button>
+      <button id="glossBtn2" class="big-btn" style="flex:0 0 120px;background:var(--panel2);color:var(--text);border-color:var(--border)">📖 术语表</button>
     </div>
     <div id="mpBox" style="display:none;margin-top:14px;padding:14px;border:1px solid var(--border);border-radius:10px;background:var(--panel2)">
       <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
@@ -60,6 +61,7 @@
       <span class="stat" id="streakStat"></span>
       <span id="enemyLabel" style="color:var(--accent)"></span>
       <span style="flex:1"></span>
+      <button id="glossBtn" class="utility-btn" title="术语表">📖 术语</button>
       <button id="pauseBtn" class="utility-btn">⏸ 暂停</button>
       <button id="viewBtn" class="utility-btn">🎥 视角</button>
       <button id="speedBtn">▶ 1x</button>
@@ -125,6 +127,57 @@
   <div id="scoutModal"></div>
   <div id="carModal"></div>
   <div id="tutModal"><div id="tutBox"><h3 id="tutTitle"></h3><div id="tutBody"></div><button id="tutOk" class="big-btn" style="max-width:160px;margin-top:14px">知道了 ▶</button></div></div>
+
+  <!-- 术语表 -->
+  <div id="glossModal">
+    <div id="glossBox">
+      <div style="display:flex;align-items:center;justify-content:space-between">
+        <h3 style="color:var(--accent)">📖 术语表</h3>
+        <button id="glossClose" class="utility-btn">✕ 关闭</button>
+      </div>
+      <div class="gloss-tabs">
+        <button class="gloss-tab active" data-tab="st">头顶状态</button>
+        <button class="gloss-tab" data-tab="bar">血条与法力</button>
+        <button class="gloss-tab" data-tab="dmg">伤害类型</button>
+        <button class="gloss-tab" data-tab="kw">关键词</button>
+      </div>
+      <div class="gloss-page" data-page="st">
+        <div class="gl-row"><span class="gl-ic">💫</span><b>眩晕</b><span>无法移动、普攻和施法。受<b>韧性</b>缩短。</span></div>
+        <div class="gl-row"><span class="gl-ic">❄️</span><b>冰缓</b><span>攻击速度降低 10%。受韧性缩短。</span></div>
+        <div class="gl-row"><span class="gl-ic">🚫</span><b>缴械</b><span>无法进行普通攻击（仍可移动与施法）。受韧性缩短。</span></div>
+        <div class="gl-row"><span class="gl-ic">🔥</span><b>灼烧</b><span>每秒受到 1% 最大生命值的纯粹伤害。</span></div>
+        <div class="gl-row"><span class="gl-ic">💔</span><b>重伤</b><span>受到的治疗效果降低 35%。</span></div>
+        <div class="gl-row"><span class="gl-ic">😡</span><b>嘲讽</b><span>被迫以施加者为攻击目标。</span></div>
+        <div class="gl-row"><span class="gl-ic" style="opacity:.4">👤</span><b>不可选取</b><span>棋子半透明：不会被敌人选为目标。</span></div>
+        <div class="gl-row"><span class="gl-ic">✨</span><b>净化</b><span>驱散全部负面状态，头顶标记立即消失。</span></div>
+      </div>
+      <div class="gloss-page" data-page="bar" style="display:none">
+        <div class="gl-row"><span class="gl-ic">🟩</span><b>生命条</b><span>绿色为当前生命；敌方棋子的生命条为红色。</span></div>
+        <div class="gl-row"><span class="gl-ic">⬜</span><b>护盾</b><span>血条末端的白色段：先于生命被扣除，超时未破则消失。</span></div>
+        <div class="gl-row"><span class="gl-ic">🟦</span><b>法力条</b><span>蓝色；普攻与受击回蓝，满蓝施放技能。</span></div>
+        <div class="gl-row"><span class="gl-ic">⬜</span><b>破法</b><span>法力条变白并显示红字：需额外积攒法力才能施法（施法后解除）。</span></div>
+      </div>
+      <div class="gloss-page" data-page="dmg" style="display:none">
+        <div class="gl-row"><span class="gl-ic" style="color:var(--dmg-phys)">⚔</span><b>物理</b><span>受<b>护甲</b>减免；由攻击力驱动。</span></div>
+        <div class="gl-row"><span class="gl-ic" style="color:var(--dmg-light)">☀</span><b>光明</b><span>受<b>光明抗性</b>减免；对黑暗阵营棋子造成 ×1.2，对光明阵营 ×0.8。</span></div>
+        <div class="gl-row"><span class="gl-ic" style="color:var(--dmg-dark)">🌑</span><b>黑暗</b><span>受<b>黑暗抗性</b>减免；对光明阵营棋子造成 ×1.2，对黑暗阵营 ×0.8。</span></div>
+        <div class="gl-row"><span class="gl-ic" style="color:var(--dmg-true)">✦</span><b>纯粹</b><span>无视一切护甲、抗性与减伤。</span></div>
+      </div>
+      <div class="gloss-page" data-page="kw" style="display:none">
+        <div class="gl-row"><b>自适应</b><span>装备/羁绊的"强度、抗性、穿透"加到棋子光/黑两系中<b>较高</b>的一侧（平手按阵营）。</span></div>
+        <div class="gl-row"><b>六维亲和度</b><span>维拉/能量/纳雅/卡蕾/乌墨/科尔——推导攻击、护甲、双强、双抗、韧性等成长属性（Shift 查看详情）。</span></div>
+        <div class="gl-row"><b>韧性</b><span>缩短受到的眩晕/冰缓/缴械时长：时长 ×100/(100+韧性)。</span></div>
+        <div class="gl-row"><b>全能吸血</b><span>造成的任意伤害按比例回复自身生命。</span></div>
+        <div class="gl-row"><b>穿透</b><span>无视目标部分护甲/抗性（先百分比后固定值）。</span></div>
+        <div class="gl-row"><b>利息</b><span>回合结束按存款每 10 金产 1 金，至多 5。</span></div>
+        <div class="gl-row"><b>连胜/连败</b><span>连续胜利或失败都会获得额外金币。</span></div>
+        <div class="gl-row"><b>光明装</b><span>金框稀有装备，仅特定途径获得，数值远超普通成装。</span></div>
+        <div class="gl-row"><b>纹章</b><span>转职书生成：为穿戴者增加一条随机羁绊。</span></div>
+        <div class="gl-row"><b>偷偷</b><span>窃贼手套/飞贼的戒指：占满 3 格装备栏，每场战斗随机给 2 件散件/成装。</span></div>
+        <div class="gl-row"><b>声望</b><span>阿拉贡专属：随对局进程解锁三段技能形态。</span></div>
+      </div>
+    </div>
+  </div>
 
   <script>
     function toggleTheme(){

@@ -67,15 +67,30 @@ export class Game {
     this._carouselCheckDone();
   }
 
-  aiCarouselChoice(p) {
+  aiCarouselChoice(p) { // 云顶式：健康拿最缺的件，落后拿高费卡回血，凑对优先
     const mine = allUnits(p);
+    const stage = this.stageOf();
+    const comps = [...p.items, ...mine.flatMap(u => u.items)].flatMap(it => it.comps ? it.comps : it.comp ? [it.comp] : []);
+    const catOf = c => c.replace(/\d+$/, '');
+    const offN = comps.filter(c => ['ad', 'as', 'csc'].includes(catOf(c))).length;
+    const castN = comps.filter(c => ['ap', 'm'].includes(catOf(c))).length;
+    const tankN = comps.filter(c => ['a', 'mr', 'hp', 'hs'].includes(catOf(c))).length;
+    const minPool = Math.min(offN, castN, tankN);
     let best = -1, bestS = -1;
     this.carousel.offers.forEach((o, i) => {
       if (o.takenBy !== null) return;
       const def = UNITS_BY_ID[o.defId];
-      let s = def.cost * 3 + this.rng.next();
-      if (mine.some(u => u.def.id === def.id)) s += 20;
+      const cat = catOf(o.comp);
+      let s = this.rng.next() + def.cost * (p.hp < 50 ? 6 : 2);
+      const copies = mine.filter(u => u.def.id === def.id).length;
+      s += copies >= 2 ? 40 : copies === 1 ? 15 : 0;
       s += mine.reduce((a, u) => a + u.def.races.filter(r => def.races.includes(r)).length + u.def.classes.filter(x => def.classes.includes(x)).length, 0);
+      if (['ad', 'as', 'csc'].includes(cat) && offN === minPool) s += 8;
+      if (['ap', 'm'].includes(cat) && castN === minPool) s += 8;
+      if (['a', 'mr', 'hp', 'hs'].includes(cat) && tankN === minPool) s += 8;
+      if (p.aiStyle === 'balancing' && ['ad', 'as', 'csc'].includes(cat)) s += 4;
+      if (p.aiStyle === 'strategic' && ['ap', 'm'].includes(cat)) s += 4;
+      if (stage <= 1 && def.cost === 2) s += 6; // 首轮：二费带件优先
       if (s > bestS) { bestS = s; best = i; }
     });
     return best;

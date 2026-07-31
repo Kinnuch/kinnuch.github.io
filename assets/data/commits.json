@@ -1,5 +1,19 @@
 [
   {
+    "hash": "ac26b1aba50fb0f96b29573b121add1a18aad9cf",
+    "short": "ac26b1a",
+    "date": "2026-07-31T00:25:30+08:00",
+    "author": "wuyichen",
+    "msg": "Important Update: update art performance with VFX and icons"
+  },
+  {
+    "hash": "74d5f10ab70293b98d5344627db2f05976263265",
+    "short": "74d5f10",
+    "date": "2026-07-30T12:19:20Z",
+    "author": "github-actions[bot]",
+    "msg": "chore: refresh commits.json [skip ci]"
+  },
+  {
     "hash": "31652c756b363d196d9ba2c539a9758f4855d01a",
     "short": "31652c7",
     "date": "2026-07-30T20:18:53+08:00",

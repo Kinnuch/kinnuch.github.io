@@ -1,5 +1,19 @@
 [
   {
+    "hash": "8fa89cf8975b9fbb4d4f8aa603462a369f0877db",
+    "short": "8fa89cf",
+    "date": "2026-08-01T01:07:30+08:00",
+    "author": "wuyichen",
+    "msg": "Massive Update: now cards have their own pictures!"
+  },
+  {
+    "hash": "15b9f3bb303716d56f676f953d6bf6a1e3b3cf11",
+    "short": "15b9f3b",
+    "date": "2026-07-31T05:43:37Z",
+    "author": "github-actions[bot]",
+    "msg": "chore: refresh commits.json [skip ci]"
+  },
+  {
     "hash": "602ee7ce6d868329e57ae0a5074a07cd1fe65df9",
     "short": "602ee7c",
     "date": "2026-07-31T13:42:33+08:00",

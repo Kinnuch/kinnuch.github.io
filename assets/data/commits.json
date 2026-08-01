@@ -1,5 +1,19 @@
 [
   {
+    "hash": "05d4021346dc0e902393e3e818c2ab9c2740b5a4",
+    "short": "05d4021",
+    "date": "2026-08-01T23:35:16+08:00",
+    "author": "Kinnuch",
+    "msg": "update Sindarin Dictionary"
+  },
+  {
+    "hash": "15aec76dc39c95fbc736397322770bce8b96d864",
+    "short": "15aec76",
+    "date": "2026-07-31T17:10:14Z",
+    "author": "github-actions[bot]",
+    "msg": "chore: refresh commits.json [skip ci]"
+  },
+  {
     "hash": "8fa89cf8975b9fbb4d4f8aa603462a369f0877db",
     "short": "8fa89cf",
     "date": "2026-08-01T01:07:30+08:00",

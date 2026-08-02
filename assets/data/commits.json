@@ -1,5 +1,19 @@
 [
   {
+    "hash": "3973b32610eb571f627fa227d07cc968449f2730",
+    "short": "3973b32",
+    "date": "2026-08-02T23:14:47+08:00",
+    "author": "wuyichen",
+    "msg": "Update README.md"
+  },
+  {
+    "hash": "96e5cffcfda94178a8d5504ca2331eba1d5f3e61",
+    "short": "96e5cff",
+    "date": "2026-08-02T15:10:41Z",
+    "author": "github-actions[bot]",
+    "msg": "chore: refresh commits.json [skip ci]"
+  },
+  {
     "hash": "828f6565397700880a7c8d20d15bb6be951e01de",
     "short": "828f656",
     "date": "2026-08-02T23:10:24+08:00",

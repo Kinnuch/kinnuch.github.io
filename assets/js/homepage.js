@@ -265,6 +265,9 @@
     currentAnim = sel.weather.hasParticles
       ? startWeatherParticles(sel.weather.particle)
       : null;
+    if (typeof window.setWeatherSound === 'function') {
+      window.setWeatherSound(sel.weather.particle || null);
+    }
   }
 
   if (weatherEl) {

@@ -21396,6 +21396,309 @@
     ]
   },
   {
+    "dict_form": "Hadhod",
+    "part": "noun",
+    "english": "Dwarf",
+    "definition": "矮人",
+    "sentence": "[WJ/414]\nHadhodrond\n哈索德隆德，卡扎督姆，墨瑞亚",
+    "other": "来自库兹都语Khuzd",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i Chadhod"
+      },
+      {
+        "type": "Plural",
+        "form": "Hedhyd"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i Chedhyd"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "a Chadhod"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-Chadhod"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin Chadhod"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor Chadhod"
+      },
+      {
+        "type": "Stop",
+        "form": "o Chadhod"
+      },
+      {
+        "type": "H",
+        "form": "a Chadhod"
+      },
+      {
+        "type": "DH",
+        "form": "ne Chadhod"
+      }
+    ]
+  },
+  {
+    "dict_form": "hadhu",
+    "part": "noun",
+    "english": "seat",
+    "definition": "座位，席位",
+    "sentence": "[PE22/148]\narahadhw.\n王座",
+    "other": "昆雅语同源词hanwa",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i chadhu"
+      },
+      {
+        "type": "Plural",
+        "form": "hedhu"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i chedhu"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "a chadhu"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-chadhu"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin chadhu"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor chadhu"
+      },
+      {
+        "type": "Stop",
+        "form": "o chadhu"
+      },
+      {
+        "type": "H",
+        "form": "a chadhu"
+      },
+      {
+        "type": "DH",
+        "form": "ne chadhu"
+      }
+    ]
+  },
+  {
+    "dict_form": "hadhwa-",
+    "part": "verb",
+    "english": "to seat",
+    "definition": "使坐下，使就坐，使落座",
+    "sentence": "",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Present",
+        "form": "hadhwa/hadhwa(o)-"
+      },
+      {
+        "type": "Past",
+        "form": "hadhwant/hadhwanne-"
+      },
+      {
+        "type": "Future",
+        "form": "hadhwatha/hadhwatha(o)-"
+      },
+      {
+        "type": "Imperative",
+        "form": "hadhwo"
+      },
+      {
+        "type": "Gerund",
+        "form": "hadhwad"
+      },
+      {
+        "type": "PastParticiple",
+        "form": "hadhwannen"
+      },
+      {
+        "type": "PresentParticiple",
+        "form": "hadhwol"
+      },
+      {
+        "type": "PeferctParticle",
+        "form": "hedhwiel"
+      }
+    ]
+  },
+  {
+    "dict_form": "hae",
+    "part": "adverb",
+    "english": "far, very far away",
+    "definition": "远地，遥远地",
+    "sentence": "[PE17/27]\nHaerast.\n远方海岸，阿门洲",
+    "other": "",
+    "morphology": []
+  },
+  {
+    "dict_form": "haedh",
+    "part": "noun",
+    "english": "fenced enclosure",
+    "definition": "防护围栏，围城，围起来的结构",
+    "sentence": "",
+    "other": "√KHAG",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i chaedh"
+      },
+      {
+        "type": "Plural",
+        "form": "haedh"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i chaedh"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "a chaedh"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-chaedh"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin chaedh"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor chaedh"
+      },
+      {
+        "type": "Stop",
+        "form": "o chaedh"
+      },
+      {
+        "type": "H",
+        "form": "a chaedh"
+      },
+      {
+        "type": "DH",
+        "form": "ne chaedh"
+      }
+    ]
+  },
+  {
+    "dict_form": "haer",
+    "part": "adjective",
+    "english": "remote",
+    "definition": "遥远的，距离远的",
+    "sentence": "",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "chaer"
+      },
+      {
+        "type": "Plural",
+        "form": "haer"
+      },
+      {
+        "type": "Comparative",
+        "form": "achaer"
+      },
+      {
+        "type": "Superlative",
+        "form": "ro-chaer"
+      }
+    ]
+  },
+  {
+    "dict_form": "haered",
+    "part": "noun",
+    "english": "remoteness, (remote)distance",
+    "definition": "遥远；（远）距离",
+    "sentence": "[LotR/238][PE17/20]\nna-chaered palan-díriel.\n（茂林幽深的中洲上），我们遥遥仰望！",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i chaered"
+      },
+      {
+        "type": "Plural",
+        "form": "haerid"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i chaerid"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "a chaered"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-chaered"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin chaered"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor chaered"
+      },
+      {
+        "type": "Stop",
+        "form": "o chaered"
+      },
+      {
+        "type": "H",
+        "form": "a chaered"
+      },
+      {
+        "type": "DH",
+        "form": "ne chaered"
+      }
+    ]
+  },
+  {
+    "dict_form": "haeron",
+    "part": "adjective",
+    "english": "distant",
+    "definition": "有一定距离的，远的，遥远的",
+    "sentence": "[PM/273]\nDor Haeron.",
+    "other": "haer + -on",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "chaeron"
+      },
+      {
+        "type": "Plural",
+        "form": "haeryn"
+      },
+      {
+        "type": "Comparative",
+        "form": "achaeron"
+      },
+      {
+        "type": "Superlative",
+        "form": "ro-chaeron"
+      }
+    ]
+  },
+  {
     "dict_form": "êl",
     "part": "noun",
     "english": "star",

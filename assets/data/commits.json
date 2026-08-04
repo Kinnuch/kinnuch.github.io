@@ -1,5 +1,19 @@
 [
   {
+    "hash": "d058a8627a2973f94d390b725facb38d4627b97b",
+    "short": "d058a86",
+    "date": "2026-08-04T22:54:33+08:00",
+    "author": "wuyichen",
+    "msg": "fix multi browser bugs in EPT games"
+  },
+  {
+    "hash": "0f5a76dd72a4703d41f7b7781b2a57ed089032ca",
+    "short": "0f5a76d",
+    "date": "2026-08-04T14:52:11Z",
+    "author": "github-actions[bot]",
+    "msg": "chore: refresh commits.json [skip ci]"
+  },
+  {
     "hash": "1989d14e629ca8f75860f2e32b408c2050bcc74b",
     "short": "1989d14",
     "date": "2026-08-04T22:51:57+08:00",

@@ -32,8 +32,10 @@ const shiftHint = () => shiftDown ? '' : '<div class="tt-shift">按住 ⇧Shift 
 
 const $ = id => document.getElementById(id);
 
-// 装备图标（M4）：game-icons.net SVG（CC BY 3.0），CSS mask 上色随主题
+// 装备/UI 图标（M4）：game-icons.net SVG（CC BY 3.0），CSS mask 上色随主题
+// 用 SVG 替代 emoji：不同浏览器/系统的 emoji 字体覆盖不一致（如 🪙 在非 Chrome 上可能显示为方框）
 const GI = k => `<span class="gi gi-${k}"></span>`;
+const COIN = '<span class="gi gi-ui-coin coin"></span>';
 const COMP_ICON = Object.fromEntries(['ad1', 'ad2', 'as1', 'as2', 'ap1', 'ap2', 'm1', 'm2', 'a1', 'a2', 'mr1', 'mr2', 'hp1', 'hp2', 'hs1', 'hs2', 'csc1', 'csc2', 'al'].map(k => [k, GI(k)]));
 const CONS_ICON = Object.fromEntries(['smallDup', 'bigDup', 'jobBook', 'dice', 'silmaril', 'remover', 'reforger', 'upgrader'].map(k => [k, GI(k)]));
 function itemIcon(it) {
@@ -116,7 +118,7 @@ function renderDmgPanel() {
 let paused = false, tutEnabled = false, tutShown = {};
 function setPaused(v) {
   paused = v;
-  $('pauseBtn').textContent = paused ? '▶ 继续' : '⏸ 暂停';
+  $('pauseBtn').innerHTML = paused ? '<span class="gi gi-ui-play"></span> 继续' : '<span class="gi gi-ui-pause"></span> 暂停';
   $('pauseBtn').style.background = paused ? 'var(--accent)' : '';
   $('pauseBtn').style.color = paused ? '#fff8e8' : '';
 }
@@ -232,7 +234,7 @@ export function initUI() {
     const names = [...new Set([...ALL_NAMES, ...Object.keys(l)])];
     const rows = names.map(n => ({ n, s: l[n] || 0 })).sort((a, b) => b.s - a.s)
       .map((x, i) => `<div class="lad-row${x.n === '你' || (myNick && x.n === myNick) ? ' me' : ''}"><span class="lad-no">${i + 1}.</span><span class="lad-name">${x.n}</span><span class="lad-rank">${rankOf(x.s)}</span><span class="lad-score"><b>${rankProgress(x.s)}</b> 分</span></div>`).join('');
-    $('scoutModal').innerHTML = `<div id="scoutBox" style="min-width:380px"><h3>🏆 排行榜</h3>
+    $('scoutModal').innerHTML = `<div id="scoutBox" style="min-width:380px"><h3><span class="gi gi-ui-trophy"></span> 排行榜</h3>
       <div class="tt-sub" style="margin-bottom:8px">名次积分：+30/+20/+10/+5/−5/−10/−20/−30（含段位修正）；每100分一个小段位，段位序列：黑铁→黄铜→白银→黄金→秘银→加尔沃恩→提卡尔→熙利玛</div>
       ${rows}<div class="tt-sub" style="margin-top:8px">点击空白处关闭</div></div>`;
     $('scoutModal').style.display = 'flex';
@@ -249,7 +251,7 @@ export function initUI() {
     if (!playback) return;
     playback.speed = playback.speed >= 4 ? 1 : playback.speed * 2;
     localStorage.setItem('ept-speed', playback.speed);
-    $('speedBtn').textContent = '▶ ' + playback.speed + 'x';
+    $('speedBtn').innerHTML = '<span class="gi gi-ui-play"></span> ' + playback.speed + 'x';
   };
   $('skipBtn').onclick = () => { if (playback) playback.skip = true; };
   $('rerollBtn').onclick = () => dispatch({ k: 'reroll' });
@@ -288,6 +290,14 @@ export function initUI() {
   }, { passive: false });
   document.addEventListener('pointermove', e => { moveTooltip(e); dragMove(e); });
   document.addEventListener('pointerup', dragEnd);
+  // 跨浏览器拖拽保障：
+  // 1) Firefox/Safari 中 pointerdown 的 preventDefault 不会阻止原生 HTML5 拖拽，
+  //    原生拖拽一启动就吞掉 pointermove/pointerup（只剩 pointercancel），导致拖拽永远卡在 pending。
+  document.addEventListener('dragstart', e => e.preventDefault());
+  document.addEventListener('selectstart', e => { if (drag) e.preventDefault(); });
+  // 2) 指针被系统/手势接管时立即复位，避免残留状态让棋子"拖不动"
+  document.addEventListener('pointercancel', () => { if (drag) { drag.pending ? (drag = null) : cancelDrag(); } });
+  window.addEventListener('blur', () => { if (drag) { drag.pending ? (drag = null) : cancelDrag(); } });
   document.addEventListener('pointerdown', e => {
     if (tooltipPinned && !$('tooltip').contains(e.target)) { tooltipPinned = false; hideTooltip(true); }
   });
@@ -304,6 +314,7 @@ export function initUI() {
     $('game').style.display = 'block';
     startGame(q.get('seed') ? +q.get('seed') : (Math.random() * 0xFFFFFFFF) >>> 0);
     if (q.get('fight')) setTimeout(() => { if (game.phase === 'planning') requestCombat(); }, 800);
+    if (q.get('dragtest')) setTimeout(runDragSelfTest, 1200);
   }
 }
 
@@ -408,7 +419,7 @@ function showCarousel() {
   maybeTut('carousel');
   // 入场演出 2 秒：前往选秀会场
   const ib = $('introBanner');
-  ib.querySelector('.it-main').textContent = '🎠 正在前往选秀会场…';
+  ib.querySelector('.it-main').textContent = '正在前往选秀会场…';
   ib.querySelector('.it-sub').textContent = '9 个自带散件的棋子等待挑选';
   ib.classList.remove('show'); void ib.offsetWidth; ib.classList.add('show');
   const bw = $('boardWrap');
@@ -515,7 +526,7 @@ function buildCarArena(c) {
     sprites += `<div class="car-sprite${pi === myIndex ? ' mine' : ''}" data-pi="${pi}" style="left:${s.x}px;top:${s.y}px;--pc:${PLAYER_COLOR[pi % 8]}"><i></i><span>${p.name.slice(0, 3)}</span></div>`;
   });
   $('carModal').innerHTML = `<div id="carBox">
-    <h3>🎠 共享选秀 <span id="carHead" class="tt-sub" style="font-weight:normal"></span></h3>
+    <h3><span class="gi gi-ui-carousel"></span> 共享选秀 <span id="carHead" class="tt-sub" style="font-weight:normal"></span></h3>
     <div id="carSeats"></div>
     <div id="carStatus" class="tt-sub" style="margin:4px 0"></div>
     <div id="carArena" style="width:${W}px;height:${H}px">
@@ -733,9 +744,9 @@ function renderTopbar() {
 
 function renderGold() {
   const p = me();
-  $('goldBig').innerHTML = `🪙 <b>${p.gold}</b>`;
+  $('goldBig').innerHTML = `${COIN} <b>${p.gold}</b>`;
   const need = p.level >= 10 ? 'MAX' : `${p.xp}/${XP_TO_LEVEL[p.level + 1]}`;
-  $('xpBtn').innerHTML = `📖 经验 4🪙<br><span style="font-size:11px;color:var(--sub)">Lv${p.level} (${need})</span>`;
+  $('xpBtn').innerHTML = `<span class="gi gi-ui-xp"></span> 经验 4${COIN}<br><span style="font-size:11px;color:var(--sub)">Lv${p.level} (${need})</span>`;
 }
 function goldTooltip() {
   const p = me();
@@ -908,7 +919,7 @@ function renderShop() {
     const traits = [...def.races.map(r => `<span class="sc-t" data-t="${r}">${RACES[r]}</span>`),
       ...def.classes.map(c => `<span class="sc-t" data-t="${c}">${CLASSES[c]}</span>`)].join(' · ');
     const art = PORTRAITS.has(def.id) ? `<img class="sc-art${PHOTOS.has(def.id) ? ' photo' : ''}" src="${unitArtSrc(def.id)}" draggable="false">` : '';
-    card.innerHTML = `${art}<div class="sc-name">${CLASS_ICON[def.classes[0]] || ''} ${def.name}</div><div class="sc-traits">${traits}</div><div class="sc-cost">${def.cost}🪙</div>`;
+    card.innerHTML = `${art}<div class="sc-name">${CLASS_ICON[def.classes[0]] || ''} ${def.name}</div><div class="sc-traits">${traits}</div><div class="sc-cost">${def.cost}${COIN}</div>`;
     card.onclick = () => { if (drag) return; dispatch({ k: 'buy', slot: i }); };
     card.onpointerdown = e => {
       if (e.button !== 0 || !actOk()) return;
@@ -925,7 +936,7 @@ function renderShop() {
     });
     bar.appendChild(card);
   });
-  $('lockBtn').textContent = p.shopLocked ? '🔒 已锁定' : '🔓 锁定';
+  $('lockBtn').innerHTML = p.shopLocked ? '<span class="gi gi-ui-lock"></span> 已锁定' : '<span class="gi gi-ui-unlock"></span> 锁定';
 }
 
 const TRAIT_PARENT = { gondolin: 'noldor', fingolfinH: 'noldor', feanorH: 'noldor', finarfinH: 'noldor', hador: 'mankind', beor: 'mankind', haleth: 'mankind' };
@@ -1325,6 +1336,37 @@ function hideTooltip(force) {
   pinnedLive = null;
 }
 
+// 开发用自检（?auto=1&dragtest=1）：先模拟"原生拖拽打断"（只有 pointercancel、没有 pointerup），
+// 再做一次正常拖拽，确认状态没被卡住、棋子确实上场。结果写进 document.title。
+function runDragSelfTest() {
+  const log = [];
+  const pe = (t, el, x, y, buttons = 1) => el.dispatchEvent(new PointerEvent(t, { bubbles: true, clientX: x, clientY: y, buttons, button: 0, pointerId: 1 }));
+  const center = el => { const r = el.getBoundingClientRect(); return [r.left + r.width / 2, r.top + r.height / 2]; };
+  const p = me();
+  if (!p.bench.filter(Boolean).length) dispatch({ k: 'buy', slot: 0 });
+  renderAll();
+  const benchUnit = document.querySelector('#benchRow .unit');
+  const cell = $('cell-3-6');
+  if (!benchUnit || !cell) { document.title = 'DRAGTEST no-fixture'; return; }
+  const [bx, by] = center(benchUnit), [cx, cy] = center(cell);
+  // ① 模拟 Firefox 原生拖拽劫持：pointerdown → pointercancel（没有 move/up）
+  pe('pointerdown', benchUnit, bx, by);
+  benchUnit.dispatchEvent(new PointerEvent('pointercancel', { bubbles: true, pointerId: 1 }));
+  log.push(drag === null ? 'cancel-ok' : 'cancel-STUCK');
+  // ② 再来一次正常拖拽，应当能把棋子放到 (3,6)
+  const before = me().board.length;
+  const u2 = document.querySelector('#benchRow .unit');
+  if (u2) {
+    const [x2, y2] = center(u2);
+    pe('pointerdown', u2, x2, y2);
+    pe('pointermove', document, x2 + 30, y2 - 20);
+    pe('pointermove', document, cx, cy);
+    pe('pointerup', document, cx, cy, 0);
+  }
+  log.push(me().board.length > before ? 'drag-ok' : 'drag-FAILED');
+  document.title = 'DRAGTEST ' + log.join(' ');
+}
+
 // ---------- 拖拽（pending：移动超过阈值才算拖拽，否则视为点击） ----------
 function startDrag(d, e, ghostMaker) {
   drag = d;
@@ -1343,7 +1385,7 @@ function activateDrag() {
   if (d.kind === 'unit') {
     $('sellOverlay').classList.add('active');
     const price = d.unit.star === 1 ? d.unit.def.cost : d.unit.def.cost * Math.pow(3, d.unit.star - 1) - 1;
-    $('sellOverlay').textContent = `⬇ 拖到这里出售（${price} 🪙）`;
+    $('sellOverlay').innerHTML = `↓ 拖到这里出售（${price} ${COIN}）`;
     // 高亮可放置区
     if (planOk()) {
       const p = me();
@@ -1398,6 +1440,8 @@ function attachUnitInteract(el, unit, src) {
 }
 function dragMove(e) {
   if (!drag) return;
+  // 自愈：按键已不在按下状态（漏收 pointerup，如被原生拖拽/系统手势打断）→ 撤销拖拽，不做落点判定
+  if (e.buttons === 0) { if (drag.pending) drag = null; else { cancelDrag(); renderAll(); } return; }
   if (drag.pending) {
     if (Math.hypot(e.clientX - drag.sx, e.clientY - drag.sy) < 7) return;
     activateDrag();
@@ -1535,7 +1579,7 @@ function startPlayback(events, mirror) {
   document.querySelectorAll('#board .unit,#board .float-txt,#board .proj').forEach(n => n.remove());
   const savedSpeed = Math.min(4, Math.max(1, parseFloat(localStorage.getItem('ept-speed')) || 1));
   playback = { events, i: 0, t: 0, speed: savedSpeed, skip: false, nodes: {}, last: performance.now(), mirror, acc: { dealt: {}, taken: {}, heal: {} }, lastPanelT: 0 };
-  $('speedBtn').textContent = '▶ ' + savedSpeed + 'x';
+  $('speedBtn').innerHTML = '<span class="gi gi-ui-play"></span> ' + savedSpeed + 'x';
   lastAcc = playback.acc;
   lastNodes = playback.nodes;
   renderDmgPanel();

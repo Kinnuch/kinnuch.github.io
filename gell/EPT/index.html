@@ -29,9 +29,9 @@
     <div class="lobby-btns">
       <button id="startSolo" class="big-btn">⚔ 单人模式</button>
       <button id="mpToggle" class="big-btn">🌐 多人联机</button>
-      <button id="ladderBtn" class="big-btn" style="flex:0 0 130px;background:var(--panel2);color:var(--text);border-color:var(--border)">🏆 排行榜</button>
-      <button id="glossBtn2" class="big-btn" style="flex:0 0 120px;background:var(--panel2);color:var(--text);border-color:var(--border)">📖 术语表</button>
-      <button id="dexBtn2" class="big-btn" style="flex:0 0 110px;background:var(--panel2);color:var(--text);border-color:var(--border)">📔 图鉴</button>
+      <button id="ladderBtn" class="big-btn" style="flex:0 0 130px;background:var(--panel2);color:var(--text);border-color:var(--border)"><span class="gi gi-ui-trophy"></span> 排行榜</button>
+      <button id="glossBtn2" class="big-btn" style="flex:0 0 120px;background:var(--panel2);color:var(--text);border-color:var(--border)"><span class="gi gi-ui-gloss"></span> 术语表</button>
+      <button id="dexBtn2" class="big-btn" style="flex:0 0 110px;background:var(--panel2);color:var(--text);border-color:var(--border)"><span class="gi gi-ui-dex"></span> 图鉴</button>
     </div>
     <div id="mpBox" style="display:none;margin-top:14px;padding:14px;border:1px solid var(--border);border-radius:10px;background:var(--panel2)">
       <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
@@ -62,13 +62,13 @@
       <span class="stat" id="streakStat"></span>
       <span id="enemyLabel" style="color:var(--accent)"></span>
       <span style="flex:1"></span>
-      <button id="glossBtn" class="utility-btn" title="术语表">📖 术语</button>
-      <button id="dexBtn" class="utility-btn" title="棋子图鉴">📔 图鉴</button>
-      <button id="pauseBtn" class="utility-btn">⏸ 暂停</button>
-      <button id="viewBtn" class="utility-btn">🎥 视角</button>
+      <button id="glossBtn" class="utility-btn" title="术语表"><span class="gi gi-ui-gloss"></span> 术语</button>
+      <button id="dexBtn" class="utility-btn" title="棋子图鉴"><span class="gi gi-ui-dex"></span> 图鉴</button>
+      <button id="pauseBtn" class="utility-btn"><span class="gi gi-ui-pause"></span> 暂停</button>
+      <button id="viewBtn" class="utility-btn"><span class="gi gi-ui-view"></span> 视角</button>
       <button id="speedBtn">▶ 1x</button>
-      <button id="skipBtn">⏭ 跳过</button>
-      <button id="startBtn">开战 ⚔</button>
+      <button id="skipBtn"><span class="gi gi-ui-skip"></span> 跳过</button>
+      <button id="startBtn">开战 <span class="gi gi-ui-swords"></span></button>
     </div>
     <div id="layout">
       <div id="leftPanel">
@@ -76,8 +76,8 @@
       </div>
       <div id="centerPanel">
         <div id="boardWrap">
-          <button id="dmgToggle" title="伤害统计">📊</button>
-          <div id="dmgPanel"><h4>📊 伤害统计</h4><div id="dmgSections"></div></div>
+          <button id="dmgToggle" title="伤害统计"><span class="gi gi-ui-chart"></span></button>
+          <div id="dmgPanel"><h4><span class="gi gi-ui-chart"></span> 伤害统计</h4><div id="dmgSections"></div></div>
           <div id="board"></div>
           <div id="banner"></div>
           <div id="introBanner"><div class="it-main"></div><div class="it-sub"></div></div>
@@ -94,10 +94,10 @@
           <div id="oddsBar"></div>
           <div id="shopBar">
             <div id="shopBtns">
-              <div id="goldBig">🪙 <b>0</b></div>
-              <button id="rerollBtn">🎲 刷新 2🪙</button>
-              <button id="xpBtn">📖 经验 4🪙</button>
-              <button id="lockBtn">🔓 锁定</button>
+              <div id="goldBig"><span class="gi gi-ui-coin coin"></span> <b>0</b></div>
+              <button id="rerollBtn"><span class="gi gi-ui-dice"></span> 刷新 2<span class="gi gi-ui-coin coin"></span></button>
+              <button id="xpBtn"><span class="gi gi-ui-xp"></span> 经验 4<span class="gi gi-ui-coin coin"></span></button>
+              <button id="lockBtn"><span class="gi gi-ui-unlock"></span> 锁定</button>
             </div>
             <div id="shopCards" style="display:flex;flex:1;gap:8px"></div>
             <div id="sellOverlay"></div>
@@ -121,7 +121,7 @@
       <button id="menuBtn" class="big-btn" style="max-width:180px;background:var(--panel2);color:var(--text);border-color:var(--border)">🏠 返回菜单</button>
     </div>
   </div>
-  <div id="promoFx"><div id="promoInner"><div class="promo-title">🏆 晋升</div><div class="promo-rank"></div></div></div>
+  <div id="promoFx"><div id="promoInner"><div class="promo-title"><span class="gi gi-ui-trophy"></span> 晋升</div><div class="promo-rank"></div></div></div>
 
   <div id="tooltip"></div>
   <div id="tooltip2"></div>
@@ -134,7 +134,7 @@
   <div id="dexModal">
     <div id="dexBox">
       <div style="display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap">
-        <h3 style="color:var(--accent)">📔 棋子图鉴 <span id="dexCount" class="tt-sub" style="font-weight:normal"></span></h3>
+        <h3 style="color:var(--accent)"><span class="gi gi-ui-dex"></span> 棋子图鉴 <span id="dexCount" class="tt-sub" style="font-weight:normal"></span></h3>
         <div style="display:flex;gap:8px;align-items:center">
           <select id="dexCost"><option value="">全部费用</option><option value="1">1费</option><option value="2">2费</option><option value="3">3费</option><option value="4">4费</option><option value="5">5费</option></select>
           <select id="dexTrait"><option value="">全部羁绊</option></select>
@@ -150,7 +150,7 @@
   <div id="glossModal">
     <div id="glossBox">
       <div style="display:flex;align-items:center;justify-content:space-between">
-        <h3 style="color:var(--accent)">📖 术语表</h3>
+        <h3 style="color:var(--accent)"><span class="gi gi-ui-gloss"></span> 术语表</h3>
         <button id="glossClose" class="utility-btn">✕ 关闭</button>
       </div>
       <div class="gloss-tabs">

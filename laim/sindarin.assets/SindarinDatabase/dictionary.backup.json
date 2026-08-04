@@ -10881,9 +10881,9 @@
   {
     "dict_form": "duinen",
     "part": "noun",
-    "english": "flodd, high tide",
+    "english": "flood, high tide",
     "definition": "水流，潮水；高潮，涨潮",
-    "sentence": "\n",
+    "sentence": "",
     "other": "",
     "morphology": [
       {
@@ -20107,7 +20107,7 @@
     "part": "adverb",
     "english": "away",
     "definition": "远离地，遥远地",
-    "sentence": "[PM/186]\ngwahae.\n远远地，遥远地",
+    "sentence": "[PM/186]\ngwahae.\n远远的，遥远的",
     "other": "",
     "morphology": []
   },
@@ -20117,7 +20117,7 @@
     "english": "wind",
     "definition": "风",
     "sentence": "[PE17/33]\nGwaihir.\n格怀希尔，大鹰",
-    "other": "昆雅语同源词vailë",
+    "other": "昆雅语同源词vailë\n地名Bar-in-Gwael出现了异体gwael",
     "morphology": [
       {
         "type": "Soft",
@@ -20200,6 +20200,998 @@
       {
         "type": "PeferctParticle",
         "form": "gwanu/gwawn"
+      }
+    ]
+  },
+  {
+    "dict_form": "gwaelod",
+    "part": "noun",
+    "english": "wind feather",
+    "definition": "风之羽翼（船），能在大洋上航行的巨大船只",
+    "sentence": "",
+    "other": "等价于昆雅语的ëarráman\ngwae + laud",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i 'waelod"
+      },
+      {
+        "type": "Plural",
+        "form": "gwaeloed"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "in gwaeloed"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an gwaelod"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-gwaelod"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin gwaelod"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor 'waelod"
+      },
+      {
+        "type": "Stop",
+        "form": "o gwaelod"
+      },
+      {
+        "type": "H",
+        "form": "ah gwaelod"
+      },
+      {
+        "type": "DH",
+        "form": "nedh gwaelod"
+      }
+    ]
+  },
+  {
+    "dict_form": "gwaen",
+    "part": "adjective",
+    "english": "stained",
+    "definition": "玷污的，着色的，被沾染的",
+    "sentence": "[S/210]\nAgarwaen.\n沾满血液的，血污的",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "'waen"
+      },
+      {
+        "type": "Plural",
+        "form": "gwaen"
+      },
+      {
+        "type": "Comparative",
+        "form": "angwaen"
+      },
+      {
+        "type": "Superlative",
+        "form": "ro-'waen"
+      }
+    ]
+  },
+  {
+    "dict_form": "gwaeren",
+    "part": "adjective",
+    "english": "windy",
+    "definition": "多风的，刮大风的，吹风的",
+    "sentence": "[VT42/15]\nCôf Gwaeren Bel.\n贝尔的风之湾，贝尔法拉斯湾.",
+    "other": "gwae + -ren",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "'waeren"
+      },
+      {
+        "type": "Plural",
+        "form": "gwaerin"
+      },
+      {
+        "type": "Comparative",
+        "form": "angwaeren"
+      },
+      {
+        "type": "Superlative",
+        "form": "ro-'waeren"
+      }
+    ]
+  },
+  {
+    "dict_form": "Gwaeron",
+    "part": "noun",
+    "english": "March, windy-one",
+    "definition": "三月，多风的月份",
+    "sentence": "",
+    "other": "昆雅语同源词Súlimë\ngwae + -(r)on",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i 'waeron"
+      },
+      {
+        "type": "Plural",
+        "form": "Gwaeryn"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "in Gwaeryn"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an Gwaeron"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-Gwaeron"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin Gwaeron"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor 'waeron"
+      },
+      {
+        "type": "Stop",
+        "form": "o Gwaeron"
+      },
+      {
+        "type": "H",
+        "form": "ah Gwaeron"
+      },
+      {
+        "type": "DH",
+        "form": "nedh Gwaeron"
+      }
+    ]
+  },
+  {
+    "dict_form": "gwaew",
+    "part": "noun",
+    "english": "storm, blow",
+    "definition": "风暴，暴风，强风，暴风雨",
+    "sentence": "",
+    "other": "昆雅语同源词vangwë",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i 'waew"
+      },
+      {
+        "type": "Plural",
+        "form": "gwaew"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "in gwaew"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an gwaew"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-gwaew"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin gwaew"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor 'waew"
+      },
+      {
+        "type": "Stop",
+        "form": "o gwaew"
+      },
+      {
+        "type": "H",
+        "form": "ah gwaew"
+      },
+      {
+        "type": "DH",
+        "form": "nedh gwaew"
+      }
+    ]
+  },
+  {
+    "dict_form": "gwahae",
+    "part": "adjective",
+    "english": "far away",
+    "definition": "远远的，遥远的",
+    "sentence": "[PM/186]\nGwahaedir.\n帕兰提尔",
+    "other": "gwa- + hae",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "'wahae"
+      },
+      {
+        "type": "Plural",
+        "form": "gwehae"
+      },
+      {
+        "type": "Comparative",
+        "form": "angwahae"
+      },
+      {
+        "type": "Superlative",
+        "form": "ro-'wahae"
+      }
+    ]
+  },
+  {
+    "dict_form": "gwain",
+    "part": "adjective",
+    "english": "young, new",
+    "definition": "年轻的；新的，嫩的",
+    "sentence": "",
+    "other": "昆雅语同源词vinya\n来自词根√WIN，参见另一gwain词条",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "'wain"
+      },
+      {
+        "type": "Plural",
+        "form": "gwîn"
+      },
+      {
+        "type": "Comparative",
+        "form": "angwain"
+      },
+      {
+        "type": "Superlative",
+        "form": "ro-'wain"
+      }
+    ]
+  },
+  {
+    "dict_form": "gwain",
+    "part": "adjective",
+    "english": "blonde",
+    "definition": "金色的，金发的",
+    "sentence": "",
+    "other": "昆雅语同源词vanya\n来自词根√(G)WAN，参见另一gwain词条\n一说拼写为gwân",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "'wain"
+      },
+      {
+        "type": "Plural",
+        "form": "gwain"
+      },
+      {
+        "type": "Comparative",
+        "form": "angwain"
+      },
+      {
+        "type": "Superlative",
+        "form": "ro-'wain"
+      }
+    ]
+  },
+  {
+    "dict_form": "gwaith",
+    "part": "noun",
+    "english": "people; region",
+    "definition": "...人，...族，...民；区域，王国",
+    "sentence": "[Let/224]\nEnedwaith.\n中洲之民",
+    "other": "昆雅语同源词vehtë",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i 'waith"
+      },
+      {
+        "type": "Plural",
+        "form": "gwaith"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "in gwaith"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an gwaith"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-gwaith"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin gwaith"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor 'waith"
+      },
+      {
+        "type": "Stop",
+        "form": "o gwaith"
+      },
+      {
+        "type": "H",
+        "form": "ah gwaith"
+      },
+      {
+        "type": "DH",
+        "form": "nedh gwaith"
+      }
+    ]
+  },
+  {
+    "dict_form": "gwanon",
+    "part": "noun",
+    "english": "twin",
+    "definition": "双胞胎，双子",
+    "sentence": "[LotR/1054]\nHaudh-in-Gwanûr.\n豪兹-因-格瓦努尔，兄弟坟丘",
+    "other": "昆雅语同源词onóna\ngo- + √NŌ/ONO",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i 'wanon"
+      },
+      {
+        "type": "Plural",
+        "form": "gwenyn（此外还存在特殊双数形式gwanûr）"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "in gwenyn"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an gwanon"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-gwanon"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin gwanon"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor 'wanon"
+      },
+      {
+        "type": "Stop",
+        "form": "o gwanon"
+      },
+      {
+        "type": "H",
+        "form": "ah gwanon"
+      },
+      {
+        "type": "DH",
+        "form": "nedh gwanon"
+      }
+    ]
+  },
+  {
+    "dict_form": "gwanwen",
+    "part": "adjective",
+    "english": "departed",
+    "definition": "逝去的，离去的，死亡的",
+    "sentence": "",
+    "other": "gwae-的过去分词",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "'wanwen"
+      },
+      {
+        "type": "Plural",
+        "form": "gwenwin"
+      },
+      {
+        "type": "Comparative",
+        "form": "angwanwen"
+      },
+      {
+        "type": "Superlative",
+        "form": "ro-'wanwen"
+      }
+    ]
+  },
+  {
+    "dict_form": "gwath",
+    "part": "noun",
+    "english": "shadow, dim light",
+    "definition": "阴影，昏暗的光，暗影",
+    "sentence": "[S]\nDeldúwath.\n死亡夜影，陶尔-努-浮阴，多松尼安",
+    "other": "并非实际物体或人因为太阳或月亮光而产生的阴影，而是指因为云或迷雾，或者幽深峡谷中光线昏暗的区域。如果要指被光线投射出的实际影子，参见morchant\n昆雅语同源词vasar\n来自词根√WATH",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i 'wath"
+      },
+      {
+        "type": "Plural",
+        "form": "gwaith"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "in gwaith"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an gwath"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-gwath"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin gwath"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor 'wath"
+      },
+      {
+        "type": "Stop",
+        "form": "o gwath"
+      },
+      {
+        "type": "H",
+        "form": "ah gwath"
+      },
+      {
+        "type": "DH",
+        "form": "nedh gwath"
+      }
+    ]
+  },
+  {
+    "dict_form": "gwathra-",
+    "part": "verb",
+    "english": "to overshadow, dim, veil, obscure",
+    "definition": "使黯然失色，蒙蔽，掩盖，使昏暗，遮蔽",
+    "sentence": "",
+    "other": "√WATH",
+    "morphology": [
+      {
+        "type": "Present",
+        "form": "gwathra/gwathra(o)-"
+      },
+      {
+        "type": "Past",
+        "form": "gwathrant/gwathranne-"
+      },
+      {
+        "type": "Future",
+        "form": "gwathratha/gwathratha(o)-"
+      },
+      {
+        "type": "Imperative",
+        "form": "gwathro"
+      },
+      {
+        "type": "Gerund",
+        "form": "gwathrad"
+      },
+      {
+        "type": "PastParticiple",
+        "form": "gwathrannen"
+      },
+      {
+        "type": "PresentParticiple",
+        "form": "gwathrol"
+      },
+      {
+        "type": "PeferctParticle",
+        "form": "gwethriel"
+      }
+    ]
+  },
+  {
+    "dict_form": "gwathren",
+    "part": "adjective",
+    "english": "shadowy, dim",
+    "definition": "幽暗的，昏暗的",
+    "sentence": "[S]\nEred Wethrin.\n埃瑞德威斯林，黯影山脉",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "'wathren"
+      },
+      {
+        "type": "Plural",
+        "form": "gwethrin"
+      },
+      {
+        "type": "Comparative",
+        "form": "angwathren"
+      },
+      {
+        "type": "Superlative",
+        "form": "ro-'wathren"
+      }
+    ]
+  },
+  {
+    "dict_form": "gwathui",
+    "part": "adjective",
+    "english": "shadowy, of shadow",
+    "definition": "幽暗的，暗影的",
+    "sentence": "[PM/330]\nGwathuirim.\n格瓦夙伊民，黑蛮地人",
+    "other": "gwath + -ui",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "'wathui"
+      },
+      {
+        "type": "Plural",
+        "form": "gwathui"
+      },
+      {
+        "type": "Comparative",
+        "form": "angwathui"
+      },
+      {
+        "type": "Superlative",
+        "form": "ro-'wathui"
+      }
+    ]
+  },
+  {
+    "dict_form": "gwend",
+    "part": "noun",
+    "english": "maiden",
+    "definition": "少女",
+    "sentence": "",
+    "other": "昆雅语同源词vendë\n√WEN(ED)",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i 'wend"
+      },
+      {
+        "type": "Plural",
+        "form": "gwind"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "in gwind"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an gwend"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-gwend"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin gwend"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor 'wend"
+      },
+      {
+        "type": "Stop",
+        "form": "o gwend"
+      },
+      {
+        "type": "H",
+        "form": "ah gwend"
+      },
+      {
+        "type": "DH",
+        "form": "nedh gwend"
+      }
+    ]
+  },
+  {
+    "dict_form": "gweneth",
+    "part": "noun",
+    "english": "maidenhood",
+    "definition": "少女时期，少女时代；处女",
+    "sentence": "",
+    "other": "昆雅语同源词vendelë\ngwend + -th",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i 'weneth"
+      },
+      {
+        "type": "Plural",
+        "form": "gwenith"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "in gwenith"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an gweneth"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-gweneth"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin gweneth"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor 'weneth"
+      },
+      {
+        "type": "Stop",
+        "form": "o gweneth"
+      },
+      {
+        "type": "H",
+        "form": "ah gweneth"
+      },
+      {
+        "type": "DH",
+        "form": "nedh gweneth"
+      }
+    ]
+  },
+  {
+    "dict_form": "gwenneth",
+    "part": "noun",
+    "english": "maiden",
+    "definition": "少女",
+    "sentence": "",
+    "other": "gwend的长变体",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i 'wenneth"
+      },
+      {
+        "type": "Plural",
+        "form": "gwennith"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "in gwennith"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an gwenneth"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-gwenneth"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin gwenneth"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor 'wenneth"
+      },
+      {
+        "type": "Stop",
+        "form": "o gwenneth"
+      },
+      {
+        "type": "H",
+        "form": "ah gwenneth"
+      },
+      {
+        "type": "DH",
+        "form": "nedh gwenneth"
+      }
+    ]
+  },
+  {
+    "dict_form": "gweth-",
+    "part": "verb",
+    "english": "to report",
+    "definition": "报告，述说，公布",
+    "sentence": "[PM/395]\ndangweth.\n回答，回复（返回-报告）",
+    "other": "来自词根√GWETH",
+    "morphology": [
+      {
+        "type": "Present",
+        "form": "gwêth/gwethi-"
+      },
+      {
+        "type": "Past",
+        "form": "gwethas/gwethasse-"
+      },
+      {
+        "type": "Future",
+        "form": "gwethatha/gwethatha(o)-"
+      },
+      {
+        "type": "Imperative",
+        "form": "gwetho"
+      },
+      {
+        "type": "Gerund",
+        "form": "gwethed"
+      },
+      {
+        "type": "PastParticiple",
+        "form": "gwethen"
+      },
+      {
+        "type": "PresentParticiple",
+        "form": "gwethel"
+      },
+      {
+        "type": "PeferctParticle",
+        "form": "gwíthiel"
+      }
+    ]
+  },
+  {
+    "dict_form": "gwing",
+    "part": "noun",
+    "english": "foam, spindrift",
+    "definition": "海浪的飞沫，浪花，沫浪",
+    "sentence": "[PM/376]\nElwing.\n埃尔玟，星光水花",
+    "other": "来自词根√WIG",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i 'wing"
+      },
+      {
+        "type": "Plural",
+        "form": "gwing"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "in gwing"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an gwing"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-gwing"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin gwing"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor 'wing"
+      },
+      {
+        "type": "Stop",
+        "form": "o gwing"
+      },
+      {
+        "type": "H",
+        "form": "ah gwing"
+      },
+      {
+        "type": "DH",
+        "form": "nedh gwing"
+      }
+    ]
+  },
+  {
+    "dict_form": "gwinig",
+    "part": "noun",
+    "english": "little-one, baby",
+    "definition": "小宝宝，婴儿；小个子，小只",
+    "sentence": "",
+    "other": "昆雅语同源词vinimo\n√WIN + -eg",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i 'winig"
+      },
+      {
+        "type": "Plural",
+        "form": "gwinig"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "in gwinig"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an gwinig"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-gwinig"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin gwinig"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor 'winig"
+      },
+      {
+        "type": "Stop",
+        "form": "o gwinig"
+      },
+      {
+        "type": "H",
+        "form": "ah gwinig"
+      },
+      {
+        "type": "DH",
+        "form": "nedh gwinig"
+      }
+    ]
+  },
+  {
+    "dict_form": "Gwirith",
+    "part": "noun",
+    "english": "April, freshness",
+    "definition": "四月，清新的月份",
+    "sentence": "[SD/129]\negor ben genediad Drannail erin Gwirith edwen.\n或者用夏尔纪年法计算，四月的第二天",
+    "other": "昆雅语同源词Víressë",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i 'wirith"
+      },
+      {
+        "type": "Plural",
+        "form": "Gwirith"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "in Gwirith"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an Gwirith"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-Gwirith"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin Gwirith"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor 'wirith"
+      },
+      {
+        "type": "Stop",
+        "form": "o Gwirith"
+      },
+      {
+        "type": "H",
+        "form": "ah Gwirith"
+      },
+      {
+        "type": "DH",
+        "form": "nedh Gwirith"
+      }
+    ]
+  },
+  {
+    "dict_form": "gwê",
+    "part": "noun",
+    "english": "living creature",
+    "definition": "活物，生物（包含动物和植物）",
+    "sentence": "",
+    "other": "昆雅语同源词vëo\n来自词根√WEG",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i 'wê"
+      },
+      {
+        "type": "Plural",
+        "form": "gwî"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "in gwî"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an gwê"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-gwê"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin gwê"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor 'wê"
+      },
+      {
+        "type": "Stop",
+        "form": "o gwê"
+      },
+      {
+        "type": "H",
+        "form": "ah gwê"
+      },
+      {
+        "type": "DH",
+        "form": "nedh gwê"
+      }
+    ]
+  },
+  {
+    "dict_form": "gwîn",
+    "part": "noun",
+    "english": "youth",
+    "definition": "青少年时代，青少年时期，青春期；早期",
+    "sentence": "",
+    "other": "昆雅语同源词vínë\n来自词根√WIN",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i 'wîn"
+      },
+      {
+        "type": "Plural",
+        "form": "gwîn"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "in gwîn"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an gwîn"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-gwîn"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin gwîn"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor 'wîn"
+      },
+      {
+        "type": "Stop",
+        "form": "o gwîn"
+      },
+      {
+        "type": "H",
+        "form": "ah gwîn"
+      },
+      {
+        "type": "DH",
+        "form": "nedh gwîn"
       }
     ]
   },
@@ -20400,6 +21392,309 @@
       {
         "type": "DH",
         "form": "nedh gûr"
+      }
+    ]
+  },
+  {
+    "dict_form": "Hadhod",
+    "part": "noun",
+    "english": "Dwarf",
+    "definition": "矮人",
+    "sentence": "[WJ/414]\nHadhodrond\n哈索德隆德，卡扎督姆，墨瑞亚",
+    "other": "来自库兹都语Khuzd",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i Chadhod"
+      },
+      {
+        "type": "Plural",
+        "form": "Hedhyd"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i Chedhyd"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "a Chadhod"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-Chadhod"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin Chadhod"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor Chadhod"
+      },
+      {
+        "type": "Stop",
+        "form": "o Chadhod"
+      },
+      {
+        "type": "H",
+        "form": "a Chadhod"
+      },
+      {
+        "type": "DH",
+        "form": "ne Chadhod"
+      }
+    ]
+  },
+  {
+    "dict_form": "hadhu",
+    "part": "noun",
+    "english": "seat",
+    "definition": "座位，席位",
+    "sentence": "[PE22/148]\narahadhw.\n王座",
+    "other": "昆雅语同源词hanwa",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i chadhu"
+      },
+      {
+        "type": "Plural",
+        "form": "hedhu"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i chedhu"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "a chadhu"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-chadhu"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin chadhu"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor chadhu"
+      },
+      {
+        "type": "Stop",
+        "form": "o chadhu"
+      },
+      {
+        "type": "H",
+        "form": "a chadhu"
+      },
+      {
+        "type": "DH",
+        "form": "ne chadhu"
+      }
+    ]
+  },
+  {
+    "dict_form": "hadhwa-",
+    "part": "verb",
+    "english": "to seat",
+    "definition": "使坐下，使就坐，使落座",
+    "sentence": "",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Present",
+        "form": "hadhwa/hadhwa(o)-"
+      },
+      {
+        "type": "Past",
+        "form": "hadhwant/hadhwanne-"
+      },
+      {
+        "type": "Future",
+        "form": "hadhwatha/hadhwatha(o)-"
+      },
+      {
+        "type": "Imperative",
+        "form": "hadhwo"
+      },
+      {
+        "type": "Gerund",
+        "form": "hadhwad"
+      },
+      {
+        "type": "PastParticiple",
+        "form": "hadhwannen"
+      },
+      {
+        "type": "PresentParticiple",
+        "form": "hadhwol"
+      },
+      {
+        "type": "PeferctParticle",
+        "form": "hedhwiel"
+      }
+    ]
+  },
+  {
+    "dict_form": "hae",
+    "part": "adverb",
+    "english": "far, very far away",
+    "definition": "远地，遥远地",
+    "sentence": "[PE17/27]\nHaerast.\n远方海岸，阿门洲",
+    "other": "",
+    "morphology": []
+  },
+  {
+    "dict_form": "haedh",
+    "part": "noun",
+    "english": "fenced enclosure",
+    "definition": "防护围栏，围城，围起来的结构",
+    "sentence": "",
+    "other": "√KHAG",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i chaedh"
+      },
+      {
+        "type": "Plural",
+        "form": "haedh"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i chaedh"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "a chaedh"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-chaedh"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin chaedh"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor chaedh"
+      },
+      {
+        "type": "Stop",
+        "form": "o chaedh"
+      },
+      {
+        "type": "H",
+        "form": "a chaedh"
+      },
+      {
+        "type": "DH",
+        "form": "ne chaedh"
+      }
+    ]
+  },
+  {
+    "dict_form": "haer",
+    "part": "adjective",
+    "english": "remote",
+    "definition": "遥远的，距离远的",
+    "sentence": "",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "chaer"
+      },
+      {
+        "type": "Plural",
+        "form": "haer"
+      },
+      {
+        "type": "Comparative",
+        "form": "achaer"
+      },
+      {
+        "type": "Superlative",
+        "form": "ro-chaer"
+      }
+    ]
+  },
+  {
+    "dict_form": "haered",
+    "part": "noun",
+    "english": "remoteness, (remote)distance",
+    "definition": "遥远；（远）距离",
+    "sentence": "[LotR/238][PE17/20]\nna-chaered palan-díriel.\n（茂林幽深的中洲上），我们遥遥仰望！",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i chaered"
+      },
+      {
+        "type": "Plural",
+        "form": "haerid"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i chaerid"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "a chaered"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-chaered"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin chaered"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor chaered"
+      },
+      {
+        "type": "Stop",
+        "form": "o chaered"
+      },
+      {
+        "type": "H",
+        "form": "a chaered"
+      },
+      {
+        "type": "DH",
+        "form": "ne chaered"
+      }
+    ]
+  },
+  {
+    "dict_form": "haeron",
+    "part": "adjective",
+    "english": "distant",
+    "definition": "有一定距离的，远的，遥远的",
+    "sentence": "[PM/273]\nDor Haeron.",
+    "other": "haer + -on",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "chaeron"
+      },
+      {
+        "type": "Plural",
+        "form": "haeryn"
+      },
+      {
+        "type": "Comparative",
+        "form": "achaeron"
+      },
+      {
+        "type": "Superlative",
+        "form": "ro-chaeron"
       }
     ]
   },

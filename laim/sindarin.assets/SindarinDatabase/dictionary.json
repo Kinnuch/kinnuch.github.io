@@ -21699,6 +21699,724 @@
     ]
   },
   {
+    "dict_form": "hanar",
+    "part": "noun",
+    "english": "brother",
+    "definition": "兄弟",
+    "sentence": "",
+    "other": "昆雅语同源词háno\n一说拼写为hawn",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i chanar"
+      },
+      {
+        "type": "Plural",
+        "form": "henair"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i chenair"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "a chanar"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-chanar"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin chanar"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor chanar"
+      },
+      {
+        "type": "Stop",
+        "form": "o chanar"
+      },
+      {
+        "type": "H",
+        "form": "a chanar"
+      },
+      {
+        "type": "DH",
+        "form": "ne chanar"
+      }
+    ]
+  },
+  {
+    "dict_form": "harad",
+    "part": "noun",
+    "english": "south",
+    "definition": "南方，南边，南；哈拉德",
+    "sentence": "",
+    "other": "昆雅语同源词hyarmen",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i charad"
+      },
+      {
+        "type": "Plural",
+        "form": "heraid"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i cheraid"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "a charad"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-charad"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin charad"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor charad"
+      },
+      {
+        "type": "Stop",
+        "form": "o charad"
+      },
+      {
+        "type": "H",
+        "form": "a charad"
+      },
+      {
+        "type": "DH",
+        "form": "ne charad"
+      }
+    ]
+  },
+  {
+    "dict_form": "harn",
+    "part": "adjective",
+    "english": "southern, south",
+    "definition": "南方的，南部的，南边的，南向的，南的",
+    "sentence": "",
+    "other": "常做前缀har-",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "charn"
+      },
+      {
+        "type": "Plural",
+        "form": "hern"
+      },
+      {
+        "type": "Comparative",
+        "form": "acharn"
+      },
+      {
+        "type": "Superlative",
+        "form": "ro-charn"
+      }
+    ]
+  },
+  {
+    "dict_form": "harvo",
+    "part": "noun",
+    "english": "left hand, left side",
+    "definition": "左手；左侧，左手边，左边",
+    "sentence": "",
+    "other": "形容词hargam\nharn + †maw\n昆雅语同源词hyarma",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i charvo"
+      },
+      {
+        "type": "Plural",
+        "form": "hervo"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i chervo"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "a charvo"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-charvo"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin charvo"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor charvo"
+      },
+      {
+        "type": "Stop",
+        "form": "o charvo"
+      },
+      {
+        "type": "H",
+        "form": "a charvo"
+      },
+      {
+        "type": "DH",
+        "form": "ne charvo"
+      }
+    ]
+  },
+  {
+    "dict_form": "hathol",
+    "part": "noun",
+    "english": "axe",
+    "definition": "斧头",
+    "sentence": "[WJ/234]\nHathol.\n哈索尔",
+    "other": "√SYAD",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i chathol"
+      },
+      {
+        "type": "Plural",
+        "form": "hethyl"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i chethyl"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "a chathol"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-chathol"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin chathol"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor chathol"
+      },
+      {
+        "type": "Stop",
+        "form": "o chathol"
+      },
+      {
+        "type": "H",
+        "form": "a chathol"
+      },
+      {
+        "type": "DH",
+        "form": "ne chathol"
+      }
+    ]
+  },
+  {
+    "dict_form": "haudh",
+    "part": "noun",
+    "english": "(funeral) mound, grave; heap, piled mound",
+    "definition": "（葬礼）墓碑，坟墓，墓穴；堆，堆积的墓穴",
+    "sentence": "[S/197]\nHaudh-en-Nirnaeth.\n眼泪之丘，阵亡者之丘",
+    "other": "昆雅语同源词hamna",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i chaudh"
+      },
+      {
+        "type": "Plural",
+        "form": "hoedh"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i choedh"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "a chaudh"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-chaudh"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin chaudh"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor chaudh"
+      },
+      {
+        "type": "Stop",
+        "form": "o chaudh"
+      },
+      {
+        "type": "H",
+        "form": "a chaudh"
+      },
+      {
+        "type": "DH",
+        "form": "ne chaudh"
+      }
+    ]
+  },
+  {
+    "dict_form": "heb-",
+    "part": "verb",
+    "english": "to keep",
+    "definition": "保持，保留，留下，收下，收留",
+    "sentence": "[LotR/1061][PE17/117]\nú-chebin estel anim.\n自己却毫无保留",
+    "other": "√KHEP",
+    "morphology": [
+      {
+        "type": "Present",
+        "form": "hêb/hebi-"
+      },
+      {
+        "type": "Past",
+        "form": "echemp/echemme-"
+      },
+      {
+        "type": "Future",
+        "form": "hebatha/hebatha(o)-"
+      },
+      {
+        "type": "Imperative",
+        "form": "hebo"
+      },
+      {
+        "type": "Gerund",
+        "form": "hebed"
+      },
+      {
+        "type": "PastParticiple",
+        "form": "hemmen"
+      },
+      {
+        "type": "PresentParticiple",
+        "form": "hebel"
+      },
+      {
+        "type": "PeferctParticle",
+        "form": "híbiel"
+      }
+    ]
+  },
+  {
+    "dict_form": "heledh",
+    "part": "noun",
+    "english": "glass",
+    "definition": "玻璃，琉璃",
+    "sentence": "[PE17/37]\nHelevorn.\n赫列沃恩，黑色玻璃",
+    "other": "借词，来自库兹都语kheled\n维林诺的精灵独立发明了玻璃，故昆雅语的玻璃与辛达语的玻璃并不同源",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i cheledh"
+      },
+      {
+        "type": "Plural",
+        "form": "helidh"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i chelidh"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "a cheledh"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-cheledh"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin cheledh"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor cheledh"
+      },
+      {
+        "type": "Stop",
+        "form": "o cheledh"
+      },
+      {
+        "type": "H",
+        "form": "a cheledh"
+      },
+      {
+        "type": "DH",
+        "form": "ne cheledh"
+      }
+    ]
+  },
+  {
+    "dict_form": "heleg",
+    "part": "noun",
+    "english": "ice",
+    "definition": "冰，冰锥",
+    "sentence": "",
+    "other": "√KHELEK",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i cheleg"
+      },
+      {
+        "type": "Plural",
+        "form": "helig"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i chelig"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "a cheleg"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-cheleg"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin cheleg"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor cheleg"
+      },
+      {
+        "type": "Stop",
+        "form": "o cheleg"
+      },
+      {
+        "type": "H",
+        "form": "a cheleg"
+      },
+      {
+        "type": "DH",
+        "form": "ne cheleg"
+      }
+    ]
+  },
+  {
+    "dict_form": "hen(d)",
+    "part": "noun",
+    "english": "eye",
+    "definition": "眼睛，目，眸子",
+    "sentence": "[PE17/77]\nAmon Hen.\n阿蒙汉，观望之山",
+    "other": "昆雅语同源词hen",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i chen(d)"
+      },
+      {
+        "type": "Plural",
+        "form": "hin(d)"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i chin(d)"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "a chen(d)"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-chen(d)"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin chen(d)"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor chen(d)"
+      },
+      {
+        "type": "Stop",
+        "form": "o chen(d)"
+      },
+      {
+        "type": "H",
+        "form": "a chen(d)"
+      },
+      {
+        "type": "DH",
+        "form": "ne chen(d)"
+      }
+    ]
+  },
+  {
+    "dict_form": "henneth",
+    "part": "noun",
+    "english": "window",
+    "definition": "窗户，窗子",
+    "sentence": "[LotR/674][RC/473]\nHenneth Annûn.\n汉奈斯安努恩，落日之窗，西方之窗",
+    "other": "hen(d) + -th",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i chenneth"
+      },
+      {
+        "type": "Plural",
+        "form": "hennith"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i chennith"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "a chenneth"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-chenneth"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin chenneth"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor chenneth"
+      },
+      {
+        "type": "Stop",
+        "form": "o chenneth"
+      },
+      {
+        "type": "H",
+        "form": "a chenneth"
+      },
+      {
+        "type": "DH",
+        "form": "ne chenneth"
+      }
+    ]
+  },
+  {
+    "dict_form": "herdir",
+    "part": "noun",
+    "english": "master",
+    "definition": "主人；大师；大人",
+    "sentence": "[AotM/62][SD/129]\nedregol e aníra tírad i Cherdir Perhael (i sennui Panthael estathar aen) Condir i Drann.\n他尤其希望迎接夏尔的市长山姆怀斯（恰如其分的称谓应当是“睿智的”）大人",
+    "other": "hîr + dîr",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i cherdir"
+      },
+      {
+        "type": "Plural",
+        "form": "herdir"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i cherdir"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "a cherdir"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-cherdir"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin cherdir"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor cherdir"
+      },
+      {
+        "type": "Stop",
+        "form": "o cherdir"
+      },
+      {
+        "type": "H",
+        "form": "a cherdir"
+      },
+      {
+        "type": "DH",
+        "form": "ne cherdir"
+      }
+    ]
+  },
+  {
+    "dict_form": "herw",
+    "part": "noun",
+    "english": "wine",
+    "definition": "酒，葡萄酒，红酒",
+    "sentence": "",
+    "other": "昆雅语同源词hyero",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i cherw"
+      },
+      {
+        "type": "Plural",
+        "form": "hery"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i chery"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "a cherw"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-cherw"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin cherw"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor cherw"
+      },
+      {
+        "type": "Stop",
+        "form": "o cherw"
+      },
+      {
+        "type": "H",
+        "form": "a cherw"
+      },
+      {
+        "type": "DH",
+        "form": "ne cherw"
+      }
+    ]
+  },
+  {
+    "dict_form": "heryn",
+    "part": "noun",
+    "english": "lady",
+    "definition": "女士，小姐",
+    "sentence": "[PE17/97]\nRocheryn.\n洛赫林，阿拉贡的马",
+    "other": "一说拼写为heruin",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i cheryn"
+      },
+      {
+        "type": "Plural",
+        "form": "heryn"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i cheryn"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "a cheryn"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-cheryn"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin cheryn"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor cheryn"
+      },
+      {
+        "type": "Stop",
+        "form": "o cheryn"
+      },
+      {
+        "type": "H",
+        "form": "a cheryn"
+      },
+      {
+        "type": "DH",
+        "form": "ne cheryn"
+      }
+    ]
+  },
+  {
+    "dict_form": "hên",
+    "part": "noun",
+    "english": "child",
+    "definition": "孩子，儿童，小孩，幼儿，娃娃",
+    "sentence": "[MR/373][S/198][UT/57][WJ/403]\nNarn i Chîn Húrin.\n胡林的子女",
+    "other": "昆雅语同源词hína",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i chên"
+      },
+      {
+        "type": "Plural",
+        "form": "hîn"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i chîn"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "a chên"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-chên"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin chên"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor chên"
+      },
+      {
+        "type": "Stop",
+        "form": "o chên"
+      },
+      {
+        "type": "H",
+        "form": "a chên"
+      },
+      {
+        "type": "DH",
+        "form": "ne chên"
+      }
+    ]
+  },
+  {
     "dict_form": "êl",
     "part": "noun",
     "english": "star",

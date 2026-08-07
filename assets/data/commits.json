@@ -1,5 +1,19 @@
 [
   {
+    "hash": "3d1e827f7c040372a73c0e332c769dc92f387381",
+    "short": "3d1e827",
+    "date": "2026-08-07T18:12:47+08:00",
+    "author": "wuyichen",
+    "msg": "update EPT Camera Settings"
+  },
+  {
+    "hash": "5805b1567856a46de71224b01710447f8825fcfb",
+    "short": "5805b15",
+    "date": "2026-08-07T07:21:08Z",
+    "author": "github-actions[bot]",
+    "msg": "chore: refresh commits.json [skip ci]"
+  },
+  {
     "hash": "64daf083660f7afcbc59f092834ef5b2ea8b0364",
     "short": "64daf08",
     "date": "2026-08-07T15:20:16+08:00",

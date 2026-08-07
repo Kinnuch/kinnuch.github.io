@@ -17,12 +17,20 @@ const KAY = { idle: 'Idle', walk: 'Walking_A', run: 'Running_A', hit: 'Hit_A', d
 const QMON = { idle: 'Idle', walk: 'Walk', run: 'Run', hit: 'HitReact', death: 'Death', cheer: 'Wave', cast: 'Weapon', castBig: 'Weapon', melee: 'Punch', melee2: 'Punch', shoot: 'Punch', shoot2: 'Punch' };
 const QFLY = { idle: 'Flying_Idle', walk: 'Fast_Flying', run: 'Fast_Flying', hit: 'HitReact', death: 'Death', cheer: 'Yes', cast: 'Headbutt', castBig: 'Headbutt', melee: 'Headbutt', melee2: 'Headbutt', shoot: 'Punch', shoot2: 'Punch' };
 const QBEAST = { idle: 'Idle', walk: 'Walk', run: 'Gallop', hit: 'Idle_HitReact1', death: 'Death', cheer: 'Idle_2', cast: 'Attack', castBig: 'Attack', melee: 'Attack', melee2: 'Attack', shoot: 'Attack', shoot2: 'Attack' };
+// parts：该原型内置的"可开关部件"全集（KayKit 角色 glb 自带多套武器/盾/盔/披风，按变体显隐）
 export const ARCHS = {
-  Knight: { anims: KAY, scale: 0.30 }, Mage: { anims: KAY, scale: 0.30 },
-  Barbarian: { anims: KAY, scale: 0.30 }, Rogue: { anims: KAY, scale: 0.30 }, Rogue_Hooded: { anims: KAY, scale: 0.30 },
-  Skeleton_Warrior: { anims: KAY, scale: 0.30 }, Skeleton_Mage: { anims: KAY, scale: 0.30 }, Skeleton_Minion: { anims: KAY, scale: 0.29 },
+  Knight: { anims: KAY, scale: 0.30, parts: ['1H_Sword', '2H_Sword', '1H_Sword_Offhand', 'Badge_Shield', 'Rectangle_Shield', 'Round_Shield', 'Spike_Shield', 'Knight_Helmet', 'Knight_Cape'] },
+  Mage: { anims: KAY, scale: 0.30, parts: ['Spellbook', 'Spellbook_open', '1H_Wand', '2H_Staff', 'Mage_Hat', 'Mage_Cape'] },
+  Barbarian: { anims: KAY, scale: 0.30, parts: ['1H_Axe', '2H_Axe', '1H_Axe_Offhand', 'Barbarian_Round_Shield', 'Mug', 'Barbarian_Hat', 'Barbarian_Cape'] },
+  Rogue: { anims: KAY, scale: 0.30, parts: ['Knife', 'Knife_Offhand', '1H_Crossbow', '2H_Crossbow', 'Throwable', 'Rogue_Cape'] },
+  Rogue_Hooded: { anims: KAY, scale: 0.30, parts: ['Knife', 'Knife_Offhand', '1H_Crossbow', '2H_Crossbow', 'Throwable', 'Rogue_Cape'] },
+  Skeleton_Warrior: { anims: KAY, scale: 0.30, parts: ['Skeleton_Warrior_Helmet', 'Skeleton_Warrior_Cloak'] },
+  Skeleton_Mage: { anims: KAY, scale: 0.30, parts: ['Skeleton_Mage_Hat'] },
+  Skeleton_Minion: { anims: KAY, scale: 0.29, parts: ['Skeleton_Minion_Cloak'] },
   Demon: { anims: QMON, scale: 0.26 }, BlueDemon: { anims: QMON, scale: 0.26 }, Orc: { anims: QMON, scale: 0.25 },
-  Dragon: { anims: QFLY, scale: 0.28, fly: 0.09 }, Dragon_Evolved: { anims: QFLY, scale: 0.30, fly: 0.1 }, Ghost: { anims: QFLY, scale: 0.25, fly: 0.05 },
+  Yeti: { anims: QMON, scale: 0.27 }, Tribal: { anims: QMON, scale: 0.25 }, MushroomKing: { anims: QMON, scale: 0.26 }, Orc_Skull: { anims: QMON, scale: 0.25 },
+  Dragon: { anims: QFLY, scale: 0.28, fly: 0.09 }, Dragon_Evolved: { anims: QFLY, scale: 0.30, fly: 0.1 },
+  Ghost: { anims: QFLY, scale: 0.25, fly: 0.05 }, Ghost_Skull: { anims: QFLY, scale: 0.26, fly: 0.05 }, Goleling: { anims: QFLY, scale: 0.27, fly: 0.04 },
   Wolf: { anims: QBEAST, scale: 0.25 }, Husky: { anims: QBEAST, scale: 0.25 }, Fox: { anims: QBEAST, scale: 0.25 },
 };
 
@@ -32,7 +40,9 @@ const units = new Map(); // uid → { group, model, mixer, clips, arch, team, c,
 const loadCache = new Map(); // arch → Promise<gltf>
 const raycaster = new THREE.Raycaster();
 const clock = new THREE.Clock();
-let zoom = 1, viewMode = 'tilt', running = false, disposed = false;
+let zoom = 1, viewMode = 'tilt', running = false, disposed = false, speedMult = 1;
+let az = 0, pol = 0.72, orbit = null; // 相机球面角：方位角/俯仰角；右键拖拽旋转
+export function setSpeed(m) { speedMult = m; } // 战斗倍速/暂停（0=冻结）
 
 export function supported() {
   try {
@@ -92,6 +102,24 @@ export function mount(el, o = {}) {
   unitGroup = new THREE.Group();
   scene.add(unitGroup);
 
+  // 右键拖拽旋转镜头（指针捕获，拖出画布也不断）
+  canvas.addEventListener('contextmenu', e => e.preventDefault());
+  canvas.addEventListener('pointerdown', e => {
+    if (e.button !== 2) return;
+    e.preventDefault();
+    orbit = { sx: e.clientX, sy: e.clientY, az0: az, pol0: pol, id: e.pointerId };
+    if (canvas.setPointerCapture) try { canvas.setPointerCapture(e.pointerId); } catch { /* 忽略 */ }
+  });
+  canvas.addEventListener('pointermove', e => {
+    if (!orbit) return;
+    az = orbit.az0 - (e.clientX - orbit.sx) * 0.008;
+    pol = Math.min(1.5, Math.max(0.3, orbit.pol0 + (e.clientY - orbit.sy) * 0.006));
+    applyCamera();
+  });
+  const endOrbit = () => { orbit = null; };
+  canvas.addEventListener('pointerup', e => { if (e.button === 2) endOrbit(); });
+  canvas.addEventListener('pointercancel', endOrbit);
+
   resize();
   running = true;
   loop();
@@ -115,17 +143,17 @@ export function resize() {
 }
 
 function applyCamera() {
-  const d = 8.6 / zoom;
-  if (viewMode === 'top') {
-    cam.position.set(0, d * 0.92, 0.001);
-    cam.lookAt(0, 0, 0);
-  } else {
-    cam.position.set(0, d * Math.sin(0.72), d * Math.cos(0.72) + 0.5);
-    cam.lookAt(0, 0.05, 0.05);
-  }
+  const d = 9.1 / zoom;
+  const tx = 0, ty = 0, tz = 0.3;
+  cam.position.set(
+    tx + d * Math.cos(pol) * Math.sin(az),
+    ty + d * Math.sin(pol),
+    tz + d * Math.cos(pol) * Math.cos(az)
+  );
+  cam.lookAt(tx, ty, tz);
 }
 export function setZoom(z) { zoom = Math.min(1.6, Math.max(0.55, z)); applyCamera(); }
-export function setView(v) { viewMode = v; applyCamera(); }
+export function setView(v) { viewMode = v; az = 0; pol = v === 'top' ? 1.47 : 0.72; applyCamera(); } // 视角按钮=复位到斜视/俯视预设
 
 // ---------- 模型 ----------
 function loadArch(arch) {
@@ -158,7 +186,8 @@ export function addUnit(uid, cfg) {
   removeUnit(uid);
   const group = new THREE.Group();
   group.position.set(wx(cfg.c, cfg.r), 0, wz(cfg.r));
-  group.rotation.y = cfg.team === 0 ? Math.PI : 0;
+  // 摆放时侧身45°（能看到脸），战斗中移动/攻击会自动转向目标
+  group.rotation.y = (cfg.team === 0 ? 1 : -1) * Math.PI / 4;
   // 底座：队伍色圆盘 + 星级环
   const baseCol = cfg.team === 0 ? 0xb08d3f : 0x8a3b2e;
   const base = new THREE.Mesh(new THREE.CylinderGeometry(0.34, 0.38, 0.05, 24), new THREE.MeshStandardMaterial({ color: baseCol, roughness: 0.6 }));
@@ -180,6 +209,11 @@ export function addUnit(uid, cfg) {
     const model = SkeletonUtils.clone(g.scene);
     model.scale.setScalar(scl);
     model.position.y = (spec.fly || 0) + 0.05;
+    // 变体：按部件全集显隐（cfg.show = 该单位要显示的部件名单）
+    if (spec.parts) {
+      const showSet = new Set(cfg.show || []);
+      model.traverse(o => { if (spec.parts.includes(o.name)) o.visible = showSet.has(o.name); });
+    }
     model.traverse(o => {
       if (o.isMesh) {
         o.castShadow = true;
@@ -336,7 +370,7 @@ export function isCanvas(el) { return el === canvas; }
 function loop() {
   if (!running) return;
   requestAnimationFrame(loop);
-  const dt = Math.min(clock.getDelta(), 0.1);
+  const dt = Math.min(clock.getDelta(), 0.1) * speedMult;
   for (const [uid, u] of units) {
     if (u.mixer) u.mixer.update(dt);
     if (u.mv) {

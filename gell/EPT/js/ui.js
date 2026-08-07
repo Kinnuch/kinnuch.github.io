@@ -122,6 +122,7 @@ function setPaused(v) {
   $('pauseBtn').innerHTML = paused ? '<span class="gi gi-ui-play"></span> 继续' : '<span class="gi gi-ui-pause"></span> 暂停';
   $('pauseBtn').style.background = paused ? 'var(--accent)' : '';
   $('pauseBtn').style.color = paused ? '#fff8e8' : '';
+  if (use3d) board3d.setSpeed(paused ? 0 : (playback ? playback.speed : 1)); // 3D 动画同步冻结/倍速
 }
 const TUT_STEPS = {
   welcome: ['欢迎来到中土自走棋', '目标：活到最后。每回合你会获得金币收入（含利息与连胜奖励）。用金币在下方<b>商店</b>购买棋子、<b>刷新</b>商店（2金币）或<b>购买经验</b>升级（4金币）。等级决定能上场的棋子数量和商店刷出高费卡的概率。'],
@@ -171,7 +172,41 @@ let use3d = false, combat3dActive = false, b3resizeBound = false;
 const plan3d = new Map(); // 备战期已同步到 3D 的棋子：uid → {c,r,star}
 // 职业 → 原型模型；个别棋子按 id 覆盖
 const CLASS_ARCH = { warrior: 'Knight', chivalry: 'Knight', arcanist: 'Mage', indulger: 'Mage', flagger: 'Mage', forger: 'Barbarian', executor: 'Barbarian', killer: 'Rogue', adventurer: 'Rogue', ranger: 'Rogue_Hooded', hunter: 'Rogue_Hooded', trickshot: 'Rogue_Hooded' };
-const ARCH_OVERRIDE = { carcharoth: 'Wolf', huan: 'Husky', tevildo: 'Fox', glaurung: 'Dragon', ancalagon: 'Dragon_Evolved', gothmog: 'Demon', morgoth: 'BlueDemon', sauron: 'Skeleton_Warrior', witchking: 'Ghost', khamul: 'Ghost', mouthofsauron: 'Skeleton_Mage', grishnakh: 'Orc' };
+const ARCH_OVERRIDE = { carcharoth: 'Wolf', huan: 'Husky', tevildo: 'Fox', glaurung: 'Dragon', ancalagon: 'Dragon_Evolved', gothmog: 'Demon', morgoth: 'BlueDemon', sauron: 'Skeleton_Warrior', witchking: 'Ghost_Skull', khamul: 'Ghost', mouthofsauron: 'Skeleton_Mage', grishnakh: 'Orc', durin: 'Goleling', tombombadil: 'MushroomKing', haleth: 'Tribal', hurin: 'Tribal', beren: 'Tribal' };
+// 职业 → 部件变体（武器形态定基调；盔/披风/盾式样按棋子 id 哈希微变，同职业也各有不同）
+const hashId = s => { let h = 5381; for (let i = 0; i < s.length; i++) h = (h * 33 + s.charCodeAt(i)) >>> 0; return h; };
+function partsFor(arch, def) {
+  const h = hashId(def.id);
+  const shields = ['Round_Shield', 'Badge_Shield', 'Rectangle_Shield', 'Spike_Shield'];
+  const P = [];
+  const cap = (name, bit) => { if ((h >> bit) & 1) P.push(name); };
+  if (arch === 'Knight') {
+    const cls = def.classes[0];
+    if (cls === 'chivalry') { P.push('1H_Sword', 'Badge_Shield', 'Knight_Helmet', 'Knight_Cape'); }
+    else if ((h >> 2) & 1) { P.push('2H_Sword'); cap('Knight_Helmet', 3); cap('Knight_Cape', 4); }
+    else { P.push('1H_Sword', shields[h % 4]); cap('Knight_Helmet', 3); cap('Knight_Cape', 4); }
+  } else if (arch === 'Mage') {
+    const cls = def.classes[0];
+    if (cls === 'indulger') { P.push('Spellbook_open', '1H_Wand'); cap('Mage_Cape', 3); }
+    else if (cls === 'flagger') { P.push('2H_Staff', 'Mage_Cape'); cap('Mage_Hat', 3); }
+    else { P.push('2H_Staff', 'Mage_Hat'); cap('Mage_Cape', 3); }
+  } else if (arch === 'Barbarian') {
+    if ((h >> 1) & 1) P.push('1H_Axe', '1H_Axe_Offhand');
+    else if ((h >> 2) & 1) P.push('1H_Axe', 'Barbarian_Round_Shield');
+    else P.push('2H_Axe');
+    cap('Barbarian_Hat', 3); cap('Barbarian_Cape', 4);
+  } else if (arch === 'Rogue' || arch === 'Rogue_Hooded') {
+    const cls = def.classes[0];
+    if (cls === 'ranger') P.push('1H_Crossbow', 'Knife_Offhand');
+    else if (cls === 'hunter' || cls === 'trickshot') P.push('2H_Crossbow');
+    else if ((h >> 1) & 1) P.push('Knife', 'Knife_Offhand');
+    else P.push('Knife', 'Throwable');
+    cap('Rogue_Cape', 3);
+  } else if (arch === 'Skeleton_Warrior') { cap('Skeleton_Warrior_Helmet', 1); cap('Skeleton_Warrior_Cloak', 2); }
+  else if (arch === 'Skeleton_Mage') { P.push('Skeleton_Mage_Hat'); }
+  else if (arch === 'Skeleton_Minion') { cap('Skeleton_Minion_Cloak', 1); }
+  return P;
+}
 function archOf(def) {
   if (ARCH_OVERRIDE[def.id]) return ARCH_OVERRIDE[def.id];
   const dark = def.races.some(r => ['mordor', 'angband'].includes(r));
@@ -185,11 +220,15 @@ function monsterArch(name) {
   if (/龙/.test(name)) return 'Dragon';
   if (/炎魔/.test(name)) return 'Demon';
   if (/狼|犬/.test(name)) return 'Wolf';
+  if (/雪怪|巨魔|食人妖|巨人/.test(name)) return 'Yeti';
+  if (/石|魔像/.test(name)) return 'Goleling';
+  if (/野猪|熊/.test(name)) return 'Wolf';
   return 'Orc';
 }
 function unitCfg3d(def, star, team, monster) {
   if (monster) return { arch: monsterArch(def.name), tint: '#8a7a66', team, star: 1, big: /炎魔|龙/.test(def.name) ? 1.6 : 1.1 };
-  return { arch: archOf(def), tint: RACE_COLOR[def.races[0]] || '#999999', team, star, big: def.cost === 5 ? 1.25 : def.cost === 4 ? 1.12 : 1 };
+  const arch = archOf(def);
+  return { arch, tint: RACE_COLOR[def.races[0]] || '#999999', team, star, big: def.cost === 5 ? 1.25 : def.cost === 4 ? 1.12 : 1, show: partsFor(arch, def) };
 }
 function atkKind(def) {
   if (!def || def.monster) return 'melee2';
@@ -235,7 +274,7 @@ function syncOverlay() { // 每帧把血条锚到 3D 头顶
   }
 }
 function sync3DPlanning() { // 备战期：把 me().board 差分同步到 3D
-  if (combat3dActive) { board3d.clearUnits(); const ov = $('b3overlay'); if (ov) ov.innerHTML = ''; plan3d.clear(); combat3dActive = false; }
+  if (combat3dActive) { board3d.clearUnits(); const ov = $('b3overlay'); if (ov) ov.innerHTML = ''; plan3d.clear(); combat3dActive = false; board3d.setSpeed(paused ? 0 : 1); }
   document.querySelectorAll('#board .float-txt,#board .proj').forEach(n => n.remove());
   const p = me();
   const want = new Map(p.board.map(b => [b.unit.uid, b]));
@@ -381,10 +420,13 @@ export function initUI() {
   });
   $('startBtn').onclick = () => { if (game && game.phase === 'planning' && (!online || net.isHost)) requestCombat(); };
   $('speedBtn').onclick = () => {
-    if (!playback) return;
-    playback.speed = playback.speed >= 4 ? 1 : playback.speed * 2;
-    localStorage.setItem('ept-speed', playback.speed);
-    $('speedBtn').innerHTML = '<span class="gi gi-ui-play"></span> ' + playback.speed + 'x';
+    // 备战期也可预调（写入存档），战斗中立即生效（含 3D 动画速率）
+    const cur = playback ? playback.speed : (Math.min(4, Math.max(1, parseFloat(localStorage.getItem('ept-speed')) || 1)));
+    const next = cur >= 4 ? 1 : cur * 2;
+    if (playback) playback.speed = next;
+    localStorage.setItem('ept-speed', next);
+    if (use3d && playback && !paused) board3d.setSpeed(next);
+    $('speedBtn').innerHTML = '<span class="gi gi-ui-play"></span> ' + next + 'x';
   };
   $('skipBtn').onclick = () => { if (playback) playback.skip = true; };
   $('rerollBtn').onclick = () => dispatch({ k: 'reroll' });
@@ -449,6 +491,7 @@ export function initUI() {
     startGame(q.get('seed') ? +q.get('seed') : (Math.random() * 0xFFFFFFFF) >>> 0);
     if (q.get('fight')) setTimeout(() => { if (game.phase === 'planning') requestCombat(); }, 800);
     if (q.get('dragtest')) setTimeout(runDragSelfTest, 1200);
+    if (q.get('orbittest')) setTimeout(runOrbitSelfTest, 1500);
   }
 }
 
@@ -1475,6 +1518,21 @@ function hideTooltip(force) {
 
 // 开发用自检（?auto=1&dragtest=1）：先模拟"原生拖拽打断"（只有 pointercancel、没有 pointerup），
 // 再做一次正常拖拽，确认状态没被卡住、棋子确实上场。结果写进 document.title。
+// 开发用自检（?auto=1&orbittest=1）：合成右键拖拽，验证相机方位角变化
+function runOrbitSelfTest() {
+  if (!use3d) { document.title = 'ORBIT no-3d'; return; }
+  const cv = document.getElementById('b3canvas');
+  const r = cv.getBoundingClientRect();
+  const cx = r.left + r.width / 2, cy = r.top + r.height / 2;
+  const pe = (t, x, y) => cv.dispatchEvent(new PointerEvent(t, { bubbles: true, clientX: x, clientY: y, button: 2, buttons: 2, pointerId: 7 }));
+  const before = board3d.cellScreen(0, 0).x;
+  pe('pointerdown', cx, cy);
+  pe('pointermove', cx + 130, cy + 40);
+  pe('pointerup', cx + 130, cy + 40);
+  const after = board3d.cellScreen(0, 0).x;
+  document.title = 'ORBIT ' + (Math.abs(after - before) > 5 ? 'ok' : 'FAILED') + ' dx=' + Math.round(after - before);
+}
+
 function runDragSelfTest() {
   if (use3d) { document.title = 'DRAGTEST skipped-3d'; return; } // 该自检针对 2D DOM 路径（配合 ?2d=1）
   const log = [];
@@ -1729,7 +1787,7 @@ function beginCombatLocal() {
 }
 
 function startPlayback(events, mirror) {
-  if (use3d) { plan3d.clear(); board3d.clearUnits(); board3d.clearHighlights(); const ov = $('b3overlay'); if (ov) ov.innerHTML = ''; combat3dActive = true; }
+  if (use3d) { plan3d.clear(); board3d.clearUnits(); board3d.clearHighlights(); const ov = $('b3overlay'); if (ov) ov.innerHTML = ''; combat3dActive = true; board3d.setSpeed(paused ? 0 : Math.min(4, Math.max(1, parseFloat(localStorage.getItem('ept-speed')) || 1))); }
   document.querySelectorAll('#board .unit,#board .float-txt,#board .proj').forEach(n => n.remove());
   const savedSpeed = Math.min(4, Math.max(1, parseFloat(localStorage.getItem('ept-speed')) || 1));
   playback = { events, i: 0, t: 0, speed: savedSpeed, skip: false, nodes: {}, last: performance.now(), mirror, acc: { dealt: {}, taken: {}, heal: {} }, lastPanelT: 0 };

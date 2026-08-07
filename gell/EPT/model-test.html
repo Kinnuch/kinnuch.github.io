@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html><head><meta charset="UTF-8">
+<style>body { margin: 0; background: #f4efe6; font-family: sans-serif; } #info { position: fixed; left: 10px; top: 10px; font-size: 12px; color: #3b3020; background: #fffaf1cc; padding: 8px 10px; border-radius: 8px; max-width: 460px; line-height: 1.5; }</style>
+<script type="importmap">{ "imports": { "three": "./js/vendor/three.module.min.js" } }</script>
+</head>
+<body>
+<div id="info">loading...</div>
+<script type="module">
+import * as THREE from 'three';
+import { GLTFLoader } from './js/vendor/GLTFLoader.js';
+
+const W = innerWidth, H = innerHeight;
+const renderer = new THREE.WebGLRenderer({ antialias: true });
+renderer.setSize(W, H);
+renderer.setPixelRatio(1);
+renderer.shadowMap.enabled = true;
+document.body.appendChild(renderer.domElement);
+
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(0xf4efe6);
+// camera mimics the in-game 2.5D tilt (~38deg)
+const cam = new THREE.PerspectiveCamera(34, W / H, 0.1, 100);
+cam.position.set(0, 6.6, 8.6);
+cam.lookAt(0, 0.4, -1.2);
+
+scene.add(new THREE.AmbientLight(0xfff4e0, 1.1));
+const sun = new THREE.DirectionalLight(0xffffff, 2.2);
+sun.position.set(3, 8, 4);
+sun.castShadow = true;
+scene.add(sun);
+
+// hex tiles standing in for the board
+const hexShape = new THREE.Shape();
+for (let i = 0; i < 6; i++) { const a = Math.PI / 3 * i + Math.PI / 6; const x = Math.cos(a), y = Math.sin(a); i ? hexShape.lineTo(x, y) : hexShape.moveTo(x, y); }
+const hexGeo = new THREE.ShapeGeometry(hexShape);
+const hexMat = new THREE.MeshStandardMaterial({ color: 0xe4dbc4 });
+const positions = [[-2.2, 0], [0, 0], [2.2, 0], [-2.4, -2.1], [0, -2.3], [2.6, -2.4]];
+for (const [x, z] of positions) {
+  const h = new THREE.Mesh(hexGeo, hexMat);
+  h.rotation.x = -Math.PI / 2; h.rotation.z = Math.PI / 6;
+  h.scale.setScalar(1.04); h.position.set(x, 0, z);
+  h.receiveShadow = true;
+  scene.add(h);
+}
+
+const loader = new GLTFLoader();
+const info = [];
+const clock = new THREE.Clock();
+const mixers = [];
+const CFG = [
+  ['assets/models/Knight.trim.glb', -2.2, 0, 'Idle', 0.62],
+  ['assets/models/Mage.glb', 0, 0, 'Spellcast_Shoot', 0.62],
+  ['assets/models/Barbarian.glb', 2.2, 0, '2H_Melee_Attack_Chop', 0.62],
+  ['assets/models/Wolf.gltf', -2.4, -2.1, 'Attack', 0.5],
+  ['assets/models/Demon.gltf', 0, -2.3, 'Idle', 0.55],
+  ['assets/models/Dragon.gltf', 2.6, -2.4, 'Flying_Idle', 0.6],
+];
+let loaded = 0;
+for (const [url, x, z, animName, sc] of CFG) {
+  loader.load(url, g => {
+    const m = g.scene;
+    m.position.set(x, 0.02, z);
+    m.scale.setScalar(sc || 0.62);
+    m.traverse(o => { if (o.isMesh) { o.castShadow = true; } });
+    scene.add(m);
+    const names = g.animations.map(a => a.name);
+    const mixer = new THREE.AnimationMixer(m);
+    const clip = g.animations.find(a => a.name === animName) || g.animations.find(a => /idle/i.test(a.name)) || g.animations[0];
+    mixer.clipAction(clip).play();
+    mixers.push(mixer);
+    loaded++;
+    info.push(url.split('/').pop() + ' [' + names.length + ' anims] -> ' + clip.name);
+    document.getElementById('info').innerHTML = 'PoC: three.js + KayKit + Quaternius (CC0) - ' + loaded + '/' + CFG.length + '<br>' + info.join('<br>');
+    document.title = 'MODELTEST ' + loaded + '/' + CFG.length;
+  }, undefined, err => { document.title = 'MODELTEST ERR'; document.getElementById('info').textContent = 'load fail: ' + err; });
+}
+
+function tick() {
+  requestAnimationFrame(tick);
+  const dt = clock.getDelta();
+  for (const mx of mixers) mx.update(dt || 0.016);
+  renderer.render(scene, cam);
+}
+tick();
+// headless fallback: rAF may stall under virtual time
+setInterval(() => { for (const mx of mixers) mx.update(0.033); renderer.render(scene, cam); }, 33);
+</script>
+</body></html>

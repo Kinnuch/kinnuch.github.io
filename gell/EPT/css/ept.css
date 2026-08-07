@@ -162,6 +162,14 @@ button { font-family: inherit; cursor: pointer; }
 @keyframes floatUp { 0% { transform: translateY(0); opacity: 1; } 100% { transform: translateY(-36px); opacity: 0; } }
 .proj { position: absolute; z-index: 15; width: 8px; height: 8px; border-radius: 50%; pointer-events: none; }
 
+/* M5：3D 棋盘 */
+#board.b3 { transform: none !important; }
+#board.b3 #b3canvas { position: absolute; inset: 0; z-index: 1; }
+#b3overlay { position: absolute; inset: 0; pointer-events: none; z-index: 8; }
+.unit.b3o { transform: translate(-50%, -100%); transition: none; pointer-events: none; width: 58px; z-index: 8; }
+.unit.b3o .uname { max-width: 58px; }
+.unit.b3o.dead { opacity: 0; transition: opacity 1.2s; }
+
 /* M4：状态头顶标记 / 施法爆发环 / 震屏 */
 .st-marks { position: absolute; top: -15px; left: -10px; right: -10px; display: flex; justify-content: center; gap: 1px; font-size: 11px; line-height: 1; z-index: 6; pointer-events: none; }
 .st-mark { animation: markPop .25s ease; filter: drop-shadow(0 1px 2px #0009); }

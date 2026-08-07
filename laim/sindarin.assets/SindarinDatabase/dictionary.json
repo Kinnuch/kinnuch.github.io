@@ -13706,8 +13706,8 @@
     "part": "adverb",
     "english": "only, alone",
     "definition": "只有，仅，独自地",
-    "sentence": "[VT50/5]\nI glinn hen agorer Edain mi Velerian, ach hí in Ellath îr ed epholar.\n人类在贝烈瑞安德创作了这首歌，但如今独有精灵（？记得）它了。\n",
-    "other": "ero > îr，一说îr来源于air",
+    "sentence": "[VT50/5]\nI glinn hen agorer Edain mi Velerian, ach hí in Ellath îr ed epholar.\n人类在贝烈瑞安德创作了这首歌，但如今独有精灵（？记得）它了。",
+    "other": "独立副词\nero > îr，一说îr来源于air",
     "morphology": []
   },
   {
@@ -20108,7 +20108,7 @@
     "english": "away",
     "definition": "远离地，遥远地",
     "sentence": "[PM/186]\ngwahae.\n远远的，遥远的",
-    "other": "",
+    "other": "副词前缀，引发软音变",
     "morphology": []
   },
   {
@@ -21543,7 +21543,7 @@
     "english": "far, very far away",
     "definition": "远地，遥远地",
     "sentence": "[PE17/27]\nHaerast.\n远方海岸，阿门洲",
-    "other": "",
+    "other": "独立副词",
     "morphology": []
   },
   {
@@ -22367,6 +22367,259 @@
     ]
   },
   {
+    "dict_form": "him",
+    "part": "adverb",
+    "english": "ever",
+    "definition": "永远地，从来地，永恒地",
+    "sentence": "[S/123]\nHimring.\n永远严寒，希姆凛",
+    "other": "独立副词\n一说也可做形容词",
+    "morphology": []
+  },
+  {
+    "dict_form": "hiril",
+    "part": "noun",
+    "english": "lady",
+    "definition": "女士",
+    "sentence": "[PE23/143]\nGaladriel Hiril.\n加拉德瑞尔女士",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i chiril"
+      },
+      {
+        "type": "Plural",
+        "form": "hiril"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i chiril"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "a chiril"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-chiril"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin chiril"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor chiril"
+      },
+      {
+        "type": "Stop",
+        "form": "o chiril"
+      },
+      {
+        "type": "H",
+        "form": "a chiril"
+      },
+      {
+        "type": "DH",
+        "form": "ne chiril"
+      }
+    ]
+  },
+  {
+    "dict_form": "hithlain",
+    "part": "noun",
+    "english": "mist thread, grey elvish rope",
+    "definition": "迷雾般的绳子，希斯莱恩",
+    "sentence": "",
+    "other": "昆雅语同源词hísilanya\nhîth + lain",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i chithlain"
+      },
+      {
+        "type": "Plural",
+        "form": "hithlain"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i chithlain"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "a chithlain"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-chithlain"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin chithlain"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor chithlain"
+      },
+      {
+        "type": "Stop",
+        "form": "o chithlain"
+      },
+      {
+        "type": "H",
+        "form": "a chithlain"
+      },
+      {
+        "type": "DH",
+        "form": "ne chithlain"
+      }
+    ]
+  },
+  {
+    "dict_form": "hithren",
+    "part": "adjective",
+    "english": "grey",
+    "definition": "灰色的",
+    "sentence": "",
+    "other": "参考thind",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "chithren"
+      },
+      {
+        "type": "Plural",
+        "form": "hithrin"
+      },
+      {
+        "type": "Comparative",
+        "form": "echithren"
+      },
+      {
+        "type": "Superlative",
+        "form": "ro-chithren"
+      }
+    ]
+  },
+  {
+    "dict_form": "Hithui",
+    "part": "noun",
+    "english": "November, Misty-one",
+    "definition": "十一月，迷雾般的月份",
+    "sentence": "",
+    "other": "昆雅语同源词Hísimë",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i Chithui"
+      },
+      {
+        "type": "Plural",
+        "form": "Hithui"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i Chithui"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "a Chithui"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-Chithui"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin Chithui"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor Chithui"
+      },
+      {
+        "type": "Stop",
+        "form": "o Chithui"
+      },
+      {
+        "type": "H",
+        "form": "a Chithui"
+      },
+      {
+        "type": "DH",
+        "form": "ne Chithui"
+      }
+    ]
+  },
+  {
+    "dict_form": "hithui",
+    "part": "adjective",
+    "english": "misty",
+    "definition": "充斥迷雾的，起雾的，雾霭重重的，有雾的",
+    "sentence": "",
+    "other": "hîth + -ui",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "chithui"
+      },
+      {
+        "type": "Plural",
+        "form": "hithui"
+      },
+      {
+        "type": "Comparative",
+        "form": "echithui"
+      },
+      {
+        "type": "Superlative",
+        "form": "ro-chithui"
+      }
+    ]
+  },
+  {
+    "dict_form": "hol-",
+    "part": "verb",
+    "english": "to close, shut",
+    "definition": "关闭，关掉，封盖",
+    "sentence": "[PE17/98]\nhollen.\n关闭的，关掉的",
+    "other": "昆雅语同源词holya-\n词根√SKOL",
+    "morphology": [
+      {
+        "type": "Present",
+        "form": "hôl/heli-"
+      },
+      {
+        "type": "Past",
+        "form": "holant/holanne-"
+      },
+      {
+        "type": "Future",
+        "form": "holatha/holatha(o)-"
+      },
+      {
+        "type": "Imperative",
+        "form": "holo"
+      },
+      {
+        "type": "Gerund",
+        "form": "holed"
+      },
+      {
+        "type": "PastParticiple",
+        "form": "hollen"
+      },
+      {
+        "type": "PresentParticiple",
+        "form": "holel"
+      },
+      {
+        "type": "PeferctParticle",
+        "form": "húliel"
+      }
+    ]
+  },
+  {
     "dict_form": "hên",
     "part": "noun",
     "english": "child",
@@ -22413,6 +22666,165 @@
       {
         "type": "DH",
         "form": "ne chên"
+      }
+    ]
+  },
+  {
+    "dict_form": "hí",
+    "part": "adverb",
+    "english": "now",
+    "definition": "现在，当下",
+    "sentence": "[VT50/5]\nI glinn hen agorer Edain mi Velerian, ach hí in Ellath îr ed epholar.\n人类在贝烈瑞安德创作了这首歌，但如今独有精灵（？记得）它了。",
+    "other": "独立副词",
+    "morphology": []
+  },
+  {
+    "dict_form": "hîl",
+    "part": "noun",
+    "english": "heir",
+    "definition": "后裔，子嗣，后代；继承人",
+    "sentence": "[PM/369]\nEluchíl.\n辛葛的子嗣",
+    "other": "昆雅语同源词hildë",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i chîl"
+      },
+      {
+        "type": "Plural",
+        "form": "hîl"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i chîl"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "a chîl"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-chîl"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin chîl"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor chîl"
+      },
+      {
+        "type": "Stop",
+        "form": "o chîl"
+      },
+      {
+        "type": "H",
+        "form": "a chîl"
+      },
+      {
+        "type": "DH",
+        "form": "ne chîl"
+      }
+    ]
+  },
+  {
+    "dict_form": "hîr",
+    "part": "noun",
+    "english": "lord, master",
+    "definition": "大人，领主，主人，首领",
+    "sentence": "[AotM/62][SD/128]\naran Gondor ar Arnor ar Hîr i Mbair Annui.\n刚铎与阿尔诺的国王暨西境之主",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i chîr"
+      },
+      {
+        "type": "Plural",
+        "form": "hîr"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i chîr"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "a chîr"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-chîr"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin chîr"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor chîr"
+      },
+      {
+        "type": "Stop",
+        "form": "o chîr"
+      },
+      {
+        "type": "H",
+        "form": "a chîr"
+      },
+      {
+        "type": "DH",
+        "form": "ne chîr"
+      }
+    ]
+  },
+  {
+    "dict_form": "hîth",
+    "part": "noun",
+    "english": "mist",
+    "definition": "迷雾，雾霭",
+    "sentence": "[RC/327]\nNen Hithoel.\n能希斯艾尔，迷雾之水",
+    "other": "昆雅语同源词hísë",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i chîth"
+      },
+      {
+        "type": "Plural",
+        "form": "hîth"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i chîth"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "a chîth"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-chîth"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin chîth"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor chîth"
+      },
+      {
+        "type": "Stop",
+        "form": "o chîth"
+      },
+      {
+        "type": "H",
+        "form": "a chîth"
+      },
+      {
+        "type": "DH",
+        "form": "ne chîth"
       }
     ]
   },

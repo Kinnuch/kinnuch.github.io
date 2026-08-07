@@ -8,6 +8,7 @@ import { buyCard, reroll, buyXp, sellUnit, placeUnit, unfieldUnit, allUnits, isF
 import { RACES, CLASSES, UNITS, UNITS_BY_ID, unitStatsAtStar, XP_TO_LEVEL, SHOP_ODDS, affAtStar } from '../data/units.js';
 import { countTraits, TRAITS, FLAGGER_BONUS } from '../data/traits.js';
 import { canCombine, makeCombinedItem, makeComponentItem, COMPONENTS, COMBO_NAMES, comboKey, CONSUMABLES } from '../data/items.js';
+import * as board3d from './board3d.js';
 
 const CELL_W = 70, ROW_H = 58, COLS = 7, ROWS = 8;
 const COST_COLOR = { 1: 'var(--c1)', 2: 'var(--c2)', 3: 'var(--c3)', 4: 'var(--c4)', 5: 'var(--c5)' };
@@ -160,7 +161,139 @@ function showCount(n) {
   el.classList.remove('tick'); void el.offsetWidth; el.classList.add('tick');
 }
 function applyView() {
-  $('board').classList.toggle('tilt', localStorage.getItem('ept-view') !== '2d');
+  const v2d = localStorage.getItem('ept-view') === '2d';
+  if (use3d) { board3d.setView(v2d ? 'top' : 'tilt'); return; } // 3D 下"视角"= 俯视/斜视切换
+  $('board').classList.toggle('tilt', !v2d);
+}
+
+// ---------- M5 · 3D 棋盘 ----------
+let use3d = false, combat3dActive = false, b3resizeBound = false;
+const plan3d = new Map(); // 备战期已同步到 3D 的棋子：uid → {c,r,star}
+// 职业 → 原型模型；个别棋子按 id 覆盖
+const CLASS_ARCH = { warrior: 'Knight', chivalry: 'Knight', arcanist: 'Mage', indulger: 'Mage', flagger: 'Mage', forger: 'Barbarian', executor: 'Barbarian', killer: 'Rogue', adventurer: 'Rogue', ranger: 'Rogue_Hooded', hunter: 'Rogue_Hooded', trickshot: 'Rogue_Hooded' };
+const ARCH_OVERRIDE = { carcharoth: 'Wolf', huan: 'Husky', tevildo: 'Fox', glaurung: 'Dragon', ancalagon: 'Dragon_Evolved', gothmog: 'Demon', morgoth: 'BlueDemon', sauron: 'Skeleton_Warrior', witchking: 'Ghost', khamul: 'Ghost', mouthofsauron: 'Skeleton_Mage', grishnakh: 'Orc' };
+function archOf(def) {
+  if (ARCH_OVERRIDE[def.id]) return ARCH_OVERRIDE[def.id];
+  const dark = def.races.some(r => ['mordor', 'angband'].includes(r));
+  for (const c of def.classes) {
+    const a = CLASS_ARCH[c];
+    if (a) return dark ? (a === 'Mage' ? 'Skeleton_Mage' : (a === 'Knight' || a === 'Barbarian') ? 'Skeleton_Warrior' : 'Skeleton_Minion') : a;
+  }
+  return dark ? 'Skeleton_Minion' : 'Knight';
+}
+function monsterArch(name) {
+  if (/龙/.test(name)) return 'Dragon';
+  if (/炎魔/.test(name)) return 'Demon';
+  if (/狼|犬/.test(name)) return 'Wolf';
+  return 'Orc';
+}
+function unitCfg3d(def, star, team, monster) {
+  if (monster) return { arch: monsterArch(def.name), tint: '#8a7a66', team, star: 1, big: /炎魔|龙/.test(def.name) ? 1.6 : 1.1 };
+  return { arch: archOf(def), tint: RACE_COLOR[def.races[0]] || '#999999', team, star, big: def.cost === 5 ? 1.25 : def.cost === 4 ? 1.12 : 1 };
+}
+function atkKind(def) {
+  if (!def || def.monster) return 'melee2';
+  const caster = def.classes.some(c => ['arcanist', 'indulger', 'flagger'].includes(c));
+  if (def.range > 1) return caster ? 'cast' : 'shoot2';
+  return def.classes.some(c => ['warrior', 'chivalry'].includes(c)) ? 'melee' : 'melee2';
+}
+function init3D() {
+  const q = new URLSearchParams(location.search);
+  const want = !q.get('2d') && board3d.supported();
+  if (use3d) { board3d.unmount(); use3d = false; }
+  plan3d.clear(); combat3dActive = false;
+  document.querySelectorAll('#board .cell').forEach(n => n.style.display = want ? 'none' : '');
+  if (want) $('board').classList.remove('tilt');
+  $('board').classList.toggle('b3', want);
+  if (!want) return;
+  use3d = board3d.mount($('board'), { onFrame: syncOverlay });
+  if (!use3d) { // WebGL 创建失败 → 回退 2D
+    document.querySelectorAll('#board .cell').forEach(n => n.style.display = '');
+    $('board').classList.remove('b3');
+    applyView();
+    return;
+  }
+  let ov = $('b3overlay');
+  if (!ov) { ov = document.createElement('div'); ov.id = 'b3overlay'; }
+  $('board').appendChild(ov); // 保证盖在 canvas 之上
+  ov.innerHTML = '';
+  board3d.setZoom(parseFloat(localStorage.getItem('ept-zoom')) || 1);
+  applyView();
+  bindCanvasInput();
+  if (!b3resizeBound) { b3resizeBound = true; window.addEventListener('resize', () => use3d && board3d.resize()); }
+  board3d.preload(['Knight', 'Mage', 'Rogue', 'Rogue_Hooded', 'Orc']);
+}
+function syncOverlay() { // 每帧把血条锚到 3D 头顶
+  if (!use3d) return;
+  const nodes = (playback && playback.nodes) || (combat3dActive && lastNodes) || null;
+  if (!nodes) return;
+  for (const id in nodes) {
+    const n = nodes[id];
+    if (!n.fid3d) continue;
+    const p = board3d.screenOf(n.fid3d);
+    if (p) { n.el.style.left = p.x + 'px'; n.el.style.top = p.y + 'px'; }
+  }
+}
+function sync3DPlanning() { // 备战期：把 me().board 差分同步到 3D
+  if (combat3dActive) { board3d.clearUnits(); const ov = $('b3overlay'); if (ov) ov.innerHTML = ''; plan3d.clear(); combat3dActive = false; }
+  document.querySelectorAll('#board .float-txt,#board .proj').forEach(n => n.remove());
+  const p = me();
+  const want = new Map(p.board.map(b => [b.unit.uid, b]));
+  for (const uid of [...plan3d.keys()]) if (!want.has(uid)) { board3d.removeUnit('u' + uid); plan3d.delete(uid); }
+  for (const [uid, b] of want) {
+    const prev = plan3d.get(uid);
+    if (!prev || prev.star !== b.unit.star) {
+      board3d.removeUnit('u' + uid);
+      board3d.addUnit('u' + uid, { ...unitCfg3d(b.unit.def, b.unit.star, 0), c: b.c, r: b.r });
+    } else if (prev.c !== b.c || prev.r !== b.r) {
+      board3d.moveUnit('u' + uid, b.c, b.r);
+    }
+    plan3d.set(uid, { c: b.c, r: b.r, star: b.unit.star });
+  }
+}
+function bindCanvasInput() {
+  const cv = document.getElementById('b3canvas');
+  if (!cv) return;
+  cv.style.touchAction = 'none';
+  cv.addEventListener('pointerdown', e => {
+    if (e.button !== 0 || !actOk() || !planOk()) return;
+    const hit = board3d.pickAt(e.clientX, e.clientY);
+    if (!hit || !hit.unit || String(hit.unit)[0] !== 'u') return;
+    const uid = +String(hit.unit).slice(1);
+    const b = me().board.find(x => x.unit.uid === uid);
+    if (!b) return;
+    e.preventDefault();
+    if (selectedItem) { equipItem(b.unit, selectedItem); return; }
+    startDrag({ kind: 'unit', unit: b.unit, src: { from: 'board' }, el: null, uid3d: hit.unit }, e, () => makeUnitNode(b.unit.def, b.unit.star));
+  });
+  cv.addEventListener('click', e => {
+    if (drag) return;
+    const hit = board3d.pickAt(e.clientX, e.clientY);
+    if (!hit || !hit.unit) return;
+    const tag = String(hit.unit);
+    if (tag[0] === 'u' && game.phase === 'planning') {
+      const b = me().board.find(x => x.unit.uid === +tag.slice(1));
+      if (b) pinUnitPanel(b.unit, e);
+    } else if (tag[0] === 'f') {
+      const nodes = (playback && playback.nodes) || lastNodes;
+      const n = nodes && nodes[+tag.slice(1)];
+      if (n) pinLivePanel(n, e);
+    }
+  });
+}
+// 特效锚点：3D 覆盖层节点以头顶为原点，2D 棋子以左上角为原点
+function fxAnchor(el) {
+  return el.classList && el.classList.contains('b3o')
+    ? { x: el.offsetLeft, y: el.offsetTop + 14 }
+    : { x: el.offsetLeft + 26, y: el.offsetTop + 26 };
+}
+function makeOverlayNode(def, star, enemy, manaPct) {
+  const el = document.createElement('div');
+  el.className = 'unit b3o';
+  el.innerHTML = `<div class="st-marks"></div><div class="stars">${'★'.repeat(star)}</div><div class="uname">${def.name}</div>
+    <div class="bars${enemy ? ' enemy' : ''}"><div class="hpfill" style="width:100%"></div><div class="shfill"></div></div>
+    <div class="mbar"><div class="mfill" style="width:${manaPct || 0}%"></div></div>`;
+  return el;
 }
 
 export function initUI() {
@@ -287,6 +420,7 @@ export function initUI() {
     zoom = Math.round(zoom * 100) / 100;
     localStorage.setItem('ept-zoom', zoom);
     $('board').style.setProperty('--zoom', zoom);
+    if (use3d) board3d.setZoom(zoom);
   }, { passive: false });
   document.addEventListener('pointermove', e => { moveTooltip(e); dragMove(e); });
   document.addEventListener('pointerup', dragEnd);
@@ -394,6 +528,7 @@ function startOnline(seed, roster, youIdx) {
   tutShown = {};
   lastLevel = 0;
   paused = false;
+  init3D();
   renderAll();
   if (game.carousel) showCarousel();
   else startPlanTimer();
@@ -406,6 +541,7 @@ function startGame(seed) {
   lastLevel = 0;
   $('pauseBtn').style.display = '';
   setPaused(false);
+  init3D();
   renderAll();
   maybeTut('welcome');
   if (game.carousel) showCarousel();
@@ -828,6 +964,7 @@ function renderUnitItems(el, unit) {
 
 function renderBoardUnits() {
   if (game.phase !== 'planning') return; // 战斗中由回放接管棋盘，绝不清场（修复开战瞬间拖拽 bug）
+  if (use3d) { sync3DPlanning(); return; }
   document.querySelectorAll('#board .unit').forEach(n => n.remove());
   document.querySelectorAll('#board .float-txt,#board .proj').forEach(n => n.remove());
   const p = me();
@@ -1339,6 +1476,7 @@ function hideTooltip(force) {
 // 开发用自检（?auto=1&dragtest=1）：先模拟"原生拖拽打断"（只有 pointercancel、没有 pointerup），
 // 再做一次正常拖拽，确认状态没被卡住、棋子确实上场。结果写进 document.title。
 function runDragSelfTest() {
+  if (use3d) { document.title = 'DRAGTEST skipped-3d'; return; } // 该自检针对 2D DOM 路径（配合 ?2d=1）
   const log = [];
   const pe = (t, el, x, y, buttons = 1) => el.dispatchEvent(new PointerEvent(t, { bubbles: true, clientX: x, clientY: y, buttons, button: 0, pointerId: 1 }));
   const center = el => { const r = el.getBoundingClientRect(); return [r.left + r.width / 2, r.top + r.height / 2]; };
@@ -1377,7 +1515,8 @@ function startDrag(d, e, ghostMaker) {
 function activateDrag() {
   const d = drag;
   d.pending = false;
-  d.el.classList.add('dragging');
+  if (d.el) d.el.classList.add('dragging');
+  if (use3d && d.uid3d) board3d.liftUnit(d.uid3d, true);
   const g = $('dragGhost');
   g.innerHTML = '';
   g.appendChild(d.ghostMaker());
@@ -1390,10 +1529,12 @@ function activateDrag() {
     if (planOk()) {
       const p = me();
       const full = !isFielded(p, d.unit.uid) && p.board.length >= p.level;
+      const cells = [];
       for (let r = 4; r < 8; r++) for (let c = 0; c < COLS; c++) {
         const occ = p.board.some(b => b.c === c && b.r === r);
-        if (occ || !full) $(`cell-${c}-${r}`).classList.add('can-place');
+        if (occ || !full) { cells.push([c, r]); if (!use3d) $(`cell-${c}-${r}`).classList.add('can-place'); }
       }
+      if (use3d) board3d.highlightCells(cells);
     }
   }
 }
@@ -1451,7 +1592,8 @@ function dragMove(e) {
   g.style.top = (e.clientY - 30) + 'px';
   document.querySelectorAll('.drop-ok').forEach(n => n.classList.remove('drop-ok'));
   const t = dropTarget(e);
-  if (t) t.el.classList.add('drop-ok');
+  if (t && t.el) t.el.classList.add('drop-ok');
+  if (use3d && drag.kind === 'unit') { if (t && t.type === 'cell') board3d.markCell(t.c, t.r); else board3d.markCell(-1, -1); }
   // 散件拖到散件上：未松开即预览合成结果
   if (drag.kind === 'item' && t && t.type === 'item') {
     const other = me().items[t.idx];
@@ -1464,6 +1606,16 @@ function dragMove(e) {
 }
 function dropTarget(e) {
   const els = document.elementsFromPoint(e.clientX, e.clientY);
+  // 3D 棋盘：命中 canvas 时用 raycaster 求落点（棋子=可穿装备目标；地格=落子）
+  if (use3d && els.some(el => board3d.isCanvas(el))) {
+    const hit = board3d.pickAt(e.clientX, e.clientY);
+    if (hit) {
+      if (drag && drag.kind === 'item' && hit.unit && String(hit.unit)[0] === 'u') return { el: null, type: 'unit', uid: +String(hit.unit).slice(1) };
+      const cell = hit.cell || (hit.unit ? [hit.c, hit.r] : null);
+      if (cell && cell[1] >= 4) return { el: null, type: 'cell', c: cell[0], r: cell[1] };
+    }
+    return null;
+  }
   for (const el of els) {
     if (drag && drag.kind === 'item') {
       if (el.classList && el.classList.contains('unit') && el.dataset.uid) return { el, type: 'unit', uid: +el.dataset.uid };
@@ -1480,7 +1632,8 @@ function dropTarget(e) {
 }
 function cancelDrag() {
   if (!drag) return;
-  drag.el.classList.remove('dragging');
+  if (drag.el) drag.el.classList.remove('dragging');
+  if (use3d) { if (drag.uid3d) board3d.liftUnit(drag.uid3d, false); board3d.clearHighlights(); }
   $('dragGhost').style.display = 'none';
   $('sellOverlay').classList.remove('active');
   document.querySelectorAll('.drop-ok,.can-place').forEach(n => n.classList.remove('drop-ok', 'can-place'));
@@ -1576,6 +1729,7 @@ function beginCombatLocal() {
 }
 
 function startPlayback(events, mirror) {
+  if (use3d) { plan3d.clear(); board3d.clearUnits(); board3d.clearHighlights(); const ov = $('b3overlay'); if (ov) ov.innerHTML = ''; combat3dActive = true; }
   document.querySelectorAll('#board .unit,#board .float-txt,#board .proj').forEach(n => n.remove());
   const savedSpeed = Math.min(4, Math.max(1, parseFloat(localStorage.getItem('ept-speed')) || 1));
   playback = { events, i: 0, t: 0, speed: savedSpeed, skip: false, nodes: {}, last: performance.now(), mirror, acc: { dealt: {}, taken: {}, heal: {} }, lastPanelT: 0 };
@@ -1625,8 +1779,16 @@ function applyEvent(pb, e) {
     case 'spawn': {
       const def = e.monster ? { name: e.name, monster: true, races: [], classes: [] } : UNITS_BY_ID[e.defId];
       const enemy = e.team === (pb.mirror ? 0 : 1);
-      const el = makeUnitNode(def, e.star, { bars: true, enemy, manaPct: e.manaMax ? e.mana / e.manaMax * 100 : 0 });
       const { c, r } = mirrorPos(pb, e.c, e.r);
+      if (use3d) { // 3D：模型进场 + 覆盖层血条
+        const el = makeOverlayNode(def, e.star, enemy, e.manaMax ? e.mana / e.manaMax * 100 : 0);
+        $('b3overlay').appendChild(el);
+        const n = { el, fid3d: 'f' + e.id, maxHp: e.hp, hp: e.hp, mana: e.mana, manaMax: e.monster ? 0 : e.manaMax, enemy, def, star: e.star, items: e.items || [], shield: 0, breakExtra: 0 };
+        nodes[e.id] = n;
+        board3d.addUnit('f' + e.id, { ...unitCfg3d(def, e.star, enemy ? 1 : 0, e.monster), c, r });
+        break;
+      }
+      const el = makeUnitNode(def, e.star, { bars: true, enemy, manaPct: e.manaMax ? e.mana / e.manaMax * 100 : 0 });
       positionUnit(el, c, r);
       board.appendChild(el);
       const n = { el, maxHp: e.hp, hp: e.hp, mana: e.mana, manaMax: e.monster ? 0 : e.manaMax, enemy, def, star: e.star, items: e.items || [], shield: 0, breakExtra: 0 };
@@ -1640,6 +1802,7 @@ function applyEvent(pb, e) {
     case 'move': {
       const n = nodes[e.id]; if (!n) break;
       const { c, r } = mirrorPos(pb, e.c, e.r);
+      if (use3d) { board3d.moveUnit(n.fid3d, c, r, { dash: !!e.dash }); break; }
       if (e.dash) { n.el.classList.add('dashing'); setTimeout(() => n.el.classList.remove('dashing'), 200); }
       positionUnit(n.el, c, r);
       break;
@@ -1648,7 +1811,8 @@ function applyEvent(pb, e) {
       const n = nodes[e.id], t = nodes[e.tgt];
       if (!n) break;
       if (!pb.skip) {
-        n.el.classList.remove('lunge'); void n.el.offsetWidth; n.el.classList.add('lunge');
+        if (use3d) board3d.attackAnim(n.fid3d, t && t.fid3d, atkKind(n.def));
+        else { n.el.classList.remove('lunge'); void n.el.offsetWidth; n.el.classList.add('lunge'); }
         if (e.range > 1 && t) shootProj(n.el, t.el, n.enemy ? '#ef5350' : '#ffd54f');
       }
       break;
@@ -1665,6 +1829,7 @@ function applyEvent(pb, e) {
       updateBars(n);
       if (!pb.skip) {
         floatText(n.el, (e.crit ? '暴击 ' : '') + e.v, DMG_COLOR[e.type] || '#fff', e.crit);
+        if (use3d && e.v >= 220 && n.hp > 0) board3d.anim(n.fid3d, 'hit');
         if (e.v >= 600) { const bw = $('boardWrap'); bw.classList.remove('shake'); void bw.offsetWidth; bw.classList.add('shake'); }
       }
       break;
@@ -1684,7 +1849,8 @@ function applyEvent(pb, e) {
       const n = nodes[e.id]; if (!n) break;
       n.mana = 0; updateBars(n);
       if (!pb.skip) {
-        n.el.classList.add('casting'); setTimeout(() => n.el.classList.remove('casting'), 500);
+        if (use3d) board3d.anim(n.fid3d, n.def.cost >= 4 ? 'castBig' : 'cast');
+        else { n.el.classList.add('casting'); setTimeout(() => n.el.classList.remove('casting'), 500); }
         floatText(n.el, '【' + e.name + '】', 'var(--accent2)');
         playSkillFx(pb, n, e);
       }
@@ -1699,10 +1865,20 @@ function applyEvent(pb, e) {
     case 'cleanse': { const n = nodes[e.id]; if (n) { clearMarks(n); if (!pb.skip) floatText(n.el, '净化', '#8ee08e'); } break; }
     case 'execute': { const n = nodes[e.id]; if (n && !pb.skip) floatText(n.el, '处决！', 'var(--dmg-true)', true); break; }
     case 'miss': { const n = nodes[e.id]; if (n && !pb.skip) floatText(n.el, '闪避', '#9e9e9e'); break; }
-    case 'die': { const n = nodes[e.id]; if (n) { n.el.classList.add('dead'); n.el.style.pointerEvents = 'none'; if (!tooltipPinned) hideTooltip(); } break; }
+    case 'die': {
+      const n = nodes[e.id];
+      if (n) {
+        if (use3d) board3d.removeUnit(n.fid3d, { death: true });
+        n.el.classList.add('dead');
+        n.el.style.pointerEvents = 'none';
+        if (!tooltipPinned) hideTooltip();
+      }
+      break;
+    }
     case 'star': {
       if (pb.skip) break;
       const { c, r } = mirrorPos(pb, e.c, e.r);
+      if (use3d) { board3d.flashCell(c, r); break; }
       const cell = $(`cell-${c}-${r}`);
       if (cell) { cell.classList.add('star-flash'); setTimeout(() => cell.classList.remove('star-flash'), 200); }
       break;
@@ -1712,6 +1888,7 @@ function applyEvent(pb, e) {
     case 'overtime': { if (!pb.skip) banner('加时！全员狂暴'); break; }
     case 'end': {
       const meWon = e.winner === (pb.mirror ? 1 : 0);
+      if (use3d && e.winner !== 'draw') board3d.cheerTeam(meWon ? 0 : 1);
       banner(e.winner === 'draw' ? '平局' : meWon ? '胜利！' : '战败…');
       return true;
     }
@@ -1736,8 +1913,9 @@ function floatText(el, txt, color, big) {
   f.textContent = txt;
   f.style.color = color;
   if (big) f.style.fontSize = '18px';
-  f.style.left = (el.offsetLeft + 8 + Math.random() * 24) + 'px';
-  f.style.top = (el.offsetTop - 4) + 'px';
+  const a = fxAnchor(el);
+  f.style.left = (a.x - 18 + Math.random() * 24) + 'px';
+  f.style.top = (a.y - 30) + 'px';
   $('board').appendChild(f);
   setTimeout(() => f.remove(), 1000);
 }
@@ -1782,7 +1960,7 @@ const SKILL_FX = {
   fingolfin: ['aoeSelf', 'light'], manwe: ['aoe', 'light'], feanor: ['line', 'light'], ecthelion: ['aoeSelf', 'ice'],
   varda: ['aoe', 'light'], beleg: ['bolt', 'phys', 3], aragorn: ['aoeSelf', 'light'],
 };
-function fxCenter(el) { return { x: el.offsetLeft + 26, y: el.offsetTop + 26 }; }
+function fxCenter(el) { return fxAnchor(el); }
 function fxRing(x, y, color, scale) {
   const b = document.createElement('div');
   b.className = 'cast-burst';
@@ -1812,8 +1990,8 @@ function playSkillFx(pb, n, e) {
   let tgt = src;
   if (e.tc !== undefined && e.tr !== undefined) {
     const { c, r } = mirrorPos(pb, e.tc, e.tr);
-    const p = cellPos(c, r);
-    tgt = { x: p.x + 32, y: p.y + 18 };
+    if (use3d) tgt = board3d.cellScreen(c, r);
+    else { const p = cellPos(c, r); tgt = { x: p.x + 32, y: p.y + 18 }; }
   }
   switch (shape) {
     case 'bolt': {
@@ -1841,11 +2019,12 @@ function shootProj(from, to, color) {
   const p = document.createElement('div');
   p.className = 'proj';
   p.style.background = color;
-  p.style.left = (from.offsetLeft + 26) + 'px';
-  p.style.top = (from.offsetTop + 26) + 'px';
+  const a = fxAnchor(from), b = fxAnchor(to);
+  p.style.left = a.x + 'px';
+  p.style.top = a.y + 'px';
   p.style.transition = 'left .2s linear, top .2s linear';
   $('board').appendChild(p);
-  requestAnimationFrame(() => { p.style.left = (to.offsetLeft + 26) + 'px'; p.style.top = (to.offsetTop + 26) + 'px'; });
+  requestAnimationFrame(() => { p.style.left = b.x + 'px'; p.style.top = b.y + 'px'; });
   setTimeout(() => p.remove(), 260);
 }
 function banner(txt) {

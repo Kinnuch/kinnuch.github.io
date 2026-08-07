@@ -1,5 +1,19 @@
 [
   {
+    "hash": "64daf083660f7afcbc59f092834ef5b2ea8b0364",
+    "short": "64daf08",
+    "date": "2026-08-07T15:20:16+08:00",
+    "author": "wuyichen",
+    "msg": "Important Update: Now EPT has 3d models"
+  },
+  {
+    "hash": "286efb2dc3f1b399ac36fcedc564266643195462",
+    "short": "286efb2",
+    "date": "2026-08-04T14:54:49Z",
+    "author": "github-actions[bot]",
+    "msg": "chore: refresh commits.json [skip ci]"
+  },
+  {
     "hash": "d058a8627a2973f94d390b725facb38d4627b97b",
     "short": "d058a86",
     "date": "2026-08-04T22:54:33+08:00",

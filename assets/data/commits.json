@@ -1,5 +1,19 @@
 [
   {
+    "hash": "3ab9966cd323feb65721462b75d9ebfa2f3e268c",
+    "short": "3ab9966",
+    "date": "2026-08-10T11:35:25+08:00",
+    "author": "wuyichen",
+    "msg": "fix a bug where cursor showed wrong size"
+  },
+  {
+    "hash": "42a51de208cc0c6f4e999b642e58ace145cb076f",
+    "short": "42a51de",
+    "date": "2026-08-07T10:13:14Z",
+    "author": "github-actions[bot]",
+    "msg": "chore: refresh commits.json [skip ci]"
+  },
+  {
     "hash": "3d1e827f7c040372a73c0e332c769dc92f387381",
     "short": "3d1e827",
     "date": "2026-08-07T18:12:47+08:00",

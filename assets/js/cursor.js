@@ -4,7 +4,12 @@
    images depending on hover context.
    Falls back to CSS cursors defined in cursors.css if this script fails. */
 (function () {
-  if ('ontouchstart' in window || navigator.maxTouchPoints > 0) return;
+  // Skip only when the device truly has no fine pointer (phone / tablet).
+  // Windows laptops report maxTouchPoints > 0 but still have a mouse; those
+  // match `pointer: fine` and should get the custom cursor.
+  var mm = window.matchMedia && window.matchMedia('(pointer: fine)');
+  var hasFinePointer = mm ? mm.matches : !('ontouchstart' in window);
+  if (!hasFinePointer) return;
 
   var SIZE = 28;
   var HOTSPOT = { x: 3, y: 3 };
@@ -67,9 +72,15 @@
       'transform:translate3d(-100px,-100px,0);' +
       'opacity:0;transition:opacity 0.15s;' +
       'will-change:transform,background-image;';
-    var host = document.body || document.documentElement;
-    host.appendChild(el);
-    document.documentElement.classList.add('has-custom-cursor');
+    function attach() {
+      if (!document.body) {
+        requestAnimationFrame(attach);
+        return;
+      }
+      document.body.appendChild(el);
+      document.documentElement.classList.add('has-custom-cursor');
+    }
+    attach();
 
     var current = null;
     function setKind(kind) {

@@ -1,20 +1,16 @@
 /* Middle-earth cursor set.
    Two-layer strategy:
-   - Fallback layer (rules below) uses native CSS cursors, whose display size
-     is baked into the .cur/.ani files.
-   - When cursor.js loads, it adds html.has-custom-cursor and takes over —
-     drawing a size-normalised <div> that follows the pointer.
-   The `cursor: none` rule wins because of the .has-custom-cursor class
-   (higher specificity than the plain selectors below). */
+   - Fallback layer (rules below) uses only native CSS cursor keywords so
+     that if cursor.js hasn't installed yet (race), can't load (Firefox +
+     .ani), or is disabled (no JS), users see the system default sized
+     cursor. Never a huge native .cur.
+   - cursor.js adds html.has-custom-cursor, hides the system cursor with
+     `cursor: none !important`, and renders a uniform 28px <div>. */
 
 html.has-custom-cursor,
 html.has-custom-cursor body,
 html.has-custom-cursor * {
   cursor: none !important;
-}
-
-html, body {
-  cursor: url('/images/GaladrielCursor.ani'), url('/images/GaladrielCursor.cur'), default;
 }
 
 /* Links, buttons, and anything semantically clickable */
@@ -25,8 +21,8 @@ label[for], summary,
 input[type="button"], input[type="submit"], input[type="reset"],
 .me-weather, .map-city, .map-modal__close, .map-grid-toggle,
 .comments-fab, .comments-drawer__close,
-#theme-toggle {
-  cursor: url('/images/AragornCursor.cur'), pointer;
+#theme-toggle, #sound-toggle {
+  cursor: pointer;
 }
 
 /* Text selection / editable fields */
@@ -34,22 +30,22 @@ input[type="text"], input[type="search"], input[type="email"],
 input[type="url"], input[type="password"], input[type="number"],
 input[type="tel"], input:not([type]),
 textarea, [contenteditable="true"] {
-  cursor: url('/images/WizardstaffCursor.cur'), text;
+  cursor: text;
 }
 
 /* Busy state (blocking wait) */
 [aria-busy="true"], .is-busy, html.is-busy, html.is-busy * {
-  cursor: url('/images/RingPointer.cur'), wait !important;
+  cursor: wait;
 }
 
 /* Background work in progress */
 [data-loading="true"], .is-loading,
 html.is-loading, html.is-loading * {
-  cursor: url('/images/RingCursor.cur'), progress !important;
+  cursor: progress;
 }
 
-/* Disabled controls fall back to the busy cursor */
+/* Disabled controls */
 button:disabled, input:disabled, textarea:disabled, select:disabled,
 [aria-disabled="true"] {
-  cursor: url('/images/RingPointer.cur'), not-allowed;
+  cursor: not-allowed;
 }

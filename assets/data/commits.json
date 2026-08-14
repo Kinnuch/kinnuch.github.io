@@ -1,5 +1,19 @@
 [
   {
+    "hash": "ad38c44de7650774335a3fb9fbb60a1688337295",
+    "short": "ad38c44",
+    "date": "2026-08-14T13:50:06+08:00",
+    "author": "wuyichen",
+    "msg": "Add site search, TOC, changelog and four Sindarin study tools"
+  },
+  {
+    "hash": "c5de020d8568af54aafb7ebe43476fb78147f6f4",
+    "short": "c5de020",
+    "date": "2026-08-10T03:35:51Z",
+    "author": "github-actions[bot]",
+    "msg": "chore: refresh commits.json [skip ci]"
+  },
+  {
     "hash": "3ab9966cd323feb65721462b75d9ebfa2f3e268c",
     "short": "3ab9966",
     "date": "2026-08-10T11:35:25+08:00",

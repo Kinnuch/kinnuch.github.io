@@ -1,0 +1,106 @@
+# Single source of truth for the Laim (语言) section.
+# laim.md, the site search index and the conlang overview page all render
+# from this file — add a language here and it shows up everywhere.
+#
+# group: elvish | conlang | natural
+# status: done | wip | stub | planned   (drives the badge on /laim/)
+# url:    site-relative; omit for a language that has no page yet.
+
+- name: Sindarin
+  zh: 辛达语
+  group: elvish
+  status: done
+  url: /laim/sindarin/
+  blurb: 站点最完整的教程，含语音、文字、语法与词汇，配套词典、练习、爬塔游戏。
+  extra:
+    - title: 汉语-辛达语词典
+      url: /laim/sindarin.assets/SindarinDatabase/SindarinDictionary.html
+    - title: 课后练习
+      url: /laim/sindarin.assets/Exercises/Exercises.html
+
+- name: Quenya
+  zh: 昆雅语
+  group: elvish
+  status: wip
+  url: /laim/quenya/
+  blurb: 语法参考、词汇表与昆雅-拉丁同源词对照，另有本地语法检查器 QuenyaChecker。
+
+- name: Elandis
+  zh: 亚提斯语
+  group: conlang
+  status: done
+  url: /laim/elandis/
+  blurb: 我的第一门造语，含辅音表、对比表与自创书写系统。
+
+- name: Dyalan
+  zh: 嘉兰语
+  group: conlang
+  status: done
+  url: /laim/dyalan/
+  blurb: 为朋友的小说创作的人造语言。
+
+- name: Vōhyssys
+  zh: 厄希斯语
+  group: conlang
+  status: planned
+  blurb: 尚未整理成页面。
+
+- name: Shikṛin
+  zh: 希克林语系
+  group: conlang
+  status: done
+  url: /laim/shikṛin/
+  blurb: 完成度最高的造语，含原始希克林语、瑟乌丝林语、群岛希克林语三支，配套音变器与词典。
+  extra:
+    - title: Proto-Shikṛin 原始希克林语
+      url: /laim/Proto-Shikṛin/
+    - title: Theusṛin 瑟乌丝林语
+      url: /laim/Theusṛin/
+    - title: Archipelago Shikrin 群岛希克林语
+      url: /laim/ArchipelagoShikrin/
+    - title: 希克林语词典
+      url: /laim/shikrin.assets/ShikrinDatabase/ShikrinDictionary.html
+    - title: 海蚀录·亚希林卷 · 初遇（语内文献）
+      url: /laim/shikrin-essay/1/
+    - title: 海蚀录·亚希林卷 · 相识（语内文献）
+      url: /laim/shikrin-essay/2/
+
+- name: Scottish Gaelic
+  zh: 苏格兰盖尔语
+  group: natural
+  status: stub
+  url: /laim/scottishgaelic/
+  blurb: 学习笔记。
+
+- name: Old Norse & Old Icelandic
+  zh: 古诺斯语 & 古冰岛语
+  group: natural
+  status: done
+  url: /laim/oldicelandic/
+  blurb: 站内篇幅最长的自然语言笔记。
+
+- name: Korean
+  zh: 韩语
+  group: natural
+  status: wip
+  url: /laim/korean/
+  blurb: 学习笔记。
+
+- name: Hittite
+  zh: 赫梯语
+  group: natural
+  status: wip
+  url: /laim/hittite/
+  blurb: 赫梯语与楔形文字学习笔记。
+
+- name: Japanese
+  zh: 日语
+  group: natural
+  status: wip
+  url: /laim/japanese/
+  blurb: JLPT N3 / N1 积累笔记。
+  extra:
+    - title: JLPT N3 积累
+      url: /laim/N3/
+    - title: JLPT N1 积累
+      url: /laim/N1/

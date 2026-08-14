@@ -1,0 +1,192 @@
+# Latin -> Tengwar / Angerthas mapping table for /cerf/tengwar/.
+#
+# The phoneme inventory below is taken verbatim from 第零课 of the Sindarin
+# textbook (laim/sindarin.md) — those cells are verified.
+#
+# The `tengwa` and `certh` columns are DELIBERATELY EMPTY. The tutorial only
+# ships Runic/Tengwar samples as images (RunicEg.png / TengwarEg.png), so
+# there is no machine-readable glyph table in the repo to derive them from,
+# and guessing them would put wrong letterforms on the site.
+#
+# Fill each cell with one of:
+#   - a Unicode codepoint  (Tengwar was added in Unicode 16.0 at U+16080;
+#     Cirth is not encoded and lives in the CSUR PUA at U+E080)
+#   - the ASCII key of your preferred Tengwar font's layout
+#     (Tengwar Annatar / Telcontar / Parmaite all use Dan Smith's layout)
+#   - the tengwa / certh name, if you only want names rendered
+#
+# /cerf/tengwar/ shows a coverage meter and lists exactly which cells are
+# still blank, so you can fill this incrementally.
+
+meta:
+  # Point this at a font you have the right to redistribute, then drop the
+  # file into assets/fonts/. Leave blank to render names + codepoints only.
+  tengwar_font_file: ""
+  tengwar_font_family: ""
+  certh_font_file: ""
+  certh_font_family: ""
+
+# --- 单元音 -----------------------------------------------------------------
+vowels:
+  - latin: a
+    ipa: "ɑ"
+    note: 开前不圆唇元音，位置稍稍靠后
+    tengwa: ""
+    certh: ""
+  - latin: e
+    ipa: "ɛ"
+    note: 半开前不圆唇元音
+    tengwa: ""
+    certh: ""
+  - latin: i
+    ipa: "i"
+    note: 闭前不圆唇元音；同音节中位于其他元音前时读 /j/
+    tengwa: ""
+    certh: ""
+  - latin: o
+    ipa: "ɔ"
+    note: 半开后圆唇元音
+    tengwa: ""
+    certh: ""
+  - latin: u
+    ipa: "u"
+    note: 闭后圆唇元音
+    tengwa: ""
+    certh: ""
+  - latin: y
+    ipa: "y"
+    note: 闭前圆唇元音，与 i 构成圆唇对立
+    tengwa: ""
+    certh: ""
+
+# --- 双元音 -----------------------------------------------------------------
+diphthongs:
+  - latin: ai
+    ipa: "ɑj"
+    tengwa: ""
+    certh: ""
+  - latin: ae
+    ipa: "ɑɛ"
+    note: 与 ai 极相似，开口略小，收在 e 的口型
+    tengwa: ""
+    certh: ""
+  - latin: au
+    ipa: "ɑu"
+    tengwa: ""
+    certh: ""
+  - latin: aw
+    ipa: "ɑu"
+    note: au 的词尾写法
+    tengwa: ""
+    certh: ""
+  - latin: ei
+    ipa: "ɛj"
+    tengwa: ""
+    certh: ""
+  - latin: oe
+    ipa: "ɔɛ"
+    tengwa: ""
+    certh: ""
+  - latin: ui
+    ipa: "uj"
+    tengwa: ""
+    certh: ""
+
+# --- 辅音（含二合字母）------------------------------------------------------
+# Digraphs MUST stay listed before their component letters; the segmenter
+# matches longest-first and relies on this file's order only for display.
+consonants:
+  - latin: ch
+    ipa: "x"
+    tengwa: ""
+    certh: ""
+  - latin: dh
+    ipa: "ð"
+    tengwa: ""
+    certh: ""
+  - latin: lh
+    ipa: "ɬ"
+    tengwa: ""
+    certh: ""
+  - latin: mh
+    ipa: "v"
+    tengwa: ""
+    certh: ""
+  - latin: ng
+    ipa: "ŋ"
+    tengwa: ""
+    certh: ""
+  - latin: ph
+    ipa: "f"
+    tengwa: ""
+    certh: ""
+  - latin: rh
+    ipa: "r̥"
+    tengwa: ""
+    certh: ""
+  - latin: th
+    ipa: "θ"
+    tengwa: ""
+    certh: ""
+  - latin: hw
+    ipa: "ʍ"
+    tengwa: ""
+    certh: ""
+  - latin: b
+    ipa: "b"
+    tengwa: ""
+    certh: ""
+  - latin: c
+    ipa: "k"
+    note: 辛达语中 c 恒读 /k/，无软音
+    tengwa: ""
+    certh: ""
+  - latin: d
+    ipa: "d"
+    tengwa: ""
+    certh: ""
+  - latin: f
+    ipa: "f"
+    note: 词尾读 /v/
+    tengwa: ""
+    certh: ""
+  - latin: g
+    ipa: "g"
+    tengwa: ""
+    certh: ""
+  - latin: h
+    ipa: "h"
+    tengwa: ""
+    certh: ""
+  - latin: l
+    ipa: "l"
+    tengwa: ""
+    certh: ""
+  - latin: m
+    ipa: "m"
+    tengwa: ""
+    certh: ""
+  - latin: n
+    ipa: "n"
+    tengwa: ""
+    certh: ""
+  - latin: p
+    ipa: "p"
+    tengwa: ""
+    certh: ""
+  - latin: r
+    ipa: "r"
+    tengwa: ""
+    certh: ""
+  - latin: s
+    ipa: "s"
+    tengwa: ""
+    certh: ""
+  - latin: t
+    ipa: "t"
+    tengwa: ""
+    certh: ""
+  - latin: v
+    ipa: "v"
+    tengwa: ""
+    certh: ""

@@ -1,8 +1,15 @@
 ---
 layout: page
+title: Barphalt
+description: Kinnuch 的个人网站——辛达语教程、六门造语、翻译考据、词典与网页小游戏。
 ---
 
 # Maedol! | 欢迎！
+
+<p class="home-lead" markdown="1">
+第一次来？看看 [**关于本站**](/about/) 里的三条推荐路线。
+想找东西？按 <kbd>/</kbd> 或 <kbd>Ctrl</kbd>+<kbd>K</kbd> [**搜索全站**](/search/)。
+</p>
 
 <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="https://music.163.com/outchain/player?type=2&id=31108432&auto=0&height=66" style="vertical-align: middle; display: inline-block;"></iframe>
 
@@ -19,6 +26,13 @@ layout: page
   <button class="gallery-btn gallery-next" aria-label="Next image">&#10095;</button>
   <div class="gallery-dots"></div>
 </div>
+
+## Cerf | 最近做的东西
+
+- [**中文名 → 辛达语名**](/cerf/name/) 按真实构词法与软音变规则，从词典的 558 条词条生成名字，附逐语素依据。
+- [**发音练习器**](/cerf/pronunciation/) 用教程里的真人录音做最小对立对听辨（i / y 那组最值得练）。
+- [**词汇间隔重复复习**](/cerf/review/) SM-2 算法排期，进度与「巴别塔」爬塔游戏共享同一份存档。
+- [**造语总览**](/laim/overview/) 各门造语的横向对比与谱系树。
 
 ## Istad i laim | 学习语言
 
@@ -42,6 +56,11 @@ layout: page
 ---
 
 ## Pennas-e-vínimraef | 博客小记
+
+<p markdown="1">
+下面是手写的里程碑记录。站点的**每一次**改动（目前 556 次提交）都在
+[**更新日志**](/changelog/) 里，按月分组、可搜索、可跳转到对应提交。
+</p>
 
 <div class="blog-scroll-wrap" markdown="1">
 

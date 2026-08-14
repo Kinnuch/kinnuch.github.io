@@ -1,3 +1,10 @@
+---
+layout: page
+permalink: /laim/quenya/vocabulary/index.html
+title: Quenya Vocabulary 昆雅语词汇表
+description: 按语义场分类的昆雅语词汇表，来源 eldamo.org，已排除人名地名。
+---
+
 # 昆雅语词汇表 / Quenya Vocabulary List
 
 > 来源：eldamo.org（排除所有人名、地名）

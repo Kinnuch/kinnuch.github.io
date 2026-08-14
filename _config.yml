@@ -23,13 +23,17 @@ links:
     url: /haudhas
   - title: Cerf 工具
     url: /cerf
-  - title: Mínimraef 博客
-    url: /mínimraef
   - title: Gobeth 词典
     url: /gobeth
+  - title: Mínimraef 博客
+    url: /mínimraef
 
 # http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
-timezone: China/Beijing
+# Must be a real IANA identifier. "China/Beijing" is not one: on Linux an
+# invalid TZ silently falls back to UTC (so site.time was an hour-offset wrong
+# in production), and on Windows Jekyll validates it through tzinfo and aborts
+# the build outright.
+timezone: Asia/Shanghai
 future: true
 highlighter: rouge
 # markdown: kramdown
@@ -75,4 +79,29 @@ giscus:
   loading: lazy
 
 include: [".htaccess"]
-exclude: ["lib", "config.rb", "Capfile", "config", "log", "Rakefile", "Rakefile.rb", "tmp", "less", "minimal-mistakes.sublime-project", "minimal-mistakes.sublime-workspace"]
+
+# NOTE: a custom `exclude:` REPLACES Jekyll's built-in default list rather than
+# extending it, so the Bundler/Ruby entries below must be spelled out. Without
+# them a local `bundle install --path vendor/bundle` makes Jekyll try to render
+# the gems' own site templates and the build dies.
+exclude:
+  - lib
+  - config.rb
+  - Capfile
+  - config
+  - log
+  - Rakefile
+  - Rakefile.rb
+  - tmp
+  - less
+  - minimal-mistakes.sublime-project
+  - minimal-mistakes.sublime-workspace
+  # Bundler / Ruby
+  - Gemfile
+  - Gemfile.lock
+  - .bundle
+  - vendor
+  - script
+  # Build artefacts that should never be published
+  - laim/quenya.assets/QuenyaChecker/build
+  - node_modules

@@ -236,12 +236,12 @@ title: Sindarin Textbook
 
 6. **lh [l̥]**
 
-   <audio controls="controls"><source src="https://kinnuch.github.io/laim/sindarin.assets/LHman.mp3" type="audio/mpeg"></audio>
+   <audio controls="controls"><source src="https://kinnuch.github.io/laim/sindarin.assets/Lhman.mp3" type="audio/mpeg"></audio>
 
    边擦音。这个音很难在汉语或英语中找到对应的音。发音时，舌位和l一样，由舌尖顶住上颚，但气流由两侧强烈的送出，形成摩擦。
 
    录音中的单词分别是：**<u>lh</u>ûg** 龙 **<u>lh</u>ing** 蜘蛛网 **<u>Lh</u>othlann** 舒丝蓝  **<u>Lh</u>úthien** 露西恩
 
-   <audio controls="controls"><source src="https://kinnuch.github.io/laim/sindarin.assets/LHmanWord.mp3" type="audio/mpeg"></audio>
+   <audio controls="controls"><source src="https://kinnuch.github.io/laim/sindarin.assets/LhmanWord.mp3" type="audio/mpeg"></audio>
 
 7. 

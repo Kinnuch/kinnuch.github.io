@@ -1,0 +1,15 @@
+# Local development overrides.
+#
+# _config.yml pins `url: https://kinnuch.github.io`, and several includes build
+# asset paths as `{{ site.url }}/assets/...`. Without this override a local
+# server would silently load CSS and JS from the LIVE site, so local edits to
+# those files appear to do nothing.
+#
+# Usage:
+#   bundle exec jekyll serve --livereload --config _config.yml,_config.dev.yml
+#
+url: "http://127.0.0.1:4000"
+
+# Show drafts and future-dated content while writing.
+future: true
+show_drafts: true

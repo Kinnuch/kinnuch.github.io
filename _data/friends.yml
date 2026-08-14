@@ -1,0 +1,20 @@
+# Friend links. Rendered by friends.md and by _includes/author-bio.html.
+
+- name: 荏苒之境主站
+  url: https://gilatod.art
+  icon: /file/gilatod.png
+  blurb: Gilatod，长期合作的朋友的主站。
+
+- name: Kikomas
+  url: https://kikomas.art
+  icon: /file/kikomas.png
+  blurb: 插画与视觉创作。
+
+- name: Cathamos
+  url: https://cathamos.github.io
+  icon: /file/cathamos.png
+  blurb: Cathamos 的个人站点。
+
+- name: Sicusa
+  url: https://github.com/sicusa
+  blurb: GitHub 主页。

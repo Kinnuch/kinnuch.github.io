@@ -1,0 +1,39 @@
+---
+layout: null
+permalink: /search.json
+sitemap: false
+---
+{%- comment -%}
+  Client-side search index, built at compile time. No plugins required, so it
+  works on stock GitHub Pages.
+
+  Only pages carrying a `title` are indexed; generated files (sitemap.xml,
+  robots.txt, feed.xml, this file) have none and drop out automatically.
+  Set `search: false` in a page's front matter to exclude it explicitly.
+
+  `body` is truncated so the whole index stays well under ~200 KB — enough
+  for relevance ranking, and the browser only downloads it once, lazily.
+
+  `markdownify` before `strip_html` is load-bearing, not decorative. Jekyll
+  renders pages in an arbitrary order, so `p.content` here is the RENDERED
+  html for pages processed before this file and the RAW markdown for pages
+  processed after it. Without markdownify the raw ones land in the index
+  complete with asterisk emphasis markers and un-interpolated Liquid tags.
+  Running it through markdownify normalises both cases to html, and
+  strip_html then leaves clean prose either way.
+
+  (Do not write a literal Liquid output tag in this comment. Liquid still
+  lexes the body of a comment block, so it would emit a syntax warning on
+  every build.)
+{%- endcomment -%}
+{%- assign indexed = site.pages | where_exp: "p", "p.title" -%}
+{%- assign indexed = indexed | where_exp: "p", "p.search != false" -%}
+[
+{%- for p in indexed -%}
+{"t":{{ p.title | jsonify }},
+"u":{{ p.url | remove: "index.html" | jsonify }},
+"d":{{ p.description | default: "" | jsonify }},
+"b":{{ p.content | markdownify | strip_html | normalize_whitespace | truncate: 2400, "" | jsonify }}}
+{%- unless forloop.last -%},{%- endunless -%}
+{%- endfor -%}
+]

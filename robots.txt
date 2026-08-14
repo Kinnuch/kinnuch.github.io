@@ -1,0 +1,13 @@
+---
+layout: null
+permalink: /robots.txt
+sitemap: false
+---
+User-agent: *
+Allow: /
+
+# Build artefacts and raw data dumps: crawlable, but not worth indexing.
+Disallow: /laim/quenya.assets/QuenyaChecker/build/
+Disallow: /search.json
+
+Sitemap: {{ site.url }}/sitemap.xml

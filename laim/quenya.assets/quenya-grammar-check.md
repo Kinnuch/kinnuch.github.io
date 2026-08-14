@@ -1,3 +1,10 @@
+---
+layout: page
+permalink: /laim/quenya/checklist/index.html
+title: Quenya Grammar Checklist 昆雅语语法检查清单
+description: 逐条验证昆雅语句子是否合乎语法的检查清单，附正误示例。
+---
+
 # 昆雅语语法检查清单
 # Quenya Grammar Check Rules
 

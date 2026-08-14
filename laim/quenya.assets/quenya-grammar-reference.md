@@ -1,3 +1,10 @@
+---
+layout: page
+permalink: /laim/quenya/grammar/index.html
+title: Quenya Grammar Reference 昆雅语语法参考
+description: 基于 eldamo.org 的晚期昆雅语语法参考手册：音系、名词变格、动词变位、代词与句法。
+---
+
 # 昆雅语语法参考手册
 # Quenya Grammar Reference
 

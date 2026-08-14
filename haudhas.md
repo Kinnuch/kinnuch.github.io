@@ -2,6 +2,7 @@
 layout: page
 permalink: /haudhas/index.html
 title: Haudhas
+description: 翻译作品：《刚多林的陷落》选段的英语 / 昆雅语 / 辛达语 / 汉语四语对照。
 ---
 
 ## Nevias | 翻译

@@ -7,14 +7,22 @@
   // Skip only when the device truly has no fine pointer (phone / tablet).
   // Windows laptops report maxTouchPoints > 0 but still have a mouse; those
   // match `pointer: fine` and should get the custom cursor.
-  var mm = window.matchMedia && window.matchMedia('(pointer: fine)');
+  //
+  // `hover: hover` is required alongside it: a touchscreen laptop or an
+  // iPad with a Pencil matches `pointer: fine` on its own, and a tap there
+  // would strand the cursor div at the tap point with nothing to move it.
+  var mm = window.matchMedia &&
+           window.matchMedia('(pointer: fine) and (hover: hover)');
   var hasFinePointer = mm ? mm.matches : !('ontouchstart' in window);
   if (!hasFinePointer) return;
 
   var SIZE = 28;
   var HOTSPOT = { x: 3, y: 3 };
+  // GaladrielCursor.cur is the first frame of GaladrielCursor.ani, extracted
+  // because no browser decodes RIFF/ACON through `new Image()` — pointing at
+  // the .ani made this entry always fall through to the generic SVG arrow.
   var SOURCES = {
-    'default':  '/images/GaladrielCursor.ani',
+    'default':  '/images/GaladrielCursor.cur',
     'pointer':  '/images/AragornCursor.cur',
     'text':     '/images/WizardstaffCursor.cur',
     'wait':     '/images/RingPointer.cur',
@@ -94,7 +102,7 @@
       'a,button,[role="button"],.btn,summary,label[for],' +
       'input[type="button"],input[type="submit"],input[type="reset"],' +
       '.me-weather,.map-city,.map-modal__close,.map-grid-toggle,' +
-      '.comments-fab,.comments-drawer__close,#theme-toggle,' +
+      '.comments-fab,.comments-drawer__close,#theme-toggle,#search-toggle,' +
       '.gallery-btn,.gallery-dot';
     var TEXT_SEL =
       'input[type="text"],input[type="search"],input[type="email"],' +
@@ -122,7 +130,14 @@
       return 'default';
     }
 
+    // A hybrid device can still deliver touch events even though it matched
+    // `hover: hover`. Ignore those and hide the cursor, so a tap never leaves
+    // a 28px ghost stranded at z-index 2147483647.
     document.addEventListener('pointermove', function (e) {
+      if (e.pointerType === 'touch' || e.pointerType === 'pen') {
+        el.style.opacity = '0';
+        return;
+      }
       lastX = e.clientX;
       lastY = e.clientY;
       el.style.opacity = '1';
@@ -134,6 +149,10 @@
     }, { passive: true });
 
     document.addEventListener('pointerdown', function (e) {
+      if (e.pointerType === 'touch' || e.pointerType === 'pen') {
+        el.style.opacity = '0';
+        return;
+      }
       setKind(detectKind(e.target));
     }, { passive: true });
 

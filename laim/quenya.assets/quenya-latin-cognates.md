@@ -1,3 +1,10 @@
+---
+layout: page
+permalink: /laim/quenya/cognates/index.html
+title: Quenya–Latin Cognates 昆雅语-拉丁语形音义对照
+description: 昆雅语与拉丁语在词形与词义上同时相似的词汇对照表，按可信度分三级。
+---
+
 # 昆雅语-拉丁语 形音义对照表
 
 > 本表整理了托尔金昆雅语(Quenya)中与拉丁语在**词形(form)**和**词义(meaning)**上同时存在相似性的词汇。

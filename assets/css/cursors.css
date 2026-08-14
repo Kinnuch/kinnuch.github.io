@@ -21,7 +21,9 @@ label[for], summary,
 input[type="button"], input[type="submit"], input[type="reset"],
 .me-weather, .map-city, .map-modal__close, .map-grid-toggle,
 .comments-fab, .comments-drawer__close,
-#theme-toggle, #sound-toggle {
+#theme-toggle, #sound-toggle, #search-toggle,
+.forger__mode, .forge-opt, .bilingual__btn, .drill-pair, .drill-choice,
+.srs__show, .srs__grade, .toc__title, .heat-cell {
   cursor: pointer;
 }
 
@@ -33,15 +35,19 @@ textarea, [contenteditable="true"] {
   cursor: text;
 }
 
-/* Busy state (blocking wait) */
+/* Busy state (blocking wait).
+   !important is required: without it these lose the cascade to #theme-toggle
+   (specificity 1-0-0) and to the later-declared :disabled / [aria-disabled]
+   rules below at equal specificity, so a busy button would keep showing
+   `pointer` or `not-allowed`. */
 [aria-busy="true"], .is-busy, html.is-busy, html.is-busy * {
-  cursor: wait;
+  cursor: wait !important;
 }
 
 /* Background work in progress */
 [data-loading="true"], .is-loading,
 html.is-loading, html.is-loading * {
-  cursor: progress;
+  cursor: progress !important;
 }
 
 /* Disabled controls */

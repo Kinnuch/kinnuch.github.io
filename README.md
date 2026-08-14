@@ -22,6 +22,14 @@ bundle exec jekyll serve --config _config.yml,_config.dev.yml
 python script/linkcheck.py    # 站内链接、大小写、Unicode 归一化
 ```
 
+## 部署
+
+站点由 [deploy.yml](.github/workflows/deploy.yml) 构建并部署，**不是** GitHub Pages 从分支直接构建。仓库 Settings → Pages → Source 必须设为 **GitHub Actions**。
+
+推送到 `main` 后依次跑三个 job：`verify`（链接检查 / JS 语法 / YAML+JSON）→ `build`（生成 `commits.json`、`jekyll build`、断言产物可解析）→ `deploy`。Pull request 只跑前两个，不部署。
+
+这样做的原因：早先的方案让 Pages 从分支构建，`commits.json` 只能由 workflow 生成后**提交回仓库**，于是每推送一次就多一个 `chore: refresh commits.json` 的 bot 提交。现在它在 runner 里生成、直接进 `_site`，仓库不再被写入。
+
 `--livereload` 在 32 位 Ruby 3.2 上用不了（eventmachine 的 x86-mingw32 预编译包只到 Ruby 2.x）。`serve` 默认已带 `--watch`，改文件会自动重建，手动刷新浏览器即可。
 
 ## 站点结构
@@ -52,7 +60,15 @@ python script/linkcheck.py    # 站内链接、大小写、Unicode 归一化
 - [assets/](assets/)：站点静态资源。
   - CSS：[dark-mode.css](assets/css/dark-mode.css) 暗色模式、[homepage.css](assets/css/homepage.css) 主页轮播样式、[cursors.css](assets/css/cursors.css) 自定义光标等，另含 LESS 源文件与字体。
   - JS：主题切换、首页画廊、[calendar.js](assets/js/calendar.js) 主页日历（读取提交记录生成更新时间线）、[weather-sound.js](assets/js/weather-sound.js) 用 Web Audio 实时合成的环境天气音效（无外部音频文件）等。
-  - [assets/data/commits.json](assets/data/commits.json)：站点提交历史数据，由 GitHub Actions（[build-commits.yml](.github/workflows/build-commits.yml)）在每次推送后自动生成，供主页日历 / 时间线使用。
+  - [assets/data/commits.json](assets/data/commits.json)：站点提交历史，供主页日历与[更新日志](changelog.md)使用。**线上版本由 [deploy.yml](.github/workflows/deploy.yml) 在构建期从 `git log` 重新生成**，不经过仓库；仓库里这一份只是给本地开发用的快照，会逐渐过时。想在本地刷新它：
+
+    ```bash
+    git log --no-merges --date=iso-strict \
+      --pretty=format:'%H%x09%h%x09%cI%x09%an%x09%s' \
+      | jq -R -s 'split("\n") | map(select(length > 0)) | map(split("\t"))
+                  | map({hash:.[0], short:.[1], date:.[2], author:.[3], msg:(.[4:]|join("\t"))})' \
+      > assets/data/commits.json
+    ```
 - [gell/](gell/)：小游戏目录，目前包含中土自走棋 [gell/EPT/](gell/EPT/)。
 - [laim/stars.assets/](laim/stars.assets/)：3D 夜空星图，可拖动旋转天球、缩放并点击恒星查看详情的交互式恒星观测页面。
 - [images/](images/)：主页画廊与图标素材。

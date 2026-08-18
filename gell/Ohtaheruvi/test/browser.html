@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>Ohtaheruvi · 浏览器端集成测试</title>
+<link rel="stylesheet" href="../css/ohta.css">
+</head>
+<body>
+<!-- 与 index.html 相同的元素 id，供 ui.js 挂载 -->
+<div id="topbar">
+  <span id="turnLabel"></span><span id="factionLabel"></span>
+  <b id="goldLabel"></b><span id="flowLabel"></span>
+  <button id="undoBtn"></button><button id="statsBtn"></button>
+  <button id="tutorBtn"></button><button id="endTurn"></button>
+</div>
+<div id="centerPanel"><canvas id="board" style="width:800px;height:600px"></canvas></div>
+<canvas id="minimap" width="220" height="180"></canvas>
+<div id="stackPanel"></div><div id="tilePanel"></div><div id="heroPanel"></div>
+<div id="cityPanel"></div><div id="logPanel"></div>
+
+<h2>结果</h2>
+<pre id="out">运行中…</pre>
+
+<script type="module">
+import { TEST_MAP } from '../maps/test.js';
+import * as S from '../js/state.js';
+import * as R from '../js/render.js';
+import * as UI from '../js/ui.js';
+import * as Save from '../js/save.js';
+import { HERO_ROSTER } from '../data/heroes.js';
+import { makeUnit } from '../js/unit.js';
+import { key, pathTo } from '../js/map.js';
+import { runAiTurn } from '../js/ai.js';
+import { startTutorial, endTutorial } from '../js/tutorial.js';
+import { applyCmd, checksum } from '../js/commands.js';
+
+const lines = [];
+let fails = 0;
+const ok = (c, m) => { lines.push((c ? 'ok   ' : 'FAIL ') + m); if (!c) fails++; };
+window.addEventListener('error', (e) => { lines.push('FAIL 未捕获异常：' + e.message); fails++; });
+
+try {
+  const G = S.newGame(TEST_MAP, { seed: 20260817 });
+  const view = R.createView(document.getElementById('board'), G);
+  R.resize(view);
+  const ui = UI.createUI(G, view);
+  // 界面上的操作现在一律走指令层（联机与单人共用同一条路径）
+  ui.dispatch = (cmd) => { cmd.p = S.current(G); applyCmd(G, cmd); UI.refreshAll(ui); };
+
+  ok(view.vw > 0 && view.vh > 0, `画布尺寸 ${Math.round(view.vw)}×${Math.round(view.vh)}`);
+
+  UI.refreshAll(ui);
+  ok(document.getElementById('turnLabel').textContent.includes('第 1 回合'), '顶栏渲染回合');
+  ok(document.getElementById('goldLabel').textContent === '120', '顶栏渲染金币');
+  ok(document.getElementById('heroPanel').textContent.includes('芬国昐'), '英雄面板列出芬国昐');
+  ok(document.getElementById('logPanel').children.length > 0, '日志面板有内容');
+
+  // 选中都城军团
+  const eithel = S.cityById(G, 'eithel');
+  const eAt = S.cityAnchor(eithel);
+  const army = S.armyAt(G, eAt.x, eAt.y);
+  UI.selectArmy(ui, army);
+  ok(document.getElementById('stackPanel').querySelectorAll('.slot').length === army.units.length,
+     `队列渲染 ${army.units.length} 个格位`);
+  ok(view.reach && view.reach.size > 0, `可达域 ${view.reach ? view.reach.size : 0} 格`);
+  ok(ui.picked.size === army.units.length, '默认全选');
+
+  // 只勾选英雄单独出击 → 分队
+  const heroUnit = army.units.find((u) => u.type === 'hero');
+  ui.picked = new Set([heroUnit.uid]);
+  UI.updateReach(ui);
+  const soloReach = view.reach.size;
+  ok(soloReach > 0, `英雄单独行动的可达域 ${soloReach} 格`);
+
+  const before = army.units.length;
+  const target = [...view.reach.keys()].map((k) => ({ x: k % 4096, y: Math.floor(k / 4096), n: view.reach.get(k) }))
+    .sort((a, b) => b.n.spent - a.n.spent)[0];
+  const sub = S.detach(G, army, ui.picked);
+  ok(!!sub && sub !== army, '分队成功');
+  const path = pathTo(view.reach, sub, target.x, target.y);
+  S.moveAlong(G, sub, path);
+  ok(sub.x === target.x && sub.y === target.y, `英雄移动到 (${sub.x},${sub.y})`);
+  ok(army.units.length === before - 1, `母军团剩余 ${army.units.length} 个单位`);
+  S.reattachIfIdle(G, sub);
+  ok(G.armies.filter((a) => a.x === army.x && a.y === army.y).length === 1, '同格不会残留两支军团');
+
+  // 中立城池的守军：位置在右下角，强度随规模递增（反馈 2、3）
+  {
+    const lad = S.cityById(G, 'ladros'), bre = S.cityById(G, 'brethil');
+    const lg = S.armyAt(G, S.cityAnchor(lad).x, S.cityAnchor(lad).y);
+    const bg = S.armyAt(G, S.cityAnchor(bre).x, S.cityAnchor(bre).y);
+    ok(!!lg && !!bg, '中立城池都有守军');
+    ok(lg.x === lad.x + 1 && lg.y === lad.y + 1, '守军停在城池右下角');
+    ok(bg.units.length > lg.units.length, `规模越大守军越多：城 ${bg.units.length} > 村镇 ${lg.units.length}`);
+  }
+
+  // 地块信息面板（反馈 4）
+  ui.inspect = { x: 20, y: 10 };
+  UI.refreshAll(ui);
+  let tp = document.getElementById('tilePanel').textContent;
+  ok(tp.includes('草原') && tp.includes('移动消耗'), '地块面板显示地形与移动消耗');
+  ui.inspect = { x: 5, y: 2 };    // 山地（注意 18~19,1~2 已被安格班城占掉）
+  UI.refreshAll(ui);
+  tp = document.getElementById('tilePanel').textContent;
+  ok(tp.includes('山地系'), '山地格标出通行限制');
+  ui.inspect = { x: eithel.x, y: eithel.y };
+  UI.refreshAll(ui);
+  tp = document.getElementById('tilePanel').textContent;
+  ok(tp.includes('巴拉德埃塞尔') && tp.includes('防御'), '城市格显示城市信息');
+  ui.inspect = { x: 16, y: 10 };  // 祭坛
+  UI.refreshAll(ui);
+  ok(document.getElementById('tilePanel').textContent.includes('众神祭坛'), '地物格标出祭坛');
+
+  // 城市面板与生产：卡片式（反馈 5）
+  ui.selectCity(eithel);
+  const cards = document.getElementById('cityPanel').querySelectorAll('.ucard');
+  ok(cards.length === eithel.produces.length, `生产面板渲染 ${cards.length} 张兵种卡片（不再是下拉框）`);
+  ok(document.getElementById('cityPanel').querySelector('.ucard-stats'), '卡片上有攻/耐/移数值');
+  ok(document.getElementById('cityPanel').textContent.includes('维护'), '卡片上标出维护费');
+  const lanceCard = [...cards].find((c) => c.textContent.includes('希斯路姆枪骑'));
+  lanceCard.click();
+  ok(eithel.building.type === 'hithlum_lance', '点击卡片切换生产生效');
+  ok(document.getElementById('cityPanel').querySelector('.ucard.active').textContent.includes('希斯路姆枪骑'),
+     '当前生产的卡片被高亮');
+  const vsel = document.getElementById('cityPanel').querySelector('select');
+  vsel.value = 'mithrim';
+  vsel.dispatchEvent(new Event('change'));
+  ok(eithel.vectorTo === 'mithrim', '设置投送目标生效');
+
+  // 生产总览弹窗
+  UI.productionOverview(ui);
+  const ov = document.querySelector('.modal-back');
+  ok(!!ov && ov.textContent.includes('巴拉德埃塞尔'), '生产总览弹窗列出城市');
+  ov.remove();
+
+  // 战前预估 + 实战：造一支压倒性部队打中立的拉德洛斯哨所
+  const ladros = S.cityById(G, 'ladros');
+  const strike = S.placeArmy(G, ladros.x, ladros.y + 2, 1,
+    Array.from({ length: 8 }, () => makeUnit(G, 'hithlum_lance')));
+  UI.selectArmy(ui, strike);
+  let confirmed = false;
+  // 故意打「没有守军站着」的那一格：预估与实战都必须照样把守军算进去
+  UI.battlePreview(ui, strike, ladros.x, ladros.y + 1, () => { confirmed = true; });
+  const pv = document.querySelector('.modal-back');
+  ok(!!pv && pv.textContent.includes('预估胜率'), '战前预估弹窗出现并给出胜率');
+  ok(pv.textContent.includes('拉德洛斯哨所'), '预估弹窗标出目标城市');
+  pv.querySelectorAll('button')[1].click();
+  ok(confirmed, '点「进攻」触发了回调');
+
+  const res = S.attack(G, strike, ladros.x, ladros.y + 1);
+  ok(!!res && res.log.length > 0, `战斗产生 ${res.log.length} 场决斗`);
+  UI.battleReport(ui, res, ladros.name);
+  const rp = document.querySelector('.modal-back');
+  ok(!!rp && rp.textContent.includes('交锋轮'), '战报弹窗渲染');
+  rp.remove();
+  ok(ladros.owner === 1, `拉德洛斯哨所已易主（owner=${ladros.owner}）`);
+
+  // 遗迹：把英雄送到石环
+  const ruin = G.map.def.features.find((f) => f.type === 'ruin');
+  const explorer = S.placeArmy(G, ruin.x, ruin.y, 1, []);
+  explorer.units.push(...G.armies.find((a) => a.units.some((u) => u.type === 'hero')).units.splice(0, 1));
+  const canE = S.canExplore(G, explorer);
+  ok(!!canE, '英雄在遗迹上可发起探索');
+  const eres = S.exploreFeature(G, explorer);
+  ok(!!eres && eres.type === 'ruin', `遗迹结算：${eres.win ? '击杀守护者，奖励 ' + eres.reward : '被守护者击退'}`);
+
+  // 指令层与局面指纹（联机的地基）
+  {
+    const before = checksum(G);
+    ok(typeof before === 'number', `局面指纹可计算（${before}）`);
+    ok(applyCmd(G, { k: 'produce', p: 999, city: 'eithel', type: 'noldor_sword' }) === null,
+       '指令层拒绝越权操作');
+    ok(checksum(G) === before, '被拒绝的指令没有改动局面');
+  }
+
+  // 存读档往返
+  Save.save(G, 's_test');
+  const data = Save.load('s_test');
+  ok(!!data, '存档写入 localStorage');
+  const G2 = Save.deserialize(data, TEST_MAP, (p, id) => (HERO_ROSTER[p] || []).find((h) => h.id === id));
+  ok(G2.turn === G.turn && G2.gold[1] === G.gold[1], '读档还原回合与金币');
+  ok(G2.armies.length === G.armies.length, `读档还原 ${G2.armies.length} 支军团`);
+  ok(G2.cities.find((c) => c.id === 'ladros').owner === 1, '读档还原城市归属');
+  ok(G2.map.def.features.filter((f) => f.explored).length === G.map.def.features.filter((f) => f.explored).length,
+     '读档还原遗迹探索状态');
+  ok(G2.history.length === G.history.length, `读档还原统计曲线的 ${G2.history.length} 条历史`);
+  ok(JSON.stringify(G2.humans) === JSON.stringify(G.humans), '读档还原人类/AI 的分配');
+  Save.clearSlot('s_test');
+
+  // 重开一局不应继承上一局的遗迹状态
+  const G3 = S.newGame(TEST_MAP, { seed: 1 });
+  ok(G3.map.def.features.every((f) => !f.explored), '重开新局的遗迹全部未探索');
+
+  // 撤回按钮状态（反馈 1）
+  UI.refreshAll(ui);
+  ok(document.getElementById('undoBtn').disabled, '未移动时撤回按钮为禁用');
+  const mv = S.armyAt(G, eithel.x, eithel.y);
+  if (mv) {
+    S.pushUndo(G);
+    const r2 = S.reachFor(G, mv);
+    const kk = [...r2.keys()][0];
+    S.moveAlong(G, mv, [{ x: kk % 4096, y: Math.floor(kk / 4096) }]);
+    UI.refreshAll(ui);
+    ok(!document.getElementById('undoBtn').disabled, '移动后撤回按钮可用');
+    ok(document.getElementById('undoBtn').title.includes('可撤回'), '按钮提示写明可撤回步数');
+    S.undoMove(G);
+    UI.refreshAll(ui);
+    ok(document.getElementById('undoBtn').disabled, '撤回后按钮回到禁用');
+  }
+
+  // 统计曲线（反馈 2）
+  for (let i = 0; i < 6; i++) S.endTurn(G);
+  UI.statsDialog(ui);
+  const sm = document.querySelector('.modal-back');
+  ok(!!sm, '统计曲线弹窗打开');
+  ok(sm.querySelectorAll('.chart').length === 3, `三张小多图（金币/城池/部队），实际 ${sm.querySelectorAll('.chart').length} 张`);
+  ok(sm.querySelectorAll('.chart-svg path[stroke]').length >= 2, '每张图至少画出两条数据线');
+  ok(sm.querySelectorAll('.legend-item').length === G.players.length, '图例覆盖全部参战方');
+  ok(sm.textContent.includes('希斯路姆的诺多') && sm.textContent.includes('安格班'), '图例给出势力名（身份不靠颜色单独承担）');
+  const tableBtn = [...sm.querySelectorAll('button')].find((b) => b.textContent.includes('表格'));
+  ok(!!tableBtn, '提供表格视图开关');
+  tableBtn.click();
+  ok(sm.querySelector('table.ov').style.display !== 'none', '切到表格视图');
+  sm.remove();
+
+  // 回合开始提示（反馈 6）
+  UI.turnBanner(G, '第 9 回合 · 希斯路姆的诺多', '金库 300');
+  const banner = document.getElementById('turnBanner');
+  ok(!!banner && banner.textContent.includes('第 9 回合'), '画面中央浮出回合提示');
+  ok(getComputedStyle(banner).animationName === 'tb', '提示带渐隐动画');
+  banner.remove();
+
+  // 新手教程（反馈 3）
+  startTutorial(ui);
+  const card = document.getElementById('tutorCard');
+  ok(!!card, '教程卡片出现');
+  ok(card.textContent.includes('1 / '), '显示步数进度');
+  const nextBtn = [...card.querySelectorAll('button')].find((b) => b.textContent === '下一步');
+  nextBtn.click();
+  ok(document.getElementById('tutorCard').textContent.includes('2 / '), '「下一步」推进');
+  ok(!!document.querySelector('.tutor-spot'), '对应界面元素被高亮');
+  endTutorial(ui);
+  ok(!document.getElementById('tutorCard'), '跳过后卡片被移除');
+  ok(!document.querySelector('.tutor-spot'), '高亮一并清除');
+
+  // AI 自动执棋（反馈 6）
+  const G8 = S.newGame(TEST_MAP, { seed: 88, humans: [1] });
+  ok(!S.isHuman(G8, 8), '安格班由 AI 执棋');
+  S.endTurn(G8);
+  ok(S.current(G8) === 8, '结束回合后轮到 AI');
+  runAiTurn(G8, 8);
+  S.endTurn(G8);
+  ok(S.current(G8) === 1, 'AI 走完后直接回到玩家（不需要玩家再点一次）');
+} catch (err) {
+  lines.push('FAIL 抛出异常：' + (err && err.stack ? err.stack : err));
+  fails++;
+}
+
+lines.push(fails ? `\n${fails} 项失败` : '\n全部通过');
+document.getElementById('out').textContent = lines.join('\n');
+document.title = fails ? `FAILED(${fails})` : 'ALL PASS';
+</script>
+</body>
+</html>

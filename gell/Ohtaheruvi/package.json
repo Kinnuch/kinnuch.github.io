@@ -1,0 +1,6 @@
+{
+  "name": "ohtaheruvi",
+  "private": true,
+  "type": "module",
+  "description": "声明本目录的 .js 为 ES Module，使规则内核可以直接用 node 跑无头测试（浏览器端无需构建，不引入任何依赖）。"
+}

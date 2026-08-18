@@ -1,0 +1,24 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git add *)",
+      "Bash(git restore *)",
+      "Bash(git commit *)",
+      "Bash(git fetch *)",
+      "Bash(git pull *)",
+      "Bash(git stash *)",
+      "Bash(git push *)",
+      "Bash(git rm *)",
+      "Bash(python -c ' *)",
+      "Bash(python3 -)",
+      "Bash(echo \"assertion script exit=$?\")",
+      "Bash(command -v jq)",
+      "Bash(jq --version)",
+      "Bash(echo \"  jq present locally: $\\(jq --version\\)\")",
+      "PowerShell(python \"C:\\\\Users\\\\ADMINI~1\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\c--Users-Administrator-Documents-GitHub-kinnuch-github-io\\\\c93aed2a-fc04-44c1-9997-a6f4e14cc23b\\\\scratchpad\\\\bench.py\" 2>$null)",
+      "PowerShell(python \"C:\\\\Users\\\\ADMINI~1\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\c--Users-Administrator-Documents-GitHub-kinnuch-github-io\\\\c93aed2a-fc04-44c1-9997-a6f4e14cc23b\\\\scratchpad\\\\bench2.py\" 2>$null)",
+      "PowerShell(python \"C:\\\\Users\\\\ADMINI~1\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\c--Users-Administrator-Documents-GitHub-kinnuch-github-io\\\\c93aed2a-fc04-44c1-9997-a6f4e14cc23b\\\\scratchpad\\\\bench3.py\" 2>$null)",
+      "PowerShell(python \"C:\\\\Users\\\\ADMINI~1\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\c--Users-Administrator-Documents-GitHub-kinnuch-github-io\\\\c93aed2a-fc04-44c1-9997-a6f4e14cc23b\\\\scratchpad\\\\repro.py\" 2>&1)"
+    ]
+  }
+}

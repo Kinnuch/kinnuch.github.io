@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ohtaheruvi · 中土战争领主</title>
+  <link rel="stylesheet" href="css/ohta.css">
+  <script>
+    (function(){var t=localStorage.getItem('theme');if(t==='dark'||((!t)&&window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches)){document.documentElement.setAttribute('data-theme','dark');}})();
+    function toggleTheme(){var d=document.documentElement;var n=d.getAttribute('data-theme')==='dark'?'light':'dark';d.setAttribute('data-theme',n);localStorage.setItem('theme',n);}
+  </script>
+</head>
+<body>
+
+<div class="header-bar">
+  <div class="utility-bar">
+    <a href="/cerf/" class="utility-btn">🏠 返回工具页</a>
+    <button class="utility-btn" onclick="toggleTheme()">☀ 模式</button>
+  </div>
+  <h1 class="page-title">Ohtaheruvi · 中土战争领主</h1>
+  <p class="page-sub">以《精灵宝钻》为舞台的回合制战略。占城、产兵、养军，派英雄探索上古遗迹寻找神器与盟友，用最多八个单位的军团逐城推进。</p>
+</div>
+
+<!-- 大厅：三屏 —— 模式 → 战役 →（联机时）房间 -->
+
+<!-- 一、模式 -->
+<div id="screenMode" class="screen">
+  <h2>Ohtaheruvi</h2>
+  <p class="lead">以《精灵宝钻》为舞台的回合制战略。占领城市、生产并供养军队、派英雄探索上古遗迹寻找神器与盟友，
+     用最多八个单位的军团逐城推进。</p>
+  <div class="mode-grid">
+    <button id="modeSolo" class="mode-card">
+      <span class="mode-icon">⚔</span>
+      <span class="mode-name">单人游戏</span>
+      <span class="mode-desc">你执掌一方，其余势力交给 AI。十场战役、两个纪元的战场，四档难度。</span>
+    </button>
+    <button id="modeMp" class="mode-card">
+      <span class="mode-icon">🌐</span>
+      <span class="mode-name">多人联机</span>
+      <span class="mode-desc">2~8 人点对点直连，房号邀请。空出来的势力由 AI 接管。</span>
+    </button>
+    <button id="modeResume" class="mode-card" style="display:none">
+      <span class="mode-icon">▶</span>
+      <span class="mode-name">继续上次</span>
+      <span class="mode-desc" id="resumeInfo"></span>
+    </button>
+  </div>
+  <label class="check">
+    <input type="checkbox" id="tutorCheck"> 🎓 新手教程（分步引导，随时可跳过；首次游玩会自动打开）
+  </label>
+  <p class="muted tiny" style="margin-top:18px">
+    非官方同人作品，与 Tolkien Estate 及 Middle-earth Enterprises 无关，不作商业用途。
+    规则内核参考 1989 年 Steve Fawkner 的 <i>Warlords</i>（及其 iPad 移植版 <i>Warlords Classic HD</i>）的玩法结构；
+    美术与代码全部原创，未使用原作任何素材。
+  </p>
+</div>
+
+<!-- 二、联机房间 -->
+<div id="screenRoom" class="screen" style="display:none">
+  <button class="back-btn" data-back="screenMode">← 返回</button>
+  <h2>多人联机</h2>
+  <div class="room-row">
+    <label>昵称 <input id="mpName" maxlength="8" placeholder="你的名字"></label>
+    <button id="mpHost" class="mini gold">🏠 创建房间</button>
+    <span class="muted">或</span>
+    <input id="mpCode" placeholder="输入房号 ohta-xxxxxx">
+    <button id="mpJoin" class="mini">🔗 加入房间</button>
+  </div>
+  <div id="mpStatus" class="muted" style="margin-top:10px"></div>
+  <div id="mpPlayers" style="margin-top:6px;font-size:13px"></div>
+  <button id="mpToSetup" class="big-btn" style="display:none;max-width:260px;margin-top:14px">⚔ 去选战役</button>
+  <p class="muted tiny" style="margin-top:14px">
+    房主定序、各端重放同一串指令 —— 网上只传操作，不传局面。
+    只有房主能选战役与开局；部分严格网络环境可能无法点对点直连。
+  </p>
+</div>
+
+<!-- 三、战役选择 -->
+<div id="screenSetup" class="screen" style="display:none">
+  <button class="back-btn" data-back="screenMode">← 返回</button>
+  <h2>选择战役</h2>
+  <div class="setup-grid">
+    <div class="setup-left">
+      <div id="scenarioList"></div>
+    </div>
+    <div class="setup-right">
+      <canvas id="scThumb" class="sc-thumb"></canvas>
+      <div id="scInfo"></div>
+      <label class="lbl">执掌哪一方</label>
+      <div id="sidePick"></div>
+      <div id="sideInfo" class="side-info"></div>
+      <div class="opt-row">
+        <div>
+          <label class="lbl">战争迷雾</label>
+          <div id="fogPick"></div>
+        </div>
+        <div>
+          <label class="lbl">AI 难度</label>
+          <div id="diffPick"></div>
+        </div>
+      </div>
+      <p id="diffDesc" class="muted tiny"></p>
+      <div class="lobby-btns">
+        <button id="newBtn" class="big-btn">⚔ 开战</button>
+        <button id="seedBtn" class="big-btn alt">🎲 指定种子</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 对局 -->
+<div id="game" style="display:none">
+  <div id="topbar">
+    <span id="turnLabel">第 1 回合</span>
+    <span id="factionLabel">—</span>
+    <span class="gold-box">💰 <b id="goldLabel">0</b> <span id="flowLabel" class="flow">+0 / −0</span></span>
+    <button id="undoBtn" class="utility-btn" disabled>↶ 撤回移动</button>
+    <span class="spacer"></span>
+    <button id="statsBtn" class="utility-btn">统计曲线</button>
+    <button id="histBtn" class="utility-btn">战史</button>
+    <button id="tutorBtn" class="utility-btn">教程</button>
+    <button id="prodBtn" class="utility-btn">生产总览</button>
+    <button id="orderBtn" class="utility-btn">出战：弱者先</button>
+    <button id="animBtn" class="utility-btn">动画：开</button>
+    <button id="soundBtn" class="utility-btn">音效：开</button>
+    <button id="saveBtn" class="utility-btn">存档</button>
+    <button id="loadBtn" class="utility-btn">读档</button>
+    <button id="endTurn" class="primary-btn">结束回合</button>
+  </div>
+
+  <div id="layout">
+    <div id="leftPanel">
+      <div class="panel-box">
+        <h4>小地图</h4>
+        <canvas id="minimap" width="220" height="180"></canvas>
+      </div>
+      <div class="panel-box">
+        <h4>军团队列</h4>
+        <div id="stackPanel"></div>
+      </div>
+      <div class="panel-box">
+        <h4>地块</h4>
+        <div id="tilePanel"></div>
+      </div>
+      <div class="panel-box">
+        <h4>英雄与神器</h4>
+        <div id="heroPanel"></div>
+      </div>
+    </div>
+
+    <div id="centerPanel">
+      <canvas id="board"></canvas>
+    </div>
+
+    <div id="rightPanel">
+      <div class="panel-box">
+        <h4>城市</h4>
+        <div id="cityPanel"></div>
+      </div>
+      <div class="panel-box">
+        <h4>战报与日志</h4>
+        <div id="logPanel"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="js/vendor-peerjs.min.js"></script>
+<script type="module" src="js/main.js"></script>
+</body>
+</html>

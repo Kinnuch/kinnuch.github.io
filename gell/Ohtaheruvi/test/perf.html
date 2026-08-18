@@ -1,0 +1,35 @@
+<!-- 渲染性能测量：浏览器打开 test/perf.html 看结果。
+     跑一局 AI 把地图铺满部队，再测首帧（要现烘地形块）与稳态帧。
+     注意：测的是 CPU 侧的绘制命令提交耗时，不含 GPU 光栅化。 -->
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8">
+<link rel="stylesheet" href="../css/ohta.css"></head><body style="margin:0">
+<canvas id="board" style="width:1400px;height:880px"></canvas>
+<pre id="out" style="padding:12px"></pre>
+<script type="module">
+import { NORTHWEST } from '../maps/northwest.js';
+import * as S from '../js/state.js';
+import * as R from '../js/render.js';
+import { runAiTurn } from '../js/ai.js';
+const lines = [];
+const G = S.newGame(NORTHWEST, { seed: 3, humans: [11], fogMode: 'off', difficulty: 'normal' });
+for (let i = 0; i < 8 * 12; i++) { const p = S.current(G); if (!S.isHuman(G,p)) runAiTurn(G,p); S.endTurn(G); }
+const units = G.armies.reduce((n,a)=>n+a.units.length,0);
+const view = R.createView(document.getElementById('board'), G);
+R.resize(view);
+R.setZoom(view, 48);
+R.centerOn(view, 110, 80);
+const t0 = performance.now(); R.draw(view); const cold = performance.now() - t0;
+let warm = 0;
+for (let i = 0; i < 60; i++) {
+  view.cam.x += 1; R.clampCam(view);
+  const a = performance.now(); R.draw(view); warm += performance.now() - a;
+}
+lines.push('地图 ' + G.map.w + '×' + G.map.h + '，' + G.cities.length + ' 城，' + G.armies.length + ' 支军团 / ' + units + ' 个单位');
+lines.push('首帧（需现烘地形块）：' + cold.toFixed(1) + ' ms');
+lines.push('稳态平均帧：' + (warm/60).toFixed(2) + ' ms  →  ' + Math.round(1000/(warm/60)) + ' fps 上限');
+// 缩放会作废缓存，测一次换档的代价
+const t2 = performance.now(); R.setZoom(view, 64); R.draw(view); lines.push('切换缩放档后的首帧：' + (performance.now()-t2).toFixed(1) + ' ms');
+const t3 = performance.now(); for (let i=0;i<30;i++){ view.cam.y += 1; R.clampCam(view); R.draw(view); }
+lines.push('64px 档稳态平均帧：' + ((performance.now()-t3)/30).toFixed(2) + ' ms');
+document.getElementById('out').textContent = lines.join('\n');
+</script></body></html>

@@ -9,6 +9,15 @@
     "morphology": []
   },
   {
+    "dict_form": "-ian(d)",
+    "part": "affix",
+    "english": "-land, country",
+    "definition": "国名，地名常用后缀",
+    "sentence": "[PE17/29][PE17/37][PE17/42]\nBeleriand.\n贝烈瑞安德",
+    "other": "复数-iend",
+    "morphology": []
+  },
+  {
     "dict_form": "a(ar)/ah",
     "part": "conjunction",
     "english": "and",
@@ -22620,6 +22629,232 @@
     ]
   },
   {
+    "dict_form": "hollen",
+    "part": "adjective",
+    "english": "closed, shut",
+    "definition": "关上的，关闭的",
+    "sentence": "[PE17/98]\nFen Hollen.\n分霍尔兰，紧闭的大门",
+    "other": "hol-的过去分词",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "chollen"
+      },
+      {
+        "type": "Plural",
+        "form": "hellin"
+      },
+      {
+        "type": "Comparative",
+        "form": "achollen"
+      },
+      {
+        "type": "Superlative",
+        "form": "ro-chollen"
+      }
+    ]
+  },
+  {
+    "dict_form": "honeg",
+    "part": "noun",
+    "english": "brother(diminutive)",
+    "definition": "小兄弟，兄弟（小称，亲昵称呼）",
+    "sentence": "",
+    "other": "参见hanar\n†hawn + -eg",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i choneg"
+      },
+      {
+        "type": "Plural",
+        "form": "henig"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i chenig"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "a choneg"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-choneg"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin choneg"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor choneg"
+      },
+      {
+        "type": "Stop",
+        "form": "o choneg"
+      },
+      {
+        "type": "H",
+        "form": "a choneg"
+      },
+      {
+        "type": "DH",
+        "form": "ne choneg"
+      }
+    ]
+  },
+  {
+    "dict_form": "hoth",
+    "part": "noun",
+    "english": "host, horde",
+    "definition": "（兽）群，（奥克）军队",
+    "sentence": "[PE17/39]\nGlamhoth.\n奥克的别称，直译为“吵闹的兽群”",
+    "other": "仅用于邪恶或不友好的敌对生物",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i choth"
+      },
+      {
+        "type": "Plural",
+        "form": "hyth"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i chyth"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "a choth"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-choth"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin choth"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor choth"
+      },
+      {
+        "type": "Stop",
+        "form": "o choth"
+      },
+      {
+        "type": "H",
+        "form": "a choth"
+      },
+      {
+        "type": "DH",
+        "form": "ne choth"
+      }
+    ]
+  },
+  {
+    "dict_form": "huan",
+    "part": "noun",
+    "english": "great dog, hound",
+    "definition": "大狗，胡安，大猎犬",
+    "sentence": "",
+    "other": "神犬胡安",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i chuan"
+      },
+      {
+        "type": "Plural",
+        "form": "huain"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i chuain"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "a chuan"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-chuan"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin chuan"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor chuan"
+      },
+      {
+        "type": "Stop",
+        "form": "o chuan"
+      },
+      {
+        "type": "H",
+        "form": "a chuan"
+      },
+      {
+        "type": "DH",
+        "form": "ne chuan"
+      }
+    ]
+  },
+  {
+    "dict_form": "huorn",
+    "part": "noun",
+    "english": "spirit tree",
+    "definition": "胡奥恩",
+    "sentence": "",
+    "other": "含义存疑\nhû + orn",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i chuorn"
+      },
+      {
+        "type": "Plural",
+        "form": "huyrn"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i chuyrn"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "a chuorn"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-chuorn"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin chuorn"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor chuorn"
+      },
+      {
+        "type": "Stop",
+        "form": "o chuorn"
+      },
+      {
+        "type": "H",
+        "form": "a chuorn"
+      },
+      {
+        "type": "DH",
+        "form": "ne chuorn"
+      }
+    ]
+  },
+  {
     "dict_form": "hên",
     "part": "noun",
     "english": "child",
@@ -22825,6 +23060,350 @@
       {
         "type": "DH",
         "form": "ne chîth"
+      }
+    ]
+  },
+  {
+    "dict_form": "hû",
+    "part": "noun",
+    "english": "spirit, shadow",
+    "definition": "灵魂，魂灵，幽影",
+    "sentence": "",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i chû"
+      },
+      {
+        "type": "Plural",
+        "form": "hui"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i chui"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "a chû"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-chû"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin chû"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor chû"
+      },
+      {
+        "type": "Stop",
+        "form": "o chû"
+      },
+      {
+        "type": "H",
+        "form": "a chû"
+      },
+      {
+        "type": "DH",
+        "form": "ne chû"
+      }
+    ]
+  },
+  {
+    "dict_form": "hû",
+    "part": "noun",
+    "english": "hound",
+    "definition": "猎犬，猎狗",
+    "sentence": "",
+    "other": "昆雅语同源词hú",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i chû"
+      },
+      {
+        "type": "Plural",
+        "form": "hui"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i chui"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "a chû"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-chû"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin chû"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor chû"
+      },
+      {
+        "type": "Stop",
+        "form": "o chû"
+      },
+      {
+        "type": "H",
+        "form": "a chû"
+      },
+      {
+        "type": "DH",
+        "form": "ne chû"
+      }
+    ]
+  },
+  {
+    "dict_form": "hûl",
+    "part": "noun",
+    "english": "secret",
+    "definition": "秘密，机密",
+    "sentence": "",
+    "other": "",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i chûl"
+      },
+      {
+        "type": "Plural",
+        "form": "huil"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i chuil"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "a chûl"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-chûl"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin chûl"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor chûl"
+      },
+      {
+        "type": "Stop",
+        "form": "o chûl"
+      },
+      {
+        "type": "H",
+        "form": "a chûl"
+      },
+      {
+        "type": "DH",
+        "form": "ne chûl"
+      }
+    ]
+  },
+  {
+    "dict_form": "hûn",
+    "part": "noun",
+    "english": "heart",
+    "definition": "心脏（器官）",
+    "sentence": "",
+    "other": "来自√KHOM，仅指代物理上的器官心脏",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i chûn"
+      },
+      {
+        "type": "Plural",
+        "form": "huin"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "i chuin"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "a chûn"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "e-chûn"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin chûn"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor chûn"
+      },
+      {
+        "type": "Stop",
+        "form": "o chûn"
+      },
+      {
+        "type": "H",
+        "form": "a chûn"
+      },
+      {
+        "type": "DH",
+        "form": "ne chûn"
+      }
+    ]
+  },
+  {
+    "dict_form": "i",
+    "part": "other",
+    "english": "the",
+    "definition": "定冠词",
+    "sentence": "",
+    "other": "复数in\n昆雅语定冠词同样是i\n根据PE23，一说定冠词为e",
+    "morphology": []
+  },
+  {
+    "dict_form": "i",
+    "part": "pronoun",
+    "english": "who, that",
+    "definition": "关系代词；从句引导词",
+    "sentence": "[S/188]\nDor Firn-i-Guinar.\n多尔费恩-伊-圭那，死而复生者之地",
+    "other": "",
+    "morphology": []
+  },
+  {
+    "dict_form": "iach",
+    "part": "noun",
+    "english": "ford, crossing",
+    "definition": "渡口，浅滩",
+    "sentence": "[S/121]\n阿洛西阿赫，阿洛斯渡口",
+    "other": "√YAK",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i iach"
+      },
+      {
+        "type": "Plural",
+        "form": "iaich"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "in iaich"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an iach"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "en-iach"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin iach"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor iach"
+      },
+      {
+        "type": "Stop",
+        "form": "od iach"
+      },
+      {
+        "type": "H",
+        "form": "ah iach"
+      },
+      {
+        "type": "DH",
+        "form": "nedh iach"
+      }
+    ]
+  },
+  {
+    "dict_form": "iand",
+    "part": "adjective",
+    "english": "wide",
+    "definition": "广阔的，宽阔的，宽敞的",
+    "sentence": "",
+    "other": "昆雅语同源词yanda\n√YAN",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "iand"
+      },
+      {
+        "type": "Plural",
+        "form": "iend"
+      },
+      {
+        "type": "Comparative",
+        "form": "aniand"
+      },
+      {
+        "type": "Superlative",
+        "form": "ro-iand"
+      }
+    ]
+  },
+  {
+    "dict_form": "iâ",
+    "part": "noun",
+    "english": "chasm, pit; void, abyss",
+    "definition": "深渊，大裂谷，鸿沟，虚空；一亚",
+    "sentence": "[PE17/35]\nMoria.\n墨瑞亚，黑色裂谷",
+    "other": "√YAG",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i iâ"
+      },
+      {
+        "type": "Plural",
+        "form": "iai"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "in iai"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an iâ"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "en-iâ"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin iâ"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor iâ"
+      },
+      {
+        "type": "Stop",
+        "form": "od iâ"
+      },
+      {
+        "type": "H",
+        "form": "ah iâ"
+      },
+      {
+        "type": "DH",
+        "form": "nedh iâ"
       }
     ]
   },

@@ -16,7 +16,7 @@ description: 各门个人造语的横向对比——谱系、形态类型、书�
 | [**Elandis** 亚提斯语](/laim/elandis/) | 独立，无姊妹语 | 屈折，前缀 + 词尾并用 | 自创字母 | — | 有语法与长诗文本 |
 | [**Dyalan** 嘉兰语](/laim/dyalan/) | Proto-Andoric → 古語 → 嘉兰语 | 屈折，有生性标记脱落（M-X-S → M-S） | 拉丁转写 | — | 谱系 + 音变链完整 |
 | [**Proto-Shikṛin** 原始希克林语](/laim/Proto-Shikṛin/) | 希克林语系祖语 | — | 拉丁转写 | SCA 音变器 | **完整语法书** |
-| [**Theusṛin** 瑟乌丝林语](/laim/Theusṛin/) | Proto-Shikṛin 子语 | — | 拉丁转写 | SCA 预设 + Rime 输入方案 | 语法 + 音变规则 |
+| [**Theusṛin** 瑟乌丝林语](/laim/Theusṛin/) | Proto-Shikṛin 子语 | 屈折，词头标性 + 四格价态系统 | 科飒尔文（自创，128 字符） | SCA 预设 + Rime 输入方案 | 音系 / 文字 / 名词形态完整，动词与句法待补 |
 | [**Archipelago Shikrin** 群岛希克林语](/laim/ArchipelagoShikrin/) | Proto-Shikṛin 子语 | — | 拉丁转写 | SCA 预设 | 起步 |
 | **Vōhyssys** 厄希斯语 | 独立 | — | — | — | 尚未整理 |
 
@@ -67,7 +67,7 @@ Proto-Andoric 原祖语（类 PIE 地位：三系软腭 + 元音交替）
 站内完成度最高的造语项目，也是唯一一个「祖语 + 子语 + 音变规则 + 词典 + 输入法 + 语内文献」六件套齐全的：
 
 - [Proto-Shikṛin 语法书](/laim/Proto-Shikṛin/)（篇幅最长的一份造语文档）
-- [Theusṛin 语法](/laim/Theusṛin/) 与 Rime 输入方案（`theusrin.schema.yaml`）
+- [Theusṛin 语法](/laim/Theusṛin/)：完整音系、科飒尔文（128 字符，页面自带字体）、名词的四格价态系统与限定词总表，配 Rime 输入方案（`theusrin.schema.yaml`）
 - [希克林语词典](/laim/shikrin.assets/ShikrinDatabase/ShikrinDictionary.html)
 - 语内文献：[海蚀录·亚希林卷·初遇](/laim/shikrin-essay/1/) · [相识](/laim/shikrin-essay/2/)
 

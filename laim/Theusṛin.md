@@ -621,7 +621,7 @@ description: 瑟乌丝林语语法：音系、科飒尔文、名词的四格系�
 
 这里<abbr class="ts-tip" title="[动] 洒落">·tes</abbr>是零价动词，无法直接支配论元，因此<abbr class="ts-tip" title="[名] 雨">gnef</abbr>与之交互的方式是转化为斜格，以“补充者”的身份补全零价动词所描述的画面。
 
-<div class="tool-warn" markdown="span">此处零价动词接受的逆流前缀a-并不表示语流逆向（零价动词也不涉及语流流向），而是表示动作的**隐没**。关于这种特殊的语流用法请参考语流前缀一节。</div>
+<div class="tool-warn" markdown="span">此处零价动词接受的逆流前缀a-并不表示语流逆向（零价动词也不涉及语流流向），而是表示动作的**隐没**。关于这种特殊的语流用法请参考[语流前缀](#flow)一节。</div>
 
 
 **2.** 斜格还用于标记三价动词中远离动词亲和成分的论元，对于**受事亲和动词**，斜格标记**与事**，而对于**与事亲和动词**，斜格标记**受事**。
@@ -701,7 +701,7 @@ description: 瑟乌丝林语语法：音系、科飒尔文、名词的四格系�
 
 此句的欠格结构是从句“蜻蜓低飞”，整句字面义为“蜻蜓低飞，将预示着雨水洒落”，其中动词<abbr class="ts-tip" title="[动] 洒落">·tes</abbr>是零价动词，不能直接接受论元，因此不论是雨水还是后面的从句都必须转化为直接格（及物格和不及物格）以外的形式，雨水是直接与洒落交互的，因此其为零价动词的第一补充者，接受斜格，而间接影响雨水洒落的“蜻蜓低飞”则为第二补充者，接受欠格。
 
-<div class="tool-warn" markdown="span">此处零价动词接受的扩流前缀i-并不表示语流扩展（零价动词也无法通过扩流升价为一价动词），而是表示动作受到第二补充者的**促进、促成**。关于这种特殊的语流用法请参考语流前缀一节。</div>
+<div class="tool-warn" markdown="span">此处零价动词接受的扩流前缀i-并不表示语流扩展（零价动词也无法通过扩流升价为一价动词），而是表示动作受到第二补充者的**促进、促成**。关于这种特殊的语流用法请参考[语流前缀](#flow)一节。</div>
 
 
 ##### 格系统小结 {#case-summary}
@@ -813,7 +813,346 @@ description: 瑟乌丝林语语法：音系、科飒尔文、名词的四格系�
 ### 形容词形态 {#adjectives}
 <p class="page-note">本节尚未撰写。</p>
 ### 动词形态 {#verbs}
-<p class="page-note">本节尚未撰写。</p>
+#### 动词概述 {#verb-overview}
+<blockquote class="ts-quote" markdown="span"><abbr class="ts-tip" title="[动] 0 下雨；1 洒，泼">·tes</abbr> <br> <abbr class="ts-tip" title="[动] 1 飞翔，飞">·lhes</abbr> <br> <abbr class="ts-tip" title="[动] 2 看，看见（泛）">·hân</abbr> <br> <abbr class="ts-tip" title="[动] 3 允许，准许">·foer</abbr></blockquote>
+
+
+上面是四个瑟乌丝林语动词的字典形。与名词不同，动词在词典中以**前置间隔号**标出，用以提示其后可能附着的[语流前缀](#flow)与[人称中缀](#person)。
+
+瑟乌丝林语动词按其所能管辖的论元数量，即**价态**，分为**零价**至**三价**四类，其中三价动词还进一步分为**受事亲和**与**与事亲和**两小类。价态直接决定了论元采用何种格。
+
+
+<p class="ts-seealso" markdown="span">延伸阅读：[名词的数与格](#number-case)</p>
+
+
+动词的形态由三部分共同决定：动词本身所处的**焦点**范式、附着在词干上的**语流**与**人称**，以及位于词干之前、用以编码时体式与情感的**动词头**。下文依次讨论。
+
+#### 动词的基本形式 {#verb-forms}
+每个动词在词典中都列出若干基本形式，其中**字典形**同时也是**无焦点形**。焦点的取用参照[原始希克林语](/laim/Proto-Shikṛin/)，不同的语境需要选取不同的焦点。
+
+
+<p class="table-caption">动词基本形式举例</p>
+
+| 形式 | ·tes（零价） | ·lhes（一价） | ·hân（二价） | ·foer（三价） | ·ato（回指动词） |
+| :--: | :--: | :--: | :--: | :--: | :--: |
+| **字典形／无焦点形** | tes | lhes | hân | foer | ato |
+| **强焦点形** | dhes | salth | hân | fwau | aut |
+| **弱焦点形** | tes | lhaes | haun | foer | aet |
+| **弱失焦形** | te.es | lhe.es | ha.an | fo.ori | a.et |
+| **强失焦形** | ti.es | lhe.es | ha.an | fo.iau | i.et |
+| **副动词形** | cethes | cles | cechan | cefoer | at |
+| **动名词** | des | thles | chán | foer | wat |
+| **动形词** | adesch | athlesch | achanc | aforiauch | awadoch |
+| **词干元音** | ei | e | a | e | ei |
+
+
+词典条目中出现的**间隔号**并非读音的一部分，而是一个**感音槽位**。弱失焦形与强失焦形几乎总是带有这一槽位，使用时需要向其中填入一个感音辅音，详见[时定式](#tense-fixing)一节。
+
+**词干元音**不参与拼写，但它决定了该动词否定时所取用的元音，详见[否定](#negation)一节。
+
+#### 动词结构 {#verb-structure}
+动词若进入句子，则须按下列结构编码时、体、式等信息：
+
+**（否定元音）-（感音=á）-（式=e）-（体=o）-（时=ó）·（语流）&lt;人称&gt;词干（某一焦点形）-（言据）**
+
+间隔号**前方**的部分称为**动词头**，**后方**的部分称为**动词干**。动词干是强制的，动词头则不是——日常口语通常整体省略动词头，而书面语通常不会省略。
+
+当动词头被完全省略时，所表达的即是没有特殊感情色彩的**现在时、一般体貌、直陈式**，这也正是一般口语环境下最常见的组合。试比较：
+
+
+<div class="gloss" markdown="0">
+<div class="gloss__row"><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">Lhes</span><span class="gl__spell">∅-le-es-∅</span><span class="gl__morph">三单.有生&gt</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">falth.</span><span class="gl__spell">fal-∅-tha-∅</span><span class="gl__morph">飞翔.无焦点</span></span><span class="gl__w"><span class="gl__spell">顺流&lt</span><span class="gl__morph">云鸟.不及物格单数</span></span></div>
+<div class="gloss__tr">云鸟飞翔。</div>
+</div>
+
+
+<div class="gloss" markdown="0">
+<div class="gloss__row"><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">Don·euraug</span><span class="gl__spell">to-on·eu-ra-uc</span><span class="gl__morph">三单.无生&gt</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">mos</span><span class="gl__spell">mo-os-∅</span><span class="gl__morph">掩盖.弱焦点</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">e</span><span class="gl__spell">e</span><span class="gl__morph">影子.及物格单数</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">lawas.</span><span class="gl__spell">lawar</span><span class="gl__morph">单数限定</span></span><span class="gl__w"><span class="gl__spell">完成=体-过去·顺流&lt</span><span class="gl__morph">林中小径.及物格单数</span></span></div>
+<div class="gloss__tr">影子掩藏了小径。</div>
+</div>
+
+
+前者没有动词头，动词干直接以字典形出现；后者的动词头don·编码了完成体与过去时。
+
+#### 动词头 {#verb-head}
+##### 插槽与标记元音 {#slots}
+动词头由至多五个**插槽**构成，除否定外，每个插槽都由一个**辅音**加一个固定的**标记元音**组成：
+
+
+<p class="table-caption">动词头的插槽</p>
+
+| 插槽 | 标记元音 | 空置时表达 |
+| :--: | :--: | :--: |
+| 否定 | 见下 | 肯定 |
+| **感音** | á | 无特殊感情色彩 |
+| **式** | e | 直陈式 |
+| **体** | o | 一般体貌 |
+| **时** | ó | 现在时 |
+
+
+感音、式、体三个插槽都不是必须的。当动词头中存在**多个**插槽时，**最末尾**一个插槽的标记元音会省略。如don·可解析为d=o-n=(ó)，即完成=体-过去=时，其中过去时的标记元音ó因位于末尾而脱落。
+
+
+<div class="tool-warn" markdown="span">插槽辅音存在**弱化**形式：当该辅音前后**都**是元音时，取用括号内的形式。<br>如希求式的b在词首作b，而在Dáfes·中因夹于á与e之间而弱化为f。</div>
+
+
+##### 感音 {#emotive}
+感音共十六个，其取值与象征参见[原始希克林语](/laim/Proto-Shikṛin/)的感音一节。
+
+
+<p class="table-caption">感音插槽辅音</p>
+
+| 感音 | 辅音 | 感音 | 辅音 | 感音 | 辅音 | 感音 | 辅音 |
+| :--: | :--: | :--: | :--: | :--: | :--: | :--: | :--: |
+| 喜悦 | p (f) | 惊讶 | b (b) | 恐惧 | mb (m) | 兴奋 | m (w) |
+| 羡慕 | t (s / th) | 期待 | d (d) | 愤怒 | nd (ns / nth) | 宁静 | n (n) |
+| 信任 | k (ch) | 失望 | g (g) | 惆怅 | ng (ng) | 厌恶 | l (l) |
+| 冷漠 | s (∅) | 自豪 | w (u) | 悲伤 | y (i) | 焦虑 | r (r) |
+
+
+<div class="tool-note" markdown="span">表中的k与下文式插槽的c是同一个音<span class="ipa">/k/</span>，正字法在词首作c。因此信任感音在词首表现为Cá·，词中则弱化为ch。</div>
+
+
+##### 式 {#mood}
+
+<p class="table-caption">式插槽辅音</p>
+
+| 式 | 辅音 | 备注 |
+| :--: | :--: | :--: |
+| 预言式 | pn (nn) |  |
+| 希求式／目的式 | b (f) |  |
+| 命令式 | c (ch) | 一定搭配**强失焦形** |
+| 条件式 | mb (m) |  |
+| 直陈式 | ∅ | 插槽空置 |
+
+
+##### 体与时 {#aspect-tense}
+
+<p class="table-caption">体插槽辅音</p>
+
+| 体 | 辅音 | 体 | 辅音 |
+| :--: | :--: | :--: | :--: |
+| 惯常体 | z (r) | 未完成体 | fs (s) |
+| 恒真体 | t (th) | 完成体 | d (dh) |
+| 临终体 | l（末尾lt，中央ll） | 一般体貌 | ∅ |
+
+
+<p class="table-caption">时插槽辅音</p>
+
+| 时 | 辅音 |
+| :--: | :--: |
+| 远过去时 | m |
+| 过去时 | n |
+| 现在时 | ∅ |
+
+
+下面把本页出现过的几个动词头逐一拆开，以见其构成：
+
+
+<p class="table-caption">动词头拆解</p>
+
+| 动词头 | 拆解 | 释读 |
+| :--: | :--: | :--: |
+| Dáfes· | d=á-b(f)=e-fs(s)=(o) | 期待感音-希求式-未完成体 |
+| Cá· | k(c)=á | 信任感音 |
+| Ná· | n=á | 宁静感音 |
+| Pne· | pn=e | 预言式 |
+| don· | d=o-n=(ó) | 完成体-过去时 |
+| fsom· | fs=o-m=(ó) | 未完成体-远过去时 |
+| nádhon· | n=á-d(dh)=o-n=(ó) | 宁静感音-完成体-过去时 |
+
+
+##### 否定 {#negation}
+否定通过在动词头**最前方**添加一个**否定元音**实现。该元音并非任取，而是由动词的**词干元音**所对应天体的**对位天体**决定，对位关系参见[原始希克林语](/laim/Proto-Shikṛin/)。
+
+
+<p class="table-caption">否定元音与双重否定</p>
+
+| 词干元音 | e | eu | u | o | i | a | ei |
+| :--: | :--: | :--: | :--: | :--: | :--: | :--: | :--: |
+| **否定** | i | u | eu | a | e | o | ei |
+| **双重否定** | í | ú | wó | á | é | ó | ié |
+
+
+可以看到，ei的对位是其自身，因此以ei为词干元音的动词其否定元音同样是ei。
+
+##### 固定组合 {#idiomatic-heads}
+除了各插槽的字面意义之外，若干组合已经凝固为特定的语法意义：
+
+
+<p class="table-caption">动词头的固定组合</p>
+
+| 组合 | 意义 |
+| :--: | :--: |
+| 恒真体 + 条件式 | 不得不…… |
+| 否定 + 条件式 + 惯常体 | 就连，哪怕 |
+| 预言式 + 惯常体 | 该，应该 |
+| 否定 + 临终体 | 完成，相当于英语的 has been doing |
+| 预言式 + 自反[^21] | 将来时 |
+| 否定 + 条件式 + 恒真体 | 仿佛，就像，好像 |
+
+
+最后一组还需依其后所接的时进一步区分：
+
+
+| 所接的时 | 意义 |
+| :--: | :--: |
+| 现在时 | 比喻 |
+| 过去时 | 虚拟式，虚拟语气 |
+| 远过去时 | 开玩笑、咒骂 |
+
+
+##### 动词头的回指 {#head-anaphora}
+动词头可以被**整体**回指，此时只需将其替换为mae·即可，其后的动词干不受影响。如：
+
+
+<div class="gloss" markdown="0">
+<div class="gloss__row"><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">mae·caurth</span><span class="gl__spell">ma-e·∅-ca-ur-∅-tha-∅</span><span class="gl__morph">词头回指·见证.副动词形</span></span></div>
+<div class="gloss__tr">（如前所述地）见证</div>
+</div>
+
+
+#### 动词干 {#verb-stem}
+##### 语流前缀 {#flow}
+**语流**标记的是句中语义角色之间的流向，其前缀非常简单：
+
+
+<p class="table-caption">语流前缀</p>
+
+| 语流 | 前缀 | 意义 |
+| :--: | :--: | :--: |
+| 顺流 | ∅ |  |
+| 逆流 | a- | 施动与受动反向 |
+| 滞流 | e- | 自然态；静态；无人称动词 |
+| 扩流 | i- | 致使 |
+| 换流 | u- | 应动 |
+
+
+特殊的是**零价动词**。零价动词默认使用**滞流**，而其余四种语流附着于零价动词时，其意义发生整体转变：
+
+
+<p class="table-caption">零价动词的语流</p>
+
+| 语流 | 意义 |
+| :--: | :--: |
+| 顺流 | 现物 |
+| 逆流 | 隐物 |
+| 扩流 | 促成 |
+| 换流 | 接收 |
+
+
+本页[斜格](#case-obl)与[欠格](#case-abe)两节中出现的零价动词·tes，其逆流形正是取“隐物”义（雨越下越小），其扩流形则取“促成”义（蜻蜓低飞促成了下雨），均非字面的语流流向。
+
+##### 人称中缀 {#person}
+人称中缀与语流前缀会发生复杂的合并，最终得到下表。表头自左向右按**人称等级**排列，语流的具体流向参见[原始希克林语](/laim/Proto-Shikṛin/)。
+
+
+<details class="ts-fold" markdown="1">
+<summary>语流—人称合并总表</summary>
+
+
+<p class="table-caption">语流前缀与人称中缀的合并形式</p>
+
+| 语流／人称 | 回指 | 3祂 | 1单 | 2单亲 | 2单敬 | 3单有生 | 1复 | 2复 | 3复 | 3单无生 |
+| :--: | :--: | :--: | :--: | :--: | :--: | :--: | :--: | :--: | :--: | :--: |
+| **顺流** | e | (u)w | m- | d% | ei+ | ∅ | a+ | o+ | s~ | eu+ |
+| **逆流** | ae+ | aw+ | am- | ad% | ai+ | a | á+ | ao+ | as~ | au+ |
+| **扩流** | ie+ | iw+ | im- | id% | í+ | i+ | ia+ | io+ | is~ | ieu+ |
+| **换流** | we+ | ú+[^22] | um- | ud% | ui+ | (w)u+ | wa+ | wo+ | us~ | weu+ |
+| **滞流** | é | ew+ | em- | ed% | é+ | e+ | ea+ | eo+ | es~ | oe+ |
+
+
+</details>
+
+
+表中的符号标记的是该中缀对其后辅音所引发的音变：
+
+
+| 符号 | 引发的音变 |
+| :--: | :--: |
+| + | 软音变（弱化） |
+| - | 鼻音音变 |
+| % | 闭锁音变 |
+| ~ | 流音音变 |
+
+
+以本页出现过的形式为例：
+
+
+<p class="table-caption">语流—人称的实际拼合</p>
+
+| 形式 | 语流·人称 | 词干 | 拼合 |
+| :--: | :--: | :--: | :--: |
+| euraug | 顺流·3单无生 eu+ | ·rôg 弱焦点 raug | eu + raug |
+| uhár | 顺流·3祂 (u)w | ·hâr 无焦点 hâr | u + hâr |
+| ithaur | 扩流·3单有生 i+ | ·thaur 弱焦点 thaur | i + thaur |
+| ules | 换流·3单有生 (w)u+ | ·lhes 无焦点 lhes | u + lhes（lh 软化为 l） |
+| esreug | 滞流·3复 es~ | ·seug 强焦点 reug | es + reug |
+| emaud | 顺流·3单有生 ∅ | ·emaud 无焦点 emaud | 中缀为零，词干直接出现 |
+
+
+<div class="tool-warn" markdown="span">顺流·3祂的(u)w与换流·3单有生的(w)u在本页例句中分布如下：辅音前作u（uhár、uret、ules），元音前作w（welch）。</div>
+
+
+##### 言据后缀 {#evidentials}
+动词的**最末尾**可能附着一个言据后缀，标记说话人获取该信息的途径：
+
+
+<p class="table-caption">言据后缀</p>
+
+| 后缀 | 言据 |
+| :--: | :--: |
+| -m | 强调感官 |
+| -s | 推测 |
+| -g | 臆想，猜测，假设 |
+| -t | 传说 |
+| -n | 道听途说 |
+
+
+如nádhon·iân “听说未亚已经离开了城镇”中，动词干末尾的-n即标记该信息为道听途说。
+
+#### 时定式 {#tense-fixing}
+如上文所述，许多动词的**弱失焦形**与**强失焦形**在词典中形如lo.or，其中的间隔号是一个**感音槽位**。一般情况下，只需向其中填入与动词头所用**相同**的感音即可。如：
+
+
+<div class="gloss" markdown="0">
+<div class="gloss__row"><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">Cá·fociaun</span><span class="gl__spell">ca-a·fo-oc-ci-aun</span><span class="gl__morph">允许...做&lt</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">Billes</span><span class="gl__spell">pi-il-les</span><span class="gl__morph">信任&gt</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">Dhenses</span><span class="gl__spell">the-en-∅-se-es-∅</span><span class="gl__morph">强失焦-传言</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">awamóst?</span><span class="gl__spell">aw-am-o-o-sat-∅-?</span><span class="gl__morph">芙芈琳.及物格单数</span></span><span class="gl__w"><span class="gl__spell">信任=感音·顺流&lt</span><span class="gl__morph">祯丝.及物格单数</span></span><span class="gl__w"><span class="gl__spell">三单.有生&gt</span><span class="gl__morph">祭司.斜格单数</span></span></div>
+<div class="gloss__tr">听说芙芈琳终于允许祯丝当祭司啦？</div>
+</div>
+
+
+此处·foer的强失焦形为fo.iau，动词头所用的感音为信任，因此槽位中填入的同样是信任的c，得到fociau。
+
+但当需要表达**情感的变化**，或是更为复杂的情形时，仅靠一个感音便不敷使用，此时需要采用**时定式**。
+
+时定式通过位于**句末**的一个**回指动词**实现。回指动词的原型为<abbr class="ts-tip" title="[动] 回指动词">·ato</abbr>，词干元音为ei，其各焦点形如下：
+
+
+<p class="table-caption">回指动词·ato</p>
+
+| 无焦点形 | 强焦点形 | 弱焦点形 | 弱失焦形 | 强失焦形 |
+| :--: | :--: | :--: | :--: | :--: |
+| ato | aut | aet | a.et | i.et |
+
+
+回指动词的**动词头**可以挂载多余的额外情感信息；而其**动词干**之前不附着语流与人称，取而代之的是一个称为**变时体貌**的前缀。
+
+设句中**主动词**所携带的感情信息为 F<sub>1</sub>，**时定式**中回指动词所携带的感情信息为 F<sub>2</sub>，则各变时体貌前缀的意义如下：
+
+
+<p class="table-caption">变时体貌前缀</p>
+
+| 前缀 | 意义 |
+| :--: | :--: |
+| a- | F<sub>1</sub> 与 F<sub>2</sub> 不断循环 |
+| h- | 情感自 F<sub>1</sub> 单向变化为 F<sub>2</sub> |
+| o- | 情感在 F<sub>1</sub> 与 F<sub>2</sub> 之间周期性震荡 |
+| m- | 情感自 F<sub>1</sub> 逐渐收敛变化为 F<sub>2</sub>，中间可能经历相当复杂的过程 |
+| n- | 情感自 F<sub>1</sub> 骤升或骤降为 F<sub>2</sub> |
+
+
+各前缀所对应的象征同样参见[原始希克林语](/laim/Proto-Shikṛin/)。
+
 ## 句法 {#syntax}
 <p class="page-note">本节尚未撰写。</p>
 ## 构词 {#word-formation}
@@ -907,3 +1246,7 @@ description: 瑟乌丝林语语法：音系、科飒尔文、名词的四格系�
 [^19]: 仅部分方言中存在，标准语中只有极少数单词，诗歌或其他特殊文体中才可能出现
 
 [^20]: 节选自“古星在焚风中纷落如金，每颗星辰都噙着未冷的火，淅淅沥沥地在远海沉没”——《焚海绘》其一
+
+[^21]: 自反通过在动词后接独立小品词aun实现
+
+[^22]: 如果其后为元音，则变为w+并把该元音拉长，即加上锐音符

@@ -18,6 +18,24 @@
     "morphology": []
   },
   {
+    "dict_form": "-iel",
+    "part": "affix",
+    "english": "daughter; feminine suffix",
+    "definition": "...之女；女性后缀",
+    "sentence": "[PE17/23]\nGilthoniel.\n点星者，吉尔松涅尔",
+    "other": "昆雅语同源后缀-iel",
+    "morphology": []
+  },
+  {
+    "dict_form": "-il",
+    "part": "affix",
+    "english": "feminine suffix",
+    "definition": "女性后缀",
+    "sentence": "",
+    "other": "一说是-iel的变体",
+    "morphology": []
+  },
+  {
     "dict_form": "a(ar)/ah",
     "part": "conjunction",
     "english": "and",
@@ -2548,7 +2566,7 @@
     "part": "verb",
     "english": "to give",
     "definition": "给，呈，递给",
-    "sentence": "[VT44/21]\nanno ammen sír i mbas ilaurui vín.\n在这天给我们每天的面包\n",
+    "sentence": "[VT44/21]\nanno ammen sír i mbas ilaurui vín.\n我们日用的饮食，今日赐给我们。（主祷文中的一句）",
     "other": "TA类动词，变形时词根视为an-",
     "morphology": [
       {
@@ -23349,11 +23367,409 @@
       },
       {
         "type": "Comparative",
-        "form": "aniand"
+        "form": "einiand"
       },
       {
         "type": "Superlative",
         "form": "ro-iand"
+      }
+    ]
+  },
+  {
+    "dict_form": "iant",
+    "part": "noun",
+    "english": "bridge",
+    "definition": "桥，桥梁",
+    "sentence": "[AotM/62][SD/129]\nanglennatha i Varanduiniant erin dolothen Ethuil.\n阿拉贡将会在春季的第八天接近白兰地河大桥",
+    "other": "昆雅语同源词yanta\n√YAN",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i iant"
+      },
+      {
+        "type": "Plural",
+        "form": "ient"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "in ient"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an iant"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "en-iant"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin iant"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor iant"
+      },
+      {
+        "type": "Stop",
+        "form": "od iant"
+      },
+      {
+        "type": "H",
+        "form": "ah iant"
+      },
+      {
+        "type": "DH",
+        "form": "nedh iant"
+      }
+    ]
+  },
+  {
+    "dict_form": "iaun",
+    "part": "adjective",
+    "english": "wide, extensive, large, roomy, vast, huge",
+    "definition": "广阔的，广袤的，无垠的，巨大的",
+    "sentence": "",
+    "other": "昆雅语同源词yána\n√YAN",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "iaun"
+      },
+      {
+        "type": "Plural",
+        "form": "ioen"
+      },
+      {
+        "type": "Comparative",
+        "form": "einion"
+      },
+      {
+        "type": "Superlative",
+        "form": "ro-ion"
+      }
+    ]
+  },
+  {
+    "dict_form": "iaur",
+    "part": "adjective",
+    "english": "old",
+    "definition": "老的，衰老的；旧的，古旧的",
+    "sentence": "[RC/579]\nIoreth.\n老妪，老太太",
+    "other": "昆雅语同源词yára",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "iaur"
+      },
+      {
+        "type": "Plural",
+        "form": "ioer"
+      },
+      {
+        "type": "Comparative",
+        "form": "einior"
+      },
+      {
+        "type": "Superlative",
+        "form": "ro-ior"
+      }
+    ]
+  },
+  {
+    "dict_form": "iavas",
+    "part": "noun",
+    "english": "autumn",
+    "definition": "秋天，秋季；收获季",
+    "sentence": "",
+    "other": "昆雅语同源词yávië\niau + -as",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i iavas"
+      },
+      {
+        "type": "Plural",
+        "form": "ievais"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "in ievais"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an iavas"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "en-iavas"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin iavas"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor iavas"
+      },
+      {
+        "type": "Stop",
+        "form": "od iavas"
+      },
+      {
+        "type": "H",
+        "form": "ah iavas"
+      },
+      {
+        "type": "DH",
+        "form": "nedh iavas"
+      }
+    ]
+  },
+  {
+    "dict_form": "ifant",
+    "part": "adjective",
+    "english": "aged",
+    "definition": "年老的，衰老的，衰弱的，上年纪的",
+    "sentence": "",
+    "other": "în + -pant",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "ifant"
+      },
+      {
+        "type": "Plural",
+        "form": "ifent"
+      },
+      {
+        "type": "Comparative",
+        "form": "einifant"
+      },
+      {
+        "type": "Superlative",
+        "form": "ro-ifant"
+      }
+    ]
+  },
+  {
+    "dict_form": "il",
+    "part": "adjective",
+    "english": "all",
+    "definition": "所有的，全部的",
+    "sentence": "[VT44/28]\nilaurui.\n每天的，日常的",
+    "other": "昆雅语同源前缀il-\n√IL",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "il"
+      },
+      {
+        "type": "Plural",
+        "form": "il"
+      },
+      {
+        "type": "Comparative",
+        "form": "无比较级形式"
+      },
+      {
+        "type": "Superlative",
+        "form": "无最高级形式"
+      }
+    ]
+  },
+  {
+    "dict_form": "ilaurui",
+    "part": "adjective",
+    "english": "daily",
+    "definition": "每天的，日常的，每日的",
+    "sentence": "例句:\n[VT44/21]\nanno ammen sír i mbas ilaurui vín.\n我们日用的饮食，今日赐给我们。（主祷文中的一句）",
+    "other": "昆雅语同源词ilaurëa\nil + aur + -ui",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "ilaurui"
+      },
+      {
+        "type": "Plural",
+        "form": "ilaurui"
+      },
+      {
+        "type": "Comparative",
+        "form": "无比较级形式"
+      },
+      {
+        "type": "Superlative",
+        "form": "无最高级形式"
+      }
+    ]
+  },
+  {
+    "dict_form": "im",
+    "part": "pronoun",
+    "english": "I, I myself; reflexive, self",
+    "definition": "我自己，自己；自我；反身代词",
+    "sentence": "[LotR/305][PE17/40][VT47/38]\nim Narvi hain echant.\n我，纳维，建造了它",
+    "other": "昆雅语同源词imma",
+    "morphology": []
+  },
+  {
+    "dict_form": "im",
+    "part": "preposition",
+    "english": "between",
+    "definition": "在...之间，在...中间",
+    "sentence": "[S/123]\nTaur-im-Duinath.\n河间之森，陶尔-伊姆-都因那斯",
+    "other": "昆雅语同源词imbë\n介词，引发鼻音音变Ⅰ型",
+    "morphology": []
+  },
+  {
+    "dict_form": "im",
+    "part": "noun",
+    "english": "valley",
+    "definition": "谷地，山谷",
+    "sentence": "[VT47/14]\nimlad.\n深谷，幽谷",
+    "other": "一说拼写为imm",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i im"
+      },
+      {
+        "type": "Plural",
+        "form": "im"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "in im"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an im"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "en-im"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin im"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor im"
+      },
+      {
+        "type": "Stop",
+        "form": "od im"
+      },
+      {
+        "type": "H",
+        "form": "ah im"
+      },
+      {
+        "type": "DH",
+        "form": "nedh im"
+      }
+    ]
+  },
+  {
+    "dict_form": "imlad",
+    "part": "noun",
+    "english": "deep valley, narrow valley with steep sides, gap, gully",
+    "definition": "深谷，幽谷，窄谷",
+    "sentence": "[PE17/87]\nImladris.\n伊姆拉缀斯，幽谷，瑞文戴尔",
+    "other": "im + lad",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i imlad"
+      },
+      {
+        "type": "Plural",
+        "form": "imlaid"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "in imlaid"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an imlad"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "en-imlad"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin imlad"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor imlad"
+      },
+      {
+        "type": "Stop",
+        "form": "od imlad"
+      },
+      {
+        "type": "H",
+        "form": "ah imlad"
+      },
+      {
+        "type": "DH",
+        "form": "nedh imlad"
+      }
+    ]
+  },
+  {
+    "dict_form": "imrad",
+    "part": "noun",
+    "english": "path or pass between mountains or trackless forest",
+    "definition": "谷底小路，山间小路，山谷小径，山隘，林间小道",
+    "sentence": "",
+    "other": "im + râd",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i imrad"
+      },
+      {
+        "type": "Plural",
+        "form": "imraid"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "in imraid"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an imrad"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "en-imrad"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin imrad"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor imrad"
+      },
+      {
+        "type": "Stop",
+        "form": "od imrad"
+      },
+      {
+        "type": "H",
+        "form": "ah imrad"
+      },
+      {
+        "type": "DH",
+        "form": "nedh imrad"
       }
     ]
   },
@@ -23408,6 +23824,56 @@
     ]
   },
   {
+    "dict_form": "iâth",
+    "part": "noun",
+    "english": "fence",
+    "definition": "围栏；栅栏，篱笆；屏障",
+    "sentence": "[WJ/370]\nDoriath.\n围栏之地，多瑞亚斯",
+    "other": "一说拼写为iath",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i iâth"
+      },
+      {
+        "type": "Plural",
+        "form": "iaith"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "in iaith"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an iâth"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "en-iâth"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin iâth"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor iâth"
+      },
+      {
+        "type": "Stop",
+        "form": "od iâth"
+      },
+      {
+        "type": "H",
+        "form": "ah iâth"
+      },
+      {
+        "type": "DH",
+        "form": "nedh iâth"
+      }
+    ]
+  },
+  {
     "dict_form": "êl",
     "part": "noun",
     "english": "star",
@@ -23454,6 +23920,157 @@
       {
         "type": "DH",
         "form": "nedh êl"
+      }
+    ]
+  },
+  {
+    "dict_form": "íd",
+    "part": "adverb",
+    "english": "extremely, very",
+    "definition": "极其地，非常地，极端地",
+    "sentence": "",
+    "other": "昆雅语同源词íta\n√IT",
+    "morphology": []
+  },
+  {
+    "dict_form": "ídhra-",
+    "part": "verb",
+    "english": "to long for, desire",
+    "definition": "渴求，需求，渴望获得，欲求",
+    "sentence": "",
+    "other": "√ID",
+    "morphology": [
+      {
+        "type": "Present",
+        "form": "ídhra/ídhra(o)-"
+      },
+      {
+        "type": "Past",
+        "form": "ídhrant/ídhranne-"
+      },
+      {
+        "type": "Future",
+        "form": "ídhratha/ídhratha(o)-"
+      },
+      {
+        "type": "Imperative",
+        "form": "ídhro"
+      },
+      {
+        "type": "Gerund",
+        "form": "ídhrad"
+      },
+      {
+        "type": "PastParticiple",
+        "form": "ídhrannen"
+      },
+      {
+        "type": "PresentParticiple",
+        "form": "ídhrol"
+      },
+      {
+        "type": "PeferctParticle",
+        "form": "ídhriel"
+      }
+    ]
+  },
+  {
+    "dict_form": "îdh",
+    "part": "noun",
+    "english": "rest, repose, peace, tranquility",
+    "definition": "宁静，平静；平和，安详，和平；休息，休憩",
+    "sentence": "",
+    "other": "√SED",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i îdh"
+      },
+      {
+        "type": "Plural",
+        "form": "îdh"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "in îdh"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an îdh"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "en-îdh"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin îdh"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor îdh"
+      },
+      {
+        "type": "Stop",
+        "form": "od îdh"
+      },
+      {
+        "type": "H",
+        "form": "ah îdh"
+      },
+      {
+        "type": "DH",
+        "form": "nedh îdh"
+      }
+    ]
+  },
+  {
+    "dict_form": "îf",
+    "part": "noun",
+    "english": "cliff, sheer descent",
+    "definition": "瀑布峭壁，玻璃水帘瀑布，薄片式瀑布",
+    "sentence": "",
+    "other": "√IBI",
+    "morphology": [
+      {
+        "type": "Soft",
+        "form": "i îf"
+      },
+      {
+        "type": "Plural",
+        "form": "îf"
+      },
+      {
+        "type": "NasalⅠ",
+        "form": "in îf"
+      },
+      {
+        "type": "NasalⅡ",
+        "form": "an îf"
+      },
+      {
+        "type": "MixedⅠ",
+        "form": "en-îf"
+      },
+      {
+        "type": "MixedⅡ",
+        "form": "anin îf"
+      },
+      {
+        "type": "Liquid",
+        "form": "egor îf"
+      },
+      {
+        "type": "Stop",
+        "form": "od îf"
+      },
+      {
+        "type": "H",
+        "form": "ah îf"
+      },
+      {
+        "type": "DH",
+        "form": "nedh îf"
       }
     ]
   }

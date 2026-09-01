@@ -139,11 +139,18 @@ PAGES = {
 }
 # anchors only for sections that actually exist on this page
 ANCHORS = {
-    '瑟乌丝林语#词干重整':   '#stem-reorg',
-    '瑟乌丝林语#及物格':     '#case-tr',
-    '瑟乌丝林语#名词的限定': '#determination',
-    '瑟乌丝林语#演化':       '#evolution',
-    '科飒尔文':              '#script',
+    '瑟乌丝林语#词干重整':     '#stem-reorg',
+    '瑟乌丝林语#及物格':       '#case-tr',
+    '瑟乌丝林语#斜格':         '#case-obl',
+    '瑟乌丝林语#欠格':         '#case-abe',
+    '瑟乌丝林语#名词的数与格': '#number-case',
+    '瑟乌丝林语#名词的限定':   '#determination',
+    '瑟乌丝林语#语流前缀':     '#flow',
+    '瑟乌丝林语#人称中缀':     '#person',
+    '瑟乌丝林语#时定式':       '#tense-fixing',
+    '瑟乌丝林语#否定':         '#negation',
+    '瑟乌丝林语#演化':         '#evolution',
+    '科飒尔文':                '#script',
 }
 
 
@@ -397,13 +404,20 @@ HEAD_IDS = {
     '全指限定': 'det-universal', '领属限定': 'det-possessive',
     '指示限定': 'det-demonstrative', '零指限定': 'det-zero',
     '其他限定': 'det-other',
-    '形容词形态': 'adjectives', '动词形态': 'verbs',
+    '形容词形态': 'adjectives',
+    '动词形态': 'verbs', '动词概述': 'verb-overview',
+    '动词的基本形式': 'verb-forms', '动词结构': 'verb-structure',
+    '动词头': 'verb-head', '插槽与标记元音': 'slots', '感音': 'emotive',
+    '式': 'mood', '体与时': 'aspect-tense', '否定': 'negation',
+    '固定组合': 'idiomatic-heads', '动词头的回指': 'head-anaphora',
+    '动词干': 'verb-stem', '语流前缀': 'flow', '人称中缀': 'person',
+    '言据后缀': 'evidentials', '时定式': 'tense-fixing',
     '句法': 'syntax', '构词': 'word-formation', '演化': 'evolution', '备注': 'notes',
 }
 # kramdown's auto_ids strips CJK to nothing, so every heading gets an explicit
 # ASCII id — otherwise the in-page anchors all collapse to "section-N".
 STUBS = {'变格法': 5, '领属限定': 5, '指示限定': 5, '零指限定': 5, '其他限定': 5,
-         '形容词形态': 3, '动词形态': 3, '句法': 2, '构词': 2}
+         '形容词形态': 3, '句法': 2, '构词': 2}
 
 
 def head(level, title):

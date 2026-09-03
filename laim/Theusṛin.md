@@ -20,7 +20,7 @@ description: 瑟乌丝林语语法：音系、科飒尔文、名词的四格系�
 </dl>
 </aside>
 
-<p class="page-note">本页与 <a href="https://wiki.gilatod.art/index.php?title=%E7%91%9F%E4%B9%8C%E4%B8%9D%E6%9E%97%E8%AF%AD">Gilatod Wiki 的瑟乌丝林语条目</a>同源，语法主体以 wiki 为准；<a href="#evolution">演化</a>一节的音变链只在本站列出。科飒尔文以私用区码位（U+F300–F380）呈现，页面自带 <code>Kessar</code> 字体，无需另装。配套资源：<a href="/laim/shikrin.assets/SCA/SCA.html">SCA 音变器</a>、<a href="/laim/shikrin.assets/ShikrinDatabase/ShikrinDictionary.html">希克林语词典</a>、<a href="#ime">科飒尔文输入法</a>。</p>
+<p class="page-note">本页与 <a href="https://wiki.gilatod.art/index.php?title=%E7%91%9F%E4%B9%8C%E4%B8%9D%E6%9E%97%E8%AF%AD">Gilatod Wiki 的瑟乌丝林语条目</a>同源，语法主体以 wiki 为准。科飒尔文以私用区码位（U+F300–F380）呈现，页面自带 <code>Kessar</code> 字体，无需另装。配套资源：<a href="/laim/shikrin.assets/SCA/SCA.html">SCA 音变器</a>、<a href="/laim/shikrin.assets/ShikrinDatabase/ShikrinDictionary.html">希克林语词典</a>、<a href="#ime">科飒尔文输入法</a>。</p>
 
 <div class="gloss" markdown="0">
 <div class="gloss__row"><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">Dáfes·welch</span><span class="gl__spell">ta-a-fes·we-el-ha-∅</span><span class="gl__morph">期待=感音-希求=式-未完成·顺流&lt;三单.祂&gt;停留.强焦点</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">léthes</span><span class="gl__spell">althaer</span><span class="gl__morph">云鲸.及物格单数</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">em'to.</span><span class="gl__spell">em-'-∅-to</span><span class="gl__morph">环绕=你.及物格</span></span></div>
@@ -327,11 +327,11 @@ description: 瑟乌丝林语语法：音系、科飒尔文、名词的四格系�
 
 ### 输入法 {#ime}
 科飒尔文输入法基于RIME输入法引擎制作，安装输入法的步骤如下：
-**1.** 请先下载[RIME输入框架](https://rime.im)
-**1.** 请打开[科飒尔文码表](https://kinnuch.github.io/laim/shikrin.assets/theusrin.dict.yaml)和[科飒尔文输入法基础设置](https://kinnuch.github.io/laim/shikrin.assets/theusrin.schema.yaml)，右键点击选择另存为至本地，两者均为.yaml配置文件。
-**1.** 将两个配置文件挪动到RIME输入法的**用户文件夹**。
-**1.** 切换至RIME输入法，右键选择**输入法设定**，确认勾选了**瑟乌丝林语输入法**。
-**1.** 在右键菜单中点击**重新部署**后，即可开始按照文字构成一节的方法输入瑟乌丝林语了！
+1. 请先下载[RIME输入框架](https://rime.im)
+1. 请打开[科飒尔文码表](https://kinnuch.github.io/laim/shikrin.assets/theusrin.dict.yaml)和[科飒尔文输入法基础设置](https://kinnuch.github.io/laim/shikrin.assets/theusrin.schema.yaml)，右键点击选择另存为至本地，两者均为.yaml配置文件。
+1. 将两个配置文件挪动到RIME输入法的**用户文件夹**。
+1. 切换至RIME输入法，右键选择**输入法设定**，确认勾选了**瑟乌丝林语输入法**。
+1. 在右键菜单中点击**重新部署**后，即可开始按照文字构成一节的方法输入瑟乌丝林语了！
 
 
 <div class="tool-note" markdown="span">Windows操作系统下用户文件夹默认路径为C:\Users\Administrator\AppData\Roaming\Rime<br>如果安装时自定义了位置或找不到文件夹，可先切换到RIME输入法后右键输入法图标寻找用户文件夹。</div>
@@ -718,7 +718,166 @@ description: 瑟乌丝林语语法：音系、科飒尔文、名词的四格系�
 
 
 ##### 变格法 {#declensions}
-<p class="page-note">本节尚未撰写。</p>
+瑟乌丝林语的变格法**不是**一张可以直接查阅的词尾表。名词的数与格在原始瑟乌丝林语阶段便已附着于真词干之后，此后与词干一同经历了[四个阶段的音变](#evolution)。因此同一个格缀在不同的词干末音之后会呈现出截然不同的面貌，而要得到一个名词的完整变格，唯一可靠的办法是**取其真词干，附上格缀，然后走完整条音变链**。[音变](#sound-changes)一节列出了全部规则，本站的[音变器](https://kinnuch.github.io/laim/shikrin.assets/SCA/SCA.html)则可以直接完成这一过程。
+
+以下用四个不同类别的名词演示这一过程。表中自左向右依次为原始瑟乌丝林语（PTsr）、上古瑟乌丝林语（ATsr）、古瑟乌丝林语（OTsr）与标准语（Tsr）。
+
+
+<p class="table-caption">cessar “科飒尔文”（∅ 词头，极静式）：真词干 ✶gēssal- / ✶gessal-</p>
+
+| 格 | 拼合 | 音变链 | 标准语 |
+| :--: | :--: | :--: | :--: |
+| 及物 | ✶gēssal-s | gēssals → kessals → kessalt | cessalt |
+| 不及物 | ✶gēssal-m | gēssalm → kessaln → kessall → kessal | cessal |
+| 欠格 | ✶gessal-wat | gessalwat → kessalwath → kessalwad → 脱落 -ad | cessalu |
+
+
+<p class="table-caption">rawar “界限”（∅ 词头，极静式）：真词干 ✶rahar-</p>
+
+| 格 | 拼合 | 音变链 | 标准语 |
+| :--: | :--: | :--: | :--: |
+| 及物 | ✶rahar-s | rahars → rāars → rōars | rawas |
+| 不及物 | ✶rahar-m | raharm → rāarn → rōarn | rawar |
+| 欠格 | ✶rahar-wat | raharwat → rōarwat → rawarwad → 脱落 -ad | rawaru |
+
+
+<p class="table-caption">é·bae “暗焰”（é 词头，侧动式）：真词干 ✶ébew- / ✶bewé- / ✶bēw-</p>
+
+| 格 | 拼合 | 音变链 | 标准语 |
+| :--: | :--: | :--: | :--: |
+| 及物 | ✶ébew-s | ébews → épeus | ébeus |
+| 不及物 | ✶ébew-m | ébewm → épeun | ébeun |
+| 欠格 | ✶bewé-wat | bewéwat → pewéwad → 脱落 -ad | pewéw |
+| 斜格（无生） | ✶bēw-hr | bēwhr → pexr → pexer | pecher |
+
+
+<p class="table-caption">reñsad “火焰”（s 词头，极静式）：真词干 ✶shngwsat- / ✶shangwsat-</p>
+
+| 格 | 拼合 | 音变链 | 标准语 |
+| :--: | :--: | :--: | :--: |
+| 及物 | ✶shngwsat-s | shengsats → reŋksaths → reŋsaþ | reñsath |
+| 不及物 | ✶shngwsat-m | shengsatm → reŋksathn → reŋsats | reñsats |
+| 欠格 | ✶shangwsat-wat | shangsatwat → raŋsaþwad → 脱落 -wad | rañsath |
+
+
+从上面的推导中可以归纳出几条格缀与词干末音接触时最常见的走向：
+* **及物格 ✶-s**：在 l 后融合为 -lt，在 t 后融合为 -th，在 k 后为 -chs，在 m/n/r 后 -s 直接附着而鼻音或流音本身发生变化。元音后的 -s 在多数词中脱落（如 lemó → lemós 中 ó 后保留，但 ✶ébew-s 中 -s 经 épeu 脱落）；不过**元音结尾的真词干以及过短的词干**会保留及物格的 -s——这是因为在原始瑟乌丝林语中这类词的 -s 被延长为 -ss，从而躲过了元音后 -s 脱落的音变。é·bae 的及物格 ébeus 即属此类。
+* **不及物格 ✶-m**：词尾的 -m 在原始瑟乌丝林语阶段便变为 -n，随后在 l、r 后同化并消失（cessal、rawar），在 t 后成为 -ts，在 k 后完全消失。
+* **欠格 ✶-wat**：尾部的 -at 在音变后脱落，只留下 -w（词尾写作 -u）；-w 与鼻音接触时融合为 -mb（hethin → hethémb），与 s 接触时为 -ch（é·feb → fibich），与 l、r 接触时分别为 -lu、-ru。若脱落 -at 之后仍不能得到词典所载的形式，则该词整个脱落了 -wat。
+* **斜格 ✶-st / ✶-hr**：取决于名词的**有生性**。动物、人名、以及部分被视为有生的事物（如天体与神使）采用 ✶-st，音变后多呈现为 -st、-t、-est；其余无生名词采用 ✶-hr，音变后多呈现为 -er、-her、-zer 或 -aur。极静式与前动式名词没有中形，其斜格与不及物格相同。
+
+下表按真词干末音汇总了标准语中最常见的格尾。表中只收录音变器推导与词典完全一致的词，每行给出出现最多的三种格尾。
+
+
+<details class="ts-fold" markdown="1">
+<summary>格尾总表（按词干末音）</summary>
+
+
+<p class="table-caption">及物格 ✶-s</p>
+
+| 词干末 | 常见格尾 | 例 |
+| :--: | :--: | :--: |
+| 元音 | -ós, -ath, -s | lemó → lemós；sea → athea |
+| s | -nes, -ros, -wos | e·thin ✶ucenes- → ethenes |
+| m | -hes, -nes, -res | hethin ✶sgēstem- → hethes |
+| r | -eus, -was, -has | anar ✶hanar- → anas |
+| l | -elt, -alt, -ilt | cessar ✶gēssal- → cessalt |
+| n | -hes, -eus, -sas | haun ✶ekwan- → echas |
+| t | -ath, -eth, -oth | thaud ✶sdāt- → thas |
+| d | -ads, -eds, -ids | é·ched ✶ékid- → échids |
+| k | -chs | grich ✶ureik- → grichs |
+| p | -efs, -ofs, -ufs | gnef ✶undep- → gnefs |
+
+
+<p class="table-caption">不及物格 ✶-m</p>
+
+| 词干末 | 常见格尾 | 例 |
+| :--: | :--: | :--: |
+| 元音 | -win, -nin, -ón | iae ✶īaye- → iain |
+| s | -nin, -ron, -won | e·thin ✶ucenes- → ethenin |
+| r | -eur, -war, -har | anar ✶hanar- → anar |
+| l | -sal, -wel, -hel | cessar ✶gēssal- → cessal |
+| n | -rin, -eun, -san | haun ✶ekwan- → echan |
+| t | -ats, -ets, -ots | thaud ✶sdāt- → thats |
+| d | -ran, -lan, -hin | é·ched ✶ékid- → échin |
+| k, kw | -ich, -ech, -uch | grich ✶ureik- → grich |
+| h | -aun, -aen | ó·thos ✶ósoh- → óthaun |
+| p | -ref, -nef, -hof | gnef ✶undep- → gnef |
+
+
+<p class="table-caption">欠格 ✶-wat</p>
+
+| 词干末 | 常见格尾 | 例 |
+| :--: | :--: | :--: |
+| m | -amb, -émb, -emb | hethin ✶sgestém- → hethémb |
+| s | -ach, -och, -ech | é·feb ✶pibis- → fibich |
+| l | -alu, -elu, -ilu | cessar ✶gessal- → cessalu |
+| r | -aru, -uru, -eru | thâr ✶tacar- → tharu |
+| n | -amb, -émb, -imb | în ✶hen- → amb |
+| 元音 | -aud, -éw, -ów | anar ✶hnra- → edhraud |
+| d | -adu, -edu, -idu | é·ched ✶ked- → hedu |
+| k, c | -ech, -ich, -ach | alech ✶ghelek- → alech |
+| t, st | -asu, -esu, -ésu | thaud ✶sdat- → thasu |
+| p | -aff, -off, -eff | gnef ✶undap- → gnaff |
+
+
+<p class="table-caption">斜格</p>
+
+| 有生性 | 词干末 | 常见格尾 | 例 |
+| :--: | :--: | :--: | :--: |
+| 有生 ✶-st | r | -est, -ost, -ist | anar ✶ahener- → awanest |
+| 有生 ✶-st | 元音 | -óst, -ist, -ost | renethró ✶renesró- → renethróst |
+| 有生 ✶-st | l | -elt, -alt | grafer ✶urapel- → grafelt |
+| 有生 ✶-st | n | -ast | haun ✶kwān- → hast |
+| 无生 ✶-hr | 元音 | -aur, -hir, -mîr | e·fal ✶upale- → efalaur |
+| 无生 ✶-hr | l | -sal, -mil, -wel | e·maer ✶émbīl- → émil |
+| 无生 ✶-hr | t | -her, -ser | renad ✶rendat- → renather |
+| 无生 ✶-hr | n, d, k | -her | e·theian ✶useyan- → etheiadher |
+| 无生 ✶-hr | m | -wer, -her | awaun ✶hōm- → ower |
+| 无生 ✶-hr | p | -fer | ce·thof ✶gtop- → cethofer |
+| 无生 ✶-hr | h | -sôr, -mer, -eur | ó·thos ✶sōh- → sôr |
+
+
+</details>
+
+
+##### 特殊变格 {#irregular-nouns}
+**借词**。借入较早的词汇（尤其是大部分流云语借词）与固有词一样参与了全部音变，其变格并无特殊之处；只有近代借入的词汇（如部分孤叶语、荏苒语与古亚夜语借词）不参与音变，其变格直接在借入形式后附加格尾，如<abbr class="ts-tip" title="[人] 未娜">woena</abbr>的四格为 woenas / woenan / wonaud / woenan。
+
+**星-前缀**。以“星”<abbr class="ts-tip" title="[名] 星">edhraer</abbr>为前项的复合词，其前项一律缩写为 edh·，而不写全为 edhrel-，如<abbr class="ts-tip" title="[专] 索恩界">edh·tos</abbr>、<abbr class="ts-tip" title="[名] 农田">edh·âd</abbr>。这是瑟乌丝林语中唯一一个此类缩写。
+
+**无复数的名词**。词典中复数形式前带有星号的名词（如<abbr class="ts-tip" title="[地] 夏格">é·thago</abbr>、<abbr class="ts-tip" title="[神] 西亚">sea</abbr>、<abbr class="ts-tip" title="[星] 天海">apfin</abbr>），其词义本身不具有复数。在极少数确需复数的场合，采用星号后所列的形式。
+
+**双数**。标准语中仅有少数天生成对的身体部位名词残留双数，词典在备注中列出。双数形式依次对应及物格、不及物格与欠格，若有第四个形式则为斜格：
+
+
+| 名词 | 及物 | 不及物 | 欠格 | 斜格 |
+| :--: | :--: | :--: | :--: | :--: |
+| <abbr class="ts-tip" title="[名] 眼睛">é·eu</abbr> | ew | ewen | ewo |  |
+| <abbr class="ts-tip" title="[名] 耳朵">é·thal</abbr> | éthele | étheleun | salau |  |
+| <abbr class="ts-tip" title="[名] 手">é·daud</abbr> | édath | édathun | tatheu | tauthur |
+| <abbr class="ts-tip" title="[名] 翅膀">é·(ñ)ges</abbr> | éñge | éñgeun | éñgeu | éñgeur |
+| <abbr class="ts-tip" title="[名] 足">é·dather</abbr> | édethel | édethlun | tathload |  |
+
+
+双数在诗歌中偶有出现，如：
+
+
+<div class="gloss" markdown="0">
+<div class="gloss__row"><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">Ian·echolch</span><span class="gl__spell">ian·e-ho-ol-ho-∅</span><span class="gl__morph">变得-过去·滞流&lt;三双&gt;僵住.弱焦点</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">h-'eun</span><span class="gl__spell">ho-∅-'-e-un</span><span class="gl__morph">悦增音-不可让渡.翅膀.不及物格双数</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">sér'âs,</span><span class="gl__spell">se-e-er-'-a-as-∅</span><span class="gl__morph">古复数限定=她的</span></span></div>
+<div class="gloss__tr">（节选）她翅膀一僵，将身躯沉重地抛在余晖的五角平原上。乳白色的花香扑腾在有些脏乱的羽毛间。</div>
+</div>
+
+
+此片段的 h-'eun 是“翅膀”的不及物格双数 éñgeun 带悦增音的形式，前面的动词 echolch 也相应地取第三人称双数中缀。
+
+#### 名词的复合与派生 {#noun-compounding}
+**名词-名词复合**时，两个名词的模式叠加。若前项为长元音或双元音词根，或者前项为双音节，则前项发生弱化，后项不变；整体的词头采用前项的词头，或根据词义重新择取。如<abbr class="ts-tip" title="[地] 北边境森林">ce·thollast</abbr> < ✶deur-last “森林-雪”，前项 ✶deur 弱化为 ✶dor-，词头采用“森林”的 ce·。
+
+**名词-词缀派生**时，派生缀的元音一般不随重音模式省略，但会被模式改变（如极静式中的高化）。派生所得的名词随后按其自身的类别变格，如<abbr class="ts-tip" title="[名] 音律">rowabad</abbr> < ✶homab-at “曲调-抽象”。
+
+复合词与派生词的变格一般参照前项；个别形式特殊的词在词典中单独注明。
+
 #### 名词的限定 {#determination}
 除了发生在名词本体上的形态变化，名词还可以与所谓的限定词交互，从而改变其指称性质。
 
@@ -749,6 +908,8 @@ description: 瑟乌丝林语语法：音系、科飒尔文、名词的四格系�
 后半分句的银杏树显然是指的前半分句看到的那株，因此这里添加了单数限定词<abbr class="ts-tip" title="单数限定词">e(s)</abbr>。
 
 一般限定词分为**单数限定词**e(s)和**复数限定词**ar，其中e在元音开头的词前会表现为es，比如例句中的es allaus “那株银杏”。另外两种限定词分别还存在古形an(s)和sar，主要出现在古文本、典籍以及诗歌中。
+
+词典所列的及物格与不及物格形式都**带有词头**，如<abbr class="ts-tip" title="[名] 马">é·feb</abbr>的及物格 éfibis。但在句中，名词处于**无定**状态时词头**省略**，如本页例句中的 ubs（< cóubs）、falth（< éfalth）、Thorañ（< gwathorañ）；而处于**限定**状态时，词头被替换为下表中对应的限定形式。欠格与斜格本身不带词头，其限定一律使用表中 ∅ 行所列的独立限定词。
 
 不幸的是，直接将限定词添加在名词前方的规则仅仅适用于没有词头的名词，对于有词头的名词，限定词会与词头发生复杂的交互，最终产生如下表的结果：
 
@@ -788,6 +949,35 @@ description: 瑟乌丝林语语法：音系、科飒尔文、名词的四格系�
 </details>
 
 
+各种一般限定词的用法可以从下面几句看出。单数限定词 e 直接置于无词头名词之前：
+
+
+<div class="gloss" markdown="0">
+<div class="gloss__row"><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">Nó·gwauch</span><span class="gl__spell">no-o·ca-∅-wa-u-ha-∅</span><span class="gl__morph">过去=时·顺流&lt;三单.有生&gt;大喊.弱焦点</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">e</span><span class="gl__spell">e</span><span class="gl__morph">单数限定</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">rado</span><span class="gl__spell">radog</span><span class="gl__morph">人群.不及物格单数</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">adhen.</span><span class="gl__spell">ath-en</span><span class="gl__morph">某指.不及物格</span></span></div>
+<div class="gloss__tr">一些人喊了起来。</div>
+</div>
+
+
+该句的 e rado 即“那群人”，其后的某指代词 adhen 再将其限定为“其中一些”。古单数限定词 an 见于祷歌：
+
+
+<div class="gloss" markdown="0">
+<div class="gloss__row"><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">Ce·isnidaf</span><span class="gl__spell">∅-ce·is-∅-ni-ta-af</span><span class="gl__morph">命令=式·扩流&lt;三复&gt;品尝&lt;期待&gt;强失焦</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">nîr</span><span class="gl__spell">ni-i-ir</span><span class="gl__morph">人.及物格复数</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">telin-pair</span><span class="gl__spell">∅-te-li-in-∅-pa-ir</span><span class="gl__morph">午夜-守护的.复数</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">an</span><span class="gl__spell">an</span><span class="gl__morph">古单数限定</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">clas-re-toraun</span><span class="gl__spell">col-∅-as-∅-re-tor-aun</span><span class="gl__morph">芽.及物格单数-属于-晨露.字典形</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">(foran)</span><span class="gl__spell">fo-ran</span><span class="gl__morph">全，完满</span></span></div>
+<div class="gloss__tr">好让守夜的人儿，尝到晨露的甜芽</div>
+</div>
+
+
+本句的 an clas-re-toraun “晨露的那颗嫩芽”中，an 是单数限定词的古形，与祷文的正式语体相称。古复数限定词则有独立与结合两种面貌：
+
+
+<div class="gloss" markdown="0">
+<div class="gloss__row"><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">Dáf·urá</span><span class="gl__spell">ta-a-af·u-ra-a</span><span class="gl__morph">期待=感音-希求·顺流&lt;三单.祂&gt;点燃.强焦点</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">sar</span><span class="gl__spell">sar</span><span class="gl__morph">古复数限定</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">apfín,</span><span class="gl__spell">ap-fi-ín</span><span class="gl__morph">天海.及物格复数</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">mae·uraus</span><span class="gl__spell">ma-e·u-ra-us-∅</span><span class="gl__morph">回指·顺流&lt;三单.祂&gt;破除.强焦点</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">re·frín</span><span class="gl__spell">re·fer-∅-ín</span><span class="gl__morph">古复数限定·迷惘.及物格复数</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">nêm</span><span class="gl__spell">ne-e-em</span><span class="gl__morph">我们的</span></span></div>
+<div class="gloss__tr">请点亮那倒影之海，破除吾等的迷惘</div>
+</div>
+
+
+此句前半的 sar apfín “那些天海”用的是独立的古复数限定词 sar；后半的 re·frín “那些迷惘”中，名词 se·frin 的词头 se 按下表换成了 re。
+
 ##### 全指限定 {#det-universal}
 全指限定的作用是指向名词所构成的**集体**，比如：
 
@@ -800,10 +990,80 @@ description: 瑟乌丝林语语法：音系、科飒尔文、名词的四格系�
 
 这里的星辰被全指限定词限定，即“所有星辰”，当然全指限定也可以翻译为“**每个**”（即集体中的任一个体），具体情况视文本而定。
 
-值得注意的是，全指限定词后方接续的是名词的单数而不是复数。
+值得注意的是，全指限定词后方接续的是名词的单数而不是复数，但整体被视为复数。如：
+
+
+<div class="gloss" markdown="0">
+<div class="gloss__row"><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">Nó·gwauch</span><span class="gl__spell">no-o·ca-∅-wa-u-ha-∅</span><span class="gl__morph">过去=时·顺流&lt;三单.有生&gt;大喊.弱焦点</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">en</span><span class="gl__spell">en</span><span class="gl__morph">全指限定</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">rado.</span><span class="gl__spell">radog</span><span class="gl__morph">人群.不及物格单数</span></span></div>
+<div class="gloss__tr">所有人都喊了起来。</div>
+</div>
+
+
+该句的 en rado “所有人”中，rado 仍是“人群”的不及物格单数，全指限定词 en 使其指称全体。
 
 ##### 领属限定 {#det-possessive}
-<p class="page-note">本节尚未撰写。</p>
+领属限定用于表达“A 的 B”这类从属关系。此时 A 为中心词，按其语义角色变格；B 为从属词，采用**字典形**，且 B 的词头被替换为**领属限定词**，整体以连字号相连，形如 A-re-B。领属限定词的形式取决于 B 原本的词头：
+
+
+<details class="ts-fold" markdown="1">
+<summary>领属限定词与全指限定词总表</summary>
+
+
+| 名词词头 | 全指限定 | 领属限定 |
+| :--: | :--: | :--: |
+| ∅ | en | re |
+| e | en | re |
+| é | én | ré |
+| ó | ón | ró |
+| o | on | ro |
+| a | an | ra |
+| á | án | rá |
+| as | ans | ras |
+| és | éns | rés |
+| os | ons | ros |
+| ós | óns | rós |
+| edh | edh | redh |
+| édh | édh | rédh |
+| ce | ech | rech |
+| cé | éch | réch |
+| có | óch | róch |
+| co | och | roch |
+| gwé | éñ | réw |
+| gwa | éñ | rau |
+| se | es | se |
+| sé | és | sé |
+| só | ós | só |
+
+
+</details>
+
+
+本页出现过的 aen-re-anar “天海日的光芒”中，<abbr class="ts-tip" title="[星] 天海日">anar</abbr>词头为 ∅，故取 re；而<abbr class="ts-tip" title="[专] 夏格生物分类法">írthanin-ré-thago</abbr>中，<abbr class="ts-tip" title="[地] 夏格">é·thago</abbr>词头为 é，故取 ré，thago 本身则以去掉词头的字典形出现。
+
+
+<div class="tool-note" markdown="span">全指限定词同样按上表随名词词头变化。全指限定词后方的名词以**单数**形式出现，但整体被视为**复数**。</div>
+
+
+下面两句展示了领属限定的实际用法：
+
+
+<div class="gloss" markdown="0">
+<div class="gloss__row"><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">mo</span><span class="gl__spell">mo</span><span class="gl__morph">如同</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">nánnerth·usó</span><span class="gl__spell">na-án-ne-∅-the-∅·us-so-o</span><span class="gl__morph">宁静=感音-预言=式-惯常-排除·换流&lt;三复&gt;渎神.强焦点</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">am</span><span class="gl__spell">am</span><span class="gl__morph">我们.及物格</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">saz</span><span class="gl__spell">∅-sa-as</span><span class="gl__morph">古复数限定</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">zain-ré-auni</span><span class="gl__spell">sa-in-re-e-aun-i</span><span class="gl__morph">罪孽.斜格复数-属于-凡人.字典形复数</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">zi</span><span class="gl__spell">si</span><span class="gl__morph">如同</span></span></div>
+<div class="gloss__tr">如同我们免了别人的债</div>
+</div>
+
+
+该句末尾的 saz zain-ré-auni “凡人们的罪孽”中，中心词 zain “罪孽”取斜格复数，从属词 auni “凡人”取字典形复数，两者以 ré 相连——ré 正对应 é·aun “凡人”原本的词头 é。
+
+
+<div class="gloss" markdown="0">
+<div class="gloss__row"><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">Ce·isnidaf</span><span class="gl__spell">∅-ce·is-∅-ni-ta-af</span><span class="gl__morph">命令=式·扩流&lt;三复&gt;品尝&lt;期待&gt;强失焦</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">nîr</span><span class="gl__spell">ni-i-ir</span><span class="gl__morph">人.及物格复数</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">telin-pair</span><span class="gl__spell">∅-te-li-in-∅-pa-ir</span><span class="gl__morph">午夜-守护的.复数</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">an</span><span class="gl__spell">an</span><span class="gl__morph">古单数限定</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">clas-re-toraun</span><span class="gl__spell">col-∅-as-∅-re-tor-aun</span><span class="gl__morph">芽.及物格单数-属于-晨露.字典形</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">(foran)</span><span class="gl__spell">fo-ran</span><span class="gl__morph">全，完满</span></span></div>
+<div class="gloss__tr">好让守夜的人儿，尝到晨露的甜芽</div>
+</div>
+
+
+此句的 clas-re-toraun “晨露的嫩芽”中，toraun “晨露”没有词头，故领属限定词取 re。
+
 ##### 指示限定 {#det-demonstrative}
 <p class="page-note">本节尚未撰写。</p>
 ##### 零指限定 {#det-zero}
@@ -811,7 +1071,148 @@ description: 瑟乌丝林语语法：音系、科飒尔文、名词的四格系�
 ##### 其他限定 {#det-other}
 <p class="page-note">本节尚未撰写。</p>
 ### 形容词形态 {#adjectives}
-<p class="page-note">本节尚未撰写。</p>
+#### 形容词概述 {#adj-overview}
+<blockquote class="ts-quote" markdown="span"><abbr class="ts-tip" title="[形] 大的">nosso</abbr> <br> <abbr class="ts-tip" title="[形] 高的">sîch</abbr> <br> <abbr class="ts-tip" title="[形] 热情的">anarrin</abbr> <br> <abbr class="ts-tip" title="[形] 漂浮的">gweler</abbr></blockquote>
+
+
+瑟乌丝林语的形容词在词典中以**字典形**与**复数形**两个形式列出。形容词本身不变格，置于名词之后，并在数上与所修饰的名词一致：
+
+
+<div class="gloss" markdown="0">
+<div class="gloss__row"><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">Wemin</span><span class="gl__spell">we-min</span><span class="gl__morph">顺流&lt;三单.祂&gt;照耀.无焦点</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">anar</span><span class="gl__spell">anar</span><span class="gl__morph">天海日.不及物格单数</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">echran.</span><span class="gl__spell">e-ha-∅-ran</span><span class="gl__morph">明亮的</span></span></div>
+<div class="gloss__tr">明亮的天海日照耀着。</div>
+</div>
+
+
+该句的 echran “明亮的”直接跟在 anar “天海日”之后，名词为单数，形容词用字典形。
+
+
+<div class="gloss" markdown="0">
+<div class="gloss__row"><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">Zo·soch</span><span class="gl__spell">so·∅-so-ho-∅</span><span class="gl__morph">惯常=体·顺流&lt;三复&gt;大喊.无焦点</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">nilin</span><span class="gl__spell">ni-li-in</span><span class="gl__morph">个体.不及物格复数</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">laod.</span><span class="gl__spell">la-ot</span><span class="gl__morph">高兴的.复数</span></span></div>
+<div class="gloss__tr">快乐的人常常大喊。</div>
+</div>
+
+
+此句的 nilin “个体”为不及物格复数，形容词也相应地用复数形 laod。少数形容词带有**词头**，如<abbr class="ts-tip" title="[形] 基本的">thonathan</abbr>、<abbr class="ts-tip" title="[形] 早晨的">auwan</abbr>、<abbr class="ts-tip" title="[形] 便利的">edhewenan</abbr>，词典中单独标记。
+
+#### 形容词的来源 {#adj-sources}
+按来源，形容词分为**固有形容词**、**名词派生**、**动词派生**与其他来源四类，原始希克林语的派生缀决定了它们的形态：
+
+
+| 来源 | 祖语后缀 | 含义 | 例 |
+| :--: | :--: | :--: | :--: |
+| 固有形容词 | ✶-o | 无区别，仅随词根末辅音的倾向选取 | ✶mepr-o > <abbr class="ts-tip" title="[形] 第一的">mefer</abbr> |
+| ✶-co | ✶hem-co > <abbr class="ts-tip" title="[形] 上古的">asso</abbr> |  |  |
+| ✶-do | ✶mew-do > <abbr class="ts-tip" title="[形] 少的">meud</abbr> |  |  |
+| ✶-wo | ✶stēn-wo > <abbr class="ts-tip" title="[形] 寒冷的">themb</abbr> |  |  |
+| ✶-no | ✶dos-no > <abbr class="ts-tip" title="[形] 虚假的">tôn</abbr> |  |  |
+| 名词派生 | ✶-hen | 具有…… | ✶hōj-hen > <abbr class="ts-tip" title="[形] 炎热的">oran</abbr> |
+| ✶-ren | 似…… | ✶last-ren > <abbr class="ts-tip" title="[形] 雪白的">lathrin</abbr> |  |
+| ✶-men | 受……影响 | ✶sbeu-men > <abbr class="ts-tip" title="[形] 正式的">fowin</abbr> |  |
+| 动词派生 | ✶-ē | 具有…… | ✶yag-ē > <abbr class="ts-tip" title="[形] 快速的">iâg</abbr> |
+| ✶-ey | 变得…… | ✶mār-ey > <abbr class="ts-tip" title="[形] 衰老的">mare</abbr> |  |
+| ✶-weh | 惯常…… | ✶snāb-weh > <abbr class="ts-tip" title="[形] 常驻的">napf</abbr> |  |
+| ✶-hōs | 停滞于…… | ✶mār-hōs > <abbr class="ts-tip" title="[形] 依旧的">maros</abbr> |  |
+
+
+固有形容词的五个后缀之间没有语义区别，选用哪个只取决于词根末辅音的倾向；同一词根接不同后缀可以派生出不同的词（<abbr class="ts-tip" title="[形] 高的">sîch</abbr> < ✶sceik-wo 与<abbr class="ts-tip" title="[形] 高贵的">siceth</abbr> < ✶sceik-do）。派生形容词还可以临时由名词与动词性成分复合而成：
+
+
+<div class="gloss" markdown="0">
+<div class="gloss__row"><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">Ce·isnidaf</span><span class="gl__spell">∅-ce·is-∅-ni-ta-af</span><span class="gl__morph">命令=式·扩流&lt;三复&gt;品尝&lt;期待&gt;强失焦</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">nîr</span><span class="gl__spell">ni-i-ir</span><span class="gl__morph">人.及物格复数</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">telin-pair</span><span class="gl__spell">∅-te-li-in-∅-pa-ir</span><span class="gl__morph">午夜-守护的.复数</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">an</span><span class="gl__spell">an</span><span class="gl__morph">古单数限定</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">clas-re-toraun</span><span class="gl__spell">col-∅-as-∅-re-tor-aun</span><span class="gl__morph">芽.及物格单数-属于-晨露.字典形</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">(foran)</span><span class="gl__spell">fo-ran</span><span class="gl__morph">全，完满</span></span></div>
+<div class="gloss__tr">好让守夜的人儿，尝到晨露的甜芽</div>
+</div>
+
+
+该句的 telin-pair “午夜-守护的”便是“午夜”与动词派生形容词“守护的”临时复合，修饰前面的 nîr “人”，并与之同取复数。
+
+#### 形容词的复数 {#adj-plural}
+形容词复数的构成大体可以归为几类：
+
+
+| 字典形词尾 | 复数 | 例 |
+| :--: | :--: | :--: |
+| -an | -ian | thonathan → thonathian；oran → orian |
+| 辅音 | 加 -i | eñgal → eñgali；raug → raugi |
+| -d | -th | gwelenad → gwelenath；thansad → thansas |
+| -rin（名词派生） | -irin | iobrin → iobirin；iaerin → iairin |
+| -dhrin | -nirin | hadhrin → hanirin；sadhrin → sanirin |
+| -o | -iw 或 -i | nosso → nossiw；sewo → sewi |
+| -mb | -ni | emalamb → emalani；salamb → salani |
+| -aud | -oed | saud → soed；eñgaud → eñgoed |
+
+
+另有一部分形容词单复数**同形**（mefer、thâr、foran、gorin 等），多为固有形容词。复数一致在诗歌中随处可见：
+
+
+<div class="gloss" markdown="0">
+<div class="gloss__row"><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">Mó·ewewart</span><span class="gl__spell">mo-o·ew-ew-ar-∅-ta-∅</span><span class="gl__morph">远过去=时·滞流&lt;三单.祂&gt;游泳.强焦点-传言</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">léthrin</span><span class="gl__spell">althaer-i</span><span class="gl__morph">云鲸.不及物格复数</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">t'apfin</span><span class="gl__spell">∅-ta-'-ap-fin</span><span class="gl__morph">在...上（不接触）-天海.字典形</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">e</span><span class="gl__spell">e</span><span class="gl__morph">副词标记</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">níwin</span><span class="gl__spell">ni-i-iw-in</span><span class="gl__morph">悠然的.复数</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">to·haut</span><span class="gl__spell">∅-to·ha-ut-∅</span><span class="gl__morph">恒真=体·持续=回指动词.时定式</span></span></div>
+<div class="gloss__tr">传说天海之上，云鲸游弋徜徉</div>
+</div>
+
+
+此句的 níwin “悠然的.复数”与主语 léthrin “云鲸.不及物格复数”一致，两者之间还隔着介词短语与副词标记 e。
+
+#### 比较 {#comparison}
+瑟乌丝林语的比较不通过词尾，而是用一对**小品词**把被比较的成分**包裹**起来，类似法语的 ne……pas：
+
+
+| 级 | 结构 | 备注 |
+| :--: | :--: | :--: |
+| 平级 | mo … zi | “如……一样” |
+| 比较级 | mo … or | or 引发其后的流音音变；动词作比较时改用大化·小化缀 |
+| 最高级 | mo … sam |  |
+
+
+<div class="gloss" markdown="0">
+<div class="gloss__row"><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">Hath</span><span class="gl__spell">∅-ha-ath</span><span class="gl__morph">飒沓姿态</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">na-hallanín</span><span class="gl__spell">na-hal-la-ni-ín</span><span class="gl__morph">在-不可让渡-脚步.字典形复数</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">forwath</span><span class="gl__spell">fo-or-wa-ath-∅</span><span class="gl__morph">轻巧的.复数</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">mo</span><span class="gl__spell">mo</span><span class="gl__morph">如同</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">has</span><span class="gl__spell">has</span><span class="gl__morph">鹿.字典形单数</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">zi</span><span class="gl__spell">si</span><span class="gl__morph">一样</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">mentás</span><span class="gl__spell">men-∅-ta-a-as-∅</span><span class="gl__morph">少女=她的</span></span></div>
+<div class="gloss__tr">少女鹿般轻巧的脚步飒沓</div>
+</div>
+
+
+该句的 mo has zi “如鹿一样”把“鹿”夹在平级比较的两个小品词之间，修饰前面的“轻巧的脚步”。
+
+
+<div class="gloss" markdown="0">
+<div class="gloss__row"><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">Fsom·gosfem</span><span class="gl__spell">fos-∅-om·co-os-fe-em</span><span class="gl__morph">未完成=体-远过去·顺流&lt;三单.有生&gt;摆弄.强焦点-感官强调</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">cé·chalthaches</span><span class="gl__spell">∅-ce-e·ha-al-thach-es-∅</span><span class="gl__morph">古单数限定·冰陶.及物格单数</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">na</span><span class="gl__spell">na</span><span class="gl__morph">在...中</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">e·galan,</span><span class="gl__spell">e·ca-la-an</span><span class="gl__morph">单数限定·镜子.字典形单数</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">cechaes,</span><span class="gl__spell">cech-a-es-∅</span><span class="gl__morph">涂鸦.副动词</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">cefau</span><span class="gl__spell">∅-ce-fa-u</span><span class="gl__morph">大笑.副动词</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">mo</span><span class="gl__spell">mo</span><span class="gl__morph">如同</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">anel</span><span class="gl__spell">an-el</span><span class="gl__morph">花海.字典形单数</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">zi</span><span class="gl__spell">si</span><span class="gl__morph">一样</span></span></div>
+<div class="gloss__tr">镜中她摆弄着冰陶，涂着色，笑靥如花</div>
+</div>
+
+
+此句句末的 mo anel zi “如花一样”结构相同，被比较的“花海”仍取字典形。
+
+#### 副词化与否定 {#adverbs-negation}
+形容词转为**副词**时，形容词前置副词标记 e（元音前作 he），形容词本身加悦增音前缀 t-：
+
+
+<div class="gloss" markdown="0">
+<div class="gloss__row"><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">Wemin</span><span class="gl__spell">we-min</span><span class="gl__morph">顺流&lt;三单.祂&gt;照耀.无焦点</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">anar</span><span class="gl__spell">anar</span><span class="gl__morph">天海日.不及物格单数</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">e</span><span class="gl__spell">e</span><span class="gl__morph">副词标记</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">t-echran.</span><span class="gl__spell">∅-te-∅-e-ha-∅-ran</span><span class="gl__morph">悦增音-明亮的</span></span></div>
+<div class="gloss__tr">天海日明亮地照耀着。</div>
+</div>
+
+
+该句的 e t-echran “明亮地”由副词标记 e 与 t-echran 构成，与上文形容词概述中作定语的 echran “明亮的”形成对照。
+
+
+<div class="gloss" markdown="0">
+<div class="gloss__row"><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">Fso·wemein</span><span class="gl__spell">fo-∅-∅-so·we-me-in</span><span class="gl__morph">未完成=体·顺流&lt;三单.祂&gt;照耀.弱失焦</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">anar</span><span class="gl__spell">anar</span><span class="gl__morph">天海日.不及物格单数</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">e</span><span class="gl__spell">e</span><span class="gl__morph">副词标记</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">t-iélan.</span><span class="gl__spell">∅-ti-∅-i-e-el-an</span><span class="gl__morph">悦增音-再次的</span></span></div>
+<div class="gloss__tr">天海日又在照耀了。</div>
+</div>
+
+
+此句的 e t-iélan “再次”同样以 e 加 t- 构成，说明这一手段不限于性质形容词。
+
+形容词的**否定**通过前缀 e- 实现，并引发形容词词首的**软音变**，如 ethener “未冷的” < e- + <abbr class="ts-tip" title="[形] 冰冷的">thener</abbr>：
+
+
+<div class="gloss" markdown="0">
+<div class="gloss__row"><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">Ma</span><span class="gl__spell">ma</span><span class="gl__morph">存在</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">melechal-sará-thos</span><span class="gl__spell">me-le-hal-sar-a-∅-tho-os-∅</span><span class="gl__morph">麦草.不及物格单数-量化-浅滩.字典形</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">eñgol</span><span class="gl__spell">en-co-ol</span><span class="gl__morph">甘草色的</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">eñ</span><span class="gl__spell">en</span><span class="gl__morph">在...处</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">wa·eachod</span><span class="gl__spell">wa·e-a-hod</span><span class="gl__morph">单数限定·山坡.字典形</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">ewenallan,</span><span class="gl__spell">e-we-na-al-la-an</span><span class="gl__morph">否定=遥远的</span></span></div>
+<div class="gloss__tr">（节选）不远处的山坡上有一滩枯黄的麦草，被一位夏格的农夫遗忘于此几百多年。腐烂的叶脉让岁月温柔地覆以青苔，仿佛里面的生命从未真正离去。记忆的界限模糊在时间的刻度上，连匆忙的旅人也会停下怀念。</div>
+</div>
+
+
+该片段末尾的 ewenallan “不远的”即 e- 加 <abbr class="ts-tip" title="[形] 遥远的">menallan</abbr>，词首的 m 在否定前缀之后软化为 w。
+
 ### 动词形态 {#verbs}
 #### 动词概述 {#verb-overview}
 <blockquote class="ts-quote" markdown="span"><abbr class="ts-tip" title="[动] 0 下雨；1 洒，泼">·tes</abbr> <br> <abbr class="ts-tip" title="[动] 1 飞翔，飞">·lhes</abbr> <br> <abbr class="ts-tip" title="[动] 2 看，看见（泛）">·hân</abbr> <br> <abbr class="ts-tip" title="[动] 3 允许，准许">·foer</abbr></blockquote>
@@ -850,6 +1251,53 @@ description: 瑟乌丝林语语法：音系、科飒尔文、名词的四格系�
 
 **词干元音**不参与拼写，但它决定了该动词否定时所取用的元音，详见[否定](#negation)一节。
 
+#### 焦点形的推导 {#focus-derivation}
+上一节列出的各焦点形并非任意的，而是[原始希克林语](/laim/Proto-Shikṛin/)的**焦点范式**经由瑟乌丝林语音变后的结果。原始希克林语的动词词根分为**强词根**（单音节，形如 √CVC）与**弱词根**（双音节，形如 √CVCV(C)），两者在各范式下的操作不同。下面以标准语的角度概述各形式的来源，范式本身的细节参见[原始希克林语](/laim/Proto-Shikṛin/)动词形态一节。
+
+
+<p class="table-caption">焦点形的祖语来源</p>
+
+| 形式 | 强词根 | 弱词根 | 例（√HEST “燃烧”） | 例（√WEKR “扩大”） |
+| :--: | :--: | :--: | :--: | :--: |
+| **字典形／无焦点形** | 词根本身 | 词根本身 | ✶hest > ast | ✶wekr > gwecher |
+| **强焦点形** | 音节核被成音节喉音 H̩ 替换；或首辅音送气化而音节核不变 | 两个元音合并 | ✶hh̩st > ast | ✶wh̩kr > cher |
+| **弱焦点形** | 音节首与音节核重叠后坍缩，音节核变长（eu → wō，ei → ēy） | 第二个元音隐匿 | ✶hēst > est | ✶wēkr > gwecher |
+| **弱失焦形** | 音节核复制，中间插入实星屑：CV·VC | 第二个元音隐匿，第一个元音复制：CV<sub>1</sub>·V<sub>1</sub>C | ✶he·est > a.est | ✶we·ekr > gwe.echer |
+| **强失焦形** | 代表元音插入音节核之前，中间插入实星屑：CV<sub>ᴘ</sub>·VC | 中央辅音被实星屑替换：CV<sub>1</sub>·V<sub>2</sub>C | ✶ha·est > a.est | ✶wi·ekr > gwi.echer |
+
+
+**强焦点形**有两种来源：一部分动词按祖语范式以成音节喉音 H̩ 替换音节核（√WEKR → ✶wh̩kr > cher）；另一部分动词为了避免与其他形式重合，改为将**首辅音送气化**而不触动音节核（√KAM “看”→ ✶kham > hân，√DOSR “画圆”→ ✶dhosr > dhoser，√WŌM “入梦”→ ✶whōm > haun）。
+
+表中的**实星屑**即上文所说的**感音槽**——原始希克林语失焦时插入词中的辅音，在瑟乌丝林语词典中以间隔号标出，使用时填入感音辅音。**代表元音 V<sub>ᴘ</sub>**即动词的**词干元音**，这也是为什么强失焦形的点前元音往往与词干元音一致（√WEKR 词干元音 i → gwi.echer；√NDETR 词干元音 u → eno.ether）。
+
+原始希克林语各焦点所要求的焦点缀（强焦点 ✶-r/-l、弱焦点 ✶-ĝ/-s、无焦点 ✶-m/-h、弱失焦 ✶-b、强失焦 ✶-k/-t）在瑟乌丝林语中已不可辨识。
+
+
+<div class="tool-note" markdown="span">上表给出的是主要规律。由于音变链长达四个阶段，个别词根（尤其含成音节响音或长元音的词根）的实际形式可能偏离表中的操作，以词典所载为准。</div>
+
+
+##### 前缀点 {#prefix-dot}
+部分动词由名词或其他动词经**派生缀**（去名词化 ✶-eh、致使 ✶-teh、✶-ya 等）构成。这类动词的派生缀在音变中被**抽离到词头**，词典以**前缀点**的形式单独列出。使用时，前缀点置于[动词头](#verb-head)**之前**并与之结合，如本页例句 Adhom·urecht 中的 a- 即去名词化前缀点与动词头 dhom· 的结合。
+
+
+<p class="table-caption">带前缀点的动词</p>
+
+| 前缀点 | 动词 | 来源 | 释义 |
+| :--: | :--: | :--: | :--: |
+| tha· | wather | ✶satr-teh 腿-致使 | 跨步，迈步 |
+| tha· | essar | ✶hēm-sal-teh 数-致使 | 使量化；数数 |
+| au· | wether | ✶weter-eh 目标-去名词化 | 以……为目标 |
+| au· | thach | ✶sakm-eh 冰-去名词化 | 刻字，写，记录 |
+| au· | theun | ✶seum-eh 集体-去名词化 | 集合；组建 |
+| au· | anerrin | ✶a-nder-ren-eh 人偶-去名词化 | 玩耍，戏弄 |
+| a· | weus | ✶heus-eh 裸露-去名词化 | 暴露，展示 |
+| a· | fîn | ✶pin-eh 倒影-去名词化 | 倒映，映出 |
+| ia· | loga | ✶loga-ya | 冻僵，变硬 |
+
+
+##### 同形异源动词 {#homonymous-verbs}
+词典中若干动词的祖语来源与词干元音以斜线分列多个（如<abbr class="ts-tip" title="[动] 来；繁荣">thaur</abbr> < ✶tōl / ✶tār，词干元音 e / a）。这是两个来源不同的动词经音变后**同形**的结果，斜线两侧对应两个不同的词义，其部分形式也可能不同。这类动词否定时，按所取词义各自对应的词干元音选取否定元音。
+
 #### 动词结构 {#verb-structure}
 动词若进入句子，则须按下列结构编码时、体、式等信息：
 
@@ -861,13 +1309,13 @@ description: 瑟乌丝林语语法：音系、科飒尔文、名词的四格系�
 
 
 <div class="gloss" markdown="0">
-<div class="gloss__row"><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">Lhes</span><span class="gl__spell">∅-le-es-∅</span><span class="gl__morph">三单.有生&gt</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">falth.</span><span class="gl__spell">fal-∅-tha-∅</span><span class="gl__morph">飞翔.无焦点</span></span><span class="gl__w"><span class="gl__spell">顺流&lt</span><span class="gl__morph">云鸟.不及物格单数</span></span></div>
+<div class="gloss__row"><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">Lhes</span><span class="gl__spell">∅-le-es-∅</span><span class="gl__morph">顺流&lt;三单.有生&gt;飞翔.无焦点</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">falth.</span><span class="gl__spell">fal-∅-tha-∅</span><span class="gl__morph">云鸟.不及物格单数</span></span></div>
 <div class="gloss__tr">云鸟飞翔。</div>
 </div>
 
 
 <div class="gloss" markdown="0">
-<div class="gloss__row"><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">Don·euraug</span><span class="gl__spell">to-on·eu-ra-uc</span><span class="gl__morph">三单.无生&gt</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">mos</span><span class="gl__spell">mo-os-∅</span><span class="gl__morph">掩盖.弱焦点</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">e</span><span class="gl__spell">e</span><span class="gl__morph">影子.及物格单数</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">lawas.</span><span class="gl__spell">lawar</span><span class="gl__morph">单数限定</span></span><span class="gl__w"><span class="gl__spell">完成=体-过去·顺流&lt</span><span class="gl__morph">林中小径.及物格单数</span></span></div>
+<div class="gloss__row"><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">Don·euraug</span><span class="gl__spell">to-on·eu-ra-uc</span><span class="gl__morph">完成=体-过去·顺流&lt;三单.无生&gt;掩盖.弱焦点</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">mos</span><span class="gl__spell">mo-os-∅</span><span class="gl__morph">影子.及物格单数</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">e</span><span class="gl__spell">e</span><span class="gl__morph">单数限定</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">lawas.</span><span class="gl__spell">lawar</span><span class="gl__morph">林中小径.及物格单数</span></span></div>
 <div class="gloss__tr">影子掩藏了小径。</div>
 </div>
 
@@ -960,7 +1408,49 @@ description: 瑟乌丝林语语法：音系、科飒尔文、名词的四格系�
 | don· | d=o-n=(ó) | 完成体-过去时 |
 | fsom· | fs=o-m=(ó) | 未完成体-远过去时 |
 | nádhon· | n=á-d(dh)=o-n=(ó) | 宁静感音-完成体-过去时 |
+| Fso· | fs=o | 未完成体 |
+| Nó· | n=ó | 过去时 |
+| Zo· | z=o | 惯常体 |
+| Mó· | m=ó | 远过去时 |
 
+
+同一个动词 ·emin “照耀”配上不同的动词头，可以清楚地看到时与体的差别。首先是完全省略动词头的情形：
+
+
+<div class="gloss" markdown="0">
+<div class="gloss__row"><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">Wemin</span><span class="gl__spell">we-min</span><span class="gl__morph">顺流&lt;三单.祂&gt;照耀.无焦点</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">anar.</span><span class="gl__spell">anar</span><span class="gl__morph">天海日.不及物格单数</span></span></div>
+<div class="gloss__tr">天海日照耀着。</div>
+</div>
+
+
+该句没有动词头，动词干 wemin 直接以无焦点形出现，表达的是现在时、一般体貌的陈述。给它加上未完成体的动词头 fs=o，便成了正在进行：
+
+
+<div class="gloss" markdown="0">
+<div class="gloss__row"><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">Fso·wemein</span><span class="gl__spell">fo-∅-∅-so·we-me-in</span><span class="gl__morph">未完成=体·顺流&lt;三单.祂&gt;照耀.弱失焦</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">anar.</span><span class="gl__spell">anar</span><span class="gl__morph">天海日.不及物格单数</span></span></div>
+<div class="gloss__tr">天海日正在照耀。</div>
+</div>
+
+
+此句的 Fso· 由未完成体 fs 与标记元音 o 构成，动词也随之改用弱失焦形 wemein。若改为过去时 n=ó：
+
+
+<div class="gloss" markdown="0">
+<div class="gloss__row"><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">Nó·wemaen</span><span class="gl__spell">no-o·we-em-aen</span><span class="gl__morph">过去=时·顺流&lt;三单.祂&gt;照耀.弱焦点</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">anar.</span><span class="gl__spell">anar</span><span class="gl__morph">天海日.不及物格单数</span></span></div>
+<div class="gloss__tr">天海日照耀过。</div>
+</div>
+
+
+这一句的 Nó· 只含时插槽，标记元音 ó 因插槽唯一而保留，动词取弱焦点形 wemaen。最后是惯常体 z=o：
+
+
+<div class="gloss" markdown="0">
+<div class="gloss__row"><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">Zo·soch</span><span class="gl__spell">so·∅-so-ho-∅</span><span class="gl__morph">惯常=体·顺流&lt;三复&gt;大喊.无焦点</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">nilin</span><span class="gl__spell">ni-li-in</span><span class="gl__morph">个体.不及物格复数</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">laod.</span><span class="gl__spell">la-ot</span><span class="gl__morph">高兴的.复数</span></span></div>
+<div class="gloss__tr">快乐的人常常大喊。</div>
+</div>
+
+
+本句的 Zo· 表达“常常”，与句末的形容词 laod “高兴的.复数”一起描述惯常发生的事。
 
 ##### 否定 {#negation}
 否定通过在动词头**最前方**添加一个**否定元音**实现。该元音并非任取，而是由动词的**词干元音**所对应天体的**对位天体**决定，对位关系参见[原始希克林语](/laim/Proto-Shikṛin/)。
@@ -1001,6 +1491,53 @@ description: 瑟乌丝林语语法：音系、科飒尔文、名词的四格系�
 | 过去时 | 虚拟式，虚拟语气 |
 | 远过去时 | 开玩笑、咒骂 |
 
+
+这些组合大多可以在语料中找到实例。先看“预言式 + 自反”：
+
+
+<div class="gloss" markdown="0">
+<div class="gloss__row"><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">Pne·wemin</span><span class="gl__spell">∅-pe-∅-ne·we-min</span><span class="gl__morph">预言=式·顺流&lt;三单.祂&gt;照耀.无焦点</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">anar</span><span class="gl__spell">anar</span><span class="gl__morph">天海日.不及物格单数</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">aun.</span><span class="gl__spell">aun</span><span class="gl__morph">自反.不及物格单数</span></span></div>
+<div class="gloss__tr">天海日将会照耀。</div>
+</div>
+
+
+该句的 Pne· 是预言式 pn=e，句末的 aun 是自反小品词，两者合起来便表达将来“将会照耀”。再看“否定 + 临终体”：
+
+
+<div class="gloss" markdown="0">
+<div class="gloss__row"><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">Olt·wemein</span><span class="gl__spell">o-lat-∅·we-me-in</span><span class="gl__morph">否定-临终·顺流&lt;三单.祂&gt;照耀.弱失焦</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">anar.</span><span class="gl__spell">anar</span><span class="gl__morph">天海日.不及物格单数</span></span></div>
+<div class="gloss__tr">天海日一直照耀到现在。</div>
+</div>
+
+
+本句的动词头 Olt· 由否定元音 o 与临终体 l(t) 构成，表达“一直照耀到现在”的完成义。“预言式 + 惯常体”表达“该，应该”：
+
+
+<div class="gloss" markdown="0">
+<div class="gloss__row"><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">Ánner·mî</span><span class="gl__spell">án-ne-er·mi-i</span><span class="gl__morph">冷漠=感音-预言=式-惯常·顺流&lt;一单&gt;离去.强焦点</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">renes,</span><span class="gl__spell">re-nes</span><span class="gl__morph">就这样</span></span></div>
+<div class="gloss__tr">（节选）而道别了天空的鸟儿啊。我该就此离开，还是去捧起你冰凉的身躯，就像回乡的旅人捧起同伴的遗物？你最后的心愿是什么？是将它埋进封雪岭的冰川，还是浇灌上克洛尔火山炽热的熔岩？为你实现心愿的我能离你现在的世界更近吗，还是依旧遥远得像沉默的影子一样？</div>
+</div>
+
+
+这里的 Ánner· 是冷漠感音 á、预言式 nn 与惯常体 r 的叠加，整句义为“我该就此离开”。“否定 + 条件式 + 惯常体”表达“就连，哪怕”：
+
+
+<div class="gloss" markdown="0">
+<div class="gloss__row"><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">eumer·lasch</span><span class="gl__spell">eu-me-er·las-ha-∅</span><span class="gl__morph">否定-条件=式-惯常·顺流&lt;三单.有生&gt;停下.无焦点</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">be·cagsin</span><span class="gl__spell">pe·∅-ca-ac-∅-si-in</span><span class="gl__morph">希求=式·怀念.副动词形</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">sé·wean</span><span class="gl__spell">se-e·gwea</span><span class="gl__morph">古单数限定·旅人.不及物格单数</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">horo</span><span class="gl__spell">hor-o</span><span class="gl__morph">匆忙的</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">ich.</span><span class="gl__spell">i-hi-∅</span><span class="gl__morph">也，还</span></span></div>
+<div class="gloss__tr">（节选）不远处的山坡上有一滩枯黄的麦草，被一位夏格的农夫遗忘于此几百多年。腐烂的叶脉让岁月温柔地覆以青苔，仿佛里面的生命从未真正离去。记忆的界限模糊在时间的刻度上，连匆忙的旅人也会停下怀念。</div>
+</div>
+
+
+此句的 eumer· 以否定元音 eu 起头，其后接条件式 m 与惯常体 r，于是“连匆忙的旅人也会停下”。最后是“否定 + 条件式 + 恒真体”：
+
+
+<div class="gloss" markdown="0">
+<div class="gloss__row"><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">Eimethon·euchaur</span><span class="gl__spell">e-im-eth-tho-on·eu-ha-ur</span><span class="gl__morph">否定-条件=式-恒真=体-过去·滞流&lt;三单.祂&gt;落雪.弱焦点</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">lothor</span><span class="gl__spell">lo-thor</span><span class="gl__morph">大雪.斜格单数</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">eñgenoe</span><span class="gl__spell">en-ce-no-e</span><span class="gl__morph">倾天的</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">ren-salfew</span><span class="gl__spell">re-en-sal-fe-ew</span><span class="gl__morph">似-银河.字典形单数</span></span></div>
+<div class="gloss__tr">倾天的大雪似银河般落下</div>
+</div>
+
+
+本句的 Eimethon· 由否定元音 ei、条件式 m、恒真体 th 与过去时 n 构成，配合句末的 ren-salfew “似银河”表达比喻。
 
 ##### 动词头的回指 {#head-anaphora}
 动词头可以被**整体**回指，此时只需将其替换为mae·即可，其后的动词干不受影响。如：
@@ -1044,55 +1581,124 @@ description: 瑟乌丝林语语法：音系、科飒尔文、名词的四格系�
 本页[斜格](#case-obl)与[欠格](#case-abe)两节中出现的零价动词·tes，其逆流形正是取“隐物”义（雨越下越小），其扩流形则取“促成”义（蜻蜓低飞促成了下雨），均非字面的语流流向。
 
 ##### 人称中缀 {#person}
-人称中缀与语流前缀会发生复杂的合并，最终得到下表。表头自左向右按**人称等级**排列，语流的具体流向参见[原始希克林语](/laim/Proto-Shikṛin/)。
-
-
-<details class="ts-fold" markdown="1">
-<summary>语流—人称合并总表</summary>
+人称中缀与语流前缀会发生复杂的合并，最终得到下表。表头自左向右按**人称等级**排列，语流的具体流向参见[原始希克林语](/laim/Proto-Shikṛin/)。表中的上标标记该中缀对其后词干首辅音所引发的音变，说明见表后。
 
 
 <p class="table-caption">语流前缀与人称中缀的合并形式</p>
 
-| 语流／人称 | 回指 | 3祂 | 1单 | 2单亲 | 2单敬 | 3单有生 | 1复 | 2复 | 3复 | 3单无生 |
+| 语流 | anaph.[^22] | 3sg.gd | 1sg | 2sg.fam | 2sg.res | 3sg.an | 1pl | 2pl | 3pl | 3sg.inan |
 | :--: | :--: | :--: | :--: | :--: | :--: | :--: | :--: | :--: | :--: | :--: |
-| **顺流** | e | (u)w | m- | d% | ei+ | ∅ | a+ | o+ | s~ | eu+ |
-| **逆流** | ae+ | aw+ | am- | ad% | ai+ | a | á+ | ao+ | as~ | au+ |
-| **扩流** | ie+ | iw+ | im- | id% | í+ | i+ | ia+ | io+ | is~ | ieu+ |
-| **换流** | we+ | ú+[^22] | um- | ud% | ui+ | (w)u+ | wa+ | wo+ | us~ | weu+ |
-| **滞流** | é | ew+ | em- | ed% | é+ | e+ | ea+ | eo+ | es~ | oe+ |
+| **顺流** | e | (u)w | m<sup>ɴ</sup> | d<sup>ꜱ</sup> | ei<sup>ʟ</sup> | ∅ | a<sup>ʟ</sup> | o<sup>ʟ</sup> | s<sup>ʀ</sup> | eu<sup>ʟ</sup> |
+| **逆流** | ae<sup>ʟ</sup> | aw<sup>ʟ</sup> | am<sup>ɴ</sup> | ad<sup>ꜱ</sup> | ai<sup>ʟ</sup> | a | á<sup>ʟ</sup> | ao<sup>ʟ</sup> | as<sup>ʀ</sup> | au<sup>ʟ</sup> |
+| **扩流** | ie<sup>ʟ</sup> | iw<sup>ʟ</sup> | im<sup>ɴ</sup> | id<sup>ꜱ</sup> | í<sup>ʟ</sup> | i<sup>ʟ</sup> | ia<sup>ʟ</sup> | io<sup>ʟ</sup> | is<sup>ʀ</sup> | ieu<sup>ʟ</sup> |
+| **换流** | we<sup>ʟ</sup> | ú<sup>ʟ</sup>[^23] | um<sup>ɴ</sup> | ud<sup>ꜱ</sup> | ui<sup>ʟ</sup> | (w)u<sup>ʟ</sup> | wa<sup>ʟ</sup> | wo<sup>ʟ</sup> | us<sup>ʀ</sup> | weu<sup>ʟ</sup> |
+| **滞流** | é | ew<sup>ʟ</sup> | em<sup>ɴ</sup> | ed<sup>ꜱ</sup> | é<sup>ʟ</sup> | e<sup>ʟ</sup> | ea<sup>ʟ</sup> | eo<sup>ʟ</sup> | es<sup>ʀ</sup> | oe<sup>ʟ</sup> |
 
 
-</details>
+上标的含义如下，与介词内化时所引发的音变属于同一套系统：
+* **<sup>ʟ</sup> 软音变**（弱化）：词干首辅音弱化，如 lh 弱化为 l（·lhes “飞翔”在换流·3sg.an 的 u<sup>ʟ</sup> 之后作 ules）。
+* **<sup>ɴ</sup> 鼻音音变**：词干首辅音鼻化。
+* **<sup>ꜱ</sup> 闭锁音变**：词干首辅音闭锁化。
+* **<sup>ʀ</sup> 流音音变**：词干首辅音流音化。
+不带上标的中缀不引发音变。顺流·3sg.gd 的 (u)w 与换流·3sg.an 的 (w)u 在语料中的分布是：辅音前作 u，元音前作 w。
+
+下面逐一展示各语流与人称在句中的拼合。顺流·3sg.gd 的 w 直接附着于词干：
 
 
-表中的符号标记的是该中缀对其后辅音所引发的音变：
+<div class="gloss" markdown="0">
+<div class="gloss__row"><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">Wemin</span><span class="gl__spell">we-min</span><span class="gl__morph">顺流&lt;三单.祂&gt;照耀.无焦点</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">anar.</span><span class="gl__spell">anar</span><span class="gl__morph">天海日.不及物格单数</span></span></div>
+<div class="gloss__tr">天海日照耀着。</div>
+</div>
 
 
-| 符号 | 引发的音变 |
-| :--: | :--: |
-| + | 软音变（弱化） |
-| - | 鼻音音变 |
-| % | 闭锁音变 |
-| ~ | 流音音变 |
+该句中动词 ·emin “照耀”前的 w 即神性人称中缀——天海日在人称等级上属于神性。顺流·3sg.an 的中缀为零：
 
 
-以本页出现过的形式为例：
+<div class="gloss" markdown="0">
+<div class="gloss__row"><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">Nó·gwauch</span><span class="gl__spell">no-o·ca-∅-wa-u-ha-∅</span><span class="gl__morph">过去=时·顺流&lt;三单.有生&gt;大喊.弱焦点</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">en</span><span class="gl__spell">en</span><span class="gl__morph">全指限定</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">rado.</span><span class="gl__spell">radog</span><span class="gl__morph">人群.不及物格单数</span></span></div>
+<div class="gloss__tr">所有人都喊了起来。</div>
+</div>
 
 
-<p class="table-caption">语流—人称的实际拼合</p>
-
-| 形式 | 语流·人称 | 词干 | 拼合 |
-| :--: | :--: | :--: | :--: |
-| euraug | 顺流·3单无生 eu+ | ·rôg 弱焦点 raug | eu + raug |
-| uhár | 顺流·3祂 (u)w | ·hâr 无焦点 hâr | u + hâr |
-| ithaur | 扩流·3单有生 i+ | ·thaur 弱焦点 thaur | i + thaur |
-| ules | 换流·3单有生 (w)u+ | ·lhes 无焦点 lhes | u + lhes（lh 软化为 l） |
-| esreug | 滞流·3复 es~ | ·seug 强焦点 reug | es + reug |
-| emaud | 顺流·3单有生 ∅ | ·emaud 无焦点 emaud | 中缀为零，词干直接出现 |
+此句的 gwauch 是 ·goch “大喊”的弱焦点形，主语“人群”为有生，中缀为 ∅，词干直接出现。顺流·3pl 的 s<sup>ʀ</sup>：
 
 
-<div class="tool-warn" markdown="span">顺流·3祂的(u)w与换流·3单有生的(w)u在本页例句中分布如下：辅音前作u（uhár、uret、ules），元音前作w（welch）。</div>
+<div class="gloss" markdown="0">
+<div class="gloss__row"><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">Zo·soch</span><span class="gl__spell">so·∅-so-ho-∅</span><span class="gl__morph">惯常=体·顺流&lt;三复&gt;大喊.无焦点</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">nilin</span><span class="gl__spell">ni-li-in</span><span class="gl__morph">个体.不及物格复数</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">laod.</span><span class="gl__spell">la-ot</span><span class="gl__morph">高兴的.复数</span></span></div>
+<div class="gloss__tr">快乐的人常常大喊。</div>
+</div>
 
+
+本句的主语“个体”为复数，·goch 在 s<sup>ʀ</sup> 之后作 soch。顺流·1pl 的 a<sup>ʟ</sup>：
+
+
+<div class="gloss" markdown="0">
+<div class="gloss__row"><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">Athea,</span><span class="gl__spell">sea</span><span class="gl__morph">西亚.欠格单数</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">renes</span><span class="gl__spell">re-nes</span><span class="gl__morph">就此</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">alfe·achech</span><span class="gl__spell">al-fe·a-he-he-∅</span><span class="gl__morph">小化-希求=式·顺流&lt;一复&gt;呼喊.强焦点</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">ti</span><span class="gl__spell">∅-ti</span><span class="gl__morph">您.及物格</span></span></div>
+<div class="gloss__tr">阿瑟雅，由是吾等呼唤尔方</div>
+</div>
+
+
+此句的 achech 是 a<sup>ʟ</sup> 与 chech “呼喊.强焦点”的拼合，“吾等”即第一人称复数。顺流·1sg 的 m<sup>ɴ</sup>：
+
+
+<div class="gloss" markdown="0">
+<div class="gloss__row"><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">mneudin</span><span class="gl__spell">me-∅-ne-ut-in</span><span class="gl__morph">顺流&lt;一单&gt;挥手&lt;期待&gt;强失焦</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">lás,</span><span class="gl__spell">la-a-as-∅</span><span class="gl__morph">朝向=她</span></span></div>
+<div class="gloss__tr">（节选）于是我朝她挥挥手，她回眸，便是永恒</div>
+</div>
+
+
+这一片段的 mneudin 由 m<sup>ɴ</sup> 与 ·neudin “挥手.强失焦”拼合而成。换流·3sg.an 的 u<sup>ʟ</sup>：
+
+
+<div class="gloss" markdown="0">
+<div class="gloss__row"><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">Nóg·uferth</span><span class="gl__spell">no-o-oc·u-fer-∅-the-∅</span><span class="gl__morph">过去=时-向上·顺流&lt;三单.有生&gt;跳.弱焦点</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">es</span><span class="gl__spell">es-∅</span><span class="gl__morph">单数限定</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">al-aeafor.</span><span class="gl__spell">al-a-e-af-or</span><span class="gl__morph">小化-猫.不及物格单数</span></span></div>
+<div class="gloss__tr">小猫跳了起来。</div>
+</div>
+
+
+该句的 uferth 即 u<sup>ʟ</sup> + ferth “跳.弱焦点”；动词头 Nóg· 还内化了介词 gwe “向上”，故为“跳了起来”。换流·3sg.gd 的 ú<sup>ʟ</sup>：
+
+
+<div class="gloss" markdown="0">
+<div class="gloss__row"><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">Dom·úthaun</span><span class="gl__spell">to-om·u-uth-tha-un</span><span class="gl__morph">完成=体-远过去·换流&lt;三单.祂&gt;跨过.强焦点</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">lên,</span><span class="gl__spell">lên</span><span class="gl__morph">天环.斜格单数</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">mae·udhofer</span><span class="gl__spell">ma-e·uth-of-er</span><span class="gl__morph">回指·顺流&lt;三单.祂&gt;穿过.强焦点</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">iaes,</span><span class="gl__spell">iae</span><span class="gl__morph">神话星群.及物格单数</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">domól·wî</span><span class="gl__spell">to-mo-o-ol·wi-i</span><span class="gl__morph">完成=体-远过去=时-朝向·换流&lt;三单.祂&gt;去.强焦点</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">rawar</span><span class="gl__spell">ra-wa-ar</span><span class="gl__morph">（天的）尽头.斜格单数</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">e</span><span class="gl__spell">e</span><span class="gl__morph">副词标记</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">sewathrin</span><span class="gl__spell">∅-se-wa-ath-∅-ri-in</span><span class="gl__morph">直接的</span></span></div>
+<div class="gloss__tr">祂跨过天环，穿过神话星群，直奔天边而去</div>
+</div>
+
+
+此句开头的 úthaun 是 ú + thaun “跨过.强焦点”，主语“祂”为神性。扩流·3pl 的 is<sup>ʀ</sup>：
+
+
+<div class="gloss" markdown="0">
+<div class="gloss__row"><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">Ce·isnidaf</span><span class="gl__spell">∅-ce·is-∅-ni-ta-af</span><span class="gl__morph">命令=式·扩流&lt;三复&gt;品尝&lt;期待&gt;强失焦</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">nîr</span><span class="gl__spell">ni-i-ir</span><span class="gl__morph">人.及物格复数</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">telin-pair</span><span class="gl__spell">∅-te-li-in-∅-pa-ir</span><span class="gl__morph">午夜-守护的.复数</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">an</span><span class="gl__spell">an</span><span class="gl__morph">古单数限定</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">clas-re-toraun</span><span class="gl__spell">col-∅-as-∅-re-tor-aun</span><span class="gl__morph">芽.及物格单数-属于-晨露.字典形</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">(foran)</span><span class="gl__spell">fo-ran</span><span class="gl__morph">全，完满</span></span></div>
+<div class="gloss__tr">好让守夜的人儿，尝到晨露的甜芽</div>
+</div>
+
+
+这一句的 isnidaf 中，扩流 i 使“品尝”升为致使义，被致使的“人”取及物格复数 nîr。逆流·1pl 的 á<sup>ʟ</sup>：
+
+
+<div class="gloss" markdown="0">
+<div class="gloss__row"><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">dáfer·aián</span><span class="gl__spell">ta-a-fer·a-i-án</span><span class="gl__morph">期待=感音-希求=式-惯常·逆流&lt;一复&gt;赐给.强焦点</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">sió·ubin</span><span class="gl__spell">∅-si-o·up-in</span><span class="gl__morph">古复数限定·事物.不及物格复数</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">emeweu</span><span class="gl__spell">em-ew-eu</span><span class="gl__morph">每天的.复数</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">âm</span><span class="gl__spell">a-am</span><span class="gl__morph">我们的</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">e-saer</span><span class="gl__spell">e-∅-sa-er</span><span class="gl__morph">在-今天.字典形</span></span></div>
+<div class="gloss__tr">我们日用的饮食，今日赐给我们</div>
+</div>
+
+
+本句的 aián 是 á + ián “赐给.强焦点”，逆流使施动方向反转，“我们”成为接受的一方。滞流·3sg.gd 的 ew<sup>ʟ</sup> 与滞流·3pl 的 es<sup>ʀ</sup>：
+
+
+<div class="gloss" markdown="0">
+<div class="gloss__row"><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">Mó·ewewart</span><span class="gl__spell">mo-o·ew-ew-ar-∅-ta-∅</span><span class="gl__morph">远过去=时·滞流&lt;三单.祂&gt;游泳.强焦点-传言</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">léthrin</span><span class="gl__spell">althaer-i</span><span class="gl__morph">云鲸.不及物格复数</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">t'apfin</span><span class="gl__spell">∅-ta-'-ap-fin</span><span class="gl__morph">在...上（不接触）-天海.字典形</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">e</span><span class="gl__spell">e</span><span class="gl__morph">副词标记</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">níwin</span><span class="gl__spell">ni-i-iw-in</span><span class="gl__morph">悠然的.复数</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">to·haut</span><span class="gl__spell">∅-to·ha-ut-∅</span><span class="gl__morph">恒真=体·持续=回指动词.时定式</span></span></div>
+<div class="gloss__tr">传说天海之上，云鲸游弋徜徉</div>
+</div>
+
+
+<div class="gloss" markdown="0">
+<div class="gloss__row"><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">Mó·eseñgaut</span><span class="gl__spell">mo-o·es-sen-ca-ut-∅</span><span class="gl__morph">远过去=时·滞流&lt;三复&gt;（植物）生长.强焦点-传言</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">theurin</span><span class="gl__spell">theu-ri-in</span><span class="gl__morph">森林.不及物格复数</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">e-degnes</span><span class="gl__spell">e-te-ec-nes</span><span class="gl__morph">在...处-彼方</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">e</span><span class="gl__spell">e</span><span class="gl__morph">副词标记</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">heirin</span><span class="gl__spell">∅-he-ir-in</span><span class="gl__morph">唯美的.复数</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">to·haut</span><span class="gl__spell">∅-to·ha-ut-∅</span><span class="gl__morph">恒真=体·持续=回指动词.时定式</span></span></div>
+<div class="gloss__tr">传说雪岭彼方，林木葳蕤生光</div>
+</div>
+
+
+两句分别以 ewewart “游泳”与 eseñgaut “生长”起头，滞流表达自然而然的状态；前者主语云鲸为神性，后者主语森林为复数，中缀因而不同。
 
 ##### 言据后缀 {#evidentials}
 动词的**最末尾**可能附着一个言据后缀，标记说话人获取该信息的途径：
@@ -1116,7 +1722,7 @@ description: 瑟乌丝林语语法：音系、科飒尔文、名词的四格系�
 
 
 <div class="gloss" markdown="0">
-<div class="gloss__row"><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">Cá·fociaun</span><span class="gl__spell">ca-a·fo-oc-ci-aun</span><span class="gl__morph">允许...做&lt</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">Billes</span><span class="gl__spell">pi-il-les</span><span class="gl__morph">信任&gt</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">Dhenses</span><span class="gl__spell">the-en-∅-se-es-∅</span><span class="gl__morph">强失焦-传言</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">awamóst?</span><span class="gl__spell">aw-am-o-o-sat-∅-?</span><span class="gl__morph">芙芈琳.及物格单数</span></span><span class="gl__w"><span class="gl__spell">信任=感音·顺流&lt</span><span class="gl__morph">祯丝.及物格单数</span></span><span class="gl__w"><span class="gl__spell">三单.有生&gt</span><span class="gl__morph">祭司.斜格单数</span></span></div>
+<div class="gloss__row"><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">Cá·fociaun</span><span class="gl__spell">ca-a·fo-oc-ci-aun</span><span class="gl__morph">信任=感音·顺流&lt;三单.有生&gt;允许...做&lt;信任&gt;强失焦-传言</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">Billes</span><span class="gl__spell">pi-il-les</span><span class="gl__morph">芙芈琳.及物格单数</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">Dhenses</span><span class="gl__spell">the-en-∅-se-es-∅</span><span class="gl__morph">祯丝.及物格单数</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">awamóst?</span><span class="gl__spell">aw-am-o-o-sat-∅-?</span><span class="gl__morph">祭司.斜格单数</span></span></div>
 <div class="gloss__tr">听说芙芈琳终于允许祯丝当祭司啦？</div>
 </div>
 
@@ -1153,57 +1759,834 @@ description: 瑟乌丝林语语法：音系、科飒尔文、名词的四格系�
 
 各前缀所对应的象征同样参见[原始希克林语](/laim/Proto-Shikṛin/)。
 
-## 句法 {#syntax}
+诗歌中的时定式都以回指动词的焦点形结尾，并冠以变时体貌前缀。先看单向变化的 h-：
+
+
+<div class="gloss" markdown="0">
+<div class="gloss__row"><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">Mó·ewewart</span><span class="gl__spell">mo-o·ew-ew-ar-∅-ta-∅</span><span class="gl__morph">远过去=时·滞流&lt;三单.祂&gt;游泳.强焦点-传言</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">léthrin</span><span class="gl__spell">althaer-i</span><span class="gl__morph">云鲸.不及物格复数</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">t'apfin</span><span class="gl__spell">∅-ta-'-ap-fin</span><span class="gl__morph">在...上（不接触）-天海.字典形</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">e</span><span class="gl__spell">e</span><span class="gl__morph">副词标记</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">níwin</span><span class="gl__spell">ni-i-iw-in</span><span class="gl__morph">悠然的.复数</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">to·haut</span><span class="gl__spell">∅-to·ha-ut-∅</span><span class="gl__morph">恒真=体·持续=回指动词.时定式</span></span></div>
+<div class="gloss__tr">传说天海之上，云鲸游弋徜徉</div>
+</div>
+
+
+该句主动词 ewewart 以传言言据 -t 结尾，句末的 to·haut 由恒真体动词头 to· 与 h + aut 构成，表示情感沿一个方向持续推进。往复的 a-：
+
+
+<div class="gloss" markdown="0">
+<div class="gloss__row"><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">Al-ente</span><span class="gl__spell">al-en-∅-te</span><span class="gl__morph">小化-递进</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">mneudin</span><span class="gl__spell">me-∅-ne-ut-in</span><span class="gl__morph">顺流&lt;一单&gt;挥手&lt;期待&gt;强失焦</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">lás,</span><span class="gl__spell">la-a-as-∅</span><span class="gl__morph">朝向=她</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">eweneain,</span><span class="gl__spell">ew-en-e-a-in</span><span class="gl__morph">顺流&lt;三单.有生&gt;回眸.强失焦</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">wá·wes</span><span class="gl__spell">wa-a·we-es-∅</span><span class="gl__morph">兴奋=感音·顺流&lt;三单.祂&gt;降临.强焦点</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">saeats</span><span class="gl__spell">∅-sa-e-a-tas-∅</span><span class="gl__morph">永恒.斜格单数</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">to·áut</span><span class="gl__spell">∅-to·a-a-ut-∅</span><span class="gl__morph">恒真=体·往复=回指动词.时定式</span></span></div>
+<div class="gloss__tr">于是我朝她挥挥手，她回眸，便是永恒</div>
+</div>
+
+
+此句句末的 to·áut 以 a- 起头，表示“便是永恒”一句中情感在两端之间往复。骤变的 n-：
+
+
+<div class="gloss" markdown="0">
+<div class="gloss__row"><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">Bán·euthaur</span><span class="gl__spell">pa-a-an·eu-∅-tha-ur</span><span class="gl__morph">讶异=感音-过去·滞流&lt;三单.祂&gt;到来.强焦点</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">nefin-re-hethans</span><span class="gl__spell">ne-fi-in-re-∅-he-eth-tha-nas-∅</span><span class="gl__morph">落雨.及物格单数-属于-实星屑.字典形</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">e</span><span class="gl__spell">e</span><span class="gl__morph">副词标记</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">thinnan</span><span class="gl__spell">thin-na-an</span><span class="gl__morph">突然的</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">don·naut,</span><span class="gl__spell">to-on·na-ut-∅</span><span class="gl__morph">完成=体-过去·骤变=回指动词.时定式</span></span></div>
+<div class="gloss__tr">（节选）顷刻间星屑的落雨不约而至，明亮的尘末铺盖天空。草野上游荡起幽蓝的魂灵。舔舐晨露的松鼠，泥土地上戏水的海鱼，古代的鸟儿也凑近了同伴的尸体，等待一个崭新的时刻。细微的喧闹穿梭在草丛间。 而天穹中央，五角天体的刻度归于原位——从远方飘来寂静的钟声。那些魂灵仰起头，朝着云岭的方向飞去，消失在了天空的尽头。</div>
+</div>
+
+
+这一片段以 don·naut 收尾，完成体-过去时的动词头 don· 加上 n + aut，表示流星不约而至所带来的情感骤变。
+
+#### 非限定形式 {#nonfinite}
+动词不携带动词头与人称时，处于非限定状态。瑟乌丝林语的非限定形式共有四种：
+
+
+| 形式 | 构成 | 祖语来源 | 例（√DESC “下雨”） |
+| :--: | :--: | :--: | :--: |
+| **不定式（副动词形）** | 词典所列 | ✶g- + 词根（g-不定式） | cethes |
+| **动名词** | 词典所列 | w-动名词 | des |
+| **动形词** | 词典所列 | ✶a- + 词根 + ✶-k（逆流前缀 + √KEUS “习惯”） | adesch |
+| **动副词** | dhar· + 字典形 | 小品词缀 ✶ĝar- | dhar·tes |
+
+
+**不定式**即词典中的副动词形，是动词最基本的非限定形式，用于构成短语以及与动词头搭配表达状态，如<abbr class="ts-tip" title="完成状态">do·cent</abbr>（完成=体 · ·et “成为”的不定式）。当动词头被回指时，其后接的也是不定式，如 mae·caurth “见证”。不定式最常见的用法是与另一个动词搭配：
+
+
+<div class="gloss" markdown="0">
+<div class="gloss__row"><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">cinf</span><span class="gl__spell">∅-ci-in-fi-∅</span><span class="gl__morph">尝试.副动词形</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">aun</span><span class="gl__spell">aun</span><span class="gl__morph">自反.斜格复数</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">narwaru</span><span class="gl__spell">nar-wa-ru</span><span class="gl__morph">里面.欠格单数</span></span></div>
+<div class="gloss__tr">（节选）人群围绕着一盏古老的灯，试图弄清楚里面刻着什么文字。</div>
+</div>
+
+
+该片段的 cinf 是 ·enab “尝试”的不定式，与主动词 bes·usadas “弄清楚”连用，aun 为自反。不定式也可以直接并列，作伴随状语：
+
+
+<div class="gloss" markdown="0">
+<div class="gloss__row"><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">Fsom·gosfem</span><span class="gl__spell">fos-∅-om·co-os-fe-em</span><span class="gl__morph">未完成=体-远过去·顺流&lt;三单.有生&gt;摆弄.强焦点-感官强调</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">cé·chalthaches</span><span class="gl__spell">∅-ce-e·ha-al-thach-es-∅</span><span class="gl__morph">古单数限定·冰陶.及物格单数</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">na</span><span class="gl__spell">na</span><span class="gl__morph">在...中</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">e·galan,</span><span class="gl__spell">e·ca-la-an</span><span class="gl__morph">单数限定·镜子.字典形单数</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">cechaes,</span><span class="gl__spell">cech-a-es-∅</span><span class="gl__morph">涂鸦.副动词</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">cefau</span><span class="gl__spell">∅-ce-fa-u</span><span class="gl__morph">大笑.副动词</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">mo</span><span class="gl__spell">mo</span><span class="gl__morph">如同</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">anel</span><span class="gl__spell">an-el</span><span class="gl__morph">花海.字典形单数</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">zi</span><span class="gl__spell">si</span><span class="gl__morph">一样</span></span></div>
+<div class="gloss__tr">镜中她摆弄着冰陶，涂着色，笑靥如花</div>
+</div>
+
+
+此句的 cechaes “涂鸦”与 cefau “大笑”都是不定式，描述主动词“摆弄”进行时伴随的动作。
+
+**动名词**是动词的名词形式，在句中按名词使用。
+
+**动形词**带有逆流含义，表示“应当被……的”“确实该……的”，用作形容词。
+
+**动副词**用于构成状语从句，表达“当……时”“因为”“然后”等关系，由动副词头 dhar· 直接接动词的字典形构成，如[及物格](#case-tr)一节例句中的 dhar·goch “叫喊着”。dhar 也可以独立成词引出整个状语从句：
+
+
+<div class="gloss" markdown="0">
+<div class="gloss__row"><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">dhar</span><span class="gl__spell">tha-ar</span><span class="gl__morph">动副词</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">sá·sechan</span><span class="gl__spell">∅-sa-a·∅-se-han</span><span class="gl__morph">冷漠=感音·顺流&lt;三单.有生&gt;蔑视.无焦点</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">heres,</span><span class="gl__spell">∅-he-res</span><span class="gl__morph">名誉.及物格单数</span></span></div>
+<div class="gloss__tr">（节选）他曾以天空和海洋为目标，蔑视名誉，向着他的梦想急速前行。如今他远离梦想。目的地在沙漠，回忆属于海洋。</div>
+</div>
+
+
+这一片段以 dhar 引出“蔑视名誉”的伴随状语，其后的动词 sá·sechan 仍带有自己的动词头。
+
+### 代词 {#pronouns}
+#### 人称代词 {#personal-pronouns}
+瑟乌丝林语的人称代词区分四个形式：**字典形／及物形**、**不及物形／斜格形**、**欠格形**与**物主形**。第三人称区分**神性**（3sg.gd）、**有生**（3sg.an）与**无生**（3sg.inan），第二人称单数区分**亲昵**（2sg.fam）与**敬称**（2sg.res），另有第一、二、三人称的**双数**（du）。
+
+
+| 人称 | 字典形／及物 | 不及物／斜格 | 欠格 | 物主 |
+| :--: | :--: | :--: | :--: | :--: |
+| 3sg.gd “祂” | anu | non | noad | dhae |
+| 1sg “我” | nem | newer | neu | nêm |
+| 2sg.fam “你” | to | tun | tu | tô |
+| 2sg.res “您” | ti | tin | ti | tî |
+| 3sg.an “她” | as | asen | asch | âs |
+| 3sg.inan “它，它们” | e | eun | euch | ê |
+| refl. “自己” | au | aun | auch | awa |
+| 1pl “我们” | am | an | assi | âm |
+| 2pl “你们” | os | osen | ossi | ôs |
+| 3pl “她们” | assar | assar | assari | ássar |
+| 1du “我俩” | otha | otsa | soad | ótha |
+| 2du “你俩” | othen | otsen | send | óthen |
+| 3du “她俩” | assad | atsad | thoad | ássad |
+
+
+及物形是代词作核心论元时的形式，如：
+
+
+<div class="gloss" markdown="0">
+<div class="gloss__row"><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">leud</span><span class="gl__spell">le-ut</span><span class="gl__morph">转折</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">maedh·wálid</span><span class="gl__spell">ma-eth·wa-a-al-it</span><span class="gl__morph">回指-远离·换流&lt;三单.祂&gt;松开.强焦点</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">am</span><span class="gl__spell">am</span><span class="gl__morph">我们.及物格</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">rhowos</span><span class="gl__spell">∅-ro-wo-os-∅</span><span class="gl__morph">邪恶.及物格单数</span></span></div>
+<div class="gloss__tr">救我们脱离凶险</div>
+</div>
+
+
+该句的 am 是“我们”的及物形，作动词“松开”的受事。物主形则是代词的领属形式，直接置于名词之后：
+
+
+<div class="gloss" markdown="0">
+<div class="gloss__row"><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">dáfer·aián</span><span class="gl__spell">ta-a-fer·a-i-án</span><span class="gl__morph">期待=感音-希求=式-惯常·逆流&lt;一复&gt;赐给.强焦点</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">sió·ubin</span><span class="gl__spell">∅-si-o·up-in</span><span class="gl__morph">古复数限定·事物.不及物格复数</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">emeweu</span><span class="gl__spell">em-ew-eu</span><span class="gl__morph">每天的.复数</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">âm</span><span class="gl__spell">a-am</span><span class="gl__morph">我们的</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">e-saer</span><span class="gl__spell">e-∅-sa-er</span><span class="gl__morph">在-今天.字典形</span></span></div>
+<div class="gloss__tr">我们日用的饮食，今日赐给我们</div>
+</div>
+
+
+此句句末的 âm “我们的”修饰其前的 emeweu “饮食”；普通名词之间的领属关系则不用物主形，而用[领属限定词](#det-possessive)。敬称与亲昵的区别体现在语体上：
+
+
+<div class="gloss" markdown="0">
+<div class="gloss__row"><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">Athea,</span><span class="gl__spell">sea</span><span class="gl__morph">西亚.欠格单数</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">renes</span><span class="gl__spell">re-nes</span><span class="gl__morph">就此</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">alfe·achech</span><span class="gl__spell">al-fe·a-he-he-∅</span><span class="gl__morph">小化-希求=式·顺流&lt;一复&gt;呼喊.强焦点</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">ti</span><span class="gl__spell">∅-ti</span><span class="gl__morph">您.及物格</span></span></div>
+<div class="gloss__tr">阿瑟雅，由是吾等呼唤尔方</div>
+</div>
+
+
+本句是向西亚的祷告，因此用敬称“您”的及物形 ti，而非亲昵的 to。反身代词 aun 通常紧随动词，表示动作及于主语自身：
+
+
+<div class="gloss" markdown="0">
+<div class="gloss__row"><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">Pnep·úhafad</span><span class="gl__spell">pen-∅-ep-∅·u-us-∅-af-at</span><span class="gl__morph">预言=式-穿过·换流&lt;三单.祂&gt;流淌&lt;喜悦&gt;强失焦</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">leiémb</span><span class="gl__spell">le-i-e-em-pe-∅</span><span class="gl__morph">天边的金光，余晖.斜格单数</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">chethedh</span><span class="gl__spell">he-eth-the-eth</span><span class="gl__morph">不可让渡-身体.欠格单数</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">só</span><span class="gl__spell">so-o</span><span class="gl__morph">古单数限定</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">âs</span><span class="gl__spell">a-as-∅</span><span class="gl__morph">她的</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">e</span><span class="gl__spell">e</span><span class="gl__morph">副词标记</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">rân</span><span class="gl__spell">ra-a-an</span><span class="gl__morph">慢慢的</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">aun</span><span class="gl__spell">aun</span><span class="gl__morph">自反</span></span></div>
+<div class="gloss__tr">天边的金光缓缓地流淌过她的身体</div>
+</div>
+
+
+该句句末的 aun 表示金光“自己”流淌过身体；aun 还用于构成将来时，见固定组合。
+
+#### 指示代词与不定代词 {#demonstratives}
+
+| 代词 | 字典形／及物 | 不及物／斜格 | 欠格 | 物主 |
+| :--: | :--: | :--: | :--: | :--: |
+| 近指 “这” | es | esen | esch | ês |
+| 远指 “那” | ant | anen | ani | ánt |
+| 某指 “某” | ad | adhen | adu | âd |
+| 任指 “任一” | ent | enen | eni | ént |
+| 零指 “无” | gon | gon | gomb | gôn |
+| 回指 | a | a | aud | â |
+
+
+零指代词与数词 0 同形。回指代词指代上文已出现的成分，其欠格形 aud 已见于[欠格](#case-abe)一节的例句。不定代词置于名词之后：
+
+
+<div class="gloss" markdown="0">
+<div class="gloss__row"><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">Nó·gwauch</span><span class="gl__spell">no-o·ca-∅-wa-u-ha-∅</span><span class="gl__morph">过去=时·顺流&lt;三单.有生&gt;大喊.弱焦点</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">e</span><span class="gl__spell">e</span><span class="gl__morph">单数限定</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">rado</span><span class="gl__spell">radog</span><span class="gl__morph">人群.不及物格单数</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">adhen.</span><span class="gl__spell">ath-en</span><span class="gl__morph">某指.不及物格</span></span></div>
+<div class="gloss__tr">一些人喊了起来。</div>
+</div>
+
+
+此句的 adhen 是某指代词的不及物形，跟在 rado “人群”之后表示“其中一些人”。
+
+#### 副词性代词 {#proadverbs}
+
+| 代词 | 义 | 代词 | 义 |
+| :--: | :--: | :--: | :--: |
+| renes | 如此，就这样 | enes | 在此，于此 |
+| renant | 如彼，就那样 | enant | 在彼，于彼 |
+| erént | 无论，不管怎样 | aines | 这次 |
+| etant | 变得那样；如愿，阿门 | ainnon | 下次 |
+|  |  | aillon | 上次 |
+
+
+副词性代词多置于句首或句末：
+
+
+<div class="gloss" markdown="0">
+<div class="gloss__row"><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">Enant</span><span class="gl__spell">en-a-nat-∅</span><span class="gl__morph">于=彼</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">enel,</span><span class="gl__spell">en-el</span><span class="gl__morph">星舞.字典形单数</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">bédhon·euthaur</span><span class="gl__spell">pe-e-eth-on·e-uth-tha-ur</span><span class="gl__morph">惊讶=感音-完成=体-过去·滞流&lt;三单.祂&gt;到来.强焦点</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">e</span><span class="gl__spell">e</span><span class="gl__morph">副词标记</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">thinnan</span><span class="gl__spell">thin-na-an</span><span class="gl__morph">突然的</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">serallin</span><span class="gl__spell">ser-al-li-in</span><span class="gl__morph">悄悄的</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">â</span><span class="gl__spell">a</span><span class="gl__morph">和</span></span></div>
+<div class="gloss__tr">那一夜，流星悄然而至</div>
+</div>
+
+
+该句起首的 enant “于彼”交代了“那一夜”的时间背景。
+
+
+<div class="gloss" markdown="0">
+<div class="gloss__row"><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">Don·authaen</span><span class="gl__spell">to-on·a-u-thaen</span><span class="gl__morph">完成=体-过去·逆流&lt;三单.祂&gt;终结.弱焦点</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">lêw</span><span class="gl__spell">le-e-ew</span><span class="gl__morph">五角年.斜格单数</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">iélan,</span><span class="gl__spell">i-e-el-an</span><span class="gl__morph">再次的</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">a</span><span class="gl__spell">a</span><span class="gl__morph">回指</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">'aur</span><span class="gl__spell">'-a-ur</span><span class="gl__morph">顺流&lt;三单.回指&gt;具有.无焦点</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">2212</span><span class="gl__spell">2-2-1-2</span><span class="gl__morph">2212</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">miw</span><span class="gl__spell">mi-iw</span><span class="gl__morph">天（数）.及物格复数</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">aines.</span><span class="gl__spell">a-in-es-∅</span><span class="gl__morph">这次的，本次的</span></span></div>
+<div class="gloss__tr">又一个六季的轮回结束了，这次是五百一十二天。</div>
+</div>
+
+
+此句末尾的 aines “这次”限定的是前面的整个数量短语“五百一十二天”。etant 则可以单独成句：
+
+
+<div class="gloss" markdown="0">
+<div class="gloss__row"><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">etant</span><span class="gl__spell">et-ta-nat-∅</span><span class="gl__morph">阿门（如愿）</span></span></div>
+<div class="gloss__tr">阿门</div>
+</div>
+
+
+#### 疑问代词 {#interrogatives}
+
+| 疑问词 | 义 | 备注 |
+| :--: | :--: | :--: |
+| sow | 什么，哪个 | 复数 sowi；后缀形 -su “何种”，其独立形为 sû |
+| sôg | 多少 |  |
+| sô | 谁 |  |
+| sôr | 什么时候，什么情况下 |  |
+| sód | 什么地点，哪里 |  |
+| sorad | 什么方法，怎样 |  |
+
+
+疑问代词的位置与其所替代的成分相同：
+
+
+<div class="gloss" markdown="0">
+<div class="gloss__row"><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">Nó·eusa</span><span class="gl__spell">no-o·eu-∅-sa</span><span class="gl__morph">过去=时·顺流&lt;三单.无生&gt;系词.弱焦点</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">sow</span><span class="gl__spell">sow</span><span class="gl__morph">什么</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">sa·fesse</span><span class="gl__spell">sa·fes-se</span><span class="gl__morph">古单数限定·心愿</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">meneg</span><span class="gl__spell">men-ec</span><span class="gl__morph">终末的</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">nado?</span><span class="gl__spell">na-to-?</span><span class="gl__morph">在=你</span></span></div>
+<div class="gloss__tr">（节选）而道别了天空的鸟儿啊。我该就此离开，还是去捧起你冰凉的身躯，就像回乡的旅人捧起同伴的遗物？你最后的心愿是什么？是将它埋进封雪岭的冰川，还是浇灌上克洛尔火山炽热的熔岩？为你实现心愿的我能离你现在的世界更近吗，还是依旧遥远得像沉默的影子一样？</div>
+</div>
+
+
+该片段的 sow “什么”紧随系词 eusa 之后，构成“你最后的心愿是什么”。
+
+### 数词 {#numerals-words}
+#### 基数词 {#cardinals}
+与亚夜花园中的多数语言一样，瑟乌丝林语的数词采用**六进制**。0 到 5 各有独立的数词，6 及 6 的各次幂也各有独立的**位权词**：
+
+
+| 0 | 1 | 2 | 3 | 4 | 5 |
+| :--: | :--: | :--: | :--: | :--: | :--: |
+| gon | aen | sa | hes / emasfi | auf | iona |
+
+
+| 6 | 36 | 216 | 1296 | 7776 | 46656 |
+| :--: | :--: | :--: | :--: | :--: | :--: |
+| **10₍₆₎** | **100₍₆₎** | **1000₍₆₎** | **10000₍₆₎** | **100000₍₆₎** | **1000000₍₆₎** |
+| fi | edher | ios | lîn | theus | iaun |
+
+
+数词置于名词之前，名词按其语义角色变格：
+
+
+<div class="gloss" markdown="0">
+<div class="gloss__row"><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">Fso·usiadad</span><span class="gl__spell">fos-∅-o·us-si-at-at</span><span class="gl__morph">未完成=体·换流&lt;三复&gt;作围着状&lt;期待&gt;作围着状.弱失焦</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">radogin</span><span class="gl__spell">radog-in</span><span class="gl__morph">人群.不及物格复数</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">aen</span><span class="gl__spell">aen</span><span class="gl__morph">一</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">halazer</span><span class="gl__spell">∅-ha-la-se-er</span><span class="gl__morph">灯.斜格单数</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">mare,</span><span class="gl__spell">ma-re</span><span class="gl__morph">古老的</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">bes·usadas</span><span class="gl__spell">pe-es-∅·us-sa-ta-as-∅</span><span class="gl__morph">目的=式-未完成·顺流&lt;三单.祂&gt;变明晰&lt;期待&gt;变明晰.弱失焦</span></span></div>
+<div class="gloss__tr">（节选）人群围绕着一盏古老的灯，试图弄清楚里面刻着什么文字。</div>
+</div>
+
+
+该片段的 aen halazer “一盏灯”中，数词 aen 位于名词 halazer “灯.斜格单数”之前。
+
+其余数字按六进制**逐位**读出，每一位由**位数值**与**位权词**缩合为一个词。其中个位与六位缩合时，个位数值在前、位权词 fi 在后，两者之间以连接元音相接：
+
+
+<p class="table-caption">7 至 11（六进制 11 至 15）</p>
+
+| 7 | 8 | 9 | 10 | 11 |
+| :--: | :--: | :--: | :--: | :--: |
+| ewafi | sawafi | herafi | auffi | ionofi |
+
+
+6 的倍数则直接以数值缩合位权词，位权词随之呈现缩略形式（fi、-dher、-us）：
+
+
+| 12 | 18 | 24 | 30 |
+| :--: | :--: | :--: | :--: |
+| safi | hesfi | opfi | ionafi |
+| **72** | **108** | **144** | **180** |
+| sadher | hédher | auffer | ionadher |
+| **432** | **648** | **864** | **1080** |
+| saus | hathos | ofius | ionaus |
+
+
+位权词还可以单独缀于名词之后表示约数：
+
+
+<div class="gloss" markdown="0">
+<div class="gloss__row"><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">édh·Thago</span><span class="gl__spell">e-eth·∅-tha-co</span><span class="gl__morph">单数限定-来自·夏格.字典形</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">enes</span><span class="gl__spell">enes</span><span class="gl__morph">于此</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">e</span><span class="gl__spell">e</span><span class="gl__morph">副词标记</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">lewini-ios.</span><span class="gl__spell">le-wi-ni-i-os-∅</span><span class="gl__morph">五角年.字典形复数-千(216)</span></span></div>
+<div class="gloss__tr">（节选）不远处的山坡上有一滩枯黄的麦草，被一位夏格的农夫遗忘于此几百多年。腐烂的叶脉让岁月温柔地覆以青苔，仿佛里面的生命从未真正离去。记忆的界限模糊在时间的刻度上，连匆忙的旅人也会停下怀念。</div>
+</div>
+
+
+此处的 lewini-ios 以位权词 ios “216”直接接在 lewini “五角年.复数”之后，表达“几百多年”。书面语中数字也常直接以[科飒尔文](#script)的[数字符号](#numerals)写出：
+
+
+<div class="gloss" markdown="0">
+<div class="gloss__row"><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">Don·authaen</span><span class="gl__spell">to-on·a-u-thaen</span><span class="gl__morph">完成=体-过去·逆流&lt;三单.祂&gt;终结.弱焦点</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">lêw</span><span class="gl__spell">le-e-ew</span><span class="gl__morph">五角年.斜格单数</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">iélan,</span><span class="gl__spell">i-e-el-an</span><span class="gl__morph">再次的</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">a</span><span class="gl__spell">a</span><span class="gl__morph">回指</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">'aur</span><span class="gl__spell">'-a-ur</span><span class="gl__morph">顺流&lt;三单.回指&gt;具有.无焦点</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">2212</span><span class="gl__spell">2-2-1-2</span><span class="gl__morph">2212</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">miw</span><span class="gl__spell">mi-iw</span><span class="gl__morph">天（数）.及物格复数</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">aines.</span><span class="gl__spell">a-in-es-∅</span><span class="gl__morph">这次的，本次的</span></span></div>
+<div class="gloss__tr">又一个六季的轮回结束了，这次是五百一十二天。</div>
+</div>
+
+
+该句中的 2212 即六进制的 2212₍₆₎（十进制 512），其后的 miw “天.及物格复数”按数词后名词的规则变格。
+
+#### 序数词 {#ordinals}
 <p class="page-note">本节尚未撰写。</p>
+### 小品词与介词 {#particles}
+#### 连词 {#conjunctions}
+瑟乌丝林语的连词沿袭[原始希克林语](/laim/Proto-Shikṛin/)的特点：被连接的名词**不变格**，而由**连词本身**承担变格，区分单数、复数（以及双数）与四格。
+
+
+<p class="table-caption">连词的变格</p>
+
+| 连词 | 义 | 数 | 及物 | 不及物 | 欠格 | 斜格 |
+| :--: | :--: | :--: | :--: | :--: | :--: | :--: |
+| â | 和 | 单数 | ath | athun | atho | athur |
+| 复数 | aith | athin | athi | athir |  |  |
+| ich | 或；还 | 单数 | ich | ichun | icho | ichur |
+| 复数 | îch | ichin | ichi | ichir |  |  |
+| mâ | 非 | 单数 | math | mathun | matho | mathur |
+| 复数 | maith | mathin | mathi | mathir |  |  |
+
+
+<div class="gloss" markdown="0">
+<div class="gloss__row"><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">Aunó·wether</span><span class="gl__spell">a-u-no-o·we-ther</span><span class="gl__morph">动词化=过去=时·顺流&lt;三单.有生&gt;目标.弱焦点</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">anc</span><span class="gl__spell">anc</span><span class="gl__morph">天空.字典形</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">hozor</span><span class="gl__spell">hozor</span><span class="gl__morph">海洋.字典形</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">ath,</span><span class="gl__spell">ath-∅</span><span class="gl__morph">和.及物格双数</span></span></div>
+<div class="gloss__tr">（节选）他曾以天空和海洋为目标，蔑视名誉，向着他的梦想急速前行。如今他远离梦想。目的地在沙漠，回忆属于海洋。</div>
+</div>
+
+
+该片段中“天空”anc 与“海洋”hozor 两个名词都保持字典形，而其后的连词 â 取及物格双数 ath——正是它标记了“天空和海洋”作为受事的身份。另有几个不变格的连词与副词性小品词：
+
+
+| 小品词 | 义 |
+| :--: | :--: |
+| ente | 递进；一边……一边 |
+| leud | 但 |
+| torch | 即使 |
+| sêr | 现在，当下 |
+
+
+<div class="gloss" markdown="0">
+<div class="gloss__row"><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">leud</span><span class="gl__spell">le-ut</span><span class="gl__morph">转折</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">maedh·wálid</span><span class="gl__spell">ma-eth·wa-a-al-it</span><span class="gl__morph">回指-远离·换流&lt;三单.祂&gt;松开.强焦点</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">am</span><span class="gl__spell">am</span><span class="gl__morph">我们.及物格</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">rhowos</span><span class="gl__spell">∅-ro-wo-os-∅</span><span class="gl__morph">邪恶.及物格单数</span></span></div>
+<div class="gloss__tr">救我们脱离凶险</div>
+</div>
+
+
+此句以转折连词 leud 起首，将“救我们脱离凶险”与前文“不叫我们遇见试探”对立起来。
+
+
+<div class="gloss" markdown="0">
+<div class="gloss__row"><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">Fso·urób</span><span class="gl__spell">fo-∅-∅-so·ur-o-op</span><span class="gl__morph">未完成=体·顺流&lt;三单.祂&gt;升起.弱失焦</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">anar</span><span class="gl__spell">anar</span><span class="gl__morph">天海日.不及物格单数</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">sêr.</span><span class="gl__spell">∅-se-e-er</span><span class="gl__morph">现在</span></span></div>
+<div class="gloss__tr">天海日正在升起。</div>
+</div>
+
+
+本句句末的 sêr “现在”作时间副词。ente 与 leud 常与小化前缀 al- 连用（al-ente “于是”，al-leud “而”），见下文大化与小化。
+
+#### 系词与否定词 {#copula-negator}
+系词 sê “是”与否定词 neu “否”按**人称**变化，顺序依次为 3sg.gd、1sg、2sg、3sg.an、3sg.inan、refl.、1pl、2pl、3pl：
+
+
+|  | 3sg.gd | 1sg | 2sg | 3sg.an | 3sg.inan | refl. | 1pl | 2pl | 3pl |
+| :--: | :--: | :--: | :--: | :--: | :--: | :--: | :--: | :--: | :--: |
+| **是** sê | séw | sém | séd | séi | sê | séa | séo | sés | séu |
+| **否** neu | nóu | lóm | nód | nui | neu | nóa | nô | nós | nóe |
+
+
+系词也可以像其他动词一样接受动词头与人称中缀：
+
+
+<div class="gloss" markdown="0">
+<div class="gloss__row"><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">Nó·eusa</span><span class="gl__spell">no-o·eu-∅-sa</span><span class="gl__morph">过去=时·顺流&lt;三单.无生&gt;系词.弱焦点</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">sow</span><span class="gl__spell">sow</span><span class="gl__morph">什么</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">sa·fesse</span><span class="gl__spell">sa·fes-se</span><span class="gl__morph">古单数限定·心愿</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">meneg</span><span class="gl__spell">men-ec</span><span class="gl__morph">终末的</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">nado?</span><span class="gl__spell">na-to-?</span><span class="gl__morph">在=你</span></span></div>
+<div class="gloss__tr">（节选）而道别了天空的鸟儿啊。我该就此离开，还是去捧起你冰凉的身躯，就像回乡的旅人捧起同伴的遗物？你最后的心愿是什么？是将它埋进封雪岭的冰川，还是浇灌上克洛尔火山炽热的熔岩？为你实现心愿的我能离你现在的世界更近吗，还是依旧遥远得像沉默的影子一样？</div>
+</div>
+
+
+该片段的 Nó·eusa 由过去时动词头 Nó·、无生人称中缀 eu 与系词 sa 拼合而成，“心愿”为无生，故取 eu。
+
+#### 大化与小化 {#augmentation}
+**大化**前缀 tar 与**小化**前缀 al 用于在一个多义词的诸义项中**择取**：大化择取最强烈或最广阔的义项，小化择取较弱或较窄的义项。如<abbr class="ts-tip" title="[名] 次级管理者；摄政者">salwó</abbr>以大化指代时强调“摄政者”，以小化择取时则强调“次级管理员”。两者在口语中分别缩略为 ta' 与 a'。小化用于名词时常译作“小”：
+
+
+<div class="gloss" markdown="0">
+<div class="gloss__row"><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">Nóg·uferth</span><span class="gl__spell">no-o-oc·u-fer-∅-the-∅</span><span class="gl__morph">过去=时-向上·顺流&lt;三单.有生&gt;跳.弱焦点</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">es</span><span class="gl__spell">es-∅</span><span class="gl__morph">单数限定</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">al-aeafor.</span><span class="gl__spell">al-a-e-af-or</span><span class="gl__morph">小化-猫.不及物格单数</span></span></div>
+<div class="gloss__tr">小猫跳了起来。</div>
+</div>
+
+
+该句的 al-aeafor 即“猫”aeafer 前加小化前缀，义为“小猫”。大化用于动词时择取动作最强烈的义项：
+
+
+<div class="gloss" markdown="0">
+<div class="gloss__row"><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">re-Nothrin<span class="kessar"></span>Nenc</span><span class="gl__spell">re-no-thor-∅-in<span class="kessar"></span>ne-noc-∅</span><span class="gl__morph">属于-克洛尔火山</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">echá?</span><span class="gl__spell">e-ha-a-?</span><span class="gl__morph">不持续-信任=感音</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">Dáf·fmaur</span><span class="gl__spell">ta-a-af·fam-∅-a-ur</span><span class="gl__morph">期待=感音-希求·顺流&lt;一单&gt;能够.无焦点</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">tar·cechaur</span><span class="gl__spell">tar·cech-a-ur</span><span class="gl__morph">大化·靠近.副动词形</span></span></div>
+<div class="gloss__tr">（节选）而道别了天空的鸟儿啊。我该就此离开，还是去捧起你冰凉的身躯，就像回乡的旅人捧起同伴的遗物？你最后的心愿是什么？是将它埋进封雪岭的冰川，还是浇灌上克洛尔火山炽热的熔岩？为你实现心愿的我能离你现在的世界更近吗，还是依旧遥远得像沉默的影子一样？</div>
+</div>
+
+
+此片段的 tar·cechaur 是“靠近”的不定式加大化前缀，义为“更近”。小化还可以与小品词结合，弱化其语气：
+
+
+<div class="gloss" markdown="0">
+<div class="gloss__row"><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">al-ente</span><span class="gl__spell">al-en-∅-te</span><span class="gl__morph">小化-递进</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">maeth·waó</span><span class="gl__spell">ma-eth-∅·wa-o-o</span><span class="gl__morph">回指-排除·换流&lt;一复&gt;渎神.强焦点</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">saz</span><span class="gl__spell">∅-sa-as</span><span class="gl__morph">古复数限定</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">zain</span><span class="gl__spell">sa-in</span><span class="gl__morph">罪孽.斜格复数</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">âm</span><span class="gl__spell">a-am</span><span class="gl__morph">我们的</span></span></div>
+<div class="gloss__tr">免我们的债</div>
+</div>
+
+
+本句起首的 al-ente 是 ente “递进”的小化形式，义为“于是”。
+
+#### 介词 {#prepositions}
+介词置于名词之前，名词采用字典形，并可能发生词首音变（见[字典形](#case-lex)第 3 条）；元音前的介词常缩略并以撇号相连（ta → t'，bo → b'，na → n'）。每个介词还对应一个**内化后缀**：在[双系式](#flow)中，介词被吸收入动词时采用的正是该后缀，同时对其后的辅音引发一种音变。
+
+
+<p class="table-caption">介词表</p>
+
+| 介词 | 义 | 内化后缀 | 引发音变 |
+| :--: | :--: | :--: | :--: |
+| la | 朝向，向 | -l | 软音变 |
+| do | 远离，离开 | -dh | 软音变 |
+| em | 环绕 | -w | 鼻音音变 |
+| gwe | 向上 | -g | 软音变 |
+| se | 向下 | -es | 软音变 |
+| for | 向前 | -for | 流音音变 |
+| ian | 向后 | -an | 混合音变 |
+| enon | 顺 | -non | 混合音变 |
+| lon | 逆 | -lon | 混合音变 |
+| mo | 伴随，一起 | -m | 软音变 |
+| ar | 工具，材料，方式 | -ar | 流音音变 |
+| na | 中，里 | -na | 软音变 |
+| et | 向外，排除 | -th | 闭锁音变 |
+| or | 次要的，旁侧的；提及 | -r | 流音音变 |
+| pae | 跨，跃，穿 | -p | 软音变 |
+| agi | 粘合，紧贴，倚靠；对峙 | -ig | 软音变 |
+| en | 在……处 | -ne | 鼻音音变 |
+| á | 媒介（尤其人） | -a | 软音变 |
+| bo | 在……上（接触） | -b | 软音变 |
+| ta | 在……上（不接触） | -at | 软音变 |
+| nu | 在……下（接触） | -nu | 软音变 |
+| ef | 在……下（不接触） | -f | 闭锁音变 |
+| ur | 和……相关 | -ru | 流音音变 |
+| sorth | 根据，原因 | -sorth | 闭锁音变 |
+| sam | 在……间 | -sam | 鼻音音变 |
+| ren | 如同，好像，似 | -ren | 鼻音音变 |
+
+
+表中的五种音变与[人称中缀](#person)一节的上标对应：软音变即 <sup>ʟ</sup>，鼻音音变即 <sup>ɴ</sup>，闭锁音变即 <sup>ꜱ</sup>，流音音变即 <sup>ʀ</sup>；**混合音变**则是介词内化时特有的第五种。
+
+介词短语最常见的形态是介词加字典形名词，以连字号或撇号相连：
+
+
+<div class="gloss" markdown="0">
+<div class="gloss__row"><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">Gnawan</span><span class="gl__spell">gnawan</span><span class="gl__morph">祂.字典形单数</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">t'am</span><span class="gl__spell">∅-ta-'-am</span><span class="gl__morph">在...上（无接触）-我们.字典形</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">asó</span><span class="gl__spell">as-so-o</span><span class="gl__morph">回指=谁</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">t'apfin</span><span class="gl__spell">∅-ta-'-ap-fin</span><span class="gl__morph">在...上（无接触）-天海.字典形</span></span></div>
+<div class="gloss__tr">我们在天上的父</div>
+</div>
+
+
+该句的 t'am “在我们之上”与 t'apfin “在天海之上”都是介词 ta 在元音前缩略为 t' 的形式。上下两个方位介词的对比：
+
+
+<div class="gloss" markdown="0">
+<div class="gloss__row"><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">ef-apfin</span><span class="gl__spell">ef-ap-fin</span><span class="gl__morph">在...下（不接触）-天海.字典形</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">mo</span><span class="gl__spell">mo</span><span class="gl__morph">如同</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">t'azi</span><span class="gl__spell">∅-ta-'-as-i</span><span class="gl__morph">在...上（不接触）-回指=如同</span></span></div>
+<div class="gloss__tr">行在地上，如同行在天上</div>
+</div>
+
+
+此句以 ef-apfin “在天海之下”对 t'azi “在（天海）之上”，同时用 mo “如同”连接。介词 la “朝向”与 sam “在……间”：
+
+
+<div class="gloss" markdown="0">
+<div class="gloss__row"><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">dáfer·uraeg</span><span class="gl__spell">ta-a-fer·u-ra-ec</span><span class="gl__morph">期待=感音-希求=式-惯常·顺流&lt;三单.祂&gt;引导.强焦点</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">am</span><span class="gl__spell">am</span><span class="gl__morph">我们.及物格</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">mâ</span><span class="gl__spell">ma-a</span><span class="gl__morph">非</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">la-hethí</span><span class="gl__spell">la-∅-se-eth-thi-i</span><span class="gl__morph">朝向-诱惑.字典形</span></span></div>
+<div class="gloss__tr">不叫我们遇见试探</div>
+</div>
+
+
+本句的 la-hethí “向着诱惑”表达方向。
+
+
+<div class="gloss" markdown="0">
+<div class="gloss__row"><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">Don·mainem</span><span class="gl__spell">to-on·ma-in-em</span><span class="gl__morph">完成=体-过去·顺流&lt;三单.有生&gt;合十-感官强调</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">é·wen</span><span class="gl__spell">e·we-en</span><span class="gl__morph">单数限定·少女.不及物格单数</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">ar-dhath</span><span class="gl__spell">ar-ta-ath-∅</span><span class="gl__morph">用...-双手</span></span></div>
+<div class="gloss__tr">少女双手合十</div>
+</div>
+
+
+这一句的 ar-dhath “用双手”展示了工具介词 ar。介词 ren “似”：
+
+
+<div class="gloss" markdown="0">
+<div class="gloss__row"><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">Eimethon·euchaur</span><span class="gl__spell">e-im-eth-tho-on·eu-ha-ur</span><span class="gl__morph">否定-条件=式-恒真=体-过去·滞流&lt;三单.祂&gt;落雪.弱焦点</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">lothor</span><span class="gl__spell">lo-thor</span><span class="gl__morph">大雪.斜格单数</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">eñgenoe</span><span class="gl__spell">en-ce-no-e</span><span class="gl__morph">倾天的</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">ren-salfew</span><span class="gl__spell">re-en-sal-fe-ew</span><span class="gl__morph">似-银河.字典形单数</span></span></div>
+<div class="gloss__tr">倾天的大雪似银河般落下</div>
+</div>
+
+
+该句句末的 ren-salfew “似银河”以介词 ren 构成比喻。
+
+介词被内化入动词时，采用表中的内化后缀并附于动词头之后。连续三句展示了 gwe → -g、la → -l、do → -dh：
+
+
+<div class="gloss" markdown="0">
+<div class="gloss__row"><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">Nóg·uferth</span><span class="gl__spell">no-o-oc·u-fer-∅-the-∅</span><span class="gl__morph">过去=时-向上·顺流&lt;三单.有生&gt;跳.弱焦点</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">es</span><span class="gl__spell">es-∅</span><span class="gl__morph">单数限定</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">al-aeafor.</span><span class="gl__spell">al-a-e-af-or</span><span class="gl__morph">小化-猫.不及物格单数</span></span></div>
+<div class="gloss__tr">小猫跳了起来。</div>
+</div>
+
+
+该句的动词头 Nóg· 是过去时 Nó· 加内化的 gwe “向上”，故“跳了起来”。
+
+
+<div class="gloss" markdown="0">
+<div class="gloss__row"><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">Nól·uferth</span><span class="gl__spell">no-o-ol·u-fer-∅-the-∅</span><span class="gl__morph">过去=时-朝着·顺流&lt;三单.有生&gt;跳.弱焦点</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">es</span><span class="gl__spell">es-∅</span><span class="gl__morph">单数限定</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">al-aeafor</span><span class="gl__spell">al-a-e-af-or</span><span class="gl__morph">小化-猫.不及物格单数</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">b'es</span><span class="gl__spell">po-'-es-∅</span><span class="gl__morph">在...上（接触）=单数限定</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">athan.</span><span class="gl__spell">ath-tha-an</span><span class="gl__morph">桌子.斜格单数</span></span></div>
+<div class="gloss__tr">小猫跳上了桌子。</div>
+</div>
+
+
+此句的 Nól· 内化了朝向义的介词，其后的 b'es athan “在桌子上”仍以独立介词 bo 引出目标。
+
+
+<div class="gloss" markdown="0">
+<div class="gloss__row"><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">Nódh·weñgosch</span><span class="gl__spell">no-o-oth·we-en-co-os-ho-∅</span><span class="gl__morph">过去=时-远离·顺流&lt;三单.有生&gt;（动物）行走.弱焦点</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">es</span><span class="gl__spell">es-∅</span><span class="gl__morph">单数限定</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">al-aeafor</span><span class="gl__spell">al-a-e-af-or</span><span class="gl__morph">小化-猫.不及物格单数</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">emeworrin</span><span class="gl__spell">em-ew-or-ri-in</span><span class="gl__morph">小型的</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">nêm.</span><span class="gl__spell">ne-e-em</span><span class="gl__morph">我的</span></span></div>
+<div class="gloss__tr">我的小猫走开了。</div>
+</div>
+
+
+本句的 Nódh· 内化了 do “远离”，于是“走开了”。
+
+#### 其他 {#other-particles}
+部分词汇由**古施动前缀** am- 派生而来，该前缀表示施动含义，在标准语中已不能产。
+
+## 句法 {#syntax}
+### 惯用形与问候语 {#idioms}
+以下是日常交际中的固定表达。方括号内为可替换的成分：[H0.] 名词字典形，[H1.] 名词及物格，[H3.] 名词斜格，[L0.] 零价动词，[X.] 形容词，[T.] 从句。
+
+
+<p class="table-caption">固定句式</p>
+
+| 瑟乌丝林语 | 直译 | 义 |
+| :--: | :--: | :--: |
+| Dáfes·welch léthes [H1.] | 愿云鲸一直停留在…… | 欢迎来到……／祝……好运 |
+| pne·i-[L0.] [H3.] aud [T.] | 预言·致使-…… 引导词 从句 | 因为……，所以将要…… |
+| do·cent [X.] | 完成·成为-不定式 …… | 处于……的完成状态 |
+| [H0.] nanem. | …… 在-我 | 我有…… |
+| [H0.] nanem athichéw. | …… 在-我 匮乏.欠格 | 我没有…… |
+| Dhranef / Hewos nanem. | 饥饿状态／口渴状态 在-我 | 我饿了／我渴了 |
+| Nem gweder na-[H0.]. | 我 沉醉 在-…… | 我喜欢…… |
+| Geur nanem or-[H0.]. | 狂喜 在-我 提及-…… | 我很喜欢…… |
+| Sa sow [H1.] tar-weuno tô? | 是 什么 …… 最喜欢的 你的 | 你最喜欢的……是什么？ |
+| Sa [H1.]1 [H1.]2 tar-weuno nêm. | 是 …… …… 最喜欢的 我的 | ……是我最喜欢的…… |
+
+
+上表中的“在-我” nanem 可替换为其他人称。
+
+
+<p class="table-caption">问候与祝福</p>
+
+| 瑟乌丝林语 | 直译 | 用法 |
+| :--: | :--: | :--: |
+| Modorrach íri / Íri | 众生（皆有）轮回 | 大家好；开场白的正式寒暄 |
+| Fanin | （摇晃）木琉璃 | 引起注意；打扰一下 |
+| Toroni iélian（Toron' iélian） | 又见朝露 | 早上好 |
+| Soth(i)an' iélian | 又见雪阳 | 中午好 |
+| Théraen' iélian | 又见余晖 | 下午好，傍晚好 |
+| En hên iélan（E chên iélan） | 又见繁星 | 晚上好 |
+| Lo·hâd é·chor | 百灵鸟在歌唱 | 早点睡吧，夜深了 |
+| Edh·enel ewaberan | 夜未央 | 凌晨好；早点休息 |
+| Fes âr nato / nati | 好梦在你 | 晚安，好眠 |
+| Iadháfes·uthaur aiwari | 愿花儿生生不息 | 祝你好运；再见 |
+| Axich nato / nati | 阿慈凯克保佑你 | 再见，保重 |
+| Wenon an fi nem / Wenonnem | 六神原谅我 | 对不起，抱歉 |
+| Sewan Naerin! | 新年 | 新年快乐！ |
+| Tâth! |  | 谢谢！ |
+| Dáfes·uichád lemís / Dáflem | 愿光灵为你歌唱 | 万分感谢！ |
+| Moto / Moti | 你也 | 你也是（客气回复） |
+| Írchethor |  | 【专】圣临节，生临节 |
+
+
+其中的“新年快乐”与“阿门”在语料中均有出现：
+
+
+<div class="gloss" markdown="0">
+<div class="gloss__row"><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">Sewan</span><span class="gl__spell">∅-se-wa-an</span><span class="gl__morph">星起.字典形</span></span><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">Naerin!</span><span class="gl__spell">nae-ri-in-!</span><span class="gl__morph">美丽的</span></span></div>
+<div class="gloss__tr">新年快乐！</div>
+</div>
+
+
+该句即 Sewan “星起（新年）”配形容词 Naerin “美丽的”，是省略了系词的祝福语。
+
+
+<div class="gloss" markdown="0">
+<div class="gloss__row"><span class="gl__w"><span class="gl__ks"><span class="kessar"></span></span><span class="gl__lat">etant</span><span class="gl__spell">et-ta-nat-∅</span><span class="gl__morph">阿门（如愿）</span></span></div>
+<div class="gloss__tr">阿门</div>
+</div>
+
+
+此句的 etant 是副词性代词“如愿，变得那样”，单独成句即“阿门”。
+
 ## 构词 {#word-formation}
 <p class="page-note">本节尚未撰写。</p>
 ## 演化 {#evolution}
+瑟乌丝林语自[原始希克林语](/laim/Proto-Shikṛin/)（PSkr）分化以来，经历了**原始瑟乌丝林语**（PTsr）、**上古瑟乌丝林语**（ATsr）、**古瑟乌丝林语**（OTsr）三个阶段，最终成为标准语（Tsr）。完整的音变链由本站的[音变器](https://kinnuch.github.io/laim/shikrin.assets/SCA/SCA.html)实际驱动：输入祖语形式，即可输出各阶段的形式。本节按阶段逐条说明每一条规则，并各附一个词表中的实例；实例取自音变器对该词的实际推导，箭头前后分别是该规则作用前后的形式，括号内为该词的标准语形式。词表中尚无实例的规则注明「暂无实例」。
 
-瑟乌丝林语自原始希克林语分化以来经历了四个阶段：**原始瑟乌丝林语（PTsr）→ 上古瑟乌丝林语（ATsr）→ 古瑟乌丝林语（OTsr）→ 瑟乌丝林语（Tsr）**。完整的音变链共 236 条规则，以 [SCA 音变器](/laim/shikrin.assets/SCA/SCA.html) 的规则文件 `TheusrinRule.txt` 为准——本节列出的是其中影响最深远、需要文字说明的几条。
+### 音变 {#sound-changes}
+#### 原始希克林语 → 原始瑟乌丝林语 {#pskr-ptsr}
+这一阶段的特征是喉音的牵引与脱落、咝音化、以及成音节响音的增音。
+1. 喉音牵引：h 旁的 e 变为 a。　例：nehem → naham（nae）
+1. 词中已有 p 时，kʷ 异化为 p。　暂无实例
+1. 词中已有 b 时，gʷ 异化为 b。　暂无实例
+1. 唇化软腭音去唇化：kʷ gʷ 并入 k g（咝音化第一步）。　例：ekwans → ekans（haun）
+1. 硬腭音擦化：k̂ 变为 s（咝音化第二步）。　例：ésœcren → ésœsren（é·theusrin）
+1. 词首的 ss 简化为 s。　例：ssemats → semats（sewad）
+1. 硬腭音擦化：ĝ 变为 z。　例：njēls → nzēls（edhraer）
+1. 成音节鼻音 m̩ n̩ 之前增生 e。　例：óprsurslns → óprsurslens（ó·fossossal）
+1. 成音节的 l̩ 变为 al。　例：wéplprs → wépalprs（e·falafor）
+1. 成音节的 r̩ 变为 ur。　例：wépalprs → wépalpurs（e·falafor）
+1. 词首辅音前的成音节喉音 h̩ 变为 a。　例：hlembēls → alembēls（a·lemaer）
+1. 短元音后的喉音脱落，元音补偿延长。　例：naham → nāam（nae）
+1. 重读短元音后的喉音脱落，元音补偿延长。　例：séham → sēam（rei）
+1. 长元音之后的 h、x 脱落。　例：glāhm → glām（clach）
 
+#### 原始瑟乌丝林语 → 上古瑟乌丝林语 {#ptsr-atsr}
+这一阶段的特征是浊塞音清化、送气塞音的产生、词尾音的大规模调整与鼻音同化。
+1. bh 擦化为 w。　例：rebhm → rewm（reu）
+1. dh 擦化为 ð。　例：géradhs → géraðs（cradh）
+1. gh 擦化为 ħ。　例：ghabos → ħabos（âb）
+1. wh 变为 x。　例：whasers → xasers（haer）
+1. sh 变为清 r（rh）。　例：shægs → rhægs（rîg）
+1. 清塞音之后增生 h，即清塞音一律送气化。　例：sgēstems → sgēsthems（hethin）
+1. 浊塞音清化：b d g 变为 p t k。　例：gēssals → kēssals（cessar）
+1. 非词首鼻冠音的鼻音在浊塞音前脱落。　暂无实例
+1. 与 s 相邻或位于 ht 中的送气 h 脱落。　暂无实例
+1. 塞音丛之间的 h 脱落。　例：élasthphales → élastphales（é·lasfal）
+1. bm 换位为 mb。　暂无实例
+1. dn 换位为 nd。　暂无实例
+1. 单音节词长元音之后的词尾 y、w 脱落。　暂无实例
+1. 词尾的 y 元音化为 i。　例：sorslensy → sorslensi（sothles）
+1. 词尾的 w 元音化为 u。　例：hamsew → hamseu（asse）
+1. 词首的 n 在后有 m 时异化为 l。　例：nāam → lāam（nae）
+1. 词尾的 l 变为 r。　例：kēssal → kēssar（cessar）
+1. 词尾的 m 变为 n——不及物格 ✶-m 的面貌由此决定。　例：kēssalm → kēssaln（cessar）
+1. s 前的 h 变为 s（塞音后除外）。　例：ħaltenurhs → ħaltenurss（allenor）
+1. ħ 在塞音与 s 之前变为 h。　例：theħs → thehs（thêg）
+1. l 后的 ħ 变为 g。　暂无实例
+1. 辅音丛前的长元音缩短。　例：kēssals → kessals（cessar）
+1. t 前的 h 变为 x（塞音后除外）。　例：enhthseru → enxthseru（enser）
+1. 其余不在塞音后的 h 一律脱落。　例：hanars → anars（anar）
+1. km 换位为 mk。　例：kmœns → mkœns（ñeun）
+1. ng 合并为软腭鼻音 ŋ。　暂无实例
+1. 鼻音在唇音 p b 前同化为 m。　例：ésenptons → ésemptons（napthón）
+1. 鼻音在齿音 t d ð 前同化为 n。　例：wómturs → wónturs（gmoder）
+1. 鼻音在软腭音 k g ħ 前同化为 ŋ。　例：phlemkāap → phleŋkāap（fleñga）
+1. ŋ 后的 ŋ、ħ 变为 g。　暂无实例
+1. s 前的 ŋ 变为 n。　暂无实例
+1. p 后的 w 同化为 p。　例：phlemyampwath → phlemyamppath（fleniamp）
+1. ph 后的 w 同化为 ph。　例：untaphwath → untaphphath（gnef）
+1. 浊塞音前的 s 浊化为 z。　暂无实例
+1. 词尾短元音 e a o 脱落。　例：syekhusa → syekhus（thêch）
+1. 词尾的 i 降低为 e。　例：sorslensi → sorslense（sothles）
+1. 词尾的 u 降低为 o。　例：amseu → amseo（asse）
+1. w 后的重读 ó 变为 a。　例：wóloraŋn → waloraŋn（gloranc）
+1. t 前的 t、d 变为 s。　例：óntthurmos → ónsthurmos（e·naserwó）
+1. t 前的 th 变为 s。　暂无实例
+1. d 前的 d 变为 z。　暂无实例
+1. k 前的 t 同化为 k。　例：élastkekhn → élaskkekhn（é·laschech）
+1. 塞音旁以及 s 前的浊塞音清化。　暂无实例
+1. l 后的 r 同化为 l。　例：énilren → énillen（é·nello）
+1. 元音后辅音前的 y 元音化为 i。　例：xoyn → xoin（choe）
+1. 元音后辅音前的 w 元音化为 u。　例：rewn → reun（reu）
 
-### 原始希克林语→原始瑟乌丝林语
+#### 上古瑟乌丝林语 → 古瑟乌丝林语 {#atsr-otsr}
+这一阶段的特征是词尾清塞音与 s 的脱落、塞音擦化、清响音的产生与元音系统的重组。
+1. 塞音与「流音 + 重读元音」之间的短元音缩合脱落。　暂无实例
+1. t、d、n、l 之后的 y 脱落。　例：ħaltyamps → ħaltamps（allamp）
+1. l 后的 n 同化为 l。　例：kessaln → kessall（cessar）
+1. 元音后词尾的 p t k s 脱落，单音节词除外——及物格 ✶-s 在多数词中由此消失。　例：séweyas → séweya（gwea）
+1. s 前的 m、n 同化为 s。　例：skesthems → skesthess（hethin）
+1. 元音后词尾的 i 延长（单音节词除外）。　例：wézethāmoi → wézethāmoī（gwé·rethau）
+1. 元音后、浊塞音前的 b 元音化为 u。　暂无实例
+1. 元音后、浊塞音前的 g 元音化为 i。　暂无实例
+1. 响音前的 ħ 变为 g。　例：theħn → thegn（thêg）
+1. 词首的 ħ、h 脱落（短词除外）。　例：ħapo → apo（âb）
+1. 词首 k、kh、g 之后的 y 脱落。　例：kyess → kess（ces）
+1. y、w 前的 m 变为 n。　例：phalphemys → phalphenys（falfew）
+1. 词尾 m 后的 w 同化为 m。　暂无实例
+1. 词首流音前的 m 变为 b。　暂无实例
+1. m、n 前的清塞音浊化。　例：ékhitn → ékhidn（é·ched）
+1. 送气塞音后的 m 变为 w。　例：kēalkhme → kēalkhwe（alwi）
+1. thn 变为 tth。　例：ktorlasthn → ktorlastth（ce·thollast）
+1. 词尾「短元音 + d」中的 d 脱落，元音补偿延长。　暂无实例
+1. 词尾「重读元音 + d」中的 d 脱落，元音补偿延长。　暂无实例
+1. 元音后词尾的 d 脱落。　暂无实例
+1. 词尾 th 去送气。　例：ktorlastth → ktorlastt（ce·thollast）
+1. sy 变为 þ。　例：syekhusa → þekhusa（thêch）
+1. sw 变为 x。　例：swœn → xœn（heu）
+1. 词首「s + 响音」变为清响音（sl > lh，sr > rh，sm > mh，sn > nh）。　例：slæssals → lhæssals（lhissar）
+1. 词尾的长元音缩短。　例：ékawā → ékawa（é·gau）
+1. d 前「短元音 + z」中的 z 脱落，元音补偿延长。　暂无实例
+1. d 前「重读元音 + z」中的 z 脱落，元音补偿延长。　暂无实例
+1. 元音后、d 前的 z 脱落。　暂无实例
+1. 词尾 s、st 之后的 e 变为 a。　例：sékese → sékesa（hais）
+1. 词首 s 之后的塞音擦化：sp st sk > sø sþ sx。　例：skesthess → sxesthess（hethin）
+1. 辅音丛、响音、ŋ 之后的塞音送气化。　例：ktorlasths → kthorlasths（ce·thollast）
+1. 全部送气塞音擦化：ph th kh > ø þ x（标准语的 f、th、ch 由此产生）。　例：sxesthess → sxesþess（hethin）
+1. 词首元音（即词头）之后、元音前的 s 变为 þ——词头引发软音变的来源之一。　例：ésœsren → éþœsren（é·theusrin）
+1. ā 变为 ō。　例：lāan → lōan（nae）
+1. au 变为 ō。　例：éraun → érōn（é·rau）
+1. 元音后的 y 变为 i。　例：īayen → īaien（iae）
+1. 原始希克林语的双元音 eu 释放为 e + u。　例：éþœsren → éþeusren（é·theusrin）
+1. 双元音 ei 变为 ī。　例：ræks → rīks（rîg）
+1. ou 变为 ū。　例：sónoups → sónūps（nûb）
+1. oi 变为 ui。　例：xoin → xuin（choe）
+1. ōi 变为 oi。　例：óþōi → óþoi（ó·thos）
+1. 非词首的 s 在 m 前同化为 m。　例：ésmiks → émmiks（é·mi）
+1. 非词首的 s 在 n 前同化为 n。　例：uþenesn → uþenenn（e·thin）
+1. 元音之间以及元音后词尾的 s 弱化为 h。　例：þexusa → þexuha（thêch）
+1. l 前的 r 同化为 l。　例：kþorlasþs → kþollasþs（ce·thollast）
+1. (u)i 前的 y 脱落。　例：øaløenyin → øaløenin（falfew）
+1. u 旁的 w 脱落。　例：uwīxs → uīxs（gwich）
+1. m 前的 b 鼻化为 m。　例：ónnebmo → ónnemmo（namó）
+1. n 前的 d 鼻化为 n。　例：éxidn → éxinn（é·ched）
 
-#### 喉音牵引(Coloring)
+#### 古瑟乌丝林语 → 瑟乌丝林语 {#otsr-tsr}
+这一阶段规则最多，特征是词首鼻冠音脱落、元音与流音后浊塞音的擦化、词首 w > gw、元音和谐、ō ē 的裂化、鼻音后的强化以及大量辅音丛简化。
+1. 词首 mb 的 m 脱落。　暂无实例
+1. 词首 nd 的 n 脱落。　暂无实例
+1. 词首 ŋg 的 ŋ 脱落。　暂无实例
+1. 词尾辅音后的鼻音脱落。　例：wéøaløurn → wéøaløur（e·falafor）
+1. 词首擦音前的 s 脱落。　例：sxesþess → xesþess（hethin）
+1. 流音或元音后的 b 擦化为 w。　例：wéturb → wéturw（e·ter）
+1. 流音或元音后的 d 擦化为 ð。　暂无实例
+1. 流音或元音后的 g 擦化为 ħ——词头元音引发软音变的主要来源。　例：øeg → øeħ（fêg）
+1. zb 变为 ðw。　暂无实例
+1. zg 变为 ðħ。　暂无实例
+1. 词首的 z 变为 ð。　例：zalxs → ðalxs（dhalch）
+1. 其余的 z 变为 r。　例：enzels → enrels（edhraer）
+1. 词首的 u、w 变为 gw。　例：wéøaløurs → gwéøaløurs（e·falafor）
+1. 词尾 a 前音节的 i 降低为 e。　暂无实例
+1. 词尾 a 前音节的 u 降低为 o。　例：þexuha → þexoha（thêch）
+1. ø 并入 f。　例：gwéøaløurs → gwéfalfurs（e·falafor）
+1. 辅音后、元音前的 y 变为 i。　例：kótoryass → kótoriass（ce·theurian）
+1. 元音和谐：词尾 i 使前一音节的 e 高化为 i。　例：sófolenþi → sófolinþi（folení）
+1. 元音和谐：词尾 i 使前一音节的 o 高化为 u。　例：sorni → surni（sôr）
+1. 元音和谐：词尾 i 使前一音节的 a 变为 e。　例：kessali → kesseli（cessar）
+1. 元音后、响音前的 ħ 元音化为 i。　例：éfiħr → éfiir（fêg）
+1. 元音后、þ 前的 x 元音化为 i。　暂无实例
+1. 元音后、þ 前的 f 元音化为 u。　暂无实例
+1. iu、yu 合并为 ū。　例：aniun → anūn（anun）
+1. u 变为 o（后接 u、w 或鼻音时除外）。　例：éþeusren → éþeosren（é·theusrin）
+1. 元音后的 o 变为 u。　例：éþeosren → éþeusren（é·theusrin）
+1. n、ŋ 后的 m 变为 w。　例：ēanmorors → ēanworors（aeambor）
+1. n、w 前「短元音 + ŋ」中的 ŋ 脱落，元音补偿延长。　暂无实例
+1. n、w 前「重读元音 + ŋ」中的 ŋ 脱落，元音补偿延长。　暂无实例
+1. 元音后、n w 前的 ŋ 脱落。　暂无实例
+1. ō 裂化为 au。　例：lōan → lauan（nae）
+1. ē 裂化为 ai。　例：enrēr → enrair（edhraer）
+1. 词尾短元音 e a o 再次脱落。　例：séweia → séwei（gwea）
+1. 词尾「元音 + 送气塞音 + i」换位为「元音 + i + 送气塞音」。　暂无实例
+1. 词尾「元音 + 辅音 + i」换位，i 前移与前面的元音构成双元音——复数的 -i 常由此成为 -ai、-ei。　例：kesseli → kesseil（cessar）
+1. 词尾的 xw 变为 ux。　例：kaialxw → kaialux（alwi）
+1. 词首的 x 变为 h。　例：xesþess → hesþess（hethin）
+1. 词首「x + 流音」变为清流音。　暂无实例
+1. 元音后的清塞音浊化（h 与擦音前除外）。　例：kótoriass → kódoriass（ce·theurian）
+1. s 后、元音前的 p 浊化为 b。　例：élespohalads → élesbohalads（lesboal）
+1. s 后、元音前的 k 浊化为 g。　例：askels → asgels（asger）
+1. 单音节词的短元音延长。　例：þex → þēx（thêch）
+1. 词尾辅音后的 ħ 变为 a。　例：ébalħ → ébala（pêl）
+1. 词尾辅音后的 ħi 变为 ī。　暂无实例
+1. l r ð 后、元音前的 ħ 变为 i。　暂无实例
+1. 其余的 ħ 脱落。　例：ħāb → āb（âb）
+1. 词尾 i 前的 w 变为 u。　例：óralþwi → óralþui（ó·ralth）
+1. 元音后的 h 脱落。　例：þexoh → þexo（thêch）
+1. 词尾 n 前的 e 高化为 i——不及物格常见的 -in 由此而来。　例：éþeusren → éþeusrin（é·theusrin）
+1. 词尾的 i、u 脱落（u + 辅音之后除外）。　例：séwei → séwe（gwea）
+1. 词尾的 ī 缩短。　例：kóxī → kóxi（ce·sowi）
+1. 复合词界之前、辅音之间的短元音脱落。　暂无实例
+1. a、o 后的 i 降低为 e。　例：īaiin → īaein（iae）
+1. 词尾 i 前的 e 变为 a。　例：īaein → īaain（iae）
+1. r 前的 n 变为 ð。　例：enrels → eðrels（edhraer）
+1. l 后的 s 变为 þ。　例：kessals → kessalþ（cessar）
+1. 异化：þ、ð 之后音节中的 þ 变为 s。　例：eðrelþ → eðrels（edhraer）
+1. s 前的 r 同化为 s。　例：gwéfalfors → gwéfalfoss（e·falafor）
+1. 词尾 m 后的 f 变为 p。　例：fleniamf → fleniamp（fleniamp）
+1. 词尾 n、l 后的 þ 变为 t。　例：kessalþ → kessalt（cessar）
+1. 词尾 ŋ 后的 x 变为 k。　暂无实例
+1. 「擦音 + 流音」之前的鼻音脱落。　例：kérenþró → kéreþró（crethró）
+1. 复合词界前的鼻音在擦音、鼻音、l 之前脱落。　暂无实例
+1. 复合词界前的 ð 在鼻音前脱落。　暂无实例
+1. 复合词界消失。　暂无实例
+1. 鼻音后的 w、u 强化为 b——欠格的 -mb 由此而来。　例：aeanwoross → aeanboross（aeambor）
+1. 鼻音后的 ð 强化为 d。　例：gwémfenðr → gwémfendr（gmant）
+1. 鼻音后的 ħ 强化为 g。　暂无实例
+1. m 后的 f 同化为 m。　例：kémfaloss → kémmaloss（ce·malar）
+1. n 后的 þ 同化为 n。　例：enþasoss → ennasoss（e·nather）
+1. ŋ 后的 x 变为 g。　例：fleŋxa → fleŋga（fleñga）
+1. l 后的 þ 同化为 l。　例：óralþess → óralless（ó·ralth）
+1. m、n 后的 h 脱落。　例：nhauuranní → nauuranní（nauraní）
+1. 词首辅音前的 h 脱落。　例：htoronbad → toronbad（toraun）
+1. 辅音丛前的长元音缩短。　例：rīgs → rigs（rîg）
+1. 多音节词中的 ī 缩短。　例：īaain → iaain（iae）
+1. 多音节词中的 ū 缩短。　例：anūn → anun（anun）
+1. a 后的 wa 变为 u。　例：égawaun → égauun（é·gau）
+1. l 后的 ð 同化为 l。　例：kaealðr → kaeallr（âl）
+1. l 前的 n 同化为 l。　暂无实例
+1. m 后的 b 同化为 m。　例：fleniamb → fleniamm（fleniamp）
+1. n 后的 d 同化为 n。　例：éndmin → énnmin（é·nan）
+1. 三辅音丛的中间辅音脱落（h 除外）。　例：ófossossless → ófossosless（ó·fossossal）
+1. 元音后、流音前的 s 变为 þ。　例：éþeusrin → éþeuþrin（é·theusrin）
+1. o 前的 w 脱落。　例：ówoþs → óoþs（ó·od）
+1. m、b 前的 n 同化为 m。　例：aeanboross → aeamboross（aeambor）
+1. 词尾的 ll 简化为 l。　例：kessall → kessal（cessar）
+1. 词尾的 nn 简化为 n。　例：gwérenn → gwéren（grent）
+1. 词尾的 ss 简化为 s。　例：hesþess → hesþes（hethin）
+1. 词首 ŋ 之后以及词尾 ŋ 之后的 g、s、þ 脱落。　例：ŋgeus → ŋeus（ñeun）
+1. 齿音前的 ŋ 变为 n。　暂无实例
+1. 唇音前的 ŋ 变为 m。　暂无实例
+1. 元音或流音后的 m 变为 w（唇音前除外）。　例：gwémeraŋ → gwéweraŋ（gmeranc）
+1. nn 简化为 n。　例：hennos → henos（henos）
+1. mm 简化为 m。　例：kémmalos → kémalos（ce·malar）
+1. 词尾 u 后的 w 脱落。　例：gwéreþauw → gwéreþau（gwé·rethau）
+1. u 前的 o 变为 a。　暂无实例
+1. þþ 简化为 þ。　暂无实例
+1. xx 简化为 x。　例：anaxx → anax（·nâch）
+1. 词尾「辅音 + 响音」之间增生 e。　例：mefr → mefer（mefer）
+1. 词首 k 与塞音／擦音之间增生 e。　例：kþollas → keþollas（ce·thollast）
+1. 词首塞音／擦音前的 g 变为 e——前动式的 g 词头由此成为 e·。　例：gþenes → eþenes（e·thin）
+1. 词尾（含 n 前）以及元音后辅音前的 w 变为 u。　例：gwédurw → gwéduru（e·ter）
+1. 词尾的 rr 简化为 r。　暂无实例
+1. wh、wx 变为 f。　暂无实例
+1. ðh、ðx 变为 þ。　暂无实例
+1. þ 旁的 s 脱落。　例：hesþes → heþes（hethin）
+1. þ、ð 之后音节以及 t 之后的 þ 变为 s。　例：éþeuþrin → éþeusrin（é·theusrin）
+1. 「ð／þ … 流音」之后的 s 变为 t。　例：eðrels → eðrelt（edhraer）
+1. 流音后的 s 变为 þ。　例：gwédors → gwédorþ（e·ter）
+1. 「辅音 + u」之后的 u 变为 i。　暂无实例
+1. 「元音 + u」之后的 u 脱落。　例：kauus → kaus（eus）
+1. 元音之间的 u 变为 w。　例：lauan → lawan（nae）
 
-> e > a | \_h<sub>1</sub>, h<sub>1</sub>\_
->
-> e > o | \_h<sub>2</sub>, h<sub>2</sub>_
-
-#### 词干重整(Reorganization)
-
-> 该过程是瑟乌丝林语同其他希克林语言差别最显著的地方。瑟乌丝林人西迁时原始希克林语的书写还没有规范，彼时盛行的标记方式是显式地将名词类别通过一个单独的楔形文字紧跟词干来标记。而西迁后的瑟乌丝林人与原部族失去了联系，她们决定将该标记提前至词首，使之更醒目，该过程也深刻的影响了瑟乌丝林语的发音以及语法。
->
-
-#### 咝音化(Satemization)
-
-> 主要发生两部分音变
->
-> 1、唇化软腭音合并至软腭音
->
-> k<sup>w</sup> > k, g<sup>w</sup> > g, <sup>ŋ</sup>g<sup>w</sup> > <sup>ŋ</sup>g
->
-> 2、硬腭音擦化
->
-> k̂ > s, ĝ > z, <sup>ɲ</sup>ĝ > nz
-
-#### 增音(Epenthesis)
-
-> 成音节响音失去其成音节性，转移至前方增音上。
->
-> m̩ > em, n̩ > en
->
-> l̩ > al
->
-> r̩ > ur
-
-#### 喉音脱落(Loss of laryngeals)
-
-> h<sub>1</sub> > a | #_, h<sub>2</sub> > ∅ | #_
->
-> H > ∅ | _V
->
-> VH > V:
+#### 正字法 {#orthography}
+标准语的正字法在音变结果之上作如下替换。
+1. 正字法：k 写作 c。　例：kessalt → cessalt（cessar）
+1. 正字法：ŋ 写作 ñ。　例：gwaloraŋ → gwalorañ（gloranc）
+1. 正字法：þ 写作 th。　例：éþeusrin → étheusrin（é·theusrin）
+1. 正字法：ð 写作 dh。　例：eðrelt → edhrelt（edhraer）
+1. 正字法：x 写作 ch。　例：exas → echas（haun）
+1. 正字法：长元音以扬抑符标记。　例：thēch → thêch（thêch）
+1. 正字法：aa 写作 â。　例：iaain → iâin（iae）
+1. 正字法：ii 写作 î。　例：éiichin → éîchin（é·iech）
+1. 正字法：辅音丛前及元音旁的扬抑符元音复归短元音。　例：iâin → iain（iae）
 
 ## 备注 {#notes}
 
@@ -1249,4 +2632,6 @@ description: 瑟乌丝林语语法：音系、科飒尔文、名词的四格系�
 
 [^21]: 自反通过在动词后接独立小品词aun实现
 
-[^22]: 如果其后为元音，则变为w+并把该元音拉长，即加上锐音符
+[^22]: 本表人称缩写：anaph. 回指；3sg.gd 第三人称单数神性；1sg 第一人称单数；2sg.fam 第二人称单数亲昵；2sg.res 第二人称单数敬称；3sg.an 第三人称单数有生；1pl 第一人称复数；2pl 第二人称复数；3pl 第三人称复数；3sg.inan 第三人称单数无生。
+
+[^23]: 换流·3sg.gd 的 ú 若其后为元音，则变为 w 并使该元音延长（加锐音符）。

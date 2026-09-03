@@ -5,8 +5,8 @@ The wiki page is the live source of truth for this grammar; the script does the
 mechanical wikitext → kramdown pass (templates, tables, interlinear glosses,
 <ref> footnotes) so a wiki edit can be pulled down without hand-porting it.
 
-One section is NOT taken from the wiki: `## 演化`. The sound-change chain only
-exists locally, so it is lifted out of the current page and spliced back in.
+If the wiki's `## 演化` is empty, the local page's 演化 section is lifted out
+and spliced back in (the sound-change chain lived only here for a while).
 
 科飒尔文 lives in the private use area (U+F300–F380). The glyphs travel inside
 the wikitext as-is; assets/fonts/kessar.woff2 is a subset of the wiki's Gilatod
@@ -57,14 +57,23 @@ description: 瑟乌丝林语语法：音系、科飒尔文、名词的四格系�
 </dl>
 </aside>
 
-<p class="page-note">本页与 <a href="https://wiki.gilatod.art/index.php?title=%E7%91%9F%E4%B9%8C%E4%B8%9D%E6%9E%97%E8%AF%AD">Gilatod Wiki 的瑟乌丝林语条目</a>同源，语法主体以 wiki 为准；<a href="#evolution">演化</a>一节的音变链只在本站列出。科飒尔文以私用区码位（U+F300–F380）呈现，页面自带 <code>Kessar</code> 字体，无需另装。配套资源：<a href="/laim/shikrin.assets/SCA/SCA.html">SCA 音变器</a>、<a href="/laim/shikrin.assets/ShikrinDatabase/ShikrinDictionary.html">希克林语词典</a>、<a href="#ime">科飒尔文输入法</a>。</p>
+<p class="page-note">本页与 <a href="https://wiki.gilatod.art/index.php?title=%E7%91%9F%E4%B9%8C%E4%B8%9D%E6%9E%97%E8%AF%AD">Gilatod Wiki 的瑟乌丝林语条目</a>同源，语法主体以 wiki 为准。科飒尔文以私用区码位（U+F300–F380）呈现，页面自带 <code>Kessar</code> 字体，无需另装。配套资源：<a href="/laim/shikrin.assets/SCA/SCA.html">SCA 音变器</a>、<a href="/laim/shikrin.assets/ShikrinDatabase/ShikrinDictionary.html">希克林语词典</a>、<a href="#ime">科飒尔文输入法</a>。</p>
 
 """
 
 # ---------------------------------------------------------------- source prep
 # Orthography brackets like <ñ> <c> <dh> are literal text, not html.
-KNOWN_TAGS = ('br', 'sup', 'sub', 'ref', 'ruby', 'rt', 'span', 'abbr',
+KNOWN_TAGS = ('br', 'sup', 'sub', 'ref', 'ruby', 'rt', 'span', 'abbr', 'code',
               'div', 'p', 'b', 'i', 's', 'translate', 'languages')
+
+
+def protect_code(t):
+    """kramdown parses inline-HTML content as span markdown: escape the
+    characters inside <code> that it would otherwise eat."""
+    def f(m):
+        inner = m.group(1).replace('\\', '&#92;').replace('_', '\\_').replace('*', '\\*')
+        return '<code>%s</code>' % inner
+    return re.sub(r'<code>(.*?)</code>', f, t, flags=re.S)
 
 
 def protect_angles(t):
@@ -74,6 +83,13 @@ def protect_angles(t):
         return '&lt;%s&gt;' % m.group(1)
     t = re.sub(r'<(/?[A-Za-zñ]{1,4})>', f, t)
     return re.sub(r'&lt;([A-Za-zñ]{1,4})>', r'&lt;\1&gt;', t)
+
+
+def protect_cjk_angles(t):
+    """<人称> / <期待> in prose are notation, not tags.  Applied only to text
+    outside templates: a gloss's 分块注释 is split on ';' and would be torn
+    apart by the ';' inside '&lt;'."""
+    return re.sub(r'<([一-鿿][^<>\n]{0,8})>', r'&lt;\1&gt;', t)
 
 
 # ---------------------------------------------------------------- utilities
@@ -150,6 +166,12 @@ ANCHORS = {
     '瑟乌丝林语#时定式':       '#tense-fixing',
     '瑟乌丝林语#否定':         '#negation',
     '瑟乌丝林语#演化':         '#evolution',
+    '瑟乌丝林语#音变':         '#sound-changes',
+    '瑟乌丝林语#特殊变格':     '#irregular-nouns',
+    '瑟乌丝林语#领属限定':     '#det-possessive',
+    '瑟乌丝林语#动词头':       '#verb-head',
+    '瑟乌丝林语#字典形':       '#case-lex',
+    '瑟乌丝林语#数字符号':     '#numerals',
     '科飒尔文':                '#script',
 }
 
@@ -306,6 +328,8 @@ def conv_table(block):
             cur[0] = True; cur[1].extend(cells); continue
         if s.startswith('|'):
             cells = [c.strip() for c in re.split(r'\s*\|\|\s*', s[1:])]
+            # `rowspan="3" | text` -> markdown has no rowspan; keep the text
+            cells = [re.sub(r'^\s*(?:rowspan|colspan|style|align)=\S+\s*\|\s*', '', c) for c in cells]
             if cur is None:
                 cur = [False, []]
             cur[1].extend(cells); continue
@@ -353,10 +377,10 @@ def convert(text):
 
     out, last = [], 0
     for st, en, name, body in find_templates(text):
-        out.append(text[last:st])
+        out.append(protect_cjk_angles(text[last:st]))
         out.append(render_template(name, body))
         last = en
-    out.append(text[last:])
+    out.append(protect_cjk_angles(text[last:]))
     text = ''.join(out)
 
     text = re.sub(r'\[\[([^\]]+)\]\]', conv_link, text)
@@ -412,12 +436,25 @@ HEAD_IDS = {
     '固定组合': 'idiomatic-heads', '动词头的回指': 'head-anaphora',
     '动词干': 'verb-stem', '语流前缀': 'flow', '人称中缀': 'person',
     '言据后缀': 'evidentials', '时定式': 'tense-fixing',
+    '特殊变格': 'irregular-nouns', '名词的复合与派生': 'noun-compounding',
+    '焦点形的推导': 'focus-derivation', '前缀点': 'prefix-dot', '同形异源动词': 'homonymous-verbs',
+    '非限定形式': 'nonfinite',
+    '形容词概述': 'adj-overview', '形容词的来源': 'adj-sources', '形容词的复数': 'adj-plural',
+    '比较': 'comparison', '副词化与否定': 'adverbs-negation',
+    '代词': 'pronouns', '人称代词': 'personal-pronouns', '指示代词与不定代词': 'demonstratives',
+    '副词性代词': 'proadverbs', '疑问代词': 'interrogatives',
+    '数词': 'numerals-words', '基数词': 'cardinals', '序数词': 'ordinals',
+    '小品词与介词': 'particles', '连词': 'conjunctions', '系词与否定词': 'copula-negator',
+    '大化与小化': 'augmentation', '介词': 'prepositions', '其他': 'other-particles',
+    '惯用形与问候语': 'idioms', '词汇来源': 'lexicon-sources', '音变': 'sound-changes',
+    '原始希克林语 → 原始瑟乌丝林语': 'pskr-ptsr', '原始瑟乌丝林语 → 上古瑟乌丝林语': 'ptsr-atsr',
+    '上古瑟乌丝林语 → 古瑟乌丝林语': 'atsr-otsr', '古瑟乌丝林语 → 瑟乌丝林语': 'otsr-tsr',
+    '正字法': 'orthography',
     '句法': 'syntax', '构词': 'word-formation', '演化': 'evolution', '备注': 'notes',
 }
 # kramdown's auto_ids strips CJK to nothing, so every heading gets an explicit
 # ASCII id — otherwise the in-page anchors all collapse to "section-N".
-STUBS = {'变格法': 5, '领属限定': 5, '指示限定': 5, '零指限定': 5, '其他限定': 5,
-         '形容词形态': 3, '句法': 2, '构词': 2}
+STUBS = {'指示限定': 5, '零指限定': 5, '其他限定': 5, '序数词': 4, '构词': 2}
 
 
 def head(level, title):
@@ -442,7 +479,7 @@ def local_evolution():
 
 
 def build(wikitext):
-    text = protect_angles(wikitext)
+    text = protect_code(protect_angles(wikitext))
     text = text.replace('<languages/>', '')
     text = re.sub(r'</?translate>', '', text)
     text = re.sub(r'<!--T:\d+-->', '', text)
@@ -464,13 +501,14 @@ def build(wikitext):
         if kind == 'table':
             parts.append(conv_table(body)); continue
         b = convert(body)
-        b = re.sub(r'^#\s+', '1. ', b, flags=re.M)            # wiki ordered list
+        b = re.sub(r'^#\s+', '\x00OL ', b, flags=re.M)        # wiki ordered list (real list)
         for lv in (5, 4, 3, 2):
             b = re.sub(r'^' + '=' * lv + r'\s*(.+?)\s*' + '=' * lv + r'\s*$',
                        lambda m, lv=lv: head(lv, m.group(1)), b, flags=re.M)
         # "1. " paragraphs are prose enumerations, not markdown lists: the
         # blocks between them would restart the numbering
         b = re.sub(r'^(\d+)\.\s*(?=\S)', r'**\1.** ', b, flags=re.M)
+        b = b.replace('\x00OL ', '1. ')                        # kramdown renumbers
         parts.append(b)
 
     body = cleanup(''.join(parts))
@@ -494,8 +532,13 @@ def build(wikitext):
         body = body.replace(head(lv, title) + '\n',
                             head(lv, title) + '\n<p class="page-note">本节尚未撰写。</p>\n')
 
-    body = body.replace(head(2, '演化') + '\n',
-                        head(2, '演化') + '\n' + local_evolution())
+    # the wiki's 演化 used to be empty and the section lived only here; splice
+    # the local copy in only while the wiki still has nothing under it
+    m = re.search(r'^' + re.escape(head(2, '演化')) + r'[ \t]*\n(.*?)(?=^## |\Z)',
+                  body, re.S | re.M)
+    if m and not m.group(1).strip():
+        body = body.replace(head(2, '演化') + '\n',
+                            head(2, '演化') + '\n' + local_evolution())
 
     fn = '\n\n'.join('[^%d]: %s' % (i + 1, convert(f).strip())
                      for i, f in enumerate(FOOTNOTES))

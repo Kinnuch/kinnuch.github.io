@@ -2,6 +2,14 @@
 # section: 分组标题（辛达语 | 中文）
 # new: true 会显示 NEW 角标
 
+- section: Qonlang | 千语集
+  items:
+    - title: Qonlang · 千语集
+      zh: 给所有造语者的桌面工作台
+      url: /cerf/qonlang/
+      new: true
+      blurb: 录入词汇与词根、制订音变规则、按音系自动标音、自动 gloss 例句、自定义文字与皮肤、导出词典与 PDF。不内置任何一门语言的术语，一切分类由你定义。Windows 免安装版与安装包见 GitHub，本页为分模块使用指南。
+
 - section: Prestannath | 音变器
   items:
     - title: Shikrin SCA

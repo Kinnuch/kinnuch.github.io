@@ -13,7 +13,10 @@ description: 千语集的安装、首页、起步模板、项目文件与保存�
 
 - **Windows 免安装版**：解压后双击 `Qonlang.exe`。数据目录在 `%APPDATA%\Qonlang`（偏好设置、最近项目、自动备份、下载的字体都在这里）。
 - **Windows 安装包**：`Qonlang-<版本>-setup.exe`，可选安装目录，桌面快捷方式叫「千语集」。
-- **从源码运行**：`git clone` 后双击仓库里的 `dev.cmd`（不经过 PowerShell，不受执行策略限制），首次会自动 `npm install`。
+- **macOS**：从 [GitHub Releases](https://github.com/Kinnuch/Qonlang/releases) 下载 `Qonlang-<版本>-mac-arm64.dmg`（Apple Silicon）或 `-x64.dmg`（Intel），拖进「应用程序」。应用没有签名与公证，首次打开会被 Gatekeeper 拦：**右键应用 →「打开」**，或在终端执行 `xattr -cr /Applications/Qonlang.app`。数据目录在 `~/Library/Application Support/Qonlang`。
+- **从源码运行**：`git clone` 后，Windows 双击仓库里的 `dev.cmd`（不经过 PowerShell，不受执行策略限制），macOS / Linux 执行 `sh dev.sh`，首次会自动 `npm install`。
+
+每个版本的 Windows 安装包与 macOS dmg 都由 GitHub Actions 在打 tag 时同时构建，挂在同一个 Release 下。
 
 如果系统提示「禁止运行脚本」，那是 PowerShell 的执行策略在拦 `npm.ps1`，用 `dev.cmd` 或直接用 exe 即可。
 

@@ -53,6 +53,24 @@ function absorb(headWord, c) {
   return i;
 }
 
+/* Phrases live in a separate index. The books carry them per headword under
+   `phrase.phrases`, and they are the only source for "give up", "in spite of"
+   and friends — the headword list is single words almost throughout, so without
+   this a pasted phrase list gets no glosses at all. */
+const phraseIndex = new Map();   // lowercase phrase -> [text, gloss]
+
+function absorbPhrases(c) {
+  for (const p of ((c.phrase || {}).phrases) || []) {
+    const text = clean(p.pContent);
+    const gloss = clean(p.pCn);
+    if (!text || !gloss || !/[a-zA-Z]/.test(text)) continue;
+    if (!text.includes(' ') && !text.includes('-')) continue;   // single words already covered
+    const k = text.toLowerCase();
+    const cur = phraseIndex.get(k);
+    if (!cur || cur[1].length < gloss.length) phraseIndex.set(k, [text, gloss]);
+  }
+}
+
 const out = { v: 1, books: [], entries };
 for (const [key, name, files] of BOOKS) {
   const seen = new Set(), words = [];
@@ -67,6 +85,7 @@ for (const [key, name, files] of BOOKS) {
       const c = ((r.content || {}).word || {}).content;
       if (!c) continue;
       const i = absorb(r.headWord, c);
+      absorbPhrases(c);
       if (i >= 0 && !seen.has(i)) { seen.add(i); words.push(i); }
     }
   }
@@ -74,10 +93,13 @@ for (const [key, name, files] of BOOKS) {
   console.error(`${name.padEnd(6)} ${String(words.length).padStart(6)} words`);
 }
 
+out.phrases = [...phraseIndex.values()].sort((a, b) => a[0].localeCompare(b[0]));
+
 fs.mkdirSync(path.dirname(OUT), { recursive: true });
 fs.writeFileSync(OUT, JSON.stringify(out));
 const withEx = entries.filter(e => e[3]).length, withPhon = entries.filter(e => e[1]).length;
 console.error(`\nunique entries : ${entries.length}`);
 console.error(`with phonetic  : ${withPhon}`);
 console.error(`with example   : ${withEx}`);
+console.error(`phrases        : ${out.phrases.length}`);
 console.error(`size           : ${(fs.statSync(OUT).size / 1048576).toFixed(2)} MB`);

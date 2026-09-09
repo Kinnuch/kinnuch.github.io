@@ -56,13 +56,16 @@ const paste = `abandon vt. 放弃，抛弃
 candid\tadj. 坦率的
 meticulous
 ubiquitous
-carrying`;
+carrying
+give up
+in spite of
+gave up`;
 await page.type('#imp-text', paste, { delay: 0 });
 await page.click('[data-act="imp-parse"]');
 await page.waitForSelector('.preview table', { visible: true });
 const previewRows = await page.$$eval('.preview tbody tr', rs => rs.map(r => r.children[0].textContent + '|' + r.children[1].textContent));
 log('   预览: ' + JSON.stringify(previewRows));
-check('解析出 6 条', previewRows.length === 6, previewRows.length + ' 条');
+check('解析出 9 条', previewRows.length === 9, previewRows.length + ' 条');
 check('自动查词开关出现', !!(await page.$('#imp-fill')));
 await shot('02-preview');
 
@@ -76,18 +79,22 @@ const lib = await page.evaluate(async () => new Promise(res => {
   const rq = indexedDB.open('wordbank');
   rq.onsuccess = () => {
     const g = rq.result.transaction('words').objectStore('words').getAll();
-    g.onsuccess = () => res(g.result.map(w => ({ w: w.w, trans: w.trans, phon: w.phon, ex: !!w.exEn, tags: w.tags })));
+    g.onsuccess = () => res(g.result.map(w => ({ w: w.w, trans: w.trans, phon: w.phon, ex: !!w.exEn, tags: w.tags, note: w.note })));
   };
 }));
 for (const w of lib) log('   ' + w.w.padEnd(12) + (w.phon || '-').padEnd(16) + (w.trans || '(无释义)').slice(0, 30) + (w.ex ? '  +例句' : ''));
-check('6 个词入库', lib.length === 6, lib.length + ' 个');
+check('9 个词条入库', lib.length === 9, lib.length + ' 个');
 check('meticulous 自动查到释义', !!(lib.find(x => x.w === 'meticulous') || {}).trans);
 check('carrying 按 carry 补全', !!(lib.find(x => x.w === 'carrying') || {}).trans);
 check('标签写入', (lib[0].tags || []).includes('冒烟测试'));
+const ph = w => (lib.find(x => x.w === w) || {});
+check('短语 give up 查到释义', !!ph('give up').trans, ph('give up').trans || '(空)');
+check('短语 in spite of 查到释义', !!ph('in spite of').trans, ph('in spite of').trans || '(空)');
+check('变形短语 gave up 归到 give up', /give up/.test(ph('gave up').note || ''), ph('gave up').note || '(无标注)');
 
 log('\n--- 4. 学习一轮 ---');
 await page.waitForSelector('[data-act="start"]');
-check('待学新词 6', (await page.$eval('.today__new .today__n', e => e.textContent)) === '6');
+check('待学新词 9', (await page.$eval('.today__new .today__n', e => e.textContent)) === '9');
 await shot('03-study-home');
 await page.click('[data-act="start"]');
 await page.waitForSelector('#session:not(.is-hidden) .q', { visible: true });
@@ -95,8 +102,8 @@ check('新词卡显示单词', (await page.$eval('#ses-body .q__word', e => e.te
 check('新词卡三个按钮', (await page.$$('#ses-foot [data-grade]')).length === 3);
 await shot('04-learn-card');
 
-// grade the 6 new words: mix of 不认识 / 有印象 / 已认识
-for (let i = 0; i < 6; i++) {
+// grade the new words: mix of 不认识 / 有印象 / 已认识
+for (let i = 0; i < 9; i++) {
   const grades = await page.$$('#ses-foot [data-grade]');
   if (!grades.length) break;
   await grades[i % 3].click();
@@ -108,7 +115,7 @@ const stateNow = await page.evaluate(() => ({
   kind: (document.querySelector('.q__kind') || {}).textContent,
 }));
 log('   进度 ' + stateNow.count + ' · 当前题型 ' + stateNow.kind);
-check('答错的词当场重排进队列', stateNow.count.split('/')[1].trim() > 6, '队列长度 ' + stateNow.count);
+check('答错的词当场重排进队列', stateNow.count.split('/')[1].trim() > 9, '队列长度 ' + stateNow.count);
 await shot('05-quiz');
 
 // Answer everything that is left, always correctly, so the session can drain.
@@ -159,7 +166,7 @@ await sleep(300);
 log('\n--- 5. 词库 / 统计 / 设置 ---');
 await page.click('[data-tab="library"]');
 await page.waitForSelector('.wlist');
-check('词库列出 6 条', (await page.$$('.wli')).length === 6);
+check('词库列出 9 条', (await page.$$('.wli')).length === 9);
 await page.type('#lib-q', 'benev');
 await sleep(200);
 check('搜索可用', (await page.$$('.wli')).length === 1, (await page.$$('.wli')).length + ' 条');
@@ -209,17 +216,22 @@ check('断网后应用仍能启动', booted);
 if (booted) {
   await page.click('[data-tab="library"]');
   await page.waitForSelector('.wli');
-  check('断网后词库可读', (await page.$$('.wli')).length === 6);
+  check('断网后词库可读', (await page.$$('.wli')).length === 9);
   // a dictionary lookup now has to come from the cached copy
-  await page.waitForSelector('#e-w', { visible: true });
-  await sleep(500);                                   // let the sheet finish sliding up
-  await page.type('#e-w', 'ephemeral');
-  await page.evaluate(() => document.querySelector('[data-act="lookup-one"]').click());
-  await sleep(1200);
-  const filled = await page.$eval('#e-trans', e => e.value);
-  log('   离线查词 ephemeral -> ' + (filled || '(空)'));
-  check('断网后离线词典仍可查词', !!filled);
-  await shot('12-offline');
+  for (const [q, label] of [['ephemeral', '单词'], ['put up with', '短语']]) {
+    await page.evaluate(() => document.querySelector('[data-act="add"]').click());
+    await page.waitForSelector('#e-w', { visible: true });
+    await sleep(500);                                 // let the sheet finish sliding up
+    await page.type('#e-w', q);
+    await page.evaluate(() => document.querySelector('[data-act="lookup-one"]').click());
+    await sleep(1200);
+    const filled = await page.$eval('#e-trans', e => e.value);
+    log('   离线查' + label + ' ' + q + ' -> ' + (filled || '(空)'));
+    check('断网后离线词典查得到' + label, !!filled);
+    if (q === 'put up with') await shot('12-offline');
+    await page.evaluate(() => document.querySelector('#sheet-bg').click());
+    await sleep(350);
+  }
 }
 await page.setOfflineMode(false);
 

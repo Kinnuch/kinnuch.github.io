@@ -748,8 +748,8 @@ candid
 
   const books = D.books();
   if (!books.length) return `
-    <p class="small muted">内置词书来自 14 本考试词表，共 19,870 个词条，含音标、词性释义和例句。
-      第一次使用需要下载约 1.6 MB，之后完全离线。</p>
+    <p class="small muted">内置词书来自 14 本考试词表，共 19,870 个词条（含音标、词性释义和例句）
+      与 52,011 条短语。第一次使用需要下载约 2.5 MB，之后完全离线。</p>
     <button class="btn btn--primary btn--wide" data-act="imp-load-dict">载入词书</button>
     <div class="bar is-hidden" id="imp-bar"><i></i></div>`;
   return `
@@ -835,7 +835,7 @@ async function commitImport() {
           w: r.w, phon: r.phon || hit.phon, trans: hit.trans,
           exEn: r.exEn || hit.exEn, exCn: r.exCn || hit.exCn,
           // "carrying" gets carry's entry; say so rather than quietly mislabelling it
-          note: hit.lemma ? '释义取自原形 ' + hit.lemma : '',
+          note: hit.lemma ? '释义取自「' + hit.lemma + '」' : '',
         };
       });
     }
@@ -1177,7 +1177,7 @@ document.addEventListener('click', async ev => {
         w.trans = w.trans || hit.trans;
         w.exEn = w.exEn || hit.exEn;
         w.exCn = w.exCn || hit.exCn;
-        if (hit.lemma && !w.note) w.note = '释义取自原形 ' + hit.lemma;
+        if (hit.lemma && !w.note) w.note = '释义取自「' + hit.lemma + '」';
         await saveWord(w);
         openWord(key);
         toast('已补全');

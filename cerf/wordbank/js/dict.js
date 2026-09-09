@@ -1,15 +1,22 @@
 /* Offline dictionary: 19,870 headwords merged from 14 exam word books
-   (小学 → GMAT), each with phonetic, part-of-speech glosses and one example.
+   (小学 → GMAT), each with phonetic, part-of-speech glosses and one example,
+   plus 52,011 phrases with Chinese glosses.
 
-   The file is ~3.3 MB (1.6 MB over the wire, gzipped by the host) and is only
+   The phrase index is separate and matters more than its size suggests: the
+   headword lists are single words almost throughout, so "give up", "in spite
+   of" and "put up with" appear nowhere in them. Without it a pasted phrase
+   list comes back with every gloss blank.
+
+   The file is ~5.5 MB (2.5 MB over the wire, gzipped by the host) and is only
    fetched when the user actually needs a lookup — importing a bare word list,
    auto-filling a manual entry, or browsing a built-in book. The service worker
    keeps it cached afterwards, so it costs one download, ever. */
 
 const URL_DICT = './data/dict.json';
 
-let raw = null;          // { v, books:[{key,name,words:[idx]}], entries:[[w,phon,trans,exEn,exCn]] }
+let raw = null;          // { v, books:[…], entries:[[w,phon,trans,exEn,exCn]], phrases:[[text,gloss]] }
 let byWord = null;       // lowercase headword -> index
+let byPhrase = null;     // lowercase phrase   -> [text, gloss]
 let loading = null;
 
 export function isLoaded() { return !!raw; }
@@ -42,6 +49,8 @@ export function load(onProgress) {
       const k = raw.entries[i][0].toLowerCase();
       if (!byWord.has(k)) byWord.set(k, i);
     }
+    byPhrase = new Map();
+    for (const p of raw.phrases || []) byPhrase.set(p[0].toLowerCase(), p);
     return raw;
   })();
   loading.catch(() => { loading = null; });
@@ -102,7 +111,6 @@ function candidates(w) {
   if (IRREGULAR[w]) return [IRREGULAR[w]];
   const out = [];
   const push = s => { if (s && s.length > 1 && !out.includes(s)) out.push(s); };
-  const last = w[w.length - 1], prev = w[w.length - 2];
 
   if (w.endsWith('ves')) { push(w.slice(0, -3) + 'f'); push(w.slice(0, -3) + 'fe'); }
   if (w.endsWith('ies')) { push(w.slice(0, -3) + 'y'); push(w.slice(0, -2)); }
@@ -123,15 +131,72 @@ function candidates(w) {
   return out;
 }
 
-/** Look a word up, trying inflected forms. Returns null when unknown. */
+/* A phrase inflects on one of its words — nearly always the verb at the front:
+   "gave up", "gives up" and "giving up" all mean "give up". Try a base form for
+   the first token, then the last, and try the other word separator. */
+function phraseCandidates(p) {
+  const out = [];
+  const push = s => { if (s && s !== p && !out.includes(s)) out.push(s); };
+
+  if (p.includes('-')) push(p.replace(/-/g, ' '));
+  if (p.includes(' ')) push(p.replace(/ /g, '-'));
+
+  const toks = p.split(' ');
+  if (toks.length > 2 && (toks[0] === 'to' || toks[0] === 'be')) push(toks.slice(1).join(' '));
+  if (toks.length > 1) {
+    for (const i of [0, toks.length - 1]) {
+      for (const base of candidates(toks[i])) {
+        const copy = toks.slice();
+        copy[i] = base;
+        push(copy.join(' '));
+      }
+    }
+  }
+  return out;
+}
+
+/* Last resort: the corpus lists "be used to something" but not the bare
+   "be used to". Accept a phrase that merely extends the query by one token —
+   but only from three tokens up, or "in the" would happily match "in the end".
+   The match is reported through `lemma` so the UI can say where it came from. */
+function nearestPhrase(q) {
+  const toks = q.split(' ');
+  if (toks.length < 3) return null;
+  let best = null;
+  for (const [k, p] of byPhrase) {
+    if (!k.startsWith(q + ' ')) continue;
+    if (k.split(' ').length > toks.length + 1) continue;
+    if (!best || k.length < best[0].length) best = p;
+  }
+  return best;
+}
+
+function phraseEntry(p, matched) {
+  return { w: p[0], phon: '', trans: p[1], exEn: '', exCn: '', lemma: matched, phrase: true };
+}
+
+/** Look a word or phrase up, trying inflected forms. Returns null when unknown. */
 export function lookup(word) {
   if (!raw) return null;
-  const w = String(word).trim().toLowerCase().replace(/[^a-z' -]/g, '');
-  if (!w) return null;
-  if (byWord.has(w)) return entry(byWord.get(w), null);
-  for (const c of candidates(w)) {
-    if (byWord.has(c)) return entry(byWord.get(c), c);
+  const q = String(word).trim().toLowerCase()
+    .replace(/[^a-z' -]/g, ' ').replace(/\s+/g, ' ').trim();
+  if (!q) return null;
+
+  if (q.includes(' ') || q.includes('-')) {
+    if (byPhrase.has(q)) return phraseEntry(byPhrase.get(q), null);
+    // a few compounds are real headwords too ("living room", "first floor")
+    if (byWord.has(q)) return entry(byWord.get(q), null);
+    for (const c of phraseCandidates(q)) {
+      if (byPhrase.has(c)) return phraseEntry(byPhrase.get(c), c);
+      if (byWord.has(c)) return entry(byWord.get(c), c);
+    }
+    const near = nearestPhrase(q);
+    if (near) return phraseEntry(near, near[0]);
+    return null;
   }
+
+  if (byWord.has(q)) return entry(byWord.get(q), null);
+  for (const c of candidates(q)) if (byWord.has(c)) return entry(byWord.get(c), c);
   return null;
 }
 

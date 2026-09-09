@@ -1,5 +1,12 @@
-/* Wordbank service worker — offline app shell + on-demand dictionary cache. */
-const VERSION = 'wb-v1';
+/* Wordbank service worker — offline app shell + on-demand dictionary cache.
+
+   BUMP VERSION whenever data/dict.json changes. The dictionary is cached
+   cache-first and never revalidated, so an installed copy would otherwise keep
+   serving the old file forever; changing VERSION renames both caches and the
+   activate handler drops the stale ones.
+
+   v2 — dictionary gained the 52,011-entry phrase index. */
+const VERSION = 'wb-v2';
 const SHELL = VERSION + '-shell';
 const DATA = VERSION + '-data';
 

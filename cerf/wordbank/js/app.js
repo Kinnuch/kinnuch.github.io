@@ -749,7 +749,7 @@ candid
   const books = D.books();
   if (!books.length) return `
     <p class="small muted">内置词书来自 14 本考试词表，共 19,870 个词条（含音标、词性释义和例句）
-      与 52,054 条短语。第一次使用需要下载约 2.5 MB，之后完全离线。</p>
+      与 52,061 条短语。第一次使用需要下载约 2.5 MB，之后完全离线。</p>
     <button class="btn btn--primary btn--wide" data-act="imp-load-dict">载入词书</button>
     <div class="bar is-hidden" id="imp-bar"><i></i></div>`;
   return `

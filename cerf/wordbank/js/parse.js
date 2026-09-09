@@ -68,18 +68,47 @@ const LIST_SEP = /\s*[.,;，、；]\s*|\s{2,}/;
    words are all content words is mis-punctuated rather than a real phrase.
    That test is only applied to segments of a line that was already split, so a
    standalone "bachelor's degree" or "the West Lake" is never broken up. */
+/* A slash with spaces around it separates alternatives:
+
+     shelves / shelf                 -> two words
+     form / develop                  -> two words
+     be covered by / with            -> the tail preposition varies, so the
+                                        second alternative is "be covered with",
+                                        not a bare "with"
+
+   A slash without spaces ("so/such ... that") is left alone — the dictionary
+   expands that form itself, where it can check both readings against the data. */
+function splitAlternatives(line) {
+  if (!/\s\/\s|\s\/|\/\s/.test(line)) return [line];
+  const segs = line.split(/\s*\/\s*/).map(x => x.trim()).filter(Boolean);
+  if (segs.length < 2) return [line];
+  const out = [];
+  for (const s of segs) {
+    const toks = s.split(/\s+/);
+    const prev = out[out.length - 1];
+    if (toks.length === 1 && GLUE.has(toks[0].toLowerCase()) && prev) {
+      const pt = prev.split(/\s+/);
+      if (pt.length >= 2) { out.push(pt.slice(0, -1).concat(toks[0]).join(' ')); continue; }
+    }
+    out.push(s);
+  }
+  return out;
+}
+
 function expandList(s) {
   const line = String(s).trim();
   if (!line) return [];
   if (!looksEnglish(line) || FRAME.test(line)) return [line];
-  const parts = line.split(LIST_SEP).map(x => x.trim()).filter(Boolean);
-  if (!parts.length) return [line];
-  if (parts.length === 1) return parts;          // also drops a trailing full stop
   const out = [];
-  for (const p of parts) {
-    const toks = p.split(/\s+/);
-    if (toks.length >= 2 && toks.every(t => !GLUE.has(t.toLowerCase()))) out.push(...toks);
-    else out.push(p);
+  for (const alt of splitAlternatives(line)) {
+    const parts = alt.split(LIST_SEP).map(x => x.trim()).filter(Boolean);
+    if (!parts.length) { out.push(alt); continue; }
+    if (parts.length === 1) { out.push(parts[0]); continue; }   // drops a trailing full stop
+    for (const p of parts) {
+      const toks = p.split(/\s+/);
+      if (toks.length >= 2 && toks.every(t => !GLUE.has(t.toLowerCase()))) out.push(...toks);
+      else out.push(p);
+    }
   }
   return out;
 }

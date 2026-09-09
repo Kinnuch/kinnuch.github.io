@@ -6,8 +6,9 @@
    activate handler drops the stale ones.
 
    v2 — dictionary gained the phrase index.
-   v3 — phrase supplement + normalised phrase keys (52,054 phrases). */
-const VERSION = 'wb-v3';
+   v3 — phrase supplement + normalised phrase keys.
+   v4 — more supplement entries (52,061 phrases). */
+const VERSION = 'wb-v4';
 const SHELL = VERSION + '-shell';
 const DATA = VERSION + '-data';
 

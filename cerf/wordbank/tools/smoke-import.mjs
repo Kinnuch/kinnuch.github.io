@@ -23,22 +23,36 @@ const P = await import(pathToFileURL(path.join(t, 'parse.mjs')).href);
 const D = await import(pathToFileURL(path.join(t, 'dict.mjs')).href);
 await D.load();
 
-const input = fs.readFileSync(path.join(HERE, 'fixtures/real-list.txt'), 'utf8');
-const r = P.parse(input, 'auto');
-const got = new Map();
-for (const row of r.rows) got.set(row.w, row.trans || (D.lookup(row.w) || {}).trans || '');
-
 const errors = [];
 const check = (name, ok, extra) => {
   console.log((ok ? '  PASS  ' : '  FAIL  ') + name + (extra ? '  — ' + extra : ''));
   if (!ok) errors.push(name);
 };
+
+let got = new Map();
 const has = (w, re) => {
   const g = got.get(w);
   return g !== undefined && (re ? re.test(g) : !!g);
 };
 
-console.log('解析方式: ' + r.mode + ' · ' + r.rows.length + ' 个词条\n');
+function load(fixture) {
+  const input = fs.readFileSync(path.join(HERE, 'fixtures', fixture), 'utf8');
+  const r = P.parse(input, 'auto');
+  got = new Map();
+  for (const row of r.rows) got.set(row.w, row.trans || (D.lookup(row.w) || {}).trans || '');
+  console.log('\n=== ' + fixture + ' · 解析方式 ' + r.mode + ' · ' + r.rows.length + ' 个词条 ===\n');
+  return r;
+}
+
+function coverage(min) {
+  const found = [...got.values()].filter(Boolean).length;
+  const pct = Math.round(found / got.size * 100);
+  check('整体覆盖率 ≥ ' + min + '%', pct >= min, found + '/' + got.size + ' = ' + pct + '%');
+  const missing = [...got.entries()].filter(([, g]) => !g).map(([w]) => w);
+  if (missing.length) console.log('  查不到: ' + missing.join(' | '));
+}
+
+const r = load('real-list.txt');
 
 // the synonym lines must become separate entries
 check('“target. goal. aim” 拆成三个词', ['target', 'goal', 'aim'].every(w => got.has(w)));
@@ -74,11 +88,38 @@ check('go through / look after / work out 等短语查得到',
   ['go through', 'look after', 'care for', 'work out', 'work on', 'sell out', 'in case of',
     'differ from', 'graduate from', 'be keen on'].every(w => has(w)));
 
-const found = [...got.values()].filter(Boolean).length;
-const pct = Math.round(found / got.size * 100);
-check('整体覆盖率 ≥ 98%', pct >= 98, found + '/' + got.size + ' = ' + pct + '%');
+coverage(98);
 
-const missing = [...got.entries()].filter(([, g]) => !g).map(([w]) => w);
-if (missing.length) console.log('\n查不到: ' + missing.join(' | '));
+/* Second fixture: numbering on its own line, a "第2页" page break in the middle,
+   no numbering at all in the back half, and alternatives joined by a slash. */
+load('real-list-2.txt');
+
+check('编号单独占一行时词形仍取到', got.has('bacteria') && got.has('curriculum'));
+check('页码行“第2页”被丢弃', !got.has('第2页') && ![...got.keys()].some(k => /第|页/.test(k)));
+check('“shelves / shelf” 拆成两条', got.has('shelves') && got.has('shelf'));
+check('“form / develop” 拆成两条', got.has('form') && got.has('develop'));
+check('“all kinds of / all sorts of / various” 拆成三条',
+  ['all kinds of', 'all sorts of', 'various'].every(w => got.has(w)));
+check('“take / follow / adopt one\'s” 拆成三条',
+  got.has('take') && got.has('follow') && got.has("adopt one's"));
+// the tail preposition varies, so the second alternative rebuilds the phrase
+check('“be covered by / with” 展开成两个完整短语',
+  got.has('be covered by') && got.has('be covered with'), [...got.keys()].filter(k => k.startsWith('be covered')).join(' + '));
+check('不产生孤零零的 “with” 词条', !got.has('with'));
+
+check('all kinds of = 各种各样的', has('all kinds of', /各种各样/), got.get('all kinds of'));
+check('be covered by = 被……覆盖', has('be covered by', /覆盖/), got.get('be covered by'));
+check('there be 查得到', has('there be', /有/), got.get('there be'));
+// a verb phrase plus its object should gloss the verb phrase, not just the verb
+check('look up new words 走 look up 而不是 look',
+  (D.lookup('look up new words') || {}).lemma === 'look up', got.get('look up new words'));
+check('refer to dictionary 走 refer to',
+  (D.lookup('refer to dictionary') || {}).lemma === 'refer to', got.get('refer to dictionary'));
+check('divide ... into ... 查得到', has('divide ... into ...', /分成/), got.get('divide ... into ...'));
+check('need to be done / need doing 都查得到',
+  has('need to be done', /需要/) && has('need doing', /需要/));
+
+coverage(98);
+
 console.log('\n' + (errors.length ? errors.length + ' 项未通过' : '全部通过'));
 process.exit(errors.length ? 1 : 0);

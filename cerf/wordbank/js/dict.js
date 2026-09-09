@@ -1,6 +1,6 @@
 /* Offline dictionary: 19,870 headwords merged from 14 exam word books
    (小学 → GMAT), each with phonetic, part-of-speech glosses and one example,
-   plus 52,054 phrases with Chinese glosses.
+   plus 52,061 phrases with Chinese glosses.
 
    The phrase index is separate and matters more than its size suggests: the
    headword lists are single words almost throughout, so "give up", "in spite
@@ -273,6 +273,14 @@ function lookupOne(src) {
       const near = nearestPhrase(v);
       if (near) return phraseEntry(near, near[0]);
     }
+    // "look up new words" is a verb phrase plus its object — the phrase is the
+    // part worth glossing, and it is much better than falling back to "look".
+    const toks = q.split(' ');
+    for (let n = Math.min(3, toks.length - 1); n >= 2; n--) {
+      const p = toks.slice(0, n).join(' ');
+      if (byPhrase.has(p)) return phraseEntry(byPhrase.get(p), p);
+    }
+
     // "as ... as" must not quietly become the entry for "as"
     return frame ? null : headWord(q);
   }

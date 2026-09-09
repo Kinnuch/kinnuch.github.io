@@ -22,8 +22,10 @@ const CASES = [
   ['zzq wibble', 0], ['flurgle', 0],
   // a phrase made only of function words has no head to fall back to
   ['in the', 0], ['of the', 0],
+  // a verb phrase plus trailing junk resolves to the verb phrase, labelled
+  ['look at the', 1, 'look at'], ['look up new words', 1, 'look up'],
   // these resolve through the head-word fallback, and must be labelled as such
-  ['look at the', 1, 'look'], ['belong to', 1], ['a little', 1],
+  ['adopt one\'s', 1, 'adopt'], ['belong to', 1], ['a little', 1],
   ['be used to', 1], ['on the other hand', 1],
   // grammar frames come from the hand-checked supplement, never from a stray word
   ['as ... as', 1], ['neither ... nor', 1], ['so/such ... that', 1],

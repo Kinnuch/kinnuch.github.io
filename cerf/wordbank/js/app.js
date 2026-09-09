@@ -219,7 +219,9 @@ function renderStudy() {
         <h2>随时抽查</h2>
         <p class="small muted" style="margin:-4px 0 12px">
           从已经学过的词里随机抽 20 个考你。答对不会拉长复习间隔，答错照常算作遗忘 ——
-          所以随便抽查多少次都不会打乱排期。
+          所以随便抽查多少次都不会打乱排期。${SET.spotRecall
+      ? '当前用<b>自评卡</b>：只给单词，不给选项。'
+      : '想要不给选项的纯回忆，去设置里打开「抽查只用自评卡」。'}
         </p>
         <div class="row">
           <button class="btn btn--sm" data-act="spot" ${learned ? '' : 'disabled'}>随机抽查</button>
@@ -249,19 +251,39 @@ const SES = {
   answered: false, right: 0, wrong: 0, seen: 0, started: 0,
 };
 
-function pickType(w) {
-  const t = SET.types;
-  if (w.state === SRS.STATE.NEW && !w.reps) return 'learn';
-  const pool = [];
+/* Which types a given word can actually support. `recall` needs nothing — the
+   card is just the word — which makes it the safe fallback. */
+function eligible(w) {
   const hasTrans = !!w.trans;
-  if (t.en2cn && hasTrans) pool.push('en2cn', w.reps <= 1 ? 'en2cn' : null);
-  if (t.cn2en && hasTrans) pool.push('cn2en');
-  if (t.cloze && w.exEn && clozeRe(w)) pool.push('cloze');
-  if (t.listen && 'speechSynthesis' in window && hasTrans) pool.push('listen');
-  if (t.spell && hasTrans && w.reps >= 2) pool.push('spell', w.reps >= 4 ? 'spell' : null);
-  const use = pool.filter(Boolean);
-  if (!use.length) return hasTrans ? 'en2cn' : 'learn';
-  return use[(Math.random() * use.length) | 0];
+  return {
+    recall: true,
+    en2cn: hasTrans,
+    cn2en: hasTrans,
+    spell: hasTrans,
+    cloze: !!(w.exEn && clozeRe(w)),
+    listen: hasTrans && 'speechSynthesis' in window,
+  };
+}
+
+/* Draw a question type from the user's weights. There is deliberately no
+   difficulty ramp on top: an earlier version quietly forced 认词义 for new
+   words and doubled 拼写 for old ones, which silently overrode whatever ratio
+   the settings page said. Weight 0 means never, and it means it. */
+function pickType(w) {
+  if (w.state === SRS.STATE.NEW && !w.reps) return 'learn';
+  if (SES.spot && SET.spotRecall) return 'recall';
+
+  const ok = eligible(w);
+  const pool = [];
+  let total = 0;
+  for (const k in ok) {
+    const wt = Math.max(0, Math.min(5, Number((SET.types || {})[k]) || 0));
+    if (ok[k] && wt > 0) { pool.push([k, wt]); total += wt; }
+  }
+  if (!pool.length) return 'recall';
+  let r = Math.random() * total;
+  for (const [k, wt] of pool) { r -= wt; if (r <= 0) return k; }
+  return pool[pool.length - 1][0];
 }
 
 function clozeRe(w) {
@@ -279,8 +301,18 @@ function buildQueue(opts) {
   if (o.keys) return o.keys.slice();
 
   const d = today();
-  const due = dueList().slice(0, SET.reviewCap).map(w => w.key);
-  const fresh = newList().slice(0, Math.max(0, SET.newPerDay - d.learned)).map(w => w.key);
+  const rand = SET.order === 'random';
+
+  // Sequential draws today's new words from the front of the library, which for
+  // a built-in book means 考频顺序; random draws from anywhere in the backlog.
+  const newPool = newList();
+  const fresh = (rand ? shuffle(newPool.slice()) : newPool)
+    .slice(0, Math.max(0, SET.newPerDay - d.learned)).map(w => w.key);
+
+  // Reviews are always *selected* by due date — the most overdue matter most —
+  // but random shuffles the order they are asked in.
+  let due = dueList().slice(0, SET.reviewCap).map(w => w.key);
+  if (rand) due = shuffle(due);
 
   // Spread the new words through the review queue instead of front-loading them:
   // meeting 20 unknown words in a row is the part people quit over.
@@ -353,22 +385,27 @@ function renderCard() {
   const foot = $('#ses-foot');
   const t = SES.type;
 
-  if (t === 'learn') {
-    // Word only. Showing the gloss here would make "已认识" meaningless —
+  if (t === 'learn' || t === 'recall') {
+    // Word only. Showing the gloss here would make "认识" meaningless —
     // you cannot honestly say you knew a word whose meaning is on screen.
+    const isNew = t === 'learn';
+    const ivl = SRS.preview(w, SET.masterDays);
     body.innerHTML = `
       <div class="q">
-        <div class="q__kind">新词</div>
+        <div class="q__kind">${isNew ? '新词' : '自评回忆'}</div>
         <div class="q__word en">${esc(w.w)}</div>
         ${w.phon ? `<div class="q__phon ipa">/${esc(w.phon)}/</div>` : ''}
         <button class="q__speak" data-say="${esc(w.w)}">${SPEAKER} 发音</button>
-        <p class="small faint" style="margin-top:18px">这个词你认识吗？</p>
+        <p class="small faint" style="margin-top:18px">
+          ${isNew ? '这个词你认识吗？' : '还记得意思吗？想好了再看答案'}</p>
       </div>`;
     foot.innerHTML = `
       <div class="grades">
-        <button class="grade grade--again" data-grade="0">不认识<small>现在学</small></button>
-        <button class="grade" data-grade="3">有印象<small>${SRS.ivlLabel(SRS.preview(w, SET.masterDays)[3])}后</small></button>
-        <button class="grade grade--good" data-grade="known">已认识<small>不用学了</small></button>
+        <button class="grade grade--again" data-grade="0">不认识<small>${isNew ? '现在学' : '重新学'}</small></button>
+        <button class="grade" data-grade="3">有印象<small>${SRS.ivlLabel(ivl[3])}后</small></button>
+        ${isNew
+        ? '<button class="grade grade--good" data-grade="known">已认识<small>不用学了</small></button>'
+        : `<button class="grade grade--good" data-grade="5">认识<small>${SES.spot ? '不改排期' : SRS.ivlLabel(ivl[5]) + '后'}</small></button>`}
       </div>`;
     if (SET.autoSpeak) speak(w.w);
     return;
@@ -551,7 +588,10 @@ function showLearnReveal(w, g) {
       ${exampleHTML(w)}`;
     q.appendChild(div);
   }
-  const label = g === 'known' ? '标为已掌握' : g === '0' ? '本轮稍后再来一次' : '下次复习：' + SRS.ivlLabel(w.ivl);
+  const label = g === 'known' ? '标为已掌握'
+    : g === '0' ? '本轮稍后再来一次'
+      : SES.spot ? '抽查不改排期'
+        : '下次复习：' + SRS.ivlLabel(w.ivl);
   $('#ses-foot').innerHTML = `
     <div class="row" style="margin-bottom:8px">
       <span class="small muted">${label}</span>
@@ -954,12 +994,28 @@ function renderStats() {
 /* ======================================================================== */
 
 const TYPE_NAMES = {
+  recall: ['自评回忆', '只给单词，自己判断记不记得，选完才看释义'],
   en2cn: ['认词义', '看英文选中文释义'],
   cn2en: ['选单词', '看中文释义选英文'],
-  spell: ['拼写', '看释义把单词拼出来'],
-  cloze: ['例句填空', '在例句里挖空拼写'],
+  spell: ['拼写', '给中文释义和首字母，把单词打出来'],
+  cloze: ['例句填空', '在例句里挖掉单词，把它打出来（也要拼写）'],
   listen: ['听音辨义', '朗读单词后选释义'],
 };
+
+const WEIGHTS = [[0, '不出'], [1, '很少'], [2, '正常'], [3, '较多'], [4, '很多'], [5, '最多']];
+
+/* What the weights actually mean, as percentages, so the ratio is not guesswork. */
+function typeMixText() {
+  const rows = Object.keys(TYPE_NAMES)
+    .map(k => [k, Math.max(0, Number(SET.types[k]) || 0)])
+    .filter(([, v]) => v > 0);
+  const total = rows.reduce((a, [, v]) => a + v, 0);
+  if (!total) return '所有题型都关了，会一律使用自评回忆卡。';
+  return '大致比例：' + rows
+    .sort((a, b) => b[1] - a[1])
+    .map(([k, v]) => TYPE_NAMES[k][0] + ' ' + Math.round(v / total * 100) + '%')
+    .join(' · ') + '。词条缺例句或释义时会自动跳过对应题型。';
+}
 
 function renderSettings() {
   view().innerHTML = `
@@ -979,11 +1035,28 @@ function renderSettings() {
     </div>
 
     <div class="card">
-      <h2>题型</h2>
+      <h2>题型比例</h2>
+      <p class="small muted" style="margin:-4px 0 10px">选「不出」就完全不会出现这种题。</p>
       ${Object.keys(TYPE_NAMES).map(k => `
         <label class="switch"><span class="switch__label"><b>${TYPE_NAMES[k][0]}</b>
           <span class="small muted">${TYPE_NAMES[k][1]}</span></span>
-          <input type="checkbox" data-type="${k}" ${SET.types[k] ? 'checked' : ''}></label>`).join('')}
+          <select data-type="${k}">${WEIGHTS.map(([v, n]) =>
+      `<option value="${v}" ${Number(SET.types[k]) === v ? 'selected' : ''}>${n}</option>`).join('')}
+          </select></label>`).join('')}
+      <p class="small muted" id="type-mix" style="margin:12px 0 0">${typeMixText()}</p>
+    </div>
+
+    <div class="card">
+      <h2>学习方式</h2>
+      <label class="switch"><span class="switch__label"><b>出词顺序</b>
+        <span class="small muted">新词按词库顺序取，还是每轮随机打乱</span></span>
+        <select data-set="order">
+          <option value="seq" ${SET.order === 'seq' ? 'selected' : ''}>按顺序</option>
+          <option value="random" ${SET.order === 'random' ? 'selected' : ''}>随机打乱</option>
+        </select></label>
+      <label class="switch"><span class="switch__label"><b>抽查只用自评卡</b>
+        <span class="small muted">抽查时不给选项，只看单词自己判断</span></span>
+        <input type="checkbox" data-set="spotRecall" ${SET.spotRecall ? 'checked' : ''}></label>
       <label class="switch"><span class="switch__label"><b>答错当场重来</b>
         <span class="small muted">忘掉的词在本轮内再出现一次</span></span>
         <input type="checkbox" data-set="relearnInSession" ${SET.relearnInSession ? 'checked' : ''}></label>
@@ -1276,8 +1349,11 @@ document.addEventListener('change', ev => {
   const el = ev.target;
   if (el.dataset && el.dataset.set) applySetting(el);
   else if (el.dataset && el.dataset.type) {
-    S.saveSettings({ types: Object.assign({}, SET.types, { [el.dataset.type]: el.checked }) })
-      .then(s => { SET = s; });
+    const next = Object.assign({}, SET.types, { [el.dataset.type]: Number(el.value) || 0 });
+    SET = Object.assign({}, SET, { types: next });      // update before the await, so
+    const mix = $('#type-mix');                          // fast successive edits compound
+    if (mix) mix.textContent = typeMixText();
+    S.saveSettings({ types: next }).then(s => { SET = s; });
   } else if (el.id === 'restore-file' && el.files && el.files[0]) {
     restoreJSON(el.files[0]);
     el.value = '';
@@ -1332,6 +1408,8 @@ async function boot() {
     const w = LIB.get(SES.queue[SES.i]);
     const g = b.dataset.grade;
     const d = today();
+    const wasNew = w.state === SRS.STATE.NEW;
+
     if (g === 'known') {
       w.state = SRS.STATE.MASTERED;
       w.reps = SRS.LADDER.length + 1;
@@ -1339,12 +1417,24 @@ async function boot() {
       w.due = Date.now() + SET.masterDays * SRS.DAY;
       w.last = Date.now();
       w.seen = (w.seen || 0) + 1;
+    } else if (SES.spot && +g >= 3) {
+      // Spot check: answering early proves nothing new, so leave the schedule be
+      w.seen = (w.seen || 0) + 1;
+      w.last = Date.now();
     } else {
       SRS.grade(w, +g, Date.now(), SET.masterDays);
     }
     await saveWord(w);
-    d.learned++;
+
+    if (wasNew) d.learned++; else d.reviewed++;
+    if (!wasNew) {                       // a recall card is a real test; the intro card is not
+      d.total++;
+      if (+g >= 3) d.correct++;
+      SES.seen++;
+      if (+g >= 3) SES.right++; else SES.wrong++;
+    }
     saveDay(d);
+
     if (g === '0' && SET.relearnInSession) requeue();
     showLearnReveal(w, g);
   });

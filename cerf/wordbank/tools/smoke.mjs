@@ -182,6 +182,87 @@ await shot('06-done');
 await page.click('[data-act="close"]');
 await sleep(300);
 
+log('\n--- 4b. 题型比例被真正遵守 ---');
+// Everything off except 认词义: no typing question, no self-assessment card may
+// appear. This is the regression for "拼写关了还是出现拼写题".
+await page.click('[data-tab="settings"]');
+await page.waitForSelector('[data-type="spell"]');
+await page.evaluate(() => {
+  const set = (k, v) => {
+    const el = document.querySelector(`[data-type="${k}"]`);
+    el.value = String(v);
+    el.dispatchEvent(new Event('change', { bubbles: true }));
+  };
+  ['recall', 'cn2en', 'spell', 'cloze', 'listen'].forEach(k => set(k, 0));
+  set('en2cn', 3);
+});
+await sleep(400);
+check('比例说明随之更新', (await page.$eval('#type-mix', e => e.textContent)).includes('认词义 100%'),
+  await page.$eval('#type-mix', e => e.textContent.slice(0, 40)));
+
+await page.click('[data-tab="study"]');
+await page.waitForSelector('[data-act="spot"]');
+await page.click('[data-act="spot"]');
+await page.waitForSelector('#session:not(.is-hidden) .q', { visible: true });
+const kindsSeen = new Set();
+for (let i = 0; i < 14; i++) {
+  if (await page.$('.done')) break;
+  const k = await page.evaluate(() => (document.querySelector('.q__kind') || {}).textContent || '');
+  if (k) kindsSeen.add(k);
+  const opt = await page.$('#ses-body .opt[data-right="1"]');
+  if (opt) { await page.evaluate(() => document.querySelector('#ses-body .opt[data-right="1"]').click()); }
+  else break;
+  await sleep(140);
+  const next = await page.$('[data-act="next"]');
+  if (next) { await next.click(); await sleep(140); }
+}
+log('   抽查中出现的题型: ' + [...kindsSeen].join('、'));
+check('关掉的题型一次都没出现', [...kindsSeen].every(k => k === '认词义'), [...kindsSeen].join('、'));
+check('没有出现拼写输入框', !(await page.$('#spell-in')));
+await page.evaluate(() => document.querySelector('#ses-close').click());
+await sleep(300);
+
+log('\n--- 4c. 抽查自评卡模式 ---');
+await page.click('[data-tab="settings"]');
+await page.waitForSelector('[data-set="spotRecall"]');
+await page.evaluate(() => {
+  const el = document.querySelector('[data-set="spotRecall"]');
+  el.checked = true;
+  el.dispatchEvent(new Event('change', { bubbles: true }));
+});
+await sleep(400);
+await page.click('[data-tab="study"]');
+await page.waitForSelector('[data-act="spot"]');
+await page.click('[data-act="spot"]');
+await page.waitForSelector('#session:not(.is-hidden) .q', { visible: true });
+check('抽查用自评卡', (await page.$eval('.q__kind', e => e.textContent)) === '自评回忆');
+check('自评卡不给选项', !(await page.$('#ses-body .opt')));
+const spotBody = await page.$eval('#ses-body', e => e.textContent);
+check('自评前不显示释义', !/[一-鿿]/.test(spotBody.replace(/自评回忆|发音|还记得意思吗？想好了再看答案/g, '')),
+  spotBody.replace(/\s+/g, ' ').trim().slice(0, 50));
+await shot('05b-spot-recall');
+await page.click('#ses-foot [data-grade="5"]');
+await sleep(250);
+check('自评后揭晓释义', !!(await page.$('#ses-body .reveal')));
+check('抽查答对不改排期', (await page.$eval('#ses-foot', e => e.textContent)).includes('抽查不改排期'),
+  await page.$eval('#ses-foot .small', e => e.textContent));
+await page.evaluate(() => document.querySelector('#ses-close').click());
+await sleep(300);
+
+// restore a normal mix so the later steps behave like a fresh install
+await page.click('[data-tab="settings"]');
+await page.waitForSelector('[data-type="spell"]');
+await page.evaluate(() => {
+  const set = (k, v) => {
+    const el = document.querySelector(`[data-type="${k}"]`);
+    el.value = String(v); el.dispatchEvent(new Event('change', { bubbles: true }));
+  };
+  set('recall', 2); set('en2cn', 3); set('cn2en', 2); set('spell', 2); set('cloze', 2);
+  const sr = document.querySelector('[data-set="spotRecall"]');
+  sr.checked = false; sr.dispatchEvent(new Event('change', { bubbles: true }));
+});
+await sleep(400);
+
 log('\n--- 5. 词库 / 统计 / 设置 ---');
 await page.click('[data-tab="library"]');
 await page.waitForSelector('.wlist');

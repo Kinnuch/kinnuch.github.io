@@ -105,7 +105,12 @@ export function countRange(store, index, keyRange) {
 export const DEFAULTS = {
   newPerDay: 20,
   reviewCap: 200,
-  types: { en2cn: true, cn2en: true, spell: true, listen: false, cloze: true },
+  /* Relative weights, not on/off: 0 never asks, and the rest are a ratio.
+     A type is still skipped when the word lacks the data it needs (no example
+     sentence, no gloss), so the realised mix drifts from the nominal one. */
+  types: { recall: 2, en2cn: 3, cn2en: 2, spell: 2, cloze: 2, listen: 0 },
+  order: 'seq',           // 'seq' = 词库顺序, 'random' = 每轮打乱
+  spotRecall: false,      // 抽查只用自评卡（不给选项）
   autoSpeak: true,
   accent: 'en-US',
   theme: 'auto',
@@ -118,7 +123,14 @@ let settings = null;
 export async function loadSettings() {
   const row = await get('meta', 'settings');
   settings = Object.assign({}, DEFAULTS, row ? row.v : {});
-  settings.types = Object.assign({}, DEFAULTS.types, (row && row.v && row.v.types) || {});
+  const stored = (row && row.v && row.v.types) || {};
+  settings.types = Object.assign({}, DEFAULTS.types);
+  for (const k in stored) {
+    if (!(k in settings.types)) continue;
+    const v = stored[k];
+    // types used to be booleans; keep an old profile's intent when upgrading
+    settings.types[k] = typeof v === 'boolean' ? (v ? 2 : 0) : Math.max(0, Math.min(5, Number(v) || 0));
+  }
   return settings;
 }
 export function getSettings() { return settings || DEFAULTS; }

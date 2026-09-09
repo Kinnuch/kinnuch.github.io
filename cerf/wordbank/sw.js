@@ -12,9 +12,10 @@
    The activate handler deletes any cache that is neither of these.
 
    shell v2 — phrase index; v3 — phrase supplement; v4 — more supplement
-   entries; v5 — new words hide their gloss until the learner self-assesses.
-   data  v4 — 52,061 phrases (name frozen so the v5 shell keeps the cached copy). */
-const VERSION = 'wb-v5';
+   entries; v5 — new words hide their gloss until the learner self-assesses;
+   v6 — question types are weights, self-assessment review card, queue order.
+   data  v4 — 52,061 phrases (name frozen so later shells keep the cached copy). */
+const VERSION = 'wb-v6';
 const SHELL = VERSION + '-shell';
 const DATA = 'wb-v4-data';
 

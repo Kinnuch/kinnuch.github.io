@@ -39,8 +39,12 @@ tools/                  构建与测试脚本，不参与运行
 
 ## 出题
 
-按熟练度轮换：认词义（英→中四选一）、选单词（中→英四选一）、拼写（给释义和
-首字母）、例句填空、听音辨义（Web Speech API）。生词第一次出现是展示卡，不是考题。
+生词第一次出现是**自评卡**：只给词形、音标和发音，先问「这个词你认识吗」，
+选完（不认识 / 有印象 / 已认识）才揭晓释义和例句 —— 释义摆在眼前的话，「已认识」
+就是一道能看见答案的题。看完释义发现其实不会，可以点「其实不认识」改判。
+
+之后按熟练度轮换：认词义（英→中四选一）、选单词（中→英四选一）、拼写（给释义和
+首字母）、例句填空、听音辨义（Web Speech API）。
 选项的干扰项优先从用户自己的词库里取 —— 从两万词词典里随机取的干扰项等于送分。
 
 ## 导入
@@ -123,7 +127,9 @@ SAT、BEC、GMAT），保留词形、音标、词性释义和一条最短的例�
 `due to`、`according to`、`owing to`。没有补充表的话 `due to` 会退回单词 `due`
 （到期的），意思正好反了 —— 背错比背不到更糟。
 
-首次需要查词时才下载，之后由 Service Worker 永久缓存 —— 只花一次流量。
+首次需要查词时才下载，之后由 Service Worker 永久缓存 —— 只花一次流量。词典缓存和外壳
+缓存是分开编号的（sw.js 里的 DATA / VERSION），改代码不会连带把 2.5 MB 的词典冲掉；
+**只有 dict.json 真的变了才动 DATA**。
 
 ## 数据
 
@@ -138,7 +144,7 @@ node tools/make-icons.js icons                              # 重画图标
 node tools/serve.mjs                                        # 本地静态服务器 :8765
 node tools/smoke-lookup.mjs                                 # 查词与词形还原（不需服务器）
 node tools/smoke-import.mjs                                 # 真实词表解析 + 查词（不需服务器）
-npm i puppeteer-core && node tools/smoke.mjs                # 浏览器端到端（28 项）
+npm i puppeteer-core && node tools/smoke.mjs                # 浏览器端到端（33 项）
 node tools/smoke-books.mjs                                  # 内置词书导入（10 项）
 ```
 

@@ -102,12 +102,31 @@ check('新词卡显示单词', (await page.$eval('#ses-body .q__word', e => e.te
 check('新词卡三个按钮', (await page.$$('#ses-foot [data-grade]')).length === 3);
 await shot('04-learn-card');
 
-// grade the new words: mix of 不认识 / 有印象 / 已认识
+// The meaning must stay hidden until the learner commits to an answer —
+// otherwise "已认识" is a question you can already see the answer to.
+const beforeGrading = await page.$eval('#ses-body', e => e.textContent);
+check('自评之前不显示中文释义', !/[一-鿿]/.test(beforeGrading.replace(/新词|发音|这个词你认识吗？/g, '')),
+  beforeGrading.replace(/\s+/g, ' ').trim().slice(0, 60));
+check('自评之前没有 reveal 区块', !(await page.$('#ses-body .reveal')));
+
+// grade the new words: mix of 不认识 / 有印象 / 已认识, then read the reveal
 for (let i = 0; i < 9; i++) {
   const grades = await page.$$('#ses-foot [data-grade]');
   if (!grades.length) break;
   await grades[i % 3].click();
-  await sleep(180);
+  await sleep(200);
+  if (i === 0) {                       // clicked 不认识
+    check('自评之后才显示释义', !!(await page.$('#ses-body .reveal')));
+    const revealed = await page.$eval('#ses-body .reveal', e => e.textContent.trim());
+    check('释义内容非空', revealed.length > 0, revealed.slice(0, 40));
+    check('点“不认识”后不提供降级按钮', !(await page.$('[data-act="relearn"]')));
+    await shot('04b-learn-reveal');
+  }
+  if (i === 2) {                       // clicked 已认识
+    check('点“已认识”后提供「其实不认识」补救', !!(await page.$('[data-act="relearn"]')));
+  }
+  const next = await page.$('[data-act="next"]');
+  if (next) { await next.click(); await sleep(160); }
 }
 const stateNow = await page.evaluate(() => ({
   count: document.querySelector('#ses-count').textContent,

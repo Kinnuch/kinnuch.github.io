@@ -1,16 +1,22 @@
 /* Wordbank service worker — offline app shell + on-demand dictionary cache.
 
-   BUMP VERSION whenever data/dict.json changes. The dictionary is cached
-   cache-first and never revalidated, so an installed copy would otherwise keep
-   serving the old file forever; changing VERSION renames both caches and the
-   activate handler drops the stale ones.
+   Two independently versioned caches:
 
-   v2 — dictionary gained the phrase index.
-   v3 — phrase supplement + normalised phrase keys.
-   v4 — more supplement entries (52,061 phrases). */
-const VERSION = 'wb-v4';
+   - VERSION covers the app shell. Bump it for any HTML/CSS/JS change.
+   - DATA covers data/dict.json, which is cached cache-first and never
+     revalidated, so an installed copy would otherwise serve the old file
+     forever. Bump it ONLY when dict.json actually changes — it is 2.5 MB over
+     the wire, and tying it to VERSION made every code change re-download the
+     whole dictionary.
+
+   The activate handler deletes any cache that is neither of these.
+
+   shell v2 — phrase index; v3 — phrase supplement; v4 — more supplement
+   entries; v5 — new words hide their gloss until the learner self-assesses.
+   data  v4 — 52,061 phrases (name frozen so the v5 shell keeps the cached copy). */
+const VERSION = 'wb-v5';
 const SHELL = VERSION + '-shell';
-const DATA = VERSION + '-data';
+const DATA = 'wb-v4-data';
 
 // Everything needed to boot with no network. dict.json is deliberately NOT here:
 // it is 3 MB and only fetched the first time the user actually needs a lookup.

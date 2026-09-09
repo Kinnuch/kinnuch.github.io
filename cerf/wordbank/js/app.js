@@ -354,16 +354,15 @@ function renderCard() {
   const t = SES.type;
 
   if (t === 'learn') {
+    // Word only. Showing the gloss here would make "已认识" meaningless —
+    // you cannot honestly say you knew a word whose meaning is on screen.
     body.innerHTML = `
       <div class="q">
         <div class="q__kind">新词</div>
         <div class="q__word en">${esc(w.w)}</div>
         ${w.phon ? `<div class="q__phon ipa">/${esc(w.phon)}/</div>` : ''}
         <button class="q__speak" data-say="${esc(w.w)}">${SPEAKER} 发音</button>
-        <div class="reveal">
-          <div class="reveal__trans">${esc(w.trans) || '<span class="muted">（还没有释义，可在词库里补上）</span>'}</div>
-          ${exampleHTML(w)}
-        </div>
+        <p class="small faint" style="margin-top:18px">这个词你认识吗？</p>
       </div>`;
     foot.innerHTML = `
       <div class="grades">
@@ -534,6 +533,32 @@ function showReveal(ok) {
     </div>
     <button class="btn btn--primary btn--wide" data-act="next">继续</button>`;
   if (!ok && SET.autoSpeak) speak(w.w);
+}
+
+/* Second half of a new-word card: the meaning, shown only once the learner has
+   committed to an answer. Saying "已认识" and then reading the gloss is how you
+   catch a word you only thought you knew, so the downgrade stays available. */
+function showLearnReveal(w, g) {
+  const q = $('#ses-body .q');
+  if (q) {
+    const hint = q.querySelector('.small.faint');
+    if (hint) hint.remove();
+    const div = document.createElement('div');
+    div.className = 'reveal';
+    div.innerHTML = `
+      <div class="reveal__trans">${esc(w.trans)
+      || '<span class="muted">（还没有释义，可在词库里补上）</span>'}</div>
+      ${exampleHTML(w)}`;
+    q.appendChild(div);
+  }
+  const label = g === 'known' ? '标为已掌握' : g === '0' ? '本轮稍后再来一次' : '下次复习：' + SRS.ivlLabel(w.ivl);
+  $('#ses-foot').innerHTML = `
+    <div class="row" style="margin-bottom:8px">
+      <span class="small muted">${label}</span>
+      <div class="spacer"></div>
+      ${g === '0' ? '' : '<button class="btn btn--sm btn--ghost" data-act="relearn">其实不认识</button>'}
+    </div>
+    <button class="btn btn--primary btn--wide" data-act="next">继续</button>`;
 }
 
 function nextCard() {
@@ -1145,6 +1170,16 @@ document.addEventListener('click', async ev => {
     case 'edit': editWord(key); break;
     case 'save-word': saveEdit(key || null); break;
 
+    case 'relearn': {
+      // Read the gloss, realised you did not actually know it.
+      const w = LIB.get(SES.queue[SES.i]);
+      SRS.grade(w, 0, Date.now(), SET.masterDays);
+      await saveWord(w);
+      if (SET.relearnInSession) requeue();
+      toast('已改为「不认识」，本轮稍后再来一次');
+      t.remove();
+      break;
+    }
     case 'vague': {
       // Downgrade a self-reported shaky "correct" answer.
       const w = LIB.get(SES.queue[SES.i]);
@@ -1311,7 +1346,7 @@ async function boot() {
     d.learned++;
     saveDay(d);
     if (g === '0' && SET.relearnInSession) requeue();
-    nextCard();
+    showLearnReveal(w, g);
   });
 
   $('#ses-close').addEventListener('click', endSession);

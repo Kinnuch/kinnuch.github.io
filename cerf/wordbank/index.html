@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-CN" translate="no">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1">
+<title>Wordbank 单词本</title>
+<meta name="description" content="轻量离线背单词：粘贴或导入词表即可开背，按遗忘曲线安排复习。">
+<meta name="theme-color" content="#f7f6f3">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Wordbank">
+<meta name="format-detection" content="telephone=no">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+
+<div id="boot" class="empty" style="margin-top:22vh">
+  <p class="muted">载入中…</p>
+  <noscript><p>这个应用需要 JavaScript。</p></noscript>
+</div>
+
+<main id="view" role="main"></main>
+
+<nav class="tabbar" role="tablist" aria-label="主导航">
+  <button data-tab="study" role="tab" aria-selected="true">
+    <svg viewBox="0 0 24 24"><path d="M4 5.5A1.5 1.5 0 0 1 5.5 4H11v16H5.5A1.5 1.5 0 0 1 4 18.5z"/><path d="M20 5.5A1.5 1.5 0 0 0 18.5 4H13v16h5.5a1.5 1.5 0 0 0 1.5-1.5z"/></svg>
+    学习
+  </button>
+  <button data-tab="library" role="tab" aria-selected="false">
+    <svg viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h10"/></svg>
+    词库
+  </button>
+  <button data-tab="stats" role="tab" aria-selected="false">
+    <svg viewBox="0 0 24 24"><path d="M5 19V11M12 19V5M19 19v-6"/></svg>
+    统计
+  </button>
+  <button data-tab="settings" role="tab" aria-selected="false">
+    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.6 1.6 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.6 1.6 0 0 0-1.8-.3 1.6 1.6 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1A1.6 1.6 0 0 0 9 19.4a1.6 1.6 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.6 1.6 0 0 0 .3-1.8 1.6 1.6 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1A1.6 1.6 0 0 0 4.6 9a1.6 1.6 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.6 1.6 0 0 0 1.8.3H9a1.6 1.6 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.6 1.6 0 0 0 1 1.5 1.6 1.6 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.6 1.6 0 0 0-.3 1.8V9a1.6 1.6 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.6 1.6 0 0 0-1.5 1z"/></svg>
+    设置
+  </button>
+</nav>
+
+<section id="session" class="session is-hidden" aria-label="学习中">
+  <div class="session__bar">
+    <button id="ses-close" class="session__x" aria-label="退出">&times;</button>
+    <div class="session__prog"><i id="ses-prog"></i></div>
+    <span class="session__count" id="ses-count"></span>
+  </div>
+  <div class="session__body" id="ses-body"></div>
+  <div class="session__foot" id="ses-foot"></div>
+</section>
+
+<div id="sheet-bg" class="sheet-bg is-hidden"></div>
+<div id="sheet" class="sheet is-hidden" role="dialog" aria-modal="true"></div>
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+<script type="module" src="js/app.js"></script>
+</body>
+</html>

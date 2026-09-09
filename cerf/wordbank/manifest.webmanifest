@@ -1,0 +1,25 @@
+{
+  "name": "Wordbank 单词本",
+  "short_name": "Wordbank",
+  "description": "轻量离线背单词：粘贴或导入词表即可开背，按遗忘曲线安排复习。",
+  "lang": "zh-CN",
+  "dir": "ltr",
+  "start_url": "./",
+  "scope": "./",
+  "id": "/cerf/wordbank/",
+  "display": "standalone",
+  "display_override": ["standalone", "minimal-ui"],
+  "orientation": "portrait",
+  "background_color": "#1a1a2e",
+  "theme_color": "#1a1a2e",
+  "categories": ["education", "productivity"],
+  "icons": [
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ],
+  "shortcuts": [
+    { "name": "开始学习", "url": "./?go=study", "icons": [{ "src": "icons/icon-192.png", "sizes": "192x192" }] },
+    { "name": "导入单词", "url": "./?go=import", "icons": [{ "src": "icons/icon-192.png", "sizes": "192x192" }] }
+  ]
+}

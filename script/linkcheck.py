@@ -41,6 +41,17 @@ ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardir))
 # directory is itself named "kinnuch.github.io", which contains ".git".
 SKIP_DIRS = {'.git', '_site', 'node_modules', '__pycache__', '.jekyll-cache'}
 
+# Paths on kinnuch.github.io that are served by a DIFFERENT repository's Pages
+# and therefore will never exist in this repo's file tree. ABS_RE deliberately
+# treats same-host absolute URLs as internal, which is right for everything
+# built from here; these are the documented exceptions.
+#
+# Keep this list minimal. It is not a way to silence a broken link — an entry
+# here is a promise that another repo publishes that path.
+SIBLING_PAGES = {
+    '/itinera',   # Kinnuch/itinera — 行迹, Flutter web build deployed by its own workflow
+}
+
 LINK_RE = re.compile(r'\]\((/[^)\s]*)\)')
 HREF_RE = re.compile(r'(?:href|src)="(/[^"]*)"')
 ABS_RE = re.compile(r'https://kinnuch\.github\.io(/[^)"\s]*)')
@@ -112,7 +123,7 @@ def main():
     for t in targets:
         by_nfc.setdefault(nfc(t), t)
 
-    missing, mismatched, checked = [], [], 0
+    missing, mismatched, checked, sibling = [], [], 0, 0
     for path in sources:
         text = io.open(path, encoding='utf-8').read()
         links = set(LINK_RE.findall(text)) | set(HREF_RE.findall(text)) | set(ABS_RE.findall(text))
@@ -125,6 +136,9 @@ def main():
             target = norm(link)
             if target in targets:
                 continue
+            if any(target == p or target.startswith(p + '/') for p in SIBLING_PAGES):
+                sibling += 1
+                continue
             actual = by_nfc.get(nfc(target))
             if actual is not None:
                 mismatched.append((path, link, actual))
@@ -132,6 +146,9 @@ def main():
                 missing.append((path, link))
 
     print('checked %d internal links across %d files' % (checked, len(sources)))
+    if sibling:
+        print('  (%d point at sibling-repo Pages: %s)'
+              % (sibling, ', '.join(sorted(SIBLING_PAGES))))
 
     if mismatched:
         print('\n%d UNICODE NORMALISATION MISMATCH '

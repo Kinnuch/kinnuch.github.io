@@ -17,7 +17,7 @@ js/srs.js               间隔重复调度器
 js/dict.js              离线词典的加载、查词、词形还原
 js/parse.js             导入解析（自由文本 / CSV / 两行一组 / 纯词表）
 js/app.js               界面与学习会话引擎
-data/dict.json          离线词典：19,870 词 + 52,011 短语（5.5 MB，gzip 后 2.5 MB）
+data/dict.json          离线词典：19,870 词 + 52,054 短语（5.5 MB，gzip 后 2.5 MB）
 tools/                  构建与测试脚本，不参与运行
 ```
 
@@ -60,6 +60,21 @@ abandon \n vt. 放弃             两行一组
 纯词表里的变形词会做词形还原后再查（`carrying` → `carry`，`wolves` → `wolf`，
 `went` → `go`），补上的释义会在词条里注明取自哪个原形。文件导入支持 UTF-8 与 GBK。
 
+手抄的词表常把同义词挤在一行，所以**全英文的行会按标点再拆一次**：
+
+```
+target. goal. aim                 -> 三个词
+cross， a cross                    -> 两条，全角逗号也算分隔符
+attractive charming. fascinating  -> 四个词（见下）
+because of. due to. owing to      -> 三个短语，各自保持完整
+as ... as                         -> 语法框架，原样保留，不拆
+```
+
+拆出来的片段里，**全部由实词组成的**（`attractive charming`）判为漏了标点，再按空格
+拆开；只要含一个虚词（`because of` 的 `of`、`a cross` 的 `a`）就当作短语保持完整。这条
+判断只对「已经被标点拆过的行」生效，所以单独成行的 `bachelor's degree`、`the West Lake`
+不会被误拆。
+
 ## 词典
 
 `data/dict.json` 由 [kajweb/dict](https://github.com/kajweb/dict) 的 14 本考试词书
@@ -67,12 +82,30 @@ abandon \n vt. 放弃             两行一组
 SAT、BEC、GMAT），保留词形、音标、词性释义和一条最短的例句。19,870 个词条中
 19,616 个有音标、16,625 个有例句。这 14 本同时作为可直接导入的内置词书，按考频顺序排列。
 
-**短语单独建索引**（52,011 条，取自词书的 `phrase` 字段）。这一步不是可选的：词书的
+**短语单独建索引**（52,054 条，取自词书的 `phrase` 字段）。这一步不是可选的：词书的
 词头几乎全是单词，`give up`、`in spite of`、`put up with` 一个都不在里面，没有短语索引
-的话粘一列短语进来会全部查不到释义。查短语时先精确匹配，再试首/尾词的原形
-（`gave up` → `give up`）、连字符与空格互换，最后才允许「只多一个词」的近似匹配
-（`be used to` → `be used to something`），且要求至少三个词，否则 `in the` 会去匹配
-`in the end`。近似匹配来源会写进词条的笔记里。
+的话粘一列短语进来会全部查不到释义。索引用的键和查询走同一套规范化，所以存成
+`as ... as` 的条目也能被丢掉省略号的查询命中。
+
+查短语的顺序：
+
+1. 斜杠展开 —— `not so/as ... as` 拆成 `not so ... as` 和 `not as ... as` 分别试
+2. 精确匹配
+3. 改写：去掉 `sth` / `sb` 占位符，再逐个剥掉开头的 `the` / `a` / `be` / `to` ——
+   `be busy with sth` → `busy with`，`be the same as` → `the same as` → `same as`
+4. 首词或尾词还原原形（`gave up` → `give up`）、连字符与空格互换
+5. 「只多一个词」的近似匹配（`be used to` → `be used to something`），要求至少三个词，
+   否则 `in the` 会去匹配 `in the end`
+6. 退回中心词（`belong to` → `belong`，`a little` → `little`）。语法框架不走这一步，
+   否则 `as ... as` 会变成 `as` 的释义
+
+第 3 步之后的任何一步命中，来源都会写进词条的笔记（`释义取自「…」`），因为借来的
+释义不该被当成精确释义背下去。
+
+`tools/phrase-supplement.json` 是**人工审定的补充表**，只在词书语料没有该条目时才加入。
+存在的理由很具体：语料里有 `instead of`、`as well as`、`rather than`，却偏偏没有
+`due to`、`according to`、`owing to`。没有补充表的话 `due to` 会退回单词 `due`
+（到期的），意思正好反了 —— 背错比背不到更糟。
 
 首次需要查词时才下载，之后由 Service Worker 永久缓存 —— 只花一次流量。
 
@@ -87,11 +120,18 @@ SAT、BEC、GMAT），保留词形、音标、词性释义和一条最短的例�
 node tools/build-dict.js <解压后的词书目录> data/dict.json   # 重建词典
 node tools/make-icons.js icons                              # 重画图标
 node tools/serve.mjs                                        # 本地静态服务器 :8765
-npm i puppeteer-core && node tools/smoke.mjs                # 端到端冒烟测试（24 项）
-node tools/smoke-books.mjs                                  # 内置词书导入测试（8 项）
+node tools/smoke-lookup.mjs                                 # 查词与词形还原（不需服务器）
+node tools/smoke-import.mjs                                 # 真实词表解析 + 查词（不需服务器）
+npm i puppeteer-core && node tools/smoke.mjs                # 浏览器端到端（28 项）
+node tools/smoke-books.mjs                                  # 内置词书导入（10 项）
 ```
 
-两个测试都需要 `tools/serve.mjs` 先跑起来。`smoke.mjs` 会走完冷启动、粘贴导入、
-词典补全、学习一轮、词库搜索、统计、深色模式、刷新留存，以及**断网后完全离线可用**
-（含离线查词）；`smoke-books.mjs` 覆盖内置词书的下载、分段导入与重复检测。
+前两个是纯 Node 的，直接读 `data/dict.json`，跑得很快：`smoke-lookup.mjs` 覆盖单词、
+短语、词形还原、近似匹配的护栏和「借来的释义必须带来源标注」；`smoke-import.mjs` 拿
+`tools/fixtures/real-list.txt`（一份真实的、格式很乱的手抄词表）跑完整的解析 + 查词，
+断言覆盖率不低于 98%。
+
+后两个需要先 `node tools/serve.mjs`。`smoke.mjs` 走完冷启动、粘贴导入、词典补全、
+学习一轮、词库搜索、统计、深色模式、刷新留存，以及**断网后完全离线可用**（离线查
+单词和短语各一次）；`smoke-books.mjs` 覆盖内置词书的下载、分段导入与重复检测。
 两者都断言零控制台错误。Chrome 路径可用环境变量 `CHROME` 覆盖。

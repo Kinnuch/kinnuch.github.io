@@ -1,6 +1,6 @@
 /* Offline dictionary: 19,870 headwords merged from 14 exam word books
    (小学 → GMAT), each with phonetic, part-of-speech glosses and one example,
-   plus 52,011 phrases with Chinese glosses.
+   plus 52,054 phrases with Chinese glosses.
 
    The phrase index is separate and matters more than its size suggests: the
    headword lists are single words almost throughout, so "give up", "in spite
@@ -49,8 +49,13 @@ export function load(onProgress) {
       const k = raw.entries[i][0].toLowerCase();
       if (!byWord.has(k)) byWord.set(k, i);
     }
+    // Indexed by the same normalisation queries go through, so the stored
+    // "as ... as" is reachable from a query that has lost its ellipsis.
     byPhrase = new Map();
-    for (const p of raw.phrases || []) byPhrase.set(p[0].toLowerCase(), p);
+    for (const p of raw.phrases || []) {
+      const k = normKey(p[0]);
+      if (k && !byPhrase.has(k)) byPhrase.set(k, p);
+    }
     return raw;
   })();
   loading.catch(() => { loading = null; });
@@ -155,6 +160,49 @@ function phraseCandidates(p) {
   return out;
 }
 
+/* Word-list shorthand the corpus never spells out. Stripping these turns
+   "be busy with sth" into "busy with" and "help sb with sth" into "help with",
+   both of which are listed. */
+const PLACEHOLDER = new Set(['sth', 'sth.', 'sb', 'sb.', 'somebody', 'something', 'someone', 'oneself', "one's"]);
+const LEAD = new Set(['the', 'a', 'an', 'be', 'to']);
+const STOP = new Set([...PLACEHOLDER, ...LEAD, 'is', 'are', 'was', 'were', 'been', 'of', 'in', 'on',
+  'at', 'by', 'for', 'with', 'from', 'into', 'and', 'or', 'nor', 'but', 'not', 'so', 'such',
+  'that', 'as', 'than', 'do', 'doing', 'done', 'it', 'its', 'up', 'out', 'off', 'down']);
+
+/* Ordered rewrites of a phrase query: drop the sth/sb placeholders, then peel
+   leading articles and copulas one at a time, so "be the same as" reaches
+   "the same as" and then "same as", which is the form the corpus has. */
+function normVariants(q) {
+  const out = [];
+  const push = s => { if (s && s !== q && !out.includes(s)) out.push(s); };
+  const toks = q.split(' ');
+  const stripped = toks.filter(t => !PLACEHOLDER.has(t));
+  const bases = [];
+  if (stripped.length > 1 && stripped.length !== toks.length) bases.push(stripped);
+  bases.push(toks);
+  for (const b of bases) {
+    let cur = b;
+    push(cur.join(' '));
+    while (cur.length > 2 && LEAD.has(cur[0])) { cur = cur.slice(1); push(cur.join(' ')); }
+  }
+  return out;
+}
+
+/* Nothing matched the phrase as a whole. Fall back to its head word — for
+   "belong to" or "a little" the entry for "belong" / "little" is what a paper
+   dictionary would send you to. `lemma` records it so the import preview and
+   the word's note can say where the gloss came from. */
+function headWord(q) {
+  const toks = q.split(' ');
+  if (toks.length > 4) return null;
+  for (const t of toks) {
+    if (STOP.has(t) || !/^[a-z']+$/.test(t)) continue;
+    if (byWord.has(t)) return entry(byWord.get(t), t);
+    for (const c of candidates(t)) if (byWord.has(c)) return entry(byWord.get(c), c);
+  }
+  return null;
+}
+
 /* Last resort: the corpus lists "be used to something" but not the bare
    "be used to". Accept a phrase that merely extends the query by one token —
    but only from three tokens up, or "in the" would happily match "in the end".
@@ -175,24 +223,58 @@ function phraseEntry(p, matched) {
   return { w: p[0], phon: '', trans: p[1], exEn: '', exCn: '', lemma: matched, phrase: true };
 }
 
+const normKey = s => String(s).toLowerCase().replace(/[^a-z' -]/g, ' ').replace(/\s+/g, ' ').trim();
+
+/* Word lists compress alternatives with a slash: "not so/as ... as" stands for
+   both "not so ... as" and "not as ... as". Expand into real candidates. */
+function slashAlternatives(src) {
+  if (!src.includes('/')) return [src];
+  const toks = src.split(/\s+/);
+  let outs = [[]];
+  for (const t of toks) {
+    const opts = t.includes('/') ? t.split('/').filter(Boolean) : [t];
+    const next = [];
+    for (const o of outs) for (const opt of opts) next.push(o.concat(opt));
+    outs = next.slice(0, 6);
+  }
+  return outs.map(o => o.join(' '));
+}
+
 /** Look a word or phrase up, trying inflected forms. Returns null when unknown. */
 export function lookup(word) {
   if (!raw) return null;
-  const q = String(word).trim().toLowerCase()
-    .replace(/[^a-z' -]/g, ' ').replace(/\s+/g, ' ').trim();
+  const src = String(word).trim().toLowerCase();
+  if (!src) return null;
+  for (const alt of slashAlternatives(src)) {
+    const hit = lookupOne(alt);
+    if (hit) {
+      if (!hit.lemma && alt !== src) hit.lemma = alt;
+      return hit;
+    }
+  }
+  return null;
+}
+
+function lookupOne(src) {
+  const frame = /\.{3,}|…/.test(src);
+  const q = normKey(src);
   if (!q) return null;
 
   if (q.includes(' ') || q.includes('-')) {
-    if (byPhrase.has(q)) return phraseEntry(byPhrase.get(q), null);
-    // a few compounds are real headwords too ("living room", "first floor")
-    if (byWord.has(q)) return entry(byWord.get(q), null);
-    for (const c of phraseCandidates(q)) {
-      if (byPhrase.has(c)) return phraseEntry(byPhrase.get(c), c);
-      if (byWord.has(c)) return entry(byWord.get(c), c);
+
+    for (const v of [q, ...normVariants(q)]) {
+      if (byPhrase.has(v)) return phraseEntry(byPhrase.get(v), v === q ? null : v);
+      // a few compounds are real headwords too ("living room", "first floor")
+      if (byWord.has(v)) return entry(byWord.get(v), v === q ? null : v);
+      for (const c of phraseCandidates(v)) {
+        if (byPhrase.has(c)) return phraseEntry(byPhrase.get(c), c);
+        if (byWord.has(c)) return entry(byWord.get(c), c);
+      }
+      const near = nearestPhrase(v);
+      if (near) return phraseEntry(near, near[0]);
     }
-    const near = nearestPhrase(q);
-    if (near) return phraseEntry(near, near[0]);
-    return null;
+    // "as ... as" must not quietly become the entry for "as"
+    return frame ? null : headWord(q);
   }
 
   if (byWord.has(q)) return entry(byWord.get(q), null);

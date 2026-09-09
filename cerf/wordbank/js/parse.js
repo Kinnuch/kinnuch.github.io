@@ -12,7 +12,10 @@
    Nothing here is tied to one exporter: columns are identified by what they
    contain, so an unknown app's CSV still lands in the right fields. */
 
-const CJK = /[一-鿿㐀-䶿＀-￯　-〿]/;
+/* Han characters only. Full-width punctuation deliberately excluded: a line like
+   "cross， a cross" is an English list that happens to use a Chinese comma, and
+   treating it as Chinese made the whole line get dropped. */
+const CJK = /[一-鿿㐀-䶿]/;
 const POS_TAIL = /(?:^|\s)((?:[nvadjprepconint]{1,4}\.\s*)+)$/i;
 
 export const MODES = [
@@ -34,6 +37,51 @@ function unnumber(line) {
 
 function looksEnglish(s) {
   return !!s && !CJK.test(s) && /[A-Za-z]/.test(s);
+}
+
+/* Words that make a two-word string a phrase rather than two separate words.
+   "give up" and "belong to" contain one; "obtain attain" does not. */
+const GLUE = new Set([
+  'a', 'an', 'the', 'be', 'am', 'is', 'are', 'was', 'were', 'been', 'being',
+  'to', 'of', 'in', 'on', 'at', 'by', 'for', 'with', 'from', 'into', 'onto',
+  'up', 'out', 'off', 'down', 'over', 'under', 'about', 'after', 'before',
+  'around', 'across', 'through', 'against', 'between', 'along', 'away', 'back',
+  'and', 'or', 'nor', 'but', 'as', 'than', 'that', 'so', 'such', 'not', 'no',
+  'sth', 'sb', 'sth.', 'sb.', 'something', 'somebody', 'someone', 'oneself',
+  'one\'s', 'do', 'doing', 'done', 'it', 'its', 'his', 'her', 'your', 'my',
+]);
+
+/* "as ... as", "so/such ... that" — grammar frames, not dictionary entries.
+   They must survive intact rather than being split on their dots. */
+const FRAME = /\.{3,}|…/;
+
+const LIST_SEP = /\s*[.,;，、；]\s*|\s{2,}/;
+
+/* One line of an English word list can hold several entries:
+
+     target. goal. aim                     -> three words
+     cross， a cross                        -> two, full-width comma
+     attractive charming. fascinating      -> "attractive charming" is really two
+     because of. due to. owing to          -> three phrases, each kept whole
+
+   The last two cases are the reason for GLUE: inside a list, a segment whose
+   words are all content words is mis-punctuated rather than a real phrase.
+   That test is only applied to segments of a line that was already split, so a
+   standalone "bachelor's degree" or "the West Lake" is never broken up. */
+function expandList(s) {
+  const line = String(s).trim();
+  if (!line) return [];
+  if (!looksEnglish(line) || FRAME.test(line)) return [line];
+  const parts = line.split(LIST_SEP).map(x => x.trim()).filter(Boolean);
+  if (!parts.length) return [line];
+  if (parts.length === 1) return parts;          // also drops a trailing full stop
+  const out = [];
+  for (const p of parts) {
+    const toks = p.split(/\s+/);
+    if (toks.length >= 2 && toks.every(t => !GLUE.has(t.toLowerCase()))) out.push(...toks);
+    else out.push(p);
+  }
+  return out;
 }
 function isHeadwordish(s) {
   // a headword or short phrase, not a sentence
@@ -213,15 +261,18 @@ export function parse(text, mode = 'auto') {
     }
   } else if (mode === 'lookup') {
     for (const l of lines) {
-      const w = unnumber(l).replace(/[,;，；]+$/, '').trim();
-      if (looksEnglish(w)) rows.push({ w, phon: '', trans: '', exEn: '', exCn: '' });
+      for (const w of expandList(unnumber(l))) {
+        if (looksEnglish(w)) rows.push({ w, phon: '', trans: '', exEn: '', exCn: '' });
+      }
     }
   } else { // pair
     for (const raw of lines) {
       const l = unnumber(raw);
       const parts = splitLine(l);
       if (parts) rows.push(partsToRow(parts));
-      else if (looksEnglish(l)) rows.push({ w: strip(l), phon: '', trans: '', exEn: '', exCn: '' });
+      else if (looksEnglish(l)) {
+        for (const w of expandList(l)) rows.push({ w: strip(w), phon: '', trans: '', exEn: '', exCn: '' });
+      }
     }
   }
 

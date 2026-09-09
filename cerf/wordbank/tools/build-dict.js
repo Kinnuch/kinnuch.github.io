@@ -93,6 +93,18 @@ for (const [key, name, files] of BOOKS) {
   console.error(`${name.padEnd(6)} ${String(words.length).padStart(6)} words`);
 }
 
+/* Hand-checked additions for the handful of very common bare compounds the
+   exam books never list on their own ("due to", "according to"). Added only
+   where the harvested corpus has nothing — book data always wins. */
+const supPath = path.join(__dirname, 'phrase-supplement.json');
+let added = 0;
+if (fs.existsSync(supPath)) {
+  for (const [text, gloss] of JSON.parse(fs.readFileSync(supPath, 'utf8')).phrases) {
+    const k = text.toLowerCase();
+    if (!phraseIndex.has(k)) { phraseIndex.set(k, [text, gloss]); added++; }
+  }
+}
+
 out.phrases = [...phraseIndex.values()].sort((a, b) => a[0].localeCompare(b[0]));
 
 fs.mkdirSync(path.dirname(OUT), { recursive: true });
@@ -101,5 +113,5 @@ const withEx = entries.filter(e => e[3]).length, withPhon = entries.filter(e => 
 console.error(`\nunique entries : ${entries.length}`);
 console.error(`with phonetic  : ${withPhon}`);
 console.error(`with example   : ${withEx}`);
-console.error(`phrases        : ${out.phrases.length}`);
+console.error(`phrases        : ${out.phrases.length} (含人工补充 ${added})`);
 console.error(`size           : ${(fs.statSync(OUT).size / 1048576).toFixed(2)} MB`);

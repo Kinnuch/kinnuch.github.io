@@ -20,16 +20,25 @@ const CASES = [
   ['to give up', 1], ['well-known', 1], ['living room', 1],
   ['abandon', 1], ['carrying', 1], ['wolves', 1],
   ['zzq wibble', 0], ['flurgle', 0],
-  // the near-match fallback must not fire on short function-word fragments
-  ['in the', 0], ['of the', 0], ['look at the', 0],
+  // a phrase made only of function words has no head to fall back to
+  ['in the', 0], ['of the', 0],
+  // these resolve through the head-word fallback, and must be labelled as such
+  ['look at the', 1, 'look'], ['belong to', 1], ['a little', 1],
   ['be used to', 1], ['on the other hand', 1],
+  // grammar frames come from the hand-checked supplement, never from a stray word
+  ['as ... as', 1], ['neither ... nor', 1], ['so/such ... that', 1],
+  // the slash notation stands for two patterns
+  ['not so/as ... as', 1],
+  // used to be wrong: "due" means 到期的, "due to" means 由于
+  ['due to', 1], ['according to', 1], ['the provincial capital', 1],
 ];
 
 let bad = 0;
-for (const [q, want] of CASES) {
+for (const [q, want, lemma] of CASES) {
   const hit = D.lookup(q);
   const got = hit ? 1 : 0;
-  const ok = got === want;
+  // a gloss borrowed from another form must say so, or the user memorises it as exact
+  const ok = got === want && (!lemma || (hit && hit.lemma === lemma));
   if (!ok) bad++;
   console.log((ok ? '  PASS  ' : '  FAIL  ') + q.padEnd(15) +
     (hit ? (hit.phrase ? '[短语] ' : '[单词] ') + hit.trans.slice(0, 34) + (hit.lemma ? '   ←' + hit.lemma : '')

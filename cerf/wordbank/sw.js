@@ -5,8 +5,9 @@
    serving the old file forever; changing VERSION renames both caches and the
    activate handler drops the stale ones.
 
-   v2 — dictionary gained the 52,011-entry phrase index. */
-const VERSION = 'wb-v2';
+   v2 — dictionary gained the phrase index.
+   v3 — phrase supplement + normalised phrase keys (52,054 phrases). */
+const VERSION = 'wb-v3';
 const SHELL = VERSION + '-shell';
 const DATA = VERSION + '-data';
 

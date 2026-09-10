@@ -294,10 +294,19 @@ const firstWord = await page.$eval('#ses-body .q__word', e => e.textContent.trim
 const firstKey = firstWord.toLowerCase();
 const before = await readWord(firstKey);
 const countBefore = await page.$eval('#ses-count', e => e.textContent.trim());
+const vagueLabel = await page.$eval('#ses-foot [data-grade="3"] small', e => e.textContent.trim());
+check('“有印象”最多隔 2 天再来，不会推到几个月后', /^[12] 天后$/.test(vagueLabel), vagueLabel);
 
 await page.click('#ses-foot [data-grade="0"]');            // 不认识: reschedules and requeues
 await sleep(400);
 check('作答后上一题按钮可用', !(await page.$eval('#ses-back', b => b.disabled)));
+check('揭晓页有收藏按钮', !!(await page.$('#ses-foot [data-act="star-ses"]')));
+await page.click('#ses-foot [data-act="star-ses"]');
+await sleep(300);
+check('点收藏后写入词条', (await readWord(firstKey)).starred === 1);
+check('收藏按钮变成已收藏',
+  (await page.$eval('#ses-foot [data-act="star-ses"]', b => b.textContent.trim())) === '★ 已收藏');
+await shot('05d-star-on-reveal');
 const afterGrade = await readWord(firstKey);
 check('答“不认识”确实改了词条', (afterGrade.lapses || 0) === (before.lapses || 0) + 1,
   'lapses ' + (before.lapses || 0) + ' → ' + (afterGrade.lapses || 0));
@@ -320,8 +329,17 @@ check('词条排期被撤回',
   'lapses ' + (restored.lapses || 0) + ', reps ' + restored.reps);
 const countBack = await page.$eval('#ses-count', e => e.textContent.trim());
 check('插回队列的重复卡被撤回', countBack === countBefore, countBack);
+check('上一题不会撤掉收藏', (await readWord(firstKey)).starred === 1);
 check('回到第一题后按钮再次禁用', await page.$eval('#ses-back', b => b.disabled));
 await shot('05c-go-back');
+
+// 有印象 inside a spot check must pull the word closer — not be ignored, not push it out
+await page.click('#ses-foot [data-grade="3"]');
+await sleep(400);
+const vague = await readWord(firstKey);
+check('抽查里答“有印象”会把词拉回近期', vague.ivl >= 1 && vague.ivl <= 2, 'ivl ' + vague.ivl + ' 天');
+const vagueFoot = await page.$eval('#ses-foot .small', e => e.textContent.trim());
+check('揭晓页如实显示下次复习时间', /^下次复习：[12] 天$/.test(vagueFoot), vagueFoot);
 await page.evaluate(() => document.querySelector('#ses-close').click());
 await sleep(300);
 

@@ -14,9 +14,10 @@
    shell v2 — phrase index; v3 — phrase supplement; v4 — more supplement
    entries; v5 — new words hide their gloss until the learner self-assesses;
    v6 — question types are weights, self-assessment review card, queue order;
-   v7 — Youdao online pronunciation with system-TTS fallback, 上一题 with undo.
+   v7 — Youdao online pronunciation with system-TTS fallback, 上一题 with undo;
+   v8 — 有印象 never lengthens an interval, 收藏 on reveal, reload on update.
    data  v4 — 52,061 phrases (name frozen so later shells keep the cached copy). */
-const VERSION = 'wb-v7';
+const VERSION = 'wb-v8';
 const SHELL = VERSION + '-shell';
 const DATA = 'wb-v4-data';
 

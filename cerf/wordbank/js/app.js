@@ -343,8 +343,8 @@ function renderStudy() {
       <div class="card">
         <h2>随时抽查</h2>
         <p class="small muted" style="margin:-4px 0 12px">
-          从已经学过的词里随机抽 20 个考你。答对不会拉长复习间隔，答错照常算作遗忘 ——
-          所以随便抽查多少次都不会打乱排期。${SET.spotRecall
+          从已经学过的词里随机抽 20 个考你。答对不会拉长复习间隔；答「有印象」或答错说明
+          间隔太长了，会照常把词拉回来 —— 所以抽查只会让词离你更近，不会被推远。${SET.spotRecall
       ? '当前用<b>自评卡</b>：只给单词，不给选项。'
       : '想要不给选项的纯回忆，去设置里打开「抽查只用自评卡」。'}
         </p>
@@ -467,9 +467,11 @@ function startSession(opts) {
   renderCard();
 }
 
+let pendingReload = null;   // set when an app update arrived mid-session; see boot()
 function endSession() {
   SES.on = false;
   stopSpeaking();
+  if (pendingReload) { pendingReload(); return; }
   $('#session').classList.add('is-hidden');
   document.body.style.overflow = '';
   render();
@@ -691,6 +693,9 @@ function beginAnswer(w) {
 
 async function undoEntry(e) {
   for (let j = e.inserted.length - 1; j >= 0; j--) SES.queue.splice(e.inserted[j], 1);
+  // 收藏 is a preference, not part of the answer: keep whatever it is now
+  const live = LIB.get(e.key);
+  if (live) e.word.starred = live.starred;
   await saveWord(e.word);
   const d = DAYS.get(e.day.date);
   if (d) { Object.assign(d, e.day); saveDay(d); }
@@ -749,15 +754,22 @@ function showReveal(ok) {
 
   const next = SRS.ivlLabel(w.ivl);
   $('#ses-foot').innerHTML = `
-    <div class="row" style="margin-bottom:8px">
+    <div class="row row--wrap" style="margin-bottom:8px">
       <span class="small ${ok ? '' : 'muted'}" style="color:${ok ? 'var(--good)' : 'var(--bad)'}">
         ${ok ? '答对' : '答错'}</span>
       <span class="small muted">${SES.spot && ok ? '抽查不改排期' : '下次复习：' + next}</span>
       <div class="spacer"></div>
-      ${ok && !SES.spot ? '<button class="btn btn--sm btn--ghost" data-act="vague">其实有点模糊</button>' : ''}
+      ${starButton(w)}
+      ${ok ? '<button class="btn btn--sm btn--ghost" data-act="vague">其实有点模糊</button>' : ''}
     </div>
     <button class="btn btn--primary btn--wide" data-act="next">继续</button>`;
   if (!ok && SET.autoSpeak) speak(w.w);
+}
+
+/* 收藏 toggle shown on every answer-reveal screen, so a word worth drilling can be
+   flagged at the moment its meaning is on screen. */
+function starButton(w) {
+  return `<button class="btn btn--sm btn--ghost ses-star${w.starred ? ' on' : ''}" type="button" data-act="star-ses">${w.starred ? '★ 已收藏' : '☆ 收藏'}</button>`;
 }
 
 /* Second half of a new-word card: the meaning, shown only once the learner has
@@ -778,12 +790,13 @@ function showLearnReveal(w, g) {
   }
   const label = g === 'known' ? '标为已掌握'
     : g === '0' ? '本轮稍后再来一次'
-      : SES.spot ? '抽查不改排期'
+      : SES.spot && g === '5' ? '抽查不改排期'
         : '下次复习：' + SRS.ivlLabel(w.ivl);
   $('#ses-foot').innerHTML = `
-    <div class="row" style="margin-bottom:8px">
+    <div class="row row--wrap" style="margin-bottom:8px">
       <span class="small muted">${label}</span>
       <div class="spacer"></div>
+      ${starButton(w)}
       ${g === '0' ? '' : '<button class="btn btn--sm btn--ghost" data-act="relearn">其实不认识</button>'}
     </div>
     <button class="btn btn--primary btn--wide" data-act="next">继续</button>`;
@@ -1442,6 +1455,15 @@ document.addEventListener('click', async ev => {
     case 'edit': editWord(key); break;
     case 'save-word': saveEdit(key || null); break;
 
+    case 'star-ses': {
+      const w = LIB.get(SES.queue[SES.i]);
+      if (!w) break;
+      w.starred = w.starred ? 0 : 1;
+      await saveWord(w);
+      t.classList.toggle('on', !!w.starred);
+      t.textContent = w.starred ? '★ 已收藏' : '☆ 收藏';
+      break;
+    }
     case 'test-voice': {
       voiceWarned = false;               // a deliberate test should always report back
       const got = await speak('pronunciation');
@@ -1629,8 +1651,10 @@ async function boot() {
       w.due = Date.now() + SET.masterDays * SRS.DAY;
       w.last = Date.now();
       w.seen = (w.seen || 0) + 1;
-    } else if (SES.spot && +g >= 3) {
-      // Spot check: answering early proves nothing new, so leave the schedule be
+    } else if (SES.spot && +g >= 5) {
+      // Spot check: a confident answer given early proves nothing new, so leave the
+      // schedule be. 有印象 is different — hesitating on a word means its interval
+      // is too long — so it falls through to grade() and pulls the word back.
       w.seen = (w.seen || 0) + 1;
       w.last = Date.now();
     } else {
@@ -1656,6 +1680,18 @@ async function boot() {
   $('#sheet-bg').addEventListener('click', closeSheet);
 
   if ('serviceWorker' in navigator) {
+    /* Apply an update on the next launch instead of the one after. When a new
+       worker takes over a page that already had one, reload — but never in the
+       middle of a session; wait for it to end. The first-ever install also fires
+       controllerchange, which is why a page with no prior controller is skipped. */
+    const hadController = !!navigator.serviceWorker.controller;
+    let reloading = false;
+    navigator.serviceWorker.addEventListener('controllerchange', () => {
+      if (!hadController || reloading) return;
+      const go = () => { if (!reloading) { reloading = true; location.reload(); } };
+      if (SES.on) pendingReload = go;
+      else go();
+    });
     navigator.serviceWorker.register('./sw.js').catch(() => { });
   }
 }

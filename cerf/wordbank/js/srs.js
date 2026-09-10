@@ -8,7 +8,9 @@
       interval. This is the 1/2/4/7/15 curve most Chinese vocabulary apps show.
    2. Three buttons, not six. Grading a word 0–5 is guesswork; 不认识 / 模糊 / 认识
       maps onto q = 0 / 3 / 5, and objective question types (spelling, multiple
-      choice) grade themselves. */
+      choice) grade themselves.
+   3. 模糊 never lengthens an interval. It sends the word back to a 1–2 day step,
+      however long the interval had grown; 不认识 resets it outright. */
 
 export const LADDER = [1, 2, 4, 7, 15];   // days, for reps 1..5
 export const DAY = 86400000;
@@ -67,14 +69,21 @@ export function grade(c, q, now = Date.now(), masterDays = 60) {
 
   // SM-2 ease update, restricted to the grades this app can actually produce
   c.ease = clamp((c.ease || 2.5) + (0.1 - (5 - q) * (0.08 + (5 - q) * 0.02)), 1.3, 2.8);
-  c.reps = (c.reps || 0) + 1;
 
   let days;
-  if (c.reps <= LADDER.length) {
+  if (q === 3) {
+    // 有印象 / 模糊: only vaguely remembered, so whatever the interval was, it was
+    // too long. Drop back to the foot of the ladder instead of growing from it.
+    // The old rule multiplied the interval by 1.25, which sent a word marked
+    // 已认识 (60 days) out another 83 days on a hesitant answer — the opposite of
+    // what hesitating means.
+    c.reps = Math.min(c.reps || 0, 1) + 1;
     days = LADDER[c.reps - 1];
-    if (q === 3) days = Math.max(1, Math.round(days * 0.6));   // 模糊: shorten, do not reset
   } else {
-    days = Math.max(1, Math.round((c.ivl || 1) * (q === 3 ? 1.25 : c.ease)));
+    c.reps = (c.reps || 0) + 1;
+    days = c.reps <= LADDER.length
+      ? LADDER[c.reps - 1]
+      : Math.max(1, Math.round((c.ivl || 1) * c.ease));
   }
   days = Math.max(1, fuzz(c.key || c.w || '', days));
 

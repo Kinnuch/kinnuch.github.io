@@ -39,13 +39,16 @@ description: 千语集「皮肤」页：配色预设与自定义预设、逐项�
 
 ## 4. 字体库
 
-内置 15 款 **OFL 许可、可免费商用**的字体目录，一键下载到数据目录（重启仍在）：
+内置 31 款 **可免费商用**（OFL / Apache）的字体目录，一键下载到数据目录（重启仍在）：
 
 - 中文：霞鹜文楷（简 / 繁）、思源宋体、思源黑体、马善政毛笔、志莽行书、龙藏体
-- 拉丁 / IPA：Charis SIL、Gentium Plus 完整版、Noto Serif
+- **gilatod unicode**：【荏苒之境】百科标准字体，随软件一起带，点「安装」即可，不用联网
+- 拉丁 / IPA：Charis SIL、Gentium Plus、Andika、Cardo
+- 界面无衬线：Inter、Noto Sans、Fira Sans、IBM Plex Sans
+- 正文衬线：Noto Serif、EB Garamond、Libre Baskerville、Lora、Source Serif 4、Merriweather
 - 西幻风格：Cinzel、Uncial Antiqua、MedievalSharp
-- 文字：Noto Sans Runic、Noto Sans Symbols 2
-- 等宽：JetBrains Mono
+- 文字：Noto Sans Runic、Noto Sans Old Turkic、Noto Sans Symbols 2
+- 等宽：JetBrains Mono、Fira Code、Noto Sans Mono
 
 下载有进度显示；国内网络可以填一个 GitHub 加速前缀（如 `https://ghfast.top/`）。也可以**从本地文件添加**自己的字体（TTF / OTF / WOFF / WOFF2），软件会读出字体家族名注册。已安装的字体名直接填进字体槽即可。
 

@@ -112,6 +112,7 @@ export const DEFAULTS = {
   order: 'seq',           // 'seq' = 词库顺序, 'random' = 每轮打乱
   spotRecall: false,      // 抽查只用自评卡（不给选项）
   autoSpeak: true,
+  voiceSource: 'auto',    // 'auto' = 有道在线优先、失败退回系统朗读 | 'online' | 'system'
   accent: 'en-US',
   theme: 'auto',
   masterDays: 60,     // interval at which a word is considered 掌握

@@ -23,7 +23,8 @@ const sleep = ms => new Promise(r => setTimeout(r, ms));
 const browser = await puppeteer.launch({
   executablePath: process.env.CHROME || CHROME_CANDIDATES.find(p => fs.existsSync(p)),
   headless: 'new',
-  args: ['--no-sandbox', '--disable-dev-shm-usage', '--use-fake-ui-for-media-stream'],
+  args: ['--no-sandbox', '--disable-dev-shm-usage', '--use-fake-ui-for-media-stream',
+    '--autoplay-policy=no-user-gesture-required'],
 });
 const page = await browser.newPage();
 await page.setViewport({ width: 390, height: 844, deviceScaleFactor: 2, isMobile: true, hasTouch: true });
@@ -34,6 +35,8 @@ page.on('requestfailed', r => {
   // worker answers it from cache without a network round trip. The paired
   // "200 fromSW=true" response below proves the fetch actually succeeded.
   if (r.url().includes('dict.json') && (r.failure() || {}).errorText === 'net::ERR_ABORTED') return;
+  // pointing the audio element at the next word aborts the previous clip's request
+  if (r.url().includes('dict.youdao.com') && (r.failure() || {}).errorText === 'net::ERR_ABORTED') return;
   errors.push('requestfailed [' + STEP + ']: ' + r.url() + ' ' + (r.failure() || {}).errorText);
 });
 page.on('response', r => { if (r.url().includes('dict.json')) log('   [net] dict.json -> ' + r.status() + ' fromSW=' + r.fromServiceWorker()); });
@@ -262,6 +265,110 @@ await page.evaluate(() => {
   sr.checked = false; sr.dispatchEvent(new Event('change', { bubbles: true }));
 });
 await sleep(400);
+
+log('\n--- 4d. 上一题：回退并撤回作答 ---');
+const readWord = key => page.evaluate(k => new Promise(res => {
+  const rq = indexedDB.open('wordbank');
+  rq.onsuccess = () => {
+    const g = rq.result.transaction('words').objectStore('words').get(k);
+    g.onsuccess = () => res(g.result);
+  };
+}), key);
+const setSpotRecall = on => page.evaluate(v => {
+  const el = document.querySelector('[data-set="spotRecall"]');
+  el.checked = v;
+  el.dispatchEvent(new Event('change', { bubbles: true }));
+}, on);
+
+await page.click('[data-tab="settings"]');
+await page.waitForSelector('[data-set="spotRecall"]');
+await setSpotRecall(true);                 // self-assessment cards make the answer path deterministic
+await sleep(400);
+await page.click('[data-tab="study"]');
+await page.waitForSelector('[data-act="spot"]');
+await page.click('[data-act="spot"]');
+await page.waitForSelector('#session:not(.is-hidden) #ses-foot [data-grade]', { visible: true });
+
+check('开局时上一题按钮禁用', await page.$eval('#ses-back', b => b.disabled));
+const firstWord = await page.$eval('#ses-body .q__word', e => e.textContent.trim());
+const firstKey = firstWord.toLowerCase();
+const before = await readWord(firstKey);
+const countBefore = await page.$eval('#ses-count', e => e.textContent.trim());
+
+await page.click('#ses-foot [data-grade="0"]');            // 不认识: reschedules and requeues
+await sleep(400);
+check('作答后上一题按钮可用', !(await page.$eval('#ses-back', b => b.disabled)));
+const afterGrade = await readWord(firstKey);
+check('答“不认识”确实改了词条', (afterGrade.lapses || 0) === (before.lapses || 0) + 1,
+  'lapses ' + (before.lapses || 0) + ' → ' + (afterGrade.lapses || 0));
+
+await page.click('[data-act="next"]');
+await sleep(250);
+const secondWord = await page.$eval('#ses-body .q__word', e => e.textContent.trim());
+const countSecond = await page.$eval('#ses-count', e => e.textContent.trim());
+const totalOf = s => Number(s.split('/')[1]);
+check('答错的词被插回队列', totalOf(countSecond) === totalOf(countBefore) + 1, countBefore + ' → ' + countSecond);
+log('   第一题 ' + firstWord + '，第二题 ' + secondWord);
+
+await page.click('#ses-back');
+await sleep(500);
+check('回到了上一题', (await page.$eval('#ses-body .q__word', e => e.textContent.trim())) === firstWord);
+check('上一题恢复为未作答', !(await page.$('#ses-body .reveal')) && !!(await page.$('#ses-foot [data-grade]')));
+const restored = await readWord(firstKey);
+check('词条排期被撤回',
+  (restored.lapses || 0) === (before.lapses || 0) && restored.due === before.due && restored.reps === before.reps,
+  'lapses ' + (restored.lapses || 0) + ', reps ' + restored.reps);
+const countBack = await page.$eval('#ses-count', e => e.textContent.trim());
+check('插回队列的重复卡被撤回', countBack === countBefore, countBack);
+check('回到第一题后按钮再次禁用', await page.$eval('#ses-back', b => b.disabled));
+await shot('05c-go-back');
+await page.evaluate(() => document.querySelector('#ses-close').click());
+await sleep(300);
+
+log('\n--- 4e. 发音 ---');
+const audioReqs = [];
+page.on('request', r => { if (r.url().includes('dict.youdao.com/dictvoice')) audioReqs.push(r.url()); });
+const setSelect = (sel, val) => page.evaluate((s, v) => {
+  const el = document.querySelector(s);
+  el.value = v;
+  el.dispatchEvent(new Event('change', { bubbles: true }));
+}, sel, val);
+async function clickAndToast(sel, timeout = 12000) {
+  await page.evaluate(() => { const t = document.querySelector('#toast'); t.textContent = ''; t.classList.remove('on'); });
+  await page.evaluate(s => document.querySelector(s).click(), sel);
+  await page.waitForFunction(() => document.querySelector('#toast').textContent.trim().length > 0, { timeout })
+    .catch(() => { });
+  return page.$eval('#toast', e => e.textContent.trim());
+}
+
+await page.click('[data-tab="settings"]');
+await page.waitForSelector('[data-act="test-voice"]');
+await setSpotRecall(false);
+await setSelect('[data-set="voiceSource"]', 'auto');
+await sleep(300);
+const t1 = await clickAndToast('[data-act="test-voice"]');
+log('   试听（自动）→ ' + (t1 || '(无反馈)'));
+check('试听请求了有道美音', audioReqs.some(u => /audio=pronunciation&type=2/.test(u)), audioReqs[0] || '(没有请求)');
+check('在线发音真正播放了', t1.includes('在线发音可用'), t1);
+
+await setSelect('[data-set="accent"]', 'en-GB');
+await sleep(300);
+await clickAndToast('[data-act="test-voice"]');
+check('英音走 type=1', audioReqs.some(u => /audio=pronunciation&type=1/.test(u)));
+await setSelect('[data-set="accent"]', 'en-US');
+
+// The user's phone: Web Speech API present, but the voice list holds no English voice.
+await setSelect('[data-set="voiceSource"]', 'system');
+await sleep(300);
+await page.evaluate(() => {
+  speechSynthesis.getVoices = () => [{ lang: 'zh-CN', name: '中文', voiceURI: 'zh-CN' }];
+  if (speechSynthesis.onvoiceschanged) speechSynthesis.onvoiceschanged();
+});
+const t2 = await clickAndToast('[data-act="test-voice"]');
+log('   模拟国行手机（只有中文语音）→ ' + (t2 || '(无反馈)'));
+check('没有英文语音时明确提示而不是静默', t2.includes('没有英文语音'), t2);
+await setSelect('[data-set="voiceSource"]', 'auto');
+await sleep(300);
 
 log('\n--- 5. 词库 / 统计 / 设置 ---');
 await page.click('[data-tab="library"]');

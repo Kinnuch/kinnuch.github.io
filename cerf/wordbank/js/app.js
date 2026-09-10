@@ -42,22 +42,147 @@ function shuffle(a) {
   return a;
 }
 
-/* speechSynthesis on Android needs the voice list to have loaded once; it also
-   silently drops utterances queued while a previous one is speaking. */
+/* Pronunciation, from two sources tried in order.
+
+   1. Youdao's dictvoice MP3 — real recordings, reachable from mainland China,
+      and the endpoint the source word books were built around (their
+      ukspeech / usspeech fields are its query strings).
+   2. The Web Speech API. It cannot be the only path: on phones without Google
+      services it usually exists but has no English voice, so an utterance
+      "succeeds" in complete silence — the bug users actually hit.
+
+   Online audio sends the word being studied to dict.youdao.com.
+   speak() resolves with 'online' | 'system' | 'superseded', or null on failure.
+   It never rejects, so fire-and-forget callers cannot leak unhandled promises. */
 let voices = [];
 function loadVoices() { voices = speechSynthesis.getVoices ? speechSynthesis.getVoices() : []; }
+
+const player = new Audio();
+player.preload = 'auto';
+let playToken = 0;
+let voiceWarned = false;
+
+const VOICE_FAIL = {
+  auto: '发音失败：连不上在线发音，手机也没有英文语音',
+  online: '在线发音失败：检查网络，或在设置里改用系统朗读',
+  system: '系统朗读失败：这台手机没有英文语音，建议在设置里改用在线发音',
+};
+
 function speak(text) {
-  if (!('speechSynthesis' in window) || !text) return;
-  try {
-    speechSynthesis.cancel();
-    const u = new SpeechSynthesisUtterance(text);
-    u.lang = SET.accent || 'en-US';
+  if (!text) return Promise.resolve(null);
+  const mode = SET.voiceSource || 'auto';
+  let blocked = false;
+  let p;
+  if (mode === 'system' || navigator.onLine === false) p = speakSystem(text);
+  else {
+    p = playOnline(text);
+    if (mode === 'auto') {
+      p = p.catch(err => {
+        blocked = !!(err && err.name === 'NotAllowedError');
+        return speakSystem(text);
+      });
+    }
+  }
+  return p.catch(err => {
+    if (!voiceWarned) {
+      voiceWarned = true;
+      const autoplay = blocked || !!(err && err.name === 'NotAllowedError');
+      toast(autoplay ? '浏览器拦截了自动发音，点一下「发音」按钮就能播放'
+        : (VOICE_FAIL[mode] || VOICE_FAIL.auto));
+    }
+    return null;
+  });
+}
+
+function stopSpeaking() {
+  playToken++;
+  try { player.pause(); } catch (e) { void e; }
+  if ('speechSynthesis' in window) speechSynthesis.cancel();
+}
+
+function playOnline(text) {
+  const token = ++playToken;
+  return new Promise((resolve, reject) => {
+    let timer = 0;
+    const cleanup = () => {
+      clearTimeout(timer);
+      player.removeEventListener('playing', onPlaying);
+      player.removeEventListener('error', onError);
+    };
+    // a newer word took over the player: not a failure, and no fallback wanted
+    const superseded = () => { cleanup(); resolve('superseded'); };
+    function onPlaying() {
+      if (token !== playToken) return superseded();
+      cleanup();
+      resolve('online');
+    }
+    function onError(err) {
+      if (token !== playToken) return superseded();
+      cleanup();
+      reject(err && err.name === 'NotAllowedError' ? err : new Error('online'));
+    }
+    player.addEventListener('playing', onPlaying);
+    player.addEventListener('error', onError);
+    // A stalled request on a bad connection neither plays nor errors.
+    timer = setTimeout(() => { if (token === playToken) player.pause(); onError(); }, 4000);
+    player.src = 'https://dict.youdao.com/dictvoice?audio=' + encodeURIComponent(text)
+      + '&type=' + (SET.accent === 'en-GB' ? 1 : 2);
+    const pr = player.play();
+    if (pr && pr.catch) pr.catch(onError);
+  });
+}
+
+function speakSystem(text) {
+  return new Promise((resolve, reject) => {
+    if (!('speechSynthesis' in window)) return reject(new Error('no-tts'));
     if (!voices.length) loadVoices();
-    const v = voices.find(x => x.lang && x.lang.replace('_', '-') === u.lang)
-      || voices.find(x => x.lang && x.lang.startsWith('en'));
-    if (v) u.voice = v;
-    u.rate = 0.92;
-    speechSynthesis.speak(u);
+    const en = voices.filter(v => /^en/i.test(v.lang || ''));
+    // A voice list that loaded but holds no English voice is the phone without
+    // Google services: speaking would "succeed" silently, so report it instead.
+    if (voices.length && !en.length) return reject(new Error('no-english-voice'));
+    speechSynthesis.cancel();
+    // Chrome on Android drops an utterance queued in the same tick as cancel().
+    setTimeout(() => {
+      const u = new SpeechSynthesisUtterance(text);
+      u.lang = SET.accent || 'en-US';
+      const v = en.find(x => x.lang.replace('_', '-') === u.lang) || en[0];
+      if (v) u.voice = v;
+      u.rate = 0.92;
+      let started = false;
+      u.onstart = () => { started = true; resolve('system'); };
+      u.onerror = e => {
+        if (started) return;
+        if (e.error === 'interrupted' || e.error === 'canceled') resolve('superseded');
+        else reject(new Error(e.error || 'tts'));
+      };
+      // some engines never fire onstart at all; do not leave the caller hanging
+      setTimeout(() => { if (!started) reject(new Error('tts-silent')); }, 3000);
+      speechSynthesis.speak(u);
+    }, 60);
+  });
+}
+
+/* Mobile browsers only let audio start inside a user gesture. Play a silent
+   clip on the very first touch, so later programmatic playback — auto-speak
+   when a card appears — is not blocked. */
+function unlockAudio() {
+  document.removeEventListener('pointerdown', unlockAudio, true);
+  try {
+    if (!player.src) {
+      const n = 800, buf = new ArrayBuffer(44 + n), v = new DataView(buf);
+      const str = (o, s) => { for (let i = 0; i < s.length; i++) v.setUint8(o + i, s.charCodeAt(i)); };
+      str(0, 'RIFF'); v.setUint32(4, 36 + n, true); str(8, 'WAVE'); str(12, 'fmt ');
+      v.setUint32(16, 16, true); v.setUint16(20, 1, true); v.setUint16(22, 1, true);
+      v.setUint32(24, 8000, true); v.setUint32(28, 8000, true);
+      v.setUint16(32, 1, true); v.setUint16(34, 8, true);
+      str(36, 'data'); v.setUint32(40, n, true);
+      new Uint8Array(buf, 44).fill(128);
+      const silent = URL.createObjectURL(new Blob([buf], { type: 'audio/wav' }));
+      player.src = silent;
+      const pr = player.play();
+      if (pr && pr.then) pr.then(() => { if (player.src === silent) player.pause(); }).catch(() => { });
+    }
+    if ('speechSynthesis' in window) speechSynthesis.speak(new SpeechSynthesisUtterance(''));
   } catch (e) { void e; }
 }
 
@@ -249,6 +374,7 @@ function renderStudy() {
 const SES = {
   on: false, queue: [], i: 0, spot: false,
   answered: false, right: 0, wrong: 0, seen: 0, started: 0,
+  hist: [],       // answer snapshots, newest last — see goBack()
 };
 
 /* Which types a given word can actually support. `recall` needs nothing — the
@@ -334,7 +460,7 @@ function startSession(opts) {
   if (!queue.length) { toast('没有可以学习的词'); return; }
   Object.assign(SES, {
     on: true, queue, i: 0, spot: !!(opts && opts.spot),
-    answered: false, right: 0, wrong: 0, seen: 0, started: Date.now(),
+    answered: false, right: 0, wrong: 0, seen: 0, started: Date.now(), hist: [],
   });
   $('#session').classList.remove('is-hidden');
   document.body.style.overflow = 'hidden';
@@ -343,6 +469,7 @@ function startSession(opts) {
 
 function endSession() {
   SES.on = false;
+  stopSpeaking();
   $('#session').classList.add('is-hidden');
   document.body.style.overflow = '';
   render();
@@ -370,13 +497,15 @@ function distractors(w, field, n) {
 
 const SPEAKER = `<svg viewBox="0 0 24 24"><path d="M11 5 6 9H3v6h3l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M18.5 5.5a9 9 0 0 1 0 13"/></svg>`;
 
-function renderCard() {
+function renderCard(forceType) {
   const key = SES.queue[SES.i];
   const w = LIB.get(key);
   if (!w) { SES.i++; return SES.i < SES.queue.length ? renderCard() : renderDone(); }
 
-  SES.type = pickType(w);
+  // going back re-asks the same kind of question instead of drawing a new one
+  SES.type = forceType || pickType(w);
   SES.answered = false;
+  syncBack();
   const total = SES.queue.length;
   $('#ses-prog').style.width = (SES.i / total * 100) + '%';
   $('#ses-count').textContent = (SES.i + 1) + ' / ' + total;
@@ -502,6 +631,7 @@ function answer(ok) {
   if (SES.answered) return;
   SES.answered = true;
   const w = LIB.get(SES.queue[SES.i]);
+  beginAnswer(w);
   SES.seen++;
   if (ok) SES.right++; else SES.wrong++;
 
@@ -535,6 +665,64 @@ function requeue() {
   const key = SES.queue[SES.i];
   const at = Math.min(SES.queue.length, SES.i + 4 + ((Math.random() * 3) | 0));
   SES.queue.splice(at, 0, key);
+  // remember the insertion so going back can take the extra copy out again
+  const top = SES.hist[SES.hist.length - 1];
+  if (top && top.pos === SES.i) top.inserted.push(at);
+}
+
+/* ---- 上一题 ------------------------------------------------------------- */
+
+/* Before an answer mutates anything, snapshot what it is about to change: the
+   word record, today's counters, the session tallies, and (via requeue) where a
+   repeat copy gets inserted. Going back pops these newest-first, so the
+   previous card returns genuinely unanswered — re-answering it can never
+   double-count a review or schedule the word twice. */
+function beginAnswer(w) {
+  const d = today();
+  SES.hist.push({
+    pos: SES.i, key: w.key, type: SES.type,
+    word: JSON.parse(JSON.stringify(w)),
+    day: { date: d.date, learned: d.learned, reviewed: d.reviewed, correct: d.correct, total: d.total },
+    ses: { seen: SES.seen, right: SES.right, wrong: SES.wrong },
+    inserted: [],
+  });
+  syncBack();
+}
+
+async function undoEntry(e) {
+  for (let j = e.inserted.length - 1; j >= 0; j--) SES.queue.splice(e.inserted[j], 1);
+  await saveWord(e.word);
+  const d = DAYS.get(e.day.date);
+  if (d) { Object.assign(d, e.day); saveDay(d); }
+  Object.assign(SES, e.ses);
+}
+
+let goingBack = false;
+async function goBack() {
+  if (!SES.on || !SES.hist.length || goingBack) return;
+  goingBack = true;
+  try {
+    stopSpeaking();
+    const top = SES.hist[SES.hist.length - 1];
+    // the card on screen was already answered: take that answer back first
+    if (SES.answered && SES.i < SES.queue.length && top.pos === SES.i) await undoEntry(SES.hist.pop());
+    const prev = SES.hist.pop();
+    if (prev) {
+      await undoEntry(prev);
+      SES.i = prev.pos;
+      renderCard(prev.type);
+    } else {
+      renderCard(top.type);        // only the current card had an answer; show it fresh
+    }
+  } finally {
+    goingBack = false;
+    syncBack();
+  }
+}
+
+function syncBack() {
+  const b = $('#ses-back');
+  if (b) b.disabled = !SES.hist.length;
 }
 
 function showReveal(ok) {
@@ -608,6 +796,7 @@ function nextCard() {
 }
 
 function renderDone() {
+  syncBack();
   const secs = Math.round((Date.now() - SES.started) / 1000);
   const acc = SES.seen ? Math.round(SES.right / SES.seen * 100) : 0;
   $('#ses-prog').style.width = '100%';
@@ -1072,6 +1261,16 @@ function renderSettings() {
           <option value="en-US" ${SET.accent === 'en-US' ? 'selected' : ''}>美音</option>
           <option value="en-GB" ${SET.accent === 'en-GB' ? 'selected' : ''}>英音</option>
         </select></label>
+      <label class="switch"><span class="switch__label"><b>发音来源</b>
+        <span class="small muted">在线 = 有道词典真人录音，需联网；系统 = 手机自带朗读，离线可用，但很多国产手机没有英文语音</span></span>
+        <select data-set="voiceSource">
+          <option value="auto" ${(SET.voiceSource || 'auto') === 'auto' ? 'selected' : ''}>自动</option>
+          <option value="online" ${SET.voiceSource === 'online' ? 'selected' : ''}>只用在线</option>
+          <option value="system" ${SET.voiceSource === 'system' ? 'selected' : ''}>只用系统</option>
+        </select></label>
+      <div class="switch"><span class="switch__label"><b>试听</b>
+        <span class="small muted">没声音时先点这里，会告诉你是哪一路出了问题</span></span>
+        <button class="btn btn--sm" type="button" data-act="test-voice">试听</button></div>
       <label class="switch"><span class="switch__label"><b>主题</b></span>
         <select data-set="theme">
           <option value="auto" ${SET.theme === 'auto' ? 'selected' : ''}>跟随系统</option>
@@ -1243,6 +1442,13 @@ document.addEventListener('click', async ev => {
     case 'edit': editWord(key); break;
     case 'save-word': saveEdit(key || null); break;
 
+    case 'test-voice': {
+      voiceWarned = false;               // a deliberate test should always report back
+      const got = await speak('pronunciation');
+      if (got === 'online') toast('✓ 在线发音可用（有道真人录音）');
+      else if (got === 'system') toast('✓ 系统朗读可用');
+      break;
+    }
     case 'relearn': {
       // Read the gloss, realised you did not actually know it.
       const w = LIB.get(SES.queue[SES.i]);
@@ -1363,6 +1569,10 @@ document.addEventListener('change', ev => {
 document.addEventListener('keydown', ev => {
   if (!SES.on) return;
   if (ev.key === 'Escape') { endSession(); return; }
+  if (ev.key === 'ArrowLeft' && !/^(INPUT|TEXTAREA|SELECT)$/.test((ev.target || {}).tagName || '')) {
+    goBack();
+    return;
+  }
   if (ev.key === 'Enter' && SES.answered) { nextCard(); return; }
   if (!SES.answered && /^[1-4]$/.test(ev.key)) {
     const b = document.querySelectorAll('#ses-body .opt')[+ev.key - 1];
@@ -1380,6 +1590,7 @@ if ('speechSynthesis' in window) {
   loadVoices();
   speechSynthesis.onvoiceschanged = loadVoices;
 }
+document.addEventListener('pointerdown', unlockAudio, true);
 
 /* ---- boot -------------------------------------------------------------- */
 
@@ -1406,6 +1617,7 @@ async function boot() {
     if (!b || SES.answered) return;
     SES.answered = true;
     const w = LIB.get(SES.queue[SES.i]);
+    beginAnswer(w);
     const g = b.dataset.grade;
     const d = today();
     const wasNew = w.state === SRS.STATE.NEW;
@@ -1440,6 +1652,7 @@ async function boot() {
   });
 
   $('#ses-close').addEventListener('click', endSession);
+  $('#ses-back').addEventListener('click', goBack);
   $('#sheet-bg').addEventListener('click', closeSheet);
 
   if ('serviceWorker' in navigator) {

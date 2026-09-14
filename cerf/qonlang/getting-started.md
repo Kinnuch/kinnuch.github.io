@@ -7,7 +7,7 @@ description: 千语集的安装、首页、起步模板、项目文件与保存�
 
 # 开始使用
 
-[← 指南目录](/cerf/qonlang/)
+[← 指南目录](/cerf/qonlang/) · [English](/cerf/qonlang/en/getting-started/)
 
 ## 1. 安装与启动
 

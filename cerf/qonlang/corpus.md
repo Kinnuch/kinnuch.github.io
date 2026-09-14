@@ -7,7 +7,7 @@ description: 千语集「语料」页：例句录入、自动 gloss 分析、行
 
 # 语料
 
-[← 指南目录](/cerf/qonlang/) · 导航栏第八项
+[← 指南目录](/cerf/qonlang/) · [English](/cerf/qonlang/en/corpus/) · 导航栏第八项
 
 语料页收例句，并给每个词自动做**行间 gloss**（interlinear gloss）。三个子页：**例句**、**统计**、**缩写表**。
 

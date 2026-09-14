@@ -7,7 +7,7 @@ description: 千语集「文档」页：项目内 Markdown 页面，支持的语
 
 # 文档
 
-[← 指南目录](/cerf/qonlang/) · 导航栏第十项
+[← 指南目录](/cerf/qonlang/) · [English](/cerf/qonlang/en/docs/) · 导航栏第十项
 
 文档页放**项目内的 Markdown 页面**：语法说明、文化背景、翻译笔记、造词日志。Lexicanter 的 Docs 与 Inflections 表导入后也变成这里的页面。
 

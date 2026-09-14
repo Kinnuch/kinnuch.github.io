@@ -7,7 +7,7 @@ description: 千语集「短语」页：按分类整理常用语，译文、按�
 
 # 短语
 
-[← 指南目录](/cerf/qonlang/) · 导航栏第九项
+[← 指南目录](/cerf/qonlang/) · [English](/cerf/qonlang/en/phrasebook/) · 导航栏第九项
 
 短语收**常用语句**：问候、数字、旅行手册式的对话、教程里的固定句式。它和语料页的分工：例句用于 gloss 分析，短语用于整理和展示。Lexicanter 的 Phrasebook 导入后就落在这里。
 

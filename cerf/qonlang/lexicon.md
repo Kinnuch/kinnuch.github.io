@@ -7,7 +7,7 @@ description: 千语集「词库」页：显示与录入模式、自定义列与�
 
 # 词库
 
-[← 指南目录](/cerf/qonlang/) · 导航栏第六项
+[← 指南目录](/cerf/qonlang/) · [English](/cerf/qonlang/en/lexicon/) · 导航栏第六项
 
 词库是项目的核心：每条记录是一个**词位**（lexeme）——单词、词类、义项、词源、词干与屈折形、发音、文字写法、关系、标签。
 

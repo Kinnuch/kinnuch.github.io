@@ -20,7 +20,7 @@ Each phoneme's **features** (type, voicing, place, manner, height, backness, rou
 - The **Classes** sub-page generates members from feature queries.
 - **Syllables & prosody** tells consonants from vowels by type when syllabifying.
 
-**Spelling per orthography**: the default spelling of each phoneme in each orthography, for reference when writing rules later.
+**Spelling per orthography**: how each phoneme is spelled in each orthography (θ as th). Once filled in, these spellings count as one sound in the primary orthography: when **Syllables & prosody** tests spelled input, and when paradigms count sounds (infix positions, patterns, reduplication), th is not split into t and h; an orthography without "Orthography → IPA" rules also uses them to turn spelling into phonemes.
 
 ## 2. Classes
 
@@ -41,20 +41,22 @@ A language can have several orthographies (a Latin romanisation, a Cyrillic tran
 
 Each orthography has rules in both directions:
 
-- **Orthography → IPA**: produces the Pronunciation column in the lexicon, the corpus IPA and phrase pronunciations. When a piece of text contains several words (`A B`, a phrase), it is transcribed word by word, split at whitespace: the end of each word counts as a word end, so `_#` rules apply to every word, and commas or quotes at the edges of a word don't block word-final rules.
+- **Orthography → IPA**: produces the Pronunciation column in the lexicon, the corpus IPA and phrase pronunciations. When a piece of text contains several words (`A B`, a phrase), it is transcribed word by word, split at whitespace: the end of each word counts as a word end, so `_#` rules apply to every word, and commas or quotes at the edges of a word don't block word-final rules. Digraph symbols that are IPA already (the θ of `th|θ`, or a sound in the inventory) stay as they are in the resulting IPA instead of turning back into th.
 - **IPA → orthography**: spells generated IPA back into the orthography when generating words; it can also convert words from another orthography.
 
-The rule language is exactly the same as on the Sound changes page (see [Rule language](/cerf/qonlang/en/sound-changes/#rule-language)), with a **rule list** and a **source** view, and a try-out box in the inspector that shows results as you type words. Rules in the rule list can be **dragged** to another position or another stage (a gap opens where they will land). If you write `-* stage name` markers, the try-out results are shown per stage, just like the Sound changes test bench.
+The rule language is exactly the same as on the Sound changes page (see [Rule language](/cerf/qonlang/en/sound-changes/#rule-language)), with a **rule list** and a **source** view, and a try-out box in the inspector that shows results as you type words. Rules in the rule list can be **dragged** to another position or another stage (a gap opens where they will land). If you write `-* stage name` markers, the try-out results are shown per stage, just like the Sound changes test bench, with every cell centred. The rules can also contain a **stress rule** (`ˈ = …`, see [Stress rules](/cerf/qonlang/en/sound-changes/#stress-rules)): placed before the rules that turn accent marks into plain vowels, it makes the resulting IPA carry `ˈ`, shown in orange in the try-out, and Syllables & prosody follows that mark.
 
 **Re-transcribe all entries** recomputes every entry of the current language from the primary orthography; pronunciations marked **irregular** in an entry are not overwritten.
 
 ## 4. Syllables & prosody
 
 - **Syllabification**: two strategies. **Template** splits by the syllable template you write (e.g. `(C)(C)V(C)`, referring to class names); **Maximal onset** assigns as many consonants as possible to the onset of the following syllable. It can also be switched off (for isolating languages, or when a syllabary already carries the syllables).
-- **Stress**: a fixed position (initial, second, final, penultimate, antepenultimate), weight-sensitive, or marked per word. You can also write rules as text.
+- **Stress**: a fixed position (initial, second, final, penultimate, antepenultimate), weight-sensitive, marked per word, or a **Custom stress rule**: choosing it shows a form to edit the rule entry by entry — the word length (Any length / Exactly / At least), which syllable (Syllable no. / From the end, no. / First fitting from the start / First fitting from the end), what the nucleus must contain, the environment and an exception; when an entry doesn't fit, the next one is tried. Fill **Split at** with `·` to stress each part of a compound on its own, and choose whether **Main stress in** is the last part or the first. Below the form, the rule is shown as text — the same notation as the part after `=` in a [stress rule](/cerf/qonlang/en/sound-changes/#stress-rules) — and mistakes are listed underneath. **Notes / exceptions** is still a free-form note.
 - **Tone**: a tone table (name, symbol, description). Tone letters are ignored during analysis, so they don't affect syllabification.
 
-The inspector has a try-out box, and the main area shows how the first dozen or so words of the lexicon are divided, which helps when adjusting the template.
+Type a few words into **Test** in the main area to see their syllables and stress. With **Input as** set to **Spelling** (the default), the input is first turned into IPA with the primary orthography and then syllabified — the th in `ce·theurian` is the single sound θ, so it comes out as `ˌke̞·ˈθɛʊ̯r.jän` rather than cet.heurian; with **IPA** the input is syllabified as written. Separators such as `·` and `-` split the word, each side is syllabified on its own, and they stay in the display; IPA that already carries `ˈ` (marked by orthography rules or typed by hand) keeps its marks, otherwise the stress setting above applies. Below that, the first dozen or so words of the lexicon are shown divided; their pronunciation is transcribed afresh with the primary orthography (irregular ones are used as they are), so changes to the orthography rules show up at once; entries with **Affects stress** ticked are stressed by their part of speech and special stress.
+
+In the custom stress rule form, ticking **Use the entry's special stress first (@)** at the top is the rule's `@`, each entry's **Part of speech** is `<part of speech>`, and **Unstressed** among the syllable choices is `0` (see [stress rules](/cerf/qonlang/en/sound-changes/#stress-rules)).
 
 ## 5. Phonotactics & generator
 
@@ -71,6 +73,7 @@ The phonotactics table describes legal syllables: **onsets**, **nuclei** and **c
 | Defined here | Used by |
 |---|---|
 | Phonemes and features | Feature queries in classes, syllabification |
+| Spelling per orthography | Syllabifying spelled input, counting sounds in paradigms, spelling → phonemes when there are no transcription rules |
 | Classes, digraphs | Sound-change rules, orthography rules, script mapping rules (all can refer to them directly) |
 | Orthography → IPA | Lexicon pronunciation column, corpus, phrasebook |
 | IPA → orthography | Spelling of generated words |
@@ -80,4 +83,5 @@ The phonotactics table describes legal syllables: **onsets**, **nuclei** and **c
 
 - **The phonotactic check flags everything**: phonotactics are written in IPA while lemmas are spellings; the check first converts lemmas to IPA with the primary orthography's rules. If you haven't written transcription rules yet, the check is comparing raw spellings.
 - **Tone marks disturb syllabification**: add the tone letters to the tone table and they will be ignored during analysis.
+- **A spelling like th is split into two sounds**: turn it into one sound in the orthography rules or as a digraph (`th > θ`, `th|θ`), or fill in th under the phoneme's **Spelling per orthography**; when testing, set **Input as** to Spelling.
 - **A symbol should count as both consonant and vowel**: create a class just for it and refer to that class in the syllable template.

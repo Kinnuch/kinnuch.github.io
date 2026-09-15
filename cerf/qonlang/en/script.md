@@ -37,11 +37,12 @@ Use **New script** at the far right of the title bar, then set in the inspector:
 
 ## 3. Glyphs
 
-Three sources, which can be mixed:
+Four sources, which can be mixed:
 
 1. **Read glyphs from font**: parses the font's cmap (character-to-glyph map) and post table (glyph names). With fonts exported from tools like FontCreator, the names you gave the glyphs appear under **Name**. For basic Latin letters and digits, the transliteration is filled in with the character itself (many home-made fonts map their glyphs onto a–z, so they work immediately); other characters are left empty for you to fill in. After choosing a font you confirm above the glyph table: the inspector shows an import preview (glyph cards in that font; characters already present are faded and will be skipped), and **Import glyphs** embeds the font into the script as well.
 2. **Paste glyph list**: one line per glyph — "character transliteration name", separated by tabs or spaces, e.g. `ᚠ f fehu`. The import preview in the inspector updates as you paste, and the card for the line you changed flashes; characters already present are faded and skipped.
 3. **Add glyph**: add them one by one by hand.
+4. **Draw a glyph**: **Draw a glyph** above the glyph table (or **Draw this glyph** in a glyph's inspector) opens the **drawing pad** for drawing a character by hand. The pad shows the ascender, cap height, x-height, baseline (green) and descender; the grey area is the body box, the two vertical lines are the glyph's origin and advance width, and the dot under the right line can be dragged to change the advance (or type it into **Advance**). Tools: **Pen** draws stroke by stroke (set the weight above); **Select** drags a box to select the strokes that actually pass through it, drag the selection to move it and press Delete to remove it; **Eraser** deletes the stroke you click; Ctrl+Z undoes the last step on the pad and **Clear all** starts over. After **Save**, Qonlang turns the hand-drawn characters of this script into a font placed first in the script's font stack — the glyph table, the inspector, the lexicon's script column, entry cards, the corpus and transliteration results all show them, and other characters keep using the original font. An empty character gets a Private Use Area code point automatically (skipping ones used by any script in the project or present in the embedded font); if the character is an existing one (such as `a`), `a` in this script is shown in your handwriting. **Edit drawing** redraws it and **Remove drawing** turns it back into an ordinary glyph.
 
 Each glyph has:
 
@@ -59,7 +60,7 @@ Glyph cards can be filtered by category; click a card to edit it in the inspecto
 
 The rule language is the same as on the Sound changes page (see [Rule language](/cerf/qonlang/en/sound-changes/#rule-language)), with a list view and a source view.
 
-The special part is the line `@glyphs`: it expands into **the mapping generated from the glyph table** — one `transliteration > character` rule per glyph with a transliteration, sorted by transliteration length, longest first (`th` before `t`, so the short one doesn't eat the long one). You can inspect the expansion under **Automatic mapping** at the bottom of the page. Transliterations containing symbols that mean something in rules (`?` `.` `#` `*`), or capital letters that share a name with a class, get a backslash in front when expanded (`\? > ⸮`) so they are matched literally — giving a glyph to a question mark no longer turns entire words into that glyph.
+The special part is the line `@glyphs`: it expands into **the mapping generated from the glyph table** — one `transliteration > character` rule per glyph with a transliteration, sorted by transliteration length, longest first (`th` before `t`, so the short one doesn't eat the long one). You can inspect the expansion under **Automatic mapping** at the bottom of the page (the glyphs on the right are shown in the script's font). Transliterations containing symbols that mean something in rules (`?` `.` `#` `*`), or capital letters that share a name with a class, get a backslash in front when expanded (`\? > ⸮`) so they are matched literally — giving a glyph to a question mark no longer turns entire words into that glyph.
 
 Rules written **before** `@glyphs` run first; rules **after** it run last. That is how the different script types are handled:
 
@@ -124,3 +125,4 @@ The **Preview** sub-page shows the first 40 lexicon entries and the first 10 cor
 - Want the script to apply **only to some words**? Set the **Script form** of the words you don't want converted to the same text as the headword.
 - No system font can display Private Use Area (PUA) glyphs, so embed the font. A font assigned to a script in Skin only applies on your computer; projects you send to others rely on the embedded font.
 - A large font file (several MB) makes the project file larger too. That is a deliberate trade-off: the project carries everything it needs.
+- Hand-drawn glyphs are stored as strokes (tens to hundreds of points) inside the project file, so they show up on another computer without any extra font.

@@ -25,7 +25,7 @@ A paradigm combines **grammatical dimensions** into **slots** and gives each slo
 
 To the right of the **Slots** title you can switch between three views:
 
-- **Visual** (default): one row per slot — enabled checkbox, slot name, gloss abbreviation, generator and pipeline — edited right in the row.
+- **Visual** (default): one row per slot — enabled checkbox, slot name, gloss abbreviation, generator and pipeline — edited right in the row. The triangle at the start of each row collapses it to one line (slot name, gloss, and small print on how the cell is built — click the small print to expand it); **Collapse all / Expand all** to the right of the **Slots** title does every slot at once. What's collapsed is remembered on this computer, and a cell clicked in the table or tree view is expanded when you land on it.
 - **Table**: the first dimension forms the rows and the second the columns; from a third dimension on, each of its values (each combination, with more dimensions) gets its own table, labelled above it. With a single dimension it is one column.
 - **Tree**: branches level by level in dimension order, with slots at the last level; click a branch point to collapse or expand it (with more than 200 slots, branches start collapsed and only the ones you open are drawn).
 
@@ -56,9 +56,10 @@ Available steps:
 | **infix** | A form + an insertion position (see below for the notation) |
 | **circumfix** | Both halves added together, e.g. `a-` … `-ot` |
 | **pattern** | Root–pattern alternation such as `C1aC2aC3` or `maCCuC` |
-| **reduplication** | Whole stem / initial part / final part, with a number of segments |
+| **reduplication** | Whole stem / initial part / final part, with a number of segments (counted in the spelling: a phoneme spelled th or eu in the primary orthography is one sound; infix positions and patterns count the same way) |
 | **sound change** | Choose a rule set and start / end stages and run the current form through it |
 | **tweak** | One small operation per line (notation below) |
+| **paradigm** | A paradigm inside a paradigm: treat the form so far as a stem and run it through one slot of another paradigm (optionally a variant). For example, add `-mAk` for a gerund, then run the result through the genitive of the Noun paradigm. Stem slots written in the nested paradigm all fall back to this form, and conditional letters still follow this entry's own features; nesting stops after 4 levels, including when a paradigm leads back to itself |
 
 The same kind of step can appear several times: add a prefix, run sound changes, add a suffix, then tweak — any order you like. Only three generator kinds remain: **None** (not derived), **Table (manual)** (typed per word) and **pipeline** (this pipeline).
 
@@ -130,10 +131,14 @@ A paradigm with **Applies to all words** ticked in the inspector (initial mutati
 
 ## 7. Inspector: the test bench
 
-- The search box matches the whole lexicon loosely (headword or definition); words bound to this paradigm come first. Click one to try it; the test bench runs whichever variant you are editing.
-- See the derived result and the step-by-step trace for every slot.
-- **Derive this word and store**: writes the results into this word's inflected forms (cells overridden by hand are left alone); the table flashes green afterwards.
-- **Derive all**: writes derived forms for every entry bound to this paradigm.
+The switch to the right of the test bench title has two modes:
+
+- **Compare**: the search box matches the whole lexicon loosely (headword or definition); words bound to this paradigm come first. Click one to try it; the test bench runs whichever variant you are editing. Each slot shows the derived result and whether it matches the form stored in the lexicon; hover to see the step-by-step trace.
+  - **Derive this word and store**: writes the results into this word's inflected forms (cells overridden by hand are left alone); the table flashes green afterwards.
+  - **Derive all**: writes derived forms for every entry that uses this paradigm (including entries that added it as an extra paradigm).
+- **Free**: type any form and see what this paradigm (the current variant) makes of it, using the current language. The arrow button next to a result (**Use this form as the input**) puts it back into the input box — switch to another paradigm tab to run it through that one.
+
+In both modes each result has a **Create entry** button (**Create a new entry from this form**): it turns that form into a new entry, with the etymology and relation already filled in from the paradigm (see [Lexicon · Inflected forms and paradigms](/cerf/qonlang/en/lexicon/)). In Free mode, if the form you typed is exactly a headword in the lexicon, the etymology points to that word.
 
 ## 8. Reconciliation report
 

@@ -27,6 +27,7 @@ Next to the title are two modes, **View / Edit**: View shows a read-only card (f
 | Allomorphs | Any number of "form + environment" pairs, with environments written in the rule language's environment notation (e.g. `_#`, `V_`, `Back?_`); paradigm generators referring to the morpheme pick one by environment |
 | Features | Custom key–value pairs |
 | Tags, Notes | |
+| Affects stress | Off by default. When ticked, **Pass part of speech** and **Pass special stress** work as in the [lexicon](/cerf/qonlang/en/lexicon/), except that morphemes have no part of speech: their type (root, suffix…) is passed instead, and **Counts as** can pick a part of speech. Lexicon evolution treats the morpheme as a word; when a paradigm adds it to a word, its special stress (counted within the affix) puts the stress on the affix, and **Counts as** makes the whole word count as that part of speech. For the notation, see [stress rules](/cerf/qonlang/en/sound-changes/#stress-rules) |
 
 The list only shows morphemes of the current language (with an extra Language column for **All languages**). By default it is sorted by the language's custom alphabet.
 

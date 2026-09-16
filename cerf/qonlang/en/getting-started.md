@@ -36,7 +36,7 @@ The start page has four parts:
 The left column has four buttons: New project, Open project, **Example projects** and User guide. **Example projects** contains two fictional projects that, between them, show every module — the quickest way to see what a feature looks like and how its data should be filled in:
 
 - **Aelith** (an agglutinative a priori language): a proto-language → modern language family with a sister language, Merun (compare cognates in the relation graph), vowel harmony, multi-slot suffixes, all eight kinds of pipeline steps, variants and inheritance, disabled slots and hand-filled tables, sandhi voicing that applies to all words, compound parts of speech, inspector modules, etymology chains and the relation graph, images and dialects, a glossed and confirmed corpus, a runic script, features and stress rules, a custom stress rule, and entries with Affects stress.
-- **Tsahun** (an isolating tone language): five tones, romanised and Cyrillic orthographies (syllables and sound counts follow the spelling), syllabary packing and **vertical text**, reduplication paradigms and inflected forms containing spaces, homograph candidates, a variant-character module, classifiers and a whole borrowed numeral system.
+- **Tsahun** (an isolating tone language): five tones, romanised and Cyrillic orthographies (syllables and sound counts follow the spelling), syllabary packing and **vertical text**, reduplication paradigms and inflected forms containing spaces, homograph candidates, a variant-character module, a logographic script written from glyph codes, classifiers and a whole borrowed numeral system.
 
 Edit them freely: they have no file behind them, so saving asks where to save, and the examples themselves are never overwritten.
 

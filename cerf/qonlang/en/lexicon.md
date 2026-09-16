@@ -93,9 +93,17 @@ When a part of speech is bound to a paradigm, Edit mode shows a **slot panel**: 
 
 Above the panel you can also **name a specific paradigm** for this word (instead of following its part of speech) and **choose a variant**; switching recomputes the derived forms and leaves hand-typed ones alone. When a part of speech is bound to several paradigms (for example a verb's first and second conjugation, see [Paradigms · Structure](/cerf/qonlang/en/paradigms/#1-structure)), the drop-down lists "paradigms of this part of speech" as a separate group, and its first item, "by part of speech", says which one is the default. **Reconciliation report** next to the Paradigms page title compares derived results with hand-typed values.
 
-When a word also inflects by **another paradigm** (for example it is both a noun and a verb — one declension, one conjugation), click **Add a paradigm** next to the inflected forms, then pick the paradigm and variant in the new row under the paradigm drop-down (the × removes it). The slot panel is grouped by paradigm, headed by its name; slots of an added paradigm whose names clash with an earlier one get the paradigm name in front (`Name·slot`), so the two sets of forms are stored separately. **Derive** derives the slots of every paradigm.
+When a word also inflects by **another paradigm** (for example it is both a noun and a verb — one declension, one conjugation), click **Add a paradigm** next to the inflected forms, then pick the paradigm and variant in the new row under the paradigm drop-down (the × removes it). You can also add **another variant of the same paradigm** (one written set, one colloquial). The slot panel is grouped per set, headed by the paradigm's name plus the variant's name when one is chosen; slots whose names clash with an earlier set get that set's name in front (`Name·slot`), so the sets of forms are stored separately. **Derive** derives the slots of every set.
 
 Every derived cell has a **Create entry** button next to it (**Create a new entry from this form**): a new-entry form opens with this form as the headword and the etymology (derived ← this word, with the paradigm and slot in the note) and relation (derivation → this word) already filled in; part of speech, paradigm, definitions in each gloss language and tags can be filled in there before clicking **Create**, and the form warns if the language already has that headword. **Only form, etymology and relation** creates the entry without anything else — such an entry has no definition, so the lexicon flags it in red. After creating, **Open in lexicon** on the toast jumps to it. Results on the Paradigms page's test bench can be turned into entries the same way.
+
+Inflected forms have three views, chosen at the right of the heading (always visible in Edit mode; in Display mode it appears when you hover over the block — both modes share one choice):
+
+- **List**: one slot per line, the default.
+- **Table**: the first dimension as rows and the second as columns, with one table per value of the third dimension onwards (each headed by that value, such as "Person 1st person"). In Edit mode the cells are input boxes, so you can fill the table in directly.
+- **Tree**: branching dimension by dimension, with the forms as leaves; branches can be collapsed.
+
+The triangle next to the heading **collapses the whole block** (Display and Edit mode remember it separately); collapsed, it says how many slots there are and how many are filled, and clicking again expands it.
 
 Slot labels are the value names joined with `.` (such as `plural.accusative`); in a CSV import, columns with the same name go straight into inflected forms.
 

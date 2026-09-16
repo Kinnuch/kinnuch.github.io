@@ -49,7 +49,7 @@ Each glyph has:
 | Field | Description |
 |---|---|
 | Character | The glyph itself (combining marks allowed; Private Use Area code points too) |
-| Transliteration | The corresponding spelling in the primary orthography; **the mapping rules are generated from it**. Leave it empty to exclude the glyph from automatic mapping |
+| Transliteration | What stands for the glyph in the **Transcribe from** field (the headword's spelling by default; a logographic script can use codes such as `aa01`); **the mapping rules are generated from it**. Leave it empty to exclude the glyph from automatic mapping |
 | Name | Glyph name |
 | Category | Letter / Vowel sign / Consonant / Syllable / Mark / Number / Punctuation / PUA glyph / Space / Other, or a custom one. **Auto-categorize** looks at the transliteration first: it is read as sounds using the primary orthography (if **Transcribe from** is set to a pronunciation, the value is taken as sounds directly) — all vowels make a vowel sign, all consonants a consonant, both a syllable; transliterations that are punctuation or digits count as such. Only glyphs without a transliteration are classified by the character itself (letter, mark, PUA glyph…). Categories you named yourself are left alone, and a toast reports how many went into each category. New glyphs read from a font or pasted in are categorised the same way |
 | Notes | |
@@ -77,6 +77,8 @@ Rules written **before** `@glyphs` run first; rules **after** it run last. That 
 Rules can refer to the classes and digraphs from the Phonology page. In the inspector's **Try it** box, type a transliteration (words separated by spaces) and the script appears immediately.
 
 The inspector also has **Transcribe from**: by default a script transcribes the entry's **headword**, but you can switch it to a **stem**, the **pronunciation** in one orthography, or an **inspector module** (for instance a field that holds another transcription); when that field is empty it falls back to the headword. The lexicon's script column, entry cards and this script's line in the corpus all follow it.
+
+When it is an **inspector module** (a logographic script: glyphs are transliterated with codes, and each entry lists its glyph codes in a field), the script lines in the corpus, the phrasebook, the script page preview and exports are no longer transcribed from the sentence itself. Instead **each word is looked up in the lexicon** — by the entry its analysis picked in the corpus, otherwise by headword and inflected forms — and written from that entry's field; words that aren't found keep their spelling. Codes typed into a hand-entered script form, for an entry or a sentence, turn into glyphs too.
 
 **Syllable packing** and **Automatic mapping** are two titled sections below the rule list; the triangle to the right of each title collapses it. When **Add rule** makes the rule list taller, they simply move down.
 

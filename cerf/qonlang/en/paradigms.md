@@ -35,7 +35,7 @@ Each cell of the table and tree shows what the **test bench** word becomes (chan
 
 When a slot has two parallel forms (colloquial / literary, form A / form B), you don't need a whole new paradigm:
 
-1. Create a variant in the **Variants** bar above the slot table and name it.
+1. Create a variant in the **Variants** bar above the slot table and name it. A new variant starts as a copy of **the set you are looking at** (inherited slots stay inherited), so you only change what differs.
 2. With that variant selected, edit slots — **only the slots you change belong to the variant**; the rest follow the base set.
 3. An entry can choose which variant to use; switching recomputes the derived forms and leaves hand-typed ones alone.
 4. Hovering a variant button shows a **pencil** on its right: click it to rename in place. With no variant selected you rename the base set (called **Base** by default — you might rename it "written"); entries' variant drop-downs show the new name, and clearing the name brings back **Base**.

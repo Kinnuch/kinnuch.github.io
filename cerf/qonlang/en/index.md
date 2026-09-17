@@ -5,6 +5,18 @@ title: Qonlang · User guide
 description: Qonlang is a desktop workbench for every conlanger — lexicon, morphemes, sound changes, phonology, scripts, paradigms, glossed corpus, phrasebook, docs and dictionary export. This is the complete guide, module by module.
 ---
 
+<style>
+  .qonlang-logo { text-align: center; margin: 0.5em 0 1.5em; }
+  .qonlang-logo img { width: 360px; max-width: 80%; height: auto; }
+  .qonlang-logo .on-dark { display: none; }
+  [data-theme="dark"] .qonlang-logo .on-light { display: none; }
+  [data-theme="dark"] .qonlang-logo .on-dark { display: inline; }
+</style>
+<p class="qonlang-logo">
+  <img class="on-light" src="/cerf/qonlang/assets/lockup-full-teal.svg" alt="Qonlang · 千语集">
+  <img class="on-dark" src="/cerf/qonlang/assets/lockup-full-white.svg" alt="Qonlang · 千语集">
+</p>
+
 # Qonlang · User guide
 
 [中文版](/cerf/qonlang/)

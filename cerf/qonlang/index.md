@@ -5,6 +5,18 @@ title: Qonlang 千语集 · 使用指南
 description: 千语集（Qonlang）是给所有造语者的桌面工作台：词库、语素、音变、音系、文字、构形、语料 gloss、短语、文档、词典导出。这里是完整的分模块指南。
 ---
 
+<style>
+  .qonlang-logo { text-align: center; margin: 0.5em 0 1.5em; }
+  .qonlang-logo img { width: 360px; max-width: 80%; height: auto; }
+  .qonlang-logo .on-dark { display: none; }
+  [data-theme="dark"] .qonlang-logo .on-light { display: none; }
+  [data-theme="dark"] .qonlang-logo .on-dark { display: inline; }
+</style>
+<p class="qonlang-logo">
+  <img class="on-light" src="/cerf/qonlang/assets/lockup-full-teal.svg" alt="Qonlang · 千语集">
+  <img class="on-dark" src="/cerf/qonlang/assets/lockup-full-white.svg" alt="Qonlang · 千语集">
+</p>
+
 # Qonlang 千语集 · 使用指南
 
 [English version](/cerf/qonlang/en/)

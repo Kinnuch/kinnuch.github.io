@@ -20,8 +20,8 @@ The Settings page has two parts: **Application** and **Project**.
 | Autosave interval | In seconds; 0 turns it off. The crash-recovery snapshot every 5 seconds is independent of this |
 | Backups to keep | Before every save, the previous file is copied to `Backups/`; beyond this number, the oldest are deleted |
 | Reopen last project on launch | |
-| Check for new versions automatically | A few seconds after launch the app asks GitHub whether there is an update, then keeps asking every few minutes while it is open, and shows a notice at the bottom right as soon as a new version is out. After **Later**, the same version isn't shown again during this session; **Skip this version** never shows it again; the whole check can be turned off here. For downloading and installing, see **Updates** below |
-| Check for new versions every … minutes | 5 minutes by default, 1–1440 allowed; has no effect while automatic checks are off |
+| Check for new versions automatically | A few seconds after launch the app asks GitHub whether there is an update, then keeps asking every few minutes while it is open, and shows a notice at the bottom right as soon as a new version is out. After **Later**, the same version isn't shown again during this session; **Skip this version** never shows it again; the whole check can be turned off here. For downloading and installing, see **Updates** below; to check right away, use **Check for updates now** under **About** |
+| Check for new versions every … minutes | 20 minutes by default (it used to be 5; unchanged settings are moved to 20 on upgrade), 1–1440 allowed; has no effect while automatic checks are off |
 | Highlight duplicate entries | Rows with identical headwords in the lexicon are shaded pale yellow; turned off, only the warning icon remains |
 | Show the "?" usage hints next to panels | The small round question marks next to modules and inspector panels, each giving a one-line explanation on hover |
 | Examples shown under an entry | 3 by default; an entry lists this many, and the rest are under **See all examples** |
@@ -40,7 +40,7 @@ Click **Download & install** in the notice:
 2. Once downloaded, the current project is saved first (installing closes the app; your project files are never touched): a project that has been saved before is saved in place; a project that has never been saved asks for a location with **Save as**, and cancelling asks "This resets the update progress. Continue?" — continue to skip the install this time, or cancel to get the **Save as** dialog again;
 3. The installed Windows version **installs silently and reopens automatically**, using your previous install folder and options; the portable build (unzipped and run directly) shows the installer wizard so you can choose a folder. **macOS** unpacks the zip, checks that it is a complete new version, and after quitting replaces Qonlang in its original location with the new one and **reopens automatically** (if the replacement fails, the old app is put back; this applies from the update after 0.8.3 is installed). If Qonlang sits somewhere it can't be replaced — opened directly from the dmg or from the Downloads folder (macOS moves such apps to a read-only temporary location), or in a folder without write permission — it downloads the dmg instead and opens it, and the notice tells you to drag Qonlang into Applications to replace the old one; after that it is the same as [Getting started · Installing and launching](/cerf/qonlang/en/getting-started/#1-installing-and-launching) (including the Gatekeeper workaround). On Linux, the folder containing the downloaded package is opened.
 
-Update checks send the ETag from the previous check to GitHub, so an unchanged Release doesn't count against the anonymous API limit of 60 requests per hour; when rate-limited, the last result is reused. If the notice appeared before your platform's installer had been uploaded to the Release (the Windows and macOS packages are uploaded one after the other), a later check replaces it with one you can download and install directly.
+An update check first looks at where GitHub's "latest release" page redirects to, which doesn't count against GitHub's API limit (without signing in, the API allows only 60 requests per hour per network address, which several people sharing a proxy or campus network use up quickly). Only when that version is newer does it ask the API once for the installer checksums and release notes; if the API is rate-limited or unreachable, it finds this computer's installer directly by the release's file naming (the Windows installer is then verified against the sha512 in `latest.yml`, and the notice has no release notes), and waits until the reset time GitHub gives before asking the API again. If the notice appeared before your platform's installer had been uploaded to the Release (the Windows and macOS packages are uploaded one after the other), a later check replaces it with one you can download and install directly.
 
 ## 2. Project (stored in the project file)
 
@@ -79,7 +79,9 @@ It is good for sharing your work without worrying that it gets messed up or take
 
 ## 6. About
 
-The version number, the data folder path (can be opened in the file manager) and the licence (MIT).
+The full Qonlang logo at the top; below it a line with the current version, the latest version on the Release page (known once a background or manual check has asked; until then it says it hasn't been checked yet) and the licence (MIT); then the data folder path.
+
+**Check for updates now** checks right away and shows the result next to the button: you have the latest version, a new version is available (the notice at the bottom right also appears, even for a skipped version), or why the check failed — GitHub can't be reached (check your network or proxy), or GitHub's request limit is used up for now (try again in a while).
 
 ## 7. Connection hints
 

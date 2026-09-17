@@ -19,31 +19,42 @@ The list shows one card per sentence: the script line (if a script is defined; w
 
 ## 2. Automatic analysis {#2-automatic-analysis}
 
-A sentence that hasn't been analysed yet is analysed when you select it; you can also click **Analyze** (fills in unconfirmed words only) or **Re-analyze all**. For each word, candidates come from, in order:
+A sentence that hasn't been analysed yet is analysed when you select it; you can also click **Analyze** (fills in unconfirmed words only) or **Re-analyze all**.
 
-1. **Confirmed analyses**: an analysis of the same word already confirmed in another sentence of the project comes first.
-2. **Headwords**: lexemes in the lexicon.
-3. **Inflected forms**: the entries' forms (the gloss carries the slot abbreviation, e.g. `house.PL`).
-4. **Stem slots**.
-5. **Morphemes**: roots / affixes, stripped up to two layers deep (`kaso-lar-da`).
-6. Morpheme boundaries written explicitly in the text (the symbols defined in Settings; `-` and `=` by default) split the word directly.
+For each word, **confirmed analyses** come first: an analysis of the same word already confirmed in another sentence of the project. Then the word is cut into pieces, and each piece is looked up in:
+
+1. **Headwords**: lexemes in the lexicon.
+2. **Inflected forms**: the forms stored in entries (the gloss carries the slot abbreviation, e.g. `house.PL`). For entries that were never **Derive**d, slots whose paradigm only adds affixes or reduplicates (no sound changes) are generated on the fly and looked up too.
+3. **Stem slots**.
+4. **Morphemes**: roots, prefixes, suffixes and clitics; particles, infixes and the like only count as whole words.
+
+A word can be prefixes + stem + suffixes, with affixes stacked several layers deep (`kaso-lar-da`) and more than one stem (two words written together plus affixes: `yvpli-hemelia-xete-s`). The possible segmentations are ranked like this, and the first is selected by default:
+
+- **Fewer pieces first**: a word found whole in the dictionary isn't cut up needlessly, and splitting off affixes beats splitting into several words.
+- **Single-letter pieces cost extra.**
+- **Allomorph environments**: for morphemes whose allomorphs have environments, the allomorph whose environment matches ranks higher and one that doesn't ranks lower (it isn't dropped, in case the environment is written loosely).
+- **Learning from confirmed words**: which entry or morpheme the same stretch of text was confirmed as elsewhere, how a run of pieces was split (once `don` is confirmed as `do-n`, it's split that way next time), and which morpheme usually follows which — the more of the corpus you confirm, the more accurate it gets.
+- **The translation**: among the segmentations, those whose entries' definitions match this sentence's translation rank higher.
 
 Matching ignores case and differences in Unicode composition; morphemes not found in the current language are looked up in the morpheme lists along the ancestor chain (so a root list kept in the proto-language still works).
 
-If the whole word still doesn't match, these are tried in turn:
+These are also tried:
 
 - **Apostrophe contractions** (first add `'` in **Settings → Morpheme boundary symbols**; many languages use the apostrophe as a letter, so it doesn't split by default): `t'am` and `m'nem` are split at the apostrophe, the first half is looked up with one or two vowels added (`t'` → `ta`) and the second half as usual; the hover card uses the longest piece's entry.
-- **Paradigms that apply to all words**: initial mutations and the like (see [Paradigms](/cerf/qonlang/en/paradigms/)) — the surface word is changed back to its base form and looked up again, with the mutation's abbreviation added after the gloss; the remainder after stripping a prefix is tried too.
+- **Paradigms that apply to all words**: initial mutations and the like (see [Paradigms](/cerf/qonlang/en/paradigms/)) — the surface word (or the stem between affixes) is changed back to its base form and looked up again, with the mutation's abbreviation added after the gloss.
 - **Dropping diacritics**: words written with stress or length marks are still found when the dictionary doesn't write them.
-- **Splitting into two words**: if nothing else works, the word is split into two whole words (compounds, words written together).
 
-**Dropping diacritics** and **splitting into two words** are guesses: until confirmed, the card stays yellow and they don't count as recognised in the coverage.
+These results are **guesses** — until confirmed, the card stays yellow and they don't count as recognised in the coverage:
+
+- matches found only after dropping diacritics;
+- segmentations with two or more stems (compounds, words written together), unless those words were confirmed together elsewhere;
+- segmentations using a single-letter morpheme that hasn't been confirmed anywhere in the corpus yet — once it is, the same morpheme in other words no longer counts as a guess.
 
 **Inflected forms with spaces**: forms written as two words in the dictionary (a determiner + noun like `ar mae`) merge the corresponding consecutive words in the text into one word before analysis, and hover cards and glosses treat it as a single word; words already confirmed are never merged.
 
-Each piece split at a boundary symbol is also looked up as a whole word first, then by reversing initial mutations, then by stripping one layer of affixes; each piece keeps candidates from a few different entries, and the combinations become analyses in the candidate drop-down. A reversed initial mutation is re-applied forwards as a check, and results that don't match are dropped.
+Words with morpheme boundaries written in the text (the symbols defined in Settings; `-` and `=` by default) are split at the boundaries first, and each piece is then segmented as above (a piece may hold only affixes, with the stem in another piece); each piece keeps candidates from a few different entries, and the combinations become analyses in the candidate drop-down. A reversed initial mutation is re-applied forwards as a check, and results that don't match are dropped.
 
-Every word gets some candidates, and the first is selected by default. Words that can't be found get the gloss `?` and the card is marked yellow.
+Every word gets some candidates, and the first is selected by default. Words that can't be found get the gloss `?` and the card is marked yellow. The gloss is the first short part of the definition, cut at the first semicolon, comma, full stop, colon or parenthesis (`house (building); home` gives `house`; a definition starting with a parenthetical note like `(of plants) grow` gives `grow`).
 
 ## 3. The interlinear editor
 
@@ -62,7 +73,7 @@ Any word in the editor or the list whose analysis points to an entry shows the l
 
 **Words matched to the wrong entry**: next to **Open in lexicon** at the bottom of the card is **Fix**. Clicking it turns the card into the same search box, titled "Which word is …?", with the word already filled in (when the card is showing one piece of the segmentation, that piece is filled in and only that piece is changed); click a result to write it into the analysis and confirm it. When candidates are listed side by side, there is **None of these — search** at the top. Cards hovered in the start page's gallery have **Fix** too: it opens the project, jumps to the sentence in the corpus and opens the search box right on that word.
 
-**Words that can't be identified**: when a whole word isn't found, or a piece of it isn't (its gloss is `?`, or it has a gloss but can't be attached to any entry or morpheme), hovering still shows a card that says "Nothing found". Pieces are first looked up by spelling, then by meaning: an entry counts if one of its definitions matches the piece's gloss and one of its forms (headword, stem, inflected form) occurs whole inside the piece — so stems with a prefix attached or written with different accents are still recognised (`wéñgaus` contains the weak focus form `eñgaus`). The search box below is pre-filled with the word itself and searches this language's entries and morphemes by spelling, definition or gloss; click one to assign it. The pieces of the word are lined up at the top of the card, with the missing piece in a yellow dashed box — click it to switch to assigning that piece; recognised pieces can still be opened. Once every piece is recognised, the word counts as confirmed.
+**Words that can't be identified**: when a whole word isn't found, or a piece of it isn't (its gloss is `?`, or it has a gloss but can't be attached to any entry or morpheme), hovering still shows a card that says "Nothing found". Pieces are first looked up by spelling, then by meaning: an entry counts if one of its definitions matches the piece's gloss and one of its forms (headword, stem, inflected form) occurs whole inside the piece — so stems with a prefix attached or written with different accents are still recognised (`wéñgaus` contains the weak focus form `eñgaus`). The search box below is pre-filled with the word itself and searches this language's entries and morphemes by spelling, definition or gloss; click one to assign it. When what you type can be split (several words, or a root with a string of affixes, written together), a few **Split** options come first — pick one to replace the word (or the missing piece) with those pieces. The pieces of the word are lined up at the top of the card, with the missing piece in a yellow dashed box — click it to switch to assigning that piece; recognised pieces can still be opened. Once every piece is recognised, the word counts as confirmed.
 
 ## 5. Export (inspector)
 

@@ -2,7 +2,7 @@
 layout: page
 permalink: /cerf/qonlang/en/lexicon/index.html
 title: Qonlang · Lexicon
-description: The Lexicon page in Qonlang — View and Edit modes, custom columns and widths, entry fields, senses and etymology chains, merging duplicates, multi-select, example sentences, the relation graph and compare view, CSV and Lexicanter import, dictionary export.
+description: The Lexicon page in Qonlang — View and Edit modes, custom columns and widths, entry fields, senses and etymology chains, the history row and correcting a step, merging duplicates, multi-select and batch tags, example sentences, the relation graph and compare view, CSV and Lexicanter import, dictionary export.
 ---
 
 # Lexicon
@@ -26,8 +26,12 @@ The lexicon is the heart of a project: each record is a **lexeme** — the word,
 
 The **Entries** sub-page has two modes:
 
-- **View mode**: the inspector shows a read-only entry card with a clean layout, good for looking things up — headword, script, pronunciation, part of speech, dimension values, senses, tags, etymology, inflected forms, relations, derived words and your own inspector modules. The card's font sizes and block order are set in [Skin](/cerf/qonlang/en/skin/) → Entry card; the symbols around pronunciations (`/…/`, `[…]`, none) are chosen in Settings → Application. A sense's registers show as boxed labels (one character in Chinese, such as `文`; abbreviations in English, such as `lit.`); **Settings → Register labels on entry cards** can switch to full names. When a sense has its own part of speech that differs from the entry's (common for entries with a compound part of speech), its abbreviation (e.g. `n.`) is shown faintly before the definition. Example sentences are listed below the card, separated by a rule. Every word on the card can be clicked to jump to it.
+- **View mode**: the inspector shows a read-only entry card with a clean layout, good for looking things up — headword, script, pronunciation, part of speech, dimension values, senses, tags, etymology, history, stems, inflected forms, relations, derived words and your own inspector modules. Etymology, history, stems and inflected forms are each a block of their own (the inflected-forms block only lists what the paradigm produced; stems are a separate block), and the card's font sizes and block order are set block by block in [Skin](/cerf/qonlang/en/skin/) → Entry card; the symbols around pronunciations (`/…/`, `[…]`, none) are chosen in Settings → Application. A sense's registers show as boxed labels (one character in Chinese, such as `文`; abbreviations in English, such as `lit.`); **Settings → Register labels on entry cards** can switch to full names. When a sense has its own part of speech that differs from the entry's (common for entries with a compound part of speech), its abbreviation (e.g. `n.`) is shown faintly before the definition. Example sentences are listed below the card, separated by a rule. Every word on the card can be clicked to jump to it.
 - **Edit mode**: the inspector becomes a form for editing field by field.
+
+**History** <a id="history"></a>: in View mode there may be a **History** row between the entry card and the example sentences, stringing together the forms this word went through from its source, such as `PAe kasu → CAe kaso → Ae kaso`. It appears when the etymology source is an entry, a morpheme, or a custom source whose language name matches a language or a [historical stage](/cerf/qonlang/en/languages/#historical-stages), and some sound-change rule set has every stage marker from the source's stage to this entry's stage bound to a language (or a stage of a language). The label before each form is the stage abbreviation, or else the language abbreviation, or else the stage marker's name; the rule set's name at the start of the row opens that rule set. If the final result doesn't match the entry's spelling, **mismatch** is shown next to it (hover it for "running the sound changes to the end does not give this entry's spelling; check the rules or the etymology"). In the default block order, History sits between the etymology and the stems.
+
+**Correcting a step**: click the form of the step that came out wrong, type the right one and press Enter (or click elsewhere) — it is stored as an etymology **stage**, and every later step is re-derived from it. A corrected step is shown in the accent colour with a small pencil after it, and the ↺ next to it (**Back to the derived form**) takes the correction back; typing the derived form in again, or clearing the box, does the same. Only the lexicon inspector lets you edit — hover cards and the start-page gallery just show the row.
 
 At the top there is also a **Relation graph** button <a id="graph"></a>: a graph centred on the current word showing derivation, composition, cognates, near-synonyms and other relations; click a node to switch to it. Concatenated forms in custom sources and stages (`gēs-sal`, `a + b`, `x·y`) are split into several nodes, and each piece is looked up in the source language as an entry or morpheme of the same form; pieces that are found can be clicked — that is how you jump across languages. Forms are compared ignoring diacritics and case, as well as the source language's "characters ignored in fuzzy matching" (see [Languages](/cerf/qonlang/en/languages/)). After clicking a word in another language, **Back** returns you to the entry in the original language.
 
@@ -50,7 +54,8 @@ At the top there is also a **Relation graph** button <a id="graph"></a>: a graph
 - Duplicate headwords get the whole row shaded pale yellow with a warning icon. To keep only the icon, turn off **Settings → Highlight duplicate entries**. The inspector also offers **Merge duplicates**: identical entries in the same language are merged into one, with their senses joined in order. If their parts of speech differ, each sense keeps its original part of speech and the merged entry gets the compound part of speech made of them (such as `n./adj.`). Merging can be undone.
 - Entries **without a definition** are flagged in red: a pale red row and a red circle next to the headword.
 - A **status bar** at the bottom right of the list counts entries without a definition (red) and duplicate headwords (yellow); hover a badge to list the entries, and click one to jump to it (search and filters are cleared, the row is scrolled into view and flashes). With nothing to report it says **No issues**.
-- `Ctrl`-click to select entries one by one, `Shift`-click to select a range; with several selected you can add tags or delete in bulk.
+- `Ctrl`-click to select entries one by one, `Shift`-click to select a range. With several selected, a bar appears above the list: **Tags**, **Delete**, **Clear selection**.
+- **Batch tags**: **Tags** opens a small panel. Type a tag in the box at the top and press Enter (or click **Add**) to add it to every selected entry. Below, every tag the selection **already uses** is listed with how many entries carry it (`3/5`), followed by three buttons: add it to the rest, rename it (only on the selected entries), and remove it from them.
 - **Double-click** a row to select it and open the inspector directly in Edit mode.
 
 ## 3. Entry fields (Edit mode)
@@ -59,20 +64,25 @@ At the top there is also a **Relation graph** button <a id="graph"></a>: a graph
 |---|---|
 | Word | Entered in the primary orthography (formerly called "headword") |
 | Part of speech | Chosen from Parts of speech & dimensions |
+| Historical stage | Only when the language has [historical stages](/cerf/qonlang/en/languages/#historical-stages): the stage this word belongs to, **(latest stage)** by default. The history row is worked out from it |
 | Dimension values | The word's inherent grammatical features (noun class, gender, etc.) |
 | Dialects | Dialect labels defined on the Languages page |
 | Senses | Any number, each with definitions in the gloss languages, registers, dialects and examples. A sense can have several registers (press Enter to add); common ones such as everyday / formal / colloquial / literary / religious / divine are offered, or type your own. Next to a sense's number you can pick a part of speech for that sense alone (default: same as the entry; for compound parts of speech, its components are listed first) |
 | Etymology | A chain read as "source > stage… > the word itself"; see below |
 | Stems | If the part of speech defines stem slots, one input per slot is listed (the grey placeholder is the slot's description; empty means the headword is used). You can also give a single word custom stems (name → form): after typing the name, Tab jumps straight to the form box, and renaming to an existing name warns about the duplicate and keeps the old name. Paradigm pipelines refer to these stems |
 | Inflected forms | Derived by paradigms or typed by hand; see below |
-| Pronunciation | One IPA per orthography; tick **!** to mark it irregular so re-transcription won't overwrite it |
+| Pronunciation | One **Orthography-based IPA** row per orthography (written **Orthography-based IPA (orthography name)** when there are several): derived from the spelling by that orthography's to-IPA rules. Tick **!** to mark it irregular — typed by hand, so re-transcription won't overwrite it |
 | Affects stress | Off by default. When ticked, **Pass part of speech** and **Pass special stress** appear: with the part of speech passed, stress-rule entries written `<part of speech>` choose by this word's part of speech; with special stress passed, pick the syllable the stress falls on (Syllable no. / From the end, no. / Unstressed), and rules containing `@` use it (see [stress rules](/cerf/qonlang/en/sound-changes/#stress-rules)). The pronunciation is re-derived right away |
 | Script form | One per script; empty means generated from the mapping rules |
 | Images | Any number of images with captions. The standard size is set in **Settings → Entry image size** (default 320×240): images of that size are kept as they are, images with the same aspect ratio are scaled, and anything else opens a crop dialog (drag the selection, zoom with the wheel or slider). PNG / GIF are stored losslessly, JPEG / WebP are re-encoded at high quality in their own format. In View mode the first image appears to the right of the headword and the rest as thumbnails |
-| Relations | A kind (synonym / antonym / see also / root / compound / derivation / sound change / borrowing / custom…) + a target word. Picking an entry as an etymology source adds a relation of the same name automatically |
+| Relations | A kind (synonym / antonym / see also / root / compound / derivation / sound change / borrowing / custom…) + a target word. Picking an entry as an etymology source adds a relation of the same name automatically. Choosing **Custom** in the kind drop-down opens a box next to it, and what you type counts only **when you press Enter or leave the box** (it no longer disappears after the first letter) |
 | Tags, Notes | Tags can be dragged onto another tag to change their order |
 
 **Circumfixes** among morpheme sources are written "first half…second half" (e.g. `e…ce`) in chains, entry cards, the Source column and the relation graph.
+
+**Several spellings in one field**: when a word, a stem or an inflected form is written as several spellings separated by a slash or a comma (`fóros/fauros`), each spelling is indexed on its own — whichever one a corpus sentence or example uses is recognised as this word, and a corpus word written that way (`Degnes/Degnant`) is recognised too.
+
+**Discontinuous words**: a word split into several parts by `…` (or `...`) — `ma…gò` — is one that is written with other words in between in a sentence. The corpus recognises `ma`, a word or two, then `gò` as this entry, giving every part the same entry and the same gloss, and the script line writes each part with only its own half (see [Corpus · Automatic analysis](/cerf/qonlang/en/corpus/#2-automatic-analysis)).
 
 ## 4. Etymology chains
 
@@ -89,7 +99,9 @@ Etymology is no longer a single "proto-form" box but a chain:
 
 ## 5. Inflected forms and paradigms
 
-When a part of speech is bound to a paradigm, Edit mode shows a **slot panel**: one cell per slot (such as "plural.accusative"). Click **Derive** to let the generator fill it in, or type a form by hand. Hand-typed cells are marked as overridden, and later bulk derivation won't touch them.
+When a part of speech is bound to a paradigm, Edit mode shows a **slot panel**: one cell per slot (such as "plural.accusative"). Click **Derive from paradigm** to let the generator fill it in, or type a form by hand. Hand-typed cells are marked as overridden, and later bulk derivation won't touch them.
+
+Cells you edited by hand can be **re-derived** at any time: each of them has a ↺ (**Restore derived value**) next to it — at the top-right corner of the cell in the table and tree views — which derives that one slot from the paradigm again. Next to **Derive from paradigm** there is also **Re-derive all**, which derives every slot again, the hand-edited ones included.
 
 Above the panel you can also **name a specific paradigm** for this word (instead of following its part of speech) and **choose a variant**; switching recomputes the derived forms and leaves hand-typed ones alone. When a part of speech is bound to several paradigms (for example a verb's first and second conjugation, see [Paradigms · Structure](/cerf/qonlang/en/paradigms/#1-structure)), the drop-down lists "paradigms of this part of speech" as a separate group, and its first item, "by part of speech", says which one is the default. **Reconciliation report** next to the Paradigms page title compares derived results with hand-typed values.
 
@@ -103,6 +115,10 @@ Inflected forms have three views, chosen at the right of the heading (always vis
 - **Table**: the first dimension as rows and the second as columns, with one table per value of the third dimension onwards (each headed by that value, such as "Person 1st person"). In Edit mode the cells are input boxes, so you can fill the table in directly.
 - **Tree**: branching dimension by dimension, with the forms as leaves; branches can be collapsed.
 
+The view you pick is also used by **hover cards and the entry cards in the start-page gallery** (they only show it, they don't offer the switch).
+
+Slots whose generator is **Pipeline + affects pronunciation** in the paradigm (see [Paradigms · Affects pronunciation](/cerf/qonlang/en/paradigms/#slot-pron)) store a pronunciation on the form when derived, and the entry card shows it in smaller type after the form in all three views (list, table, tree).
+
 The triangle next to the heading **collapses the whole block** (Display and Edit mode remember it separately); collapsed, it says how many slots there are and how many are filled, and clicking again expands it.
 
 Slot labels are the value names joined with `.` (such as `plural.accusative`); in a CSV import, columns with the same name go straight into inflected forms.
@@ -110,6 +126,8 @@ Slot labels are the value names joined with `.` (such as `plural.accusative`); i
 ## 6. Example sentences
 
 Below an entry, the **example sentences that use the word** are listed — from the corpus, the phrasebook and docs. Corpus sentences count by the entry recorded in their analysis, and words that aren't analysed are compared by headword and inflected forms as whole words; stems are not used for matching (a stem slot often holds only a root or a stem vowel that never stands alone), headwords written with a hyphen (`al-`) only match through their inflected forms, and a word already confirmed as another entry doesn't count even if it is spelled the same. 3 are shown by default (change it in **Settings → Examples shown below entries**). **See all examples** opens a page with every occurrence, loading more as you scroll, so it stays fast even for common words.
+
+When an entry has **several senses** and a corpus word matches it as a whole, the candidate list offers one candidate per sense (each with that sense's gloss), so you can pick which sense it is.
 
 ## 7. Importing
 

@@ -2,7 +2,7 @@
 layout: page
 permalink: /cerf/qonlang/en/paradigms/index.html
 title: Qonlang · Paradigms
-description: The Paradigms page in Qonlang — combining grammatical dimensions into slots, pipeline steps, letters that change by condition, adjustments and infix positions, variants, @morpheme allomorphs, paradigm inheritance, several paradigms per part of speech, the test bench, writing derived forms and reconciliation.
+description: The Paradigms page in Qonlang — combining grammatical dimensions into slots, locking and filtering dimensions, simple and complex mode, pipeline steps, letters that change by condition, adjustments and infix positions, variants, @morpheme allomorphs, paradigm inheritance, several paradigms per part of speech, slots based on other slots and slots that affect pronunciation, the test bench, writing derived forms and reconciliation.
 ---
 
 # Paradigms
@@ -14,18 +14,40 @@ A paradigm combines **grammatical dimensions** into **slots** and gives each slo
 ## 1. Structure {#1-structure}
 
 - **Dimensions** are the categories a word changes for — number, case, tense — and are defined on the lexicon's **Parts of speech & dimensions** sub-page.
-- A paradigm picks some dimensions and combines their values into slots: `sg.nom`, `sg.acc`, `pl.nom`… A slot label is its value names joined with `.`, and is also the key in an entry's `forms`. The order of the dimension chips decides which comes first in slot names (and which forms the rows or columns of the table); move a chip with its arrows, or press and drag it onto another chip. When you reorder them, each slot's generator, variants and disabled state follow along, and inflected forms stored under slot names in the lexicon move to the new names.
+- A paradigm picks some dimensions and combines their values into slots: `sg.nom`, `sg.acc`, `pl.nom`… A slot label is its value names joined with `.`, and is also the key in an entry's `forms`. The order of the dimension chips decides which comes first in slot names (and which forms the rows or columns of the table); move a chip with its arrows, or press and drag it onto another chip. A slot is identified by its **combination of values**, not by the order of dimensions: reordering dimensions, removing a dimension and adding it back, or inheriting between paradigms whose dimensions are in different orders keeps every slot's generator, variants and disabled state; inflected forms stored under slot names in the lexicon move to the new names. Projects from older versions are converted automatically when opened.
 - The number of slots is the product of the number of values in each dimension, so it grows quickly: when it would exceed 500, a dialog warns you before the dimension is added (you can still add it), and the slot summary turns to a warning colour. With too many slots, the Paradigms page, derivation and entry editing all slow down.
 - Slots you don't need can be **disabled**.
 - A paradigm can **inherit** from another: the child only defines the slots that differ and takes the rest from the parent.
 - Once a part of speech is bound to a paradigm, its entries get a slot panel in the lexicon's Edit mode; a single entry can also name a different paradigm.
 - **A part of speech can be bound to several paradigms** (say, a verb's first and second conjugations): tick them under **Bound parts of speech** in the inspector. The first one bound is the default, used by entries that haven't chosen a paradigm; the other paradigms' rows offer **Make default**, and unticked parts of speech show in small print which paradigms they are already bound to. An entry chooses its paradigm in the Edit mode drop-down (where "paradigms of this part of speech" form their own group); the test bench first lists the words currently using this paradigm, then those whose part of speech is bound to it but haven't switched to it.
+- Each paradigm is a tab at the top, and tabs can be **grouped** just like the tab groups in [Sound changes · Rule sets](/cerf/qonlang/en/sound-changes/#1-rule-sets) (click a group label to collapse or expand it; right-click a tab or a group label to move, rename or recolour). Until you change anything, they are grouped by part of speech: every part of speech bound to a paradigm gets a group named after it (a paradigm bound to several goes into the first); paradigms bound to nothing (such as ones that apply to all words) stay ungrouped.
+
+### Dimensions editable / locked {#lock-dims}
+
+The button to the right of the **Dimensions** title switches between two states:
+
+- **Dimensions editable** (default): clicking a dimension really adds it to this paradigm, clicking it again removes it, and the slots are recomputed.
+- **Dimensions locked**: the current slots are fixed (shaded), and clicking dimensions no longer changes which slots the paradigm has. Clicking a dimension now only **filters** which slots you see — those that use that dimension; once you have filtered, **Clear filter**, **Enable the filtered slots** and **Disable the filtered slots** appear after the chips and switch a whole batch at once. The line under the dimensions says how many slots are shown and how many are fixed in total.
+
+### A slot with a setup stays a slot {#kept-slots}
+
+A slot is identified by **which values it takes**, so a slot you wrote something in doesn't disappear when you change the dimensions: reorder them, or remove a dimension and add it back, and everything written in those cells is still there and still counts in derivation, the test bench and entries. Slots with one dimension more than the current grid live alongside it too — `tense.aspect.person` and `tense.aspect` both stay. These cells are listed after the slots the grid produces; the table and tree views only lay out the current grid, so use the visual view to reach them.
+
+### Simple and complex mode {#simple-mode}
+
+**Complex mode: slots with more dimensions stand on their own** in **Settings → Current project → Paradigms** is off by default, which is **simple mode**:
+
+- In simple mode, a slot with more dimensions (`polarity.tense.person`) that has no setup of its own continues from the slot with fewer (`polarity.tense`) — dimensions are dropped one by one from the end, in the paradigm's dimension order, and the first slot found with a setup is used; letters that change by condition and allomorphs still follow **this slot's own** values.
+- With complex mode ticked, each slot stands alone: a slot with more dimensions and no setup produces no form.
+
+The point is to write the shared part once: only fill in the cells that really differ and leave the rest empty. The verb of the example project Aelith is written this way — the third person has no person suffix, so those cells are simply left empty and continue from the `polarity.tense` slots.
 
 ## 2. Main area: the slot table
 
 To the right of the **Slots** title you can switch between three views:
 
-- **Visual** (default): one row per slot — enabled checkbox, slot name, gloss abbreviation, generator and pipeline — edited right in the row. The triangle at the start of each row collapses it to one line (slot name, gloss, and small print on how the cell is built — click the small print to expand it); **Collapse all / Expand all** to the right of the **Slots** title does every slot at once. What's collapsed is remembered on this computer, and a cell clicked in the table or tree view is expanded when you land on it.
+- **Visual** (default): one row per slot — enabled checkbox, slot name, gloss abbreviation, generator and pipeline — edited right in the row. The triangle at the start of each row collapses it to one line (slot name, gloss, and small print on how the cell is built — click the small print to expand it); **Collapse all / Expand all** to the right of the **Slots** title does every slot at once. What's collapsed is remembered on this computer, and a cell clicked in the table or tree view is expanded when you land on it. Under the generator drop-down are two small buttons, **Copy this slot's setup** and **Paste into this slot (replaces its setup)**: when several slots are built much the same way, copy one over and adjust it (see [section 3](#3-variants) for the clipboard). When the generator is **Pipeline + affects pronunciation**, a second, pronunciation pipeline sits under the spelling one (see [Affects pronunciation](#slot-pron)).
+  - **Double-click a slot name** — or use the small arrow (**Move to another slot**) that appears next to the name when the mouse is over the row — when a setup ended up in the wrong slot: a **Move the setup of "…" to…** dialog opens, with a search box for slot names or abbreviations and a list of the other slots, where slots that already have one are marked **has a setup**. Click one to move this slot's setup (in the variant you are viewing) there, and this slot goes back to **None**. If the target already has a setup you are asked whether to replace it; Ctrl+Z undoes the move. A slot with no setup only shows a hint.
 - **Table**: the first dimension forms the rows and the second the columns; from a third dimension on, each of its values (each combination, with more dimensions) gets its own table, labelled above it. With a single dimension it is one column.
 - **Tree**: branches level by level in dimension order, with slots at the last level; click a branch point to collapse or expand it (with more than 200 slots, branches start collapsed and only the ones you open are drawn).
 
@@ -39,10 +61,13 @@ When a slot has two parallel forms (colloquial / literary, form A / form B), you
 2. With that variant selected, edit slots — **only the slots you change belong to the variant**; the rest follow the base set.
 3. An entry can choose which variant to use; switching recomputes the derived forms and leaves hand-typed ones alone.
 4. Hovering a variant button shows a **pencil** on its right: click it to rename in place. With no variant selected you rename the base set (called **Base** by default — you might rename it "written"); entries' variant drop-downs show the new name, and clearing the name brings back **Base**.
+5. **Copy set** in the **Variants** bar copies the setup each slot actually uses in the set you are viewing (a variant's unchanged slots take the base set's); **Paste into set** pastes into the set you are viewing: slots with the same name are replaced, slots that don't exist here (different dimensions) are skipped, and a toast says how many were pasted.
+
+Copying a slot or a whole set also puts it on the system clipboard, so you can paste it into a paradigm in another window or another project. Copying is refused in read-only projects.
 
 ## 4. The pipeline: start from the stem and add step by step
 
-Each slot's generator is a **pipeline**: it starts with just the stem, and you add whatever steps you need; each step acts on the result of the previous one. Change the order with the left / right arrows on a step, or press a step (not on an input) and drag it onto another step. The **Add step** menu closes a moment after the mouse leaves it, or when you press Esc.
+Each slot's generator is a **pipeline**: it starts with the stem (or [another slot](#slot-base)), and you add whatever steps you need; each step acts on the result of the previous one. Change the order with the left / right arrows on a step, or press a step (not on an input) and drag it onto another step. The **Add step** menu closes a moment after the mouse leaves it, or when you press Esc.
 
 ```
 stem[strong] → prefix @DEF → suffix -s → sound change (Proto-Shikrin → Theusrin) → tweak -at
@@ -61,9 +86,27 @@ Available steps:
 | **tweak** | One small operation per line (notation below) |
 | **paradigm** | A paradigm inside a paradigm: treat the form so far as a stem and run it through one slot of another paradigm (optionally a variant). For example, add `-mAk` for a gerund, then run the result through the genitive of the Noun paradigm. Stem slots written in the nested paradigm all fall back to this form, and conditional letters still follow this entry's own features; nesting stops after 4 levels, including when a paradigm leads back to itself |
 
-The same kind of step can appear several times: add a prefix, run sound changes, add a suffix, then tweak — any order you like. Only three generator kinds remain: **None** (not derived), **Table (manual)** (typed per word) and **pipeline** (this pipeline).
+The same kind of step can appear several times: add a prefix, run sound changes, add a suffix, then tweak — any order you like. The generator drop-down has four entries: **None** (not derived), **Table (manual)** (typed per word), **Pipeline** (this pipeline) and **Pipeline + affects pronunciation** (this pipeline plus a second one that changes the pronunciation, see [Affects pronunciation](#slot-pron)).
 
 > The four older generator kinds — affixation, affixation + sound changes, pattern and reduplication — are converted to equivalent pipelines automatically when an old project is opened; derived results don't change.
+
+### Start point: the stem or another slot {#slot-base}
+
+The first box of the pipeline is a drop-down: choose **Stem** to type the stem next to it as before, or choose **Based on** a slot — another slot of this paradigm (the **This paradigm** group) or a slot of another paradigm (grouped by paradigm name). The pipeline then starts from the form that slot produces for the same entry, and the steps you add carry on from there; when that slot's setup changes, this one follows.
+
+- For example, `sbjv.prs.3sg` differs from `sbjv.prs.1sg` only by one suffix: choose **Based on sbjv.prs.1sg** as the start and add one suffix step.
+- If that slot was changed by hand on the entry (overridden), the hand-typed form is used; if that slot is a table or has no generator, the form stored on the entry is used; with neither, it falls back to the stem.
+- The small print on how the slot is built says **based on "sbjv.prs.1sg"**.
+- Slots based on slots stop after 4 levels.
+
+### Affects pronunciation {#slot-pron}
+
+Choosing the generator **Pipeline + affects pronunciation** (it used to be a separate checkbox) adds a second pipeline under the spelling pipeline, and this one changes the pronunciation (the orthography-based IPA):
+
+- It starts with a **Pron.** drop-down: **This form → IPA** is this slot's derived spelling converted by the primary orthography's to-IPA rules; **Entry pronunciation** is the entry's own pronunciation.
+- Add steps as usual — every kind except **paradigm** (for example a tweak `d > ð / V_V`).
+- When deriving, the result is stored as the form's pronunciation and shown after the form on the entry card (see [Lexicon · Inflected forms and paradigms](/cerf/qonlang/en/lexicon/#5-inflected-forms-and-paradigms)).
+- Switching back to **Pipeline** hides it and stops deriving the pronunciation; the steps you wrote are kept and come back if you switch again.
 
 ## 5. Notation quick reference
 
@@ -138,7 +181,7 @@ The switch to the right of the test bench title has two modes:
   - **Derive all**: writes derived forms for every entry that uses this paradigm (including entries that added it as an extra paradigm).
 - **Free**: type any form and see what this paradigm (the current variant) makes of it, using the current language. The arrow button next to a result (**Use this form as the input**) puts it back into the input box — switch to another paradigm tab to run it through that one.
 
-In both modes each result has a **Create entry** button (**Create a new entry from this form**): it turns that form into a new entry, with the etymology and relation already filled in from the paradigm (see [Lexicon · Inflected forms and paradigms](/cerf/qonlang/en/lexicon/)). In Free mode, if the form you typed is exactly a headword in the lexicon, the etymology points to that word.
+In both modes, the input box shows a × on the right when it isn't empty; click it to clear the box. Each result has a **Create entry** button (**Create a new entry from this form**): it turns that form into a new entry, with the etymology and relation already filled in from the paradigm (see [Lexicon · Inflected forms and paradigms](/cerf/qonlang/en/lexicon/)). In Free mode, if the form you typed is exactly a headword in the lexicon, the etymology points to that word.
 
 ## 8. Reconciliation report
 

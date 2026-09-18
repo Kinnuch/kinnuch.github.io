@@ -2,33 +2,50 @@
 layout: page
 permalink: /cerf/qonlang/en/settings/index.html
 title: Qonlang · Settings
-description: The Settings page in Qonlang — interface language, theme, autosave and backups, remembered interface habits, project name and author, gloss-language order, morpheme boundary symbols, default language, exporting as a folder, exporting the whole project as one CSV, and read-only copies.
+description: The Settings page in Qonlang — application settings grouped into cards (interface, saving & startup, updates, display) and project settings (basics, languages & fonts, word splitting & gloss, paradigms), exporting as a folder, one CSV or a read-only copy, and clearing data.
 ---
 
 # Settings
 
 [← Guide index](/cerf/qonlang/en/) · [中文](/cerf/qonlang/settings/) · at the very bottom of the navigation bar
 
-The Settings page has two parts: **Application** and **Project**.
+From top to bottom, the Settings page has four parts — **Application (this computer)**, **Current project**, **Data** and **About** — each grouped into cards.
 
 ## 1. Application (stored in the data folder, per computer)
+
+**Interface**
 
 | Item | Description |
 |---|---|
 | Interface language | 中文 / English. With English, the **User guide** buttons open this English guide |
 | Theme | Follow system / Light / Dark; the skin's palette switches according to this |
+| Show the "?" usage hints next to panels | The small round question marks next to modules and inspector panels, each giving a one-line explanation on hover |
+| Show the guided tour every time **User guide** is clicked | Off by default: each module's tour runs automatically only once, and after that **User guide** opens this site directly; turned on, the tour runs every time. The checkbox in the dialog at the end of a tour is the same switch |
+
+**Saving & startup**
+
+| Item | Description |
+|---|---|
 | Autosave interval | In seconds; 0 turns it off. The crash-recovery snapshot every 5 seconds is independent of this |
 | Backups to keep | Before every save, the previous file is copied to `Backups/`; beyond this number, the oldest are deleted |
 | Reopen last project on launch | |
+
+**Updates**
+
+| Item | Description |
+|---|---|
 | Check for new versions automatically | A few seconds after launch the app asks GitHub whether there is an update, then keeps asking every few minutes while it is open, and shows a notice at the bottom right as soon as a new version is out. After **Later**, the same version isn't shown again during this session; **Skip this version** never shows it again; the whole check can be turned off here. For downloading and installing, see **Updates** below; to check right away, use **Check for updates now** under **About** |
 | Check for new versions every … minutes | 20 minutes by default (it used to be 5; unchanged settings are moved to 20 on upgrade), 1–1440 allowed; has no effect while automatic checks are off |
-| Highlight duplicate entries | Rows with identical headwords in the lexicon are shaded pale yellow; turned off, only the warning icon remains |
-| Show the "?" usage hints next to panels | The small round question marks next to modules and inspector panels, each giving a one-line explanation on hover |
-| Examples shown under an entry | 3 by default; an entry lists this many, and the rest are under **See all examples** |
-| Mark paradigm-derived forms with a gear ⚙ | Distinguishes derived values from hand-entered ones on the entry card; turn it off if you don't want the mark |
+
+**Display**
+
+| Item | Description |
+|---|---|
 | Register labels on entry cards | Default: a boxed short form — the first character in Chinese (`文`, `古`), abbreviations in English (`lit.`, `arch.`); choose **Boxed full name** to write them out in full |
-| Pronunciation brackets | Broad `/…/` (default), narrow `[…]`, or none; both entry cards and the lexicon's pronunciation column follow it |
-| Show the guided tour every time **User guide** is clicked | Off by default: each module's tour runs automatically only once, and after that **User guide** opens this site directly; turned on, the tour runs every time. The checkbox in the dialog at the end of a tour is the same switch |
+| Pronunciation brackets | Phonemic `/…/` (default), Phonetic `[…]`, or none; both entry cards and the lexicon's pronunciation column follow it |
+| Examples shown under an entry | 3 by default; an entry lists this many, and the rest are under **See all examples** |
+| Highlight duplicate entries | Rows with identical headwords in the lexicon are shaded pale yellow; turned off, only the warning icon remains |
+| Mark paradigm-derived forms with a gear ⚙ | Distinguishes derived values from hand-entered ones on the entry card; turn it off if you don't want the mark |
 
 Window and panel sizes (inspector width, lexicon column widths, the chosen skin) are also kept in your local preferences and restored next time. By default the inspector width **follows the window**: the main area keeps enough width for pages such as Languages and Settings (960), and the rest goes to the inspector (between 360 and 900), so the two line up exactly unless the window is very wide. Once you drag the divider, your width is used; double-click the divider to follow the window again. Widths saved by older versions switch back to following the window once when upgrading. The side panel on the start page does not change. On a first start the window size follows the screen: 1853 × 920 on a 2K screen (2560 × 1440), and the same proportions of any other screen (on a high-DPI screen it is computed in logical pixels, so it takes up the same amount of the screen), never below 900 × 600, and the whole work area if the screen is smaller. Windows saved by older versions that are smaller than the default are enlarged once.
 
@@ -44,18 +61,40 @@ An update check first looks at where GitHub's "latest release" page redirects to
 
 ## 2. Project (stored in the project file)
 
+**Current project** has four cards.
+
+**Basics**
+
 | Item | Description |
 |---|---|
 | Project name, author, description | |
+
+**Languages & fonts**
+
+| Item | Description |
+|---|---|
+| Default language | The current language when the project is opened |
 | Definition languages | Comma-separated language codes such as `zh, en`. Multilingual text — senses, dimension names, morpheme meanings and so on — is shown and falls back in this order |
+| Font for language data | A project-level font (headwords, IPA, etc.), also used by dictionary exports; empty means the default |
+| Entry image size | Every image is cropped to this pixel size (default 320×240); after changing it, newly imported images use the new size and existing ones are unchanged |
+
+**Word splitting & gloss**
+
+| Item | Description |
+|---|---|
 | Morpheme boundary symbols | Space-separated, `-` and `=` by default; treated as explicit boundaries when the corpus is tokenised. Adding `'` makes the apostrophe a boundary too, restoring the vowel dropped in a contraction (`t'am` = `ta` + `am`) |
 | Tokenization | How corpus text is split into words: **By whitespace** (default) / **By character** (for writing without spaces, as in Chinese or Japanese) / **Custom separator** (a JS regular expression; an invalid one falls back to whitespace) |
 | Symbols that count as letters | Symbols listed here are never stripped from the edges of a word as punctuation (the `'` of Arabic transliteration, for instance). Apostrophes that start or end a word in the lexicon are picked up automatically, so you rarely need to fill this in |
-| Font for language data | A project-level font (headwords, IPA, etc.), also used by dictionary exports; empty means the default |
-| Entry image size | Every image is cropped to this pixel size (default 320×240); after changing it, newly imported images use the new size and existing ones are unchanged |
-| Default language | The current language when the project is opened |
+
+**Paradigms**
+
+| Setting | Description |
+|---|---|
+| Complex mode: slots with more dimensions stand on their own | Off by default (simple mode): a slot with more dimensions (`polarity.tense.person`) that has no setup continues from the one with fewer (`polarity.tense`). Ticked, each slot stands alone and an empty one produces no form. See [Paradigms · Simple and complex mode](/cerf/qonlang/en/paradigms/#simple-mode) |
 
 ## 3. Exporting as a folder or as one CSV
+
+The **Data** part has two cards: **Export** (this section and the read-only copy in section 5) and **Clear data**.
 
 **Export as folder** splits the project into a folder: `project.json` (metadata and settings), `languages.json`, `lexemes.json`, `morphemes.json`, `paradigms.json`, `sentences.json`, `phrasebook.json`… plus a `.txt` for each rule set and doc pages as `docs/*.md`. Good for keeping in git and reading diffs. A folder can also be imported back into a single file.
 

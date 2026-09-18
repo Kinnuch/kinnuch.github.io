@@ -24,7 +24,7 @@ Words in the text that can be found in the lexicon (including inflected forms an
 | Text | In the primary orthography |
 | Translation | In each gloss language |
 | Category | Free text, with suggestions from categories already in use; the left column groups by it. **Double-click** a category in the left column to rename it (every phrase in it changes together) |
-| Pronunciation | One IPA per orthography, followed by a **!** checkbox meaning irregular. After you edit the text, pronunciations are derived automatically with the "orthography → IPA" rules. Editing a pronunciation by hand ticks **irregular** automatically, so derivation no longer overwrites it; a toast says how many were left alone, and **Recompute them too** on the toast recomputes them as well. Unticking **!** recomputes that orthography's pronunciation from the rules immediately |
+| Pronunciation | One **Orthography-based IPA** row per orthography (written **Orthography-based IPA (orthography name)** when there are several), followed by a **!** checkbox meaning irregular. After you edit the text, pronunciations are derived automatically with the "orthography → IPA" rules. Editing a pronunciation by hand ticks **irregular** automatically, so derivation no longer overwrites it; a toast says how many were left alone, and **Recompute them too** on the toast recomputes them as well. Unticking **!** recomputes that orthography's pronunciation from the rules immediately |
 | Variants | Any number of "form + note" pairs, for differences of register, occasion or dialect |
 | Tags | |
 

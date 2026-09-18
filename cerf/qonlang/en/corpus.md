@@ -26,7 +26,7 @@ For each word, **confirmed analyses** come first: an analysis of the same word a
 1. **Headwords**: lexemes in the lexicon.
 2. **Inflected forms**: the forms stored in entries (the gloss carries the slot abbreviation, e.g. `house.PL`). For entries that were never **Derive**d, slots whose paradigm only adds affixes or reduplicates (no sound changes) are generated on the fly and looked up too.
 3. **Stem slots**.
-4. **Morphemes**: roots, prefixes, suffixes and clitics; particles, infixes and the like only count as whole words.
+4. **Morphemes**: roots, prefixes, suffixes and clitics; particles, infixes and the like only count as whole words. A word that is just a clitic on its own is glossed as that clitic.
 
 A word can be prefixes + stem + suffixes, with affixes stacked several layers deep (`kaso-lar-da`) and more than one stem (two words written together plus affixes: `yvpli-hemelia-xete-s`). The possible segmentations are ranked like this, and the first is selected by default:
 
@@ -51,6 +51,8 @@ These results are **guesses** — until confirmed, the card stays yellow and the
 - segmentations using a single-letter morpheme that hasn't been confirmed anywhere in the corpus yet — once it is, the same morpheme in other words no longer counts as a guess.
 
 **Inflected forms with spaces**: forms written as two words in the dictionary (a determiner + noun like `ar mae`) merge the corresponding consecutive words in the text into one word before analysis, and hover cards and glosses treat it as a single word; words already confirmed are never merged.
+
+**Discontinuous words**: an entry whose headword is split into several parts by `…` (or `...`) — `ma…gò` — is written in a sentence with other words in between (`ma`, a word or two, then `gò`). The analysis looks for the parts **in order** within one sentence: once the first part matches, each later part is searched for up to 12 words further on; entries with more parts are tried first, each word is used by only one match, and words you have already confirmed are left alone. Only a complete set counts, and then every part gets the same entry and the same gloss. A part on its own (`ma` with no `gò` later in the sentence) is not attached. On the script line each part is written with only its own half — the entry's **Script form** is split on `…` in the same way.
 
 Words with morpheme boundaries written in the text (the symbols defined in Settings; `-` and `=` by default) are split at the boundaries first, and each piece is then segmented as above (a piece may hold only affixes, with the stem in another piece); each piece keeps candidates from a few different entries, and the combinations become analyses in the candidate drop-down. A reversed initial mutation is re-applied forwards as a check, and results that don't match are dropped.
 

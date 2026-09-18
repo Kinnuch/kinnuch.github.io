@@ -2,7 +2,7 @@
 layout: page
 permalink: /cerf/qonlang/en/script/index.html
 title: Qonlang · Script
-description: The Script page in Qonlang — glyph tables for custom writing systems, importing from font files, embedded fonts, transliteration-to-script mapping rules, and how scripts show up in the lexicon, corpus and exports.
+description: The Script page in Qonlang — glyph tables for custom writing systems, importing from font files, embedded fonts, the drawing pad and font export, transliteration-to-script mapping rules, and how scripts show up in the lexicon, corpus and exports.
 ---
 
 # Script
@@ -32,8 +32,12 @@ Use **New script** at the far right of the title bar, then set in the inspector:
 - **System font name**: for fonts installed on the computer, just type the name.
 - **Import font file**: TTF / OTF / TTC / WOFF / WOFF2. The file is stored in the project file as a data URL, so it displays on any computer. TTF / OTF / TTC can also provide the glyph list (see below).
 - With a font, the glyph cards, the inspector title and the **Character** input use the script's font; Private Use Area glyphs show as boxes without one.
-- **Changing the font in Skin**: below [Skin → Font slots](/cerf/qonlang/en/skin/#3-font-slots), every script of the current project is listed and can be given its own font (installed from the font library or imported locally), which takes priority over the setting here; it only changes the display on this computer and doesn't touch the project file.
+- **Changing the font in Skin**: below [Skin → Font slots](/cerf/qonlang/en/skin/#4-font-slots), every script of the current project is listed and can be given its own font (installed from the font library or imported locally), which takes priority over the setting here; it only changes the display on this computer and doesn't touch the project file.
 - Without a font, script text falls back to the Skin's "custom script" font slot, and then to the language data font.
+- **Export font** <a id="export-font"></a>: the **Export font** menu above the **Glyphs** tab. **Export TTF** and **Export WOFF** rebuild a font from the embedded font's glyphs plus every drawn or edited glyph (drawn ones replace the originals) and save it; **Update embedded font** replaces this script's embedded font with the rebuilt TTF, so the project carries the edited font, with Undo on the toast.
+  - When the embedded font is **TrueType**, the original file is operated on rather than rewritten: only the glyphs you drew or edited are swapped in, glyph ids stay exactly as they were and new glyphs are appended at the end, so the original font's **kerning, ligatures and the hinting of every other glyph are kept as they are**.
+  - What can't be kept: the **hinting of the glyphs you edited** no longer matches their new outlines, so it is dropped; a **composite glyph** that references a glyph you edited changes with it (edit `A` and `Á` `À` `Ä` … change too); the **digital signature** is always dropped.
+  - When the embedded font is an **OTF (CFF outlines), a WOFF / WOFF2, a TTC, or there is no embedded font at all**, the font has to be written from scratch: only glyphs mapped to characters are included, everything is rescaled to 1000 units per em, and kerning, ligatures and hinting cannot be kept. An embedded WOFF2 font can't even be read, so only the glyphs you drew or edited come out.
 
 ## 3. Glyphs
 
@@ -42,7 +46,7 @@ Four sources, which can be mixed:
 1. **Read glyphs from font**: parses the font's cmap (character-to-glyph map) and post table (glyph names). With fonts exported from tools like FontCreator, the names you gave the glyphs appear under **Name**. For basic Latin letters and digits, the transliteration is filled in with the character itself (many home-made fonts map their glyphs onto a–z, so they work immediately); other characters are left empty for you to fill in. After choosing a font you confirm above the glyph table: the inspector shows an import preview (glyph cards in that font; characters already present are faded and will be skipped), and **Import glyphs** embeds the font into the script as well.
 2. **Paste glyph list**: one line per glyph — "character transliteration name", separated by tabs or spaces, e.g. `ᚠ f fehu`. The import preview in the inspector updates as you paste, and the card for the line you changed flashes; characters already present are faded and skipped.
 3. **Add glyph**: add them one by one by hand.
-4. **Draw a glyph**: **Draw a glyph** above the glyph table (or **Draw this glyph** in a glyph's inspector) opens the **drawing pad** for drawing a character by hand. The pad shows the ascender, cap height, x-height, baseline (green) and descender; the grey area is the body box, the two vertical lines are the glyph's origin and advance width, and the dot under the right line can be dragged to change the advance (or type it into **Advance**). Tools: **Pen** draws stroke by stroke (set the weight above); **Select** drags a box to select the strokes that actually pass through it, drag the selection to move it and press Delete to remove it; **Eraser** deletes the stroke you click; Ctrl+Z undoes the last step on the pad and **Clear all** starts over. After **Save**, Qonlang turns the hand-drawn characters of this script into a font placed first in the script's font stack — the glyph table, the inspector, the lexicon's script column, entry cards, the corpus and transliteration results all show them, and other characters keep using the original font. An empty character gets a Private Use Area code point automatically (skipping ones used by any script in the project or present in the embedded font); if the character is an existing one (such as `a`), `a` in this script is shown in your handwriting. **Edit drawing** redraws it and **Remove drawing** turns it back into an ordinary glyph.
+4. **Draw a glyph**: **Draw a glyph** above the glyph table (or **Draw this glyph** / **Edit drawing** in a glyph's inspector) opens the **drawing pad** for drawing a character by hand or editing a character from the font; see [Drawing pad](#glyph-pad) below. After **Save**, Qonlang turns the hand-drawn characters of this script into a font placed first in the script's font stack — the glyph table, the inspector, the lexicon's script column, entry cards, the corpus and transliteration results all show them, and other characters keep using the original font. An empty character gets a Private Use Area code point automatically (skipping ones used by any script in the project or present in the embedded font); if the character is an existing one (such as `a`), `a` in this script is shown in your handwriting. **Edit drawing** redraws it and **Remove drawing** turns it back into an ordinary glyph.
 
 Each glyph has:
 
@@ -55,6 +59,31 @@ Each glyph has:
 | Notes | |
 
 Glyph cards can be filtered by category; click a card to edit it in the inspector.
+
+### Drawing pad {#glyph-pad}
+
+The pad shows the ascender, cap height, x-height, baseline (green) and descender; the grey area is the body box, the two vertical lines are the glyph's origin and advance width, and the dot under the right line can be dragged to change the advance (or type it into **Advance**). A glyph is made of **strokes** (lines drawn with the pen) and **outlines** (filled closed shapes: loaded from the font or dragged out with Shapes), layered together.
+
+**Loading from the font**: when a glyph has no drawing yet and the script's embedded font has this character, the pad loads its outline as soon as it opens, ready to edit. **Load from font** next to the title reloads it at any time, replacing what is on the pad (undoable). WOFF2 fonts can't be read.
+
+| Tool | How it works |
+|---|---|
+| **Pen** | Draw freehand; **Weight** sets the line width. **Stabilizer** runs 0–10, default 5, remembered on this computer: the tip hangs on a string behind the pointer, and while drawing you see the string and a ring at the pointer — higher is steadier but lags more. Each stroke is smoothed when you lift. Dragging no longer turns the cursor into a "forbidden" sign or breaks the stroke (a browser drag used to start), and drawing carries on when the pointer leaves the canvas |
+| **Shapes** | Drag out a rectangle, ellipse or regular polygon (adjust **Sides**) — these three are filled outlines — or a straight line, which is a stroke using **Weight**. Hold Shift for a square, circle or 45° line |
+| **Select** | Click or drag a box to select strokes and outlines (Shift adds); drag to move, drag the square at the top-right corner to scale (Shift keeps proportions); arrow keys nudge by 10, Shift by 50; Ctrl+A selects everything, Delete removes |
+| **Nodes** | Click an outline or stroke to show its nodes: squares are on-curve points and small circles are control points; drag them to reshape, and Delete removes the selected node |
+| **Eraser** | Click a stroke or outline to delete it |
+
+The actions row under the tools applies to the selection, or to the whole glyph when nothing is selected (its left end says **n selected** or **Whole glyph**):
+
+- **W** / **H** resize by the bounding box, keeping the bottom-left corner; stroke weights stay the same. The chain between them is **Lock aspect ratio**.
+- **Flip horizontally**, **Flip vertically**.
+- **Reverse**: reverses outline direction — use it when a hole is filled or a shape has turned into a hole; for strokes it reverses the point order.
+- **Outline**: turns filled outlines into strokes along their edges (a hollow glyph), using **Weight**.
+- **Bold**: one-click bold, thickening each side by the number of font units typed next to it (strokes get heavier, outlines grow outward and holes shrink).
+- **Duplicate (offset down-right)** and **Delete** need a selection.
+
+Ctrl+Z undoes and Ctrl+Y or Ctrl+Shift+Z redoes, for the pad's own steps only; the bin button **Clear all** starts over. Scroll to zoom, drag with the middle button to pan, and click the percentage button to reset the view. Nothing is written back until **Save**; clicking outside the pad (or pressing Esc with nothing selected) closes it without saving.
 
 ## 4. Mapping rules
 
@@ -127,4 +156,4 @@ The **Preview** sub-page shows the first 40 lexicon entries and the first 10 cor
 - Want the script to apply **only to some words**? Set the **Script form** of the words you don't want converted to the same text as the headword.
 - No system font can display Private Use Area (PUA) glyphs, so embed the font. A font assigned to a script in Skin only applies on your computer; projects you send to others rely on the embedded font.
 - A large font file (several MB) makes the project file larger too. That is a deliberate trade-off: the project carries everything it needs.
-- Hand-drawn glyphs are stored as strokes (tens to hundreds of points) inside the project file, so they show up on another computer without any extra font.
+- Hand-drawn glyphs are stored as strokes (tens to hundreds of points) and outlines inside the project file, so they show up on another computer without any extra font. To use them in other software, [export the font](#export-font).

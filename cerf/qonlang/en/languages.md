@@ -24,18 +24,18 @@ The main area is a tree: root languages at the top, daughter languages indented 
 
 ### Tree diagram
 
-The **List / Tree diagram** switch at the right of the page title chooses the view. The tree diagram is a top-down family tree: group nodes are dashed boxes, and a language's [historical stages](#historical-stages) hang off it as a small chain. Scroll to zoom, drag the background to pan; the top left has zoom in, zoom out and **Fit to window**. Clicking a node selects it (as in the list, the current language in the top bar follows). Dragging to arrange is only available in the list.
+The **List / Tree diagram** switch at the right of the page title chooses the view. The tree diagram is a top-down family tree: group nodes are dashed boxes, and a language's [historical stages](#historical-stages) hang off it as a small chain. Scroll to zoom, drag the background to pan; the top left has zoom in, zoom out and **Fit to window**. Clicking a node selects it (as in the list, the current language in the top bar follows); **right-click** a node to collapse or expand the branch under it, which hangs a small **+n** tag below the node saying how many nodes are not drawn. Dragging to arrange is only available in the list.
 
 ### Family / Branch / Sub-branch
 
-A group is a dashed box in the tree with a level badge (Family, Branch, Sub-branch) in front; languages and lower groups hang under it, and the box's **+** is **Add a language here**. Clicking a group only selects it and doesn't change the current language. The group's inspector:
+In the list a group is drawn as a **dashed box around everything it contains**: the title row carries the level badge (Family, Branch, Sub-branch) and the name, and the group's proto-language, lower groups and other languages all sit inside the box. The proto-language is aligned with the title row (a group is only a classification, so its representative proto-language is not a level below it), while lower families, branches and other languages are indented one step. The arrow to the left of the title collapses or expands the group, and when collapsed the title says how many languages are inside (at all levels below); what's collapsed is remembered on this computer. The box's **+** is **Add a language here**. Clicking a group only selects it and doesn't change the current language. The group's inspector:
 
 | Field | Description |
 |---|---|
 | Name, Abbreviation | |
 | Level | Family / Branch / Sub-branch |
 | Parent group | The group it sits under; **(no group)** is the top level |
-| Proto-language | Optional: the proto-language representing this group. The proto-language stays an ordinary language |
+| Proto-language | Optional: the proto-language representing this group. The proto-language stays an ordinary language, and comes first inside the box — between the family and the branches below it |
 | Notes | Free text |
 
 A line below counts the sub-groups and the languages (at all levels below). **Add a language here** creates a language under this group; **Delete** removes the group and moves its sub-groups and languages up a level, with Undo on the toast.

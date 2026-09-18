@@ -109,6 +109,8 @@ The inspector also has **Transcribe from**: by default a script transcribes the 
 
 When it is an **inspector module** (a logographic script: glyphs are transliterated with codes, and each entry lists its glyph codes in a field), the script lines in the corpus, the phrasebook, the script page preview and exports are no longer transcribed from the sentence itself. Instead **each word is looked up in the lexicon** — by the entry its analysis picked in the corpus, otherwise by headword and inflected forms — and written from that entry's field; words that aren't found keep their spelling. Codes typed into a hand-entered script form, for an entry or a sentence, turn into glyphs too.
 
+**When a word is made of several morphemes** (a word written with a hyphen, such as `naegō-moh`, or a word you split with **Fix** in the corpus), **each piece of the script line is written on its own**: first the entry that piece is attached to, then the word's own entry if it recognises that spelling, then the spellings of the piece's morpheme, then the piece's own spelling looked up in the lexicon — and the piece is written from whichever entry is found. A piece that isn't found simply falls back to transliterating its own spelling and doesn't affect the others; only when no piece can be written does the word fall back as a whole.
+
 **Syllable packing** and **Automatic mapping** are two titled sections below the rule list; the triangle to the right of each title collapses it. When **Add rule** makes the rule list taller, they simply move down.
 
 ### Syllable packing

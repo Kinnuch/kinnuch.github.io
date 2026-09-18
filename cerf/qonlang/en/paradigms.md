@@ -27,7 +27,7 @@ A paradigm combines **grammatical dimensions** into **slots** and gives each slo
 The button to the right of the **Dimensions** title switches between two states:
 
 - **Dimensions editable** (default): clicking a dimension really adds it to this paradigm, clicking it again removes it, and the slots are recomputed.
-- **Dimensions locked**: the current slots are fixed (shaded), and clicking dimensions no longer changes which slots the paradigm has. Clicking a dimension now only **filters** which slots you see — those that use that dimension; once you have filtered, **Clear filter**, **Enable the filtered slots** and **Disable the filtered slots** appear after the chips and switch a whole batch at once. The line under the dimensions says how many slots are shown and how many are fixed in total.
+- **Dimensions locked**: the current slots are fixed (shaded), and clicking dimensions no longer changes which slots the paradigm has. Clicking a dimension now only **filters** which slots you see — those that use that dimension. The dimensions the paradigm itself uses can be clicked too: once locked they are shaded darker and carry a small padlock, so they stand apart from the unused ones, and clicking one filters by it just the same (the up / down arrows on the chip still reorder them). Once you have filtered, **Clear filter**, **Enable the filtered slots** and **Disable the filtered slots** appear after the chips and switch a whole batch at once. The line under the dimensions says how many slots are shown and how many are fixed in total.
 
 ### A slot with a setup stays a slot {#kept-slots}
 
@@ -84,7 +84,7 @@ Available steps:
 | **reduplication** | Whole stem / initial part / final part, with a number of segments (counted in the spelling: a phoneme spelled th or eu in the primary orthography is one sound; infix positions and patterns count the same way) |
 | **sound change** | Choose a rule set and start / end stages and run the current form through it |
 | **tweak** | One small operation per line (notation below) |
-| **paradigm** | A paradigm inside a paradigm: treat the form so far as a stem and run it through one slot of another paradigm (optionally a variant). For example, add `-mAk` for a gerund, then run the result through the genitive of the Noun paradigm. Stem slots written in the nested paradigm all fall back to this form, and conditional letters still follow this entry's own features; nesting stops after 4 levels, including when a paradigm leads back to itself |
+| **paradigm** | A paradigm inside a paradigm: treat the form so far as a stem and run it through one slot of another paradigm (optionally a variant; the first entry in the variant drop-down is that paradigm's set with no variant chosen, under its own name — **Base** unless it was renamed). For example, add `-mAk` for a gerund, then run the result through the genitive of the Noun paradigm. Stem slots written in the nested paradigm all fall back to this form, and conditional letters still follow this entry's own features; nesting stops after 4 levels, including when a paradigm leads back to itself |
 
 The same kind of step can appear several times: add a prefix, run sound changes, add a suffix, then tweak — any order you like. The generator drop-down has four entries: **None** (not derived), **Table (manual)** (typed per word), **Pipeline** (this pipeline) and **Pipeline + affects pronunciation** (this pipeline plus a second one that changes the pronunciation, see [Affects pronunciation](#slot-pron)).
 

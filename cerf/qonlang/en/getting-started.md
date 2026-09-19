@@ -22,7 +22,7 @@ If Windows says "running scripts is disabled", that is PowerShell's execution po
 
 ## 2. The start page
 
-The start page has four parts:
+The start page has five parts:
 
 1. **Banner**: a link to the Gilatod Wiki.
 2. **Gallery**: a strip below the banner that shows example sentences, phrases and words with images from your recently opened projects (up to 3), one card at a time. Sentences and phrases get a gradient background; a word with an image uses that image, blurred, as its background. Arrows appear at both sides when you hover; click one to move to the next card. The order is shuffled by the date, so the first card stays the same all day. Sentences and phrases keep their original punctuation, and any word in them can be hovered to show its word card — words are recognised exactly as on the Corpus page (words joined by boundary symbols and affixes are recognised, analyses that don't point to an entry are resolved from forms, paradigm affixes and segmentation, and each segment can be clicked); **Open in lexicon** on the card opens that project first and then jumps to the word. If a word in a sentence was matched to the wrong entry, click **Fix**: it likewise opens the project, jumps to that sentence in the corpus and lets you pick the right word (see [Corpus · Hover cards](/cerf/qonlang/en/corpus/#4-hover-cards)). The gallery is hidden when none of the recent projects has anything to show (or you haven't opened a project yet).
@@ -31,7 +31,12 @@ The start page has four parts:
    - **Language family**: a proto-language plus any number of daughter languages (one name per line); later you derive words from the proto-language with sound changes.
    - **Import from Lexicanter**: reads a `.lexc` file and brings in the lexicon, senses, dialects, pronunciation rules, alphabet, etymologies, phrasebook and docs in one go.
    - **Import from CSV**: creates a blank project and opens the CSV column-mapping wizard.
-4. **Recent**: files that no longer exist are removed from the list automatically.
+4. **Games**: a row of four games under the templates, all built from your own lexicon. Click one, pick a project (read only — it is **not opened and not changed**), then pick a language:
+   - **Flashcards**: word on the front, meaning on the back; click to flip, or turn the pair around (meaning first). Answer *Knew it* / *Didn't know*; the ones you missed come round again at the end of the round.
+   - **Sage** (the game of that name on elfdict): a few meanings at the top and a pile of letters below — exactly the letters those words are made of. Tap letters to spell a word, tap a chosen letter again to take it back; the bulb next to a line reveals that one answer.
+   - **Word guess**: six tries. Letters are judged by this language's [alphabet](/cerf/qonlang/en/languages/#2-language-properties-inspector), so `th` or `ll` count as one square; word length 3–7. Green is the right place, amber is in the word but elsewhere.
+   - **Crossword**: a grid built from the lexicon with the definitions as clues. **Check** marks what you have, **Reveal** fills it in; **Export web page** writes a single .html anyone can open in a browser to play, check and print (or save as PDF), and **Export image** gives the empty grid with the clues, for printing.
+5. **Recent**: files that no longer exist are removed from the list automatically.
 
 The left column has four buttons: New project, Open project, **Example projects** and User guide. **Example projects** contains two fictional projects that, between them, show every module — the quickest way to see what a feature looks like and how its data should be filled in:
 

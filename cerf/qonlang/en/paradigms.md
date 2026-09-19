@@ -31,7 +31,9 @@ The button to the right of the **Dimensions** title switches between two states:
 
 ### A slot with a setup stays a slot {#kept-slots}
 
-A slot is identified by **which values it takes**, so a slot you wrote something in doesn't disappear when you change the dimensions: reorder them, or remove a dimension and add it back, and everything written in those cells is still there and still counts in derivation, the test bench and entries. Slots with one dimension more than the current grid live alongside it too — `tense.aspect.person` and `tense.aspect` both stay. These cells are listed after the slots the grid produces; the table and tree views only lay out the current grid, so use the visual view to reach them.
+A slot is identified by **which values it takes**, so a slot you wrote something in doesn't disappear when you change the dimensions: reorder them, or remove a dimension and add it back, and everything written in those cells is still there and still counts in derivation, the test bench and entries. Slots with one dimension **more** than the current grid live alongside it too — `tense.aspect.person` and `tense.aspect` both stay, listed after the slots the grid produces; the table and tree views only lay out the current grid, so use the visual view to reach them.
+
+Slots with one dimension **fewer** than the current grid (the old cells left behind after you add a dimension) are the other way round: in simple mode they are **no longer listed on their own**. The list is exactly the full grid of the new dimensions, and the old setup lives on as an [inherited](#simple-mode) source — every cell that follows it is marked **Inherited from …**, and **Make it this cell's own** next to it copies that setup into the cell. In complex mode they keep a row of their own.
 
 ### Simple and complex mode {#simple-mode}
 

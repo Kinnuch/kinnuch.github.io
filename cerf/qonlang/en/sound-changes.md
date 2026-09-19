@@ -39,6 +39,21 @@ The status bar at the bottom shows the number of rules, stages, classes and diag
 - When the rules are parsed, the classes and digraphs of the first bound language are used as the base.
 - The **History** row on lexicon entry cards: when every stage marker from the language (or stage) of an entry's etymology source to the entry's own language (or stage) is bound, the card lists the forms all the way down (see [Lexicon · History](/cerf/qonlang/en/lexicon/#history)).
 
+### Using a stretch of another set {#include}
+
+When two sets share a stretch of history (two sister languages coming down the same proto stage), there is no need to copy the rules. Write one line:
+
+```
+-@ Proto → Aelith : Proto .. Modern
+```
+
+When the run reaches that line, the rules of that set between **Proto** and **Modern** run right there. The colon and the stages are optional (`-@ Proto → Aelith`), which runs the whole set.
+
+- **The shared stretch is maintained in one place**: change it there and everything that uses it follows.
+- Stages that come in this way count here too — the test bench gives them their own columns and **Language for each stage** in the inspector lists them; a stage with the same name as one of your own counts as the same stage.
+- The set being used is parsed with **its own** bound language: classes and digraphs are its own and do not affect each other.
+- In the rule list the line stands on its own, with **Open** on the right to jump to that set. A set may use another in turn (up to four levels); using each other in a circle, or a misspelt set name or stage, is reported on that line.
+
 ## 3. Test bench (inspector)
 
 - **Words**: one per line (spaces also separate); saved with the rule set.

@@ -55,7 +55,7 @@ Selecting a group shows a **Statistics and comparison: "group name"** card in th
 
 To compare two languages directly, you don't need a group: with one selected, `Ctrl`-click (`Cmd` on macOS) a second language, or click **Compare** on its card.
 
-- A bar appears above, naming the two languages and their **nearest common ancestor** ("none, the two lineages never meet" when they don't share one).
+- A bar appears above, naming the two languages and their **nearest common ancestor** ("none, the two lineages never meet" when they don't share one). The ancestor is looked for **among languages only**: a family / branch / sub-branch is there to structure the tree and is never offered as an ancestor, and when one language is itself an ancestor of the other, that language is the answer.
 - The two lineages up to that ancestor are marked with flashing dashed nodes and edges, in the list and in the tree diagram alike.
 - The statistics card below compares just those two: counts, phonemes (each row followed by "N shared · N only in A · N only in B"), cognate rates and correspondences — the same tabs as a group's statistics.
 - **Clear comparison** puts everything back.

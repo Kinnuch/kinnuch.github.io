@@ -29,9 +29,30 @@ The toolbar above the editor inserts common syntax at the cursor: bold, italic, 
 | Bold / italic / strikethrough / inline code | `**x**`, `*x*`, `~~x~~`, `` `x` `` |
 | Links | `[text](https://…)`, opened in the external browser |
 | Horizontal rule | `---` |
-| **Lexicon links** | `[[headword]]` or `[[headword\|displayed text]]`: rendered as a clickable link when the lexicon has that headword (clicking jumps to the lexicon with it selected); shown with a dashed underline when it doesn't |
+| **Project links** | `[[name]]`, `[[prefix:name]]`, `[[prefix:name#sub]]`, each of which can end with `\|displayed text`. See below |
 
 The renderer is a minimal in-house implementation: all text is escaped and raw HTML is not accepted.
+
+### Project links {#links}
+
+Without a prefix a name is looked up as a **lexeme** first, as before (so existing pages keep working), then as a morpheme, doc page, phrase, sentence, language, paradigm, rule set and script. With a prefix only that kind is searched:
+
+| Written as | Links to |
+|---|---|
+| `[[kaso]]` | a lexicon entry |
+| `[[morpheme:-lAr]]` | a morpheme (the affix hyphens are optional) |
+| `[[language:Merun]]` | a language (name or abbreviation) |
+| `[[soundchange:Proto → Aelith]]`, `[[soundchange:Proto → Aelith#Modern]]` | a rule set; after `#`, one of its stages |
+| `[[paradigm:Noun]]`, `[[paradigm:Noun#singular.locative]]` | a paradigm; after `#`, one of its slots (the slot name, its gloss abbreviation, or the values in the other interface language) |
+| `[[script:Aelith runes]]` | one writing system |
+| `[[sentence:…]]`, `[[phrase:…]]` | a corpus sentence, a phrasebook entry |
+| `[[doc:Grammar sketch]]` | another doc page |
+
+Prefixes are accepted **in both languages** (`[[语素:-lAr]]` is the same as `[[morpheme:-lAr]]`), case, spaces and hyphens don't matter, and a full-width colon works too — so a page written in the Chinese interface still works in the English one.
+
+Clicking jumps to that module and highlights the entry. A link that resolves to nothing is drawn with a dashed underline, and hovering it says which kind was not found (when the name matches but the part after `#` doesn't, it still links to the parent).
+
+The **Insert link** button on the toolbar saves you remembering the syntax: pick a kind, search the name, press Enter. Rule sets list their stages and paradigms list their slots alongside.
 
 ## 3. Export
 
@@ -42,6 +63,6 @@ The renderer is a minimal in-house implementation: all text is escaped and raw H
 
 ## 4. Connections to other modules
 
-- `[[headword]]` jumps to the lexicon.
+- `[[…]]` jumps to the lexicon, morphemes, languages, sound changes, paradigms, scripts, the corpus, the phrasebook or another doc page.
 - The command palette finds pages by title or content.
 - The Skin's "corpus translation" font slot is also used for the body text of the preview.

@@ -15,7 +15,9 @@ The phrasebook collects **common expressions**: greetings, numbers, travel-guide
 
 The left column lists **categories** ("All" plus each category with its count), the middle shows phrase cards (script line, text, pronunciation, translations, variants), and the inspector edits the current phrase. The search at the top covers text and translations, and only the current language is shown. Press a card and drag it onto another to move it there.
 
-Words in the text that can be found in the lexicon (including inflected forms and stripped affixes) are underlined: hover to show the entry card, click to jump to the lexicon.
+Words in the text that can be found in the lexicon (including inflected forms and stripped affixes) are underlined: hover to show the entry card, click to jump to the lexicon. Words are recognised exactly as in the [corpus](/cerf/qonlang/en/corpus/) — inflected forms, affixes, paradigm affixes worked backwards, and morphemes too.
+
+**Fix** on the card works as it does in the corpus: search for an entry or a morpheme and click it, and that spot in the text is replaced with it — the pronunciation and script line are then recomputed from the rules (anything you marked irregular is left alone), and the whole thing undoes in one step. A phrase stores no analysis, so what you edit here is the text itself; the corpus options for picking a sense, picking a segmentation or "also change the text" don't apply. A word that isn't recognised says "Not found" on hover, and the same search box fills it in.
 
 ## 2. Phrase fields
 

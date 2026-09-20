@@ -238,7 +238,7 @@ title: Elandis
 
 两款**全音素文字**，分别为用于日常书写的**圣纹体(Nuran Irven)**和用于刻写碑文等的**海蚀体(Nuran Llando)**。
 
-*特别感谢**Kikomas**的字体制作，星佬是我特别佩服的设计大佬，同时也是人造语言圈享有盛名的蓝地语的创造者，他的个人网站在此附上：[Kikomas](https://kikomas.art)←点此浏览*
+*特别感谢**kikomas**的字体制作，星佬是我特别佩服的设计大佬，同时也是人造语言圈享有盛名的蓝地语的创造者，他的个人网站在此附上：[kikomas](https://kikomas.art)←点此浏览*
 
 <font face='NuranIrven'>uzetes i unatixad fale morya pata Leriain xelaimer</font>
 

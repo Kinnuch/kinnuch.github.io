@@ -20,6 +20,8 @@ Ten built-in presets in two rows, each named "name · colour":
 
 Each has a light and a dark palette, switched automatically by **Settings → Theme**; a preset you chose before keeps working. Presets with very bright accents use dark text on primary buttons. Clicking a preset spreads the new palette like ink from where you clicked (it switches instantly when your system asks for reduced motion).
 
+**Export / import**: **Export skin** writes the current one to a `.qonlang-skin.json` (colours, fonts and the per-script font choices). When there is a background image, a **Include background image** tick box appears next to it, **off by default** — an image is several MB and would go into the file whole. **Import skin** lets you **try it on first**: the window and the preview card change to the imported look right away and a bar appears at the top saying "Trying out …, Apply / Cancel"; only **Apply** saves it, and leaving the Skin page without confirming reverts. A file without the right marker says it isn't a skin file, and one from a newer version of Qonlang says so too.
+
 **Your own presets**: once you have adjusted colours and fonts, click **Save as my preset** and give it a name; an existing name is overwritten. Your own presets sit on a third row, their cards show thumbnails of their own palettes, and hovering one lets you rename or delete it (deletion can be undone).
 
 Changing any colour or font puts the current preset into the **Custom** state; you can click a preset again at any time to switch everything at once.
@@ -71,7 +73,7 @@ The look of the read-only entry card in the lexicon's inspector is set here, and
 
 ## 6. Font library
 
-A built-in catalogue of 31 fonts that are **free for commercial use** (OFL / Apache), each downloadable to the data folder with one click (they remain after restarting):
+A built-in catalogue of 31 fonts that are **free for commercial use** (OFL / Apache), each downloadable to the data folder with one click (they remain after restarting). Each one carries a **preview** line: Latin fonts show `The quick brown fox jumps over the lazy dog`, CJK fonts add four dense Han characters after it, scripts with no Latin glyphs (runes, Old Turkic) show the same sentence transliterated into them, and symbol fonts show a row of common symbols. **That line is always drawn in the font itself** — a small subset of every catalogue font (just the characters this preview line uses, a few KB each) ships with the app, so you see what a font really looks like before downloading it; once installed, the full font takes over. Fonts with a common Chinese name carry it in grey under the English one.
 
 - Chinese: LXGW WenKai (Simplified / Traditional), Source Han Serif, Source Han Sans, Ma Shan Zheng, Zhi Mang Xing, Long Cang
 - **gilatod unicode**: the standard font of the 【荏苒之境】 encyclopedia, bundled with the app — just click **Install**, no internet needed

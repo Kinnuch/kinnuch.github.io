@@ -24,7 +24,7 @@ The main area is a tree: root languages at the top, daughter languages indented 
 
 ### Tree diagram
 
-The **List / Tree diagram** switch at the right of the page title chooses the view. The tree diagram is a top-down family tree: group nodes are dashed boxes, and a language's [historical stages](#historical-stages) hang off it as a small chain. Scroll to zoom, drag the background to pan; the top left has zoom in, zoom out and **Fit to window**. Clicking a node selects it (as in the list, the current language in the top bar follows); **right-click** a node to collapse or expand the branch under it, which hangs a small **+n** tag below the node saying how many nodes are not drawn. Dragging to arrange is only available in the list.
+The **List / Tree diagram** switch at the right of the page title chooses the view. The tree diagram is a top-down family tree: group nodes are dashed boxes — a family / branch / sub-branch is only there to structure things, so its proto-language sits below the group node and the sub-branches hang under that proto-language (the same arrangement as in the list); and a language's [historical stages](#historical-stages) sit in a small line under it (`PThsr › AThsr › OThsr › Thsr`) — hover to see the full chain. Scroll to zoom, drag the background to pan; the top left has zoom in, zoom out and **Fit to window**. Clicking a node selects it (as in the list, the current language in the top bar follows); **right-click** a node to collapse or expand the branch under it, which hangs a small **+n** tag below the node saying how many nodes are not drawn. Dragging to arrange is only available in the list.
 
 ### Family / Branch / Sub-branch
 

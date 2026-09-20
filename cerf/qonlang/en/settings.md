@@ -70,6 +70,7 @@ An update check first looks at where GitHub's "latest release" page redirects to
 | Item | Description |
 |---|---|
 | Project name, author, description | |
+| Mark symbol | The symbol shown in front of entries marked in the [Lexicon](/cerf/qonlang/en/lexicon/); empty means `*` |
 
 **Languages & fonts**
 

@@ -47,7 +47,7 @@ Each example card has **Open** and **Make a copy**. **Open** is for trying thing
 
 The six buttons at the bottom are Buy me a coffee, Changelog (the repository's `CHANGELOG.md`), Developer, Friends, Credits and Rule syntax, each shown in the right-hand panel when clicked (when the start page opens, that panel shows the changelog); to their left is **User guide**, which is this site.
 
-Three more sit at the bottom left: **Language** (the interface language), **Appearance** (theme and [skin](/cerf/qonlang/en/skin/) presets) and **Settings** (the **Application** half of [Settings](/cerf/qonlang/en/settings/) — everything that isn't about a project) — all available without opening a project.
+Three more sit at the bottom left: **Language** (the interface language), **Theme** (light or dark, and [Theme](/cerf/qonlang/en/skin/) presets) and **Settings** (the **Application** half of [Settings](/cerf/qonlang/en/settings/) — everything that isn't about a project) — all available without opening a project.
 
 ## 3. The project file
 

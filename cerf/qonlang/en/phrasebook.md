@@ -17,7 +17,7 @@ The left column lists **categories** ("All" plus each category with its count), 
 
 Words in the text that can be found in the lexicon (including inflected forms and stripped affixes) are underlined: hover to show the entry card, click to jump to the lexicon. Words are recognised exactly as in the [corpus](/cerf/qonlang/en/corpus/) — inflected forms, affixes, paradigm affixes worked backwards, and morphemes too.
 
-**Fix** on the card works as it does in the corpus: search for an entry or a morpheme and click it, and that spot in the text is replaced with it — the pronunciation and script line are then recomputed from the rules (anything you marked irregular is left alone), and the whole thing undoes in one step. A phrase stores no analysis, so what you edit here is the text itself; the corpus options for picking a sense, picking a segmentation or "also change the text" don't apply. A word that isn't recognised says "Not found" on hover, and the same search box fills it in.
+**Fix** on the card is the same code as in the [corpus](/cerf/qonlang/en/corpus/): a phrase stores its own analysis, so whichever piece of the segmentation is selected is the piece **Fix** changes (two occurrences of the same entry in one word are told apart), and picking a sense or a segmentation works here too. Search for an entry or a morpheme and click it and **only what the word points at changes — the text itself is left untouched**; to rewrite the text as well, tick **Also rewrite the word in the text** (off by default, and only offered when the whole word is being changed), after which the pronunciation and script line are recomputed from the rules (anything you marked irregular is left alone). Either way the whole thing undoes in one step. A piece that isn't recognised says "Not found" on hover, and the same search box fills it in. Editing the text re-runs the analysis, keeping the words you have already confirmed.
 
 ## 2. Phrase fields
 
@@ -36,7 +36,7 @@ Deletion can be undone.
 
 - **Phonology**: pronunciation rules.
 - **Script**: a script line at the top of each card.
-- **Skin**: text and translations use the corpus font slots.
+- **Theme**: text and translations use the corpus font slots.
 - **Command palette**: `Ctrl+K` finds a phrase by text or translation and jumps to it.
 
 ## 4. Tips

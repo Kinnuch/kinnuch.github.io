@@ -32,8 +32,8 @@ Use **New script** at the far right of the title bar, then set in the inspector:
 - **System font name**: for fonts installed on the computer, just type the name.
 - **Import font file**: TTF / OTF / TTC / WOFF / WOFF2. The file is stored in the project file as a data URL, so it displays on any computer. TTF / OTF / TTC can also provide the glyph list (see below).
 - With a font, the glyph cards, the inspector title and the **Character** input use the script's font; Private Use Area glyphs show as boxes without one.
-- **Changing the font in Skin**: below [Skin → Font slots](/cerf/qonlang/en/skin/#4-font-slots), every script of the current project is listed and can be given its own font (installed from the font library or imported locally), which takes priority over the setting here; it only changes the display on this computer and doesn't touch the project file.
-- Without a font, script text falls back to the Skin's "custom script" font slot, and then to the language data font.
+- **Changing the font in Theme**: below [Theme → Font slots](/cerf/qonlang/en/skin/#4-font-slots), every script of the current project is listed and can be given its own font (installed from the font library or imported locally), which takes priority over the setting here; it only changes the display on this computer and doesn't touch the project file.
+- Without a font, script text falls back to the Theme's "custom script" font slot, and then to the language data font.
 - **Export font** <a id="export-font"></a>: the **Export font** menu above the **Glyphs** tab. **Export TTF** and **Export WOFF** rebuild a font from the embedded font's glyphs plus every drawn or edited glyph (drawn ones replace the originals) and save it; **Update embedded font** replaces this script's embedded font with the rebuilt TTF, so the project carries the edited font, with Undo on the toast.
   - When the embedded font is **TrueType**, the original file is operated on rather than rewritten: only the glyphs you drew or edited are swapped in, glyph ids stay exactly as they were and new glyphs are appended at the end, so the original font's **kerning, ligatures and the hinting of every other glyph are kept as they are**.
   - What can't be kept: the **hinting of the glyphs you edited** no longer matches their new outlines, so it is dropped; a **composite glyph** that references a glyph you edited changes with it (edit `A` and `Á` `À` `Ä` … change too); the **digital signature** is always dropped.
@@ -151,11 +151,11 @@ The **Preview** sub-page shows the first 40 lexicon entries and the first 10 cor
 | Phrasebook | A script line at the top of each card |
 | Dictionary export | The script follows the headword (can be turned off) |
 | Character panel | The **project characters** tab lists every glyph of the current language; click to insert |
-| Skin | Each script can be given its own font (taking priority over the script's own font); the "custom script" font slot is the default when there is no font |
+| Theme | Each script can be given its own font (taking priority over the script's own font); the "custom script" font slot is the default when there is no font |
 
 ## 7. Tips
 
 - Want the script to apply **only to some words**? Set the **Script form** of the words you don't want converted to the same text as the headword.
-- No system font can display Private Use Area (PUA) glyphs, so embed the font. A font assigned to a script in Skin only applies on your computer; projects you send to others rely on the embedded font.
+- No system font can display Private Use Area (PUA) glyphs, so embed the font. A font assigned to a script in Theme only applies on your computer; projects you send to others rely on the embedded font.
 - A large font file (several MB) makes the project file larger too. That is a deliberate trade-off: the project carries everything it needs.
 - Hand-drawn glyphs are stored as strokes (tens to hundreds of points) and outlines inside the project file, so they show up on another computer without any extra font. To use them in other software, [export the font](#export-font).

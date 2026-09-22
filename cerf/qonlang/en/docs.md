@@ -65,4 +65,4 @@ The **Insert link** button on the toolbar saves you remembering the syntax: pick
 
 - `[[…]]` jumps to the lexicon, morphemes, languages, sound changes, paradigms, scripts, the corpus, the phrasebook or another doc page.
 - The command palette finds pages by title or content.
-- The Skin's "corpus translation" font slot is also used for the body text of the preview.
+- The Theme's "corpus translation" font slot is also used for the body text of the preview.

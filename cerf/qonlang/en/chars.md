@@ -36,4 +36,4 @@ Pick a base character, then click diacritics one after another; the preview show
 ## 3. Tips
 
 - Clicking in the panel doesn't take focus away from the input, so you can insert several symbols in a row.
-- In Skin, choose a font with complete IPA coverage (Charis SIL / Gentium Plus) for the "language data" slot so that stacked diacritics display correctly.
+- In Theme, choose a font with complete IPA coverage (Charis SIL / Gentium Plus) for the "language data" slot so that stacked diacritics display correctly.

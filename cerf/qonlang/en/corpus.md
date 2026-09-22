@@ -135,7 +135,7 @@ The abbreviations used in glosses (`PL`, `LOC`…) and their full names (in seve
 - Hovering a word in a sentence shows its entry card. When the analysis didn't recognise an entry, the software looks up headwords, stems and inflected forms first, then strips one layer using the **affixes written in paradigms** and looks again, so even heavily inflected words find their entry; when a morpheme is recognised, a morpheme card appears instead.
 - The bottom of the card lists the word's **parts** (the words of a compound, the root morphemes); click one to switch to it. **Open in lexicon** on the card jumps to the lexicon, where the list scrolls to the word and highlights it briefly.
 - Once a **Script** is defined, cards and exports gain a script line.
-- **Skin** lets you set separate fonts for the text, translation and gloss lines.
+- **Theme** lets you set separate fonts for the text, translation and gloss lines.
 - The **Current language** in the top bar decides which sentences are shown.
 
 ## 9. Tips

@@ -1,15 +1,15 @@
 ---
 layout: page
 permalink: /cerf/qonlang/en/skin/index.html
-title: Qonlang · Skin
-description: The Skin page in Qonlang — ten colour presets and your own presets, a background image, individual colours, seven font slots, downloading free-for-commercial-use fonts and importing local fonts.
+title: Qonlang · Theme
+description: The Theme page in Qonlang — ten colour presets and your own presets, a background image, individual colours, seven font slots, downloading free-for-commercial-use fonts and importing local fonts.
 ---
 
-# Skin
+# Theme
 
 [← Guide index](/cerf/qonlang/en/) · [中文](/cerf/qonlang/skin/) · the T-shirt icon at the bottom left of the navigation bar
 
-The skin is an **application setting** (stored in the preferences in the data folder, not in the project file): colours, a background image, the fonts used in each place, and the font library. The inspector is a live preview: each of the fifteen colours and seven font slots **has a matching sample** in it (entry card, example sentence, gloss, script, buttons, badges, list, code, plus a row of swatches for every colour at the bottom). The sentence is the first analysed sentence in the current project's corpus (current language first); its text, segmentation, gloss, translation and script line all come from that sentence, and a built-in sample is used when there are none. Changing an item on the left flashes the matching spot on the right, and hovering an item on the left outlines it on the right.
+The theme is an **application setting** (stored in the preferences in the data folder, not in the project file): colours, a background image, the fonts used in each place, and the font library. The inspector is a live preview: each of the fifteen colours and seven font slots **has a matching sample** in it (entry card, example sentence, gloss, script, buttons, badges, list, code, plus a row of swatches for every colour at the bottom). The sentence is the first analysed sentence in the current project's corpus (current language first); its text, segmentation, gloss, translation and script line all come from that sentence, and a built-in sample is used when there are none. Changing an item on the left flashes the matching spot on the right, and hovering an item on the left outlines it on the right.
 
 ## 1. Presets
 
@@ -20,7 +20,7 @@ Ten built-in presets in two rows, each named "name · colour":
 
 Each has a light and a dark palette, switched automatically by **Settings → Theme**; a preset you chose before keeps working. Presets with very bright accents use dark text on primary buttons. Clicking a preset spreads the new palette like ink from where you clicked (it switches instantly when your system asks for reduced motion).
 
-**Export / import**: **Export skin** writes the current one to a `.qonlang-skin.json` (colours, fonts and the per-script font choices). When there is a background image, a **Include background image** tick box appears next to it, **off by default** — an image is several MB and would go into the file whole. **Import skin** lets you **try it on first**: the window and the preview card change to the imported look right away and a bar appears at the top saying "Trying out …, Apply / Cancel"; only **Apply** saves it, and leaving the Skin page without confirming reverts. A file without the right marker says it isn't a skin file, and one from a newer version of Qonlang says so too.
+**Export / import**: **Export skin** writes the current one to a `.qonlang-skin.json` (colours, fonts and the per-script font choices). When there is a background image, a **Include background image** tick box appears next to it, **off by default** — an image is several MB and would go into the file whole. **Import skin** lets you **try it on first**: the window and the preview card change to the imported look right away and a bar appears at the top saying "Trying out …, Apply / Cancel"; only **Apply** saves it, and leaving the Theme page without confirming reverts. A file without the right marker says it isn't a skin file, and one from a newer version of Qonlang says so too.
 
 **Your own presets**: once you have adjusted colours and fonts, click **Save as my preset** and give it a name; an existing name is overwritten. Your own presets sit on a third row, their cards show thumbnails of their own palettes, and hovering one lets you rename or delete it (deletion can be undone).
 
@@ -88,6 +88,6 @@ Downloads show their progress; on networks in mainland China you can enter a Git
 
 ## 7. Connections to other modules
 
-- **Script**: a font assigned to a script in the Skin is used for it; otherwise the font set on the Script page (a system font name or an embedded font) is used, and failing both, the **Custom script** slot.
-- **Settings → Language data font** is a project setting (it travels with the project), while the Skin's **Language data** slot is an application setting; when both are set, the project setting wins.
+- **Script**: a font assigned to a script in the Theme is used for it; otherwise the font set on the Script page (a system font name or an embedded font) is used, and failing both, the **Custom script** slot.
+- **Settings → Language data font** is a project setting (it travels with the project), while the Theme's **Language data** slot is an application setting; when both are set, the project setting wins.
 - Dictionary exports use the language data font from the project settings.

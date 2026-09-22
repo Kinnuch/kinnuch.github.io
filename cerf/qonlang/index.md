@@ -49,7 +49,7 @@ description: 千语集（Qonlang）是给所有造语者的桌面工作台：词
 | 主题 | 配色预设、字体槽、字体库 | [主题](/cerf/qonlang/skin/) |
 | 字符 | IPA 字符面板与附标组合 | [字符面板](/cerf/qonlang/chars/) |
 | 设置 | 界面语言、主题、自动保存、项目设置、导出文件夹 | [设置](/cerf/qonlang/settings/) |
-| 插件与 MCP | 给千语集写插件；让 Claude 这类 LLM 客户端接进来 | [插件与 MCP](/cerf/qonlang/extending/) |
+| 插件与 MCP | 给千语集写插件；自带的「界面翻译」把界面翻成自己的语言；让 Claude 这类 LLM 客户端接进来 | [插件与 MCP](/cerf/qonlang/extending/) |
 
 ## 一张图看懂模块之间的联动
 

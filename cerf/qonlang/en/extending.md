@@ -2,14 +2,14 @@
 layout: page
 permalink: /cerf/qonlang/en/extending/index.html
 title: Qonlang · Plugins and MCP
-description: The two ways Qonlang opens up — plugins (inspector panels, pages, commands, import/export, paradigm generators) and the built-in MCP server that lets Claude, Cursor and other LLM clients search your lexicon, run sound changes and, once you confirm, change the project.
+description: The ways Qonlang opens up — plugins (inspector panels, pages, commands, import/export, paradigm generators), the built-in Interface translation plugin, and the MCP server that lets Claude, Cursor and other LLM clients search your lexicon, run sound changes and, once you confirm, change the project.
 ---
 
 # Plugins and MCP
 
 [← Guide index](/cerf/qonlang/en/) · [中文](/cerf/qonlang/extending/) · Settings → Plugins / MCP
 
-Qonlang opens up in two ways: **plugins** let other people add things to the app in JavaScript, and **MCP** lets an LLM client work with your project. Both are managed in Settings, and both are desktop-only (the web version has neither).
+Qonlang opens up in a few ways: **plugins** let other people add things to the app in JavaScript, the built-in **Interface translation** plugin lets you translate the whole interface into your own language, and **MCP** lets an LLM client work with your project. All are managed in Settings; plugins and MCP are desktop-only (the web version has neither).
 
 ## 1. Plugins {#plugins}
 
@@ -106,7 +106,42 @@ qonlang.rules.registerGenerator({ id: 'reverse', name: 'Backwards', run: (ctx) =
 
 `docs/plugin-example/` in the repository is a complete example using all five extension points; copy it into the plugins folder and it runs.
 
-## 2. MCP {#mcp}
+## 2. Interface translation (built in) {#ui-translate}
+
+Qonlang ships with one plugin of its own: **Interface translation**. It lists every string in the interface so you can translate it into your own language — the result becomes an interface language of its own, alongside the nine that come with the app.
+
+**Off by default**: go to Settings → Plugins and tick the card marked **Built in** at the top; an **Interface translation** page then appears in the navigation bar. Untick it and it disappears again.
+
+### Starting a translation {#ui-new}
+
+Click **New translation** and fill in four things:
+
+| Item | Description |
+|---|---|
+| Language name | The name shown in the language menu |
+| Base language | Untranslated strings show in this language (a key name is never shown), and it is the default source text while you translate |
+| Written in | **Latin letters** use the app's own font; **my own script** needs a font installed in the [font library](/cerf/qonlang/en/skin/#6-font-library), and the whole interface is then shown in it |
+| Written right to left | Like Arabic: only the text runs right to left, the navigation and inspector stay where they are |
+
+All of these can be changed later from the row above the list.
+
+### Translating {#ui-edit}
+
+Categories are on the left (by module — Lexicon, Paradigms, Script… with how many of them are done), and the strings on the right, one per row: the key in grey, the source text below it, and your translation in the box beside it.
+
+- **Source text in**: pick the language you would rather translate from.
+- **Only untranslated**: hide what you have already done.
+- The search box covers **keys, source text and translations** at once.
+- Placeholders such as `{n}` and `{name}` **must stay in the translation** — a yellow note appears when one goes missing, because the app replaces them with real numbers and names.
+- Translations save as you type; if you are using this language at the moment, the interface changes straight away.
+
+### Using it and sharing it {#ui-use}
+
+- **Use it**: switch to it right away (switch back from the language menu if you would rather).
+- **Export**: writes a `.qonlang-ui.json` you can send to somebody else, who imports it with **Import**.
+- Translations live in your **local preferences**, not in a project file — export a copy before reinstalling.
+
+## 3. MCP {#mcp}
 
 MCP (Model Context Protocol) is the common protocol LLM clients use to reach outside tools. Qonlang has an MCP server built in: **turn it on and clients such as Claude or Cursor can search your lexicon, run your sound changes, read paradigm derivations, and — once you say yes — change the project**.
 

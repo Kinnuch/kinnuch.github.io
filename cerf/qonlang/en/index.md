@@ -49,7 +49,7 @@ In the order of the navigation bar, top to bottom:
 | Theme | Colour presets, font slots, font library | [Theme](/cerf/qonlang/en/skin/) |
 | Characters | IPA character panel and diacritic composition | [Character panel](/cerf/qonlang/en/chars/) |
 | Settings | Interface language, theme, autosave, project settings, folder export | [Settings](/cerf/qonlang/en/settings/) |
-| Plugins and MCP | Writing plugins for Qonlang; letting LLM clients such as Claude in | [Plugins and MCP](/cerf/qonlang/en/extending/) |
+| Plugins and MCP | Writing plugins for Qonlang; the built-in Interface translation; letting LLM clients such as Claude in | [Plugins and MCP](/cerf/qonlang/en/extending/) |
 
 ## How the modules feed each other
 

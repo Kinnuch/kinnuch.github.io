@@ -48,7 +48,7 @@ The point is to write the shared part once: only fill in the cells that really d
 
 To the right of the **Slots** title you can switch between three views:
 
-- **Visual** (default): one row per slot — enabled checkbox, slot name, gloss abbreviation, generator and pipeline — edited right in the row. The triangle at the start of each row collapses it to one line (slot name, gloss, and small print on how the cell is built — click the small print to expand it); **Collapse all / Expand all** to the right of the **Slots** title does every slot at once. What's collapsed is remembered on this computer, and a cell clicked in the table or tree view is expanded when you land on it. Under the generator drop-down are two small buttons, **Copy this slot's setup** and **Paste into this slot (replaces its setup)**: when several slots are built much the same way, copy one over and adjust it (see [section 3](#3-variants) for the clipboard). When the generator is **Pipeline + affects pronunciation**, a second, pronunciation pipeline sits under the spelling one (see [Affects pronunciation](#slot-pron)).
+- **Visual** (default): one row per slot — enabled checkbox, slot name (when the dimension values have gloss abbreviations, the abbreviation sits in small print under the name rather than in a column of its own), generator and pipeline — edited right in the row. The triangle at the start of each row collapses it to one line (slot name and abbreviation, and small print on how the cell is built — click the small print to expand it); **Collapse all / Expand all** to the right of the **Slots** title does every slot at once. What's collapsed is remembered on this computer, and a cell clicked in the table or tree view is expanded when you land on it. Under the generator drop-down are two small buttons, **Copy this slot's setup** and **Paste into this slot (replaces its setup)**: when several slots are built much the same way, copy one over and adjust it (see [section 3](#3-variants) for the clipboard). When the generator is **Pipeline + affects pronunciation**, a second, pronunciation pipeline sits under the spelling one (see [Affects pronunciation](#slot-pron)).
   - **Double-click a slot name** — or use the small arrow (**Move to another slot**) that appears next to the name when the mouse is over the row — when a setup ended up in the wrong slot: a **Move the setup of "…" to…** dialog opens, with a search box for slot names or abbreviations and a list of the other slots, where slots that already have one are marked **has a setup**. Click one to move this slot's setup (in the variant you are viewing) there, and this slot goes back to **None**. If the target already has a setup you are asked whether to replace it; Ctrl+Z undoes the move. A slot with no setup only shows a hint.
 - **Table**: the first dimension forms the rows and the second the columns; from a third dimension on, each of its values (each combination, with more dimensions) gets its own table, labelled above it. With a single dimension it is one column.
 - **Tree**: branches level by level in dimension order, with slots at the last level; click a branch point to collapse or expand it (with more than 200 slots, branches start collapsed and only the ones you open are drawn).
@@ -166,6 +166,19 @@ A tweak step holds one operation per line, applied in order:
 
 A tweak takes effect wherever it sits in the pipeline — to tidy up a word ending before sound changes run, put the tweak before the sound-change step.
 
+Classes, multigraphs and features can also be declared right inside a tweak; they apply to every rule in the step, wherever the line sits, so there is no need to create them on the Phonology page first. Classes on the two sides of a replacement map position by position; when two sounds merge into one, write the shared member twice:
+
+```
+; voiceless stops become voiced at the start of a word
+{Voiceless}=p t k
+{Voiced}=b d g
+{Voiceless} > {Voiced} / #_
+; both t and d become r: r is written twice so that s → z still lines up
+{A}=t d s
+{B}=r r z
+{A} > {B} / V_V
+```
+
 ## 6. Stem slots
 
 The **stem** at the start of a pipeline comes from the entry's **stem slots**. Stem slots are defined per part of speech in [Lexicon → Parts of speech & dimensions](/cerf/qonlang/en/lexicon/#1-sub-pages-and-modes) (a name + a description, such as a noun's strong / middle / weak forms) and filled in per entry in Edit mode; the **stem** drop-down lists the stem slots of the bound parts of speech, and the hint next to it explains where stems come from. `lemma`, an empty value, or a slot the word hasn't filled all mean the headword.
@@ -178,7 +191,7 @@ A paradigm with **Applies to all words** ticked in the inspector (initial mutati
 
 The switch to the right of the test bench title has two modes:
 
-- **Compare**: the search box matches the whole lexicon loosely (headword or definition); words bound to this paradigm come first. Click one to try it; the test bench runs whichever variant you are editing. Each slot shows the derived result and whether it matches the form stored in the lexicon; hover to see the step-by-step trace.
+- **Compare**: the search box matches the whole lexicon loosely (headword or definition); words bound to this paradigm come first. Click one to try it; the test bench runs whichever variant you are editing. Each slot shows the derived result and whether it matches the form stored in the lexicon; hover to see the step-by-step trace. Slot names use their gloss abbreviations where there are any; hover one for the full name.
   - **Derive this word and store**: writes the results into this word's inflected forms (cells overridden by hand are left alone); the table flashes green afterwards.
   - **Derive all**: writes derived forms for every entry that uses this paradigm (including entries that added it as an extra paradigm).
 - **Free**: type any form and see what this paradigm (the current variant) makes of it, using the current language. The arrow button next to a result (**Use this form as the input**) puts it back into the input box — switch to another paradigm tab to run it through that one.

@@ -69,7 +69,7 @@ At the top there is also a **Relation graph** button <a id="graph"></a>: a graph
 | Historical stage | Only when the language has [historical stages](/cerf/qonlang/en/languages/#historical-stages): the stage this word belongs to, **(latest stage)** by default. The history row is worked out from it |
 | Dimension values | The word's inherent grammatical features (noun class, gender, etc.) |
 | Dialects | Dialect labels defined on the Languages page |
-| Senses | Any number, each with definitions in the gloss languages, registers, dialects and examples. A sense can have several registers (press Enter to add); common ones such as everyday / formal / colloquial / literary / religious / divine are offered, or type your own. Next to a sense's number you can pick a part of speech for that sense alone (default: same as the entry; for compound parts of speech, its components are listed first) |
+| Senses | Any number, each with definitions (only the current interface language by default; to write others, add them under [Settings](/cerf/qonlang/en/settings/) → Current project → Languages & fonts → **Languages to write definitions in**), registers, dialects and examples. A sense can have several registers (press Enter to add); common ones such as everyday / formal / colloquial / literary / religious / divine are offered, or type your own. Next to a sense's number you can pick a part of speech for that sense alone (default: same as the entry; for compound parts of speech, its components are listed first) |
 | Etymology | A chain read as "source > stage… > the word itself"; see below |
 | Stems | If the part of speech defines stem slots, one input per slot is listed (the grey placeholder is the slot's description; empty means the headword is used). You can also give a single word custom stems (name → form): after typing the name, Tab jumps straight to the form box, and renaming to an existing name warns about the duplicate and keeps the old name. Paradigm pipelines refer to these stems |
 | Inflected forms | Derived by paradigms or typed by hand; see below |
@@ -114,16 +114,18 @@ Every derived cell has a **Create entry** button next to it (**Create a new entr
 Inflected forms have three views, chosen at the right of the heading (always visible in Edit mode; in Display mode it appears when you hover over the block — both modes share one choice):
 
 - **List**: one slot per line, the default.
-- **Table**: the first dimension as rows and the second as columns, with one table per value of the third dimension onwards (each headed by that value, such as "Person 1st person"). In Edit mode the cells are input boxes, so you can fill the table in directly.
+- **Table**: the first dimension as rows and the second as columns, with one table per value of the third dimension onwards (each headed by that value, such as "Person 1st person", or its abbreviation when it has one). In Edit mode the cells are input boxes, so you can fill the table in directly.
 - **Tree**: branching dimension by dimension, with the forms as leaves; branches can be collapsed.
 
 The view you pick is also used by **hover cards and the entry cards in the start-page gallery** (they only show it, they don't offer the switch).
+
+Where a dimension value has a **gloss abbreviation** (set under Parts of speech & dimensions), the slot names, row and column headers and branch points in all three views use it (`SG.NOM`, `PL.ACC`); hover one to see the full name. The inflected-form list in Edit mode does the same. Values without an abbreviation keep their names.
 
 Slots whose generator is **Pipeline + affects pronunciation** in the paradigm (see [Paradigms · Affects pronunciation](/cerf/qonlang/en/paradigms/#slot-pron)) store a pronunciation on the form when derived, and the entry card shows it in smaller type after the form in all three views (list, table, tree).
 
 The triangle next to the heading **collapses the whole block** (Display and Edit mode remember it separately); collapsed, it says how many slots there are and how many are filled, and clicking again expands it.
 
-Slot labels are the value names joined with `.` (such as `plural.accusative`); in a CSV import, columns with the same name go straight into inflected forms.
+Slot labels are the value names joined with `.` (such as `plural.accusative`); in a CSV import, columns with the same name go straight into inflected forms (showing abbreviations on screen does not change this).
 
 ## 6. Example sentences
 

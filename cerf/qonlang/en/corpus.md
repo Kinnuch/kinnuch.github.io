@@ -13,9 +13,34 @@ The Corpus page collects example sentences and produces an **interlinear gloss**
 
 ## 1. Sentence cards {#1-sentence-cards}
 
-The list shows one card per sentence: the script line (if a script is defined; when the script transcribes from an inspector module, it is written word by word from the lexicon — see [Script](/cerf/qonlang/en/script/)), the original text (each word can be hovered / clicked), the gloss line (shown once everything is confirmed), translations, source and tags, and a badge counting confirmed words. Press a card and drag it onto another to move it there. Click a card to open the **interlinear editor** above it; the inspector edits the text, translations (in several languages), spellings in other orthographies, source, tags, extra lines (any label + text, included in exports), notes, and the export panel.
+The list shows one card per sentence: the script line (if a script is defined; when the script transcribes from an inspector module, it is written word by word from the lexicon — see [Script](/cerf/qonlang/en/script/)), the original text (shown as written, punctuation and spaces included; each word can be hovered / clicked), the gloss line (shown once everything is confirmed), translations, source and tags, and a badge counting confirmed words. Press a card and drag it onto another to move it there. Click a card to open the **interlinear editor** above it; the inspector edits the text, translations (in several languages), spellings in other orthographies, source, tags, extra lines (any label + text, included in exports), notes, and the export panel.
 
 **Find duplicates**: the button next to the title finds sentences in the current language with identical or similar (≥80%) text. Pairs that differ only in their source are merged straight away, with the source written as "A & B"; similar but not identical pairs (or pairs with conflicting translations) are listed in a dialog where you tick the ones to merge. A merge keeps the upper sentence's text and analyses and fills in missing translations, tags and extra lines.
+
+### Translation workbench {#workbench}
+
+When you know what a sentence should mean but not yet how to write it, build it backwards from the translation:
+
+1. Add a sentence (or select one) and click **Workbench** next to the translation in the inspector; the main area becomes the workbench.
+2. Write the translation in the middle (it goes into the field for the current interface language). The app looks up words you may need — it matches entry definitions and morpheme meanings, by substring for scripts written without spaces such as Chinese and by word for alphabetic ones; a word that other sentences and phrases already use for the same meaning is preferred — and floats them below as bubbles. Parts of the translation that match nothing in the lexicon or the morpheme table are listed under the translation box (**No word found for:**), one button each: click one to go to the lexicon and create an entry with that part already filled in as its definition; when you are done, click **Back** to return to the workbench with everything you built still there (switching back from another module works too). Some meanings come from a paradigm instead (a locative case for “in”, say); then no new entry is needed.
+3. Drag the words you want into the row above, or click one to add it at the end; **Add all in order** takes every bubble at once. Drag within the row to reorder; each word shows its gloss underneath. For a word that isn't in the lexicon, type it into **Not in the lexicon? Type it** and press Enter (if it is exactly a headword or a stored inflected form, it is linked to that entry; if not, you can pick which part of speech it counts as in the attachment deck and it inflects with that paradigm). A morpheme bubble (a prefix, suffix and so on) dropped onto a word attaches to that word.
+4. Click a word in the row to open the **attachment deck** below it, where you pick its form and add tense, aspect, voice, mood and the like (see below).
+5. Click **Add to corpus**. If the selected sentence's text is still empty it is filled in; otherwise a new sentence is added at the top. The words you picked are confirmed straight away together with the pieces you built, so there is nothing to check word by word. **Cancel** goes back to the list without changing anything.
+
+#### The attachment deck {#bench-attach}
+
+The top shows the part of speech of the word you clicked (for a typed word you pick it there); below it, everything that can go with the word is listed by kind. Each kind has its own colour, and the matching piece in the word block above has the same colour:
+
+- **Paradigm**: the word's own paradigm, one row per dimension (number, case, focus…), each value showing the form you would get; **Use the base form** goes back to the headword.
+- **Via "some part of speech"**: some dimensions are marked as usable for this part of speech (**For parts of speech** on a dimension under Parts of speech & dimensions) yet live not in the word's own paradigm but in another part of speech's paradigm — say, a verb's mood, aspect and tense carried by a "verb head". That paradigm is shown too, and the piece you pick is attached to the word (forms ending in a joiner such as "·" go in front).
+- **Pieces that can attach**: prefixes, suffixes, infixes, circumfixes, clitics, particles, and function words from the lexicon — every word of a part of speech named particle, preposition, classifier, marker and the like, and from other parts of speech only words whose definition names a grammatical marker ("perfective marker", "instrumental suffix"). Groups follow the project's own dimensions first — a morpheme's grammatical features, a tag named after a dimension, a gloss matching a dimension value — then Leipzig abbreviations (and the names in the project's abbreviation table) sort the rest into tense, aspect, mood, voice, negation, number, case…, and after that tags and morpheme types. Click to add, click again to remove; for separate words (dashed boxes), whether they go before or after the word also follows the corpus; a word written in two parts (`ne…pas`) puts the first part before the word and the second after it.
+
+  Order: pieces used with this kind of word in the corpus and phrasebook, and dimensions whose **For parts of speech** names it, come first in each group. While the corpus has few analyses, the deck guesses from the project's structure — the dimensions this part of speech's paradigm uses, **For parts of speech**, and part-of-speech names such as noun or verb — offering number, case and definiteness to noun-like words and tense, aspect and mood to verb-like ones; with no clue at all it shows everything. Guesses are drawn lighter. Each group shows what it has grounds for first; click **+N** for the rest. Pieces that look meant for other parts of speech wait under the **more** list.
+- **Applies to all words**: paradigms such as initial mutation or sandhi, run over the whole word last.
+
+The coloured strip in the middle is the word as built: each piece shows its spelling and gloss; added pieces can be dragged to change their order or removed with ×. Which prefix goes outermost is worked out from how far each sits from the stem in the corpus.
+
+When the deck gets tall and hides the translation and bubbles below, click **Collapse** at its top right to fold it into one line (part of speech, word and definition); it stays folded when you pick another word or come back from another module, and **Expand** opens it again.
 
 ## 2. Automatic analysis {#2-automatic-analysis}
 
@@ -140,6 +165,7 @@ The abbreviations used in glosses (`PL`, `LOC`…) and their full names (in seve
 
 ## 9. Tips
 
-- Punctuation in sentences is stripped during tokenisation and doesn't affect matching.
+- Punctuation in sentences is stripped during tokenisation and doesn't affect matching; the list still shows it as written.
+- How well the attachment deck sorts things depends on how much of the corpus is analysed: the more confirmed sentences there are, the clearer it is which morphemes go with which kind of word, on which side, and in what order. With no corpus yet it makes a rough guess from paradigms and dimensions; filling in a dimension's **For parts of speech** and glossing morphemes with Leipzig abbreviations (PL, PST…) both help it sort more accurately.
 - When the same word means different things in different sentences, just pick and confirm the right candidate in each; the first choice is only the default order. Filling in translations greatly reduces how often you have to pick.
 - To tidy up in bulk, complete the lexicon first and then **Re-analyze all** — faster than fixing words one by one.

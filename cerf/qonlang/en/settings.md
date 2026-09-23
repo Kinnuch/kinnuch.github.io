@@ -19,6 +19,7 @@ From top to bottom, the Settings page has four parts — **Application (this com
 |---|---|
 | Interface language | Nine: 中文 / 繁體中文 / English / 日本語 / 한국어 / Français / Español / Русский / العربية. Traditional Chinese is converted from Simplified automatically (Taiwan wording) and follows it; the rest are translated entry by entry. Anything not covered falls back (Traditional → Simplified, the rest → English) rather than showing a key name. With Arabic only the **text itself** runs right to left (each paragraph follows its first strong character, so Latin letters and numbers inside it stay as they are); the navigation and inspector stay where they are. Either Chinese opens the Chinese guide from the **User guide** buttons; the others open this English guide |
 | Light or dark | Follow system / Light / Dark; the theme's palette switches according to this (this item was called **Theme** before 0.12.1, renamed so it no longer clashes with the [Theme](/cerf/qonlang/en/skin/) module) |
+| When a sentence of the day is too long | What the start page's sentence of the day does with a sentence that doesn't fit on one line: **Only pick ones that fit** (default; if none fit, they are cut short instead) / **Cut it short (between words)** (split by the project's word splitting, never in the middle of a word, followed by "…") / **Wrap onto more lines** (the card grows taller). Whether a sentence fits is measured with the real font |
 | Show the "?" usage hints next to panels | The small round question marks next to modules and inspector panels, each giving a one-line explanation on hover |
 | Show the guided tour every time **User guide** is clicked | Off by default: each module's tour runs automatically only once, and after that **User guide** opens this site directly; turned on, the tour runs every time. The checkbox in the dialog at the end of a tour is the same switch |
 
@@ -78,6 +79,7 @@ An update check first looks at where GitHub's "latest release" page redirects to
 |---|---|
 | Default language | The current language when the project is opened |
 | Definition languages | Comma-separated language codes such as `zh, en`. Multilingual text — senses, dimension names, morpheme meanings and so on — is shown and falls back in this order |
+| Languages to write definitions in | Which languages get an input box in multilingual fields such as definitions, translations and names, comma-separated (`zh, en`). Empty means only the current interface language; languages that already have text are always shown |
 | Font for language data | A project-level font (headwords, IPA, etc.), also used by dictionary exports; empty means the default |
 | Entry image size | Every image is cropped to this pixel size (default 320×240); after changing it, newly imported images use the new size and existing ones are unchanged |
 

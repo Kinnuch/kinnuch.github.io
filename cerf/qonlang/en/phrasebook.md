@@ -24,13 +24,15 @@ Words in the text that can be found in the lexicon (including inflected forms an
 | Field | Description |
 |---|---|
 | Text | In the primary orthography |
-| Translation | In each gloss language |
+| Translation | Only the current interface language by default; to write others, add them under [Settings](/cerf/qonlang/en/settings/) → Current project → Languages & fonts → **Languages to write definitions in** |
 | Category | Free text, with suggestions from categories already in use; the left column groups by it. **Double-click** a category in the left column to rename it (every phrase in it changes together) |
 | Pronunciation | One **Orthography-based IPA** row per orthography (written **Orthography-based IPA (orthography name)** when there are several), followed by a **!** checkbox meaning irregular. After you edit the text, pronunciations are derived automatically with the "orthography → IPA" rules. Editing a pronunciation by hand ticks **irregular** automatically, so derivation no longer overwrites it; a toast says how many were left alone, and **Recompute them too** on the toast recomputes them as well. Unticking **!** recomputes that orthography's pronunciation from the rules immediately |
 | Variants | Any number of "form + note" pairs, for differences of register, occasion or dialect |
 | Tags | |
 
 Deletion can be undone.
+
+**Translation workbench**: click **Workbench** next to the translation in the inspector to build the text backwards from the translation, the same way as the [corpus translation workbench](/cerf/qonlang/en/corpus/#workbench): write the translation, drag the floating words up into order, click a word to pick its form and add affixes and particles in the [attachment deck](/cerf/qonlang/en/corpus/#bench-attach), then click **Add to phrasebook**. If the selected phrase's text is still empty it is filled in; otherwise a new phrase is added to the current category. The words you picked are stored as the phrase's analysis, and the pronunciation is filled in by the rules.
 
 ## 3. Connections to other modules
 

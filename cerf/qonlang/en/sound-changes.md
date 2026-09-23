@@ -89,7 +89,7 @@ target > replacement / left0_right0 , left1_right1 , … - leftExc_rightExc , le
 | Part | Description |
 |---|---|
 | Target | May contain classes, ad-hoc classes `[abc]` and optional parts `()`. Empty means insertion |
-| Replacement | May contain classes (including ad-hoc ones such as `[bdg]`); the first class in the target and the classes in the replacement correspond by position (`V > {Vlong}` turns the nth vowel into the nth long vowel). A numbered class such as `C1` outputs the sound matched by the same number. Empty means deletion. `\` is metathesis (more than two characters are reversed as a whole). `2` is gemination |
+| Replacement | May contain classes (including ad-hoc ones such as `[bdg]`); the first class in the target and the classes in the replacement correspond by position (`V > {Vlong}` turns the nth vowel into the nth long vowel); members may repeat, so when two sounds merge into one, write the shared member twice (`{A}=t d s` against `{B}=r r z`) to keep the positions lined up. A numbered class such as `C1` outputs the sound matched by the same number. Empty means deletion. `\` is metathesis (more than two characters are reversed as a whole). `2` is gemination |
 | Environment | `_` marks where the target is; left and right may be empty but `_` can't be left out. No `/` means any environment. Separate several environments with `,`; they are applied **one after another** (the second environment sees the word as already changed by the first) |
 | Exception | Introduced by `-`; positions that match an exception are left unchanged. Separate several exceptions with `,`; a position matching any of them is left unchanged |
 
@@ -219,6 +219,7 @@ V > ə / σ(C)(C)_ - ˈ(C)(C)_   ; unstressed vowels reduce
 |---|---|
 | Drop word-final vowels | `V > / _#` |
 | Voice voiceless stops between vowels | `[ptk] > [bdg] / V_V` (ad-hoc classes correspond by position) |
+| Merge two sounds into one | Define `{A}=t d` and `{B}=r r`, then write `{A} > {B} / V_V`: both t and d become r between vowels (r is written twice) |
 | Front / back vowel harmony | Define `Back=aou` and `Front=eöü` first, then write `A > a / Back?_` and `A > e / Front?_` (`A` is an archiphoneme placeholder) |
 | Simplify double consonants | `C1C1 > C1` |
 | Delete morpheme boundary marks | `¢ > / _` at the end of the rule set |

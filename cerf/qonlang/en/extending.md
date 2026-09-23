@@ -114,7 +114,7 @@ Qonlang ships with one plugin of its own: **Interface translation**. It lists ev
 
 ### Starting a translation {#ui-new}
 
-Click **New translation** and fill in four things:
+Click **New translation** and fill in:
 
 | Item | Description |
 |---|---|
@@ -122,8 +122,9 @@ Click **New translation** and fill in four things:
 | Base language | Untranslated strings show in this language (a key name is never shown), and it is the default source text while you translate |
 | Written in | **Latin letters** use the app's own font; **my own script** needs a font installed in the [font library](/cerf/qonlang/en/skin/#6-font-library), and the whole interface is then shown in it |
 | Written right to left | Like Arabic: only the text runs right to left, the navigation and inspector stay where they are |
+| App name wordmark | What replaces the "Qonlang / 千语集" lettering at the top left of the start page and in Settings → About: some text (shown in this translation's font), or click **Use an image…** for a picture (under 300 KB). The QL icon on the left stays; leave it empty for the built-in wordmark |
 
-All of these can be changed later from the row above the list.
+All of these can be changed later from the row above the list (name, font, direction and wordmark).
 
 ### Translating {#ui-edit}
 
@@ -134,6 +135,7 @@ Categories are on the left (by module — Lexicon, Paradigms, Script… with how
 - The search box covers **keys, source text and translations** at once.
 - Placeholders such as `{n}` and `{name}` **must stay in the translation** — a yellow note appears when one goes missing, because the app replaces them with real numbers and names.
 - Translations save as you type; if you are using this language at the moment, the interface changes straight away.
+- **Source changed**: every translation remembers the source text it was made from. When an update changes a source text, its row is marked **Source changed**, and hovering the mark shows the old source; tick **Only changed source text** to see just these. Editing the translation clears the mark; if the translation still holds, click **Still fine** next to the mark. Strings translated before 0.12.3 have no remembered source and are never marked.
 
 ### Using it and sharing it {#ui-use}
 

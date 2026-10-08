@@ -2,7 +2,7 @@
 layout: page
 permalink: /cerf/qonlang/en/paradigms/index.html
 title: Qonlang · Paradigms
-description: The Paradigms page in Qonlang — combining grammatical dimensions into slots, locking and filtering dimensions, simple and complex mode, pipeline steps, letters that change by condition, adjustments and infix positions, variants, @morpheme allomorphs, paradigm inheritance, several paradigms per part of speech, slots based on other slots and slots that affect pronunciation, the test bench, writing derived forms and reconciliation.
+description: The Paradigms page in Qonlang — combining grammatical dimensions into slots, locking and filtering dimensions, filtering slots and enabling or disabling them in batches, simple and complex mode, pipeline steps, letters that change by condition, adjustments and infix positions, variants, @morpheme allomorphs, paradigm inheritance, several paradigms per part of speech, slots based on other slots and slots that affect pronunciation, the test bench, writing derived forms and reconciliation.
 ---
 
 # Paradigms
@@ -53,7 +53,17 @@ To the right of the **Slots** title you can switch between three views:
 - **Table**: the first dimension forms the rows and the second the columns; from a third dimension on, each of its values (each combination, with more dimensions) gets its own table, labelled above it. With a single dimension it is one column.
 - **Tree**: branches level by level in dimension order, with slots at the last level; click a branch point to collapse or expand it (with more than 200 slots, branches start collapsed and only the ones you open are drawn).
 
-Each cell of the table and tree shows what the **test bench** word becomes (change the word in the inspector's test bench; with no word there, the cell only shows how it is built), with small print explaining how the cell is built — the affix of each step, which rule set runs, the first line of an adjustment, and "⟨stem name⟩" when the stem isn't the headword. A form that doesn't match the one typed in the entry is shown in red, disabled cells say **Off**, and cells filtered out by the top-bar search are faded. Click any cell to return to the visual view, which scrolls to that cell and flashes it.
+Each cell of the table and tree shows what the **test bench** word becomes (change the word in the inspector's test bench; with no word there, the cell only shows how it is built), with small print explaining how the cell is built — the affix of each step, which rule set runs, the first line of an adjustment, and "⟨stem name⟩" when the stem isn't the headword. A form that doesn't match the one typed in the entry is shown in red, disabled cells say **Off**, and cells filtered out by the top-bar search or the [slot filter](#slot-filter) are faded. Click any cell to return to the visual view, which scrolls to that cell and flashes it.
+
+### Filtering slots {#slot-filter}
+
+In the visual view there is a funnel right above the column of checkboxes (in the table and tree views it sits on the **Slots** title row). Click it to choose which slots to show:
+
+- **Status**: All, Enabled or Disabled, each button showing how many slots it covers.
+- **Values of each dimension**: one row per dimension the paradigm uses; click a value to filter by it, click it again to drop it. Several values picked in one dimension match any of them, while picks in different dimensions must all match — picking **plural**, **nominative** and **accusative** leaves just the plural nominative and accusative.
+- The bottom of the panel says how many slots are showing; **Enable these n** and **Disable these n** switch the whole filtered batch at once, and **Clear filter** goes back to everything.
+
+While a filter is on, the funnel is highlighted and the count after **Slots** reads like "4 / 8". In the table and tree views the cells that don't match are faded; clicking one tells you it is filtered out, and the **Clear filter** button in that message jumps straight to it. When only enabled (or only disabled) slots are showing, a row you just ticked or unticked stays where it is instead of vanishing under the mouse; the list is worked out again when you change the filter. Each paradigm remembers its own filter, also when you switch to another module and back; closing the project clears it. The top-bar search and the [dimension filter of a locked paradigm](#lock-dims) apply on top of it.
 
 ## 3. Variants
 

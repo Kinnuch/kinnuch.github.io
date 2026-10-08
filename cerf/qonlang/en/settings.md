@@ -2,7 +2,7 @@
 layout: page
 permalink: /cerf/qonlang/en/settings/index.html
 title: Qonlang · Settings
-description: The Settings page in Qonlang — application settings grouped into cards (interface, saving & startup, updates, display) and project settings (basics, languages & fonts, word splitting & gloss, paradigms), exporting as a folder, one CSV or a read-only copy, and clearing data.
+description: The Settings page in Qonlang — application settings grouped into cards (interface, saving & startup, updates, display) and project settings (basics, languages & fonts, word splitting & gloss, paradigms), exporting as a folder, one CSV, a read-only copy or a study pack, and clearing data.
 ---
 
 # Settings
@@ -99,7 +99,7 @@ An update check first looks at where GitHub's "latest release" page redirects to
 
 ## 3. Exporting as a folder or as one CSV
 
-The **Data** part has two cards: **Export** (this section and the read-only copy in section 5) and **Clear data**.
+The **Data** part has two cards: **Export** (this section, the read-only copy in section 5 and the study pack in section 8) and **Clear data**.
 
 **Export as folder** splits the project into a folder: `project.json` (metadata and settings), `languages.json`, `lexemes.json`, `morphemes.json`, `paradigms.json`, `sentences.json`, `phrasebook.json`… plus a `.txt` for each rule set and doc pages as `docs/*.md`. Good for keeping in git and reading diffs. A folder can also be imported back into a single file.
 
@@ -130,3 +130,24 @@ The full Qonlang logo at the top; below it a line with the current version, the 
 ## 7. Connection hints
 
 Closing the blue connection hints at the top of each page is remembered in the application preferences; to show them all again, delete `dismissedHints` from `prefs.json` in the data folder (a button will come in a later version).
+
+## 8. Exporting a study pack (for Qonlang Study) {#study-pack}
+
+**Export a study pack** on the **Export** card opens a page of its own that prepares a study pack for Qonlang Study, the companion language-learning app: first decide how each language is taught, then export the project together with those settings as one `.qstudy.json` file.
+
+These settings are **not written into the project file**. They are kept per project in `study-export/` in the data folder on this computer (in the browser for the web version), and changing them never marks the project as unsaved. On a new computer or after reinstalling, click **Load settings from a study pack** and pick a study pack you exported earlier; the parts that match the current project are restored.
+
+At the top, fill in the author credit and tick the languages to export (languages that have entries are ticked by default); click **Edit** on a language to set it up in six tabs below:
+
+| Tab | What it does |
+|---|---|
+| Cover | Course name (the language name when left empty) and an introduction (Markdown, previewed live), shown on this language's home page in the study app |
+| Lessons | Each lesson can use a document as its text and list its new words, sentences and phrases (type to search, click a result to add it, click × to remove it); drag the handle on the left to reorder. **One lesson per document** creates a lesson for each document of this language (and each document not tied to a language), skipping documents that are already in a lesson or hidden |
+| Hidden | Ticked entries, sentences, phrases and documents never appear in the study app — drafts, placeholders, words you would rather keep private. **Tick placeholder entries** ticks every entry that contains no letters (already ticked the first time the page opens) |
+| Levels | The study app sorts words into 5 levels by frequency; to pin a word to a level, add it here and pick the level |
+| Display | The orthography and script learners see by default, and whether IPA is shown; learners can still switch these themselves |
+| Recordings | Entries, phrases and sentences are listed separately; each row can be recorded with the microphone or given an audio file (webm, ogg, mp3, wav, m4a, flac). **Import recordings in bulk** takes many files at once: a file matches when its name (without the extension) equals a headword, a phrase or a sentence. The study app plays your recording first and reads the IPA aloud when there is none |
+
+Items that are not in any lesson still show up in the study app's word list and reviews. Entries, sentences and documents deleted from the project are dropped from lessons, hidden items, levels and recordings the next time this page opens.
+
+A study pack is a JSON file: it starts with `"format": "qonlang-study-pack"`, `version`, the export time and the Qonlang version; `study` holds the settings above (recordings embedded as data URLs) and `project` is the complete project, the same as in a project file. **Open project** in Qonlang does not accept study packs; keep editing the original project file. Study packs cannot be exported from a read-only copy.

@@ -11,12 +11,21 @@ description: Installing Qonlang, the start page, starter templates, the project 
 
 ## 1. Installing and launching {#1-installing-and-launching}
 
-- **Windows, portable**: unzip and double-click `Qonlang.exe`. The data folder is `%APPDATA%\Qonlang` (preferences, recent projects, automatic backups and downloaded fonts all live there).
-- **Windows installer**: `Qonlang-<version>-setup.exe`. You can choose the install folder; the desktop shortcut is called 千语集 (Qonlang).
-- **macOS**: download `Qonlang-<version>-mac-arm64.dmg` (Apple Silicon) or `-x64.dmg` (Intel) from [GitHub Releases](https://github.com/Kinnuch/Qonlang/releases) and drag the app into Applications. The app is not signed or notarised, so Gatekeeper blocks the first launch: **right-click the app → Open**, or run `xattr -cr /Applications/Qonlang.app` in Terminal. The data folder is `~/Library/Application Support/Qonlang`.
+All the installers are on [GitHub Releases](https://github.com/Kinnuch/Qonlang/releases). GitHub can be slow or unreachable on some networks, so please make sure you can reach it before downloading.
+
+- **Windows**: `Qonlang-<version>-setup.exe`. You can choose the install folder; the desktop shortcut is called 千语集 (Qonlang). The installer is not signed: if your browser says the file isn't commonly downloaded, choose **Keep** in the download list; if the first launch shows **Windows protected your PC**, click **More info**, then **Run anyway**. The data folder is `%APPDATA%\Qonlang` (preferences, recent projects, automatic backups and downloaded fonts all live there).
+- **macOS**: `Qonlang-<version>-mac-arm64.dmg` (Apple silicon) or `-x64.dmg` (Intel); open it and drag Qonlang into Applications. The app is not signed or notarised, so macOS blocks the first launch:
+  - macOS 14 and earlier: right-click Qonlang, choose **Open**, then click **Open** in the dialog.
+  - macOS 15 and later: double-click Qonlang once (click **Done** when it says it can't be opened), then open **System Settings → Privacy & Security**, find the message about Qonlang being blocked near the bottom, click **Open Anyway** and enter your password.
+  - If it says the app **is damaged and can't be opened**, run `xattr -cr /Applications/Qonlang.app` in Terminal, then open it as usual.
+
+  The data folder is `~/Library/Application Support/Qonlang`.
+- **Linux**: `Qonlang-<version>.AppImage`. After downloading, tick **Allow executing file as program** in the file's properties (or run `chmod +x Qonlang-*.AppImage`), then double-click it. On Debian or Ubuntu you can use the `.deb` package instead (`sudo apt install ./qonlang_<version>_amd64.deb`). The data folder is `~/.config/Qonlang`.
 - **From source**: after `git clone`, on Windows double-click `dev.cmd` in the repository (it bypasses PowerShell, so execution policies don't get in the way); on macOS / Linux run `sh dev.sh`. The first run installs dependencies with `npm install` automatically.
 
-For every release, GitHub Actions builds the Windows installer and the macOS dmg together when the version tag is pushed, and attaches them to the same Release.
+For every release, GitHub Actions builds the Windows installer, the macOS dmg and the Linux AppImage and deb together when the version tag is pushed, and attaches them to the same Release. Versions with `-beta` in them (such as `1.0.0-beta.1`) are **test builds**, marked **Pre-release** on the Release page: installs of a regular release are not offered them, so download one from the Release page if you want to try it; once you have a test build, later test builds and regular releases are offered as usual.
+
+On first launch the interface language follows your system: if the system language is one of the nine interface languages it is used, otherwise English. You can change it at any time under **Language** at the bottom left of the start page.
 
 If Windows says "running scripts is disabled", that is PowerShell's execution policy blocking `npm.ps1`; use `dev.cmd`, or just run the exe.
 
@@ -43,9 +52,11 @@ The left column also has New project, Open project, **Example projects** and Use
 - **Aelith** (an agglutinative a priori language): a proto-language → modern language family with a sister language, Merun (compare cognates in the relation graph), vowel harmony, multi-slot suffixes, all eight kinds of pipeline steps, variants and inheritance, disabled slots and hand-filled tables, sandhi voicing that applies to all words (with classes declared inside the tweak step), compound parts of speech, inspector modules, etymology chains and the relation graph, images and dialects, a glossed and confirmed corpus with punctuation, a runic script, features and stress rules (plus a merger of two sounds: t and d both become r between vowels), a custom stress rule, entries with Affects stress, the family node "Ael 语系" with group statistics, the historical stages CAe → Ae with each entry's history (kaso: PAe kasu → CAe kaso → Ae kaso), plural cases based on 复数.主格 (plural nominative), locative slots that affect pronunciation (kasoda reads ˈkasoða), an allomorph picked by a grammatical value (the plural marker is -lAn before the dative: kasolanka), and the verb's third-person cells deliberately left empty so that, in simple mode, they continue from the 极性.时 (polarity-tense) slots.
 - **Tsahun** (an isolating tone language): five tones, romanised and Cyrillic orthographies (syllables and sound counts follow the spelling), syllabary packing and **vertical text**, reduplication paradigms and inflected forms containing spaces, homograph candidates, a variant-character module, a logographic script written from glyph codes, classifiers and a whole borrowed numeral system.
 
+When the interface isn't Chinese, the documents in the example projects (**About this example**, the grammar sketches and so on) open in English; the example data itself — entries, sentences and so on — stays the same.
+
 Each example card has **Open** and **Make a copy**. **Open** is for trying things out: change anything, but it can't be saved — the top bar shows an **Example** badge and **Make a copy** where Save would be, `Ctrl+S` only shows a hint, nothing is marked as unsaved, and closing never asks. **Make a copy** (on the example card, or in the top bar once opened) asks where to save a copy, and that copy is your own normal project that saves as usual.
 
-The six buttons at the bottom are Buy me a coffee, Changelog (the repository's `CHANGELOG.md`), Developer, Friends, Credits and Rule syntax, each shown in the right-hand panel when clicked (when the start page opens, that panel shows the changelog); to their left is **User guide**, which is this site.
+The six buttons at the bottom are Buy me a coffee, Changelog (the repository's `CHANGELOG.md`, or the English `CHANGELOG.en.md` when the interface isn't Chinese), Developer, Friends, Credits and Rule syntax, each shown in the right-hand panel when clicked (when the start page opens, that panel shows the changelog); the **Developer** panel starts with **Report a problem** and **Copy diagnostics** (see [Settings · About](/cerf/qonlang/en/settings/#6-about)); to their left is **User guide**, which is this site.
 
 Three more sit at the bottom left: **Language** (the interface language), **Theme** (light or dark, and [Theme](/cerf/qonlang/en/skin/) presets) and **Settings** (the **Application** half of [Settings](/cerf/qonlang/en/settings/) — everything that isn't about a project) — all available without opening a project.
 
@@ -56,6 +67,9 @@ Three more sit at the bottom left: **Language** (the interface language), **Them
 - **Autosave**: the interval set in Settings (in seconds; 0 turns it off). Independently, a snapshot is written to the data folder every 5 seconds, so after a crash the app offers to restore it on the next start.
 - **Backups**: before every save, the previous file is copied to `Backups/` in the data folder; the last 20 are kept by default.
 - **Close protection**: if there are unsaved changes when you close the window or click 千 in the navigation bar to go back to the start page, a prompt lets you save or discard.
+- **Checking for changes made elsewhere**: before saving (autosave included), Qonlang checks whether the file was changed by another program since you opened or last saved it — another Qonlang window, a cloud-sync folder and so on. If it was, you are asked first: **Overwrite** replaces those changes with what you have now; **Save as…** saves to another file and leaves the original alone; **Don’t save yet** writes nothing this time and pauses autosave, and `Ctrl+S` lets you choose again.
+- **Two copies of Qonlang at once**: that's fine; the one opened second first tells you **Qonlang is already open**. Please edit a project in only one window; each window keeps its own crash-recovery snapshot, so they don't overwrite each other.
+- **Format promise**: from 1.0 on, every later version can open project files saved since 1.0 (read-only copies included).
 
 ## 4. A suggested order for building a language
 

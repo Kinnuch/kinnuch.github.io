@@ -21,11 +21,11 @@ description: Qonlang is a desktop workbench for every conlanger — lexicon, mor
 
 [中文版](/cerf/qonlang/)
 
-Qonlang (千语集) is a desktop application **for every conlanger** (a portable Windows build and an installer, plus macOS; the same code also runs in a browser). It ships with no terminology from any particular language: parts of speech, cases, dimensions, abbreviations, dialects and scripts are all defined by you, inside the project. The software only ties them together — entering words and roots, writing sound-change rules, deriving pronunciations from your phonology, glossing example sentences automatically, building custom scripts and exporting dictionaries.
+Qonlang (千语集) is a desktop application **for every conlanger** (installers for Windows, macOS and Linux; the same code also runs in a browser). It ships with no terminology from any particular language: parts of speech, cases, dimensions, abbreviations, dialects and scripts are all defined by you, inside the project. The software only ties them together — entering words and roots, writing sound-change rules, deriving pronunciations from your phonology, glossing example sentences automatically, building custom scripts and exporting dictionaries.
 
 - Source code and downloads: [github.com/Kinnuch/Qonlang](https://github.com/Kinnuch/Qonlang) (MIT)
-- Interface languages: 中文 / English (Chinese by default); light and dark themes
-- Project file: a single `*.laim.json`, which can also be exported as a folder split by collection (handy for git)
+- Interface languages: nine — 简体中文, 繁體中文, English, 日本語, 한국어, Français, Español, Русский and العربية; the first launch follows the system language; light and dark themes
+- Project file: a single `*.laim.json`, which can also be exported as a folder split by collection (handy for git); from 1.0 on, every later version can open project files saved since 1.0
 
 Every page in the app has a **User guide** button next to its title. It first runs an **illustrated tour** on the interface itself — highlighting the key parts with arrows and captions, step by step (1/N) — and at the end asks whether you want to open the matching chapter on this site. The tour **takes you there**: it switches to the sub-page, table or view a step is about, opening the inspector when needed, and puts everything back the way you left it when the tour ends or you skip it. Each module's tour runs automatically only once; after that the button opens this site directly. If you want the tour every time, tick the option in that final dialog, or turn it on in [Settings](/cerf/qonlang/en/settings/). The **User guide** button in the left column of the start page leads here. When the interface is in English, these buttons open this English guide.
 

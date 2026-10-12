@@ -1,0 +1,34 @@
+<!doctype html><html lang="zh-CN"><meta charset="utf-8"><title>联机测试运行中</title><pre id="out"></pre>
+<script type="module">
+import { Network } from '../js/net.js';
+const out=document.querySelector('#out');let passed=0;
+const check=(value,label)=>{if(!value)throw Error(label);out.textContent+=`通过：${label}\n`;passed++;};
+const sleep=ms=>new Promise(r=>setTimeout(r,ms));
+const until=async fn=>{for(let i=0;i<200;i++){if(fn())return;await sleep(25);}throw Error('等待连接超时');};
+// 仅替代公网信令发现。数据经真实 RTCPeerConnection / RTCDataChannel 传输。
+import { LocalPeer } from './local-peer.js';
+let host,client,late;
+try {
+  let code='',chats=[],lost=false;
+  host=new Network({open:id=>{code=id;}},LocalPeer);
+  host.hostRoom('房主',{layout:'2v2',seed:91,challenge:'hard'},'free',['recruits','defense']);await until(()=>code);
+  client=new Network({chat:m=>chats.push(m),lost:()=>{lost=true;}},LocalPeer);
+  client.joinRoom(code,'队友');await until(()=>client.G);
+  check(client.G.stars.length===host.G.stars.length,'真实 WebRTC 完整快照');
+  client.choose(0);await until(()=>host.room.members.get(client.id)?.faction===0);
+  const home=host.G.factions[0].home,target=host.G.stars[home].links[0];
+  client.command({type:'order',star:home,target});await until(()=>host.G.stars[home].order===target);
+  check(host.G.log.at(-1).f===0,'客户端指令经房主授权');
+  host.pause(false);for(let i=0;i<40;i++)host.tick();host.publish();await until(()=>client.G.tick===40);
+  check(client.G.transit.length===host.G.transit.length,'在途舰船同步');
+  client.chat('<b>消息</b>');await until(()=>chats.length);check(chats[0].text==='<b>消息</b>','聊天按文本传输');
+  late=new Network({},LocalPeer);late.joinRoom(code,'后加入');await until(()=>late.G?.tick===40);
+  check(JSON.stringify(late.G.stars)===JSON.stringify(host.G.stars),'中途加入取得当前局面');
+  client.close();await until(()=>!host.room.members.has(client.id));check(host.G.factions[0].human,'队友离线，房主仍控制势力');
+  const enemy=host.G.factions[1].home;late.choose(1);await until(()=>host.G.factions[1].human);
+  late.close();await until(()=>!host.G.factions[1].human);check(host.G.factions[1].personality,'最后一位玩家离线后 AI 接手');
+  const observer=new Network({lost:()=>{lost=true;}},LocalPeer);observer.joinRoom(code,'观战');await until(()=>observer.G);host.close();await until(()=>lost);observer.close();
+  check(lost,'房主离线提示');
+  document.title=`NETWORK PASS ${passed}`;
+}catch(e){out.textContent+=e.stack;document.title='NETWORK FAIL '+e.message;}finally{host?.close();client?.close();late?.close();}
+</script></html>

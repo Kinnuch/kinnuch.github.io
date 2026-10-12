@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Gillíf · 星路争霸</title>
+  <link rel="stylesheet" href="css/gillif.css">
+  <script>
+    (function(){var t=localStorage.getItem('theme');if(t==='dark'||((!t)&&window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches)){document.documentElement.setAttribute('data-theme','dark');}})();
+    function toggleTheme(){var d=document.documentElement;var n=d.getAttribute('data-theme')==='dark'?'light':'dark';d.setAttribute('data-theme',n);localStorage.setItem('theme',n);}
+  </script>
+</head>
+<body>
+
+<!-- 大厅 -->
+<div id="lobby">
+  <div class="header-bar">
+    <div class="utility-bar">
+      <a href="/cerf/" class="utility-btn">🏠 返回工具页</a>
+      <button class="utility-btn" onclick="toggleTheme()">☀ 模式</button>
+    </div>
+    <h1 class="page-title">Gillíf · 星路争霸</h1>
+    <p class="page-sub">抢星星的即时战略：占领群星、沿星路调兵、蚕食对手，直到一统星系。</p>
+  </div>
+
+  <div class="screen">
+    <h2>Gillíf</h2>
+    <p class="lead">
+      你从一颗母星起家。自己的星会不断造船；把船沿星路派往邻星，兵力占优就能慢慢夺取它的控制权。
+      对手是同样在扩张的 AI。消灭所有对手，或在时限到时握有最多的星，就是胜利。
+    </p>
+
+    <div id="firstTime" class="first-time" hidden>
+      <span>第一次玩？跟着<b>新手教程</b>走一局，大约 5 分钟。</span>
+      <button id="firstTutorial" type="button" class="primary small">开始教程</button>
+      <button id="firstSkip" type="button" class="link-btn">不用了</button>
+    </div>
+
+    <!-- 档案 -->
+    <div class="profile">
+      <div class="pf-lv" title="等级"><small>Lv</small><b id="pfLevel">1</b></div>
+      <div class="pf-body">
+        <div class="pf-row">
+          <input id="pfName" class="pf-name" maxlength="16" placeholder="无名氏" autocomplete="off" spellcheck="false" title="你的名字（显示在结算表里）">
+          <span id="pfTitle" class="pf-title"></span>
+        </div>
+        <div class="xpbar"><i id="pfXp"></i></div>
+        <div class="pf-meta" id="pfMeta"></div>
+        <div class="pf-note" id="pfNote" hidden></div>
+      </div>
+      <div class="pf-side">
+        <label class="toggle" title="成长模式：对局得经验、升级，能力点随等级增长。自由模式：直接 12 点，但 6 点的卡不能用，也不涨经验。">
+          <input type="checkbox" id="optRanked"> 计入成长
+        </label>
+        <button id="tutorialBtn" type="button" class="ghost-btn">新手教程</button>
+        <button id="pfReset" type="button" class="link-btn">重置档案</button>
+      </div>
+    </div>
+
+    <details class="online-setup"><summary>多人联机 · 房号邀请</summary>
+<p>队友共用同色势力、母星与卡组。仅房主推进对局和暂停；联机不计经验。需要联网以交换连接信息，部分网络可能无法直连。</p>
+<label>昵称 <input id="netName" maxlength="16" placeholder="玩家"></label>
+<label>配置 <select id="netLayout"><option>2</option><option>3</option><option selected>4</option><option>5</option><option>6</option><option>2v2</option><option>3v3</option><option>2v2v2</option></select></label>
+<label>加入规则 <select id="netRule"><option value="free">自由选势力</option><option value="coop">合作：共用一方</option><option value="deathmatch">死斗：每人一方</option></select></label>
+<button id="netHost" type="button">创建房间</button>
+<label>房号 <input id="netCode" placeholder="gillif-xxxxxx"></label><button id="netJoin" type="button">加入房间</button>
+<p id="netError" role="status"></p></details>
+<div class="setup top">
+      <label class="field">模式
+        <select id="optMode">
+          <option value="solo">单人</option><option value="hotseat">同屏多人</option>
+        </select>
+        <small class="note" id="modeNote"></small>
+      </label>
+      <label class="field">星系
+        <select id="optGalaxy">
+          <option value="small">小型</option><option value="medium">中型</option>
+          <option value="large" selected>大型</option><option value="defensible">要塞</option>
+          <option value="desolate">荒疏</option><option value="imploded">空心环</option>
+        </select>
+        <small class="note" id="galaxyNote"></small>
+      </label>
+      <label class="field" id="playersField" hidden>玩家
+        <select id="optPlayers"></select>
+      </label>
+      <label class="field"><span id="aiLabel">对手</span>
+        <select id="optAi"></select>
+      </label>
+      <label class="field">难度
+        <select id="optChallenge">
+          <option value="beginner">新兵</option><option value="easy">中尉</option>
+          <option value="normal" selected>指挥官</option><option value="hard">上将</option>
+          <option value="nightmare">皇帝</option>
+        </select>
+        <small class="note" id="challengeNote"></small>
+      </label>
+    </div>
+    <div class="setup">
+      <label class="field">时限
+        <select id="optTime">
+          <option value="10">10 分钟</option><option value="15" selected>15 分钟</option>
+          <option value="20">20 分钟</option><option value="30">30 分钟</option><option value="0">不限时</option>
+        </select>
+      </label>
+      <label class="field">星图编号
+        <input id="optSeed" inputmode="numeric" placeholder="留空随机" autocomplete="off">
+      </label>
+      <label class="toggle"><input type="checkbox" id="optFog" checked> 战争迷雾</label>
+      <button id="startBtn" class="primary">开 始</button>
+    </div>
+
+    <div class="deck-box" id="deckBox">
+      <div class="deck-head">
+        <h3>能力卡组</h3>
+        <span id="deckPts" class="pts"></span>
+        <button id="deckReset" type="button" class="link-btn">恢复默认</button>
+      </div>
+      <p class="muted tiny"><span id="deckNote"></span>对局里点右侧的卡（或按数字键），再点目标发动；每张卡开局时都在冷却中。</p>
+      <div id="deckGrid" class="deck-grid"></div>
+    </div>
+
+    <div class="howto">
+      <h3>怎么玩</h3>
+      <ul>
+        <li><b>派兵</b>：在自己的星上按住，朝某颗相邻星的方向拖动，松手。这颗星会<b>持续</b>沿星路把船送过去，直到你改主意。</li>
+        <li><b>防守</b>：点一下自己的星，停止外发、原地防守。不外发的星在交战中损失更少。</li>
+        <li><b>占领</b>：星上兵力占优的一方会逐渐积累控制度（星周围的圆环）。把星主的控制度压到 20 以下，星就变成中立；涨满 100 就归你。兵力优势超过 25 艘不再加快。</li>
+        <li><b>造船</b>：每颗星约每秒造 1 艘，控制度越低造得越慢。被自己的星包围、又闲着的内陆星不造船——把它们的兵调往前线。</li>
+        <li><b>上限</b>：每颗星最多造到 50 艘；全军总数不超过星系星数 × 8。</li>
+        <li><b>迷雾</b>：你只看得见到过的星和它们的邻星；别人的兵力只有你的船在场时才看得清。</li>
+        <li><b>能力</b>：开局前配好卡组。对局里点卡进入瞄准，可选的星会闪烁；突击队、拓宽、干扰、开辟、断航要选两颗星（从第一颗拖到第二颗，或先后各点一下）。上将与皇帝难度的 AI 也会用能力。</li>
+        <li><b>成长</b>：单人对局按得分涨经验（前 20 级有加成），升级会多出能力点、解锁更贵的卡；每 5 级换一个头衔。中途离开按认输结算。不想练级就关掉「计入成长」：直接 12 点，但 6 点的卡不能用。</li>
+        <li><b>同屏多人</b>：几个人围着一块屏幕，各自按住自己颜色的星调兵，多指可以同时操作。全图可见、不用能力卡、不计经验；可以再加几个 AI 一起混战。</li>
+        <li><kbd>空格</kbd> 暂停（暂停中也能下令），<kbd>Esc</kbd> 菜单。鼠标悬停或点按一颗星可以看详情；双击自己的星可以打个信号。</li>
+      </ul>
+      <h3>异常天体</h3>
+      <ul id="anomalyList" class="anomaly-list"></ul>
+    </div>
+
+    <p class="muted tiny disclaimer">
+      非官方同人作品，不作商业用途。玩法规则参考 Tasharen Entertainment 2013 年的 <i>Starlink</i>（今以 <i>Celestis</i> 之名在 Steam 发行）；
+      美术与代码全部原创，未使用原作任何素材。
+    </p>
+  </div>
+</div>
+
+<!-- 对局 -->
+<div id="game" hidden>
+  <canvas id="board"></canvas>
+  <div id="hud">
+    <div class="hud-left">
+      <button id="menuBtn" class="hud-btn" title="菜单（Esc）">≡</button>
+      <button id="pauseBtn" class="hud-btn" title="暂停（空格）">⏸</button>
+      <span id="clock">15:00</span>
+      <button id="helpBtn" class="hud-btn" title="操作说明">？</button>
+    </div>
+    <div id="factionBar"></div>
+  </div>
+  <div id="toast"></div>
+<details id="netPanel" hidden><summary id="netSummary">联机房间</summary>
+<div id="netRoster"></div><label>我的势力 <select id="netFaction"></select></label>
+<button id="netPlay" type="button">开始对局</button><button id="netCopy" type="button">复制房号</button>
+<div id="netChat" aria-live="polite"></div><form id="netChatForm"><input id="netText" maxlength="240" placeholder="房间聊天"><button>发送</button></form>
+</details>
+  <div id="cardBar" hidden></div>
+  <div id="armBanner" hidden></div>
+  <div id="feed"></div>
+  <div id="starTip" hidden></div>
+  <div id="tutor" hidden>
+    <div class="tu-text"></div>
+    <div class="tu-foot"><span class="tu-step"></span><button class="tu-skip" type="button">跳过教程</button><button class="tu-ok" type="button">知道了</button></div>
+  </div>
+  <div id="hint" hidden>
+    <button class="x" id="hintClose" title="知道了">×</button>
+    <b>派兵</b>：按住你的星，朝邻星方向拖动后松手 —— 船会持续流过去。
+    <b>防守</b>：点一下自己的星。圆环是控制度，压到 20 以下星就易手。悬停或点按别的星看详情，<kbd>空格</kbd> 暂停。
+  </div>
+  <div id="pauseVeil" hidden><div>已暂停<small>空格继续 · 暂停中也能下令</small></div></div>
+
+  <div id="menu" class="overlay" hidden>
+    <div class="dialog">
+      <h2 style="font-size:22px;letter-spacing:3px">菜单</h2>
+      <p class="menu-note" id="menuNote" hidden>这局已计入成长：中途离开按认输结算经验</p>
+      <div class="menu-list">
+        <button data-act="resume">继续</button>
+        <button data-act="restart">重玩这张星图</button>
+        <button data-act="new">换一张星图</button>
+        <button data-act="lobby">返回大厅</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="endPanel" class="overlay" hidden>
+    <div class="dialog">
+      <h2 id="endTitle">胜利</h2>
+      <div class="sub" id="endSub"></div>
+      <div id="endXp" class="xp-box" hidden>
+        <div class="xp-line" id="endXpLine"></div>
+        <div class="xpbar big"><i id="endXpFill"></i></div>
+        <div class="xp-lv" id="endXpLv"></div>
+      </div>
+      <table class="stats" id="endStats"></table>
+      <div class="row">
+        <button class="go" data-act="new">再来一局</button>
+        <button data-act="restart">重玩这张星图</button>
+        <button data-act="watch">看看星图</button>
+        <button data-act="lobby">返回大厅</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="js/vendor-peerjs.min.js"></script>
+<script type="module" src="js/main.js"></script>
+</body>
+</html>

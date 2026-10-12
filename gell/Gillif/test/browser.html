@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>Gillíf · 浏览器端测试（运行中）</title>
+<style>
+  body { font: 14px/1.6 "Segoe UI", "Microsoft YaHei", sans-serif; margin: 16px; background: #0b0f1a; color: #e3e8f3; }
+  canvas { width: 800px; height: 480px; display: block; border: 1px solid #2a3550; }
+  .ok { color: #63d18b; } .fail { color: #ff7a6b; font-weight: 700; }
+</style>
+</head>
+<body>
+<h2>Gillíf · 浏览器端测试</h2>
+<p>渲染器的迷雾、暗幕、间谍网与瞄准判定。不依赖帧循环：手动推进内核并逐帧调用 draw，时间由测试给定。<br>
+用法：在仓库根目录 <code>python -m http.server</code>，打开本页看下方结果；无头浏览器读页面标题。</p>
+<canvas id="c"></canvas>
+<pre id="out"></pre>
+<script type="module">
+import { newGame } from '../js/state.js';
+import { step } from '../js/sim.js';
+import { createRenderer } from '../js/render.js';
+
+const lines = [];
+let fails = 0;
+const ok = (cond, msg) => { lines.push(`<span class="${cond ? 'ok' : 'fail'}">${cond ? 'ok  ' : 'FAIL'}</span> ${msg}`); if (!cond) fails++; };
+
+const R = createRenderer(document.getElementById('c'));
+const G = newGame({ seed: 2026, factions: 4, challenge: 'normal' });
+for (let i = 0; i < 20 * 60; i++) { step(G); G.events.length = 0; }
+R.setGame(G, 0);
+let now = 1;
+const ui = { me: 0, press: -1, hover: -1, armed: null, abSrc: -1, abHover: -1 };
+let hold = null;     // 每步之前调用：比如把测试放上去的船补满，免得交战打光
+const advance = (sec) => {
+  for (let i = 0; i < Math.round(sec * 20); i++) {
+    if (hold) hold();
+    step(G); G.events.length = 0; now += 0.05; R.draw(G.time, now, ui);
+  }
+};
+
+try {
+  // 迷雾：开局知道的只有自己到过的星及其邻星
+  advance(0.5);
+  const knownIds = G.stars.filter((s) => R.starView(s.id).known).map((s) => s.id);
+  const expect = G.stars.filter((s) => s.visited[0] || s.links.some((n) => G.stars[n].visited[0])).map((s) => s.id);
+  ok(knownIds.join() === expect.join(), `迷雾：已知的星 = 到过的星及其邻星（${knownIds.length} 颗）`);
+  ok(G.stars.every((s) => s.owner !== 0 || R.starView(s.id).seen), '自己的星永远看得清');
+
+  // 你的船停在敌星上：看得清；对方开暗幕：信息淡出（星还在图上）；你开间谍网：两者抵消，又看得清
+  const E = G.stars.find((s) => s.owner >= 1);
+  ok(!!E, `找到一颗敌星（${E && G.factions[E.owner].name}方）`);
+  E.visited[0] = true;
+  hold = () => { E.ships[0] = Math.max(E.ships[0], 8); };
+  advance(1.5);
+  ok(R.starView(E.id).seen && R.starView(E.id).known, '自己的船在场：敌星看得清');
+  G.effects.push({ card: 'stealth', f: E.owner, src: E.id, dst: E.id, until: G.time + 60 });
+  advance(3);
+  const v = R.starView(E.id);
+  ok(!v.seen && v.known, '对方开暗幕：哪怕你的船在场也看不清，但星还在图上');
+  G.effects.push({ card: 'spy', f: 0, src: E.id, dst: E.id, until: G.time + 60 });
+  advance(1.5);
+  ok(R.starView(E.id).seen, '你开间谍网：与暗幕抵消，又看得清');
+  hold = null;
+
+  // 间谍网（对方没开暗幕）：对方所有的星都看得清，哪怕你的船不在
+  G.effects = [];
+  const F = G.stars.filter((s) => s.owner === E.owner);
+  for (const s of G.stars) s.ships[0] = s.owner === 0 ? s.ships[0] : 0;
+  G.effects.push({ card: 'spy', f: 0, src: E.id, dst: E.id, until: G.time + 60 });
+  for (const s of F) s.visited[0] = true;
+  advance(1.5);
+  ok(F.every((s) => R.starView(s.id).seen), `间谍网：${G.factions[E.owner].name}方的 ${F.length} 颗星都看得清`);
+  G.effects = [];
+  advance(4);
+  ok(F.some((s) => !R.starView(s.id).seen), '间谍网结束后又看不清了');
+
+  // 瞄准：选中「防御」时只有自己的星能点；pickStar 不会选到未知的星
+  const home = G.factions[0].home;
+  G.factions[0].deck = ['defense']; G.factions[0].ready.defense = 0;
+  ui.armed = 'defense';
+  advance(0.2);
+  ok(R.pickStar(-1000, -1000) === -1, '点空白处选不到星');
+  const unknown = G.stars.find((s) => !R.starView(s.id).known);
+  if (unknown) {
+    const p = R.starScreen(unknown.id);
+    ok(R.pickStar(p.x, p.y) !== unknown.id, '未知的星点不到');
+  } else ok(true, '（这一局没有未知的星）');
+  const hp = R.starScreen(home);
+  ok(R.pickStar(hp.x, hp.y) === home, '母星点得到');
+  ui.armed = null;
+} catch (e) {
+  ok(false, '异常：' + (e && e.stack || e));
+}
+
+document.getElementById('out').innerHTML = lines.join('\n') + `\n\n${lines.length - fails} 项通过，${fails} 项失败`;
+document.title = fails ? `BROWSERTEST FAIL ${fails}` : `BROWSERTEST PASS ${lines.length}`;
+</script>
+</body>
+</html>

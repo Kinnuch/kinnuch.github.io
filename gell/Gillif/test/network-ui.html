@@ -1,0 +1,32 @@
+<!doctype html><html><meta charset="utf-8"><title>联机界面测试中</title><pre id="out"></pre>
+<iframe id="host" src="../?nohint=1" width="720" height="600"></iframe><iframe id="guest" src="../?nohint=1" width="720" height="600"></iframe>
+<script type="module">
+import { LocalPeer } from './local-peer.js';
+const sleep=ms=>new Promise(r=>setTimeout(r,ms)),out=document.querySelector('#out');let n=0;
+const until=async fn=>{for(let i=0;i<200;i++){if(fn())return;await sleep(50);}throw Error('界面等待超时');};
+const check=(v,l)=>{if(!v)throw Error(l);n++;out.textContent+=`通过：${l}\n`;};
+try{
+ const h=document.querySelector('#host').contentWindow,g=document.querySelector('#guest').contentWindow;
+ await until(()=>h.document.querySelector('#netHost')?.onclick&&g.document.querySelector('#netHost')?.onclick);
+ h.Peer=g.Peer=LocalPeer;
+ h.document.querySelector('#netLayout').value='2v2';h.document.querySelector('#netName').value='房主';
+ h.document.querySelector('#netHost').click();await until(()=>h.gillif?.G.network);
+ check(!h.document.querySelector('#netPanel').hidden&&h.gillif.G.stars.filter(s=>s.owner===0).length===2,'创建组队房间');
+ const code=h.document.querySelector('#netCode').value;g.document.querySelector('#netCode').value=code;g.document.querySelector('#netName').value='队友';
+ g.document.querySelector('#netJoin').click();await until(()=>g.gillif?.G.network);
+ check(g.document.querySelector('#pauseBtn').disabled,'客户端不能暂停');
+ const sel=g.document.querySelector('#netFaction');sel.value='0';sel.dispatchEvent(new g.Event('change'));
+ await until(()=>g.document.querySelector('#cardBar').children.length>0);
+ check(g.document.querySelector('#netRoster').textContent.includes('队友：蓝方'),'队友共用同色势力和卡组');
+ h.document.querySelector('#netPlay').click();await until(()=>g.gillif.G.tick>10);
+ check(h.gillif.G.tick>=g.gillif.G.tick,'房主推进客户端同步');
+ g.document.querySelector('#netText').value='联机测试';g.document.querySelector('#netChatForm').dispatchEvent(new g.Event('submit',{cancelable:true}));
+ await until(()=>h.document.querySelector('#netChat').textContent.includes('联机测试'));check(true,'界面聊天');
+ g.document.querySelector('[data-act="lobby"]').click();await until(()=>!h.document.querySelector('#netRoster').textContent.includes('队友：'));
+ check(!g.document.querySelector('#lobby').hidden,'返回大厅断开连接');
+ h.document.querySelector('[data-act="lobby"]').click();
+ g.document.querySelector('#startBtn').click();
+ check(!g.document.querySelector('#pauseBtn').disabled&&g.gillif.session.mode==='solo','离开联机后单机暂停恢复');
+ document.title=`NETWORK UI PASS ${n}`;
+}catch(e){out.textContent+=e.stack;document.title='NETWORK UI FAIL '+e.message;}
+</script></html>

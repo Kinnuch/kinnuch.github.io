@@ -2,7 +2,7 @@
 layout: page
 permalink: /cerf/index.html
 title: Cerf
-description: 网页交互工具与小游戏：音变器、发音练习、词汇复习、名字生成、腾格瓦转写、辛达语爬塔与中土自走棋。
+description: 小游戏、Qonlang 造语工作台、Qonsona 语言学习软件，以及音变器、词汇复习、名字生成与文字转写等工具。
 ---
 
 {% comment %}
@@ -20,7 +20,7 @@ description: 网页交互工具与小游戏：音变器、发音练习、词汇�
       {% if t.new %}<span class="tool-badge">NEW</span>{% endif %}
     </h3>
     <p class="tool-card__zh">{{ t.zh }}</p>
-    <p class="tool-card__blurb">{{ t.blurb }}</p>
+    <p class="tool-card__blurb">{{ t.blurb | escape }}</p>
   </div>
 {% endfor %}
 </div>

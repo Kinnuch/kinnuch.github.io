@@ -2,13 +2,50 @@
 # section: 分组标题（辛达语 | 中文）
 # new: true 会显示 NEW 角标
 
+- section: Gell | 小游戏
+  items:
+    - title: Barad Bith · 巴别塔
+      zh: 辛达语 roguelike 卡牌爬塔
+      url: /laim/sindarin.assets/BaradBith/BaradBith.html
+      blurb: 用辛达语词条构成的 roguelike 卡牌爬塔，通过词义与音变小测验解锁卡牌效果，学习进度跨局保存。
+    - title: Enya Panta-Tyalië · 中土自走棋
+      zh: 中洲主题自走棋对战
+      url: /gell/EPT/
+      blurb: 招募中洲英雄与魔物，组合羁绊、升星锻造，在六边形棋盘上布阵。支持单人 AI 对战、本地段位榜与 2～8 人房号联机。
+    - title: Ohtaheruvi · 中土战争领主
+      zh: 精灵宝钻主题回合制战略
+      url: /gell/Ohtaheruvi/
+      new: true
+      blurb: 《精灵宝钻》主题回合制战略：占领城市、组建军团、探索遗迹。含贝烈瑞安德与中洲西北战场，支持战争迷雾、多档 AI 和 2～8 人联机。
+    - title: Gillíf · 星路争霸
+      zh: 抢星星的即时战略
+      url: /gell/Gillif/
+      new: true
+      blurb: 沿星路调兵夺星的即时战略，含六种星系、异常天体与能力卡组。支持 AI 对战、成长解锁、新手教程、同屏对战和房号组队联机。
+    - title: Tharbeth
+      zh: 辛达语填字游戏
+      url: /laim/sindarin.assets/SindarinDatabase/Tharbeth.html
+      blurb: 用汉语提示填出辛达语词条的填字游戏。
+    - title: Sindarin Guess
+      zh: 辛达语猜词
+      url: /laim/sindarin.assets/SindarinDatabase/SindarinGuess.html
+      blurb: 每日一词的辛达语猜词游戏。
+
 - section: Qonlang | 千语集
   items:
     - title: Qonlang · 千语集
       zh: 给所有造语者的桌面工作台
       url: /cerf/qonlang/
       new: true
-      blurb: 录入词汇与词根、制订音变规则、按音系自动标音、自动 gloss 例句、自定义文字与皮肤、导出词典与 PDF。不内置任何一门语言的术语，一切分类由你定义。Windows 免安装版与安装包见 GitHub，本页为分模块使用指南。
+      blurb: 为造语者整理词汇、词根、音系与音变规则，支持自动标音、例句 gloss、自定义文字和词典导出。点击查看分模块使用指南。
+
+- section: Qonsona | 语言学习
+  items:
+    - title: Qonsona
+      zh: 日语与造语学习的桌面软件
+      url: https://github.com/Kinnuch/Qonsona
+      new: true
+      blurb: 提供 JLPT N5～N1 日语词典、阅读、课程、生词本、间隔复习与模拟练习，也可导入 Qonlang 学习包。点击查看说明与下载。
 
 - section: 背单词
   items:
@@ -16,7 +53,7 @@
       zh: 离线背英语单词的手机应用
       url: /cerf/wordbank/
       new: true
-      blurb: 粘贴一列单词、导入扇贝或欧路的词表、选一本内置词书，或手动加词，都能几秒钟开背。没写释义的词会自动从内置离线词典补上音标、词性释义和例句 —— 19,870 个单词加 52,061 条短语，`give up`、`in spite of` 这类也查得到，`gave up` 会认出原形。复习按 SM-2 间隔重复排期（前五次走 1/2/4/7/15 天的固定阶梯），出题在认词义、选单词、拼写、例句填空、听音辨义之间轮换，答错的词当场重来。抽查不会打乱排期。数据只存在本机，可导出备份。安卓 Chrome 里「添加到主屏幕」后有独立图标、全屏、完全离线。
+      blurb: 支持导入词表、离线词典和多种题型，按间隔重复安排复习。数据保存在本机，可导出备份；手机添加到主屏幕后可离线使用。
 
 - section: 旅行
   items:
@@ -24,7 +61,7 @@
       zh: 旅行行程规划与开销记账
       url: https://kinnuch.github.io/itinera/
       new: true
-      blurb: 选好出发与返回日期，按天排住宿、餐饮、景点、交通与购物，每项都能记金额（多币种自动折算）和图片。开销按日、按分类、按全程自动汇总并对照预算；行程体检会查出时间撞车、两点之间来不及赶到、某晚没定住处、一天塞太满、当天在绕路等问题，并给出可一键采纳的重排建议。最后按天着色生成路线图，可导出图片分享。手机浏览器「添加到主屏幕」后是独立应用，完全离线可用；数据只存在本机浏览器里。
+      blurb: 按天规划住宿、景点与交通，记录多币种开销并对照预算，检查行程冲突、生成路线图。支持手机离线使用与数据备份。
 
 - section: Prestannath | 音变器
   items:
@@ -49,35 +86,6 @@
       url: /cerf/review/
       new: true
       blurb: 基于 SM-2 间隔重复算法的辛达语词汇复习，进度与「巴别塔」爬塔游戏的掌握度共享同一份存档。
-
-- section: Gell | 小游戏
-  items:
-    - title: Barad Bith · 巴别塔
-      zh: 辛达语 roguelike 卡牌爬塔
-      url: /laim/sindarin.assets/BaradBith/BaradBith.html
-      blurb: 卡牌、敌人、圣物均取自辛达语词典的真实词条；获取新卡、开宝箱、参加事件时都会触发词义或音变小测验，答对即可掌握该词、解锁完整效果与释义，学习进度跨局永久保存。
-    - title: Enya Panta-Tyalië · 中土自走棋
-      zh: 中洲主题自走棋对战
-      url: /gell/EPT/
-      blurb: 购买中洲的英雄与魔物、凑齐种族与职业羁绊、三合一升星、锻造装备，在六边形棋盘上布阵对弈，活到最后即胜。支持单人模式（7 名性格各异的 AI + 本地段位排行榜）与 2~8 人在线联机（房号邀请，点对点直连）。
-    - title: Ohtaheruvi · 中土战争领主
-      zh: 精灵宝钻主题回合制战略
-      url: /gell/Ohtaheruvi/
-      new: true
-      blurb: 以《精灵宝钻》为舞台的回合制战略：占领城市、生产并供养军队、派英雄探索上古遗迹寻找神器与盟友，用最多八个单位的军团逐城推进，控制全图三分之二的城市即胜。规则骨架取自 1989 年的 Warlords（含其 iPad 移植版的生产投送与报表设计）。含贝烈瑞安德（140×110，从贝烈瑞安德第一战到愤怒之战七场战役）与第三纪元中洲西北（160×120，魔戒战争等三场）两张战场，战争迷雾三档、AI 难度四档、移动可撤回、逐回合统计曲线与战史报表，并支持 2~8 人点对点联机。
-    - title: Gillíf · 星路争霸
-      zh: 抢星星的即时战略
-      url: /gell/Gillif/
-      new: true
-      blurb: 从一颗母星起家：按住自己的星拖向邻星，舰船就沿星路源源不断地流过去；兵力占优的一方逐渐夺取控制度，压到 20 以下星就易手。被己方星包围的内陆星不造船，兵源要往前线调；不外发的星原地防守，交战损失更少。六种程序生成的星系（含咽喉要塞、稀疏航线、空心环形），星云、气体云、等离子、小行星带、彗星、漩涡六种异常天体各有规则效果；战争迷雾下只看得见自己到过的地方。开局前按能力点配一副卡组，17 张卡局内各有冷却：爱国与宣传、暗幕与间谍网、防御与破坏、拓宽与干扰两两相克，另有征兵、偷袭、贿赂、无政府、突击队、清洗、开辟与切断星路、策反敌舰。对手是逐星决策的 AI，五档难度，上将以上的 AI 各带一种性格和卡组；消灭所有对手或在时限到时握有最多的星即胜，结算计分并按难度记录最高分。本机档案按得分涨经验，70 级、14 个头衔，升级解锁更多能力点与更贵的卡；第一次玩有手把手的新手教程；也能几个人围着一块屏幕同屏对战，多指同时操作。支持 PeerJS 房号联机、中途加入、房间聊天和 2v2 / 3v3 / 2v2v2 组队，同色队友共用势力；玩家离线后 AI 接管，房主离线则对局停止。手机竖屏时星图自动旋转。玩法规则参考 2013 年的 Starlink，美术与代码全部原创。
-    - title: Tharbeth
-      zh: 辛达语填字游戏
-      url: /laim/sindarin.assets/SindarinDatabase/Tharbeth.html
-      blurb: 用汉语提示填出辛达语词条的填字游戏。
-    - title: Sindarin Guess
-      zh: 辛达语猜词
-      url: /laim/sindarin.assets/SindarinDatabase/SindarinGuess.html
-      blurb: 每日一词的辛达语猜词游戏。
 
 - section: Thúnas | 造词灵感
   items:

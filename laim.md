@@ -32,7 +32,7 @@ description: 托尔金精灵语、个人造语与自然语言的学习笔记与�
       <span class="lang-card__zh">{{ lang.zh }}</span>
       <span class="lang-badge lang-badge--{{ lang.status }}">{% case lang.status %}{% when 'done' %}完成{% when 'wip' %}更新中{% when 'stub' %}起步{% else %}计划中{% endcase %}</span>
     </h3>
-    <p class="lang-card__blurb">{{ lang.blurb }}</p>
+    <p class="lang-card__blurb">{{ lang.blurb | escape }}</p>
     {% if lang.extra %}
     <ul class="lang-card__extra">
       {% for e in lang.extra %}<li><a href="{{ e.url }}">{{ e.title }}</a></li>{% endfor %}

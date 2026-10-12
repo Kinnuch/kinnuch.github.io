@@ -60,6 +60,8 @@
 
 .is-hidden { display: none !important; }
 
+.article-wrap iframe { max-width: 100%; }
+
 kbd {
   display: inline-block;
   padding: 1px 6px;
@@ -79,13 +81,15 @@ kbd {
 .lang-grid,
 .tool-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 260px), 1fr));
   gap: 14px;
   margin: 1.2em 0 2em;
 }
 
 .lang-card,
 .tool-card {
+  min-width: 0;
+  overflow-wrap: anywhere;
   border: 1px solid var(--se-border);
   border-radius: 8px;
   padding: 14px 16px;
@@ -118,6 +122,12 @@ kbd {
   color: var(--se-muted);
   line-height: 1.6;
   text-indent: 0;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  max-height: 4.8em;
+  overflow: hidden;
 }
 .tool-card__zh {
   margin: 0 0 4px;
@@ -495,7 +505,7 @@ kbd {
 
 /* Pronunciation drill */
 .drill__lead { text-indent: 0; }
-.drill__pairs { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 10px; }
+.drill__pairs { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 240px), 1fr)); gap: 10px; }
 .drill-pair {
   display: flex; flex-direction: column; gap: 4px; align-items: flex-start; text-align: left;
   border: 1px solid var(--se-border); border-radius: 8px;

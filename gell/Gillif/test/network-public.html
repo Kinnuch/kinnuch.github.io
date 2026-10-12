@@ -1,0 +1,41 @@
+<!doctype html><html lang="zh-CN"><meta charset="utf-8"><title>公网联机检查中</title><pre id="out"></pre>
+<script src="../js/vendor-peerjs.min.js"></script>
+<script type="module">
+import { Network } from '../js/net.js';
+const out=document.querySelector('#out');let passed=0;
+const write=s=>{out.textContent+=s+'\n';};
+const check=(v,s)=>{if(!v)throw Error(s);passed++;write('通过：'+s);};
+const sleep=ms=>new Promise(r=>setTimeout(r,ms));
+let error='';
+const until=async(fn)=>{for(let i=0;i<160;i++){if(error)throw Error(error);if(fn())return;await sleep(100);}throw Error('公网连接等待超时');};
+// 不替换 PeerJS 或公网信令，特意验证超过 JSON serializer 上限的真实消息。
+const query=new URLSearchParams(location.search);
+let host,guest,late;
+try {
+ for(const layout of query.has('layout')?[query.get('layout')]:['4','6']) {
+  let code='';error='';
+  host=new Network({open:id=>{code=id;},error:s=>{error=s;}});
+  host.hostRoom('公网房主',{layout,seed:7,challenge:'hard'},'free',['defense','recruits']);
+  await until(()=>code);write(`已注册 ${layout} 方房间 ${code}`);
+  guest=new Network({error:s=>{error=s;}});guest.joinRoom(code,'公网玩家');
+  await until(()=>guest.G);
+  check(guest.G.factions.length===+layout,layout+' 方开局完整快照');
+  check(guest.connection.serialization==='binary','真实 PeerJS 分片通道');
+  host.pause(false);
+  for(let i=0;i<4000;i++){host.tick();host.G.events=[];}
+  // 用真实在途数据结构放大到 >100 KB，验证中后期大快照的分片重组。
+  const ship=host.G.transit[0] || {f:0,n:1,from:0,to:1,t0:190,t1:220};
+  host.G.transit=Array.from({length:1600},()=>({...ship}));host.events=[];
+  const bytes=new TextEncoder().encode(JSON.stringify(host.room.snapshot())).byteLength;
+  check(bytes>100000,'压力快照超过 100 KB');
+  host.publish();await until(()=>guest.G.transit.length===1600);
+  check(JSON.stringify(guest.G.transit)===JSON.stringify(host.G.transit),'大快照自动分片并正确重组');
+  late=new Network({error:s=>{error=s;}});late.joinRoom(code,'中途玩家');
+  await until(()=>late.G?.transit.length===1600);
+  check(late.G.tick===host.G.tick,'中途加入接收大快照');
+  host.close();guest.close();late.close();
+ }
+ document.title='PUBLIC PASS '+passed;
+}catch(e){write(e.stack);document.title='PUBLIC FAIL '+e.message;}
+finally{host?.close();guest?.close();late?.close();}
+</script></html>

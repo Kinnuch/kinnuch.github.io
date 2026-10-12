@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict';
 import { Room, createMatch, acceptSnapshot } from '../js/room.js';
 import { recount } from '../js/sim.js';
+import { Network, normalizeRoomCode, connectionError } from '../js/net.js';
 let checks=0;
 const check=(v,label)=>{assert.ok(v,label);checks++;};
 for(const layout of ['2','3','4','5','6','2v2','3v3','2v2v2']) {
@@ -37,4 +38,25 @@ for(const restriction of ['coop','deathmatch']) {
   check(!r.choose('b',restriction==='coop'?1:0),'拒绝冲突势力');
   check(r.choose('b',-1),'退回观战');
 }
+check(normalizeRoomCode(' ABCD23 ')==='gillif-abcd23','六位短房号自动补前缀并忽略大小写');
+check(normalizeRoomCode(' GILLIF-ABCD23 ')==='gillif-abcd23','完整房号忽略首尾空格');
+check(normalizeRoomCode('abcdefg')===null,'拒绝无效房号');
+check(connectionError({type:'peer-unavailable'}).includes('找不到这个房间'),'不存在的房间给出明确提示');
+check(connectionError({type:'message-too-big'}).includes('通道限制'),'消息超限可诊断');
+class Events {
+  constructor(){this.handlers={};}
+  on(t,fn){this.handlers[t]=fn;}
+  fire(t,data){this.handlers[t]?.(data);}
+}
+class FakePeer extends Events {
+  connect(id,options){this.target=id;this.options=options;this.c=new Events();this.c.peer=id;this.c.send=m=>{this.sent=m;};return this.c;}
+  destroy(){this.destroyed=true;}
+}
+const stages=[];const net=new Network({status:text=>stages.push(text)},FakePeer);
+net.joinRoom(' ABCD23 ','玩家');net.peer.fire('open','guest');
+check(net.peer.target==='gillif-abcd23','传输层也接受规范化房号');
+check(net.peer.options.serialization==='binary','真实 PeerJS 必须选择自动分片的 binary serializer');
+net.peer.c.fire('open');
+check(net.peer.sent.t==='hello'&&stages.at(-1).includes('接收局面'),'通道打开后发送身份并显示接收阶段');
+net.receive(room.snapshot());net.close();check(net.peer.destroyed,'关闭连接释放资源');
 console.log(`联机与组队 ${checks} 项通过`);

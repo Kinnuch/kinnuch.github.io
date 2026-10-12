@@ -19,7 +19,7 @@ import {
   newProfile, normalizeProfile, profileSummary, abilityPoints, cardAllowed, unlockLevel, levelOf, settleGame,
 } from './profile.js';
 import { createTutorial, TUTORIAL } from './tutorial.js';
-import { Network } from './net.js';
+import { Network, normalizeRoomCode } from './net.js?v=20261012-binary';
 
 const $ = (id) => document.getElementById(id);
 const params = new URLSearchParams(location.search);
@@ -277,6 +277,8 @@ function connectRoom(host) {
   $('netHost').disabled = $('netJoin').disabled = true;
   const release = () => { $('netHost').disabled = $('netJoin').disabled = false; };
   network = new Network({
+    status: text => { $('netError').textContent=text; },
+    notice: text => toast(text),
     open: code => { release(); $('netCode').value = code; $('netError').textContent = ''; },
     error: text => { release(); $('netError').textContent = text; toast(text); if (session.mode === 'online') {paused=true;$('netSummary').textContent=text;} },
     lost: () => {
@@ -321,8 +323,8 @@ function connectRoom(host) {
     try {network.hostRoom(name,{ ...o, seed:o.seed || freshSeed(), timeLimit:o.time*60, layout:$('netLayout').value },$('netRule').value,cleanDeck(decks.free));}
     catch(e) { network.close();network=null;release();$('netError').textContent=e.message; }
   } else {
-    const code=$('netCode').value.trim();
-    if(!/^gillif-[a-z2-9]{6}$/.test(code)) {network=null;release();$('netError').textContent='请输入完整房号 gillif-xxxxxx';return;}
+    const code=normalizeRoomCode($('netCode').value);
+    if(!code) {network=null;release();$('netError').textContent='请输入完整房号或末尾六位（例如 gillif-abcdef 或 abcdef）';return;}
     network.joinRoom(code,name);
   }
 }

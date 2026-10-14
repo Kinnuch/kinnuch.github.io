@@ -9,6 +9,8 @@ description: 千语集的安装、首页、起步模板、项目文件与保存�
 
 [← 指南目录](/cerf/qonlang/) · [English](/cerf/qonlang/en/getting-started/)
 
+「设置」中提供可选的[共享账号入口](/cerf/qonlang/settings/#shared-account)。Qonlang 与 Qonsona 使用同一账号，登录不影响本地工程的使用。
+
 ## 1. 安装与启动
 
 安装包都在 [GitHub Releases](https://github.com/Kinnuch/Qonlang/releases) 上。GitHub 在国内有时很慢或打不开，下载前请先确认能访问 GitHub。

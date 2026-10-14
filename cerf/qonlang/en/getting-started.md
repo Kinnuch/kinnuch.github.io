@@ -9,6 +9,8 @@ description: Installing Qonlang, the start page, starter templates, the project 
 
 [← Guide index](/cerf/qonlang/en/) · [中文](/cerf/qonlang/getting-started/)
 
+Settings contains an optional [shared-account panel](/cerf/qonlang/en/settings/#shared-account). Qonlang and Qonsona use the same account; signing in does not control access to local projects.
+
 ## 1. Installing and launching {#1-installing-and-launching}
 
 All the installers are on [GitHub Releases](https://github.com/Kinnuch/Qonlang/releases). GitHub can be slow or unreachable on some networks, so please make sure you can reach it before downloading.

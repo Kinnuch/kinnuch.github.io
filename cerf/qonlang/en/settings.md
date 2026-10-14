@@ -11,6 +11,16 @@ description: The Settings page in Qonlang — application settings grouped into 
 
 From top to bottom, the Settings page has four parts — **Application (this computer)**, **Current project**, **Data** and **About** — each grouped into cards.
 
+## Shared account {#shared-account}
+
+Open **Settings** on the start page, or **Settings → Application** while editing a project, to register, sign in, sign out or change your nickname. Qonlang and Qonsona use the same account, with separate sign-ins in each app.
+
+Usernames use 3–32 English letters, numbers or underscores and are case-insensitive; passwords use 10–128 characters. Signing in to Qonlang is optional. Local projects remain editable offline. Account requests do not upload or cloud-sync projects, lexicons or language content; Qonsona collections and leaderboards use the shared account service.
+
+At the release of 1.0.0-beta.2, the account service's public HTTPS endpoint is unavailable, so registration, sign-in and other online operations are temporarily unavailable. Local projects, study-pack export and offline editing continue to work.
+
+The main process encrypts credentials using system secure storage. When it is unavailable, the app indicates a temporary session and you will need to sign in again after closing the app. Going offline does not block local editing. Offline sign-out removes local credentials and clearly reports whether remote revocation has been confirmed.
+
 ## 1. Application (stored in the data folder, per computer)
 
 **Interface**
@@ -135,9 +145,9 @@ The full Qonlang logo at the top; below it a line with the current version, the 
 
 Closing the blue connection hints at the top of each page is remembered in the application preferences; to show them all again, delete `dismissedHints` from `prefs.json` in the data folder (a button will come in a later version).
 
-## 8. Exporting a study pack (for Qonlang Study) {#study-pack}
+## 8. Exporting a study pack (for Qonsona) {#study-pack}
 
-**Export a study pack** on the **Export** card opens a page of its own that prepares a study pack for Qonlang Study, the companion language-learning app: first decide how each language is taught, then export the project together with those settings as one `.qstudy.json` file.
+**Export a study pack** on the **Export** card opens a page of its own that prepares a study pack for [Qonsona](https://github.com/Kinnuch/Qonsona) (formerly Qonlang Study), the companion language-learning app: first decide how each language is taught, then export the project together with those settings as one `.qstudy.json` file.
 
 These settings are **not written into the project file**. They are kept per project in `study-export/` in the data folder on this computer (in the browser for the web version), and changing them never marks the project as unsaved. On a new computer or after reinstalling, click **Load settings from a study pack** and pick a study pack you exported earlier; the parts that match the current project are restored.
 

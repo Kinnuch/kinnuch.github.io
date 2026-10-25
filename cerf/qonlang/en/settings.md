@@ -17,9 +17,17 @@ Open **Settings** on the start page, or **Settings → Application** while editi
 
 Usernames use 3–32 English letters, numbers or underscores and are case-insensitive; passwords use 10–128 characters. Signing in to Qonlang is optional. Local projects remain editable offline. Account requests do not upload or cloud-sync projects, lexicons or language content; Qonsona collections and leaderboards use the shared account service.
 
-At the release of 1.0.0-beta.2, the account service's public HTTPS endpoint is unavailable, so registration, sign-in and other online operations are temporarily unavailable. Local projects, study-pack export and offline editing continue to work.
+The public account service uses HTTPS for registration, sign-in, sign-out and nickname changes. Local projects, study-pack export and offline editing remain available without a connection.
 
 The main process encrypts credentials using system secure storage. When it is unavailable, the app indicates a temporary session and you will need to sign in again after closing the app. Going offline does not block local editing. Offline sign-out removes local credentials and clearly reports whether remote revocation has been confirmed.
+
+## Support development {#support-development}
+
+Choose **Support development** on the start page or in the project's right-hand inspector sidebar to open a separate page. Returning restores your project and the page you were working on.
+
+After signing in, enter an amount in Chinese yuan (CNY 0.01–600, up to two decimal places), review the confirmation and create the order. YunGouOS provides a WeChat payment code, which is rendered locally; scan it with WeChat. Contributions support Qonlang development, do not grant Qonsona tickets and do not change project content.
+
+The server verifies payment signatures and queries the payment channel before confirming payment. Hiding the code or leaving the page does not cancel an order; return to view the original order, refresh its status or request closure of an unpaid order. Codes have a ten-minute checkout window, after which the server continues reconciliation. If connectivity or the result is uncertain, refresh the original order to avoid duplicate payment.
 
 ## 1. Application (stored in the data folder, per computer)
 

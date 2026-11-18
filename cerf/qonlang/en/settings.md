@@ -25,9 +25,7 @@ The main process encrypts credentials using system secure storage. When it is un
 
 Choose **Support development** on the start page or in the project's right-hand inspector sidebar to open a separate page. Returning restores your project and the page you were working on.
 
-After signing in, enter an amount in Chinese yuan (CNY 0.01–600, up to two decimal places), review the confirmation and create the order. YunGouOS provides a WeChat payment code, which is rendered locally; scan it with WeChat. Contributions support Qonlang development, do not grant Qonsona tickets and do not change project content.
-
-The server verifies payment signatures and queries the payment channel before confirming payment. Hiding the code or leaving the page does not cancel an order; return to view the original order, refresh its status or request closure of an unpaid order. Codes have a ten-minute checkout window, after which the server continues reconciliation. If connectivity or the result is uncertain, refresh the original order to avoid duplicate payment.
+Version 1.0.0 temporarily uses the developer's personal WeChat payment code. Open the page to see the code, scan it with WeChat, then enter and confirm the amount in WeChat. Contributions support Qonlang development.
 
 ## 1. Application (stored in the data folder, per computer)
 
@@ -46,7 +44,7 @@ The server verifies payment signatures and queries the payment channel before co
 | Item | Description |
 |---|---|
 | Autosave interval | In seconds; 0 turns it off. The crash-recovery snapshot every 5 seconds is independent of this |
-| Backups to keep | Before every save, the previous file is copied to `Backups/`; beyond this number, the oldest are deleted |
+| Backups to keep | Before each save, the previous file is copied to that project's folder under `Backups/`. The oldest backups are trimmed per project, so projects with the same name in different folders each keep their own backups |
 | Reopen last project on launch | |
 
 **Updates**

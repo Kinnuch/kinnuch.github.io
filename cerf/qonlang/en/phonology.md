@@ -35,6 +35,8 @@ Classes are the sets such as `V`, `C` and `{Vlong}` used in the rule language. T
 
 Classes and digraphs are made available automatically to sound-change rule sets, orthography rules and script mapping rules. A class of the same name declared inside a rule text overrides the one defined here.
 
+Classes built by feature, including those from **Create C / V**, recognise both keyboard `g` and IPA `ɡ`. For example, if you selected `ɡ` from the IPA chart, a word ending in `g` can still match the consonant class `C`. Matching preserves the spelling you typed. If the project uses both characters explicitly, defines replacements for them, or sets the class members by hand, its settings take precedence.
+
 ## 3. Orthography
 
 A language can have several orthographies (a Latin romanisation, a Cyrillic transcription, a scholarly transcription…), one of which is the **primary orthography** — lemmas in the lexicon are entered in it. There is one button per orthography at the top; press one and drag it onto another to change their order.

@@ -23,9 +23,9 @@ The main process encrypts credentials using system secure storage. When it is un
 
 ## Support development {#support-development}
 
-Choose **Support development** on the start page or in the project's right-hand inspector sidebar to open a separate page. Returning restores your project and the page you were working on.
+Choose **Support development** on the start page to see the developer's personal WeChat payment code.
 
-Version 1.0.0 temporarily uses the developer's personal WeChat payment code. Open the page to see the code, scan it with WeChat, then enter and confirm the amount in WeChat. Contributions support Qonlang development.
+Scan the code with WeChat, then enter and confirm the amount in WeChat. Contributions support Qonlang development.
 
 ## 1. Application (stored in the data folder, per computer)
 

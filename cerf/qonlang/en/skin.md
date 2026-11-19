@@ -46,6 +46,8 @@ Fifteen colours, saved separately for the current theme (light / dark): page bac
 
 ## 4. Font slots {#4-font-slots}
 
+Each font slot has a size control. At 100%, text uses its original size. **Sentence text size** scales all the text in a sentence card, including examples under lexicon entries. Qonlang keeps the sentence size you set in 1.0.0.
+
 | Slot | Affects |
 |---|---|
 | Interface | Menus, buttons, descriptive text |
@@ -59,6 +61,8 @@ Fifteen colours, saved separately for the current theme (light / dark): page bac
 Each slot accepts several font names separated by commas, forming a fallback chain; leave it empty for the default. While typing you get suggestions from installed fonts and common system fonts.
 
 ### A font for each script
+
+Each project script can also have its own size. Reset the script's size to inherit the **Custom script** font slot again.
 
 When a project is open, every custom script in the project is also listed below the font slots ("name (language)"), and each can be given its own font: after importing a font file or installing one from the font library, choose it here, and the glyph table, inspector, lexicon and corpus all switch to it for that script. This choice takes priority over the font set for the script on the Script page (including an embedded font), is stored in your local preferences and not in the project file; leave it empty to use the script's own font.
 

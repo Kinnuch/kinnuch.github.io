@@ -41,6 +41,10 @@ Classes built by feature, including those from **Create C / V**, recognise both 
 
 A language can have several orthographies (a Latin romanisation, a Cyrillic transcription, a scholarly transcription…), one of which is the **primary orthography** — lemmas in the lexicon are entered in it. There is one button per orthography at the top; press one and drag it onto another to change their order.
 
+Enter a spelling for a phoneme in the inspector, then select the same orthography on the **Orthography** tab. **Phoneme spelling entries** shows the generated rows. For example, entering `sh` for `ʃ` gives you `sh → ʃ` and `ʃ → sh`. When a phoneme has several spellings, the first is used for conversion back to writing.
+
+You can edit or disable an individual row. **Reset to automatic** makes it follow the phoneme again. The base entries use the longest matching spelling in a single pass, followed by the advanced rules for that direction. In older projects, you can preview existing spellings and choose **Generate from phoneme spellings** to enable them.
+
 Each orthography has rules in both directions:
 
 - **Orthography → IPA**: produces the Pronunciation column in the lexicon, the corpus IPA and phrase pronunciations. When a piece of text contains several words (`A B`, a phrase), it is transcribed word by word, split at whitespace: the end of each word counts as a word end, so `_#` rules apply to every word, and commas or quotes at the edges of a word don't block word-final rules. Digraph symbols that are IPA already (the θ of `th|θ`, or a sound in the inventory) stay as they are in the resulting IPA instead of turning back into th.

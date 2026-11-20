@@ -24,9 +24,11 @@ The tab bar at the top lists every rule set in the project; click to switch, and
 
 The rule **text itself is the single source of truth**; the three views are just different editors:
 
-- **Rule list** (default): one card per rule, numbered from 1 (only rule lines are counted; comments and declarations don't take a number). Click a card to expand its form: target, replacement, several environments, exceptions and a comment. Above the cards is a panel for classes and digraphs where you can add and remove them directly; press a chip and drag it onto another to move that declaration line to its position. Selecting a rule makes the test bench show intermediate results "up to this rule", and the card plays a small animation of a sample word changing. Rule cards can be **dragged** into another stage or in front of another rule; while dragging, a dashed gap opens where the rule will land, and releasing inserts it there. Besides **Add rule** and **Add stage**, the end of each stage has **Add stress rule** and **Add feature** (sections 4.5 and 4.6): these two kinds of line are shaded cards, a stress rule reads as a sentence ("syllable 2 from the end (env _CC) else syllable 3 from the end"), and double-clicking opens a form to edit it entry by entry. Next to the classes and `@morphemes`, the form's **Click to insert a class** row also offers `σ`, `ˈ` and the features defined so far; when a project has many morphemes and the row grows past five lines, it scrolls inside its own box. Each stage (the `-*` line) has a fold triangle; a folded stage shows how many lines it has, and clicking it expands it again. With two or more stages, **Collapse all stages** / **Expand all stages** appears above. What's folded is remembered on this computer for each rule set.
+- **Rule list** (default): one card per rule, numbered from 1 (only rule lines are counted; comments and declarations don't take a number). Click a card to select the rule; double-click it or choose **Edit** to open its form: target, replacement, several environments, exceptions and a comment. Above the cards is a panel for classes and digraphs where you can add and remove them directly; press a chip and drag it onto another to move that declaration line to its position. Selecting a rule makes the test bench show intermediate results "up to this rule", and the card plays a small animation of a sample word changing. Rule cards can be **dragged** into another stage or in front of another rule; while dragging, a dashed gap opens where the rule will land, and releasing inserts it there. Besides **Add rule** and **Add stage**, the end of each stage has **Add stress rule** and **Add feature** (sections 4.5 and 4.6): these two kinds of line are shaded cards, a stress rule reads as a sentence ("syllable 2 from the end (env _CC) else syllable 3 from the end"), and double-clicking opens a form to edit it entry by entry. Next to the classes and `@morphemes`, the form's **Click to insert a class** row also offers `σ`, `ˈ` and the features defined so far; when a project has many morphemes and the row grows past five lines, it scrolls inside its own box. Each stage (the `-*` line) has a fold triangle; a folded stage shows how many lines it has, and clicking it expands it again. With two or more stages, **Collapse all stages** / **Expand all stages** appears above. What's folded is remembered on this computer for each rule set.
 - **Chain graph**: a mind-map of stages and rule chains; click a node to jump to it.
 - **Source**: a text editor with line numbers and highlighting. Syntax errors are marked in red and warnings in yellow on each line, all diagnostics are listed at the bottom, and clicking a line number jumps there.
+
+The card first searches lemmas and stored pronunciations in the lexicon of the language used by the rule set. It shows only forms that the selected rule actually changes, with their lexicon source indicated. If no entry matches, it constructs candidates from the classes, features and environment and checks them with the rule. If no reliable example is found, it shows an empty-state message. Searches run in batches; selecting another rule cancels the previous search. Examples are not added to the lexicon.
 
 The status bar at the bottom shows the number of rules, stages, classes and diagnostics, plus **Export as text** and **Evolve lexicon**. The complete rule syntax is in section 4 of this page (the **User guide** button next to the title goes straight there).
 
@@ -103,6 +105,19 @@ target > replacement / left0_right0 , left1_right1 , … - leftExc_rightExc , le
 
 a and b can be any kind of replacement: class correspondence (`[ptk] > [bdg]?[fθx] / V_V`), `\` metathesis, `2` gemination, or empty for deletion; metathesis inside and gemination outside is written `\?2`. "Inside" means matching any one of the environments and not falling in an exception; every other position counts as outside. Both branches look at the word as it was before this rule and are applied in one go; where both branches match the same spot, the inside branch wins. Target and replacement can each contain only one `?`; a `?` inside an environment still means "anywhere in between". To write a literal question mark, use `\?`.
 
+**Complete members in ad-hoc classes**: spaces or unescaped dots can separate multi-character members. With `V=aeiou`, for example, `[ī ū ȳ] > [ij.uw.yj] / _Vː` changes `īaː` to `ijaː`. `[ptk]` still reads characters individually; `[a-z]` and `[^aeiou]` remain range and negated character groups. Escape a literal dot in a member as `\.`.
+
+**Adjacent class segments**: matching numbers of top-level `_` separators can divide the target and replacement into segments. Every target segment must be a class, each replacement segment must contain a corresponding class with the same number of members, and at least one segment must be a feature with explicitly listed members. The segments match next to each other and are replaced independently by member position; these separator underscores are not characters in the word. For example:
+
+```
+V=aeiou
+[+asp]=pʰ tʰ kʰ
+[-asp]=p t k
+V_[+asp] > Vː_[-asp] / _s
+```
+
+This changes `apʰs` to `aːps`, preserving the vowel actually matched. List the corresponding members on both sides of the feature. Targets and replacements that do not meet these conditions keep the previous literal-underscore behaviour; a literal underscore can also be written `\_`. An underscore in an environment still marks the target position.
+
 ### 4.3 Symbols in environments
 
 | Symbol | Meaning |
@@ -139,6 +154,8 @@ Syllables follow the language's settings on the Phonology page (Syllables & pros
 | `V > Vː / _σ` | lengthen vowels in open syllables |
 | `> ə / Cσ_C` | insert ə between consonants of two syllables: ak.ta → akəta |
 | `a > e / σC_Cσ` | a in a closed CVC syllable |
+
+IPA length marks `ː` (long) and `ˑ` (half-long) stay with the preceding segment. If the base vowel is a syllable nucleus, its long and half-long forms can also be nuclei: for example, `aːhalur` can be divided as `aː.ha.lur`. An explicit consonant classification for the complete unit takes precedence. This comparison does not rewrite phonemes or characters in a word.
 
 Syllables follow the word as it is at that rule: when earlier rules change the word, later σ rules split it again. For the Greek letter σ itself, write `\σ`.
 

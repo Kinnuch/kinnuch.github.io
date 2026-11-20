@@ -26,8 +26,10 @@ Each phoneme's **features** (type, voicing, place, manner, height, backness, rou
 
 Classes are the sets such as `V`, `C` and `{Vlong}` used in the rule language. There are two ways to build one:
 
-- **By members**: list the members directly (members of a single-letter class are split by character; long-named classes are space-separated).
-- **By feature**: write a feature query such as "type = vowel" or "voicing = voiced and manner = plosive"; the members are computed from the inventory and follow it when it changes.
+- **By members**: list the members directly. Without separators, the input is split by character; separate multi-character members with spaces or commas, as in `ts ng`.
+- **By feature**: choose conditions such as "type = vowel" or "voicing = voiced and manner = plosive". Members are computed from the inventory; while editing, **Refresh members from conditions** recomputes them.
+
+Click a class card or **Edit** to open its form; **Add class** opens a new form. The name, members and feature conditions stay in a draft until you click **Done**. **Cancel** or Esc discards the draft, and cancelling a new class leaves no empty class behind. **Delete** removes a class immediately; **Undo** in the notification restores its complete contents. Read-only projects cannot add, edit or delete classes.
 
 **Create C / V** builds the two basic classes by type with one click.
 
@@ -63,6 +65,8 @@ The rule language is exactly the same as on the Sound changes page (see [Rule la
 Type a few words into **Test** in the main area to see their syllables and stress. With **Input as** set to **Spelling** (the default), the input is first turned into IPA with the primary orthography and then syllabified — the th in `ce·theurian` is the single sound θ, so it comes out as `ˌke̞·ˈθɛʊ̯r.jän` rather than cet.heurian; with **IPA** the input is syllabified as written. Separators such as `·` and `-` split the word, each side is syllabified on its own, and they stay in the display; IPA that already carries `ˈ` (marked by orthography rules or typed by hand) keeps its marks, otherwise the stress setting above applies. Below that, the first dozen or so words of the lexicon are shown divided; their pronunciation is transcribed afresh with the primary orthography (irregular ones are used as they are), so changes to the orthography rules show up at once; entries with **Affects stress** ticked are stressed by their part of speech and special stress.
 
 In the custom stress rule form, ticking **Use the entry's special stress first (@)** at the top is the rule's `@`, each entry's **Part of speech** is `<part of speech>`, and **Unstressed** among the syllable choices is `0` (see [stress rules](/cerf/qonlang/en/sound-changes/#stress-rules)).
+
+IPA length marks `ː` (long) and `ˑ` (half-long) stay with the preceding segment. If the base vowel is a syllable nucleus, its long and half-long forms can also be nuclei: for example, `aːhalur` can be divided as `aː.ha.lur`. An explicit consonant classification for the complete unit takes precedence. This comparison does not rewrite phonemes or characters in a word.
 
 ## 5. Phonotactics & generator
 

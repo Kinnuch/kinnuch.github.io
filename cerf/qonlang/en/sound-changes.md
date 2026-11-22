@@ -11,6 +11,8 @@ description: The Sound changes page in Qonlang — rule sets and their three vie
 
 The Sound changes page manages **rule sets**. A rule set is a piece of rule text — class declarations, digraphs, stage snapshots and rules — applied from top to bottom. The same rule language is also used for orthography transcription, script mapping and the morphophonemic rules in paradigms, so the syntax described on this page applies throughout the app.
 
+You choose what the symbols in a sound change represent. They can stand for sounds, spelling units or intermediate forms. To produce headwords, finish with rules that convert the symbols to spelling, then add a stage marker such as `-* Spelling` to record the result. For example, `ɸ > f` writes the intermediate symbol `ɸ` as `f`. Once you save that spelling in the lexicon, the target language’s spelling-to-IPA rules can derive its pronunciation.
+
 ## 1. Rule sets
 
 The tab bar at the top lists every rule set in the project; click to switch, and press and drag to reorder. **New rule set** creates an empty one; **Import** reads Yinbianji's three files, Lexicanter pronunciation rules, Zompist SCA² or plain text (see section 6); **Export** saves the current rule set, or saves every rule set as its own `.txt` in a folder. Rename, write notes or delete (undoable) in the inspector.
@@ -31,6 +33,8 @@ The rule **text itself is the single source of truth**; the three views are just
 The card first searches lemmas and stored pronunciations in the lexicon of the language used by the rule set. It shows only forms that the selected rule actually changes, with their lexicon source indicated. If no entry matches, it constructs candidates from the classes, features and environment and checks them with the rule. If no reliable example is found, it shows an empty-state message. Searches run in batches; selecting another rule cancels the previous search. Examples are not added to the lexicon.
 
 The status bar at the bottom shows the number of rules, stages, classes and diagnostics, plus **Export as text** and **Evolve lexicon**. The complete rule syntax is in section 4 of this page (the **User guide** button next to the title goes straight there).
+
+Select a rule and click **Add comment line** at the foot of its stage to insert a note after the rule. With no row selected in that stage, the note goes at the end. You can edit, move or delete a note. Comment lines beginning with `;` are saved in the rule source and skipped when the rules run.
 
 ## 2. Stage snapshots and language bindings
 

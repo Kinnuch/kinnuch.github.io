@@ -86,6 +86,27 @@ a > e / _i              ; a rule
 
 Rules are applied from top to bottom; each rule matches repeatedly from left to right across the whole word. Class and digraph declarations can appear anywhere and apply to the whole text; features and stress rules take effect from the line they are on. Classes and digraphs defined on the Phonology page are available automatically; a declaration with the same name in the text overrides them.
 
+### Simultaneous groups {#simultaneous}
+
+Rules remain sequential by default. To swap sounds without feeding one rule into the next, create an explicit group:
+
+```text
+-( Swap
+a > b
+b > a
+-)
+```
+
+The input `ab` becomes `ba`. Every target, environment and exception reads the same original group input. Replacements are collected at original positions and composed once, without temporary text that could collide with the input.
+
+For overlapping matches, the leftmost start wins; at the same start, the first rule in source order wins, without a separate longest-target preference. An occupied span is not reused. Insertions at the same boundary follow the same priority. Rules outside the group keep their previous sequential behaviour.
+
+In the list, choose **Add simultaneous group**, then use **Add rule** in its header. **Group with the next rule** wraps adjacent ordinary rules. Click the name to rename it. **Ungroup** removes only the markers and keeps the rules; the trash button deletes the group and its contents. Undo restores either operation. The source markers `-( Name` and `-)` stay in sync with the list.
+
+Groups cannot be nested. Place stages, stress rules and references outside them; classes and features retain their existing syntax. Testing up to any member executes the whole group. The trace labels each group and uses the same before/after forms for its members, rather than implying a sequential cascade.
+
+Keyboard `g` and IPA `ɡ` are equivalent in literal rules, environments, exceptions, named or temporary classes and numbered classes. Thus `g > k` also changes an input `ɡ`; numbered captures preserve the actual input glyph. If a correspondence table lists both spellings, the first source entry wins. Explicit replacement text is output as written. Class names, syntax, IDs and original word forms are not rewritten.
+
 ### 4.2 A rule
 
 ```

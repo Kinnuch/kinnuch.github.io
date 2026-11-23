@@ -38,7 +38,7 @@ description: 千语集（Qonlang）是给所有造语者的桌面工作台：词
 | 首页 | 新建 / 打开项目、例句画廊、起步模板、最近项目 | [开始使用](/cerf/qonlang/getting-started/) |
 | 语言 | 语系树、每门语言的基本信息、方言 | [语言](/cerf/qonlang/languages/) |
 | 音系 | 音位表、音类、正字法转写、音节与韵律、配列与造词 | [音系](/cerf/qonlang/phonology/) |
-| 文字 | 自定义书写系统：字形表、字体、转写→文字映射、括号处理、竖排 | [文字](/cerf/qonlang/script/) |
+| 文字 | 自定义书写系统：字形表、字体、转写→文字映射、括号处理、竖排 | [文字](/cerf/qonlang/script/) · [附标与 RIME 入门](/cerf/qonlang/script/#script-starter) |
 | 音变 | 规则集、阶段快照、测试台、整库演化 | [音变](/cerf/qonlang/sound-changes/) |
 | 语素 | 词根、词缀、附着词、异体形、统计 | [语素](/cerf/qonlang/morphemes/) |
 | 词库 | 词条、义项、词源、关系图、统计、CSV / Lexicanter 导入、词典导出 | [词库](/cerf/qonlang/lexicon/) |

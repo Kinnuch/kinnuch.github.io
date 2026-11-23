@@ -89,7 +89,7 @@ Available steps:
 
 | Step | Description |
 |---|---|
-| **prefix / suffix** | Write the form literally, or write `@morpheme` to refer to the morpheme list (an allomorph is picked automatically by environment) |
+| **prefix / suffix** | Write literal text, use a specific `@morpheme`, or select a per-entry morpheme slot as the source. Allomorphs are chosen by the current grammatical values and environment |
 | **infix** | A form + an insertion position (see below for the notation) |
 | **circumfix** | Both halves added together, e.g. `a-` … `-ot` |
 | **pattern** | Root–pattern alternation such as `C1aC2aC3` or `maCCuC` |
@@ -99,6 +99,14 @@ Available steps:
 | **paradigm** | A paradigm inside a paradigm: treat the form so far as a stem and run it through one slot of another paradigm (optionally a variant; the first entry in the variant drop-down is that paradigm's set with no variant chosen, under its own name — **Base** unless it was renamed). For example, add `-mAk` for a gerund, then run the result through the genitive of the Noun paradigm. Stem slots written in the nested paradigm all fall back to this form, and conditional letters still follow this entry's own features; nesting stops after 4 levels, including when a paradigm leads back to itself |
 
 The same kind of step can appear several times: add a prefix, run sound changes, add a suffix, then tweak — any order you like. The generator drop-down has four entries: **None** (not derived), **Table (manual)** (typed per word), **Pipeline** (this pipeline) and **Pipeline + affects pronunciation** (this pipeline plus a second one that changes the pronunciation, see [Affects pronunciation](#slot-pron)).
+
+### Reusing a paradigm through morpheme slots {#morpheme-slots}
+
+Create a reusable slot in [Lexicon Edit mode](/cerf/qonlang/en/lexicon/#morpheme-slots) and explicitly bind it to a morpheme for each entry. In a prefix or suffix step, change the source from **Text / specific @morpheme** to **Slot: name**. The step now uses the current entry’s binding. Enter spaces, middle dots or other literal separators in **Before morpheme** and **After morpheme**.
+
+For example, one dimension can choose the bound prefix’s allomorph, while another controls the named stem and a separate suffix. Entries with different bound prefixes still share one paradigm. Named stems and existing specific `@morpheme` references continue to work. Bindings use identity, so duplicate morpheme names are not guessed between.
+
+Select a real entry in the test bench’s **Compare** mode to use its bindings. An unbound slot, deleted morpheme or foreign-language binding prevents generation and shows the reason. Re-deriving clears old automatic results invalidated by these binding errors, while keeping manual overrides. **Free** input has no entry bindings, even when its text equals a known headword; switch to Compare and explicitly choose the entry to test it.
 
 > The four older generator kinds — affixation, affixation + sound changes, pattern and reduplication — are converted to equivalent pipelines automatically when an old project is opened; derived results don't change.
 

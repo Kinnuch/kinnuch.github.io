@@ -38,7 +38,7 @@ In the order of the navigation bar, top to bottom:
 | Start page | New / open project, example-sentence gallery, starter templates, recent projects | [Getting started](/cerf/qonlang/en/getting-started/) |
 | Languages | Family tree, basic information about each language, dialects | [Languages](/cerf/qonlang/en/languages/) |
 | Phonology | Phoneme inventory, classes, orthography transcription, syllables and prosody, phonotactics and word generation | [Phonology](/cerf/qonlang/en/phonology/) |
-| Script | Custom writing systems: glyph table, fonts, transcription → script mapping, bracket handling, vertical text | [Script](/cerf/qonlang/en/script/) |
+| Script | Custom writing systems: glyph table, fonts, transcription → script mapping, bracket handling, vertical text | [Script](/cerf/qonlang/en/script/) · [Vowel signs and Rime](/cerf/qonlang/en/script/#script-starter) |
 | Sound changes | Rule sets, stage snapshots, test bench, evolving the whole lexicon | [Sound changes](/cerf/qonlang/en/sound-changes/) |
 | Morphemes | Roots, affixes, clitics, allomorphs, statistics | [Morphemes](/cerf/qonlang/en/morphemes/) |
 | Lexicon | Entries, senses, etymology, relation graph, statistics, CSV / Lexicanter import, dictionary export | [Lexicon](/cerf/qonlang/en/lexicon/) |

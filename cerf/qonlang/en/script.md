@@ -13,6 +13,8 @@ The **Script** page manages a language's **custom writing systems**: alphabets, 
 
 A language can have several scripts (say, a formal hand and a cursive). Next to the page title is the switch between the three sub-pages **Glyphs / Mapping rules / Preview**; further right, each script of the language has its own bookmark tab. Click a tab to switch; press and drag it onto another tab to change their order.
 
+For a hands-on first example, start with [Vowel signs and Rime dictionaries](#script-starter).
+
 ## 1. Creating a script and its basic properties
 
 Use **New script** at the far right of the title bar, then set in the inspector:
@@ -72,7 +74,9 @@ The pad shows the ascender, cap height, x-height, baseline (green) and descender
 | **Shapes** | Drag out a rectangle, ellipse or regular polygon (adjust **Sides**) — these three are filled outlines — or a straight line, which is a stroke using **Weight**. Hold Shift for a square, circle or 45° line |
 | **Select** | Click or drag a box to select strokes and outlines (Shift adds); drag to move, drag the square at the top-right corner to scale (Shift keeps proportions); arrow keys nudge by 10, Shift by 50; Ctrl+A selects everything, Delete removes |
 | **Nodes** | Click an outline or stroke to show its nodes: squares are on-curve points and small circles are control points; drag them to reshape, and Delete removes the selected node |
-| **Eraser** | Click a stroke or outline to delete it |
+| **Eraser** | Locally erase ink with a circular brush: click or drag; the circle shows its range. The independent **Eraser diameter** slider ranges from 10–220 font units, default 60. Works on strokes, closed shapes and loaded font outlines. Releasing the pointer completes one undoable erase action; **Save** writes the result back to the glyph |
+
+To remove an entire object, switch to **Select**, select the stroke or outline, and press Delete or choose **Delete**.
 
 The actions row under the tools applies to the selection, or to the whole glyph when nothing is selected (its left end says **n selected** or **Whole glyph**):
 
@@ -84,6 +88,8 @@ The actions row under the tools applies to the selection, or to the whole glyph 
 - **Duplicate (offset down-right)** and **Delete** need a selection.
 
 Ctrl+Z undoes and Ctrl+Y or Ctrl+Shift+Z redoes, for the pad's own steps only; the bin button **Clear all** starts over. Scroll to zoom, drag with the middle button to pan, and click the percentage button to reset the view. Nothing is written back until **Save**; clicking outside the pad (or pressing Esc with nothing selected) closes it without saving.
+
+Click the first glyph and Shift-click the last to select a range. Copy with Ctrl+C, switch languages, open the destination script’s glyph table and paste with Ctrl+V (⌘C and ⌘V on macOS). This transfers the character, readings, name, category, notes and hand-drawn geometry. Characters already in the destination are skipped. For private-use characters supplied by a font, choose a font that contains them in the destination script.
 
 ## 4. Mapping rules
 
@@ -97,7 +103,7 @@ Rules written **before** `@glyphs` run first; rules **after** it run last. That 
 |---|---|
 | Alphabet | Usually just `@glyphs`; for digraphs, give the dedicated glyph a longer transliteration |
 | Abjad | Delete unwritten vowels before `@glyphs`: `[aiu] > / C_` |
-| Abugida | First delete the inherent vowel after consonants, `a > / C_`, then map the other vowels to vowel signs; add a vowel killer to consonants without a vowel at the end of a word, e.g. `C > C◌्` (`◌` is only a placeholder — write the actual character) |
+| Abugida | Mark originally word-final consonants first, then handle the inherent vowel and vowel signs. See the tutorial below |
 | Syllabary | One glyph per syllable with its transliteration (ka, ki…); longest match is handled automatically. For complex packing patterns use **Syllable packing** below |
 | Logographic | Fill in each word by hand in the lexicon's **Script form**; rules only handle the regular part |
 | Featural | Map classes to components first, then assemble them with rules |
@@ -112,6 +118,54 @@ When it is an **inspector module** (a logographic script: glyphs are translitera
 **When a word is made of several morphemes** (a word written with a hyphen, such as `naegō-moh`, or a word you split with **Fix** in the corpus), **each piece of the script line is written on its own**: first the entry that piece is attached to, then the word's own entry if it recognises that spelling, then the spellings of the piece's morpheme, then the piece's own spelling looked up in the lexicon — and the piece is written from whichever entry is found. A piece that isn't found simply falls back to transliterating its own spelling and doesn't affect the others; only when no piece can be written does the word fall back as a whole.
 
 **Syllable packing** and **Automatic mapping** are two titled sections below the rule list; the triangle to the right of each title collapses it. When **Add rule** makes the rule list taller, they simply move down.
+
+### Vowel signs and Rime dictionaries {#script-starter}
+
+Try three spellings. In this example, `क` by itself reads `ka`. Add the vowel sign `ि` to write `ki` as `कि`, or the vowel-cancelling sign `्` to write a bare `k` as `क्`. These Devanagari characters are examples you can replace with your own.
+
+**1. Give two characters their readings.** In **Script**, create a script of type **Abugida**. Under **Glyphs → Paste glyph list**, paste these two rows, check the preview and confirm. The left column is what you want to display; the right column is what you will type. A vowel sign displayed on its own may appear on a dotted circle. Copy the character in the box below.
+
+```text
+क	k
+ि	i
+```
+
+**2. Try `ki` first.** Under **Mapping rules → Source**, leave just `@glyphs`. Type `ki` in the inspector’s test box. The glyph table turns `k` into `क` and `i` into `ि`. Together they read `कि`. The font draws the sign on the left, but you still enter `k` first. Leave syllable packing off so the mapping rules are used.
+
+**3. Tell `ka` and `k` apart.** Replace the source with these four lines:
+
+```text
+C=k
+C > C् / _#
+a > / C_
+@glyphs
+```
+
+The first line puts `k` in the consonant class `C`. The second adds the cancelling sign to a consonant that was originally word-final. The third removes `a` after a consonant because its glyph already supplies that vowel. The last line applies the glyph table. Try `ka ki k`: you should see **क कि क्**. The order matters: mark an originally bare consonant before dropping `a`.
+
+To add the consonant `t`, enter `त` with reading `t` in the glyph table and change the first rule to `C=k t`. Type `ti` to get `ति` with the same vowel sign.
+
+**For a script that writes only consonants**, try a separate table with `כ` for `k` and `ת` for `t`. Use two lines of source: `[aiu] > / _` to drop those three short vowels, followed by `@glyphs` to look up the remaining letters. Type `kat` to get `כת`.
+
+**If you already have a Rime dictionary, check what one row represents.** In your `.dict.yaml`, find the line containing only `...`. The code table begins below it. These three example rows each give a complete written syllable:
+
+```text
+क	ka	100
+कि	ki	80
+क्	k	60
+```
+
+Create a second script to try this. Remove the header, comments and the final weight column. Paste these two columns in **Paste glyph list**:
+
+```text
+क	ka
+कि	ki
+क्	k
+```
+
+For this script, leave just `@glyphs` in the rule source. Type `ka ki k` to get the same **क कि क्**. If your table encodes consonants and vowel signs separately, follow steps 1–3 instead. Combine alternative readings of a character in one value, such as `ka/ga`. Choose one automatic output for a code that has multiple candidates. If the dictionary declares custom `columns`, use its actual text and code columns. For keyboard shortcuts that differ from your headword spellings, convert the codes or select a custom field containing them as the script’s transcription source.
+
+For the source dictionary format, see the [official Rime schema guide](https://github.com/rime/home/wiki/RimeWithSchemata).
 
 ### Syllable packing
 

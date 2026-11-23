@@ -2,20 +2,22 @@
 layout: page
 permalink: /cerf/qonlang/en/docs/index.html
 title: Qonlang · Docs
-description: The Docs page in Qonlang — Markdown pages inside the project, the supported syntax, [[headword]] links, pages per language, and Markdown and PDF export.
+description: The Docs page in Qonlang — Markdown and safe HTML pages, project links and sentence backlinks, pages per language, and Markdown, HTML and PDF export.
 ---
 
 # Docs
 
 [← Guide index](/cerf/qonlang/en/) · [中文](/cerf/qonlang/docs/) · tenth item in the navigation bar
 
-The Docs page holds **Markdown pages inside the project**: grammar notes, cultural background, translation notes, a coining log. Lexicanter's Docs and Inflections tables become pages here after import.
+The Docs page holds **Markdown or HTML pages inside the project**: grammar notes, cultural background, translation notes, a coining log. Lexicanter's Docs and Inflections tables become Markdown pages here after import.
 
 ## 1. Layout
 
 The left column lists pages (the current language's pages plus pages for the whole project), and the middle is the editor, with three views: **Edit**, **Split** (editor on the left, preview on the right) and **Preview**. Doc pages open in Preview by default, and a new page opens straight in Edit. The top-bar search filters pages by title or content. The inspector sets the title, the language it belongs to (or the whole project) and export.
 
 The toolbar above the editor inserts common syntax at the cursor: bold, italic, heading, list, `[[ ]]` link, table and code block.
+
+Set each page's **Body format** in the inspector. Markdown remains the default. **Settings → App → Default format for new documents** can select HTML for future pages created in Documents on this device; existing, imported and example documents are unaffected. Changing a page's format changes its interpretation without rewriting its source; changing back restores the original interpretation.
 
 ## 2. Supported syntax
 
@@ -31,7 +33,7 @@ The toolbar above the editor inserts common syntax at the cursor: bold, italic, 
 | Horizontal rule | `---` |
 | **Project links** | `[[name]]`, `[[prefix:name]]`, `[[prefix:name#sub]]`, each of which can end with `\|displayed text`. See below |
 
-The renderer is a minimal in-house implementation: all text is escaped and raw HTML is not accepted.
+Markdown uses a minimal syntax and displays raw HTML as text. HTML format supports safe text structure such as headings, paragraphs, lists, tables, bold, italic and code. User-supplied CSS, scripts, media, forms, embedded pages and automatically loaded network resources are removed. The input is never executed as a web page; event handlers, styles and forged project navigation attributes are discarded. Ordinary HTTP(S) links open externally only when clicked. HTML text nodes can contain `[[project links]]`; attributes and code do not participate.
 
 ### Project links {#links}
 
@@ -54,15 +56,19 @@ Clicking jumps to that module and highlights the entry. A link that resolves to 
 
 The **Insert link** button on the toolbar saves you remembering the syntax: pick a kind, search the name, press Enter. Rule sets list their stages and paradigms list their slots alongside.
 
+Sentence links prefer the document's language. When multiple identical sentences remain at the same level, no arbitrary target is chosen; set the document's language correctly. **Documents mentioning this sentence** in the corpus inspector links back to the document and scrolls to and highlights the mention in Preview. Multiple documents have separate titles and language labels. Plain text is listed as **Complete sentence** when a full paragraph, paired quotation marks or an HTML `<q>` element contains the exact original: at least eight characters, with word spacing, final sentence punctuation or a sufficiently long Han-script sentence. For example, `We use “ilenler kasoda jatdu.” here` and HTML `<p>We use <q>ilenler kasoda jatdu.</q> here</p>` both match the complete quoted sentence. Curly or straight quotation marks, Japanese corner quotation marks and `«…»` are supported. Short words, code, HTML attributes and merely similar substrings are excluded. Use `[[sentence:original text]]` for a reliable explicit link, including short sentences.
+
 ## 3. Export
 
-- **Markdown**: the title as a level-one heading, followed by the content as written.
+- **Markdown**: the title as a level-one heading; Markdown content is kept as written and HTML content is converted by its basic structure.
+- **HTML**: exports the safe preview with its built-in stylesheet and an escaped title, without user-supplied CSS, scripts or automatically loaded resources.
 - **PDF**: A4; the desktop app writes the file directly, the web version goes through the print dialog.
 
-**Settings → Export as folder** exports every doc page as `docs/<title>.md`.
+**Settings → Export as folder** writes document source as `docs/<title>.md` or `.html`, with `docs.json` preserving IDs, languages and formats for reimport. Older folders containing only `docs/*.md` are restored as project-wide documents. Folder HTML files contain editable original source; safe filtering is applied when previewing or exporting HTML/PDF in the app.
 
 ## 4. Connections to other modules
 
 - `[[…]]` jumps to the lexicon, morphemes, languages, sound changes, paradigms, scripts, the corpus, the phrasebook or another doc page.
+- Sentence backlinks also work from the translation workbench; **Back** restores its draft. A document link to a sentence reveals that sentence instead of leaving a previous workbench or import panel in front of it.
 - The command palette finds pages by title or content.
 - The Theme's "corpus translation" font slot is also used for the body text of the preview.

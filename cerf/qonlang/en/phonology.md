@@ -37,7 +37,7 @@ Click a class card or **Edit** to open its form; **Add class** opens a new form.
 
 Classes and digraphs are made available automatically to sound-change rule sets, orthography rules and script mapping rules. A class of the same name declared inside a rule text overrides the one defined here.
 
-Classes built by feature, including those from **Create C / V**, recognise both keyboard `g` and IPA `ɡ`. For example, if you selected `ɡ` from the IPA chart, a word ending in `g` can still match the consonant class `C`. Matching preserves the spelling you typed. If the project uses both characters explicitly, defines replacements for them, or sets the class members by hand, its settings take precedence.
+Keyboard `g` and IPA `ɡ` are equivalent in rules, transcription, search, segmentation and common word-form comparisons, including manually defined classes. If both occur as sources in a class or mapping, the first entry wins; numbered captures preserve the actual input glyph. Lemmas, phonemes, rule source and IDs are not rewritten, and class names and syntax remain distinct.
 
 ## 3. Orthography
 
@@ -58,11 +58,17 @@ The try-out follows the setting immediately. Existing automatic pronunciations a
 
 ## 4. Syllables & prosody
 
-- **Syllabification**: two strategies. **Template** splits by the syllable template you write (e.g. `(C)(C)V(C)`, referring to class names); **Maximal onset** assigns as many consonants as possible to the onset of the following syllable. It can also be switched off (for isolating languages, or when a syllabary already carries the syllables).
+- **Syllabification**: two strategies. **Template** limits onset and coda lengths according to the structural template you write (e.g. `(C)(C)V(C)`); **Maximal onset** assigns as many consonants as possible to the onset of the following syllable. It can also be switched off (for isolating languages, or when a syllabary already carries the syllables).
 - **Stress**: a fixed position (initial, second, final, penultimate, antepenultimate), weight-sensitive, marked per word, or a **Custom stress rule**: choosing it shows a form to edit the rule entry by entry — the word length (Any length / Exactly / At least), which syllable (Syllable no. / From the end, no. / First fitting from the start / First fitting from the end), what the nucleus must contain, the environment and an exception; when an entry doesn't fit, the next one is tried. Fill **Split at** with `·` to stress each part of a compound on its own, and choose whether **Main stress in** is the last part or the first. Below the form, the rule is shown as text — the same notation as the part after `=` in a [stress rule](/cerf/qonlang/en/sound-changes/#stress-rules) — and mistakes are listed underneath. **Notes / exceptions** is still a free-form note.
 - **Tone**: a tone table (name, symbol, description). Tone letters are ignored during analysis, so they don't affect syllabification.
 
 Type a few words into **Test** in the main area to see their syllables and stress. With **Input as** set to **Spelling** (the default), the input is first turned into IPA with the primary orthography and then syllabified — the th in `ce·theurian` is the single sound θ, so it comes out as `ˌke̞·ˈθɛʊ̯r.jän` rather than cet.heurian; with **IPA** the input is syllabified as written. Separators such as `·` and `-` split the word, each side is syllabified on its own, and they stay in the display; IPA that already carries `ˈ` (marked by orthography rules or typed by hand) keeps its marks, otherwise the stress setting above applies. Below that, the first dozen or so words of the lexicon are shown divided; their pronunciation is transcribed afresh with the primary orthography (irregular ones are used as they are), so changes to the orthography rules show up at once; entries with **Affects stress** ticked are stressed by their part of speech and special stress.
+
+**Template lengths and onset lists**: a template such as `CVC` limits the maximum onset and coda lengths; it does not require every syllable to end in a consonant. With one consonant between vowels, the default division is `mexa → me.xa`, not `mex.a`. The template strategy no longer silently applies a word-generation onset list.
+
+To add that restriction, tick **Also restrict onsets to the IPA phonotactics list**. This uses **Phonotactics & generator → IPA → Allowed onsets**; the separately saved Spelling list is not substituted, and an empty IPA list adds no restriction. For example, an explicit list containing only m, f and v makes `mexa` divide as `mex.a` while `mafa` divides as `ma.fa`. Add the intended IPA onsets or turn off this extra restriction if it does not express your language. The **Maximal onset** strategy retains its previous use of the IPA onset list.
+
+If the template and whitelist cannot accommodate all the consonants between two nuclei, Qonlang preserves every segment and uses the longest allowed onset rather than forcing an onset outside the list or over its length limit. The preceding coda may then exceed its maximum; widen the template or adjust the lists to describe a legal division. The Phonology test and sound-change `σ`/stress rules use the same settings, and preserve length marks, tie bars, diacritics and stress marks.
 
 In the custom stress rule form, ticking **Use the entry's special stress first (@)** at the top is the rule's `@`, each entry's **Part of speech** is `<part of speech>`, and **Unstressed** among the syllable choices is `0` (see [stress rules](/cerf/qonlang/en/sound-changes/#stress-rules)).
 

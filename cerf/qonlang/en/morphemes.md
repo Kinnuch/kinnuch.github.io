@@ -15,6 +15,8 @@ The list works like the lexicon (see [Common conventions](/cerf/qonlang/en/#comm
 
 Next to the title are two modes, **View / Edit**: View shows a read-only card (form, type, gloss, meaning, allomorphs, etymology, the entries that use it); Edit is the field-by-field form, just like in the lexicon. Double-click a row in the table to open it in the inspector directly in Edit mode.
 
+`Ctrl`-click (`⌘` on macOS) to select individual rows, or `Shift`-click to select a range. With several selected, use the red **Delete** button, press `Delete`, or right-click a selected row to delete the group. Right-clicking outside the group selects and deletes only that row. Filtering or switching languages removes selections no longer in the current list. In text boxes, `Delete` still edits text; read-only projects cannot delete items. Batch deletion follows the single-morpheme behaviour: it does not delete entries, corpus analyses or paradigms that refer to the morphemes. Those references remain unchanged, and Undo restores the original morpheme IDs and order.
+
 ## 1. Fields
 
 | Field | Description |
@@ -51,9 +53,9 @@ The first environment from the top that matches wins; write the default as `_` a
 Allomorphs can also be chosen by **grammatical values**, not only by environment: each row has **Only with these values**, and **Add value** opens a picker grouped by category, with the values you pick shown as chips (the × on a chip removes it).
 
 - It means "use this form **in the slots that have these values**": pick "dative" and the form is used in every dative slot — what you would normally call "this form before the dative". The values looked at are those of the slot being derived plus the entry's own grammatical features, the same set that letters changing by condition (`{F:g|k}`) look at.
-- Empty means any. Several values picked together all have to match.
+- Empty means unrestricted. **Match all** is the default and preserves the behaviour of older projects. **Match any** requires at least one selected value to match: for example, selecting accusative and dative with Match any uses the same form in either case.
 - If an environment is set as well, both have to match.
-- When several rows match, the row matching **more grammatical values** wins (`accusative + plural` before `accusative` alone); on a tie, a row whose **environment** is set and matches beats one without an environment; still tied, the order they are written decides. If no row matches, the row with neither values nor an environment is used; without even that, the morpheme's own form.
+- When several rows match, the row with **more actually matched grammatical values** wins (`accusative + plural` before `accusative` alone; unmatched alternatives in Match any do not increase priority). On a tie, a row whose **environment** is set and matches beats one without an environment; still tied, the order they are written decides. If no row matches, the row with neither values nor an environment is used; without even that, the morpheme's own form.
 - Paradigms do all of this automatically — nothing extra to write in the pipeline.
 
 **One subtlety**: when a slot's start point is [based on another slot](/cerf/qonlang/en/paradigms/#slot-base), that base slot is derived with **its own** values, so an affix added inside the base slot picks its allomorph by the **base slot's** values. If you want this slot's values to choose the allomorph, put the affix step in the inheriting slot instead.

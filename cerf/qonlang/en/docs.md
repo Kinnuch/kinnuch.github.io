@@ -13,7 +13,11 @@ The Docs page holds **Markdown or HTML pages inside the project**: grammar notes
 
 ## 1. Layout
 
-The left column lists pages (the current language's pages plus pages for the whole project), and the middle is the editor, with three views: **Edit**, **Split** (editor on the left, preview on the right) and **Preview**. Doc pages open in Preview by default, and a new page opens straight in Edit. The top-bar search filters pages by title or content. The inspector sets the title, the language it belongs to (or the whole project) and export.
+The left column lists pages in nested folders (the current language's pages plus pages for the whole project), and the middle is the editor, with three views: **Edit**, **Split** (editor on the left, preview on the right) and **Preview**. Doc pages open in Preview by default, and a new page opens straight in Edit. The top-bar search finds titles or content across folders and shows each result's directory. The inspector sets the title, language, folder and export.
+
+Legacy pages and pages without a directory appear in **Default**. **New folder** creates a subfolder in the current directory. A folder's menu creates children, renames, moves or deletes it. Drag documents into a folder or choose their destination in the inspector; drag folders into another folder or use their Move command. A folder cannot move into itself or its descendants. The tree is shared by the project: language filtering changes which documents are shown, without changing their folder membership. Deleting a folder promotes its immediate documents and subfolders to its parent (top-level documents return to Default), preserving every document ID and body. Conflicting promoted folder names receive a number; **Undo** in the notification restores the original names and locations.
+
+Project links, command-palette results and corpus backlinks reveal a document's actual folder and expand its ancestors. **Back** restores the previous folder, document and reading view.
 
 The toolbar above the editor inserts common syntax at the cursor: bold, italic, heading, list, `[[ ]]` link, table and code block.
 
@@ -64,7 +68,7 @@ Sentence links prefer the document's language. When multiple identical sentences
 - **HTML**: exports the safe preview with its built-in stylesheet and an escaped title, without user-supplied CSS, scripts or automatically loaded resources.
 - **PDF**: A4; the desktop app writes the file directly, the web version goes through the print dialog.
 
-**Settings → Export as folder** writes document source as `docs/<title>.md` or `.html`, with `docs.json` preserving IDs, languages and formats for reimport. Older folders containing only `docs/*.md` are restored as project-wide documents. Folder HTML files contain editable original source; safe filtering is applied when previewing or exporting HTML/PDF in the app.
+**Settings → Export as folder** writes document source as `docs/<title>.md` or `.html`. `docs.json` preserves IDs, languages, formats and folder memberships; `project.json` preserves the folder tree. Logical folders are stored in this metadata while source files retain their existing naming under `docs/`. Older folders containing only `docs/*.md` are restored as project-wide documents in Default. Folder HTML files contain editable original source; safe filtering is applied when previewing or exporting HTML/PDF in the app.
 
 ## 4. Connections to other modules
 

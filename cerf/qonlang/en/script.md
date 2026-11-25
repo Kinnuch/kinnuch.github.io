@@ -15,6 +15,8 @@ A language can have several scripts (say, a formal hand and a cursive). Next to 
 
 For a hands-on first example, start with [Vowel signs and Rime dictionaries](#script-starter).
 
+Right-click any glyph in a multiselection to change the category for all selected glyphs, delete them or clear the selection.
+
 ## 1. Creating a script and its basic properties
 
 Use **New script** at the far right of the title bar, then set in the inspector:
@@ -68,10 +70,13 @@ The pad shows the ascender, cap height, x-height, baseline (green) and descender
 
 **Loading from the font**: when a glyph has no drawing yet and the script's embedded font has this character, the pad loads its outline as soon as it opens, ready to edit. **Load from font** next to the title reloads it at any time, replacing what is on the pad (undoable). WOFF2 fonts can't be read.
 
+**Grid and guides**, **Project presets** and **Insert component** open floating panels anchored to their buttons without changing the toolbar or canvas height. Only one is open at a time. Edit fields, add guides or save presets within the panel; click outside it or press Escape to close it. Applying a preset or inserting a component also closes the panel so you can continue on the canvas.
+
 | Tool | How it works |
 |---|---|
 | **Pen** | Draw freehand; **Weight** sets the line width. **Stabilizer** runs 0–10, default 5, remembered on this computer: the tip hangs on a string behind the pointer, and while drawing you see the string and a ring at the pointer — higher is steadier but lags more. Each stroke is smoothed when you lift. Dragging no longer turns the cursor into a "forbidden" sign or breaks the stroke (a browser drag used to start), and drawing carries on when the pointer leaves the canvas |
 | **Shapes** | Drag out a rectangle, ellipse or regular polygon (adjust **Sides**) — these three are filled outlines — or a straight line, which is a stroke using **Weight**. Hold Shift for a square, circle or 45° line |
+| **Bézier** | Click to add anchors, or drag to pull out symmetric handles. Continue adding anchors, then choose **Close curve** or press Enter to finish a closed contour. Escape discards the unfinished path. With **Nodes**, drag anchors and handles; select a segment endpoint to convert the segment to a line, quadratic or cubic curve, or **Split** it without changing its shape |
 | **Select** | Click or drag a box to select strokes and outlines (Shift adds); drag to move, drag the square at the top-right corner to scale (Shift keeps proportions); arrow keys nudge by 10, Shift by 50; Ctrl+A selects everything, Delete removes |
 | **Nodes** | Click an outline or stroke to show its nodes: squares are on-curve points and small circles are control points; drag them to reshape, and Delete removes the selected node |
 | **Eraser** | Locally erase ink with a circular brush: click or drag; the circle shows its range. The independent **Eraser diameter** slider ranges from 10–220 font units, default 60. Works on strokes, closed shapes and loaded font outlines. Releasing the pointer completes one undoable erase action; **Save** writes the result back to the glyph |
@@ -88,6 +93,12 @@ The actions row under the tools applies to the selection, or to the whole glyph 
 - **Duplicate (offset down-right)** and **Delete** need a selection.
 
 Ctrl+Z undoes and Ctrl+Y or Ctrl+Shift+Z redoes, for the pad's own steps only; the bin button **Clear all** starts over. Scroll to zoom, drag with the middle button to pan, and click the percentage button to reset the view. Nothing is written back until **Save**; clicking outside the pad (or pressing Esc with nothing selected) closes it without saving.
+
+**Grid and guides**: choose its button to open a floating panel and toggle the visible grid and snapping separately, set the step and X/Y origin, or add named horizontal and vertical guides at font-unit coordinates. Changing the origin does not move existing ink. Hold Alt while drawing or dragging nodes to bypass snapping. When zoomed out, the display skips some grid lines; snapping still uses your exact step. Guides aid editing and do not change the exported font’s ascender or descender metrics.
+
+**Characters and components**: use the switch above the glyph table. Components belong to the current script; draw, rename, edit or delete them without assigning character codes. They do not enter mappings, transliteration or font exports. In any pad, enter a **Component name** and choose **Save as component**: this saves the selection, or the whole pad when nothing is selected, and leaves the pad open. In another character’s pad, expand **Insert component** and choose one. An independent copy is inserted and selected, ready to drag, scale or edit by nodes. Editing a copy does not change the library, and deleting a library component does not change copies already inserted.
+
+**Project presets**: enter a name and save the current advance, stroke weight, grid, snapping, origin and guides. Presets travel with the project and are available to every script in it. Select one and **Apply**, or **Set as default** for the next pad you open. Existing glyphs keep their own advance when opened; explicitly applying a preset changes it. **Clear default** keeps the preset without automatically applying it. **Reset settings** restores the original pad defaults. Saving components or presets changes the project immediately; cancelling the pad only discards unsaved edits to the glyph.
 
 Click the first glyph and Shift-click the last to select a range. Copy with Ctrl+C, switch languages, open the destination script’s glyph table and paste with Ctrl+V (⌘C and ⌘V on macOS). This transfers the character, readings, name, category, notes and hand-drawn geometry. Characters already in the destination are skipped. For private-use characters supplied by a font, choose a font that contains them in the destination script.
 

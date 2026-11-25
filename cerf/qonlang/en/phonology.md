@@ -74,6 +74,8 @@ In the custom stress rule form, ticking **Use the entry's special stress first (
 
 IPA length marks `ː` (long) and `ˑ` (half-long) stay with the preceding segment. If the base vowel is a syllable nucleus, its long and half-long forms can also be nuclei: for example, `aːhalur` can be divided as `aː.ha.lur`. An explicit consonant classification for the complete unit takes precedence. This comparison does not rewrite phonemes or characters in a word.
 
+Adjacent independent vowels have separate nuclei. With only `a` declared, `aa` divides as `a.a` and `aaaa` as `a.a.a.a`. A template such as `(C)(C)V(C)(C)` limits onset and coda lengths; it does not automatically turn adjacent vowels into a diphthong. Declare a true diphthong or multiletter long vowel such as `ai` or `aa` as a complete phoneme, V-class member or **Phonotactics → IPA → Nuclei** item. These explicit units use longest matching from left to right: declaring `ai` allows `aia → ai.a`. Existing `aː`, `aˑ` and combining marks stay with their segments. An overlong consonant cluster does not create additional vowelless syllables; all segments remain, so review the template and onset/coda constraints when needed. Spelling tests first convert to IPA and then use the same division.
+
 ## 5. Phonotactics & generator
 
 The phonotactics table describes legal syllables: **onsets**, **nuclei** and **codas** are each a list of allowed sequences (spelling or IPA, according to the selected mode), **illegal sequences** lists segments that must not occur, **weights** make some sequences more likely, and there are minimum / maximum syllable counts.

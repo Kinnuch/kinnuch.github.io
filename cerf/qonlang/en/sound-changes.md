@@ -11,6 +11,8 @@ description: The Sound changes page in Qonlang — rule sets and their three vie
 
 The Sound changes page manages **rule sets**. A rule set is a piece of rule text — class declarations, digraphs, stage snapshots and rules — applied from top to bottom. The same rule language is also used for orthography transcription, script mapping and the morphophonemic rules in paradigms, so the syntax described on this page applies throughout the app.
 
+**Rule syntax help**: each time you start the app and first enter a project, the **Rule syntax** button at the top right keeps glowing gold until you open the syntax help. Opening it takes you to the syntax relevant to the current module. With reduced motion enabled in the system, the reminder uses a static gold outline instead.
+
 You choose what the symbols in a sound change represent. They can stand for sounds, spelling units or intermediate forms. To produce headwords, finish with rules that convert the symbols to spelling, then add a stage marker such as `-* Spelling` to record the result. For example, `ɸ > f` writes the intermediate symbol `ɸ` as `f`. Once you save that spelling in the lexicon, the target language’s spelling-to-IPA rules can derive its pronunciation.
 
 ## 1. Rule sets
@@ -74,7 +76,7 @@ When the run reaches that line, the rules of that set between **Proto** and **Mo
 
 ```
 ; a semicolon starts a comment that runs to the end of the line; a # at the start of a line is also a comment (for old files)
-V=aeiou                 ; single-letter class: members are split by character
+V=aeiou                 ; compact class without separators: split by character
 {Vlong}=ā ē ī ō ū       ; long-named class: members separated by spaces or commas; with no separators, split by character
 th|θ                    ; digraph: th is treated as one unit θ while matching, and turned back on output
 [+asp] = ph th kh       ; feature: from this line on, rules can write [+asp] and [-asp]
@@ -84,7 +86,11 @@ a > e / _i              ; a rule
 -* Modern
 ```
 
+You can also paste a class definition with a colon followed by a space, such as `H: á áu ú`. For one multigraph member, write `H=áu,`.
+
 Rules are applied from top to bottom; each rule matches repeatedly from left to right across the whole word. Class and digraph declarations can appear anywhere and apply to the whole text; features and stress rules take effect from the line they are on. Classes and digraphs defined on the Phonology page are available automatically; a declaration with the same name in the text overrides them.
+
+Both single-letter and long-named classes accept complete members separated by spaces or commas. For example, `H=é éi ó` contains exactly `é`, `éi` and `ó`; it does not also contain `i`. Compact legacy declarations such as `V=aeiou` still split by character. To treat a multiletter sound as one member, separate all members explicitly. Combining accents remain part of their member, without temporary letters that could collide with a word. Use the same Unicode normalization form in the input and rules.
 
 ### Simultaneous groups {#simultaneous}
 

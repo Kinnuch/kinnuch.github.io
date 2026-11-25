@@ -17,6 +17,8 @@ Next to the title are two modes, **View / Edit**: View shows a read-only card (f
 
 `Ctrl`-click (`⌘` on macOS) to select individual rows, or `Shift`-click to select a range. With several selected, use the red **Delete** button, press `Delete`, or right-click a selected row to delete the group. Right-clicking outside the group selects and deletes only that row. Filtering or switching languages removes selections no longer in the current list. In text boxes, `Delete` still edits text; read-only projects cannot delete items. Batch deletion follows the single-morpheme behaviour: it does not delete entries, corpus analyses or paradigms that refer to the morphemes. Those references remain unchanged, and Undo restores the original morpheme IDs and order.
 
+After selecting several morphemes, right-click a selected row to delete the selection or clear it.
+
 ## 1. Fields
 
 | Field | Description |
@@ -61,6 +63,10 @@ Allomorphs can also be chosen by **grammatical values**, not only by environment
 **One subtlety**: when a slot's start point is [based on another slot](/cerf/qonlang/en/paradigms/#slot-base), that base slot is derived with **its own** values, so an affix added inside the base slot picks its allomorph by the **base slot's** values. If you want this slot's values to choose the allomorph, put the affix step in the inheriting slot instead.
 
 ## 3. A morpheme's etymology
+
+In a morpheme’s etymology, both the morpheme and lexeme fields search in place. Use the add button below the results to create and reference a missing record. You can enter its form and meaning, and choose a type when creating a morpheme.
+
+Search results and the creation form open in a floating panel. Press Escape or click outside to close it.
 
 Morphemes have the same **etymology chain** as entries: type (root / compound / derivation / sound change / loanword / unknown or a custom type), sources, stages and notes. Once filled in, the morpheme is joined into the same relation graph as the entries that use it, so you can follow a word all the way back to earlier morpheme sources. For how the relation graph works (including splitting concatenated sources into nodes and jumping across languages), see [Lexicon · Relation graph](/cerf/qonlang/en/lexicon/#graph).
 

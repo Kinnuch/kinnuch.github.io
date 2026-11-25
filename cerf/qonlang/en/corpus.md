@@ -11,11 +11,25 @@ description: The Corpus page in Qonlang — entering example sentences, automati
 
 The Corpus page collects example sentences and produces an **interlinear gloss** for every word automatically. It has three sub-pages: **Sentences**, **Statistics** and **Abbreviations**.
 
+### Corpus folders {#folders}
+
+The first visit to **Sentences** opens `Default` directly. Older unassigned sentences remain there, and existing single-level folders stay at the root. Click **Back to folders** to browse the current directory, enter subfolders by clicking them, and return using the breadcrumb or **Parent folder**. **Open this folder’s sentences** shows only its direct sentences. Right-click the current background to create a subfolder or import; a folder’s menu also offers rename, move, import, export and delete. `Default` is reserved and cannot be renamed or deleted.
+
+Deleting a folder keeps every sentence: its direct sentences and child folders move to the parent, while deeper subtrees remain intact. Conflicting promoted folder names receive a number such as `Child (2)`; IDs, text and analyses are not merged. Undo restores the former parent, names and assignments while preserving later manual changes.
+
+Drop a folder at another folder’s center to move inside it, or at the left edge of a sibling to reorder; items snap to grid slots on release. **Move folder** also offers a destination chooser that excludes the source and all its descendants. A folder cannot move into its own subtree. Move sentences using **Move to folder** or drag selected cards onto the directory targets shown during the drag; a selected batch moves together. Invalid, cross-project or cross-language drops leave assignments unchanged. Links from documents, lexical examples or the start page open the sentence’s actual nested path.
+
+In project settings, choose one or two translation languages for corpus cards, or show them all. For example, select Chinese and English to read both lines on bilingual cards. The inspector still lets you edit other translations.
+
 ## 1. Sentence cards {#1-sentence-cards}
 
 The list shows one card per sentence: the script line (if a script is defined; when the script transcribes from an inspector module, it is written word by word from the lexicon — see [Script](/cerf/qonlang/en/script/)), the original text (shown as written, punctuation and spaces included; each word can be hovered / clicked), the gloss line (shown once everything is confirmed), translations, source and tags, and a badge counting confirmed words. Press a card and drag it onto another to move it there. Click a card to open the **interlinear editor** above it; the inspector edits the text, translations (in several languages), spellings in other orthographies, source, tags, extra lines (any label + text, included in exports), notes, and the export panel.
 
+**Range selection and batch deletion**: click a card, then `Shift`-click another to select a continuous range in the current list. `Ctrl` (`⌘` on macOS) adds or removes individual cards; `Ctrl/⌘ + Shift` adds a range. Selection is scoped to the current folder and search results. Changing the filter clears the old range rather than including hidden sentences. Delete using the selection toolbar, the context menu or `Delete`; one Undo restores the original IDs and order. Internal links retain the same literal references as single deletion and resolve again when sentences are restored. Read-only projects cannot delete sentences.
+
 **Sentence text size**: open the font settings in [Theme](/cerf/qonlang/en/skin/) to scale sentences from 50% to 200%. Custom scripts, original text, interlinear glosses and translations scale together, including example sentences under lexicon entries. The preference is saved on this computer.
+
+**Spaces in constructed scripts**: under **Settings → Word splitting & gloss**, disable **Keep spaces in constructed-script output** to display the script line continuously. The same project switch is available in **Script → Preview**. It affects only the generated script output; original spelling, headwords, segmentation and analyses remain unchanged, and line breaks are kept. This also removes gaps between words in vertical scripts. Enable it again to restore spaces.
 
 **Find mentioning documents**: select a sentence to see **Documents mentioning this sentence** in the inspector, with each document's title, language and matching method. Click one to return to [Docs](/cerf/qonlang/en/docs/#links) and locate the mention in Preview. This also works from the translation workbench; **Back** resumes its draft. Prefer explicit `[[sentence:original text]]` links. Identical sentences are resolved in the document's language, with ambiguous matches left unresolved. Plain text is marked **Complete sentence** for a full independent paragraph, paired quotation marks or an HTML `<q>` containing the exact long original (at least eight characters with word spacing, final sentence punctuation or at least eight Han characters). `We use “ilenler kasoda jatdu.” here` therefore works without a separate paragraph. Short words, code, HTML attributes and similar substrings are excluded.
 
@@ -77,6 +91,8 @@ These are also tried:
 
 - **Apostrophe contractions** (first add `'` in **Settings → Morpheme boundary symbols**; many languages use the apostrophe as a letter, so it doesn't split by default): `t'am` and `m'nem` are split at the apostrophe, the first half is looked up with one or two vowels added (`t'` → `ta`) and the second half as usual; the hover card uses the longest piece's entry.
 - **Paradigms that apply to all words**: initial mutations and the like (see [Paradigms](/cerf/qonlang/en/paradigms/)) — the surface word (or the stem between affixes) is changed back to its base form and looked up again, with the mutation's abbreviation added after the gloss.
+
+  If a registered alternation changes `denrú` to `dhenrú`, the analysis menu keeps the surface form and shows a base-form hint such as `dhenrú → denrú · 芒草.LEN`. Homographic alternatives remain selectable. A mutation must be verified by applying the project’s paradigm forwards; arbitrary similar spellings are not forced into a base form, and the sentence still reads `dhenrú`.
 - **Dropping diacritics**: words written with stress or length marks are still found when the dictionary doesn't write them.
 
 These results are **guesses** — until confirmed, the card stays yellow and they don't count as recognised in the coverage:
@@ -130,11 +146,11 @@ The copy button copies the current format directly. In the preview, the script l
 
 ### Importing and batch export
 
-**Import** and **Export** in the title bar:
+Click **Back to folders**, then right-click a directory. Import targets the directory where the menu was opened; the root background targets `Default`. The live preview remains available, and confirmation uses the destination captured when the panel opened. Exporting from the root background includes every folder in this language. A directory’s **Include sentences in subfolders** switch explicitly selects direct sentences or its complete subtree. Existing formats are retained:
 
 - **Import from a table**: opens the import panel in the main area; choose a CSV / TSV file or paste text directly (one sentence per line also works). The inspector shows an import preview — the first few sentences' text, translations, source and tags after import, with skipped ones marked and the reason given (empty text, already present, duplicate of an earlier row); changing the separator, header or column fields updates it immediately, with changes highlighted and fading. **Separator** is automatic by default: if not every line contains the same separator, each line is treated as one sentence, so commas inside sentences don't split them; you can also pick comma, tab, semicolon or pipe manually. After import the new sentences are checked for duplicates, and those that differ only in their source are merged. With **First row is a header** ticked, each column is guessed from its header — text, a translation in some language, source, tags or notes — and can be changed column by column; rows with empty text, or text already present in this language, are skipped.
 - **Import from JSON / Export JSON**: Qonlang's own format, carrying analyses along; importing also uses the panel above — pick a file, check the preview, then click **Import**. When moving between projects, analyses that refer to entries or morphemes that don't exist are dropped, and the sentence is re-analysed when selected.
-- **Export CSV**, and batch-export the current list (following the current language and search) as Leipzig plain text, Markdown, HTML or LaTeX.
+- **Export CSV**, or export the chosen folder as Leipzig plain text, Markdown, HTML or LaTeX. A temporary list search does not omit sentences from a folder export.
 
 #### Table format {#table-format}
 

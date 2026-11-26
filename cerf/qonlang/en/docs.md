@@ -11,13 +11,25 @@ description: The Docs page in Qonlang — Markdown and safe HTML pages, project 
 
 The Docs page holds **Markdown or HTML pages inside the project**: grammar notes, cultural background, translation notes, a coining log. Lexicanter's Docs and Inflections tables become Markdown pages here after import.
 
+### Project-wide folders {#shared-folders}
+
+**Project-wide folders**: Corpus, Phrasebook and Docs now share one nested folder tree. Creating, renaming or moving a folder on one page updates the same directory on the other two. Existing corpus and document folders retain their contents and hierarchy; unassigned records appear in `Default`. Conflicting legacy folder names receive a number rather than being merged. Moving a record does not change its language.
+
+Click **Root directory** in the path to browse folders. The small triangle immediately to its left opens or closes the entire sidebar. The sidebar starts closed. Select a folder to see its contents. Open a sentence, phrase or document to go to its page. Switch between **Icons** and **Details**, and choose tags, creation date, file size and type in **Settings → Root directory**. Size estimates the UTF-8 record data, excluding separate attachments and disk allocation. Older records without a creation date show “—”.
+
+**Root directory** and `Default` are distinct. The root view lists `Default` alongside top-level folders; open `Default` to see unassigned records. `Default` is not the parent of other top-level folders. Folder counts include sentences, phrases and documents in that folder and every descendant; the root count covers the whole project. Tree arrows expand or collapse a branch without changing its count. Breadcrumbs start at Root directory and let you return through the hierarchy.
+
+`Default` cannot contain folders. Create, move or paste folders in Root directory, or drag them onto its root icon. Records can still be dropped into `Default`. Pasting records without folders at the root opens `Default` to show where they landed.
+
+Right-click a folder or record to **Copy**, **Cut** or **Paste**. Selected records also use the page toolbar and `Ctrl/⌘+C`, `Ctrl/⌘+X` and `Ctrl/⌘+V`. Copying a folder includes its subtree and all three record types; pasted copies receive new IDs while retaining their analyses and existing lexeme/morpheme references. Cut moves the original objects only after a successful paste, so cancellation or failure leaves them intact. Whole-record clipboard operations stay within the current open project session. Copy again after reopening the project or restarting the app. Normal text editing is unaffected, and read-only projects cannot change folders or records.
+
 ## 1. Layout
 
-The left column lists pages in nested folders (the current language's pages plus pages for the whole project), and the middle is the editor, with three views: **Edit**, **Split** (editor on the left, preview on the right) and **Preview**. Doc pages open in Preview by default, and a new page opens straight in Edit. The top-bar search finds titles or content across folders and shows each result's directory. The inspector sets the title, language, folder and export.
+The left column lists pages in nested folders (the current language's pages plus pages for the whole project), and the middle is the editor, with three views: **Edit**, **Split** (editor on the left, preview on the right) and **Preview**. Doc pages open in Preview by default, and a new page opens straight in Edit. The top-bar search finds titles or content across folders and shows each result's directory. The inspector sets the title, language, folder, tags and export. Enter document tags here to show them in the shared directory’s Details view.
 
 Legacy pages and pages without a directory appear in **Default**. **New folder** creates a subfolder in the current directory. A folder's menu creates children, renames, moves or deletes it. Drag documents into a folder or choose their destination in the inspector; drag folders into another folder or use their Move command. A folder cannot move into itself or its descendants. The tree is shared by the project: language filtering changes which documents are shown, without changing their folder membership. Deleting a folder promotes its immediate documents and subfolders to its parent (top-level documents return to Default), preserving every document ID and body. Conflicting promoted folder names receive a number; **Undo** in the notification restores the original names and locations.
 
-Project links, command-palette results and corpus backlinks reveal a document's actual folder and expand its ancestors. **Back** restores the previous folder, document and reading view.
+Project links, command-palette results and corpus backlinks reveal a document's actual folder and show its actual path. **Back** restores the previous folder, document and reading view.
 
 The toolbar above the editor inserts common syntax at the cursor: bold, italic, heading, list, `[[ ]]` link, table and code block.
 

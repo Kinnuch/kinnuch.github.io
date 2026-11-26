@@ -31,6 +31,8 @@ Use **New script** at the far right of the title bar, then set in the inspector:
 | Font | A system font name, or an imported font file embedded in the project |
 | Notes | Free text |
 
+**Corpus folder scope:** in the script’s basic properties, choose **All folders**, **Hide in corpus**, or **Custom folders**. A custom scope includes entire selected subtrees and can exclude individual subtrees within them; `Default` means only unfiled records. Sentences, phrases, entry examples, the script’s corpus preview and interlinear exports use the same scope. Lexicon word forms are unaffected. Moved or copied records follow their destination folder’s scope; newly copied folders do not inherit exclusions tied to the original folder IDs. Source text, manual script forms and confirmed token analyses are preserved.
+
 ## 2. Fonts
 
 - **System font name**: for fonts installed on the computer, just type the name.
@@ -94,6 +96,8 @@ The actions row under the tools applies to the selection, or to the whole glyph 
 
 Ctrl+Z undoes and Ctrl+Y or Ctrl+Shift+Z redoes, for the pad's own steps only; the bin button **Clear all** starts over. Scroll to zoom, drag with the middle button to pan, and click the percentage button to reset the view. Nothing is written back until **Save**; clicking outside the pad (or pressing Esc with nothing selected) closes it without saving.
 
+With the **Nodes** tool, select an anchor to use **Smooth node** or **Corner node** in the selected-segment row, for both pen strokes and closed outlines. Smooth handles stay collinear: dragging one keeps the opposite handle’s length while updating its direction; moving the anchor carries both handles. Corner mode retracts the handles to the anchor so each side can be adjusted independently. The mode is saved in the project and remains editable after reopening; stroke weight stays unchanged. **Insert node** splits the selected segment at its midpoint, or double-click the actual curve to insert at that position. **Delete node** or Delete removes the selected node. Insertion preserves the original curve, and each conversion, insertion or deletion is undoable. Existing strokes, outlines and font exports remain supported.
+
 **Grid and guides**: choose its button to open a floating panel and toggle the visible grid and snapping separately, set the step and X/Y origin, or add named horizontal and vertical guides at font-unit coordinates. Changing the origin does not move existing ink. Hold Alt while drawing or dragging nodes to bypass snapping. When zoomed out, the display skips some grid lines; snapping still uses your exact step. Guides aid editing and do not change the exported font’s ascender or descender metrics.
 
 **Characters and components**: use the switch above the glyph table. Components belong to the current script; draw, rename, edit or delete them without assigning character codes. They do not enter mappings, transliteration or font exports. In any pad, enter a **Component name** and choose **Save as component**: this saves the selection, or the whole pad when nothing is selected, and leaves the pad open. In another character’s pad, expand **Insert component** and choose one. An independent copy is inserted and selected, ready to drag, scale or edit by nodes. Editing a copy does not change the library, and deleting a library component does not change copies already inserted.
@@ -109,6 +113,8 @@ The rule language is the same as on the Sound changes page (see [Rule language](
 The special part is the line `@glyphs`: it expands into **the mapping generated from the glyph table** — one `transliteration > character` rule per glyph with a transliteration, sorted by transliteration length, longest first (`th` before `t`, so the short one doesn't eat the long one). You can inspect the expansion under **Automatic mapping** at the bottom of the page (the glyphs on the right are shown in the script's font). Transliterations containing symbols that mean something in rules (`?` `.` `#` `*`), or capital letters that share a name with a class, get a backslash in front when expanded (`\? > ⸮`) so they are matched literally — giving a glyph to a question mark no longer turns entire words into that glyph.
 
 Rules written **before** `@glyphs` run first; rules **after** it run last. That is how the different script types are handled:
+
+To map a halfwidth comma, put `,` alone in the glyph's transliteration field, or explicitly write `\, > target glyph` in the mapping rules. A lone comma is literal punctuation, while ordinary alternate-reading fields such as `a,b` retain their existing separator meaning. An unmapped comma is preserved. The same mapping reaches ordinary and vertical scripts, script tests/corpus previews and automatic corpus/phrasebook script lines. In syllable packing, commas are kept outside consonant-vowel packing. Ordinary hand-entered script overrides stay literal; scripts reading inspector codes continue to map hand-entered codes. This display change does not rewrite original sentences, tokens or chosen entries.
 
 | Type | Typical approach |
 |---|---|

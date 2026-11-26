@@ -19,6 +19,8 @@ Next to the title are two modes, **View / Edit**: View shows a read-only card (f
 
 After selecting several morphemes, right-click a selected row to delete the selection or clear it.
 
+Single morphemes and multiple selections can be copied, cut and pasted from the toolbar, context menu or keyboard. A cut moves records when the paste succeeds. Use record clipboard actions within the currently open project; text fields keep their normal text clipboard.
+
 ## 1. Fields
 
 | Field | Description |

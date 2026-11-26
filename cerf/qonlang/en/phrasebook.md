@@ -11,9 +11,21 @@ description: The Phrasebook page in Qonlang — common phrases organised by cate
 
 The phrasebook collects **common expressions**: greetings, numbers, travel-guide style dialogues, fixed patterns from lessons. The division of labour with the Corpus page: sentences are for gloss analysis, phrases are for organising and presenting. A Lexicanter Phrasebook ends up here after import.
 
+### Project-wide folders {#shared-folders}
+
+**Project-wide folders**: Corpus, Phrasebook and Docs now share one nested folder tree. Creating, renaming or moving a folder on one page updates the same directory on the other two. Existing corpus and document folders retain their contents and hierarchy; unassigned records appear in `Default`. Conflicting legacy folder names receive a number rather than being merged. Moving a record does not change its language.
+
+Click **Root directory** in the path to browse folders. The small triangle immediately to its left opens or closes the entire sidebar. The sidebar starts closed. Select a folder to see its contents. Open a sentence, phrase or document to go to its page. Switch between **Icons** and **Details**, and choose tags, creation date, file size and type in **Settings → Root directory**. Size estimates the UTF-8 record data, excluding separate attachments and disk allocation. Older records without a creation date show “—”.
+
+**Root directory** and `Default` are distinct. The root view lists `Default` alongside top-level folders; open `Default` to see unassigned records. `Default` is not the parent of other top-level folders. Folder counts include sentences, phrases and documents in that folder and every descendant; the root count covers the whole project. Tree arrows expand or collapse a branch without changing its count. Breadcrumbs start at Root directory and let you return through the hierarchy.
+
+`Default` cannot contain folders. Create, move or paste folders in Root directory, or drag them onto its root icon. Records can still be dropped into `Default`. Pasting records without folders at the root opens `Default` to show where they landed.
+
+Right-click a folder or record to **Copy**, **Cut** or **Paste**. Selected records also use the page toolbar and `Ctrl/⌘+C`, `Ctrl/⌘+X` and `Ctrl/⌘+V`. Copying a folder includes its subtree and all three record types; pasted copies receive new IDs while retaining their analyses and existing lexeme/morpheme references. Cut moves the original objects only after a successful paste, so cancellation or failure leaves them intact. Whole-record clipboard operations stay within the current open project session. Copy again after reopening the project or restarting the app. Normal text editing is unaffected, and read-only projects cannot change folders or records.
+
 ## 1. Layout
 
-The left column lists **categories** ("All" plus each category with its count), the middle shows phrase cards (script line, text, pronunciation, translations, variants), and the inspector edits the current phrase. The search at the top covers text and translations, and only the current language is shown. Press a card and drag it onto another to move it there.
+The sidebar lists phrases and category counts for the current language and selected folder. Select a category to narrow the list, or a phrase to open its card and inspector. Root directory gives an overview of all phrases in the current language. The search at the top covers text and translations, and only the current language is shown. Press a card and drag it onto another to move it there.
 
 Words in the text that can be found in the lexicon (including inflected forms and stripped affixes) are underlined: hover to show the entry card, click to jump to the lexicon. Words are recognised exactly as in the [corpus](/cerf/qonlang/en/corpus/) — inflected forms, affixes, paradigm affixes worked backwards, and morphemes too.
 

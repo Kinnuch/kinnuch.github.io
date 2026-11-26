@@ -15,6 +15,8 @@ Document examples in View mode preserve table cells, bold and italic text and hi
 
 Project settings let you choose one definition language, two languages, or all available definitions. Corpus translations have a separate setting.
 
+Copy or cut one or more selected entries from the toolbar, context menu or with Ctrl/Command+C/X, then paste with Ctrl/Command+V. Copies get new IDs, including links between the copied entries. A cut moves the records only on a successful paste in the current project. Incompatible language-specific references are reported and the original records are kept.
+
 ## 1. Sub-pages and modes {#1-sub-pages-and-modes}
 
 - **Entries**: the list plus the inspector.
@@ -39,6 +41,8 @@ The **Entries** sub-page has two modes:
 
 At the top there is also a **Relation graph** button <a id="graph"></a>: a graph centred on the current word showing derivation, composition, cognates, near-synonyms and other relations; click a node to switch to it. Concatenated forms in custom sources and stages (`gēs-sal`, `a + b`, `x·y`) are split into several nodes, and each piece is looked up in the source language as an entry or morpheme of the same form; pieces that are found can be clicked — that is how you jump across languages. Forms are compared ignoring diacritics and case, as well as the source language's "characters ignored in fuzzy matching" (see [Languages](/cerf/qonlang/en/languages/)). After clicking a word in another language, **Back** returns you to the entry in the original language.
 
+After editing a definition, open the relation graph and close it to return to the same entry and scroll position. Selecting a different entry in the graph takes you to that entry when you return to the list.
+
 - **Pan, pin and zoom**: drag the background to pan; Ctrl/⌘ + wheel zooms around the pointer, and **Fit all nodes** fits the visible network. Click a lexeme to recenter; drag a node to pin it, or Shift-click nodes for a group drag. **Unpin** in the context menu lets one node move again, and **Clear pinned positions** unlocks them together. Other nodes keep adjusting until the layout settles.
 - **Multiple expansion levels**: **Graph settings → Expansion depth** chooses how many hops to traverse from the centre; 0 shows only the centre. The context menu can still expand one node’s sources, derived words, cognates and marked relations. Existing nodes are reused; collapsing a branch does not rebuild the others. Morphemes and external sources can expand too. Turn **Show cross-links between nodes** off for the expansion tree, or on for the other relationships among visible nodes. Arrows follow the record’s direction; undirected cognate and synonym relationships use plain lines. Edge labels have their own switch. A display-budget message appears when the network is truncated; reduce depth or expand branches gradually to manage its scope.
 - **Relationship types and large graphs**: **Graph settings → Relationship types** enables all types by default. Toggle cognates, synonyms, see-also, compound, derived and project-defined relations separately. Traversal follows enabled relationships only: disabling a bridge also removes paths through it. Each type has its own width, solid/dashed/dotted style and color, independently of node color groups. Defaults are 1,000 nodes and 5,000 links, adjustable up to 5,000 nodes and 20,000 links. Counts report which limit was reached; dense networks can reach the link limit first. The actual reachable network, depth, filters and budgets determine the count. **View graph full screen** uses the whole workspace. Click the same full-screen toggle in the left toolbar again, or press Esc, to return to the embedded view.
@@ -52,6 +56,8 @@ At the top there is also a **Relation graph** button <a id="graph"></a>: a graph
   - **Sound correspondences**: when two or more words in different languages come straight from the root (without extra pieces), it lists what each sound of the root became in each word — changed ones only; `∅` means lost.
   - In the example project Aelith, open the relation graph of kaso or teli and click **Compare** to see how they differ from their cognates in the sister language Merun (hasu, tel) in sound changes, correspondences and meaning.
 
+**Tag and part-of-speech colors:** choose a color before adding a tag in the entry’s tag input, or edit/reset the color beside an existing tag. The batch-tag panel offers the same controls. Lexicon tags with the same name share a color throughout the project. A newly created part of speech has a color control in its card, where it can also be edited or reset later. Compound parts of speech have independent colors; their components are unchanged. List and entry-card badges are rounded and automatically choose readable black or white text. Colors are saved in the project; reset returns to the theme default. Renaming tags only on selected entries inherits the old color, while merging into an already colored tag keeps the destination color. Unselected entries retain the old name and color.
+
 ## 2. The list {#2-the-list}
 
 - Search headwords, definitions, inflected forms and pronunciations; or search a single field: `word=` (headword), `gloss=` (definition), `form=` (inflected form), `stem=` (stem), `ipa=` (pronunciation), `pos=` (part of speech), `tag=` (tag), `register=` (register), `etym=` (etymology), `note=` (notes), `script=` (script), `feature=` (a grammatical dimension value — a dimension's name works as a field too, e.g. `gender=fem`), `dialect=` (dialect), or `/regex/` — see [Common conventions](/cerf/qonlang/en/#common-conventions). Header sorting and funnel filters are also described in [Common conventions](/cerf/qonlang/en/#common-conventions); the filterable columns here are initial letter, part of speech, tags, each dimension and dialects, plus language for **All languages**. To sort by last modification, tick **Updated** under **Columns** first and then click its column name.
@@ -60,6 +66,8 @@ At the top there is also a **Relation graph** button <a id="graph"></a>: a graph
 - For entries with several senses, the definition column shows "1、… 2、…".
 - **Letter navigation and filtering**: open the funnel in the Word header. Checkboxes filter letter groups; separate letter buttons jump to the first entry in that group in the current list and close the panel. Jumps preserve search, part-of-speech and other column filters. A group with no visible entries has a disabled jump button but an available checkbox.
 - **Sort from the end**: tick this beside Select all / Select none in the same panel. Words are compared from their endings using the current language’s alphabet, and navigation/filtering switches to final-letter groups. Multi-character letters remain whole alphabet units; the words themselves are unchanged. Initial and final modes keep separate checks. In bundled Aelith, kaso and telikaso share the o ending group; untick the option to return to initial-letter navigation.
+
+**Marked words only**: use the button next to Select none in the headword filter to show entries bearing the project’s word mark. It works together with the letter, search and other filters. Click again to turn it off.
 - The default order is alphabetical (the current language's custom alphabet, or Unicode order without one); the button at the far left of the header switches to a **custom order**, which is stored in the project.
 - Duplicate headwords get the whole row shaded pale yellow with a warning icon. To keep only the icon, turn off **Settings → Highlight duplicate entries**. The inspector also offers **Merge duplicates**: identical entries in the same language are merged into one, with their senses joined in order. If their parts of speech differ, each sense keeps its original part of speech and the merged entry gets the compound part of speech made of them (such as `n./adj.`). Merging can be undone.
 - Entries **without a definition** are flagged in red: a pale red row and a red circle next to the headword.
@@ -101,6 +109,8 @@ At the top there is also a **Relation graph** button <a id="graph"></a>: a graph
 ### Morpheme slots and splitting a headword {#morpheme-slots}
 
 Search a morpheme slot by form, gloss or definition. Use the type filter to narrow the alphabetically ordered results. Etymology and relation fields also search in place, with whole-form matches first. To create a missing record, use the add button below the results. Saving it links it to the field you were editing.
+
+Use × at the top right of a slot card to delete that project-wide slot. The confirmation shows how many entry bindings and paradigm steps use it. The entries and morphemes are kept; choose a replacement slot in affected steps or undo the deletion.
 
 The results and inline creation form float beside the input. Select a result, press Escape or click outside to close the panel. The fields below stay in place.
 

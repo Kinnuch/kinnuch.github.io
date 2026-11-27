@@ -23,6 +23,8 @@ Single morphemes and multiple selections can be copied, cut and pasted from the 
 
 ## 1. Fields
 
+Press the up or down arrow in the list to select the previous or next morpheme and update the inspector.
+
 | Field | Description |
 |---|---|
 | Form | The morpheme itself. Mark an affix's position with hyphens: `-lar` (suffix), `ka-` (prefix), `-in-` (infix); clitics use `=` |

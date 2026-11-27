@@ -25,6 +25,8 @@ Right-click a folder or record to **Copy**, **Cut** or **Paste**. Selected recor
 
 ## 1. Layout
 
+Choose list, single-card gallery or masonry using the view switcher. Use the gallery arrows to move between phrases, or use masonry to fit cards of different heights into columns. Phrasebook and Corpus remember their views independently.
+
 The sidebar lists phrases and category counts for the current language and selected folder. Select a category to narrow the list, or a phrase to open its card and inspector. Root directory gives an overview of all phrases in the current language. The search at the top covers text and translations, and only the current language is shown. Press a card and drag it onto another to move it there.
 
 Words in the text that can be found in the lexicon (including inflected forms and stripped affixes) are underlined: hover to show the entry card, click to jump to the lexicon. Words are recognised exactly as in the [corpus](/cerf/qonlang/en/corpus/) — inflected forms, affixes, paradigm affixes worked backwards, and morphemes too.
